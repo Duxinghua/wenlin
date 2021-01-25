@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["colorui/components/custom-tarbar"],{"32b3":function(e,t,n){"use strict";var o=n("ccd9"),c=n.n(o);c.a},"59bd":function(e,t,n){"use strict";n.r(t);var o=n("7422"),c=n("8e14");for(var u in c)"default"!==u&&function(e){n.d(t,e,(function(){return c[e]}))}(u);n("32b3");var a,r=n("f0c5"),i=Object(r["a"])(c["default"],o["b"],o["c"],!1,null,null,null,!1,o["a"],a);t["default"]=i.exports},7422:function(e,t,n){"use strict";var o;n.d(t,"b",(function(){return c})),n.d(t,"c",(function(){return u})),n.d(t,"a",(function(){return o}));var c=function(){var e=this,t=e.$createElement;e._self._c},u=[]},"8e14":function(e,t,n){"use strict";n.r(t);var o=n("f0f6"),c=n.n(o);for(var u in o)"default"!==u&&function(e){n.d(t,e,(function(){return o[e]}))}(u);t["default"]=c.a},ccd9:function(e,t,n){},f0f6:function(e,t,n){"use strict";(function(e){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var o=c(n("8288"));function c(e){return e&&e.__esModule?e:{default:e}}var u={props:["selectIndex"],data:function(){return{activeIndex:"",activeNum:1}},onLoad:function(){},watch:{activeIndex:function(e,t){console.log(e,t)}},methods:{switchTab:function(t){if(e.getStorageSync("token"))if(e.getStorageSync("community_id")){e.setStorageSync("o",t);var n=t;if(2==n){var c=e.getStorageSync("menuIndex");1==c?n=1:3==c?n=3:2==c?console.log(c,"ta"):4==c?n=4:5==c&&(n=5)}else 3==n?e.setStorageSync("menuIndex",3):1==n?e.setStorageSync("menuIndex",1):4==n?e.setStorageSync("menuIndex",4):5==n&&e.setStorageSync("menuIndex",5);this.$emit("togger",n)}else o.default.$emit("noToken");else o.default.$emit("noToken")}}};t.default=u}).call(this,n("543d")["default"])}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'colorui/components/custom-tarbar-create-component',
+    {
+        'colorui/components/custom-tarbar-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('543d')['createComponent'](__webpack_require__("59bd"))
+        })
+    },
+    [['colorui/components/custom-tarbar-create-component']]
+]);

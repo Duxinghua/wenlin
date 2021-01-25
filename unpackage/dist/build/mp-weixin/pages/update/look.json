@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "认识我",
+  "usingComponents": {
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
+    "nodata": "/components/nodata/nodata"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "我的领居",
+  "usingComponents": {
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
+    "hch-poster": "/wxcomponent/hch-poster/hch-poster",
+    "firend": "/components/onfirend/onfirend",
+    "onshare": "/components/onshare/onshare"
+  }
+}

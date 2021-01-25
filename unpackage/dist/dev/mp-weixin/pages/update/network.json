@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "network",
+  "usingComponents": {
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
+  }
+}

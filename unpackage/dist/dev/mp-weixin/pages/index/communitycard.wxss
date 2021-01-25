@@ -1,0 +1,685 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+page.data-v-35a39713 {
+  background: white !important;
+}
+.personalcard.data-v-35a39713 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  background: whtie !important;
+  min-height: 100vh;
+}
+.personalcard .pcontent.data-v-35a39713 {
+  padding-top: 24rpx;
+  padding-bottom: 24rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.personalcard .pcontent .userheader.data-v-35a39713 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-bottom: 16rpx;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.personalcard .pcontent .userheader .avatarwrap.data-v-35a39713 {
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 23rpx;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+.personalcard .pcontent .userheader .avatarwrap.data-v-35a39713 .u-image__image {
+  width: 140rpx;
+  height: 140rpx;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+}
+.personalcard .pcontent .userheader .avatarwrap .heading.data-v-35a39713 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  overflow: hidden;
+}
+.personalcard .pcontent .userheader .avatarwrap .daing.data-v-35a39713 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 40rpx;
+  height: 40rpx;
+}
+.personalcard .pcontent .userheader .userinfwrap.data-v-35a39713 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+.personalcard .pcontent .userheader .address.data-v-35a39713 {
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #404B69;
+}
+.personalcard .pcontent .userheader .userinfo.data-v-35a39713 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.personalcard .pcontent .userheader .userinfo .username.data-v-35a39713 {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #020433;
+  color: #333333;
+  margin-right: 20rpx;
+}
+.personalcard .pcontent .userheader .userinfo .userdes.data-v-35a39713 {
+  font-size: 20rpx;
+  font-family: PingFang-SC-Medium,PingFang-SC;
+  font-weight: 500;
+  color: #020433;
+  margin-left: 24rpx;
+}
+.personalcard .pcontent .userheader .userbtn.data-v-35a39713 {
+  width: 126rpx;
+  -webkit-border-radius: 8rpx;
+          border-radius: 8rpx;
+  border: 2rpx solid #ff9c00;
+  height: 56rpx;
+  font-size: 26rpx;
+  font-family: PingFang-SC-Bold,PingFang-SC;
+  font-weight: bold;
+  color: #ff9c00;
+  line-height: 56rpx;
+  text-align: center;
+  margin-left: auto;
+}
+.personalcard .pcontent .darenwrap.data-v-35a39713 {
+  margin-top: 40rpx;
+  width: 624rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-align-content: flex-start;
+          align-content: flex-start;
+  margin: 0 auto;
+}
+.personalcard .pcontent .darenwrap .avatarico.data-v-35a39713 {
+  width: 80rpx;
+  height: 80rpx;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  border: 4rpx solid white;
+  margin-right: 24rpx;
+  margin-bottom: 24rpx;
+}
+.personalcard .pcontent .darenwrap .avatarico.data-v-35a39713:nth-child(6n) {
+  margin-right: 0rpx;
+}
+.personalcard .pcontent .darenwrap .avatarwt.data-v-35a39713 {
+  background: #EEF2FA;
+  font-size: 24rpx;
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #020433;
+}
+.personalcard .pcontent .itemwrap.data-v-35a39713 {
+  width: 624rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-align-content: flex-start;
+          align-content: flex-start;
+  margin: 30rpx auto;
+}
+.personalcard .pcontent .itemwrap .labelitem.data-v-35a39713 {
+  width: calc(33.33% - 4rpx);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  border-right: 2rpx solid #F0F0F0;
+}
+.personalcard .pcontent .itemwrap .labelitem .labelnum.data-v-35a39713 {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #020433;
+}
+.personalcard .pcontent .itemwrap .labelitem .labeltext.data-v-35a39713 {
+  font-size: 28rpx;
+  margin-top: 10rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #020433;
+}
+.personalcard .pcontent .itemwrap .labelitem.data-v-35a39713:nth-child(3n) {
+  border-right: none;
+}
+.personalcard .pcontent .swiper-wrap.data-v-35a39713 {
+  width: 100%;
+  border-top: 20rpx solid #F7F9FF;
+  padding-top: 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-align-content: flex-start;
+          align-content: flex-start;
+}
+.personalcard .pcontent .swiper-wrap .swiperimg.data-v-35a39713 {
+  width: 33.33%;
+  height: 250rpx;
+}
+.personalcard .pcontent .useritem.data-v-35a39713 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  height: 106rpx;
+  width: calc(100% - 48rpx);
+  margin: 0 auto;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  border-bottom: 1px solid rgba(222, 222, 222, 0.5);
+}
+.personalcard .pcontent .useritem .t1.data-v-35a39713 {
+  width: 112rpx;
+  margin-right: 24rpx;
+  text-align: right;
+  font-size: 28rpx;
+  line-height: 38rpx;
+  font-family: PingFang-SC-Medium,PingFang-SC;
+  font-weight: 500;
+  color: #333333;
+}
+.personalcard .pcontent .useritem .t2.data-v-35a39713 {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Bold,PingFang-SC;
+  font-weight: bold;
+  color: #333333;
+  width: calc(100% - 112rpx);
+}
+.personalcard .pcontent .useritem .ti.data-v-35a39713 {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: auto;
+}
+.personalcard .pcontent .useritemfix.data-v-35a39713 {
+  height: 118rpx;
+  line-height: 118rpx;
+}
+.personalcard .pcontent .useritemfix .imgwrap.data-v-35a39713 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+}
+.personalcard .pcontent .useritemfix .imgwrap .imgitem.data-v-35a39713 {
+  width: 72rpx;
+  height: 72rpx;
+  -webkit-border-radius: 8rpx;
+          border-radius: 8rpx;
+}
+.personalcard .pcontent .lybtn.data-v-35a39713 {
+  width: 654rpx;
+  height: 100rpx;
+  background: -webkit-linear-gradient(46deg, #FEAA0E, #FFC000);
+  background: linear-gradient(44deg, #FEAA0E, #FFC000);
+  -webkit-border-radius: 12px 12px 12px 12px;
+          border-radius: 12px 12px 12px 12px;
+  -webkit-box-shadow: 0px 8rpx 16rpx 0px rgba(225, 138, 0, 0.1);
+          box-shadow: 0px 8rpx 16rpx 0px rgba(225, 138, 0, 0.1);
+  font-size: 36rpx;
+  font-family: PingFang-SC-Bold,PingFang-SC;
+  font-weight: bold;
+  color: white;
+  line-height: 100rpx;
+  text-align: center;
+  margin-top: 234rpx;
+  position: fixed;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  bottom: 100rpx;
+}
+.personalcard .pcontent .gbbtn.data-v-35a39713 {
+  width: 702rpx;
+  height: 80rpx;
+  background: #d8d8d8;
+  -webkit-box-shadow: 0px 8rpx 16rpx 0px rgba(51, 51, 51, 0.1);
+          box-shadow: 0px 8rpx 16rpx 0px rgba(51, 51, 51, 0.1);
+  -webkit-border-radius: 40rpx;
+          border-radius: 40rpx;
+  font-size: 36rpx;
+  font-family: PingFang-SC-Bold,PingFang-SC;
+  font-weight: bold;
+  color: #333333;
+  line-height: 80rpx;
+  text-align: center;
+  margin-top: 40rpx;
+}
+.personalcard .pcontent .popup.data-v-35a39713 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 40000;
+}
+.personalcard .pcontent .popup .mb.data-v-35a39713 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4001;
+  background: rgba(0, 0, 0, 0.6);
+}
+.personalcard .pcontent .popup .message.data-v-35a39713 {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 760rpx;
+  z-index: 4001;
+  width: 750rpx;
+  height: 760rpx;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: white;
+  -webkit-border-radius: 16rpx 16rpx 0px 0px;
+          border-radius: 16rpx 16rpx 0px 0px;
+}
+.personalcard .pcontent .popup .message .openheader.data-v-35a39713 {
+  height: 108rpx;
+  line-height: 108rpx;
+  font-size: 32rpx;
+  font-family: PingFang-SC-Bold, PingFang-SC;
+  font-weight: bold;
+  color: #333333;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.personalcard .pcontent .popup .message .openheader text.data-v-35a39713 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.personalcard .pcontent .popup .message .openheader .opencolse.data-v-35a39713 {
+  width: 31rpx;
+  height: 31rpx;
+}
+.personalcard .pcontent .popup .message .openheader .selectback.data-v-35a39713 {
+  position: absolute;
+  left: 48rpx;
+  top: 50rpx;
+  margin-top: -16rpx;
+  width: 23rpx;
+  height: 32rpx;
+}
+.personalcard .pcontent .popup .message .textwrap.data-v-35a39713 {
+  width: 100%;
+  height: 400rpx;
+  background: rgba(222, 222, 222, 0.3);
+  -webkit-border-radius: 8rpx;
+          border-radius: 8rpx;
+  position: relative;
+}
+.personalcard .pcontent .popup .message .textwrap .textarea.data-v-35a39713 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20rpx;
+  font-size: 26rpx;
+  font-family: PingFang-SC-Medium,PingFang-SC;
+  font-weight: 500;
+  color: #999999;
+  line-height: 36rpx;
+}
+.personalcard .pcontent .popup .message .textwrap .tip.data-v-35a39713 {
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  font-size: 26rpx;
+  font-family: PingFang-SC-Medium,PingFang-SC;
+  font-weight: 500;
+  color: #333333;
+  line-height: u36px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+}
+.personalcard .pcontent .popup .message .textwrap .tip .t2.data-v-35a39713 {
+  color: #999999;
+}
+.personalcard .pcontent .popup .message hoverclass.data-v-35a39713 {
+  background: #ff9c00;
+}
+.personalcard .pcontent .popup .message view.data-v-35a39713:last-child {
+  width: 702rpx;
+  height: 80rpx;
+  background: rgba(255, 156, 0, 0.5);
+  box-shadowss: 0px 8rpx 16rpx 0px rgba(225, 138, 0, 0.1);
+  -webkit-border-radius: 40rpx;
+          border-radius: 40rpx;
+  margin-top: 64rpx;
+  font-size: 36rpx;
+  font-family: PingFang-SC-Bold,PingFang-SC;
+  font-weight: bold;
+  color: white;
+  line-height: 80rpx;
+  text-align: center;
+}
+.personalcard .popup.data-v-35a39713 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 40000;
+}
+.personalcard .popup .mb.data-v-35a39713 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4001;
+  background: rgba(0, 0, 0, 0.6);
+}
+.personalcard .popup .chooseid.data-v-35a39713 {
+  height: 500rpx;
+  bottom: 0;
+}
+.personalcard .popup .chooseid .pickerview.data-v-35a39713 {
+  width: 100%;
+  height: 200rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.personalcard .popup .chooseid .pickerview .item.data-v-35a39713 {
+  width: 100%;
+  font-size: 34rpx;
+  text-align: center;
+}
+.personalcard .popup .openarea.data-v-35a39713 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 4002;
+  width: 100%;
+  height: 652rpx;
+  background: white;
+  -webkit-border-radius: 16rpx 16rpx 0rpx 0rpx;
+          border-radius: 16rpx 16rpx 0rpx 0rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  padding-left: 48rpx;
+  padding-right: 48rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.personalcard .popup .openarea .openheader.data-v-35a39713 {
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  font-family: PingFang-SC-Bold, PingFang-SC;
+  font-weight: bold;
+  color: #333333;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.personalcard .popup .openarea .openheader text.data-v-35a39713 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.personalcard .popup .openarea .openheader .opencolse.data-v-35a39713 {
+  width: 31rpx;
+  height: 31rpx;
+}
+.personalcard .popup .openarea .openheader .selectback.data-v-35a39713 {
+  position: absolute;
+  left: 48rpx;
+  top: 50rpx;
+  margin-top: -16rpx;
+  width: 23rpx;
+  height: 32rpx;
+}
+.personalcard .popup .openarea .openitem.data-v-35a39713 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  position: relative;
+  height: 90rpx;
+  border-bottom: 2rpx solid rgba(222, 222, 222, 0.3);
+}
+.personalcard .popup .openarea .openitem .opentitle.data-v-35a39713 {
+  width: 120rpx;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Bold, PingFang-SC;
+  font-weight: bold;
+  color: #333333;
+  margin-right: 30rpx;
+  text-align: right;
+}
+.personalcard .popup .openarea .openitem .opentxt.data-v-35a39713 {
+  width: calc(100% - 72rpx - 150rpx);
+  font-size: 26rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: rgba(153, 153, 153, 0.5);
+}
+.personalcard .popup .openarea .openitem .opendown.data-v-35a39713 {
+  width: 30rpx;
+  height: 20rpx;
+  margin-left: auto;
+}
+.personalcard .popup .openarea .openitem input.data-v-35a39713 {
+  width: calc(100% - 72rpx - 150rpx);
+}
+.personalcard .popup .openarea .openitem .adico.data-v-35a39713 {
+  width: 32rpx;
+  height: 42rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  margin-left: auto;
+}
+.personalcard .popup .openarea .openitem .openmobile.data-v-35a39713 {
+  width: 136rpx;
+  height: 56rpx;
+  background: #ff9c00;
+  -webkit-border-radius: 8rpx;
+          border-radius: 8rpx;
+  border: none;
+  font-size: 26rpx;
+  font-family: PingFang-SC-Bold, PingFang-SC;
+  font-weight: bold;
+  color: white;
+  line-height: 56rpx;
+  text-align: center;
+  padding: 0;
+}
+.personalcard .popup .openarea .openinfo.data-v-35a39713 {
+  width: 100%;
+  font-size: 22rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: #999999;
+  line-height: 32rpx;
+  margin-top: 20rpx;
+}
+.personalcard .popup .openarea .openinfo .rcolor.data-v-35a39713 {
+  color: #ff9c00;
+}
+.personalcard .popup .openarea .openbutton.data-v-35a39713 {
+  width: 100%;
+  height: 80rpx;
+  background: #ff9c00;
+  -webkit-border-radius: 8rpx;
+          border-radius: 8rpx;
+  font-size: 34rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: white;
+  line-height: 80rpx;
+  text-align: center;
+  margin-top: 64rpx;
+}
+.personalcard .popup .openarea .hover-openbutton.data-v-35a39713 {
+  background: rgba(255, 156, 0, 0.5) !important;
+}
+.personalcard .popup .openinfomation.data-v-35a39713 {
+  height: 916rpx;
+}
+

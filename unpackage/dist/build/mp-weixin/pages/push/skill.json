@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "选择我的技能",
+  "usingComponents": {
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
+    "skill": "/components/skill/skill"
+  }
+}

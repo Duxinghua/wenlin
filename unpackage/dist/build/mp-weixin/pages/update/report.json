@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "举报",
+  "usingComponents": {
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
+  }
+}

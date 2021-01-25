@@ -1,0 +1,1 @@
+<block wx:if="{{deleteShow}}"><view class="popup data-v-1857a934"><view class="mb data-v-1857a934"></view><view class="tipslogin data-v-1857a934"><image class="networkico data-v-1857a934" src="https://sq.wenlinapp.com/upload/mini/nopost.png"></image><view class="tips data-v-1857a934">啊呀，帖子可能被删除了~</view></view></view></block>

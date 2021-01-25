@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "意见建议",
+  "usingComponents": {
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
+  }
+}

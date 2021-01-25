@@ -1,0 +1,31 @@
+
+.emotion-box.data-v-473d9acb {
+	/* 	height: 200px; */
+		height:auto;
+		margin: 0 auto;
+		width: calc(100% - 48rpx);
+/* 		padding-left:24rpx;
+		padding-right:24rpx; */
+		-webkit-box-sizing: border-box;
+		        box-sizing: border-box;
+		padding-top: 8rpx;
+		overflow: hidden;
+		background: white;
+}
+.emotion-box-line.data-v-473d9acb {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+}
+.emotion-box-line view.data-v-473d9acb{
+		width:calc(100%/8)
+}
+.emotion-item.data-v-473d9acb {
+		-webkit-box-flex: 1;
+		-webkit-flex: 1;
+		        flex: 1;
+		text-align: center;
+		cursor: pointer;
+		padding:10rpx;
+}
+

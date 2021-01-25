@@ -1,0 +1,84 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/detail",
+    "pages/index/cdetail",
+    "pages/index/personalcard",
+    "pages/index/committeedynamics",
+    "pages/index/committeeactivity",
+    "pages/index/communitycard",
+    "pages/push/index",
+    "pages/push/edit",
+    "pages/push/skill",
+    "pages/my/index"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/update",
+      "pages": [
+        "publicbenefit",
+        "selectcommunity",
+        "personal",
+        "openingcommunity",
+        "setVote",
+        "ysdetail",
+        "ysvdetail",
+        "ptdetail",
+        "award",
+        "answer",
+        "answerdetail",
+        "answerresult",
+        "joinlist",
+        "limit",
+        "report",
+        "network",
+        "secret",
+        "collect",
+        "idea",
+        "love",
+        "look",
+        "integral",
+        "integraldetail",
+        "dareninfo",
+        "message",
+        "messagedetail",
+        "myspare",
+        "verification",
+        "neighbour",
+        "committeelist",
+        "mycommunity",
+        "setcommunity",
+        "postlist",
+        "personalinfo",
+        "search",
+        "committee",
+        "committeemap",
+        "committeeworker",
+        "committeedetail",
+        "dynamicslist"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "问邻",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF",
+    "navigationStyle": "custom"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "小区定位显示"
+    }
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "cu-defaule-custom": "/colorui/components/cu-custom",
+    "cu-tarbar": "/colorui/components/custom-tarbar",
+    "home": "/pages/index/home",
+    "my": "/pages/my/index",
+    "push": "/pages/push/index",
+    "mescroll-body": "/components/mescroll-uni/mescroll-body",
+    "mescroll-uni": "/components/mescroll-uni/mescroll-uni"
+  }
+}

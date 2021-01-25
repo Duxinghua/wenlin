@@ -1,0 +1,1 @@
+<view class="{{['nodata data-v-4bb7b1e4',type?'small':'']}}"><image src="{{imgUrl+'nodata.png'}}" alt class="data-v-4bb7b1e4"></image><text class="data-v-4bb7b1e4">{{text}}</text></view>

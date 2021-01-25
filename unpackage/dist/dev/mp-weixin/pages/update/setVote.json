@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "设置投票",
+  "usingComponents": {
+    "u-input": "/uview-ui/components/u-input/u-input",
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
+  }
+}

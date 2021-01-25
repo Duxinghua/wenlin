@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "输入个人信息",
+  "usingComponents": {
+    "u-popup": "/uview-ui/components/u-popup/u-popup",
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
+  }
+}

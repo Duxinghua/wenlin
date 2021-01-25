@@ -1,0 +1,1 @@
+<block wx:if="{{isShow}}"><view class="integral data-v-7a433a6d">{{'积分 '+types+score+''}}</view></block>

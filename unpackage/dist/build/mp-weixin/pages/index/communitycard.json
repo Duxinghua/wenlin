@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "小区名片",
+  "usingComponents": {
+    "u-image": "/uview-ui/components/u-image/u-image",
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
+    "hch-poster": "/wxcomponent/hch-poster/hch-poster",
+    "onshare": "/components/onshare/onshare",
+    "firend": "/components/onfirend/onfirend"
+  }
+}

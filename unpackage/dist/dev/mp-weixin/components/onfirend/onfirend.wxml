@@ -1,0 +1,1 @@
+<block wx:if="{{show}}"><view class="firend data-v-09619664"><view data-event-opts="{{[['tap',[['onclose',['$event']]]]]}}" class="mb data-v-09619664" bindtap="__e"></view><image class="firendimg data-v-09619664" src="../../static/onfirend.png"></image></view></block>

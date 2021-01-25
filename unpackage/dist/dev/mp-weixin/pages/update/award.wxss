@@ -1,0 +1,247 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.award.data-v-ecb121e0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.award .awardcontent.data-v-ecb121e0 {
+  width: 100%;
+  height: 1488rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  position: relative;
+  z-index: 300;
+}
+.award .awardcontent .bg.data-v-ecb121e0 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1488rpx;
+  z-index: -1;
+}
+.award .awardcontent .statusText.data-v-ecb121e0 {
+  width: 485rpx;
+  height: 64rpx;
+  border: 1px solid #ffffff;
+  -webkit-border-radius: 32rpx;
+          border-radius: 32rpx;
+  line-height: 64rpx;
+  text-align: center;
+  font-size: 33rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 60rpx;
+}
+.award .awardcontent .lottery.data-v-ecb121e0 {
+  margin-top: 80rpx;
+  height: 600rpx;
+}
+.award .awardcontent .lotterywrap.data-v-ecb121e0 {
+  width: 701rpx;
+  height: 607rpx;
+  background: #FEFCFA;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding: 28rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.award .awardcontent .lotterywrap .titlewrap.data-v-ecb121e0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  height: 40rpx;
+}
+.award .awardcontent .lotterywrap .titlewrap .tabico.data-v-ecb121e0 {
+  width: 84rpx;
+  height: 30rpx;
+}
+.award .awardcontent .lotterywrap .titlewrap .tabic1.data-v-ecb121e0 {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.award .awardcontent .lotterywrap .titlewrap .titletext.data-v-ecb121e0 {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  font-size: 44rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #F66436;
+}
+.award .awardcontent .lotterywrap .cwrap.data-v-ecb121e0 {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #020433;
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+  text-align: left;
+  width: 100%;
+  height: 100rpx;
+  overflow-y: auto;
+}
+.award .awardcontent .lotterywrap .userlist.data-v-ecb121e0 {
+  width: 100%;
+  height: 300rpx;
+  margin-top: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.award .awardcontent .lotterywrap .userlist .useritem.data-v-ecb121e0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-bottom: 20rpx;
+}
+.award .awardcontent .lotterywrap .userlist .useritem .a1.data-v-ecb121e0 {
+  width: 68rpx;
+  height: 68rpx;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+}
+.award .awardcontent .lotterywrap .userlist .useritem .username.data-v-ecb121e0 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 180rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #020433;
+  margin-left: 20rpx;
+}
+.award .awardcontent .lotterywrap .userlist .useritem .awardc.data-v-ecb121e0 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #F66537;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.award .imgwrap.data-v-ecb121e0 {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.award .imgwrap .abg.data-v-ecb121e0 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.award .imgwrap.data-v-ecb121e0 .u-icon {
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+}
+.award .imgwrap.data-v-ecb121e0 .u-image {
+  margin-top: 50rpx;
+}
+.award .imgwrap .title.data-v-ecb121e0 {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #FEFCFA;
+  margin-top: 57rpx;
+}
+.award .imgwrap .name.data-v-ecb121e0 {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #FEFCFA;
+  margin-top: 20rpx;
+}
+.award .imgwrap .titlerror.data-v-ecb121e0 {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #FEFCFA;
+  line-height: 48rpx;
+  width: 260rpx;
+}
+.award .imgwrapa.data-v-ecb121e0 {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "发贴",
+  "usingComponents": {
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
+    "nodata": "/components/nodata/nodata",
+    "integraltip": "/components/integraltip/integraltip",
+    "confrimpop": "/components/confrim/confrim"
+  }
+}

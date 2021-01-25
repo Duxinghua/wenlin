@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "居委会",
+  "usingComponents": {
+    "u-image": "/uview-ui/components/u-image/u-image",
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
+    "mobile": "/components/mobile/mobile",
+    "comment": "/components/comment/comment",
+    "emotion": "/components/bkhumor-emoji/index"
+  }
+}
