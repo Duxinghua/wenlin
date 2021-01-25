@@ -461,7 +461,7 @@ export default {
 					}
 				}
 			});
-			this.getUser();
+
 			this.$Bus.$on('countmsg', countmsg => {
 				this.$getCount(result => {
 					var count = 0;
@@ -507,6 +507,7 @@ export default {
 		auth.then(status => {
 			this.token = uni.getStorageSync('token');
 			this.all_community = uni.getStorageSync('all_community');
+			this.getUser();
 			if (this.all_community.length) {
 				uni.setStorageSync('community_id', this.all_community[0].community_id);
 				uni.setStorageSync('committee_id', this.all_community[0].committee_id);

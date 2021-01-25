@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "个人名片",
-  "usingComponents": {
-    "u-popup": "/uview-ui/components/u-popup/u-popup",
-    "u-input": "/uview-ui/components/u-input/u-input",
-    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
-    "leave-words": "/components/leavewords/leavewords"
-  }
-}

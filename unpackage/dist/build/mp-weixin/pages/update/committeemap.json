@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "居委会",
-  "usingComponents": {
-    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
-  }
-}

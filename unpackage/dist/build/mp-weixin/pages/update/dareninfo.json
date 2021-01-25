@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "达人信息",
-  "usingComponents": {
-    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
-    "skill": "/components/skill/skill",
-    "integraltip": "/components/integraltip/integraltip"
-  }
-}

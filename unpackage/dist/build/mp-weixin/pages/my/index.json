@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "我的",
-  "usingComponents": {
-    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
-  }
-}

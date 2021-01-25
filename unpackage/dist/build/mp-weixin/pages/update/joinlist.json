@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "报名列表",
-  "usingComponents": {
-    "u-popup": "/uview-ui/components/u-popup/u-popup",
-    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
-    "selectitem": "/components/selectitem/selectitem"
-  }
-}

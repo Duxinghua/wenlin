@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "居委会",
-  "usingComponents": {
-    "u-image": "/uview-ui/components/u-image/u-image",
-    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "u-image": "/uview-ui/components/u-image/u-image",
-    "u-count-down": "/uview-ui/components/u-count-down/u-count-down"
-  }
-}

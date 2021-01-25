@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "居委会动态列表",
-  "usingComponents": {
-    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
-    "nodata": "/components/nodata/nodata"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "我的小区",
-  "usingComponents": {
-    "u-image": "/uview-ui/components/u-image/u-image",
-    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
-    "set-commit": "/components/setcommit/setcommit"
-  }
-}

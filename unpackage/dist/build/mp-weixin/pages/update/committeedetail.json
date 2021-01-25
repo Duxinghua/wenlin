@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "居委会详情",
-  "usingComponents": {
-    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
-    "reply": "/components/reply/reply",
-    "mobile": "/components/mobile/mobile"
-  }
-}

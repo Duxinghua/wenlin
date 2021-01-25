@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "积分",
-  "usingComponents": {
-    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
-    "pushedit": "/components/pushedit/pushedit"
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "社区公益",
-  "usingComponents": {
-    "u-image": "/uview-ui/components/u-image/u-image",
-    "u-popup": "/uview-ui/components/u-popup/u-popup",
-    "u-input": "/uview-ui/components/u-input/u-input",
-    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
-  }
-}
