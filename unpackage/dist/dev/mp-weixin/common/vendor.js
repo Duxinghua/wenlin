@@ -1936,9 +1936,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 11:
-/*!***********************************!*\
-  !*** D:/work/lindemoc/api/api.js ***!
-  \***********************************/
+/*!*********************************!*\
+  !*** D:/wrok/wenlin/api/api.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2190,8 +2190,11 @@ var questionAnswer = function questionAnswer(params) {return (0, _request.wxRequ
 
 
 //附近小区帖子--1.1 {{localhost}}/api/community/community_dynamics/nearDynamics
-var nearDynamics = function nearDynamics(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/community_dynamics/nearDynamics', 'POST');};var _default =
+var nearDynamics = function nearDynamics(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/community_dynamics/nearDynamics', 'POST');};
 
+
+//用户转送积分--1.1  {{localhost}}/api/community/user/transferScore
+var transferScore = function transferScore(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/user/transferScore', 'POST');};var _default =
 
 
 
@@ -2307,14 +2310,15 @@ var nearDynamics = function nearDynamics(params) {return (0, _request.wxRequest)
   addJoinMark: addJoinMark,
   questionList: questionList,
   questionAnswer: questionAnswer,
-  nearDynamics: nearDynamics };exports.default = _default;
+  nearDynamics: nearDynamics,
+  transferScore: transferScore };exports.default = _default;
 
 /***/ }),
 
 /***/ 12:
-/*!*****************************************!*\
-  !*** D:/work/lindemoc/utils/request.js ***!
-  \*****************************************/
+/*!***************************************!*\
+  !*** D:/wrok/wenlin/utils/request.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2486,9 +2490,9 @@ module.exports = {
 /***/ }),
 
 /***/ 13:
-/*!****************************************!*\
-  !*** D:/work/lindemoc/utils/config.js ***!
-  \****************************************/
+/*!**************************************!*\
+  !*** D:/wrok/wenlin/utils/config.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2522,9 +2526,9 @@ module.exports = {
 /***/ }),
 
 /***/ 14:
-/*!**************************************!*\
-  !*** D:/work/lindemoc/utils/tool.js ***!
-  \**************************************/
+/*!************************************!*\
+  !*** D:/wrok/wenlin/utils/tool.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2822,9 +2826,9 @@ module.exports = {
 /***/ }),
 
 /***/ 151:
-/*!********************************************************!*\
-  !*** D:/work/lindemoc/components/u-charts/u-charts.js ***!
-  \********************************************************/
+/*!******************************************************!*\
+  !*** D:/wrok/wenlin/components/u-charts/u-charts.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8498,9 +8502,9 @@ if ( true && typeof module.exports === "object") {
 /***/ }),
 
 /***/ 152:
-/*!******************************************!*\
-  !*** D:/work/lindemoc/common/checker.js ***!
-  \******************************************/
+/*!****************************************!*\
+  !*** D:/wrok/wenlin/common/checker.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8529,9 +8533,9 @@ module.exports = {
 /***/ }),
 
 /***/ 177:
-/*!***************************************!*\
-  !*** D:/work/lindemoc/common/area.js ***!
-  \***************************************/
+/*!*************************************!*\
+  !*** D:/wrok/wenlin/common/area.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12585,9 +12589,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 192:
-/*!****************************************!*\
-  !*** D:/work/lindemoc/static/vite.png ***!
-  \****************************************/
+/*!**************************************!*\
+  !*** D:/wrok/wenlin/static/vite.png ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -12596,9 +12600,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABICAMAAABr
 /***/ }),
 
 /***/ 193:
-/*!**********************************************!*\
-  !*** D:/work/lindemoc/static/voteactive.png ***!
-  \**********************************************/
+/*!********************************************!*\
+  !*** D:/wrok/wenlin/static/voteactive.png ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -18654,9 +18658,9 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 20:
-/*!******************************************!*\
-  !*** D:/work/lindemoc/uview-ui/index.js ***!
-  \******************************************/
+/*!****************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/index.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18801,9 +18805,9 @@ var install = function install(Vue) {
 /***/ }),
 
 /***/ 21:
-/*!*****************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/mixin/mixin.js ***!
-  \*****************************************************/
+/*!***************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/mixin/mixin.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18843,9 +18847,9 @@ var install = function install(Vue) {
 /***/ }),
 
 /***/ 22:
-/*!*******************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/request/index.js ***!
-  \*******************************************************/
+/*!*****************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/request/index.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19815,9 +19819,9 @@ if (hadRuntime) {
 /***/ }),
 
 /***/ 23:
-/*!************************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/deepMerge.js ***!
-  \************************************************************/
+/*!**********************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/deepMerge.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19856,9 +19860,9 @@ deepMerge;exports.default = _default;
 /***/ }),
 
 /***/ 24:
-/*!************************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/deepClone.js ***!
-  \************************************************************/
+/*!**********************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/deepClone.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19890,9 +19894,9 @@ deepClone;exports.default = _default;
 /***/ }),
 
 /***/ 25:
-/*!*******************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/test.js ***!
-  \*******************************************************/
+/*!*****************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/test.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20133,9 +20137,9 @@ function code(value) {var len = arguments.length > 1 && arguments[1] !== undefin
 /***/ }),
 
 /***/ 26:
-/*!**************************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/queryParams.js ***!
-  \**************************************************************/
+/*!************************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/queryParams.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20202,9 +20206,9 @@ queryParams;exports.default = _default;
 /***/ }),
 
 /***/ 27:
-/*!********************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/route.js ***!
-  \********************************************************/
+/*!******************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/route.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20299,9 +20303,9 @@ route;exports.default = _default;
 /***/ }),
 
 /***/ 28:
-/*!*************************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/timeFormat.js ***!
-  \*************************************************************/
+/*!***********************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/timeFormat.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20362,9 +20366,9 @@ timeFormat;exports.default = _default;
 /***/ }),
 
 /***/ 29:
-/*!***********************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/timeFrom.js ***!
-  \***********************************************************/
+/*!*********************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/timeFrom.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20450,9 +20454,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 30:
-/*!****************************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/colorGradient.js ***!
-  \****************************************************************/
+/*!**************************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/colorGradient.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20560,9 +20564,9 @@ function rgbToHex(rgb) {
 /***/ }),
 
 /***/ 31:
-/*!*******************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/guid.js ***!
-  \*******************************************************/
+/*!*****************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/guid.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20612,9 +20616,9 @@ guid;exports.default = _default;
 /***/ }),
 
 /***/ 32:
-/*!********************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/color.js ***!
-  \********************************************************/
+/*!******************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/color.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20660,9 +20664,9 @@ color;exports.default = _default;
 /***/ }),
 
 /***/ 33:
-/*!************************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/type2icon.js ***!
-  \************************************************************/
+/*!**********************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/type2icon.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20706,9 +20710,9 @@ type2icon;exports.default = _default;
 /***/ }),
 
 /***/ 34:
-/*!**************************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/randomArray.js ***!
-  \**************************************************************/
+/*!************************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/randomArray.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20724,9 +20728,9 @@ randomArray;exports.default = _default;
 /***/ }),
 
 /***/ 35:
-/*!**********************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/addUnit.js ***!
-  \**********************************************************/
+/*!********************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/addUnit.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20743,9 +20747,9 @@ function addUnit() {var value = arguments.length > 0 && arguments[0] !== undefin
 /***/ }),
 
 /***/ 36:
-/*!*********************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/random.js ***!
-  \*********************************************************/
+/*!*******************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/random.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20764,9 +20768,9 @@ random;exports.default = _default;
 /***/ }),
 
 /***/ 37:
-/*!*******************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/trim.js ***!
-  \*******************************************************/
+/*!*****************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/trim.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20790,9 +20794,9 @@ trim;exports.default = _default;
 /***/ }),
 
 /***/ 38:
-/*!********************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/toast.js ***!
-  \********************************************************/
+/*!******************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/toast.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20811,9 +20815,9 @@ toast;exports.default = _default;
 /***/ }),
 
 /***/ 39:
-/*!************************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/getParent.js ***!
-  \************************************************************/
+/*!**********************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/getParent.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20869,9 +20873,9 @@ function getParent(name, keys) {
 /***/ }),
 
 /***/ 4:
-/*!***********************************!*\
-  !*** D:/work/lindemoc/pages.json ***!
-  \***********************************/
+/*!*********************************!*\
+  !*** D:/wrok/wenlin/pages.json ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -20880,9 +20884,9 @@ function getParent(name, keys) {
 /***/ }),
 
 /***/ 40:
-/*!**********************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/$parent.js ***!
-  \**********************************************************/
+/*!********************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/$parent.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20909,9 +20913,9 @@ function $parent() {var name = arguments.length > 0 && arguments[0] !== undefine
 /***/ }),
 
 /***/ 41:
-/*!******************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/sys.js ***!
-  \******************************************************/
+/*!****************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/sys.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20928,9 +20932,9 @@ function sys() {
 /***/ }),
 
 /***/ 42:
-/*!***********************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/debounce.js ***!
-  \***********************************************************/
+/*!*********************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/debounce.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20968,9 +20972,9 @@ debounce;exports.default = _default;
 /***/ }),
 
 /***/ 43:
-/*!***********************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/function/throttle.js ***!
-  \***********************************************************/
+/*!*********************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/function/throttle.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21011,9 +21015,9 @@ throttle;exports.default = _default;
 /***/ }),
 
 /***/ 437:
-/*!*******************************************!*\
-  !*** D:/work/lindemoc/static/com1ico.png ***!
-  \*******************************************/
+/*!*****************************************!*\
+  !*** D:/wrok/wenlin/static/com1ico.png ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21022,9 +21026,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAABwCAMAAADx
 /***/ }),
 
 /***/ 438:
-/*!*******************************************!*\
-  !*** D:/work/lindemoc/static/com2ico.png ***!
-  \*******************************************/
+/*!*****************************************!*\
+  !*** D:/wrok/wenlin/static/com2ico.png ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21033,9 +21037,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAABwCAMAAADx
 /***/ }),
 
 /***/ 439:
-/*!*******************************************!*\
-  !*** D:/work/lindemoc/static/com3ico.png ***!
-  \*******************************************/
+/*!*****************************************!*\
+  !*** D:/wrok/wenlin/static/com3ico.png ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21044,9 +21048,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAABwCAMAAADx
 /***/ }),
 
 /***/ 44:
-/*!*******************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/config/config.js ***!
-  \*******************************************************/
+/*!*****************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/config/config.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21068,9 +21072,9 @@ var version = '1.6.5';var _default =
 /***/ }),
 
 /***/ 440:
-/*!*******************************************!*\
-  !*** D:/work/lindemoc/static/com4ico.png ***!
-  \*******************************************/
+/*!*****************************************!*\
+  !*** D:/wrok/wenlin/static/com4ico.png ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21079,9 +21083,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAABwCAMAAADx
 /***/ }),
 
 /***/ 441:
-/*!*******************************************!*\
-  !*** D:/work/lindemoc/static/c-d-ico.png ***!
-  \*******************************************/
+/*!*****************************************!*\
+  !*** D:/wrok/wenlin/static/c-d-ico.png ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21090,9 +21094,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABi
 /***/ }),
 
 /***/ 442:
-/*!*******************************************!*\
-  !*** D:/work/lindemoc/static/c-w-ico.png ***!
-  \*******************************************/
+/*!*****************************************!*\
+  !*** D:/wrok/wenlin/static/c-w-ico.png ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21101,9 +21105,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABi
 /***/ }),
 
 /***/ 443:
-/*!*******************************************!*\
-  !*** D:/work/lindemoc/static/c-p-ico.png ***!
-  \*******************************************/
+/*!*****************************************!*\
+  !*** D:/wrok/wenlin/static/c-p-ico.png ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21112,9 +21116,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABi
 /***/ }),
 
 /***/ 444:
-/*!*******************************************!*\
-  !*** D:/work/lindemoc/static/c-l-ico.png ***!
-  \*******************************************/
+/*!*****************************************!*\
+  !*** D:/wrok/wenlin/static/c-l-ico.png ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21123,9 +21127,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABi
 /***/ }),
 
 /***/ 45:
-/*!*******************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/config/zIndex.js ***!
-  \*******************************************************/
+/*!*****************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/config/zIndex.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21153,9 +21157,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 469:
-/*!**************************************!*\
-  !*** D:/work/lindemoc/static/c1.png ***!
-  \**************************************/
+/*!************************************!*\
+  !*** D:/wrok/wenlin/static/c1.png ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21164,9 +21168,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAAN
 /***/ }),
 
 /***/ 470:
-/*!***************************************!*\
-  !*** D:/work/lindemoc/static/c1a.png ***!
-  \***************************************/
+/*!*************************************!*\
+  !*** D:/wrok/wenlin/static/c1a.png ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21175,9 +21179,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAAN
 /***/ }),
 
 /***/ 471:
-/*!**************************************!*\
-  !*** D:/work/lindemoc/static/c2.png ***!
-  \**************************************/
+/*!************************************!*\
+  !*** D:/wrok/wenlin/static/c2.png ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21186,9 +21190,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAAN
 /***/ }),
 
 /***/ 472:
-/*!***************************************!*\
-  !*** D:/work/lindemoc/static/c2a.png ***!
-  \***************************************/
+/*!*************************************!*\
+  !*** D:/wrok/wenlin/static/c2a.png ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21197,9 +21201,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAAN
 /***/ }),
 
 /***/ 473:
-/*!**************************************!*\
-  !*** D:/work/lindemoc/static/c3.png ***!
-  \**************************************/
+/*!************************************!*\
+  !*** D:/wrok/wenlin/static/c3.png ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21208,9 +21212,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAAN
 /***/ }),
 
 /***/ 474:
-/*!***************************************!*\
-  !*** D:/work/lindemoc/static/c3a.png ***!
-  \***************************************/
+/*!*************************************!*\
+  !*** D:/wrok/wenlin/static/c3a.png ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21219,9 +21223,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAAN
 /***/ }),
 
 /***/ 475:
-/*!**************************************!*\
-  !*** D:/work/lindemoc/static/c4.png ***!
-  \**************************************/
+/*!************************************!*\
+  !*** D:/wrok/wenlin/static/c4.png ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21230,9 +21234,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAAN
 /***/ }),
 
 /***/ 476:
-/*!***************************************!*\
-  !*** D:/work/lindemoc/static/c4a.png ***!
-  \***************************************/
+/*!*************************************!*\
+  !*** D:/wrok/wenlin/static/c4a.png ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21241,9 +21245,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAAN
 /***/ }),
 
 /***/ 506:
-/*!****************************************************************!*\
-  !*** D:/work/lindemoc/components/mescroll-uni/mescroll-uni.js ***!
-  \****************************************************************/
+/*!**************************************************************!*\
+  !*** D:/wrok/wenlin/components/mescroll-uni/mescroll-uni.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22115,9 +22119,9 @@ MeScroll.prototype.setBounce = function (isBounce) {
 /***/ }),
 
 /***/ 507:
-/*!***********************************************************************!*\
-  !*** D:/work/lindemoc/components/mescroll-uni/mescroll-uni-option.js ***!
-  \***********************************************************************/
+/*!*********************************************************************!*\
+  !*** D:/wrok/wenlin/components/mescroll-uni/mescroll-uni-option.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22160,9 +22164,9 @@ GlobalOption;exports.default = _default;
 /***/ }),
 
 /***/ 51:
-/*!**************************************!*\
-  !*** D:/work/lindemoc/static/p1.png ***!
-  \**************************************/
+/*!************************************!*\
+  !*** D:/wrok/wenlin/static/p1.png ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22171,9 +22175,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5
 /***/ }),
 
 /***/ 52:
-/*!**************************************!*\
-  !*** D:/work/lindemoc/static/p2.png ***!
-  \**************************************/
+/*!************************************!*\
+  !*** D:/wrok/wenlin/static/p2.png ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22182,9 +22186,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5
 /***/ }),
 
 /***/ 522:
-/*!*******************************************************************!*\
-  !*** D:/work/lindemoc/components/mescroll-uni/mescroll-mixins.js ***!
-  \*******************************************************************/
+/*!*****************************************************************!*\
+  !*** D:/wrok/wenlin/components/mescroll-uni/mescroll-mixins.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22253,9 +22257,9 @@ MescrollMixin;exports.default = _default;
 /***/ }),
 
 /***/ 53:
-/*!**************************************!*\
-  !*** D:/work/lindemoc/static/p3.png ***!
-  \**************************************/
+/*!************************************!*\
+  !*** D:/wrok/wenlin/static/p3.png ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22264,9 +22268,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5
 /***/ }),
 
 /***/ 54:
-/*!**************************************!*\
-  !*** D:/work/lindemoc/static/p4.png ***!
-  \**************************************/
+/*!************************************!*\
+  !*** D:/wrok/wenlin/static/p4.png ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22275,9 +22279,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5
 /***/ }),
 
 /***/ 55:
-/*!**************************************!*\
-  !*** D:/work/lindemoc/static/p5.png ***!
-  \**************************************/
+/*!************************************!*\
+  !*** D:/wrok/wenlin/static/p5.png ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22286,9 +22290,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5
 /***/ }),
 
 /***/ 558:
-/*!******************************************!*\
-  !*** D:/work/lindemoc/static/pushc1.png ***!
-  \******************************************/
+/*!****************************************!*\
+  !*** D:/wrok/wenlin/static/pushc1.png ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22297,9 +22301,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 /***/ }),
 
 /***/ 559:
-/*!******************************************!*\
-  !*** D:/work/lindemoc/static/pushc2.png ***!
-  \******************************************/
+/*!****************************************!*\
+  !*** D:/wrok/wenlin/static/pushc2.png ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22308,9 +22312,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 /***/ }),
 
 /***/ 560:
-/*!******************************************!*\
-  !*** D:/work/lindemoc/static/pushc3.png ***!
-  \******************************************/
+/*!****************************************!*\
+  !*** D:/wrok/wenlin/static/pushc3.png ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22319,9 +22323,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 /***/ }),
 
 /***/ 561:
-/*!******************************************!*\
-  !*** D:/work/lindemoc/static/pushc4.png ***!
-  \******************************************/
+/*!****************************************!*\
+  !*** D:/wrok/wenlin/static/pushc4.png ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22330,9 +22334,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 /***/ }),
 
 /***/ 562:
-/*!******************************************!*\
-  !*** D:/work/lindemoc/static/pushc5.png ***!
-  \******************************************/
+/*!****************************************!*\
+  !*** D:/wrok/wenlin/static/pushc5.png ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22341,9 +22345,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 /***/ }),
 
 /***/ 563:
-/*!******************************************!*\
-  !*** D:/work/lindemoc/static/pushc6.png ***!
-  \******************************************/
+/*!****************************************!*\
+  !*** D:/wrok/wenlin/static/pushc6.png ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22352,9 +22356,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 /***/ }),
 
 /***/ 564:
-/*!******************************************!*\
-  !*** D:/work/lindemoc/static/pushc7.png ***!
-  \******************************************/
+/*!****************************************!*\
+  !*** D:/wrok/wenlin/static/pushc7.png ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22363,9 +22367,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 /***/ }),
 
 /***/ 565:
-/*!******************************************!*\
-  !*** D:/work/lindemoc/static/pushc8.png ***!
-  \******************************************/
+/*!****************************************!*\
+  !*** D:/wrok/wenlin/static/pushc8.png ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22374,9 +22378,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 /***/ }),
 
 /***/ 63:
-/*!*****************************************!*\
-  !*** D:/work/lindemoc/static/cate1.png ***!
-  \*****************************************/
+/*!***************************************!*\
+  !*** D:/wrok/wenlin/static/cate1.png ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22385,9 +22389,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5
 /***/ }),
 
 /***/ 64:
-/*!*****************************************!*\
-  !*** D:/work/lindemoc/static/cate2.png ***!
-  \*****************************************/
+/*!***************************************!*\
+  !*** D:/wrok/wenlin/static/cate2.png ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22396,9 +22400,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5
 /***/ }),
 
 /***/ 65:
-/*!*****************************************!*\
-  !*** D:/work/lindemoc/static/cate3.png ***!
-  \*****************************************/
+/*!***************************************!*\
+  !*** D:/wrok/wenlin/static/cate3.png ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -22407,9 +22411,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5
 /***/ }),
 
 /***/ 68:
-/*!*************************************!*\
-  !*** D:/work/lindemoc/utils/bus.js ***!
-  \*************************************/
+/*!***********************************!*\
+  !*** D:/wrok/wenlin/utils/bus.js ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22421,9 +22425,9 @@ bus;exports.default = _default;
 /***/ }),
 
 /***/ 692:
-/*!******************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/util/emitter.js ***!
-  \******************************************************/
+/*!****************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/util/emitter.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22481,9 +22485,9 @@ function _broadcast(componentName, eventName, params) {
 /***/ }),
 
 /***/ 714:
-/*!*******************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/util/province.js ***!
-  \*******************************************************/
+/*!*****************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/util/province.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22493,9 +22497,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 715:
-/*!***************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/util/city.js ***!
-  \***************************************************/
+/*!*************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/util/city.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22505,9 +22509,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 716:
-/*!***************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/libs/util/area.js ***!
-  \***************************************************/
+/*!*************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/libs/util/area.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22517,9 +22521,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 759:
-/*!****************************************************!*\
-  !*** D:/work/lindemoc/almost-utils/image-tools.js ***!
-  \****************************************************/
+/*!**************************************************!*\
+  !*** D:/wrok/wenlin/almost-utils/image-tools.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22692,9 +22696,9 @@ var base64ToPath = function base64ToPath(base64) {
 /***/ }),
 
 /***/ 760:
-/*!*****************************************************!*\
-  !*** D:/work/lindemoc/almost-utils/almost-utils.js ***!
-  \*****************************************************/
+/*!***************************************************!*\
+  !*** D:/wrok/wenlin/almost-utils/almost-utils.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22814,9 +22818,9 @@ var clearCacheFile = function clearCacheFile() {
 /***/ }),
 
 /***/ 768:
-/*!*************************************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/components/u-parse/libs/MpHtmlParser.js ***!
-  \*************************************************************************/
+/*!***********************************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/components/u-parse/libs/MpHtmlParser.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23360,9 +23364,9 @@ module.exports = MpHtmlParser;
 /***/ }),
 
 /***/ 769:
-/*!*******************************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/components/u-parse/libs/config.js ***!
-  \*******************************************************************/
+/*!*****************************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/components/u-parse/libs/config.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -23450,9 +23454,9 @@ module.exports = cfg;
 /***/ }),
 
 /***/ 770:
-/*!***********************************************************************!*\
-  !*** D:/work/lindemoc/uview-ui/components/u-parse/libs/CssHandler.js ***!
-  \***********************************************************************/
+/*!*********************************************************************!*\
+  !*** D:/wrok/wenlin/uview-ui/components/u-parse/libs/CssHandler.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23557,9 +23561,9 @@ parser.prototype.Content = function () {
 /***/ }),
 
 /***/ 89:
-/*!*******************************************!*\
-  !*** D:/work/lindemoc/static/collect.png ***!
-  \*******************************************/
+/*!*****************************************!*\
+  !*** D:/wrok/wenlin/static/collect.png ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -23568,9 +23572,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAoCAMAAACl
 /***/ }),
 
 /***/ 90:
-/*!*********************************************!*\
-  !*** D:/work/lindemoc/static/collected.png ***!
-  \*********************************************/
+/*!*******************************************!*\
+  !*** D:/wrok/wenlin/static/collected.png ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

@@ -32,7 +32,7 @@
 				<text class='t1'>认识他:</text>
 				<text class="t2">{{detail.know_user_total}}</text>
 				<view class="avatarwrap">
-					<image src="../../static/heading.png" class="avatarw" :style="{left:(70*index)+'rpx','z-index':(index)}" v-for="(item,index) in 6" :key="index" :index="index"></image>
+					<image :src="item.avatar" class="avatarw" :style="{left:(70*index)+'rpx','z-index':(index)}" v-for="(item,index) in detail.know_user_list" v-if="index < 6" :key="index" :index="index"></image>
 				</view>
 			</view>
 			<view class="useritem">
@@ -49,7 +49,7 @@
 				<image src="../../static/personitem5.png" class="peronico"></image>
 				<text class='t1'>当前积分:</text>
 				<text class="t2">{{detail.score}}</text>
-				<view class="inputjiwrap">
+				<view class="inputjiwrap" @click="helpPush">
 					转入积分
 				</view>
 			</view>
@@ -63,7 +63,7 @@
 				<image src="../../static/personitem7.png" class="peronico"></image>
 				<text class='t1'>闲置物品</text>
 				<view class="imgwrap">
-					<image class="imgitem" :src="item.images ? item.images[0] : ''" mode="" v-for="(item,index) in detail.sell_images" :key="index"></image>
+					<image class="imgitem" :src="item ? item : ''" mode="" v-for="(item,index) in detail.sell_images" :key="index" v-if="index<4"></image>
 				</view>
 				<image class="ti" src="../../static/cardmore.png" ></image>
 			</view>
@@ -81,13 +81,13 @@
 				<view class="headename">{{detail.user_nickname}}</view>
 				<view class="integrinput">
 					<view class="label">转入积分：</view>
-					<u-input v-model="integralValue" type="number"  />
+					<u-input v-model="integralValue" @input="integralHandler" type="number"  />
 				</view>
 				<view class="btnwrap">
-					<view class="cancel">
+					<view class="cancel" @click="integralShow = false">
 						取消
 					</view>
-					<view class="confirmbtn">
+					<view class="confirmbtn" @click="confirmHandler">
 						确定
 					</view>
 				</view>
@@ -129,7 +129,8 @@
 				posterData:{},
 				personShow:true,
 				integralShow:false,
-				integralValue:0
+				integralValue:0,
+				selfvale:0
 			}
 		},
 		mounted(options) {
@@ -169,6 +170,59 @@
 		//     }
 		// },
 		methods:{
+			confirmHandler(){
+				if(!this.integralValue){
+					return this.$u.toast('请输入有效积分')
+				}
+				var data = {
+					from_community_id:uni.getStorageSync('community_id'),
+					score:this.integralValue,
+					to_user_id:this.query.user_id,
+					to_community_id:this.query.community_id
+				}
+				this.Api.transferScore(data).then((result)=>{
+					if(result.code == 1){
+						this.$u.toast(result.msg)
+						setTimeout(()=>{
+							this.integralShow = false
+							this.getOtherUserInfo()
+						},500)
+					}else{
+						this.$u.toast(result.msg)
+					}
+				})
+			},
+			integralHandler(e){
+				this.$nextTick(()=>{
+					this.integralValue = e <= this.selfvale ? e  : this.selfvale
+					this.$forceUpdate()
+				})
+				
+			},
+			helpPush(e){
+
+						this.$getMyscore((res) => {
+							if(res.code == 1){
+								this.selfvale = res.data.score
+								if(this.selfvale== 0){
+									uni.showToast({
+										title: '您的积分不足，请参加积分任务',
+										icon:'none',
+										duration: 2000,
+									})
+									setTimeout(()=>{
+										uni.navigateTo({
+											url:'/pages/update/integral'
+										})
+									},2000)
+							
+								}else{
+									this.integralShow = true
+								}
+							}
+						})
+			
+			},
 			goCommittee(){
 				uni.navigateTo({
 					url:'/pages/index/communitycard?community_id='+this.detail.community_id

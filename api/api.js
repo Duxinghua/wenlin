@@ -248,6 +248,9 @@ const questionAnswer = (params) => wxRequest(params, baseURL + 'api/answer/answe
 const nearDynamics = (params) => wxRequest(params, baseURL + 'api/community/community_dynamics/nearDynamics', 'POST')
 
 
+//用户转送积分--1.1  {{localhost}}/api/community/user/transferScore
+const transferScore = (params) => wxRequest(params, baseURL + 'api/community/user/transferScore', 'POST')
+
 
 
 
@@ -362,5 +365,6 @@ export default {
 	addJoinMark,
 	questionList,
 	questionAnswer,
-	nearDynamics
+	nearDynamics,
+	transferScore
 }
