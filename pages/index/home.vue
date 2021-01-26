@@ -488,9 +488,11 @@ export default {
 					if (errMsg == 'login:ok') {
 						that.Api.wechatAuth({ code: code }).then(result => {
 							if (result.code == 1) {
-								result.data.all_community.map((item)=>{
-									item.title = item.community_name
-								})
+								if(result.data.all_community){
+									result.data.all_community.map((item)=>{
+										item.title = item.community_name
+									})
+								}
 								uni.setStorageSync('token', result.data.token);
 								uni.setStorageSync('user', result.data.user);
 								uni.setStorageSync('maxJoin', result.data.max_join);
@@ -507,8 +509,8 @@ export default {
 		auth.then(status => {
 			this.token = uni.getStorageSync('token');
 			this.all_community = uni.getStorageSync('all_community');
-			this.getUser();
 			if (this.all_community.length) {
+				this.getUser();
 				uni.setStorageSync('community_id', this.all_community[0].community_id);
 				uni.setStorageSync('committee_id', this.all_community[0].committee_id);
 				var url = uni.getStorageSync('url');
@@ -537,7 +539,10 @@ export default {
 						if (result.code == 1) {
 							this.current = 3;
 							this.mescroll.resetUpScroll();
-							this.setcommunity = true;
+							//this.setcommunity = true;
+							uni.navigateTo({
+								url:'../update/setcommunity'
+							})
 							var pid = uni.getStorageSync('pid');
 							if (pid) {
 								this.community = uni.getStorageSync('ptitle');
@@ -641,7 +646,10 @@ export default {
 
 			if (isNaN(committee_id) || all_community.length == 0) {
 				if (!this.setcommunity) {
-					this.setcommunity = true;
+					// this.setcommunity = true;
+					uni.navigateTo({
+						url:'../update/setcommunity'
+					})
 				}
 				result = true;
 				this.current = 3;

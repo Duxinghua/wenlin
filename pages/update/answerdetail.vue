@@ -115,7 +115,13 @@
 				}
 			},
 			timeChange(e){
+			
 				this.time = this.timestamp - e
+				
+				if(e <= 0 ){
+					this.calc()
+					return
+				}
 			},
 			change(e){
 				var type = this.list[this.currentIndex].type
@@ -255,6 +261,11 @@
 								}
 								that.currentIndex ++
 								that.detail = that.list[that.currentIndex]
+								if(that.detail.type == 1){
+									that.confirm = false
+								}else if(that.detail.type == 2){
+									that.confirm = true
+								}
 							}else{
 								that.next = true
 							}
@@ -263,9 +274,14 @@
 						}
 					}
 				})
-				if(type == 2){
-					that.detail = that.list[that.currentIndex]
-				}
+				// if(type == 2){
+				// 	that.detail = that.list[that.currentIndex]
+				// 	if(that.detail.type == 1){
+				// 		that.confirm = false
+				// 	}else if(that.detail.type == 2){
+				// 		that.confirm = true
+				// 	}
+				// }
 			}
 		}
 	}

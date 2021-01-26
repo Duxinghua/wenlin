@@ -395,6 +395,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.detail.can_draw == 0) {
         return this.$u.toast('您的抽奖次数已用完');
       }
+
       if (this.prizeing) return;
       this.prizeing = true;
 

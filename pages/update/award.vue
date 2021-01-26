@@ -7,8 +7,8 @@
 			<view class="lottery">
 				<almost-lottery
 					:prize-list="prizeList"
-					:ring-count="2"
-					:duration="1"
+					:ring-count="5"
+					:duration="10"
 					:canvas-width="canvasData.width"
 					:canvas-height="canvasData.height"
 					:prize-index="prizeIndex"
@@ -238,6 +238,7 @@ export default {
 			if(this.detail.can_draw == 0){
 				return this.$u.toast('您的抽奖次数已用完')
 			}
+			
 			if (this.prizeing) return;
 			this.prizeing = true;
 

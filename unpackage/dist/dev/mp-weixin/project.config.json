@@ -10,11 +10,20 @@
 		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
 		"coverView": true,
+		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
-		"useCompilerModule": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "",
@@ -53,10 +62,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "pages/index/personalcard",
-					"pathName": "pages/index/personalcard",
-					"query": "user_id=2252&community_id=10",
+					"id": 1,
+					"name": "pages/update/answer",
+					"pathName": "pages/update/answer",
+					"query": "answer_id=1",
 					"scene": null
 				}
 			]

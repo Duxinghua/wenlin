@@ -251,7 +251,13 @@ var _default =
                 }case 4:case "end":return _context.stop();}}}, _callee);}))();
     },
     timeChange: function timeChange(e) {
+
       this.time = this.timestamp - e;
+
+      if (e <= 0) {
+        this.calc();
+        return;
+      }
     },
     change: function change(e) {
       var type = this.list[this.currentIndex].type;
@@ -391,6 +397,11 @@ var _default =
               }
               that.currentIndex++;
               that.detail = that.list[that.currentIndex];
+              if (that.detail.type == 1) {
+                that.confirm = false;
+              } else if (that.detail.type == 2) {
+                that.confirm = true;
+              }
             } else {
               that.next = true;
             }
@@ -399,9 +410,14 @@ var _default =
           }
         }
       });
-      if (type == 2) {
-        that.detail = that.list[that.currentIndex];
-      }
+      // if(type == 2){
+      // 	that.detail = that.list[that.currentIndex]
+      // 	if(that.detail.type == 1){
+      // 		that.confirm = false
+      // 	}else if(that.detail.type == 2){
+      // 		that.confirm = true
+      // 	}
+      // }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
