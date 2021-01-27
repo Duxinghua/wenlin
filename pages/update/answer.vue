@@ -22,13 +22,58 @@
 				}
 			}
 		},
-		async onLoad(options) {
-			var data = {answer_id:options.answer_id || 1}
-			this.answer_id = options.answer_id || 1
-			var result = await this.Api.questionList(data)
-			if(result.code == 1){
-				this.detail = result.data
-			}
+		onLoad(options) {
+			console.log(options,'options')
+			var that = this
+			var auth = new Promise(function(resolve, reject) {
+				var token = uni.getStorageSync('token')
+				var all_community = uni.getStorageSync('all_community')
+				if(!token && !all_community){
+					uni.login({
+						success: res => {
+							let { errMsg, code } = res;
+							if (errMsg == 'login:ok') {
+								that.Api.wechatAuth({ code: code }).then(result => {
+									if (result.code == 1) {
+										uni.setStorageSync('token', result.data.token);
+										uni.setStorageSync('user', result.data.user);
+										uni.setStorageSync('mobile', result.data.user.mobile);
+										uni.setStorageSync('all_community', result.data.all_community.length ? result.data.all_community : []);
+										resolve();
+									}
+								});
+							}
+						}
+					});
+				}else{
+					resolve();
+				}
+			});
+			auth.then(status => {
+				var token = uni.getStorageSync('token');
+				var all_community = uni.getStorageSync('all_community');
+				if(options.scene){
+				var scene = decodeURIComponent(options.scene);
+				var arr = scene.split("=")
+					if(arr[0]){
+						
+						that.answer_id = arr[1]
+						
+					}
+				}
+				if(options.answer_id){
+					that.answer_id  = options.answer_id
+				}
+				var data = {
+					answer_id:that.answer_id
+				}
+				that.Api.questionList(data).then((result)=>{
+					if(result.code == 1){
+						that.detail = result.data
+					}
+				})
+			})
+			
 		},
 		methods:{
 			detailHandler(){

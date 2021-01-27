@@ -1,5 +1,4 @@
 {
-  "component": true,
   "usingComponents": {
     "u-image": "/uview-ui/components/u-image/u-image",
     "mescroll-uni": "/components/mescroll-uni/mescroll-uni",
@@ -12,5 +11,6 @@
     "help": "/components/help/help",
     "hch-poster": "/wxcomponents/hch-poster/hch-poster",
     "integraltip": "/components/integraltip/integraltip"
-  }
+  },
+  "component": true
 }

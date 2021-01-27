@@ -626,7 +626,10 @@ export default {
 		//游客登录操作
 		weixinlogin() {
 			this.guestShow = false;
-			this.setcommunity = true;
+			// this.setcommunity = true;
+			// uni.navigateTo({
+			// 	url:'../update/setcommunity'
+			// })
 		},
 		goLogin(cb) {
 			var result = false;
@@ -1005,7 +1008,10 @@ export default {
 									} else {
 										//如果开通过小区，待审核
 										this.current = 3;
-										this.setcommunity = true;
+										// this.setcommunity = true;
+										uni.navigateTo({
+											url:'../update/setcommunity'
+										})
 										console.log('pid');
 										var pid = uni.getStorageSync('pid');
 										if (pid) {

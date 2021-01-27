@@ -473,7 +473,10 @@ export default {
 						if(result.code == 1){
 							this.current = 3
 							this.mescroll.resetUpScroll()
-							this.setcommunity = true;
+							// this.setcommunity = true;
+							uni.navigateTo({
+								url:'../update/setcommunity'
+							})
 							var pid = uni.getStorageSync('pid')
 							if(pid){
 								this.community = uni.getStorageSync('ptitle')
@@ -557,7 +560,10 @@ export default {
 		//游客登录操作
 		weixinlogin(){
 			this.guestShow = false
-			this.setcommunity = true
+			// this.setcommunity = true
+			uni.navigateTo({
+				url:'../update/setcommunity'
+			})
 		},
 		goLogin(cb){
 			var result = false
@@ -577,7 +583,10 @@ export default {
 			
 			if(isNaN(committee_id) || all_community.length == 0){
 					if(!this.setcommunity){
-						this.setcommunity = true
+						// this.setcommunity = true
+						uni.navigateTo({
+							url:'../update/setcommunity'
+						})
 					}
 					result = true
 					this.current = 3
@@ -927,7 +936,10 @@ export default {
 									}else{
 										//如果开通过小区，待审核 
 										this.current = 3
-										this.setcommunity = true
+										// this.setcommunity = true
+										uni.navigateTo({
+											url:'../update/setcommunity'
+										})
 										console.log('pid')
 										var pid = uni.getStorageSync('pid')
 										if(pid){
