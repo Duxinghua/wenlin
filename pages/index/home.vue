@@ -12,8 +12,8 @@
 			<block slot="content"></block>
 		</cu-custom>
 		<view class="home">
-			<view class="home-top" id="hometop">
-				<view class="joinlist">
+			<view class="home-top" id="hometop" >
+				<view class="joinlist" v-if="usersList.length">
 					<view class="join-user" >
 						<view class="imgwrap" @click.stop="userHandler(item)" v-for="(item, index) in usersList" :key="index">
 							<u-image width="100%" height="100%" :src="item.avatar" border-radius="32rpx"></u-image>
@@ -56,7 +56,7 @@
 				<mescroll-uni
 					v-if="type != 3"
 					:fixed="true"
-					top="400"
+					:top="usersList.length ? 400 : 320"
 					bottom="120"
 					ref="mescrollRef"
 					@init="mescrollInit"
@@ -82,7 +82,7 @@
 					v-if="type == 3"
 					:fixed="true"
 					:flexType="flexType"
-					top="480"
+					:top="usersList.length ? 400 : 320"
 					bottom="120"
 					ref="mescrollRef"
 					@init="mescrollInit"
@@ -441,7 +441,28 @@ export default {
 	onLoad() {
 
 	},
-	mounted() {		
+	mounted() {
+		if (!uni.getStorageSync('longitude')) {
+			uni.getLocation({
+				success: res => {
+					// latitude: 30.39085
+					// longitude: 114.89495
+					uni.setStorageSync('latitude', res.latitude);
+					uni.setStorageSync('longitude', res.longitude);
+				
+				},
+				fail: err => {
+		
+					uni.showToast({
+						title: '您未开通地图授权，请打开授权',
+						icon:'none',
+						duration: 2500
+					});
+
+		
+				}
+			});
+		} 
 		this.tagList = [{id:0,tag:'全部'}].concat(this.Tool.navList)
 		this.$Bus.$on('noToken', e => {
 			this.goLogin(res => {});
@@ -540,9 +561,9 @@ export default {
 							this.current = 3;
 							this.mescroll.resetUpScroll();
 							//this.setcommunity = true;
-							uni.navigateTo({
-								url:'../update/setcommunity'
-							})
+							// uni.navigateTo({
+							// 	url:'../update/openingcommunity'
+							// })
 							var pid = uni.getStorageSync('pid');
 							if (pid) {
 								this.community = uni.getStorageSync('ptitle');
@@ -562,28 +583,29 @@ export default {
 			if (this.community_id) {
 				var p = new Promise((resolve, reject) => {
 					if (!uni.getStorageSync('longitude')) {
-						resolve();
-						// uni.getLocation({
-						// 	success: res => {
-						// 		// latitude: 30.39085
-						// 		// longitude: 114.89495
-						// 		uni.setStorageSync('latitude', res.latitude);
-						// 		uni.setStorageSync('longitude', res.longitude);
-						// 		resolve();
-						// 	},
-						// 	fail: err => {
+						// resolve();
+						uni.getLocation({
+							success: res => {
+								// latitude: 30.39085
+								// longitude: 114.89495
+								uni.setStorageSync('latitude', res.latitude);
+								uni.setStorageSync('longitude', res.longitude);
+								resolve();
+							},
+							fail: err => {
 
-						// 		uni.showToast({
-						// 			title: '您未开通地图授权，请打开授权',
-						// 			icon:'none',
-						// 			duration: 2500
-						// 		});
-						// 		setTimeout(()=>{
-						// 			this.mescroll.resetUpScroll()
-						// 		},1000)
+								uni.showToast({
+									title: '您未开通地图授权，请打开授权',
+									icon:'none',
+									duration: 2500
+								});
+								setTimeout(()=>{
+									resolve();
+									this.mescroll.resetUpScroll()
+								},1000)
 
-						// 	}
-						// });
+							}
+						});
 					} else {
 						resolve();
 					}
@@ -591,6 +613,32 @@ export default {
 				p.then(r => {
 					this.mescroll.resetUpScroll();
 				});
+			}else{
+
+					if (!uni.getStorageSync('longitude')) {
+						// resolve();
+						uni.getLocation({
+							success: res => {
+								// latitude: 30.39085
+								// longitude: 114.89495
+								uni.setStorageSync('latitude', res.latitude);
+								uni.setStorageSync('longitude', res.longitude);
+								resolve();
+							},
+							fail: err => {
+				
+								uni.showToast({
+									title: '您未开通地图授权，请打开授权',
+									icon:'none',
+									duration: 2500
+								});
+						
+				
+							}
+						});
+					} 
+				
+		
 			}
 			this.Api.getCommunityWiki({}).then(result => {
 				console.log(result);
@@ -651,7 +699,7 @@ export default {
 				if (!this.setcommunity) {
 					// this.setcommunity = true;
 					uni.navigateTo({
-						url:'../update/setcommunity'
+						url:'../update/openingcommunity'
 					})
 				}
 				result = true;
@@ -962,18 +1010,20 @@ export default {
 		//授权处理
 		getUserInfo(e) {
 			var p = new Promise((resolve, reject) => {
-				// uni.getLocation({
-				// 	success: res => {
-				// 		// latitude: 30.39085
-				// 		// longitude: 114.89495
-				// 		uni.setStorageSync('latitude', res.latitude);
-				// 		uni.setStorageSync('longitude', res.longitude);
-				// 	},
-				// 	fail: err => {
-				// 		console.log(err);
-				// 	}
-				// });
-				resolve();
+				uni.getLocation({
+					success: res => {
+						// latitude: 30.39085
+						// longitude: 114.89495
+						uni.setStorageSync('latitude', res.latitude);
+						uni.setStorageSync('longitude', res.longitude);
+						resolve();
+					},
+					fail: err => {
+						console.log(err);
+						resolve();
+					}
+				});
+				
 			});
 			p.then(data => {
 				//登录授权
@@ -1010,7 +1060,7 @@ export default {
 										this.current = 3;
 										// this.setcommunity = true;
 										uni.navigateTo({
-											url:'../update/setcommunity'
+											url:'../update/openingcommunity'
 										})
 										console.log('pid');
 										var pid = uni.getStorageSync('pid');
@@ -1669,8 +1719,8 @@ page {
 		}
 		.joinlist{
 			width: 100%;
-			padding-left:30upx;
-			padding-right:30upx;
+			padding-left:48upx;
+			padding-right:48upx;
 			box-sizing: border-box;
 			height: 88upx;
 			position: relative;
@@ -1716,11 +1766,11 @@ page {
 			flex-direction: row;
 			justify-content: flex-start;
 			align-items: center;
-			padding: 30upx;
+			padding: 30upx 48upx;
 			box-sizing: border-box;
 			// margin-bottom: 24upx;
 			.searchleft {
-				width: 615upx;
+				width: 600upx;
 				height: 80upx;
 				border-radius: 40upx;
 				padding: 0 42upx;
@@ -1745,7 +1795,7 @@ page {
 			.searchright {
 				width: 44upx;
 				height: 52upx;
-				margin-right: 12upx;
+				margin-right: 0upx;
 				margin-left: auto;
 				position: relative;
 				.red {
@@ -1836,7 +1886,7 @@ page {
 			flex-direction: row;
 			align-items: center;
 			width: 100%;
-			padding: 19upx 30upx;
+			padding: 19upx 48upx;
 			box-sizing: border-box;
 			.tagitem {
 				font-size: 26upx;

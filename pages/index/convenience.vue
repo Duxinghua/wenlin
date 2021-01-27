@@ -2,7 +2,7 @@
 	<view class="content">
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
 		<view class="home">
-			<view class="home-top">
+			<view class="home-top" v-if="committeeList.length">
 			
 <!-- 			<view class="tagwrap"> -->
 			<scroll-view   scroll-x class="bg-white nav tagwrap" scroll-with-animation :scroll-left="scrollLeft">
@@ -22,7 +22,7 @@
 			</view>
 <!-- 			</view> -->
 			<view :class="['postwrap',(type == 3 && postList.length > 0) ? 'usedwrap' : '']">
-			 <mescroll-uni  :fixed="true"  top="300" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" >
+			 <mescroll-uni  :fixed="true"  :top="committeeList.length ? 300 : 130" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" >
 	
 					<PostItem :pm="true" :allFlag="allFlag" :type="type" v-for="(item,index) in postList" :pitem="item" :key="index" @moreClick="moreClick" @helpPush="helpPush" @shareClick="shareClick" @toLogin="goDetails"></PostItem>
 				

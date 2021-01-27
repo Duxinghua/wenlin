@@ -233,6 +233,7 @@
           this.onRotateStart()
         } else {
           console.info('旋转结束，prizeIndex 已重置')
+		  this.$emit('overHandler',{})
         }
       }
     },

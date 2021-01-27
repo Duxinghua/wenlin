@@ -292,17 +292,17 @@
 		display: flex;
 		flex-direction: column;
 		position: relative;
-		min-height: 100vh;
+		height: 1800rpx;
 		.bg{
 			position: absolute;
 			left:0;
 			top:0;
 			width:100%;
-			height: 1624rpx;
+			height: 1800rpx;
 			z-index: 100;
 		}
 		.time{
-			position: absolute;
+			position: fixed;
 			left:50%;
 			width: fit-content;
 			top:120rpx;
@@ -319,7 +319,7 @@
 			border-radius: 30rpx;
 			left:50%;
 			transform: translateX(-50%);
-			top: 150rpx;
+			top: 180rpx;
 			z-index: 101;
 		}
 		.swiperwrap{
@@ -334,7 +334,7 @@
 			height: 1276rpx;
 			left:50%;
 			transform: translateX(-50%);
-			top: 150rpx;
+			top: 180rpx;
 			z-index: 102;
 			display: flex;
 			flex-direction: column;
@@ -345,13 +345,13 @@
 				margin-top:49rpx;
 				.tleft{
 					width: 200rpx;
-					height:70rpx;
+					height:60rpx;
 					position: relative;
 					z-index: 31;
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					font-size: 34rpx;
+					font-size: 30rpx;
 					font-family: PingFang SC;
 					font-weight: bold;
 					color: #FFFFFF;
@@ -397,13 +397,13 @@
 					margin-top:16rpx;
 					margin-bottom: 16rpx;
 					width:100%;
-					height: 120rpx;
-					line-height: 120rpx;
+					height: 110rpx;
+					line-height: 110rpx;
 					text-align: center;
 					background: #F2F2F2;
 					border-radius: 60rpx;
 					padding:0 30rpx;
-					font-size: 33rpx;
+					font-size: 28rpx;
 					font-family: PingFang SC;
 					font-weight: 800;
 					color: #4E5191;

@@ -379,10 +379,19 @@
 										
 									})
 								}else{
-			
+									var url = uni.getStorageSync('url')
+									if(url){
+										uni.reLaunch({
+										  url: url,
+										  success() {
+										  	uni.removeStorageSync('url')
+										  }
+										})
+									}else{
 										uni.reLaunch({
 										  url: '/pages/index/index'
 										})
+									}
 									
 								}
 					

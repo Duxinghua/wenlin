@@ -23,7 +23,6 @@
 			}
 		},
 		onLoad(options) {
-			console.log(options,'options')
 			var that = this
 			var auth = new Promise(function(resolve, reject) {
 				var token = uni.getStorageSync('token')
@@ -56,9 +55,7 @@
 				var scene = decodeURIComponent(options.scene);
 				var arr = scene.split("=")
 					if(arr[0]){
-						
 						that.answer_id = arr[1]
-						
 					}
 				}
 				if(options.answer_id){
@@ -66,6 +63,24 @@
 				}
 				var data = {
 					answer_id:that.answer_id
+				}
+				if(!token){
+					uni.setStorageSync('url','/pages/update/answer?answer_id='+that.answer_id)
+					setTimeout(()=>{
+						uni.navigateTo({
+							url:'../index/index'
+						})
+					},100)
+					return
+				}
+				if(!all_community){
+					uni.setStorageSync('url','/pages/update/answer?answer_id='+that.answer_id)
+					setTimeout(()=>{
+						uni.navigateTo({
+							url:'../index/index'
+						})
+					},100)
+					return
 				}
 				that.Api.questionList(data).then((result)=>{
 					if(result.code == 1){

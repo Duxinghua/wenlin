@@ -61,15 +61,15 @@ const resultValue = function(index) {
 		},
 		{
 			id:13,
-			tag:'新的用户（邻居）'
+			tag:'邻居'
 		},
 		{
 			id:14,
-			tag:'安居'
+			tag:'房产'
 		},
 		{
 			id:15,
-			tag:'乐业'
+			tag:'招聘'
 		},
 		{
 			id:16,
@@ -77,7 +77,7 @@ const resultValue = function(index) {
 		},
 		{
 			id:17,
-			tag:'拼团'
+			tag:'邻里团'
 		},
 		{
 			id:18,
@@ -107,28 +107,16 @@ const navList = [{
 			tag: '闲置'
 		},
 		{
-			id: 5,
-			tag: '活动'
-		},
-		{
 			id: 6,
 			tag: '达人'
 		},
 		{
-			id: 7,
-			tag: '便民'
-		},
-		{
-			id: 8,
-			tag: '动态'
-		},
-		{
 			id:14,
-			tag:'安居'
+			tag:'房产'
 		},
 		{
 			id:15,
-			tag:'乐业'
+			tag:'招聘'
 		},
 		{
 			id:16,
@@ -136,7 +124,7 @@ const navList = [{
 		},
 		{
 			id:17,
-			tag:'拼团'
+			tag:'邻里团'
 		},
 		{
 			id:18,

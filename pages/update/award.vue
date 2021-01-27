@@ -16,6 +16,7 @@
 					@draw-start="handleDrawStart"
 					@draw-end="handleDrawEnd"
 					@finish="handleDrawFinish"
+					@overHandler="overHandler"
 					v-if="prizeList.length"
 				/>
 				<text class="almost-lottery__tip" v-if="prizeList.length == 0">奖品准备中...</text>
@@ -118,6 +119,7 @@ export default {
 			draw_id:0,
 			community_id:0,
 			show:false,
+			showObj:{},
 			selectObj:null,
 			rule:'',
 			userList:[],
@@ -129,18 +131,81 @@ export default {
 		};
 	},
 	onLoad(options) {
-		this.draw_id = options.draw_id || 1
-		this.community_id = options.community_id || uni.getStorageSync('community_id')
+		
+		var that = this
+		var auth = new Promise(function(resolve, reject) {
+			var token = uni.getStorageSync('token')
+			var all_community = uni.getStorageSync('all_community')
+			if(!token && !all_community){
+				uni.login({
+					success: res => {
+						let { errMsg, code } = res;
+						if (errMsg == 'login:ok') {
+							that.Api.wechatAuth({ code: code }).then(result => {
+								if (result.code == 1) {
+									uni.setStorageSync('token', result.data.token);
+									uni.setStorageSync('user', result.data.user);
+									uni.setStorageSync('mobile', result.data.user.mobile);
+									uni.setStorageSync('all_community', result.data.all_community.length ? result.data.all_community : []);
+									resolve();
+								}
+							});
+						}
+					}
+				});
+			}else{
+				resolve();
+			}
+		});
+		auth.then(status => {
+			var token = uni.getStorageSync('token');
+			var all_community = uni.getStorageSync('all_community');
+
+			if(options.scene){
+			var scene = decodeURIComponent(options.scene);
+			var arr = scene.split("=")
+				if(arr[0]){
+					that.draw_id = arr[1]
+				}
+			}
+			if(options.award_id){
+				that.draw_id = options.award_id || 1
+			}
+			var data = {
+				draw_id:that.draw_id
+			}
+			if(!token){
+				uni.setStorageSync('url','/pages/update/award?award_id='+that.draw_id)
+				setTimeout(()=>{
+					uni.navigateTo({
+						url:'../index/index'
+					})
+				},100)
+				return
+			}
+			if(!all_community){
+				uni.setStorageSync('url','/pages/update/award?award_id='+that.draw_id)
+				setTimeout(()=>{
+					uni.navigateTo({
+						url:'../index/index'
+					})
+				},100)
+				return
+			}
+			that.community_id = options.community_id || uni.getStorageSync('community_id')
+			that.getPrizeList();
+			that.getList()
+		})
 		// 模拟请求奖品数据
-		this.getPrizeList();
+		
 	},
 	onShow() {
-		this.getList()
+		
 	},
 	methods: {
 		async getList(){
 			var data = {
-				draw_id:this.draw_id,
+				draw_id:this.adraw_id,
 				page:1,
 				page_size:10000
 			}
@@ -204,6 +269,12 @@ export default {
 				});
 			}
 			*/
+		},
+		overHandler(){
+			this.show = true
+			if(this.showObj.status == 1){
+				this.getList()
+			}
 		},
 		// 模拟请求奖品列表接口
 		requestPrizeList() {
@@ -312,10 +383,8 @@ export default {
 								}
 							}
 							this.getPrizeList()
-							this.show = true
-							if(result.data.status == 1){
-								this.getList()
-							}
+							this.showObj = result.data
+					
 						}
 					})
 		

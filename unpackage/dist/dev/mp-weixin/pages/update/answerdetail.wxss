@@ -33,18 +33,18 @@
   -webkit-flex-direction: column;
           flex-direction: column;
   position: relative;
-  min-height: 100vh;
+  height: 1800rpx;
 }
 .answer .bg.data-v-1c14d7ac {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
-  height: 1624rpx;
+  height: 1800rpx;
   z-index: 100;
 }
 .answer .time.data-v-1c14d7ac {
-  position: absolute;
+  position: fixed;
   left: 50%;
   width: -webkit-fit-content;
   width: fit-content;
@@ -63,7 +63,7 @@
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  top: 150rpx;
+  top: 180rpx;
   z-index: 101;
 }
 .answer .swiperwrap.data-v-1c14d7ac {
@@ -78,7 +78,7 @@
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  top: 150rpx;
+  top: 180rpx;
   z-index: 102;
   display: -webkit-box;
   display: -webkit-flex;
@@ -103,7 +103,7 @@
 }
 .answer .taskcontent .titlewrap .tleft.data-v-1c14d7ac {
   width: 200rpx;
-  height: 70rpx;
+  height: 60rpx;
   position: relative;
   z-index: 31;
   display: -webkit-box;
@@ -115,7 +115,7 @@
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  font-size: 34rpx;
+  font-size: 30rpx;
   font-family: PingFang SC;
   font-weight: bold;
   color: #FFFFFF;
@@ -169,14 +169,14 @@
   margin-top: 16rpx;
   margin-bottom: 16rpx;
   width: 100%;
-  height: 120rpx;
-  line-height: 120rpx;
+  height: 110rpx;
+  line-height: 110rpx;
   text-align: center;
   background: #F2F2F2;
   -webkit-border-radius: 60rpx;
           border-radius: 60rpx;
   padding: 0 30rpx;
-  font-size: 33rpx;
+  font-size: 28rpx;
   font-family: PingFang SC;
   font-weight: 800;
   color: #4E5191;

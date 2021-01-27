@@ -105,8 +105,8 @@ page.data-v-14a6ab35 {
 }
 .content .home .joinlist.data-v-14a6ab35 {
   width: 100%;
-  padding-left: 30rpx;
-  padding-right: 30rpx;
+  padding-left: 48rpx;
+  padding-right: 48rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 88rpx;
@@ -165,12 +165,12 @@ page.data-v-14a6ab35 {
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  padding: 30rpx;
+  padding: 30rpx 48rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 .content .home .search .searchleft.data-v-14a6ab35 {
-  width: 615rpx;
+  width: 600rpx;
   height: 80rpx;
   -webkit-border-radius: 40rpx;
           border-radius: 40rpx;
@@ -206,7 +206,7 @@ page.data-v-14a6ab35 {
 .content .home .search .searchright.data-v-14a6ab35 {
   width: 44rpx;
   height: 52rpx;
-  margin-right: 12rpx;
+  margin-right: 0rpx;
   margin-left: auto;
   position: relative;
 }
@@ -325,7 +325,7 @@ page.data-v-14a6ab35 {
   -webkit-align-items: center;
           align-items: center;
   width: 100%;
-  padding: 19rpx 30rpx;
+  padding: 19rpx 48rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
