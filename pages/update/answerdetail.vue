@@ -34,7 +34,7 @@
 						   @click.stop="checkHandler(sitem)" 
 						   v-for="(sitem,sindex) in detail.ask" :key="sindex" :index="sindex">
 								{{sitem.value}}
-								<image src="../../static/ok.png" class="ok" v-if="sitem.check && sitem.check == sitem.answer && next"></image>
+								<image src="../../static/ok.png" class="ok" v-if="(sitem.check && sitem.check == sitem.answer && next) || (sitem.check && sitem.check == sitem.answer && detail.type == 1)"></image>
 								<image src="../../static/error.png" class="ok" v-if="(sitem.check && sitem.check != sitem.answer && next) || (!sitem.check && sitem.answer && next && detail.type == 2)"></image>
 						   </view>
 					   </view>
@@ -259,13 +259,17 @@
 
 									return
 								}
-								that.currentIndex ++
-								that.detail = that.list[that.currentIndex]
-								if(that.detail.type == 1){
-									that.confirm = false
-								}else if(that.detail.type == 2){
-									that.confirm = true
-								}
+								setTimeout(()=>{
+									that.currentIndex ++
+									that.detail = that.list[that.currentIndex]
+									if(that.detail.type == 1){
+										that.confirm = false
+									}else if(that.detail.type == 2){
+										that.confirm = true
+									}
+									
+								},400)
+			
 							}else{
 								that.next = true
 							}

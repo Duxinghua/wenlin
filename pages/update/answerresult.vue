@@ -44,7 +44,6 @@
 			}
 		},
 		async onLoad(options){
-			console.log(options)
 			this.count = options.count
 			this.time = options.time
 			this.answer_id = options.answer_id
@@ -72,7 +71,7 @@
 					}
 					if(index == 1){
 						uni.redirectTo({
-							url:'award?draw_id='+this.draw_id
+							url:'award?award_id='+this.draw_id
 						})
 					}
 			}

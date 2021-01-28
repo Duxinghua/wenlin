@@ -151,13 +151,13 @@ export default {
 		this.tagList = this.tagList = [{id:0,tag:'全部'}].concat(this.Tool.navList)
 	},
 	watch: {
-		searchFlag(n) {
-			if (n) {
-				this.tagList.unshift({ id: 0, tag: '全部' });
-			} else {
-				this.tagList.shift();
-			}
-		}
+		// searchFlag(n) {
+		// 	if (n) {
+		// 		this.tagList.unshift({ id: 0, tag: '全部' });
+		// 	} else {
+		// 		this.tagList.shift();
+		// 	}
+		// }
 	},
 	onShareAppMessage:function(e){
 		var image = '';

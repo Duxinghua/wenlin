@@ -118,15 +118,15 @@
 			fixedTop() {
 				var width = uni.getStorageSync('width')
 				if(width < 345){
-					return this.isFixed ? (this.numTop + this.windowTop)* 2.5 + 'rpx' : 0
+					return this.isFixed ? (this.numTop + this.windowTop)* 2.6 + 'rpx' : 0
 				}else if(width >= 360 && width < 410){
-					return this.isFixed ? (this.numTop + this.windowTop)* 2.25 + 'rpx' : 0
+					return this.isFixed ? (this.numTop + this.windowTop)* 2.35 + 'rpx' : 0
 				}else if(width >=410 && width < 430){
 					return this.isFixed ? (this.numTop + this.windowTop)* 2.0 + 'rpx' : 0
 					
 				}else{
 	
-					return this.isFixed ? (this.numTop + this.windowTop)* 2.4 + 'rpx' : 0
+					return this.isFixed ? (this.numTop + this.windowTop)* 2.5 + 'rpx' : 0
 				}
 			},
 			padTop() {

@@ -3,7 +3,7 @@
 		<cu-custom bgColor="bg-white-pink" :isShow="isShow" @shows="shows" :allCommunity="all_community" :communityMenu="community_menu"  @hides="hides" @scallCommunity="scallCommunity"><block slot="content"></block></cu-custom>
 		<view class="home">
 			<view class="home-top">
-				<view class="search">
+<!-- 				<view class="search">
 					<view class="searchleft" @click="searchLink">
 						<image src="../../static/search.png" class="ico"></image>
 						<text class="search-text">搜索问邻共享资源</text>
@@ -12,7 +12,7 @@
 						<image src="../../static/messageico.png" class="red"></image>
 						<text class="redtext"  v-if="notices_count != 0">{{(notices_count < 99) ? notices_count : '99+'}}</text>
 					</view>
-				</view>
+				</view> -->
 				<view class="menuwrap">
 					<text :class="[current == 2 ? 'active' : '']" @click="itemClick(2)">附近</text>
 					<text :class="[current == 3 ? 'active' : '']" @click="itemClick(3)">推榜</text>
@@ -32,12 +32,12 @@
 			</view>
 <!-- 			</view> -->
 			<view :class="['postwrap',(type == 3 && postList.length > 0) ? 'usedwrap' : '']">
-			 <mescroll-uni  v-if="type != 3" :fixed="true"  top="390" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" >
+			 <mescroll-uni  v-if="type != 3" :fixed="true"  top="250" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" >
 	
 					<PostItem :allFlag="allFlag" :type="current" v-for="(item,index) in postList" :pitem="item" :key="index" @moreClick="moreClick" @helpPush="helpPush" @shareClick="shareClick" @toLogin="goDetails"></PostItem>
 				
 			</mescroll-uni>
-			<mescroll-uni  v-if="type == 3"  :fixed="true" :flexType="flexType" top="380" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" :flexNoData="flexNoData">
+			<mescroll-uni  v-if="type == 3"  :fixed="true" :flexType="flexType" top="250" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" :flexNoData="flexNoData">
 					<UsedItem  v-for="(item, index) in postList" :pitem="item" :key="index" :usedIndex="index"  @toLogin="goDetails" />
 			</mescroll-uni>
 				</view>
@@ -1716,7 +1716,7 @@ page {
 			flex-direction: row;
 			align-items: center;
 			width: 100%;
-			padding:19upx 30upx;
+			padding:19upx 48upx;
 			box-sizing: border-box;
 			.tagitem {
 	
@@ -1729,6 +1729,7 @@ page {
 				height: 42upx;
 				line-height: 42upx;
 				margin-right: 30upx;
+				margin-left:0rpx;
 				text-align: center;
 				background: #EEF2FA;
 				border-radius: 10upx;

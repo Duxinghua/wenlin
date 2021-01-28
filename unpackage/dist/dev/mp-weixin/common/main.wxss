@@ -1551,7 +1551,7 @@ to {
 	text-align: center;
 }
 .cu-bar .action:first-child {
-	margin-left: 30rpx;
+	margin-left: 48rpx;
 	font-size: 30rpx;
 }
 .cu-bar .action text.text-cut {
@@ -1870,6 +1870,12 @@ to {
 	min-height: 0px;
 
 	padding-right: 220rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	        justify-content: flex-start;
 
 
 

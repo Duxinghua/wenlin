@@ -395,13 +395,17 @@ var _default =
 
                 return;
               }
-              that.currentIndex++;
-              that.detail = that.list[that.currentIndex];
-              if (that.detail.type == 1) {
-                that.confirm = false;
-              } else if (that.detail.type == 2) {
-                that.confirm = true;
-              }
+              setTimeout(function () {
+                that.currentIndex++;
+                that.detail = that.list[that.currentIndex];
+                if (that.detail.type == 1) {
+                  that.confirm = false;
+                } else if (that.detail.type == 2) {
+                  that.confirm = true;
+                }
+
+              }, 400);
+
             } else {
               that.next = true;
             }

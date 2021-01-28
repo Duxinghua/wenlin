@@ -1559,7 +1559,7 @@ button.cuIcon.lg {
 }
 
 .cu-bar .action:first-child {
-	margin-left: 30upx;
+	margin-left: 48upx;
 	font-size: 30upx;
 }
 
@@ -1887,6 +1887,8 @@ button.cuIcon.lg {
 	min-height: 0px;
 	/* #ifdef MP-WEIXIN */
 	padding-right: 220upx;
+	display: flex;
+	justify-content: flex-start;
 	/* #endif */
 	/* #ifdef MP-ALIPAY */
 	padding-right: 150upx;

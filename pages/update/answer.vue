@@ -65,21 +65,23 @@
 					answer_id:that.answer_id
 				}
 				if(!token){
+					this.$u.toast('您没有登录，请登录或者注册，再参加答题')
 					uni.setStorageSync('url','/pages/update/answer?answer_id='+that.answer_id)
 					setTimeout(()=>{
 						uni.navigateTo({
 							url:'../index/index'
 						})
-					},100)
+					},300)
 					return
 				}
 				if(!all_community){
+					this.$u.toast('您没有登录，请登录或者注册，再参加答题')
 					uni.setStorageSync('url','/pages/update/answer?answer_id='+that.answer_id)
 					setTimeout(()=>{
 						uni.navigateTo({
 							url:'../index/index'
 						})
-					},100)
+					},300)
 					return
 				}
 				that.Api.questionList(data).then((result)=>{
@@ -90,13 +92,21 @@
 			})
 			
 		},
+		onShareAppMessage:function(){
+				var img = 'https://sq.wenlinapp.com/appimg/share500400.jpg'
+				return {
+				 title: this.detail.detail.title,
+				 imageUrl: img,
+				 path: '/pages/update/answer?answer_id='+this.answer_id
+				}
+		},
 		methods:{
 			detailHandler(){
-				uni.navigateTo({
-					url:'answerdetail?answer_id='+this.answer_id
-				})
+				// uni.navigateTo({
+				// 	url:'answerdetail?answer_id='+this.answer_id
+				// })
 				if(this.detail.has_answer == 1){
-					//return this.$u.toast('您已参加此次答题，请下次再来参与')
+					return this.$u.toast('您已参加此次答题，请下次再来参与')
 				}else{
 					uni.navigateTo({
 						url:'answerdetail?answer_id='+this.answer_id

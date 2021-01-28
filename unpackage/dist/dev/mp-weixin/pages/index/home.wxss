@@ -337,6 +337,7 @@ page.data-v-14a6ab35 {
   height: 42rpx;
   line-height: 42rpx;
   margin-right: 30rpx;
+  margin-left: 0rpx;
   text-align: center;
   background: #eef2fa;
   -webkit-border-radius: 10rpx;

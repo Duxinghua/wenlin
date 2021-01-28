@@ -283,14 +283,14 @@ var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcompone
     this.tagList = this.tagList = [{ id: 0, tag: '全部' }].concat(this.Tool.navList);
   },
   watch: {
-    searchFlag: function searchFlag(n) {
-      if (n) {
-        this.tagList.unshift({ id: 0, tag: '全部' });
-      } else {
-        this.tagList.shift();
-      }
-    } },
-
+    // searchFlag(n) {
+    // 	if (n) {
+    // 		this.tagList.unshift({ id: 0, tag: '全部' });
+    // 	} else {
+    // 		this.tagList.shift();
+    // 	}
+    // }
+  },
   onShareAppMessage: function onShareAppMessage(e) {
     var image = '';
     if (e.from == 'button') {

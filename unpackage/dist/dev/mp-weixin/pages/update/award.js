@@ -287,8 +287,8 @@ __webpack_require__.r(__webpack_exports__);
       } };
 
   },
-  onLoad: function onLoad(options) {
-
+  onLoad: function onLoad(options) {var _this = this;
+    console.log(options, 'options');
     var that = this;
     var auth = new Promise(function (resolve, reject) {
       var token = uni.getStorageSync('token');
@@ -315,6 +315,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     });
     auth.then(function (status) {
+      console.log('sss');
       var token = uni.getStorageSync('token');
       var all_community = uni.getStorageSync('all_community');
 
@@ -332,21 +333,23 @@ __webpack_require__.r(__webpack_exports__);
         draw_id: that.draw_id };
 
       if (!token) {
+        _this.$u.toast('您没有登录，请登录或者注册，再参加抽奖');
         uni.setStorageSync('url', '/pages/update/award?award_id=' + that.draw_id);
         setTimeout(function () {
           uni.navigateTo({
             url: '../index/index' });
 
-        }, 100);
+        }, 300);
         return;
       }
       if (!all_community) {
+        _this.$u.toast('您没有登录，请登录或者注册，再参加抽奖');
         uni.setStorageSync('url', '/pages/update/award?award_id=' + that.draw_id);
         setTimeout(function () {
           uni.navigateTo({
             url: '../index/index' });
 
-        }, 100);
+        }, 300);
         return;
       }
       that.community_id = options.community_id || uni.getStorageSync('community_id');
@@ -360,15 +363,15 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   methods: {
-    getList: function getList() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var data, result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+    getList: function getList() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var data, result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 data = {
-                  draw_id: _this.adraw_id,
+                  draw_id: _this2.adraw_id,
                   page: 1,
                   page_size: 10000 };_context.next = 3;return (
 
-                  _this.Api.drawUser(data));case 3:result = _context.sent;
+                  _this2.Api.drawUser(data));case 3:result = _context.sent;
                 if (result.code == 1) {
-                  _this.userList = result.data.list;
+                  _this2.userList = result.data.list;
                 }case 5:case "end":return _context.stop();}}}, _callee);}))();
     },
     // 重新生成
@@ -380,17 +383,17 @@ __webpack_require__.r(__webpack_exports__);
       this.getPrizeList();
     },
     // 获取奖品列表
-    getPrizeList: function getPrizeList() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+    getPrizeList: function getPrizeList() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
                 uni.showLoading({
                   title: '奖品准备中...' });_context2.next = 3;return (
 
 
-                  _this2.Api.drawDetail({ draw_id: _this2.draw_id }));case 3:res = _context2.sent;
+                  _this3.Api.drawDetail({ draw_id: _this3.draw_id }));case 3:res = _context2.sent;
                 console.log(res);
                 if (res.code == 1) {
-                  _this2.statusValue = res.data.status;
-                  _this2.rule = res.data.rule;
-                  _this2.detail = res.data;
+                  _this3.statusValue = res.data.status;
+                  _this3.rule = res.data.rule;
+                  _this3.detail = res.data;
                   res.data.prize_list.map(function (item) {
                     item.prizeImage = item.image;
                     item.prizeId = item.prize_id;
@@ -398,7 +401,7 @@ __webpack_require__.r(__webpack_exports__);
                     item.stock = 10000;
                     item.weight = 0;
                   });
-                  _this2.prizeList = res.data.prize_list;
+                  _this3.prizeList = res.data.prize_list;
                 }
                 /*
                   return
@@ -462,7 +465,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     // 本次抽奖开始
-    handleDrawStart: function handleDrawStart() {var _this3 = this;
+    handleDrawStart: function handleDrawStart() {var _this4 = this;
       if (this.detail.can_draw == 0) {
         return this.$u.toast('您的抽奖次数已用完');
       }
@@ -524,7 +527,7 @@ __webpack_require__.r(__webpack_exports__);
 
           console.warn('###当前处于模拟的随机中奖概率，实际场景中，中奖概率应由后端控制###');
           // 这里随机产生的 prizeId 是模拟后端返回的 prizeId
-          _this3.Api.gotoDraw({ draw_id: _this3.draw_id, community_id: _this3.community_id }).then(function (result) {
+          _this4.Api.gotoDraw({ draw_id: _this4.draw_id, community_id: _this4.community_id }).then(function (result) {
             if (result.code == 1) {
               console.log(result);
               // let prizeId = Math.floor(Math.random() * list.length + 1);
@@ -533,14 +536,14 @@ __webpack_require__.r(__webpack_exports__);
                 var item = list[i];
                 if (item.prizeId === prizeId) {
                   // 中奖下标
-                  _this3.prizeIndex = i;
-                  _this3.selectObj = result.data;
-                  _this3.$forceUpdate();
+                  _this4.prizeIndex = i;
+                  _this4.selectObj = result.data;
+                  _this4.$forceUpdate();
                   break;
                 }
               }
-              _this3.getPrizeList();
-              _this3.showObj = result.data;
+              _this4.getPrizeList();
+              _this4.showObj = result.data;
 
             }
           });

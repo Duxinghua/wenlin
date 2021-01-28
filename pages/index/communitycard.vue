@@ -23,10 +23,7 @@
 				</view>
 			</view>
 			<view class="darenwrap">
-				<image src="../../static/heading.png" class="avatarico" v-for="(item,index) in 11" :key="index" :index="index"></image>
-				<view class="avatarico avatarwt">
-					更多
-				</view>
+				<image @click.stop="userHandler(item)" :src="item.avatar" class="avatarico" v-for="(item,index) in detail.neighbour_list" :key="index" :index="index"></image>
 			</view>
 			<view class="itemwrap">
 				<view class="labelitem">
@@ -331,6 +328,11 @@
 			}
 		},
 		methods:{
+			userHandler(item){
+				uni.navigateTo({
+					url:'/pages/index/personalcard?user_id='+item.user_id+'&community_id='+item.community_id
+				})
+			},
 			goHome(){
 				uni.navigateTo({
 					url:'/pages/index/index'
@@ -809,8 +811,8 @@
 				padding-right:25upx;
 				box-sizing: border-box;
 				.avatarwrap{
-					width:140upx;
-					height:140upx;
+					width:100upx;
+					height:100upx;
 					margin-right:23upx;
 					border-radius: 50%;
 					overflow: hidden;

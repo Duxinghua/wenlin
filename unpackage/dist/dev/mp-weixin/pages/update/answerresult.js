@@ -176,7 +176,6 @@ var _default =
 
   },
   onLoad: function onLoad(options) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var data, result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-              console.log(options);
               _this.count = options.count;
               _this.time = options.time;
               _this.answer_id = options.answer_id;
@@ -187,12 +186,12 @@ var _default =
                 take_time: _this.time,
                 score: _this.count,
                 community_id: uni.getStorageSync('community_id'),
-                content: _this.content };_context.next = 9;return (
+                content: _this.content };_context.next = 8;return (
 
-                _this.Api.questionAnswer(data));case 9:result = _context.sent;
+                _this.Api.questionAnswer(data));case 8:result = _context.sent;
               if (result.code == 1) {
 
-              }case 11:case "end":return _context.stop();}}}, _callee);}))();
+              }case 10:case "end":return _context.stop();}}}, _callee);}))();
   },
 
   methods: {
@@ -204,7 +203,7 @@ var _default =
       }
       if (index == 1) {
         uni.redirectTo({
-          url: 'award?draw_id=' + this.draw_id });
+          url: 'award?award_id=' + this.draw_id });
 
       }
     } } };exports.default = _default;

@@ -69,8 +69,8 @@ page.data-v-35a39713 {
           box-sizing: border-box;
 }
 .personalcard .pcontent .userheader .avatarwrap.data-v-35a39713 {
-  width: 140rpx;
-  height: 140rpx;
+  width: 100rpx;
+  height: 100rpx;
   margin-right: 23rpx;
   -webkit-border-radius: 50%;
           border-radius: 50%;

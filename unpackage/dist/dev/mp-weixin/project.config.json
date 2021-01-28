@@ -57,10 +57,9 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/update/award",
-					"pathName": "pages/update/award",
-					"query": "draw_id=1",
-					"scene": null
+					"name": "test",
+					"pathName": "pages/update/setVote",
+					"query": ""
 				},
 				{
 					"id": -1,
@@ -71,7 +70,7 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/index/index",
+					"name": "pages/update/award",
 					"pathName": "pages/update/answer",
 					"query": "scene=answer_id%3D1",
 					"scene": null
@@ -80,35 +79,14 @@
 					"id": -1,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
-					"query": "scene=award_id%3D2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/update/award",
-					"query": "scene=award_id%3D2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/update/award",
-					"query": "scene=award_id%3D2",
+					"query": "scene=answer_id%3D1",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
-					"query": "scene=award_id%3D2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "scene=award_id%3D2",
+					"query": "scene=answer_id%3D1",
 					"scene": null
 				}
 			]

@@ -64,7 +64,7 @@
 			</view>
 			<view class="navitem" @click="targetClick(7)">
 				<image src="../../static/me5.png" class="mico"></image>
-				<text class="navtext">社区组织</text>
+				<text class="navtext">我的居委会</text>
 				<image src="../../static/mearrow.png" class="cardico"></image>
 			</view>
 			<view class="navitem" @click="targetClick(6)">

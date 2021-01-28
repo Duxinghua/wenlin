@@ -326,9 +326,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
 {
   data: function data() {
     return {
@@ -477,6 +474,11 @@ __webpack_require__.r(__webpack_exports__);
     } },
 
   methods: {
+    userHandler: function userHandler(item) {
+      uni.navigateTo({
+        url: '/pages/index/personalcard?user_id=' + item.user_id + '&community_id=' + item.community_id });
+
+    },
     goHome: function goHome() {
       uni.navigateTo({
         url: '/pages/index/index' });

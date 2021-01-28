@@ -131,7 +131,7 @@ export default {
 		};
 	},
 	onLoad(options) {
-		
+		console.log(options,'options')
 		var that = this
 		var auth = new Promise(function(resolve, reject) {
 			var token = uni.getStorageSync('token')
@@ -158,6 +158,7 @@ export default {
 			}
 		});
 		auth.then(status => {
+			console.log('sss')
 			var token = uni.getStorageSync('token');
 			var all_community = uni.getStorageSync('all_community');
 
@@ -175,21 +176,23 @@ export default {
 				draw_id:that.draw_id
 			}
 			if(!token){
+				this.$u.toast('您没有登录，请登录或者注册，再参加抽奖')
 				uni.setStorageSync('url','/pages/update/award?award_id='+that.draw_id)
 				setTimeout(()=>{
 					uni.navigateTo({
 						url:'../index/index'
 					})
-				},100)
+				},300)
 				return
 			}
 			if(!all_community){
+				this.$u.toast('您没有登录，请登录或者注册，再参加抽奖')
 				uni.setStorageSync('url','/pages/update/award?award_id='+that.draw_id)
 				setTimeout(()=>{
 					uni.navigateTo({
 						url:'../index/index'
 					})
-				},100)
+				},300)
 				return
 			}
 			that.community_id = options.community_id || uni.getStorageSync('community_id')

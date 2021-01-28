@@ -106,9 +106,10 @@
 <style lang="scss" scoped>
 	.menu{
 		position: relative;
-		width:320upx;
+		width:100%;
 		display: flex;
 		flex-direction: row;
+		justify-content: flex-start;
 		align-items: center;
 		.select-menu{
 			font-size: 36upx;

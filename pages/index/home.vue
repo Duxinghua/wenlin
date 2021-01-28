@@ -56,7 +56,7 @@
 				<mescroll-uni
 					v-if="type != 3"
 					:fixed="true"
-					:top="usersList.length ? 400 : 320"
+					:top="usersList.length ? 500 : 380"
 					bottom="120"
 					ref="mescrollRef"
 					@init="mescrollInit"
@@ -82,7 +82,7 @@
 					v-if="type == 3"
 					:fixed="true"
 					:flexType="flexType"
-					:top="usersList.length ? 400 : 320"
+					:top="usersList.length ? 500 : 380"
 					bottom="120"
 					ref="mescrollRef"
 					@init="mescrollInit"
@@ -1898,6 +1898,7 @@ page {
 				height: 42upx;
 				line-height: 42upx;
 				margin-right: 30upx;
+				margin-left:0rpx;
 				text-align: center;
 				background: #eef2fa;
 				border-radius: 10upx;
