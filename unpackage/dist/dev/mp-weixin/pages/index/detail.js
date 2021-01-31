@@ -915,7 +915,6 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     getDetailAll: function getDetailAll() {
       var that = this;
       if (that.type == 7) {
-        console.log('7', 's');
         that.getPDetail();
       } else if (that.type == 8) {
         that.getDdetail();

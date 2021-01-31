@@ -1376,6 +1376,7 @@ export default {
 			this.goLogin((data) => {
 				if(!data){
 					this.findFaultObject = e
+					console.log(e,'e1')
 					this.onShareShow = true
 				}
 			})

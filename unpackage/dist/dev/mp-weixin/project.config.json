@@ -63,30 +63,9 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/update/award",
-					"query": "scene=award_id%3D2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/update/award",
-					"pathName": "pages/update/answer",
-					"query": "scene=answer_id%3D1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "scene=answer_id%3D1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "scene=answer_id%3D1",
+					"name": "pages/update/ptdetail",
+					"pathName": "pages/update/ptdetail",
+					"query": "dynamics_id=1542&type=17&id=1468",
 					"scene": null
 				}
 			]

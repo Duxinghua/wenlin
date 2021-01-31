@@ -771,6 +771,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         this.Api.vote(data).then(function (result) {
           if (result.code == 1) {
             _this2.getDetailAll();
+            _this2.votetextarea = '';
             _this2.voteFlag = false;
           } else {
             return _this2.$u.toast(result.msg);
@@ -790,6 +791,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         this.Api.addDynamicsVoteVote(data).then(function (result) {
           if (result.code == 1) {
             _this2.getDetailAll();
+            _this2.votetextarea = '';
             _this2.voteFlag = false;
           } else {
             return _this2.$u.toast(result.msg);
@@ -798,6 +800,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
     },
     votoTodo: function votoTodo(item) {
+      this.votetextarea = '';
       this.voteType = 'vote';
       this.voteobj = item;
       if (this.voteobj.is_vote == 0) {

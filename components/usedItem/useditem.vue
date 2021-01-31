@@ -13,7 +13,9 @@
 		<view class="usedprice">
 			<view class="info">
 				<text class="infotype">{{pitem.sell_type | sellType}}</text>
-				<text>￥{{pitem.sell_type == 2 ? 0 : pitem.sell_price}}</text>
+<!-- 				<text>￥{{pitem.sell_type == 2 ? 0 : pitem.sell_price}}</text> -->
+				<text  v-if="pitem.sell_type != 4">￥{{ pitem.sell_type == 2 ? 0 : pitem.sell_price }}</text>
+				<text  v-if="pitem.sell_type == 4">{{ pitem.exchange_goods ? "物品："+ pitem.exchange_goods : "积分："+pitem.exchange_score }}</text>
 			</view>
 			<view class="infotime">{{pitem.create_time | formatTimeMd}}</view>
 		</view>

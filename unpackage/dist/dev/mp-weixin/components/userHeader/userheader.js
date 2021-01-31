@@ -171,6 +171,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -186,11 +196,17 @@ var _default =
       type: [Number, String] } },
 
 
+  mounted: function mounted() {
+    console.log(this.pitem, 'pitem');
+  },
   methods: {
     moreClick: function moreClick() {
       this.$emit('moreClick');
     },
     goPer: function goPer(item) {
+      if (this.pitem.anonymous == 1) {
+        return this.$u.toast('匿名用户不能查看');
+      }
       if (this.type != 7) {
         this.$emit('goPer', item);
       }

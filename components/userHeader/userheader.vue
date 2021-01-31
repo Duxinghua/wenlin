@@ -2,16 +2,20 @@
 	<!-- 用户头部组件 -->
 	<view class="postheader ">
 		<view class="headerimg" >
-			<image @click.stop="goPer(pitem.user)" v-if="pitem.publish_type == 1" :src="pitem.user.avatar" class="avatar"></image>
+			<image @click.stop="goPer(pitem.user)" v-if="pitem.publish_type == 1 && pitem.anonymous == 0" :src="pitem.user.avatar" class="avatar"></image>
+			<image @click.stop="goPer(pitem.user)" v-if="pitem.publish_type == 1 && pitem.anonymous == 1" src="../../static/heading.png" class="avatar"></image>
 			<image @click.stop="goCom" v-if="pitem.publish_type == 2" :src="pitem.communitycommittee.logo" class="avatar"></image>
 			<image v-if="pitem.publish_type == 3"  :src="pitem.admin.avatar" class="avatar"></image>
-			<image v-if="pitem.create_user.id"  @click.stop="goPer(pitem.create_user)"  :src="pitem.create_user.avatar"  class="avatar"></image>
+			<image v-if="pitem.create_user.id && pitem.anonymous == 0"  @click.stop="goPer(pitem.create_user)"  :src="pitem.create_user.avatar"  class="avatar"></image>
+			
+			<image v-if="pitem.create_user.id && pitem.anonymous == 1"  @click.stop="goPer(pitem.create_user)"  src="../../static/heading.png"  class="avatar"></image>
+			
 			<image v-if="pitem.create_user.daren == 1" src="../../static/da.png" class="da"></image>
 			<image v-if="pitem.user.daren == 1" src="../../static/da.png" class="da"></image>
 			<image v-if="pitem.user.daren == 1" src="../../static/da.png" class="da"></image>
 		</view>
 		<view class="userinfo" >
-			<view class="userwrap" v-if="pitem.publish_type == 1" @click.stop="goPer(pitem.user)">
+			<view class="userwrap" v-if="pitem.publish_type == 1 && pitem.anonymous == 0" @click.stop="goPer(pitem.user)">
 				<text class="name">{{pitem.user.user_nickname}}·{{ucommunityid == pitem.user.community_id ? pitem.user.building+'#' : pitem.user.community_name}}</text>
 				<view class="likewrap">
 					<image class="like" src="../../static/like.png"></image>
@@ -20,7 +24,10 @@
 
 				<text class="chuang" v-if="pitem.user.founder == 1">创</text>
 			</view>
-			<view class="userwrap" v-if="pitem.create_user.id" @click.stop="goPer(pitem.create_user)">
+			<view class="userwrap" v-if="pitem.publish_type == 1 && pitem.anonymous == 1" @click.stop="goPer(pitem.user)">
+				<text class="name">匿名用户</text>
+			</view>
+			<view class="userwrap" v-if="pitem.create_user.id && pitem.anonymous == 0" @click.stop="goPer(pitem.create_user)">
 				<text class="name">{{pitem.create_user.user_nickname}}·{{ucommunityid == pitem.create_user.community_id ? pitem.create_user.building+'#' : pitem.create_user.community_name}}</text>
 				<view class="likewrap">
 					<image class="like" src="../../static/like.png"></image>
@@ -28,6 +35,9 @@
 				</view>
 			
 				<text class="chuang" v-if="pitem.create_user.id == pitem.create_user_id">创</text>
+			</view>
+			<view class="userwrap" v-if="pitem.create_user.id  && pitem.anonymous == 1" @click.stop="goPer(pitem.user)">
+				<text class="name">匿名用户</text>
 			</view>
 			<view class="userwrap" v-if="pitem.publish_type == 2"  @click.stop="goCom">
 				<text class="name">{{pitem.communitycommittee.title}}</text>
@@ -60,11 +70,17 @@
 				type: [Number,String]
 			}
 		},
+		mounted() {
+			console.log(this.pitem,'pitem')
+		},
 		methods:{
 			moreClick(){
 				this.$emit('moreClick')
 			},
 			goPer(item){
+				if(this.pitem.anonymous == 1){
+					return this.$u.toast('匿名用户不能查看')
+				}
 				if(this.type != 7){
 					this.$emit('goPer',item)
 				}

@@ -22,7 +22,7 @@
 						<text class="t1">{{ detail.sell_type | sellType }}</text>
 						|
 						<text class="t2" v-if="detail.sell_type != 4">￥{{ detail.sell_type == 2 ? 0 : detail.sell_price }}</text>
-						<text class="t2" v-if="detail.sell_type == 4">{{ detail.exchange_goods ? detail.exchange_goods : detail.exchange_score }}</text>
+						<text class="t2" v-if="detail.sell_type == 4">{{ detail.exchange_goods ? "物品："+ detail.exchange_goods : "积分："+detail.exchange_score }}</text>
 					</view>
 				</view>
 				<view class="posttitle" v-if="detail.title && type == 7">{{ detail.title }}</view>
@@ -749,7 +749,6 @@ export default {
 		getDetailAll() {
 			var that = this;
 			if (that.type == 7) {
-				console.log('7', 's');
 				that.getPDetail();
 			} else if (that.type == 8) {
 				that.getDdetail();

@@ -54,10 +54,12 @@
 <script>
 	import navigationCustom from '../../components/struggler-navigationCustom/navigation-custom';
 	import Selectitem from '../../components/selectitem/selectitem.vue'
+	import Nodata from '@/components/nodata/nodata.vue'
 	export default{
 		components:{
 			navigationCustom,
-			Selectitem
+			Selectitem,
+			Nodata
 		},
 		data(){
 			return{

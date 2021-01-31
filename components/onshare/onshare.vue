@@ -7,7 +7,7 @@
 			<view class="collect sharewarp" @click="onshare">
 				 <button class="share" open-type="share">分享给好友或微信群</button>
 			</view>
-			<view class="collect" @click="ontodo">生成海报</view>
+			<view class="collect" v-if="false" @click="ontodo">生成海报</view>
 			<view class="collect cancel" @click="close">取消</view>
 		</view>
 	</view>

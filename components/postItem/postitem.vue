@@ -3,21 +3,26 @@
 		<view class="postAlltype" v-if="pitem.type != 6 ">
 			<view class="postheader" v-if="pitem.publish_type == 1">
 				<view :class="['headerimg',!pitem.user.avatar ? 'headerimgfix':'']" @click.stop="goPer(pitem.user)">
-					<image :src="pitem.user.avatar" class="avatar"></image>
+					<image :src="pitem.user.avatar" class="avatar" v-if="(pitem.type == 16 && pitem.anonymous == 0) || ( pitem.type == 18 && pitem.anonymous == 0 )"></image>
+					<image src="../../static/heading.png" class="avatar" v-if=" (pitem.type == 16 && pitem.anonymous == 1) || (pitem.anonymous == 1 &&  pitem.type == 18 )"></image>
+					<image :src="pitem.user.avatar" class="avatar" v-if="pitem.type != 16 && pitem.type != 18 "></image>
 					<image v-if="pitem.user.daren == 1" src="../../static/da.png" class="da"></image>
 				</view>
 				<view class="userinfo" @click.stop="goPer(pitem.user)">
 					<view class="userwrap">
-						<text class="name">
+						<text class="name" v-if="pitem.anonymous == 0">
 							{{ pitem.user.user_nickname }}·{{ ucommunityid == pitem.user.community_id ? pitem.user.building + '#' : pitem.user.community_name }}
 						</text>
+						<text class="name" v-if="pitem.anonymous == 1">
+							匿名用户
+						</text>
 
-						<view class="likewrap">
+						<view class="likewrap" v-if="pitem.anonymous != 1">
 							<image class="like" src="../../static/like.png"></image>
 							<text>{{ pitem.user.love_value }}</text>
 						</view>
 
-						<text class="chuang" v-if="pitem.user.founder == 1">创</text>
+						<text class="chuang" v-if="pitem.user.founder == 1 && pitem.anonymous != 1">创</text>
 					</view>
 					<view class="usertime">
 						{{ pitem.create_time | formatTime }}
@@ -75,7 +80,8 @@
 		<view class="postAlltype" style="display: none;">
 			<view class="postheader" v-if="pitem.publish_type == 1">
 				<view class="headerimg" @click.stop="goPer(pitem.user)">
-					<image :src="pitem.user.avatar" class="avatar"></image>
+					<image :src="pitem.user.avatar" class="avatar" v-if="pitem.anonymous == 0"></image>
+					<image src="../../static/heading.png" class="avatar" v-if="pitem.anonymous == 1"></image>
 					<image v-if="pitem.user.daren == 1" src="../../static/da.png" class="da"></image>
 				</view>
 				<view class="userinfo" @click.stop="goPer(pitem.user)">
@@ -174,13 +180,13 @@
 			<text class="numwrap" v-if="pitem.images.length > 3">{{ pitem.images.length }}</text>
 		</view>
 		<view class="tuan" v-if="pitem.type == 17">
-			已有<text class="ren">{{pitem.buy_num ? pitem.buy_num : 0}}</text>人参加团购 剩余时间：<u-count-down  color="#ED3269" separator-color="#ED3269" font-size="26" separator-size="26" separator="zh" :timestamp="timestamp"></u-count-down>
+			已有<text class="ren">{{pitem.buy_num ? pitem.buy_num : 0}}</text>人参加团购 剩余时间：<u-count-down  color="#ED3269" separator-color="#ED3269" font-size="26" separator-size="26" separator="zh" :timestamp="autoTime"></u-count-down>
 		</view>
 		<view class="yishi" v-if="pitem.type == 16">
-			<text class="ren">{{pitem.comment_count}}</text>人参加投票
+			<text class="ren">{{pitem.vote_num}}</text>人参加投票
 		</view>
 		<view class="posttool" v-if="pitem.type != 6" :class="[pitem.images.length == 0 ? 'posttoolfix' : '']">
-			<view class="toolitem" @click.stop="shareClick">
+			<view class="toolitem"  open-type="share" @click.stop="shareClick">
 				<image class="toolico" src="../../static/forward.png"></image>
 				<text class="tooltext">分享</text>
 			</view>
@@ -250,11 +256,29 @@ export default {
 		}
 	},
 	computed: {
+		autoTime(){
+			if(this.pitem.type == 17){
+				var obj = JSON.parse(this.pitem.relation_more)
+				var group_endtime = obj.group_endtime
+				if(group_endtime){
+					return (group_endtime - this.pitem.now_time)
+				}else{
+					return 0
+				}
+				
+			}else{
+				return 0
+			}
+		},
 		imglist() {
-			if (this.pitem.images.length > 3) {
-				return this.pitem.images.slice(0, 3);
-			} else {
-				return this.pitem.images;
+			if(this.pitem.images){
+				if (this.pitem.images.length > 3) {
+					return this.pitem.images.slice(0, 3);
+				} else {
+					return this.pitem.images;
+				}
+			}else{
+				return []
 			}
 		},
 		autoType() {
@@ -272,28 +296,35 @@ export default {
 		},
 		skillList() {
 			if(this.pitem.skill_desc){
-				console.log(this.pitem.skill_desc.split(','))
 				return this.pitem.skill_desc.split(',');
 			}
 		},
 		classObject() {
-			var l = this.pitem.images.length;
-			if (l == 1) {
-				return 'img1';
-			} else if (l == 2) {
-				return 'img2';
-			} else if (l > 2) {
-				return 'img3';
+			if(this.pitem.images){
+				var l = this.pitem.images.length;
+				if (l == 1) {
+					return 'img1';
+				} else if (l == 2) {
+					return 'img2';
+				} else if (l > 2) {
+					return 'img3';
+				}
+			}else{
+				return 'img1'
 			}
 		},
 		autoHeight(){
-			var l = this.pitem.images.length;
-			if (l == 1) {
-				return 380;
-			} else if (l == 2) {
-				return 260;
-			} else if (l > 2) {
-				return 220;
+			if(this.pitem.images){
+				var l = this.pitem.images.length;
+				if (l == 1) {
+					return 380;
+				} else if (l == 2) {
+					return 260;
+				} else if (l > 2) {
+					return 220;
+				}
+			}else{
+				return 0
 			}
 		},
 		timestamp(){
@@ -320,8 +351,13 @@ export default {
 				}
 			}
 			var type = this.pitem.type;
+	
 			if(this.pm){
 				type = 7
+			}
+			if(this.pitem.regedit){
+				this.$emit('danrenHandler',{})
+				return
 			}
 			var publish_type = this.pitem.publish_type; //2为居委会 3小区
 			if(this.pitem.opening == 0){
@@ -376,6 +412,9 @@ export default {
 				this.$emit('toLogin');
 				return;
 			} else {
+				if(this.pitem.anonymous == 1){
+					return this.$u.toast('匿名用户不可看')
+				}
 				if (!uni.getStorageSync('community_id')) {
 					this.$emit('toLogin');
 					return;

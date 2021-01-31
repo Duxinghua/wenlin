@@ -1505,6 +1505,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       this.goLogin(function (data) {
         if (!data) {
           _this20.findFaultObject = e;
+          console.log(e, 'e1');
           _this20.onShareShow = true;
         }
       });

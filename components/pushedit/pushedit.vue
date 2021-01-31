@@ -173,12 +173,12 @@ export default {
 						flex-direction: column;
 						align-items: center;
 						image {
-							width: 108upx;
-							height: 108upx;
+							width: 90upx;
+							height: 90upx;
 						}
 						text {
-							margin-top:12upx;
-							margin-bottom: 30upx;
+							margin-top:15upx;
+							margin-bottom: 40upx;
 							font-size: 29upx;
 							font-family: PingFang SC;
 							font-weight: bold;

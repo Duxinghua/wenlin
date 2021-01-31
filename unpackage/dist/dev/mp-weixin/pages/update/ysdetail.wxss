@@ -630,8 +630,8 @@ page.data-v-c1cf22f0 {
   -webkit-border-radius: 50%;
           border-radius: 50%;
   position: fixed;
-  bottom: 400rpx;
-  right: 20rpx;
+  bottom: 130rpx;
+  right: 28.5rpx;
 }
 .helpdetail .content .detailnav.data-v-c1cf22f0 {
   border-top: 20rpx solid #F7F9FF;

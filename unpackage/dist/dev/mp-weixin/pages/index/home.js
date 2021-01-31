@@ -1428,6 +1428,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
                   avatar: result.data.avatar,
                   user_nickname: result.data.user_nickname };
 
+                _this13.darenObj.regedit = true;
                 _this13.darenObj.type = 6;
               }
               _this13.mescroll.scrollTo(0, 300);
@@ -1639,6 +1640,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       this.goLogin(function (data) {
         if (!data) {
           _this20.findFaultObject = e;
+          console.log(e, 'e0');
           _this20.onShareShow = true;
         }
       });

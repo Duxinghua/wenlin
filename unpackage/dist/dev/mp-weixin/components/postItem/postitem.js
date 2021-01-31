@@ -387,6 +387,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -414,11 +420,29 @@ var _default =
 
 
   computed: {
-    imglist: function imglist() {
-      if (this.pitem.images.length > 3) {
-        return this.pitem.images.slice(0, 3);
+    autoTime: function autoTime() {
+      if (this.pitem.type == 17) {
+        var obj = JSON.parse(this.pitem.relation_more);
+        var group_endtime = obj.group_endtime;
+        if (group_endtime) {
+          return group_endtime - this.pitem.now_time;
+        } else {
+          return 0;
+        }
+
       } else {
-        return this.pitem.images;
+        return 0;
+      }
+    },
+    imglist: function imglist() {
+      if (this.pitem.images) {
+        if (this.pitem.images.length > 3) {
+          return this.pitem.images.slice(0, 3);
+        } else {
+          return this.pitem.images;
+        }
+      } else {
+        return [];
       }
     },
     autoType: function autoType() {
@@ -436,28 +460,35 @@ var _default =
     },
     skillList: function skillList() {
       if (this.pitem.skill_desc) {
-        console.log(this.pitem.skill_desc.split(','));
         return this.pitem.skill_desc.split(',');
       }
     },
     classObject: function classObject() {
-      var l = this.pitem.images.length;
-      if (l == 1) {
+      if (this.pitem.images) {
+        var l = this.pitem.images.length;
+        if (l == 1) {
+          return 'img1';
+        } else if (l == 2) {
+          return 'img2';
+        } else if (l > 2) {
+          return 'img3';
+        }
+      } else {
         return 'img1';
-      } else if (l == 2) {
-        return 'img2';
-      } else if (l > 2) {
-        return 'img3';
       }
     },
     autoHeight: function autoHeight() {
-      var l = this.pitem.images.length;
-      if (l == 1) {
-        return 380;
-      } else if (l == 2) {
-        return 260;
-      } else if (l > 2) {
-        return 220;
+      if (this.pitem.images) {
+        var l = this.pitem.images.length;
+        if (l == 1) {
+          return 380;
+        } else if (l == 2) {
+          return 260;
+        } else if (l > 2) {
+          return 220;
+        }
+      } else {
+        return 0;
       }
     },
     timestamp: function timestamp() {
@@ -484,8 +515,13 @@ var _default =
         }
       }
       var type = this.pitem.type;
+
       if (this.pm) {
         type = 7;
+      }
+      if (this.pitem.regedit) {
+        this.$emit('danrenHandler', {});
+        return;
       }
       var publish_type = this.pitem.publish_type; //2为居委会 3小区
       if (this.pitem.opening == 0) {
@@ -540,6 +576,9 @@ var _default =
         this.$emit('toLogin');
         return;
       } else {
+        if (this.pitem.anonymous == 1) {
+          return this.$u.toast('匿名用户不可看');
+        }
         if (!uni.getStorageSync('community_id')) {
           this.$emit('toLogin');
           return;

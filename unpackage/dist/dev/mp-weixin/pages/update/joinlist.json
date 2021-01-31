@@ -3,6 +3,7 @@
   "usingComponents": {
     "u-popup": "/uview-ui/components/u-popup/u-popup",
     "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
-    "selectitem": "/components/selectitem/selectitem"
+    "selectitem": "/components/selectitem/selectitem",
+    "nodata": "/components/nodata/nodata"
   }
 }

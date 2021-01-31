@@ -274,7 +274,7 @@
 										day: true,
 										hour: true,
 										minute: true,
-										second: true
+										second: false
 				},
 				radioCurrent:1,
 				radioList:[
@@ -487,7 +487,7 @@
 		},
 		methods:{
 			confirmHandler(e){
-				this.group_endtime = e.year + '-' + e.month +'-'+e.day +' '+e.hour+':'+e.minute+':'+e.second
+				this.group_endtime = e.year + '-' + e.month +'-'+e.day +' '+e.hour+':'+e.minute
 			},
 			timerHandler(){
 				this.timeShow = true
@@ -872,8 +872,8 @@
 					if(this.sell_type == 4){
 						var exchange_score = 0
 						var exchange_goods = ''
-						if(this.input_entity != 0){
-							exchange_score = this.input_entity
+						if(this.input_score != 0){
+							exchange_score = this.input_score
 						}
 						if(this.exchange_goods){
 							exchange_goods = this.exchange_goods
@@ -965,7 +965,6 @@
 				var that = this
 				//曝光台
 				console.log(data,'submit')
-	
 				if(this.type == 1){
 					this.Api.publishDynamicsExposure(data).then((result)=>{
 						if(result.code == 1){

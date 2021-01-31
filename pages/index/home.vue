@@ -56,7 +56,7 @@
 				<mescroll-uni
 					v-if="type != 3"
 					:fixed="true"
-					:top="usersList.length ? 500 : 380"
+					top="380"
 					bottom="120"
 					ref="mescrollRef"
 					@init="mescrollInit"
@@ -82,7 +82,7 @@
 					v-if="type == 3"
 					:fixed="true"
 					:flexType="flexType"
-					:top="usersList.length ? 500 : 380"
+					top="380"
 					bottom="120"
 					ref="mescrollRef"
 					@init="mescrollInit"
@@ -1296,6 +1296,7 @@ export default {
 									avatar:result.data.avatar,
 									user_nickname:result.data.user_nickname
 								}
+								this.darenObj.regedit = true
 								this.darenObj.type = 6
 							}
 							this.mescroll.scrollTo(0, 300);
@@ -1507,6 +1508,7 @@ export default {
 			this.goLogin(data => {
 				if (!data) {
 					this.findFaultObject = e;
+					console.log(e,'e0')
 					this.onShareShow = true;
 				}
 			});

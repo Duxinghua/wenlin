@@ -1,8 +1,8 @@
 <template>
 	<view class="index">
-		<Find v-if="activeIndex == 4" />
+		<Find v-if="activeIndex == 4" ref="find" />
 		<My v-if="activeIndex == 3" />
-		<Convenience v-if="activeIndex == 5" />
+		<Convenience v-if="activeIndex == 5"  ref="convenience"/>
 		<Push v-if="activeIndex == 2" />
 		<Home v-if="activeIndex == 1" ref="home" />
 		<Toolbar :selectIndex="activeIndex" @togger="toggerHander" />
@@ -57,77 +57,150 @@ export default {
 		}
 	},
 	onShareAppMessage: function(e) {
-		var image = '';
+		var image = '';	
+		var shareObj = {}
+		if(this.activeIndex == 1){
+			shareObj = this.$refs.home.findFaultObject
+		}else if(this.activeIndex == 4){
+			shareObj = this.$refs.find.findFaultObject
+		}else if(this.activeIndex == 5){
+			shareObj = this.$refs.convenience.findFaultObject
+		}
+		console.log( )
 		if (e.from == 'button') {
-			image = this.$refs.home.findFaultObject.images.length ? this.$refs.home.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png';
-			if(this.$refs.home.findFaultObject.publish_type == 3){
+			image = shareObj.images.length ? shareObj.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png';
+			if(shareObj.publish_type == 3){
 				return {
-					title: this.$refs.home.findFaultObject.title,
+					title: shareObj.title,
 					imageUrl: image,
 					path:
 						'/pages/index/detail?srouce=1&id=' +
-						this.$refs.home.findFaultObject.object_id +
+						shareObj.object_id +
 						'&type=' +
-						this.$refs.home.findFaultObject.type +
+						shareObj.type +
 						'&dynamics_id=' +
-						this.$refs.home.findFaultObject.id
+						shareObj.id
 				};
-			}else if (this.$refs.home.findFaultObject.publish_type == 2) {
-				if (this.$refs.home.findFaultObject.publish_type == 2 && this.$refs.home.findFaultObject.type == 5) {
+			}else if (shareObj.publish_type == 2) {
+				if (shareObj.publish_type == 2 && shareObj.type == 5) {
 					return {
-						title: this.$refs.home.findFaultObject.title,
+						title: shareObj.title,
 						imageUrl: image,
 						path:
 							'/pages/index/cdetail?srouce=1&id=' +
-							this.$refs.home.findFaultObject.object_id +
+							shareObj.object_id +
 							'&type=' +
-							this.$refs.home.findFaultObject.type +
+							shareObj.type +
 							'&dynamics_id=' +
-							this.$refs.home.findFaultObject.id
+							shareObj.id
 					};
 				} else {
 					return {
-						title: this.$refs.home.findFaultObject.title,
+						title: shareObj.title,
 						imageUrl: image,
 						path:
 							'/pages/index/detail?srouce=1&id=' +
-							this.$refs.home.findFaultObject.object_id +
+							shareObj.object_id +
 							'&type=' +
-							this.$refs.home.findFaultObject.type +
+							shareObj.type +
 							'&dynamics_id=' +
-							this.$refs.home.findFaultObject.id
+							shareObj.id
 					};
 				}
-			} else if (this.$refs.home.findFaultObject.publish_type == 1) {
-				var content = this.$refs.home.findFaultObject.content
-				if(this.$refs.home.findFaultObject.sell_type && this.$refs.home.findFaultObject.sell_type == 2){
-					content = '赠送:'+content
+			} else if (shareObj.publish_type == 1) {
+				if(shareObj.type != 17 && shareObj.type != 16 && shareObj.type == 18){
+					var content = shareObj.content
+					if(shareObj.sell_type && shareObj.sell_type == 2){
+						content = '赠送:'+content
+					}
+					return {
+						title:
+							content.length > 30
+								? content.substr(0, 30) + '...'
+								: content,
+						imageUrl: image,
+						path:
+							'/pages/index/detail?srouce=1&id=' +
+							shareObj.id +
+							'&type=' +
+							shareObj.type +
+							'&dynamics_id=' +
+							shareObj.object_id
+					};
+				}else if(shareObj.type == 17){
+					var content = shareObj.content
+					return {
+						title:
+							content.length > 30
+								? content.substr(0, 30) + '...'
+								: content,
+						imageUrl: image,
+						path:
+							'/pages/index/ptdetail?srouce=1&id=' +
+							shareObj.id +
+							'&type=' +
+							shareObj.type +
+							'&dynamics_id=' +
+							shareObj.object_id
+					};
+					
+				}else if(shareObj.type == 16){
+					var content = shareObj.content
+					return {
+						title:
+							content.length > 30
+								? content.substr(0, 30) + '...'
+								: content,
+						imageUrl: image,
+						path:
+							'/pages/index/ysdetail?srouce=1&id=' +
+							shareObj.id +
+							'&type=' +
+							shareObj.type +
+							'&dynamics_id=' +
+							shareObj.object_id
+					};
+					
+				}else if(shareObj.type == 18){
+					return {
+						title: shareObj.title,
+						imageUrl: image,
+						path:
+							'/pages/index/detail?srouce=1&id=' +
+							shareObj.id +
+							'&type=' +
+							shareObj.type +
+							'&dynamics_id=' +
+							shareObj.object_id
+					};
+					
+				}else{
+					var content = shareObj.content
+					return {
+						title: content.length > 30
+								? content.substr(0, 30) + '...'
+								: content,
+						imageUrl: image,
+						path:
+							'/pages/index/detail?srouce=1&id=' +
+							shareObj.id +
+							'&type=' +
+							shareObj.type +
+							'&dynamics_id=' +
+							shareObj.object_id
+					};
 				}
-				return {
-					title:
-						content.length > 30
-							? content.substr(0, 30) + '...'
-							: content,
-					imageUrl: image,
-					path:
-						'/pages/index/detail?srouce=1&id=' +
-						this.$refs.home.findFaultObject.id +
-						'&type=' +
-						this.$refs.home.findFaultObject.type +
-						'&dynamics_id=' +
-						this.$refs.home.findFaultObject.object_id
-				};
 			} else {
 				return {
-					title: this.$refs.home.findFaultObject.title,
+					title: shareObj.title,
 					imageUrl: image,
 					path:
 						'/pages/index/detail?srouce=1&id=' +
-						this.$refs.home.findFaultObject.id +
+						shareObj.id +
 						'&type=' +
-						this.$refs.home.findFaultObject.type +
+						shareObj.type +
 						'&dynamics_id=' +
-						this.$refs.home.findFaultObject.object_id
+						shareObj.object_id
 				};
 			}
 		} else {

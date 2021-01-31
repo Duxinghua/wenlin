@@ -256,7 +256,7 @@
 				<view class="votitle">
 					{{voteType == 'vote' ? '投票' : '添加我的观点' }}
 				</view>
-				<u-input height="158" v-model="votetextarea" placeholder="顺便说点理由~" type="textarea"/>
+				<u-input height="158" v-model="votetextarea" :placeholder="voteType == 'vote' ? '添加我的观点' : '每个人最多添加3次'" type="textarea"/>
 				<view v-if="voteType == 'commit'" class="selectwrap" @click.stop="selectTodo('name')">
 					<view class="label">{{nameLabel}}</view>
 					<u-icon color="#95A0B6" name="arrow-down-fill" size="20" ></u-icon>
@@ -565,6 +565,7 @@ export default {
 				this.Api.vote(data).then((result)=>{
 					if(result.code == 1){
 						this.getDetailAll()
+						this.votetextarea = ''
 						this.voteFlag = false
 					}else{
 						return this.$u.toast(result.msg)
@@ -584,6 +585,7 @@ export default {
 				this.Api.addDynamicsVoteVote(data).then((result)=>{
 					if(result.code == 1){
 						this.getDetailAll()
+						this.votetextarea = ''
 						this.voteFlag = false
 					}else{
 						return this.$u.toast(result.msg)
@@ -592,6 +594,7 @@ export default {
 			}
 		},
 		votoTodo(item){
+			this.votetextarea = ''
 			this.voteType = 'vote'
 			this.voteobj = item
 			if(this.voteobj.is_vote == 0){
@@ -2413,8 +2416,8 @@ page {
 			height: 107upx;
 			border-radius: 50%;
 			position: fixed;
-			bottom: 400upx;
-			right:20upx;
+			bottom: 130upx;
+			right:28.5upx;
 		}
 		.detailnav {
 			border-top: 20upx solid #F7F9FF;
