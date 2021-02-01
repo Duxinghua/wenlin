@@ -2194,9 +2194,10 @@ var nearDynamics = function nearDynamics(params) {return (0, _request.wxRequest)
 
 
 //用户转送积分--1.1  {{localhost}}/api/community/user/transferScore
-var transferScore = function transferScore(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/user/transferScore', 'POST');};var _default =
+var transferScore = function transferScore(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/user/transferScore', 'POST');};
 
-
+//当前用户中心-我的领居列表-达人--1.1 /api/community/ucenter/myNeighbourDare
+var myNeighbourDare = function myNeighbourDare(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/ucenter/myNeighbourDare', 'POST');};var _default =
 
 
 {
@@ -2311,7 +2312,8 @@ var transferScore = function transferScore(params) {return (0, _request.wxReques
   questionList: questionList,
   questionAnswer: questionAnswer,
   nearDynamics: nearDynamics,
-  transferScore: transferScore };exports.default = _default;
+  transferScore: transferScore,
+  myNeighbourDare: myNeighbourDare };exports.default = _default;
 
 /***/ }),
 

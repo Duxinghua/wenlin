@@ -361,20 +361,38 @@ __webpack_require__.r(__webpack_exports__);
         community_id: uni.getStorageSync('community_id'),
         type: this.navIndex };
 
-      this.Api.myNeighbour(data).then(function (result) {
-        if (result.code == 1) {
-          if (ismore) {
-            _this2.total_page = result.data.total_page;
-            _this2.list = _this2.list.concat(result.data.list);
-            _this2.total = result.data.total;
+      if (this.navIndex == 1 || this.navIndex == 2) {
+        this.Api.myNeighbour(data).then(function (result) {
+          if (result.code == 1) {
+            if (ismore) {
+              _this2.total_page = result.data.total_page;
+              _this2.list = _this2.list.concat(result.data.list);
+              _this2.total = result.data.total;
 
-          } else {
-            _this2.total_page = result.data.total_page;
-            _this2.list = result.data.list;
-            _this2.total = result.data.total;
+            } else {
+              _this2.total_page = result.data.total_page;
+              _this2.list = result.data.list;
+              _this2.total = result.data.total;
+            }
           }
-        }
-      });
+        });
+      } else if (this.navIndex == 3) {
+        this.Api.myNeighbourDare(data).then(function (result) {
+          if (result.code == 1) {
+            if (ismore) {
+              _this2.total_page = result.data.total_page;
+              _this2.list = _this2.list.concat(result.data.list);
+              _this2.total = result.data.total;
+
+            } else {
+              _this2.total_page = result.data.total_page;
+              _this2.list = result.data.list;
+              _this2.total = result.data.total;
+            }
+          }
+
+        });
+      }
     } },
 
   onReachBottom: function onReachBottom() {

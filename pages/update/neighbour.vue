@@ -229,20 +229,38 @@
 					community_id:uni.getStorageSync('community_id'),
 					type:this.navIndex
 				}
-				this.Api.myNeighbour(data).then((result) => {
-					if(result.code == 1){
-						if(ismore){
-							this.total_page = result.data.total_page
-							this.list = this.list.concat(result.data.list)
-							this.total = result.data.total
-							
-						}else{
-							this.total_page = result.data.total_page
-							this.list = result.data.list
-							this.total = result.data.total
+				if(this.navIndex == 1 || this.navIndex == 2){
+					this.Api.myNeighbour(data).then((result) => {
+						if(result.code == 1){
+							if(ismore){
+								this.total_page = result.data.total_page
+								this.list = this.list.concat(result.data.list)
+								this.total = result.data.total
+								
+							}else{
+								this.total_page = result.data.total_page
+								this.list = result.data.list
+								this.total = result.data.total
+							}
 						}
-					}
-				})
+					})
+				}else if(this.navIndex == 3){
+					this.Api.myNeighbourDare(data).then((result)=>{
+						if(result.code == 1){
+							if(ismore){
+								this.total_page = result.data.total_page
+								this.list = this.list.concat(result.data.list)
+								this.total = result.data.total
+								
+							}else{
+								this.total_page = result.data.total_page
+								this.list = result.data.list
+								this.total = result.data.total
+							}
+						}
+						
+					})
+				}
 			}
 		},
 		onReachBottom() {

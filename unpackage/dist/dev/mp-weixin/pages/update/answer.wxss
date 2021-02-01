@@ -41,6 +41,21 @@
   width: 100%;
   height: 1624rpx;
 }
+.answer .title.data-v-5ef583ca {
+  position: fixed;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: 350rpx;
+  width: -webkit-fit-content;
+  width: fit-content;
+  padding: 10rpx 50rpx;
+  background: white;
+  -webkit-border-radius: 35rpx;
+          border-radius: 35rpx;
+  color: #333333;
+  font-size: 34rpx;
+}
 .answer .answerbtn.data-v-5ef583ca {
   position: fixed;
   width: 618rpx;

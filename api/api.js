@@ -251,7 +251,8 @@ const nearDynamics = (params) => wxRequest(params, baseURL + 'api/community/comm
 //用户转送积分--1.1  {{localhost}}/api/community/user/transferScore
 const transferScore = (params) => wxRequest(params, baseURL + 'api/community/user/transferScore', 'POST')
 
-
+//当前用户中心-我的领居列表-达人--1.1 /api/community/ucenter/myNeighbourDare
+const myNeighbourDare = (params) => wxRequest(params, baseURL + 'api/community/ucenter/myNeighbourDare', 'POST')
 
 
 export default {
@@ -366,5 +367,6 @@ export default {
 	questionList,
 	questionAnswer,
 	nearDynamics,
-	transferScore
+	transferScore,
+	myNeighbourDare
 }

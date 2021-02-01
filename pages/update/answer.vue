@@ -1,6 +1,7 @@
 <template>
 	<view class="answer">
 		<image :src="Config.minUrl + 'anserbg.jpg'" class="bg"></image>
+		<view class="title">{{detail.detail.title}}</view>
 		<image  @click.stop="detailHandler" src="../../static/answerbtn.png" class="answerbtn" ></image>
 		<view class="subtext">
 			已有 {{detail.detail ? detail.detail.join_num : 0}} 人参加活动
@@ -128,6 +129,18 @@
 			top:0;
 			width:100%;
 			height: 1624rpx;
+		}
+		.title{
+			position: fixed;
+			left:50%;
+			transform: translateX(-50%);
+			top:350rpx;
+			width: fit-content;
+			padding:10rpx 50rpx;
+			background: white;
+			border-radius: 35rpx;
+			color:#333333;
+			font-size: 34rpx;
 		}
 		.answerbtn{
 			position: fixed;
