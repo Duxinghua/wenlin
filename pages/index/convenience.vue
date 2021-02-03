@@ -926,7 +926,9 @@ export default {
 										// this.current = 3
 										// this.setcommunity = true
 										if(this.all_community.legnth == 0){
-											this.setcommunityOpen = true
+											uni.navigateTo({
+												url:'../update/selectcommunity'
+											})
 										}
 										console.log('pid')
 										var pid = uni.getStorageSync('pid')

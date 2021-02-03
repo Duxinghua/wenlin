@@ -1055,7 +1055,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
                     // this.current = 3
                     // this.setcommunity = true
                     if (_this8.all_community.legnth == 0) {
-                      _this8.setcommunityOpen = true;
+                      uni.navigateTo({
+                        url: '../update/selectcommunity' });
+
                     }
                     console.log('pid');
                     var pid = uni.getStorageSync('pid');
