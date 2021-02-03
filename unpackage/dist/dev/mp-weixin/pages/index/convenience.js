@@ -705,7 +705,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
           this.guestShow = true;
         }
         result = true;
-        this.current = 3;
+        // this.current = 3
         this.mescroll.resetUpScroll();
         cb(result);
         return;
@@ -886,7 +886,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     //游客访问
     guestClick: function guestClick() {
       this.loginFalse = false;
-      this.current = 3;
+      //this.current = 3;
       this.guestShowOpen = true;
       this.mescroll.resetUpScroll();
     },
@@ -922,7 +922,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
             _this6.tagList = _this6.tagList2;
             _this6.mescroll.resetUpScroll();
           } else {
-            _this6.current = 3;
+            // this.current = 3;
 
           }
         });
@@ -936,7 +936,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
             _this6.tagList = _this6.tagList1;
             _this6.mescroll.resetUpScroll();
           } else {
-            _this6.current = 3;
+            //  this.current = 3;
 
           }
         });

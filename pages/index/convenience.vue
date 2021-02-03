@@ -576,7 +576,7 @@ export default {
 					this.guestShow = true
 				}
 				result = true
-				this.current = 3
+				// this.current = 3
 				this.mescroll.resetUpScroll()
 				cb(result)
 				return
@@ -757,7 +757,7 @@ export default {
 		//游客访问
 		guestClick() {
 			this.loginFalse = false;
-			this.current = 3;
+			//this.current = 3;
 			this.guestShowOpen = true
 			this.mescroll.resetUpScroll()
 		},
@@ -793,7 +793,7 @@ export default {
 						this.tagList = this.tagList2
 						this.mescroll.resetUpScroll()
 					}else{
-					    this.current = 3;
+					   // this.current = 3;
 						
 					}
 				})
@@ -807,7 +807,7 @@ export default {
 						this.tagList = this.tagList1
 						this.mescroll.resetUpScroll()
 					}else{
-					    this.current = 3;
+					  //  this.current = 3;
 		
 					}
 				})
