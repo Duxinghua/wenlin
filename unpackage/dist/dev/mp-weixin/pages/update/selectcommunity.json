@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "选择小区",
   "usingComponents": {
-    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
+    "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
+    "nodata": "/components/nodata/nodata"
   }
 }

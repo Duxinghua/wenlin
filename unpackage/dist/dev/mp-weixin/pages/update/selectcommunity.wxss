@@ -24,6 +24,17 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.content.data-v-19ca7d60 {
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
 .openarea.data-v-19ca7d60 {
   width: 100%;
   min-height: 100vh;
@@ -37,8 +48,6 @@
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
           flex-direction: column;
-  padding-left: 48rpx;
-  padding-right: 48rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }

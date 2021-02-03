@@ -56,7 +56,7 @@
 				<mescroll-uni
 					v-if="type != 3"
 					:fixed="true"
-					top="380"
+					:top="autoTop"
 					bottom="120"
 					ref="mescrollRef"
 					@init="mescrollInit"
@@ -77,12 +77,19 @@
 						@toLogin="goDetails"
 						@danrenHandler="danrenHandler"
 					></PostItem>
+					<!-- https://sq.wenlinapp.com/upload/mini/regnodata.png -->
+					<view class="guestdata" v-if="guestFlag">
+						<u-image width="654" height="550" src="https://sq.wenlinapp.com/upload/mini/regnodata.png"></u-image>
+						<view class="guesttext">
+							{{guestdata}}
+						</view>
+					</view>
 				</mescroll-uni>
 				<mescroll-uni
 					v-if="type == 3"
 					:fixed="true"
 					:flexType="flexType"
-					top="380"
+					:top="autoTop"
 					bottom="120"
 					ref="mescrollRef"
 					@init="mescrollInit"
@@ -93,6 +100,12 @@
 					:flexNoData="flexNoData"
 				>
 					<UsedItem v-for="(item, index) in postList" :pitem="item" :key="index" :usedIndex="index" @toLogin="goDetails" />
+					<view class="guestdata" v-if="guestFlag">
+						<u-image width="654" height="550" src="https://sq.wenlinapp.com/upload/mini/regnodata.png"></u-image>
+						<view class="guesttext">
+							{{guestdata}}
+						</view>
+					</view>
 				</mescroll-uni>
 			</view>
 			<!-- 闲置 -->
@@ -260,6 +273,13 @@
 			<text class="gtiptext">登录查看本小区新鲜事</text>
 			<view class="gtipbtn" @click="guestLoginTodo">立即登录</view>
 		</view>
+		
+		<view class="guestpop" v-if="setcommunityOpen">
+			<text class="gtiptext">设置小区可查看本小区新鲜事</text>
+			<view class="gtipbtn" @click="setcommunityOpenTodo">立即设置</view>
+		</view>
+		
+		
 		<!-- 挑错 -->
 		<LeaveWords :messageValue.sync="messageText" :messageShow.sync="messageShow" @textareaBlur="textareaBlur" @closeMessage="closeMessage" @submitTodo="submitTodo" />
 		<!-- 帮推 -->
@@ -307,6 +327,7 @@ export default {
 	mixins: [MescrollMixin],
 	data() {
 		return {
+			guestFlag:false,
 			isHome: false,
 			smallNodata: true,
 			flexType: false,
@@ -435,11 +456,18 @@ export default {
 			add_type: '',
 			score_text: '',
 			usersList:[],
-			darenObj:null
+			darenObj:null,
+			guestdata:'暂无数据，请登录或者加入小区即可查看数据',
+			setcommunityOpen:false
 		};
 	},
 	onLoad() {
 
+	},
+	computed:{
+		autoTop(){
+			return this.usersList.length ? 375 : 300
+		}
 	},
 	mounted() {
 		if (!uni.getStorageSync('longitude')) {
@@ -552,14 +580,26 @@ export default {
 			if (!this.token) {
 				//没有token要求用户授权
 				this.loginFalse = true;
+				this.guestFlag = true;
+				this.guestShowOpen = true
 			} else {
 				this.loginFalse = false;
+				this.guestFlag = false;
+				this.guestShowOpen = false
 				//判断我是否设置小区
 				if (this.all_community.length == 0) {
 					this.Api.checkUserCommunityOpening({}).then(result => {
 						if (result.code == 1) {
-							this.current = 3;
-							this.mescroll.resetUpScroll();
+							if(result.data.opening == 1){
+								this.guestdata = result.msg
+							}
+							if (this.all_community.length) {
+								this.current = 1;
+								this.mescroll.resetUpScroll();
+							}else{
+								this.guestFlag = true
+								this.setcommunityOpen = true
+							}
 							//this.setcommunity = true;
 							// uni.navigateTo({
 							// 	url:'../update/openingcommunity'
@@ -570,10 +610,12 @@ export default {
 								this.communityId = uni.getStorageSync('pcommunity_id');
 							}
 						} else {
-							setTimeout(() => {
-								this.current = 3;
-								this.mescroll.resetUpScroll();
-							}, 3000);
+							if (this.all_community.length) {
+								setTimeout(() => {
+									this.current = 1;
+									this.mescroll.resetUpScroll();
+								}, 3000);
+							}
 						}
 					});
 				} else {
@@ -606,9 +648,8 @@ export default {
 
 							}
 						});
-					} else {
-						resolve();
 					}
+					resolve();
 				});
 				p.then(r => {
 					this.mescroll.resetUpScroll();
@@ -640,9 +681,9 @@ export default {
 				
 		
 			}
-			this.Api.getCommunityWiki({}).then(result => {
-				console.log(result);
-			});
+			// this.Api.getCommunityWiki({}).then(result => {
+			// 	console.log(result);
+			// });
 		});
 	},
 	watch: {},
@@ -671,6 +712,11 @@ export default {
 			this.guestShowOpen = false;
 			this.loginFalse = true;
 		},
+		setcommunityOpenTodo(){
+			uni.navigateTo({
+				url:'../update/selectcommunity'
+			})
+		},
 		//游客登录操作
 		weixinlogin() {
 			this.guestShow = false;
@@ -684,15 +730,20 @@ export default {
 			var token = uni.getStorageSync('token');
 			var committee_id = uni.getStorageSync('committee_id');
 			var all_community = uni.getStorageSync('all_community');
+			
 			if (!token) {
+				this.guestFlag = true
 				if (!this.guestShow) {
 					this.guestShow = true;
 				}
 				result = true;
-				this.current = 3;
-				this.mescroll.resetUpScroll();
+				//不进行切换
+				// this.current = 3;
+				// this.mescroll.resetUpScroll();
 				cb(result);
 				return;
+			}else{
+				this.guestFlag = false
 			}
 
 			if (isNaN(committee_id) || all_community.length == 0) {
@@ -702,12 +753,16 @@ export default {
 						url:'../update/openingcommunity'
 					})
 				}
+				this.guestShow = true;
 				result = true;
-				this.current = 3;
-				this.mescroll.resetUpScroll();
+				this.guestFlag = true
+				
+				// this.current = 3;
+				// this.mescroll.resetUpScroll();
 				cb(result);
 				return;
 			}
+			this.guestShow = false
 			cb(result);
 		},
 		goDetails() {
@@ -863,6 +918,7 @@ export default {
 			this.committee_id = e.committee_id;
 			this.Api.setDefaultCommunity({ community_id: e.community_id }).then(result => {
 				if (result.code == 1) {
+					this.getUser()
 					uni.showToast({
 						icon: 'success',
 						title: result.msg,
@@ -874,7 +930,7 @@ export default {
 							this.current = 1;
 							this.cateIndex = 0;
 							this.mescroll.resetUpScroll();
-							this.getUser()
+							
 						}
 					});
 				}
@@ -893,9 +949,10 @@ export default {
 		//游客访问
 		guestClick() {
 			this.loginFalse = false;
-			this.current = 3;
-			this.guestShowOpen = true;
-			this.mescroll.resetUpScroll();
+			//首页不进行切换
+			// this.current = 3;
+			// this.guestShowOpen = true;
+			// this.mescroll.resetUpScroll();
 		},
 		// 手机号授权处理
 		getPhoneNumber(e) {
@@ -1050,17 +1107,22 @@ export default {
 										? res.data.all_community[0].title + (res.data.all_community[0].total ? res.data.all_community[0].total : '')
 										: '问邻';
 									this.all_community = res.data.all_community;
+									
 									this.loginFalse = false;
 									this.guestShow = false;
 									this.userinforeg = true;
+									if(this.all_community.length == 0){
+										this.guestFlag = true
+									}
 									if (this.all_community.length) {
 										this.mescroll.resetUpScroll();
 									} else {
 										//如果开通过小区，待审核
-										this.current = 3;
+										//this.current = 3;
 										// this.setcommunity = true;
+										//
 										uni.navigateTo({
-											url:'../update/openingcommunity'
+											url:'../update/selectcommunity'
 										})
 										console.log('pid');
 										var pid = uni.getStorageSync('pid');
@@ -1278,6 +1340,16 @@ export default {
 				this.allFlag = false;
 			}
 			this.type = this.tagList[index].id;
+			var token = uni.getStorageSync('token');
+			if(!token){
+				this.guestFlag = true
+				return
+			}else{
+				 if(this.all_community.length == 0){
+					 this.guestFlag = true
+					 return
+				 }
+			}
 			this.$nextTick(() => {
 				if (this.type == 3) {
 					this.flexType = true;
@@ -1670,6 +1742,20 @@ page {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
+	.guestdata{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin: 40rpx auto;
+		.guesttext{
+			font-size: 34rpx;
+			font-family: PingFang SC;
+			font-weight: bold;
+			color: #95A0B6;
+			margin-top:30rpx
+		}
+	}
 	.guestpop {
 		width: 100%;
 		height: 100upx;

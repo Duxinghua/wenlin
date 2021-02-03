@@ -111,7 +111,7 @@
 		data() {
 			return {
 				config: {
-					title: '添加小区', //title
+					title: '设置小区', //title
 					bgcolor: 'white', //背景颜色
 					fontcolor:"rgba(51, 51, 51, 1)", //文字颜色，默认白色
 					type:1, //type 1，3胶囊 2，4无胶囊模式

@@ -262,6 +262,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _area = _interopRequireDefault(__webpack_require__(/*! @/common/area.js */ 177));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 525));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
   components: {
@@ -323,7 +324,7 @@ var _area = _interopRequireDefault(__webpack_require__(/*! @/common/area.js */ 1
         building: '',
         unit: '',
         room: '',
-        type: '',
+        type: 1,
         images: '' },
 
       subFlag: false };
@@ -394,6 +395,7 @@ var _area = _interopRequireDefault(__webpack_require__(/*! @/common/area.js */ 1
         this.params.city = this.areaObj[1].code;
         this.params.area = this.areaObj[2].code;
         this.areaShow = false;
+        this.communityInput();
 
       } else {
         return this.$u.toast('请选择省市区');
@@ -446,19 +448,16 @@ var _area = _interopRequireDefault(__webpack_require__(/*! @/common/area.js */ 1
     },
     //小区处理
     communityInput: function communityInput(e) {var _this3 = this;
-      this.params.title = e.detail.value;
-      if (this.params.title.length == 0) {
-        return;
-      } else {
-        this.Api.searchCommunity({ title: this.params.title }).then(function (result) {
-          if (result.code == 1) {
-            if (result.data.length) {
-              _this3.recommend = true;
-              _this3.recommendList = result.data;
-            }
+
+      this.Api.searchCommunity({ title: this.params.title }).then(function (result) {
+        if (result.code == 1) {
+          if (result.data.length) {
+            _this3.recommend = true;
+            _this3.recommendList = result.data;
           }
-        });
-      }
+        }
+      });
+
     },
     //楼栋处理 // replace(/[^\w\.\/]/ig,''
     buildingInput: function buildingInput(e) {var _this4 = this;
@@ -487,6 +486,9 @@ var _area = _interopRequireDefault(__webpack_require__(/*! @/common/area.js */ 1
 
     },
     getArea: function getArea() {
+      if (!this.params.title) {
+        return this.$u.toast('请请入小区名');
+      }
       this.areaShow = true;
     },
     //设置小区

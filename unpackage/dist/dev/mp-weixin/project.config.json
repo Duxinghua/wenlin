@@ -57,21 +57,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "test",
-					"pathName": "pages/update/setVote",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "pages/update/award",
-					"pathName": "pages/update/answer",
-					"query": "scene=answer_id%3D1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/update/neighbour",
-					"pathName": "pages/update/neighbour",
+					"name": "pages/update/setcommunity",
+					"pathName": "pages/update/setcommunity",
 					"query": "",
 					"scene": null
 				}

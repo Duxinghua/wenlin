@@ -168,9 +168,22 @@ var _bus = _interopRequireDefault(__webpack_require__(/*! ../../utils/bus.js */ 
 //
 //
 var _default = { props: ['selectIndex'], data: function data() {return { activeIndex: '', activeNum: 1 };}, onLoad: function onLoad() {// this.activeIndex = this.selectIndex
-  }, watch: { activeIndex: function activeIndex(n, o) {console.log(n, o);} }, methods: { switchTab: function switchTab(e) {if (!uni.getStorageSync('token')) {_bus.default.$emit('noToken');return;} else {if (!uni.getStorageSync('community_id')) {_bus.default.$emit('noToken');return;}}
-      uni.setStorageSync('o', e);
-      var index = e;
+  }, watch: { activeIndex: function activeIndex(n, o) {console.log(n, o);} }, methods: { switchTab: function switchTab(e) {uni.setStorageSync('o', e);var index = e;if (e == 3) {if (!uni.getStorageSync('token')) {_bus.default.$emit('noToken');return;} else {if (!uni.getStorageSync('community_id')) {_bus.default.$emit('noToken');
+            return;
+          }
+        }
+      }
+      if (e == 2) {
+        if (!uni.getStorageSync('token')) {
+          // Bus.$emit('noToken')
+          return;
+        } else {
+          if (!uni.getStorageSync('community_id')) {
+            // Bus.$emit('noToken')
+            return;
+          }
+        }
+      }
       if (index == 2) {
         var target = uni.getStorageSync('menuIndex');
 
@@ -179,7 +192,6 @@ var _default = { props: ['selectIndex'], data: function data() {return { activeI
 
         } else if (target == 3) {
           index = 3;
-
         } else if (target == 2) {
           console.log(target, 'ta');
         } else if (target == 4) {

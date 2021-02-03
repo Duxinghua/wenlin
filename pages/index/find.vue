@@ -205,7 +205,11 @@
 		<view class="guestpop" v-if="guestShowOpen">
 			<text class="gtiptext">登录查看本小区新鲜事</text>
 			<view class="gtipbtn" @click="guestLoginTodo">立即登录</view>
-		</view>		
+		</view>
+		<view class="guestpop" v-if="setcommunityOpen">
+			<text class="gtiptext">设置小区可查看本小区新鲜事</text>
+			<view class="gtipbtn" @click="setcommunityOpenTodo">立即设置</view>
+		</view>
 		<!-- 挑错 -->
 		<LeaveWords :messageValue.sync="messageText" :messageShow.sync="messageShow" @textareaBlur="textareaBlur" @closeMessage="closeMessage" @submitTodo="submitTodo"/>
 		<!-- 帮推 -->
@@ -243,6 +247,7 @@ export default {
 	mixins: [MescrollMixin], 
 	data() {
 		return {
+				setcommunityOpen:false,
 				currentText:false,
 			    isHome:false,
 			    smallNodata:true,
@@ -421,9 +426,11 @@ export default {
 		    		if(errMsg == 'login:ok'){
 		    			that.Api.wechatAuth({code:code}).then((result)=>{
 		    				if(result.code == 1){
-								result.data.all_community.map((item)=>{
-									item.title = item.community_name
-								})
+								if(result.data.all_community){
+									result.data.all_community.map((item)=>{
+										item.title = item.community_name
+									})
+								}
 		    					uni.setStorageSync('token', result.data.token);
 		    					uni.setStorageSync('user', result.data.user);
 								uni.setStorageSync('maxJoin', result.data.max_join);
@@ -465,6 +472,8 @@ export default {
 			if (!this.token) {
 				//没有token要求用户授权
 				this.loginFalse = true;
+				this.current = 3
+				this.mescroll.resetUpScroll()
 			} else {
 				this.loginFalse = false;
 				//判断我是否设置小区
@@ -474,9 +483,10 @@ export default {
 							this.current = 3
 							this.mescroll.resetUpScroll()
 							// this.setcommunity = true;
-							uni.navigateTo({
-								url:'../update/setcommunity'
-							})
+							this.setcommunityOpen = true
+							// uni.navigateTo({
+							// 	url:'../update/setcommunity'
+							// })
 							var pid = uni.getStorageSync('pid')
 							if(pid){
 								this.community = uni.getStorageSync('ptitle')
@@ -545,6 +555,11 @@ export default {
 		
 	},
 	methods: {
+		setcommunityOpenTodo(){
+			uni.navigateTo({
+				url:'../update/selectcommunity'
+			})
+		},
 		nearHandler(){
 			this.currentText = !this.currentText
 			this.currentText ? this.$u.toast('已切换到当前位置的附近小区') : this.$u.toast('已切换到我的小区附近')
@@ -918,9 +933,11 @@ export default {
 							};
 							this.Api.communityLogin(params).then(res => {
 								if (res.code == 1) {
-									result.data.all_community.map((item)=>{
-										item.title = item.community_name
-									})
+									if(res.data.all_community){
+										res.data.all_community.map((item)=>{
+											item.title = item.community_name
+										})
+									}
 									uni.setStorageSync('token', res.data.token);
 									uni.setStorageSync('user', res.data.user);
 									uni.setStorageSync('all_community', res.data.all_community);

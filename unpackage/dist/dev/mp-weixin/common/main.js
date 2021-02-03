@@ -831,6 +831,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         }
       }
     });
+    this.$Bus.$on('noToken', function (e) {
+      console.log(e, 'e', '1111');
+
+    });
     this.$Bus.$on("countmsg", function (countmsg) {
       _this.$getCount(function (result) {
         var count = 0;
@@ -972,7 +976,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           break;
         case 15:
           uni.navigateTo({
-            url: '/pages/update/personal' });
+            url: '/pages/update/personalinfo' });
 
           break;}
 

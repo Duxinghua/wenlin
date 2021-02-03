@@ -2,9 +2,10 @@
 			<view class="openarea openinfomation">
 				<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight"/>
 				<view class="contents">
-					<view class="openitem" @click.stop="openNear">
+					<!-- @click.stop="openNear" -->
+					<view class="openitem" >
 						<text class="opentitle">小区全称:</text>
-						<input type="opentxt"  placeholder="请选择小区" v-model="params.title" @input="communityInput" />
+						<input type="opentxt"  placeholder="请选择小区" v-model="params.title"  />
 						<!-- <image src="../../static/adico.png" class="adico"  /> -->
 					</view>
 					<view class="openitem" @click="getArea">
@@ -182,7 +183,7 @@
 					building:'',
 					unit:'',
 					room:'',
-					type:'',
+					type:1,
 					images:''
 				},
 				subFlag:false
@@ -253,6 +254,7 @@
 					this.params.city = this.areaObj[1].code
 					this.params.area = this.areaObj[2].code
 					this.areaShow = false
+					this.communityInput()
 					
 				}else{
 					return this.$u.toast('请选择省市区')
@@ -305,10 +307,7 @@
 			},
 			//小区处理
 			communityInput(e) {
-				this.params.title = e.detail.value;
-				if(this.params.title.length == 0){
-					return
-				}else{
+
 					this.Api.searchCommunity({title:this.params.title}).then((result)=>{
 						if(result.code == 1){
 							 if(result.data.length){
@@ -317,7 +316,7 @@
 							 }
 						}
 					})
-				}
+				
 			},
 			//楼栋处理 // replace(/[^\w\.\/]/ig,''
 			buildingInput(e) {
@@ -346,6 +345,9 @@
 				})
 			},
 			getArea(){
+				if(!this.params.title){
+					return this.$u.toast('请请入小区名')
+				}
 				this.areaShow = true
 			},
 			//设置小区

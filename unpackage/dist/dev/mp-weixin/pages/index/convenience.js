@@ -344,6 +344,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/components/mescroll-uni/mescroll-mixins.js */ 522));
 
 
@@ -498,7 +502,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
       pos: 'home',
       add_type: '',
       score_text: '',
-      committeeList: [] };
+      committeeList: [],
+      setcommunityOpen: false };
 
 
   },
@@ -600,7 +605,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
             if (result.code == 1) {
               _this.getCommitList();
               _this.mescroll.resetUpScroll();
-              _this.setcommunity = true;
+              // this.setcommunity = true;
+              _this.setcommunityOpen = true;
               var pid = uni.getStorageSync('pid');
               if (pid) {
                 _this.community = uni.getStorageSync('ptitle');
@@ -666,6 +672,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
 
 
   methods: {
+    setcommunityOpenTodo: function setcommunityOpenTodo() {
+      uni.navigateTo({
+        url: '../update/selectcommunity' });
+
+    },
     getCommitList: function getCommitList() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   _this2.Api.myCommitteeList({}));case 2:result = _context.sent;
                 if (result.code == 1) {
@@ -681,7 +692,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     //游客登录操作
     weixinlogin: function weixinlogin() {
       this.guestShow = false;
-      this.setcommunity = true;
+      //this.setcommunity = true
+      this.setcommunityOpen = true;
     },
     goLogin: function goLogin(cb) {
       var result = false;
@@ -701,10 +713,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
 
       if (isNaN(committee_id) || all_community.length == 0) {
         if (!this.setcommunity) {
-          this.setcommunity = true;
+          //this.setcommunity = true
+          this.setcommunityOpen = true;
         }
         result = true;
-        this.current = 3;
+        // this.current = 3
         this.mescroll.resetUpScroll();
         cb(result);
         return;
@@ -1039,8 +1052,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
                     _this8.mescroll.resetUpScroll();
                   } else {
                     //如果开通过小区，待审核 
-                    _this8.current = 3;
-                    _this8.setcommunity = true;
+                    // this.current = 3
+                    // this.setcommunity = true
+                    if (_this8.all_community.legnth == 0) {
+                      _this8.setcommunityOpen = true;
+                    }
                     console.log('pid');
                     var pid = uni.getStorageSync('pid');
                     if (pid) {

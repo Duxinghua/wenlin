@@ -44,17 +44,30 @@ export default {
 	},
 	methods: {
 		switchTab(e){
-			if(!uni.getStorageSync('token')){
-				Bus.$emit('noToken')
-				return
-			}else{
-				if(!uni.getStorageSync('community_id')){
-					Bus.$emit('noToken')
-					return
-				}
-			}
 			uni.setStorageSync('o',e)
 			var index = e
+			if(e == 3){
+				if(!uni.getStorageSync('token')){
+					Bus.$emit('noToken')
+					return
+				}else{
+					if(!uni.getStorageSync('community_id')){
+						Bus.$emit('noToken')
+						return
+					}
+				}
+			}
+			if(e == 2){
+				if(!uni.getStorageSync('token')){
+					// Bus.$emit('noToken')
+					return
+				}else{
+					if(!uni.getStorageSync('community_id')){
+						// Bus.$emit('noToken')
+						return
+					}
+				}
+			}
 			if(index == 2){
 				var target = uni.getStorageSync('menuIndex')
 
@@ -63,7 +76,6 @@ export default {
 					
 				}else if(target == 3){
 					index = 3
-					
 				}else if(target == 2){
 					console.log(target,'ta')
 				}else if(target == 4){

@@ -341,15 +341,15 @@ export default {
 			});
 		},
 		postDetail() {
-			if (!uni.getStorageSync('token')) {
-				this.$emit('toLogin');
-				return;
-			} else {
-				if (!uni.getStorageSync('community_id')) {
-					this.$emit('toLogin');
-					return;
-				}
-			}
+			// if (!uni.getStorageSync('token')) {
+			// 	this.$emit('toLogin');
+			// 	return;
+			// } else {
+			// 	if (!uni.getStorageSync('community_id')) {
+			// 		this.$emit('toLogin');
+			// 		return;
+			// 	}
+			// }
 			var type = this.pitem.type;
 	
 			if(this.pm){

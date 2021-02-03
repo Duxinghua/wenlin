@@ -192,6 +192,10 @@ export default {
 				}
 			}
 		})
+		this.$Bus.$on('noToken', (e) => {
+			console.log(e,'e','1111')
+
+		})
 		this.$Bus.$on("countmsg",(countmsg)=>{
 			this.$getCount((result) => {
 				var count = 0
@@ -333,7 +337,7 @@ export default {
 				break;
 				case 15:
 				uni.navigateTo({
-					url:'/pages/update/personal'
+					url:'/pages/update/personalinfo'
 				})
 				break;
 			}

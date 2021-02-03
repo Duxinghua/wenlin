@@ -130,7 +130,10 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 525));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 589));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 525));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
 
 
 
@@ -162,7 +165,8 @@ __webpack_require__.r(__webpack_exports__);
 
 {
   components: {
-    navigationCustom: navigationCustom },
+    navigationCustom: navigationCustom,
+    Nodata: Nodata },
 
   data: function data() {
     return {
@@ -181,8 +185,8 @@ __webpack_require__.r(__webpack_exports__);
       scrollMaxHeight: 200,
       community_text: '',
       searchCommunityList: [],
-      smallNodata: true };
-
+      smallNodata: true,
+      nodataFlag: false };
 
   },
   onLoad: function onLoad() {
@@ -197,6 +201,11 @@ __webpack_require__.r(__webpack_exports__);
       that.Api.getNearCommunity({ latitude: uni.getStorageSync('latitude'), longitude: uni.getStorageSync('longitude') }).then(function (result) {
         if (result.code == 1) {
           that.searchCommunityList = result.data;
+          if (that.searchCommunityList.length) {
+            that.nodataFlag = false;
+          } else {
+            that.nodataFlag = true;
+          }
         }
       });
     },
@@ -215,6 +224,11 @@ __webpack_require__.r(__webpack_exports__);
       this.Api.searchCommunity(data).then(function (result) {
         if (result.code == 1) {
           _this.searchCommunityList = result.data;
+          if (_this.searchCommunityList.length) {
+            _this.nodataFlag = false;
+          } else {
+            _this.nodataFlag = true;
+          }
         }
       });
     },
@@ -222,9 +236,14 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     openCommunityTodo: function openCommunityTodo() {
+      uni.navigateTo({
+        url: 'openingcommunity' });
 
     },
     selectCommunity: function selectCommunity(item) {
+      var data = JSON.stringify(item);
+      uni.navigateTo({
+        url: 'personal?data=' + encodeURIComponent(data) });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

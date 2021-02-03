@@ -424,6 +424,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/components/mescroll-uni/mescroll-mixins.js */ 522));
 
 
@@ -727,7 +747,27 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
 //
 //
 //
-var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure | components/leavewords/leavewords */ "components/leavewords/leavewords").then((function () {return resolve(__webpack_require__(/*! @/components/leavewords/leavewords.vue */ 610));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var PostItem = function PostItem() {__webpack_require__.e(/*! require.ensure | components/postItem/postitem */ "components/postItem/postitem").then((function () {return resolve(__webpack_require__(/*! @/components/postItem/postitem.vue */ 787));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UsedItem = function UsedItem() {__webpack_require__.e(/*! require.ensure | components/usedItem/useditem */ "components/usedItem/useditem").then((function () {return resolve(__webpack_require__(/*! @/components/usedItem/useditem.vue */ 773));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 631));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 603));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 617));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 589));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 539));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 659));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { mixins: [_mescrollMixins.default], data: function data() {return { isHome: false, smallNodata: true, flexType: false, downOption: { use: true, // 是否启用下拉刷新; 默认true
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure | components/leavewords/leavewords */ "components/leavewords/leavewords").then((function () {return resolve(__webpack_require__(/*! @/components/leavewords/leavewords.vue */ 610));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var PostItem = function PostItem() {__webpack_require__.e(/*! require.ensure | components/postItem/postitem */ "components/postItem/postitem").then((function () {return resolve(__webpack_require__(/*! @/components/postItem/postitem.vue */ 787));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UsedItem = function UsedItem() {__webpack_require__.e(/*! require.ensure | components/usedItem/useditem */ "components/usedItem/useditem").then((function () {return resolve(__webpack_require__(/*! @/components/usedItem/useditem.vue */ 773));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 631));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 603));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 617));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 589));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 539));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 659));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { mixins: [_mescrollMixins.default], data: function data() {return { guestFlag: false, isHome: false, smallNodata: true, flexType: false, downOption: { use: true, // 是否启用下拉刷新; 默认true
         auto: false, // 是否在初始化完毕之后自动执行下拉刷新的回调; 默认true
         native: false, // 是否使用系统自带的下拉刷新; 默认false; 仅mescroll-body生效 (值为true时,还需在pages配置enablePullDownRefresh:true;详请参考mescroll-native的案例)
         autoShowLoading: false, // 如果设置auto=true(在初始化完毕之后自动执行下拉刷新的回调),那么是否显示下拉刷新的进度; 默认false
@@ -765,24 +805,25 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       committee_id: '', //居委会
       pickerId: false, //选择业主
       setcommunityType: 1, setcommunityValue: '业主', page: 1, page_size: 10, type: 0, postList: [], scrollLeft: 0, TabCur: 0, findFaultValue: false, findFaultCollect: false, findFaultType: 1, findFaultObject: {}, deliveryFlag: false, canvasFlag: true, posterData: { marginLR: 30, marginTB: 80, radius: 0.03, innerLR: 20, innerTB: 20, posterRatio: 1.3, posterImgUrl: '', title: '', titleFontSize: 15, desFontSize: 14, desLineHeight: 22, titleLineHeight: 24, posterCodeUrl: 'https://sq.wenlinapp.com/upload/share/20200821/20200821233746683.png', codeWidth: 0.22, codeRatio: 1, codeRadius: 0.5, codeMT: 15, codeName: '问邻', codeNameMT: 15, tips: '长按/扫描识别进入贴子', posterBgUrl: '', avatarUrl: uni.getStorageSync('user').avatar, des: '' }, messageShow: false, messageText: '', onShareShow: false, flexNoData: true, shareObj: {}, helpShow: false, helpObj: {}, allFlag: true, //控制显示
-      score: 0, textread: "\u300A\u95EE\u90BB\u670D\u52A1\u534F\u8BAE\u53CA\u9690\u79C1\u653F\u7B56\u300B", guestShow: false, notices_count: 0, guestShowOpen: false, pos: 'home', add_type: '', score_text: '', usersList: [], darenObj: null };}, onLoad: function onLoad() {}, mounted: function mounted() {var _this = this;if (!uni.getStorageSync('longitude')) {uni.getLocation({ success: function success(res) {// latitude: 30.39085
+      score: 0, textread: "\u300A\u95EE\u90BB\u670D\u52A1\u534F\u8BAE\u53CA\u9690\u79C1\u653F\u7B56\u300B", guestShow: false, notices_count: 0, guestShowOpen: false, pos: 'home', add_type: '', score_text: '', usersList: [], darenObj: null, guestdata: '暂无数据，请登录或者加入小区即可查看数据', setcommunityOpen: false };}, onLoad: function onLoad() {}, computed: { autoTop: function autoTop() {return this.usersList.length ? 375 : 300;} }, mounted: function mounted() {var _this = this;if (!uni.getStorageSync('longitude')) {uni.getLocation({ success: function success(res) {// latitude: 30.39085
           // longitude: 114.89495
           uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });} });}this.tagList = [{ id: 0, tag: '全部' }].concat(this.Tool.navList);this.$Bus.$on('noToken', function (e) {_this.goLogin(function (res) {});});if (uni.getStorageSync('token')) {this.$getCount(function (result) {var count = 0;if (result.code == 1) {if (!isNaN(result.data.comment_unread)) {count += result.data.comment_unread;count += result.data.leave_message_unread;count += result.data.sys_notices_unread;count += result.data.thanks_unread;_this.notices_count = count;} else {_this.notices_count = 0;}}});this.$Bus.$on('countmsg', function (countmsg) {_this.$getCount(function (result) {var count = 0;if (result.code == 1) {if (!isNaN(result.data.comment_unread)) {count += result.data.comment_unread;count += result.data.leave_message_unread;count += result.data.sys_notices_unread;count += result.data.thanks_unread;_this.notices_count = count;} else {_this.notices_count = 0;}}});});}uni.setStorageSync('o', 1); //菜单
     var that = this;var auth = new Promise(function (resolve, reject) {uni.login({ success: function success(res) {var errMsg = res.errMsg,code = res.code;if (errMsg == 'login:ok') {that.Api.wechatAuth({ code: code }).then(function (result) {if (result.code == 1) {if (result.data.all_community) {result.data.all_community.map(function (item) {item.title = item.community_name;});}uni.setStorageSync('token', result.data.token);uni.setStorageSync('user', result.data.user);uni.setStorageSync('maxJoin', result.data.max_join);uni.setStorageSync('mobile', result.data.user.mobile);uni.setStorageSync('all_community', result.data.all_community);resolve();}});}} });});auth.then(function (status) {_this.token = uni.getStorageSync('token');_this.all_community = uni.getStorageSync('all_community');if (_this.all_community.length) {_this.getUser();uni.setStorageSync('community_id', _this.all_community[0].community_id);uni.setStorageSync('committee_id', _this.all_community[0].committee_id);var url = uni.getStorageSync('url');if (url) {uni.removeStorageSync('url');uni.navigateTo({ url: url });}}_this.mobile = uni.getStorageSync('mobile');_this.community_id = uni.getStorageSync('community_id');_this.community_menu = uni.getStorageSync('community_menu') || _this.all_community.length ? _this.all_community[0].title + (_this.all_community[0].total ? ' (' + _this.all_community[0].total + ') ' : '') : '问邻';if (!_this.token) {//没有token要求用户授权
-        _this.loginFalse = true;} else {_this.loginFalse = false; //判断我是否设置小区
-        if (_this.all_community.length == 0) {_this.Api.checkUserCommunityOpening({}).then(function (result) {if (result.code == 1) {_this.current = 3;_this.mescroll.resetUpScroll(); //this.setcommunity = true;
+        _this.loginFalse = true;_this.guestFlag = true;_this.guestShowOpen = true;} else {_this.loginFalse = false;_this.guestFlag = false;_this.guestShowOpen = false; //判断我是否设置小区
+        if (_this.all_community.length == 0) {_this.Api.checkUserCommunityOpening({}).then(function (result) {if (result.code == 1) {if (result.data.opening == 1) {_this.guestdata = result.msg;}if (_this.all_community.length) {_this.current = 1;_this.mescroll.resetUpScroll();} else {_this.guestFlag = true;_this.setcommunityOpen = true;} //this.setcommunity = true;
               // uni.navigateTo({
               // 	url:'../update/openingcommunity'
               // })
-              var pid = uni.getStorageSync('pid');if (pid) {_this.community = uni.getStorageSync('ptitle');_this.communityId = uni.getStorageSync('pcommunity_id');}} else {setTimeout(function () {_this.current = 3;_this.mescroll.resetUpScroll();}, 3000);}});} else {_this.setcommunity = false;}}if (_this.community_id) {var p = new Promise(function (resolve, reject) {if (!uni.getStorageSync('longitude')) {// resolve();
+              var pid = uni.getStorageSync('pid');if (pid) {_this.community = uni.getStorageSync('ptitle');_this.communityId = uni.getStorageSync('pcommunity_id');}} else {if (_this.all_community.length) {setTimeout(function () {_this.current = 1;_this.mescroll.resetUpScroll();}, 3000);}}});} else {_this.setcommunity = false;}}if (_this.community_id) {var p = new Promise(function (resolve, reject) {if (!uni.getStorageSync('longitude')) {// resolve();
             uni.getLocation({ success: function success(res) {// latitude: 30.39085
                 // longitude: 114.89495
-                uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });setTimeout(function () {resolve();_this.mescroll.resetUpScroll();}, 1000);} });} else {resolve();}});p.then(function (r) {_this.mescroll.resetUpScroll();});} else {if (!uni.getStorageSync('longitude')) {// resolve();
+                uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });setTimeout(function () {resolve();_this.mescroll.resetUpScroll();}, 1000);} });}resolve();});p.then(function (r) {_this.mescroll.resetUpScroll();});} else {if (!uni.getStorageSync('longitude')) {// resolve();
           uni.getLocation({ success: function success(res) {// latitude: 30.39085
               // longitude: 114.89495
-              uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });} });}}_this.Api.getCommunityWiki({}).then(function (result) {console.log(result);});});}, watch: {}, methods: { danrenHandler: function danrenHandler() {uni.navigateTo({
-        url: '/pages/push/edit?type=9' });
-
+              uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });} });}} // this.Api.getCommunityWiki({}).then(result => {
+      // 	console.log(result);
+      // });
+    });}, watch: {}, methods: { danrenHandler: function danrenHandler() {uni.navigateTo({ url: '/pages/push/edit?type=9' });
     },
     userHandler: function userHandler(item) {
       uni.navigateTo({
@@ -803,6 +844,11 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       this.guestShowOpen = false;
       this.loginFalse = true;
     },
+    setcommunityOpenTodo: function setcommunityOpenTodo() {
+      uni.navigateTo({
+        url: '../update/selectcommunity' });
+
+    },
     //游客登录操作
     weixinlogin: function weixinlogin() {
       this.guestShow = false;
@@ -816,15 +862,20 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       var token = uni.getStorageSync('token');
       var committee_id = uni.getStorageSync('committee_id');
       var all_community = uni.getStorageSync('all_community');
+
       if (!token) {
+        this.guestFlag = true;
         if (!this.guestShow) {
           this.guestShow = true;
         }
         result = true;
-        this.current = 3;
-        this.mescroll.resetUpScroll();
+        //不进行切换
+        // this.current = 3;
+        // this.mescroll.resetUpScroll();
         cb(result);
         return;
+      } else {
+        this.guestFlag = false;
       }
 
       if (isNaN(committee_id) || all_community.length == 0) {
@@ -834,12 +885,16 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
             url: '../update/openingcommunity' });
 
         }
+        this.guestShow = true;
         result = true;
-        this.current = 3;
-        this.mescroll.resetUpScroll();
+        this.guestFlag = true;
+
+        // this.current = 3;
+        // this.mescroll.resetUpScroll();
         cb(result);
         return;
       }
+      this.guestShow = false;
       cb(result);
     },
     goDetails: function goDetails() {
@@ -995,6 +1050,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       this.committee_id = e.committee_id;
       this.Api.setDefaultCommunity({ community_id: e.community_id }).then(function (result) {
         if (result.code == 1) {
+          _this4.getUser();
           uni.showToast({
             icon: 'success',
             title: result.msg,
@@ -1006,7 +1062,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               _this4.current = 1;
               _this4.cateIndex = 0;
               _this4.mescroll.resetUpScroll();
-              _this4.getUser();
+
             } });
 
         }
@@ -1025,9 +1081,10 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
     //游客访问
     guestClick: function guestClick() {
       this.loginFalse = false;
-      this.current = 3;
-      this.guestShowOpen = true;
-      this.mescroll.resetUpScroll();
+      //首页不进行切换
+      // this.current = 3;
+      // this.guestShowOpen = true;
+      // this.mescroll.resetUpScroll();
     },
     // 手机号授权处理
     getPhoneNumber: function getPhoneNumber(e) {var _this5 = this;
@@ -1182,17 +1239,22 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
                   res.data.all_community[0].title + (res.data.all_community[0].total ? res.data.all_community[0].total : '') :
                   '问邻';
                   _this8.all_community = res.data.all_community;
+
                   _this8.loginFalse = false;
                   _this8.guestShow = false;
                   _this8.userinforeg = true;
+                  if (_this8.all_community.length == 0) {
+                    _this8.guestFlag = true;
+                  }
                   if (_this8.all_community.length) {
                     _this8.mescroll.resetUpScroll();
                   } else {
                     //如果开通过小区，待审核
-                    _this8.current = 3;
+                    //this.current = 3;
                     // this.setcommunity = true;
+                    //
                     uni.navigateTo({
-                      url: '../update/openingcommunity' });
+                      url: '../update/selectcommunity' });
 
                     console.log('pid');
                     var pid = uni.getStorageSync('pid');
@@ -1410,6 +1472,16 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         this.allFlag = false;
       }
       this.type = this.tagList[index].id;
+      var token = uni.getStorageSync('token');
+      if (!token) {
+        this.guestFlag = true;
+        return;
+      } else {
+        if (this.all_community.length == 0) {
+          this.guestFlag = true;
+          return;
+        }
+      }
       this.$nextTick(function () {
         if (_this13.type == 3) {
           _this13.flexType = true;

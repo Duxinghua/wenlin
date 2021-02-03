@@ -192,7 +192,11 @@
 		<view class="guestpop" v-if="guestShowOpen">
 			<text class="gtiptext">登录查看本小区新鲜事</text>
 			<view class="gtipbtn" @click="guestLoginTodo">立即登录</view>
-		</view>		
+		</view>	
+			<view class="guestpop" v-if="setcommunityOpen">
+				<text class="gtiptext">设置小区可查看本小区新鲜事</text>
+				<view class="gtipbtn" @click="setcommunityOpenTodo">立即设置</view>
+			</view>
 		<!-- 挑错 -->
 		<LeaveWords :messageValue.sync="messageText" :messageShow.sync="messageShow" @textareaBlur="textareaBlur" @closeMessage="closeMessage" @submitTodo="submitTodo"/>
 		<!-- 帮推 -->
@@ -369,7 +373,8 @@ export default {
 			pos:'home',
 			add_type:'',
 			score_text:'',
-			committeeList:[]
+			committeeList:[],
+			setcommunityOpen:false
 	
 		};
 	},
@@ -471,7 +476,8 @@ export default {
 						if(result.code == 1){
 							this.getCommitList()
 							this.mescroll.resetUpScroll()
-							this.setcommunity = true;
+							// this.setcommunity = true;
+							this.setcommunityOpen = true
 							var pid = uni.getStorageSync('pid')
 							if(pid){
 								this.community = uni.getStorageSync('ptitle')
@@ -537,6 +543,11 @@ export default {
 		
 	},
 	methods: {
+		setcommunityOpenTodo(){
+			uni.navigateTo({
+				url:'../update/selectcommunity'
+			})
+		},
 		async getCommitList(){
 			var result = await this.Api.myCommitteeList({})
 			if(result.code == 1){
@@ -552,7 +563,8 @@ export default {
 		//游客登录操作
 		weixinlogin(){
 			this.guestShow = false
-			this.setcommunity = true
+			//this.setcommunity = true
+			this.setcommunityOpen = true
 		},
 		goLogin(cb){
 			var result = false
@@ -572,10 +584,11 @@ export default {
 			
 			if(isNaN(committee_id) || all_community.length == 0){
 					if(!this.setcommunity){
-						this.setcommunity = true
+						//this.setcommunity = true
+						this.setcommunityOpen = true
 					}
 					result = true
-					this.current = 3
+					// this.current = 3
 					this.mescroll.resetUpScroll()
 					cb(result)
 					return
@@ -910,8 +923,11 @@ export default {
 										this.mescroll.resetUpScroll()
 									}else{
 										//如果开通过小区，待审核 
-										this.current = 3
-										this.setcommunity = true
+										// this.current = 3
+										// this.setcommunity = true
+										if(this.all_community.legnth == 0){
+											this.setcommunityOpen = true
+										}
 										console.log('pid')
 										var pid = uni.getStorageSync('pid')
 										if(pid){

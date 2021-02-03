@@ -1,36 +1,40 @@
 <template>
 	<view class="openarea choosecommunity">
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight"/>
-		<view class="searchwrap">
-			<image src="../../static/search.png" class="ico"></image>
-			<input type="text" class="chooseinput" v-model="community_text" placeholder="请输入小区" @input="chooseInput" />
-			<text class="choosetext" @click="searchCommunity">搜索</text>
-		</view>
-		<view class="searchtip">
-			附近的小区
-		</view>
-		<view class="searchlist">
-			<view  class="searchitem" v-for="(item,index) in  searchCommunityList" :key="index" @click="selectCommunity(item)">
-				<image src="../../static/itemico.png" class="itemico"></image>
-				<view class="comminginfo">
-					<text class="title">{{item.title}}</text>
-					<text class="addressinfo">{{item.address}}</text>
-				</view>
+		<view class="content">
+			<view class="searchwrap">
+				<image src="../../static/search.png" class="ico"></image>
+				<input type="text" class="chooseinput" v-model="community_text" placeholder="请输入小区" @input="chooseInput" />
+				<text class="choosetext" @click="searchCommunity">搜索</text>
 			</view>
-			<Nodata :type="smallNodata" v-if="searchCommunityList.length == 0" />
-		</view>
-		<view class="welcomeopen">
-			<text class="welcometext">没有自己的小区，您可以立即</text>
-			<view class="welcomebtn" @click="openCommunityTodo">申请开通</view>
+			<view class="searchtip">
+				附近的小区
+			</view>
+			<view class="searchlist">
+				<view  class="searchitem" v-for="(item,index) in  searchCommunityList" :key="index" @click="selectCommunity(item)">
+					<image src="../../static/itemico.png" class="itemico"></image>
+					<view class="comminginfo">
+						<text class="title">{{item.title}}</text>
+						<text class="addressinfo">{{item.address}}</text>
+					</view>
+				</view>
+				<Nodata :type="smallNodata" v-if="nodataFlag" />
+			</view>
+			<view class="welcomeopen">
+				<text class="welcometext">没有自己的小区，您可以立即</text>
+				<view class="welcomebtn" @click="openCommunityTodo">申请开通</view>
+			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import Nodata from '@/components/nodata/nodata.vue'
 	import navigationCustom from '../../components/struggler-navigationCustom/navigation-custom';
 	export default{
 		components:{
-			navigationCustom
+			navigationCustom,
+			Nodata
 		},
 		data(){
 			return {
@@ -50,7 +54,7 @@
 				community_text:'',
 				searchCommunityList:[],
 				smallNodata:true,
-				
+				nodataFlag:false
 			}
 		},
 		onLoad() {
@@ -65,6 +69,11 @@
 				that.Api.getNearCommunity({latitude:uni.getStorageSync('latitude'),longitude:uni.getStorageSync('longitude')}).then((result) => {
 					if(result.code == 1){
 						that.searchCommunityList = result.data;
+						if(that.searchCommunityList.length){
+							that.nodataFlag = false
+						}else{
+							that.nodataFlag = true
+						}
 					}
 				})	
 			},
@@ -83,6 +92,11 @@
 				this.Api.searchCommunity(data).then(result => {
 					if (result.code == 1) {
 						this.searchCommunityList = result.data;
+						if(this.searchCommunityList.length){
+							this.nodataFlag = false
+						}else{
+							this.nodataFlag = true
+						}
 					}
 				});
 			},
@@ -90,16 +104,27 @@
 				
 			},
 			openCommunityTodo(){
-				
+				uni.navigateTo({
+					url:'openingcommunity'
+				})
 			},
 			selectCommunity(item){
-				
+				var data = JSON.stringify(item)
+				uni.navigateTo({
+					url:'personal?data='+encodeURIComponent(data)
+				})
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	.content{
+		padding-left:40rpx;
+		padding-right:40rpx;
+		display: flex;
+		flex-direction: column;
+	}
 		.openarea {
 			width: 100%;
 			min-height: 100vh;
@@ -107,8 +132,6 @@
 			border-radius: 16upx 16upx 0upx 0upx;
 			display: flex;
 			flex-direction: column;
-			padding-left: 48upx;
-			padding-right: 48upx;
 			box-sizing: border-box;
 			.openheader {
 				height: 100upx;
