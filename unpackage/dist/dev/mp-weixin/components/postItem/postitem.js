@@ -525,7 +525,8 @@ var _default =
       }
       var publish_type = this.pitem.publish_type; //2为居委会 3小区
       if (this.pitem.opening == 0) {
-        if (this.pitem.publish_type != 3) {
+        console.log(1);
+        if (this.pitem.publish_type == 1) {
           if (this.pitem.community_id != uni.getStorageSync('community_id')) {
             uni.showToast({
               icon: 'none',

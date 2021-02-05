@@ -444,6 +444,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/components/mescroll-uni/mescroll-mixins.js */ 522));
 
 
@@ -455,6 +458,9 @@ var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/component
 
 
 var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
 //
 //
 //
@@ -823,7 +829,9 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });} });}} // this.Api.getCommunityWiki({}).then(result => {
       // 	console.log(result);
       // });
-    });}, watch: {}, methods: { danrenHandler: function danrenHandler() {uni.navigateTo({ url: '/pages/push/edit?type=9' });
+    });}, watch: {}, methods: { danrenHandler: function danrenHandler() {uni.navigateTo({ url: '/pages/push/edit?type=9' });}, moreHandler: function moreHandler() {uni.navigateTo({
+        url: '/pages/update/neighbour' });
+
     },
     userHandler: function userHandler(item) {
       uni.navigateTo({

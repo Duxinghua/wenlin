@@ -383,11 +383,11 @@
 				}
 			}
 			.askt{
-				font-size: 40rpx;
+				font-size: 36rpx;
 				font-family: PingFang SC;
 				font-weight: 800;
 				color: #4E5191;
-				line-height: 60rpx;
+				line-height: 50rpx;
 				padding:0 40rpx;
 				box-sizing: border-box;
 				margin-top:30rpx;
@@ -401,13 +401,13 @@
 					margin-top:16rpx;
 					margin-bottom: 16rpx;
 					width:100%;
-					height: 110rpx;
-					line-height: 110rpx;
+					height: 100rpx;
+					line-height: 100rpx;
 					text-align: center;
 					background: #F2F2F2;
-					border-radius: 60rpx;
+					border-radius: 50rpx;
 					padding:0 30rpx;
-					font-size: 28rpx;
+					font-size: 26rpx;
 					font-family: PingFang SC;
 					font-weight: 800;
 					color: #4E5191;

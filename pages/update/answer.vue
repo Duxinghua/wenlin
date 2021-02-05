@@ -134,13 +134,14 @@
 			position: fixed;
 			left:50%;
 			transform: translateX(-50%);
-			top:350rpx;
-			width: fit-content;
+			top:250rpx;
+			max-width: 680rpx;
+			white-space: nowrap;
 			padding:10rpx 50rpx;
-			background: white;
 			border-radius: 35rpx;
-			color:#333333;
-			font-size: 34rpx;
+			color:white;
+			font-weight: bold;
+			font-size:50rpx;
 		}
 		.answerbtn{
 			position: fixed;

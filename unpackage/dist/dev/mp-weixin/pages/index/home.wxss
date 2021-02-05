@@ -133,11 +133,11 @@ page.data-v-14a6ab35 {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 88rpx;
+  margin-top: 30rpx;
   position: relative;
 }
 .content .home .joinlist .join-user.data-v-14a6ab35 {
   width: 100%;
-  padding: 24rpx 0rpx 0rpx 0rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 88rpx;
@@ -158,6 +158,30 @@ page.data-v-14a6ab35 {
   height: 40rpx;
   right: 0rpx;
   bottom: 0rpx;
+}
+.content .home .joinlist .join-user .grap.data-v-14a6ab35 {
+  background: #95a0b4;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.content .home .joinlist .join-user .grap .rr.data-v-14a6ab35 {
+  width: 8rpx;
+  height: 8rpx;
+  margin: 0 4rpx;
+  background: white;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
 }
 .content .home .joinlist .usernumber.data-v-14a6ab35 {
   width: 64rpx;
@@ -188,7 +212,7 @@ page.data-v-14a6ab35 {
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  padding: 30rpx 48rpx;
+  padding: 20rpx 48rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }

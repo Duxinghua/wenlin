@@ -141,8 +141,8 @@
 		</view>
 		<!-- 电话 -->
 		<view class="wpwrap" v-if="autoMobileOpen">
-			<image :src="imgURl + 'weixinico.png'" class="wpico" @click="copy(2)"   v-if="detail.mobile"></image>
-			<image :src="imgURl + 'phoneico.png'" class="wpico" @click="copy(1)" v-if="detail.weixin"></image>
+			<image :src="imgURl + 'weixinico.png'" class="wpico" @click="copy(2)"   v-if="detail.weixin"></image>
+			<image :src="imgURl + 'phoneico.png'" class="wpico" @click="copy(1)" v-if="detail.mobile"></image>
 		</view>
 		<view class="popup" v-if="wxsj">
 			<view class="mb" @click="closewxsj"></view>

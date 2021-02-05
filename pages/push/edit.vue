@@ -278,8 +278,8 @@
 				},
 				radioCurrent:1,
 				radioList:[
-					{value:1,name:'所有人可见',check:false},
-					{value:0,name:'本小区可见',check:true}
+					{value:1,name:'所有人可见',check:true},
+					{value:0,name:'本小区可见',check:false}
 				],
 				nameList:[
 					{value:1,name:'实名发布',check:false},

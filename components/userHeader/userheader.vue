@@ -4,7 +4,7 @@
 		<view class="headerimg" >
 			<image @click.stop="goPer(pitem.user)" v-if="pitem.publish_type == 1 && pitem.anonymous == 0" :src="pitem.user.avatar" class="avatar"></image>
 			<image @click.stop="goPer(pitem.user)" v-if="pitem.publish_type == 1 && pitem.anonymous == 1" src="../../static/heading.png" class="avatar"></image>
-			<image @click.stop="goCom" v-if="pitem.publish_type == 2" :src="pitem.communitycommittee.logo" class="avatar"></image>
+			<image @click.stop="goCom" v-if="pitem.publish_type == 2" :src="pitem.committee.logo" class="avatar"></image>
 			<image v-if="pitem.publish_type == 3"  :src="pitem.admin.avatar" class="avatar"></image>
 			<image v-if="pitem.create_user.id && pitem.anonymous == 0"  @click.stop="goPer(pitem.create_user)"  :src="pitem.create_user.avatar"  class="avatar"></image>
 			
@@ -40,7 +40,7 @@
 				<text class="name">匿名用户</text>
 			</view>
 			<view class="userwrap" v-if="pitem.publish_type == 2"  @click.stop="goCom">
-				<text class="name">{{pitem.communitycommittee.title}}</text>
+				<text class="name">{{pitem.committee.title}}</text>
 			</view>
 			<view class="userwrap" v-if="pitem.publish_type == 3">
 				<text class="name">{{pitem.admin.user_nickname}}</text>

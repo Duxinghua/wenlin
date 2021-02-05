@@ -15,14 +15,17 @@
 			<view class="home-top" id="hometop" >
 				<view class="joinlist" v-if="usersList.length">
 					<view class="join-user" >
-						<view class="imgwrap" @click.stop="userHandler(item)" v-for="(item, index) in usersList" :key="index">
+						<view class="imgwrap" @click.stop="userHandler(item)" v-for="(item, index) in usersList" :key="index" v-if="index < 7">
 							<u-image width="100%" height="100%" :src="item.avatar" border-radius="32rpx"></u-image>
 							<image src="../../static/new.png" class="news" v-if="index == 0"></image>
 						</view>
+						<view class="imgwrap grap" @click="moreHandler">
+							<view class="rr" v-for="(item,index) in 3" :key="index"></view>
+						</view>
 					</view>
-					<view class="usernumber">
+		<!-- 			<view class="usernumber">
 						{{usersList.length}}
-					</view>
+					</view> -->
 				</view>
 				<view class="search">
 					<view class="searchleft" @click="searchLink">
@@ -691,6 +694,11 @@ export default {
 		danrenHandler(){
 			uni.navigateTo({
 				url:'/pages/push/edit?type=9'
+			})
+		},
+		moreHandler(){
+			uni.navigateTo({
+				url:'/pages/update/neighbour'
 			})
 		},
 		userHandler(item){
@@ -1811,10 +1819,11 @@ page {
 			padding-right:48upx;
 			box-sizing: border-box;
 			height: 88upx;
+			margin-top:30upx;
 			position: relative;
 		.join-user {
 			width: 100%;
-			padding: 24upx 0upx 0upx 0upx;
+			// padding: 24upx 0upx 0upx 0upx;
 			box-sizing: border-box;
 			height: 88upx;
 			overflow-x: auto;
@@ -1831,6 +1840,20 @@ page {
 					height: 40upx;
 					right: 0upx;
 					bottom: 0upx;
+				}
+			}
+			.grap{
+				background:#95a0b4;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				.rr{
+					width:8rpx;
+					height:8rpx;
+					margin:0 4rpx;
+					background:white;
+					border-radius: 50%;
 				}
 			}
 		}
@@ -1854,7 +1877,7 @@ page {
 			flex-direction: row;
 			justify-content: flex-start;
 			align-items: center;
-			padding: 30upx 48upx;
+			padding: 20upx 48upx;
 			box-sizing: border-box;
 			// margin-bottom: 24upx;
 			.searchleft {

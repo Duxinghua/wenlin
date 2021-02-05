@@ -508,6 +508,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
 
   },
   onLoad: function onLoad() {},
+  computed: {
+    autoTop: function autoTop() {
+      return this.committeeList.length ? 300 : 130;
+    } },
+
   mounted: function mounted() {var _this = this;
     this.$Bus.$on('noToken', function (e) {
       _this.goLogin(function (res) {
@@ -604,7 +609,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
           _this.Api.checkUserCommunityOpening({}).then(function (result) {
             if (result.code == 1) {
               _this.getCommitList();
-              _this.mescroll.resetUpScroll();
+              setTimeout(function () {
+                _this.mescroll.resetUpScroll();
+              }, 300);
+
               // this.setcommunity = true;
               _this.setcommunityOpen = true;
               var pid = uni.getStorageSync('pid');
@@ -615,7 +623,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
 
             } else {
               setTimeout(function () {
-
+                _this.getCommitList();
                 _this.mescroll.resetUpScroll();
               }, 3000);
 
@@ -659,7 +667,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
         });
         p.then(function (r) {
           _this.getCommitList();
-          _this.mescroll.resetUpScroll();
+          setTimeout(function () {
+            _this.mescroll.resetUpScroll();
+          }, 300);
+
         });
 
       }
@@ -681,7 +692,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
                   _this2.Api.myCommitteeList({}));case 2:result = _context.sent;
                 if (result.code == 1) {
                   _this2.committeeList = result.data;
-                  console.log(_this2.committeeList);
+                  console.log(_this2.committeeList, 'committeeList');
                   _this2.$forceUpdate();
                 }case 4:case "end":return _context.stop();}}}, _callee);}))();
     },

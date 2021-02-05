@@ -22,7 +22,7 @@
 			</view>
 <!-- 			</view> -->
 			<view :class="['postwrap',(type == 3 && postList.length > 0) ? 'usedwrap' : '']">
-			 <mescroll-uni  :fixed="true"  :top="committeeList.length ? 300 : 130" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" >
+			 <mescroll-uni  :fixed="true"  :top="autoTop" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" >
 	
 					<PostItem :pm="true" :allFlag="allFlag" :type="type" v-for="(item,index) in postList" :pitem="item" :key="index" @moreClick="moreClick" @helpPush="helpPush" @shareClick="shareClick" @toLogin="goDetails"></PostItem>
 				
@@ -379,6 +379,11 @@ export default {
 		};
 	},
 	onLoad() {},
+	computed:{
+		autoTop(){
+			return this.committeeList.length ? 300 : 130
+		}
+	},
 	mounted() {
 		this.$Bus.$on('noToken', (e) => {
 		    this.goLogin((res) => {
@@ -475,7 +480,10 @@ export default {
 					this.Api.checkUserCommunityOpening({}).then((result) => {
 						if(result.code == 1){
 							this.getCommitList()
-							this.mescroll.resetUpScroll()
+							setTimeout(()=>{
+													this.mescroll.resetUpScroll()
+							},300)
+		
 							// this.setcommunity = true;
 							this.setcommunityOpen = true
 							var pid = uni.getStorageSync('pid')
@@ -486,7 +494,7 @@ export default {
 				
 						}else{
 							setTimeout(()=>{
-					
+						this.getCommitList()
 								this.mescroll.resetUpScroll()
 							},3000)
 					
@@ -530,7 +538,10 @@ export default {
 				})
 				p.then((r)=>{
 					this.getCommitList()
-					this.mescroll.resetUpScroll()
+					setTimeout(()=>{
+									this.mescroll.resetUpScroll()
+					},300)
+		
 				})
 				
 			}
@@ -552,7 +563,7 @@ export default {
 			var result = await this.Api.myCommitteeList({})
 			if(result.code == 1){
 				this.committeeList = result.data
-				console.log(this.committeeList)
+				console.log(this.committeeList,'committeeList')
 				this.$forceUpdate()
 			}
 		},
@@ -1700,6 +1711,7 @@ page {
 			width: 100%;
 			padding:19upx 30upx;
 			box-sizing: border-box;
+			overflow-x: scroll;
 			.tagitem {
 	
 				font-size: 26upx;

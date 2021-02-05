@@ -33,13 +33,13 @@
 				<view class="morewrap" @click.stop="moreClick(pitem)"><image src="../../static/more.png" class="more"></image></view>
 			</view>
 			<view class="postheader" v-if="pitem.publish_type != 1">
-				<view class="headerimg" @click.stop="goCom(pitem.communitycommittee)">
-					<image :src="pitem.publish_type == 2 ? pitem.communitycommittee.logo : (pitem.admin.avatar ? pitem.admin.avatar : imgUrl + 'logovi.jpg')" class="avatar"></image>
+				<view class="headerimg" @click.stop="goCom(pitem.committee)">
+					<image :src="pitem.publish_type == 2 ? pitem.committee.logo : (pitem.admin.avatar ? pitem.admin.avatar : imgUrl + 'logovi.jpg')" class="avatar"></image>
 					<image style="display: none;" src="../../static/da.png" class="da"></image>
 				</view>
-				<view class="userinfo" @click.stop="goCom(pitem.communitycommittee)">
+				<view class="userinfo" @click.stop="goCom(pitem.committee)">
 					<view class="userwrap">
-						<text class="name">{{ pitem.publish_type == 2 ? pitem.communitycommittee.title : (pitem.admin.user_nickname ? pitem.admin.user_nickname : '问邻管理员') }}</text>
+						<text class="name">{{ pitem.publish_type == 2 ? pitem.committee.title : (pitem.admin.user_nickname ? pitem.admin.user_nickname : '问邻管理员') }}</text>
 					</view>
 					<view class="usertime">
 						{{ pitem.create_time | formatTime }}
@@ -107,13 +107,13 @@
 				<view class="morewrap" @click.stop="moreClick(pitem)"><image src="../../static/more.png" class="more"></image></view>
 			</view>
 			<view class="postheader" v-if="pitem.publish_type != 1 && pitem.type != 7">
-				<view class="headerimg" @click.stop="goCom(pitem.communitycommittee)">
-					<image :src="pitem.publish_type == 2 ? pitem.communitycommittee.logo :  imgUrl + 'logovi.jpg'" class="avatar"></image>
+				<view class="headerimg" @click.stop="goCom(pitem.goCom)">
+					<image :src="pitem.publish_type == 2 ? pitem.committee.logo :  imgUrl + 'logovi.jpg'" class="avatar"></image>
 					<image style="display: none;" src="../../static/da.png" class="da"></image>
 				</view>
-				<view class="userinfo" @click.stop="goCom(pitem.communitycommittee)">
+				<view class="userinfo" @click.stop="goCom(pitem.committee)">
 					<view class="userwrap">
-						<text class="name">{{ pitem.publish_type == 2 ? pitem.communitycommittee.title : '问邻管理员' }}</text>
+						<text class="name">{{ pitem.publish_type == 2 ? pitem.committee.title : '问邻管理员' }}</text>
 					</view>
 					<view class="usertime">
 						{{ pitem.create_time | formatTime }}
@@ -361,7 +361,8 @@ export default {
 			}
 			var publish_type = this.pitem.publish_type; //2为居委会 3小区
 			if(this.pitem.opening == 0){
-				if(this.pitem.publish_type != 3){
+				console.log(1)
+				if(this.pitem.publish_type == 1){
 					if(this.pitem.community_id != uni.getStorageSync('community_id')){
 						uni.showToast({
 							icon:'none',
