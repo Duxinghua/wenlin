@@ -72,7 +72,6 @@
 				"navigationBarTitleText": "我的"
 			}
 		}
-
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -338,7 +337,14 @@
 				"style": {
 					"navigationBarTitleText": "居委会动态列表"
 				}
+			},
+			{
+				"path": "newYear",
+				"style": {
+					"navigationBarTitleText": "拜年接龙"
+				}
 			}
+			
 			
 		]
 	}]

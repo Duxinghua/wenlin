@@ -55,7 +55,8 @@
         "committeemap",
         "committeeworker",
         "committeedetail",
-        "dynamicslist"
+        "dynamicslist",
+        "newYear"
       ]
     }
   ],

@@ -37,6 +37,52 @@ page.data-v-14a6ab35 {
           flex-direction: column;
   height: 100vh;
 }
+.content .paiwarp.data-v-14a6ab35 {
+  position: fixed;
+  width: 100%;
+  height: calc(838rpx * 0.85);
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 4000;
+}
+.content .paiwarp .pairect.data-v-14a6ab35 {
+  position: fixed;
+  width: 85%;
+  height: calc(720rpx * 0.85);
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 4000;
+}
+.content .paiwarp .paiclose.data-v-14a6ab35 {
+  position: fixed;
+  width: 45rpx;
+  height: 45rpx;
+  right: 120rpx;
+  top: calc(50% - 260rpx);
+  z-index: 4000;
+}
+.content .paiwarp .paienter.data-v-14a6ab35 {
+  position: fixed;
+  width: 358rpx;
+  height: 118rpx;
+  left: 50%;
+  top: 650rpx;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 4102;
+}
+.content .xf.data-v-14a6ab35 {
+  position: fixed;
+  right: 0;
+  bottom: 300rpx;
+  z-index: 500000;
+  width: 205rpx;
+  height: 123rpx;
+}
 .content .guestdata.data-v-14a6ab35 {
   display: -webkit-box;
   display: -webkit-flex;

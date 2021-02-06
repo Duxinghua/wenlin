@@ -311,6 +311,22 @@
 		</view>
 		<!-- 积分提示 -->
 		<Integraltip ref="integraltip" :types.sync="add_type" :score.sync="score_text" />
+		<u-mask :show="paiAd" @click="paiAd = false">
+				<view class="paiwarp">
+					<view class="pairect">
+						<u-image :src="imgURl+'homepai.png'" width="100%" height="100%"></u-image>
+					</view>
+					<view class="paiclose" @click="paiAd = false">
+						<u-image :src="imgURl+'paiclose.png'" width="100%" height="100%"></u-image>
+					</view>
+					<view class="paienter">
+						<u-image :src="imgURl+'btnshare.png'" width="100%" height="100%"></u-image>
+					</view>
+				</view>
+		</u-mask>
+		<view class="xf">
+			<u-image :src="imgURl+'xf.png'" width="100%" height="100%"></u-image>
+		</view>
 	</view>
 </template>
 
@@ -330,6 +346,7 @@ export default {
 	mixins: [MescrollMixin],
 	data() {
 		return {
+			imgURl:this.Config.minUrl,
 			guestFlag:false,
 			isHome: false,
 			smallNodata: true,
@@ -461,7 +478,8 @@ export default {
 			usersList:[],
 			darenObj:null,
 			guestdata:'暂无数据，请登录或者加入小区即可查看数据',
-			setcommunityOpen:false
+			setcommunityOpen:false,
+			paiAd:false
 		};
 	},
 	onLoad() {
@@ -1746,10 +1764,54 @@ export default {
 page {
 	background: white;
 }
+
 .content {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
+	.paiwarp{
+		position: fixed;
+		width:100%;
+		height:calc(838rpx * 0.85);
+		left:50%;
+		top:50%;
+		transform: translate(-50%,-50%);
+		z-index: 4000;
+		.pairect{
+			position: fixed;
+			width:85%;
+			height:calc(720rpx * 0.85);
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%);
+			z-index: 4000;
+		}
+		.paiclose{
+			position: fixed;
+			width:45rpx;
+			height:45rpx;
+			right:120rpx;
+			top:calc(50% - 260rpx);
+			z-index: 4000;
+		}
+		.paienter{
+			position: fixed;
+			width:358rpx;
+			height:118rpx;
+			left:50%;
+			top:650rpx;
+			transform: translateX(-50%);
+			z-index: 4102;
+		}
+	}
+	.xf{
+		position: fixed;
+		right:0;
+		bottom: 300rpx;
+		z-index: 500000;
+		width:205rpx;
+		height:123rpx;
+	}
 	.guestdata{
 		display: flex;
 		flex-direction: column;
