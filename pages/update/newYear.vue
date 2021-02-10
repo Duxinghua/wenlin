@@ -54,7 +54,7 @@
 		<u-popup v-model="paisend" mode="center" width="622rpx" height="695rpx" border-radius="20">
 			<view class="pushcontent">
 				<image :src="imgURl+'paiclose.png'" class="paiclose" @click.stop="paisend = false"></image>	
-				<u-input v-model="paiinput" type="textarea"   height="270"  placeholder="我们的社区，我们的家。新年有什么祝福邻居 的话，尽情写出来吧"/>
+				<u-input v-model="paiinput" type="textarea"   height="270"  placeholder="我们的社区，我们的家。新年有什么祝福邻居的话，尽情写出来吧"/>
 				<view class="pushbtnwrap">
 					<view class="btns color" @click.stop="paisend = false">
 						取消
@@ -67,7 +67,7 @@
 		</u-popup>
 		<u-popup v-model="shareShow" mode="center" width="622rpx" height="695rpx" border-radius="20">
 			<view class="pushcontent">
-				<image :src="imgURl+'paiclose.png'" class="paiclose"></image>
+				<image :src="imgURl+'paiclose.png'" class="paiclose" @click.stop="shareShow = false"></image>
 				<u-image :src="avatar" width="148rpx" height="148rpx" border-radius="74rpx" class="avatar"></u-image>
 				<view class="title">
 					拜年接龙成功
@@ -236,7 +236,7 @@
 					if(result.code == 1){
 						this.total_page = result.data.total_page
 						if(ismore){
-							this.yearList = result.data.list.concat(this.yearList)
+							this.yearList = this.yearList.concat(result.data.list)
 						}else{
 							this.yearList = result.data.list
 						}
