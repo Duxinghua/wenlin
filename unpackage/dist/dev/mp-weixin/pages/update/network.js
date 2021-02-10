@@ -157,7 +157,7 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../../utils/config.
 //
 //
 //
-var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 525));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { imgUrl: this.Config.minUrl, config: { title: '', //title
+var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 533));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { imgUrl: this.Config.minUrl, config: { title: '', //title
         bgcolor: 'white', //背景颜色
         fontcolor: "rgba(51, 51, 51, 1)", //文字颜色，默认白色
         type: 1, //type 1，3胶囊 2，4无胶囊模式

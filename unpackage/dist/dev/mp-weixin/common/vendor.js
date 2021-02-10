@@ -2197,7 +2197,14 @@ var nearDynamics = function nearDynamics(params) {return (0, _request.wxRequest)
 var transferScore = function transferScore(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/user/transferScore', 'POST');};
 
 //当前用户中心-我的领居列表-达人--1.1 /api/community/ucenter/myNeighbourDare
-var myNeighbourDare = function myNeighbourDare(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/ucenter/myNeighbourDare', 'POST');};var _default =
+var myNeighbourDare = function myNeighbourDare(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/ucenter/myNeighbourDare', 'POST');};
+
+//拜年列表
+var newyearGreetings = function newyearGreetings(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/newyear_greetings/getList', 'POST');};
+// 发布内容  {{online}}/api/community/newyear_greetings/publishGreetings
+var publishGreetings = function publishGreetings(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/newyear_greetings/publishGreetings', 'POST');};
+//点赞功能 {{online}}/api/community/newyear_greetings/greetingsLike
+var greetingsLike = function greetingsLike(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/newyear_greetings/greetingsLike', 'POST');};var _default =
 
 
 {
@@ -2313,7 +2320,10 @@ var myNeighbourDare = function myNeighbourDare(params) {return (0, _request.wxRe
   questionAnswer: questionAnswer,
   nearDynamics: nearDynamics,
   transferScore: transferScore,
-  myNeighbourDare: myNeighbourDare };exports.default = _default;
+  myNeighbourDare: myNeighbourDare,
+  newyearGreetings: newyearGreetings,
+  publishGreetings: publishGreetings,
+  greetingsLike: greetingsLike };exports.default = _default;
 
 /***/ }),
 
@@ -21234,7 +21244,18 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAAN
 
 /***/ }),
 
-/***/ 506:
+/***/ 51:
+/*!************************************!*\
+  !*** D:/wrok/wenlin/static/p1.png ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAz1BMVEUAAAD/nAD/nAD/nAD/nQD/nQD/ngD/jgD/nQD/nAD/nAD/nAD/nAD/nAD/nAD/nAD/nQD/nAD/nAD/nQD/nAD/ngD/nAD/nQD/nQD/nwD/mgD/mQD/nAD//wD/nQD/nAD/////zHv/68z/363/47b/26P/1I//w2b/u1D/qyf/t0b/rzH//fn/yHH/9+z/79b/uUz/oxT/8+H/2Z3/tD//9OX/8dz/7dL/5Lv/1pX/sjn/pxv/og//oAr/+fD/6MX/wWH/vlf/+/T/3an/0YleXm3RAAAAH3RSTlMA4P3wkkwdCQb46+Xc1dLQxbqxnI5xbGhRRT8UEgEnvaRtwAAAAyBJREFUWMPFmelS6kAQRicLIij7Jot+YYkXRHZFVgX1/Z/pplMmF3AmTEhS9/yguqjiVGa6M0vDzlCvlvVcWkkmEkklndPL1Tq7nHismFFxgpopxuKX2O5rBQ0CtELt3qfuunILT24r137GWrrBWW5K0iOPKZBCiUnprvKQJn913nenwQfa3blk6Cp8oeqeyWlk4Ztsw2P6UriAlHAiHxRchPIgeD7yXWbkPmMjhYtJNTj5zSIA2d+51hEI/Vc9qwiEeneSEA0B0Y4Tk0dg8kfrC0IgdrD+KQgBJe4KS5Bj1263BxBSckvwBnI8GobR9ljDnWKscH/cOWQvI0TlZ3/j7kct45CmlPD2nhE1hCVEjRGF8IQFu2Y0oXAwITryQi0uLmoS/gHRtoVL0zRHVjQ1f+iLirsoJxwaJ3TBoWgJM2EKM4zVVbGw2SMWPoRqnVUBqSyPu90upeeja/EqEqLKyoCvsvmigLIzBo8y030IZ1Y0o2AuFOos5yFcPBJzV2ha0dJbmGNpSGXZjb4pmFrBE3ikmeJD+EGRt1BhSR/CufPdq1CYZAkfwk+aOkf4Ah4JT2G7Sbw5wolh0ado6CFMypfNE0Ubit6tYCUYsiIvHNBi4459JUhKWl5IZdgB8WyPnUfas7Afnwi3WCgV366wJyhsXTrLPcMtFkMo1FlZTtjb2VP4vIXFloRrweJQlRK+GyNQ+SxAbEg4ESxfddVbuBm/GcSoT58DEGsKt/wF1nMLGLw0P2j+baFJI54AzmyCR8ZrkzpiPiPzF2zoYT/BoyjYRvvL1vOBbfrdp5l0X7exFb6CR0yw0a8ObK0mlfCewsXBKazF3+gFRxFnjxuauzWINX3hvG17d/SnFISHJdOqlM7Afbs2dqZnQHs4Hb0bxB4casLj3AvJ/rG0Z3JD64OT9K3gOEdUcI5txyoZykjP8a3BoeLjSLw0diBmi9ZbZzYWHonlD+0rnKUU+rUi7ItP2Fez0C+P0V5vg1/Ao24RBG9iRN9mCd4Iir5VFbyZFn27L3hDMnjLNNKmbvC2c5SN8eCt+///58Klf3/8BWlubfXAQkerAAAAAElFTkSuQmCC"
+
+/***/ }),
+
+/***/ 514:
 /*!**************************************************************!*\
   !*** D:/wrok/wenlin/components/mescroll-uni/mescroll-uni.js ***!
   \**************************************************************/
@@ -22108,7 +22129,7 @@ MeScroll.prototype.setBounce = function (isBounce) {
 
 /***/ }),
 
-/***/ 507:
+/***/ 515:
 /*!*********************************************************************!*\
   !*** D:/wrok/wenlin/components/mescroll-uni/mescroll-uni-option.js ***!
   \*********************************************************************/
@@ -22153,17 +22174,6 @@ GlobalOption;exports.default = _default;
 
 /***/ }),
 
-/***/ 51:
-/*!************************************!*\
-  !*** D:/wrok/wenlin/static/p1.png ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAz1BMVEUAAAD/nAD/nAD/nAD/nQD/nQD/ngD/jgD/nQD/nAD/nAD/nAD/nAD/nAD/nAD/nAD/nQD/nAD/nAD/nQD/nAD/ngD/nAD/nQD/nQD/nwD/mgD/mQD/nAD//wD/nQD/nAD/////zHv/68z/363/47b/26P/1I//w2b/u1D/qyf/t0b/rzH//fn/yHH/9+z/79b/uUz/oxT/8+H/2Z3/tD//9OX/8dz/7dL/5Lv/1pX/sjn/pxv/og//oAr/+fD/6MX/wWH/vlf/+/T/3an/0YleXm3RAAAAH3RSTlMA4P3wkkwdCQb46+Xc1dLQxbqxnI5xbGhRRT8UEgEnvaRtwAAAAyBJREFUWMPFmelS6kAQRicLIij7Jot+YYkXRHZFVgX1/Z/pplMmF3AmTEhS9/yguqjiVGa6M0vDzlCvlvVcWkkmEkklndPL1Tq7nHismFFxgpopxuKX2O5rBQ0CtELt3qfuunILT24r137GWrrBWW5K0iOPKZBCiUnprvKQJn913nenwQfa3blk6Cp8oeqeyWlk4Ztsw2P6UriAlHAiHxRchPIgeD7yXWbkPmMjhYtJNTj5zSIA2d+51hEI/Vc9qwiEeneSEA0B0Y4Tk0dg8kfrC0IgdrD+KQgBJe4KS5Bj1263BxBSckvwBnI8GobR9ljDnWKscH/cOWQvI0TlZ3/j7kct45CmlPD2nhE1hCVEjRGF8IQFu2Y0oXAwITryQi0uLmoS/gHRtoVL0zRHVjQ1f+iLirsoJxwaJ3TBoWgJM2EKM4zVVbGw2SMWPoRqnVUBqSyPu90upeeja/EqEqLKyoCvsvmigLIzBo8y030IZ1Y0o2AuFOos5yFcPBJzV2ha0dJbmGNpSGXZjb4pmFrBE3ikmeJD+EGRt1BhSR/CufPdq1CYZAkfwk+aOkf4Ah4JT2G7Sbw5wolh0ado6CFMypfNE0Ubit6tYCUYsiIvHNBi4459JUhKWl5IZdgB8WyPnUfas7Afnwi3WCgV366wJyhsXTrLPcMtFkMo1FlZTtjb2VP4vIXFloRrweJQlRK+GyNQ+SxAbEg4ESxfddVbuBm/GcSoT58DEGsKt/wF1nMLGLw0P2j+baFJI54AzmyCR8ZrkzpiPiPzF2zoYT/BoyjYRvvL1vOBbfrdp5l0X7exFb6CR0yw0a8ObK0mlfCewsXBKazF3+gFRxFnjxuauzWINX3hvG17d/SnFISHJdOqlM7Afbs2dqZnQHs4Hb0bxB4casLj3AvJ/rG0Z3JD64OT9K3gOEdUcI5txyoZykjP8a3BoeLjSLw0diBmi9ZbZzYWHonlD+0rnKUU+rUi7ItP2Fez0C+P0V5vg1/Ao24RBG9iRN9mCd4Iir5VFbyZFn27L3hDMnjLNNKmbvC2c5SN8eCt+///58Klf3/8BWlubfXAQkerAAAAAElFTkSuQmCC"
-
-/***/ }),
-
 /***/ 52:
 /*!************************************!*\
   !*** D:/wrok/wenlin/static/p2.png ***!
@@ -22175,7 +22185,18 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5
 
 /***/ }),
 
-/***/ 522:
+/***/ 53:
+/*!************************************!*\
+  !*** D:/wrok/wenlin/static/p3.png ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAnFBMVEUAAAD/XYz/XYz/XI3/XYz/XY3/XY3/XYz/XI3/VY7/Ton/Xoz/XYz/XYz/XYz/XYz/Xo3/XY3/Xo3/XYz/Xo7/XIz/XYr/WYz/VY7/AAD/XJD/XYz////4QXf5Vob/7fL+yNj/9/n7lLP+bpj/YY//3uj/1OD//P3/ytr+ssn/p8H/mrf/i6z/g6f/dZ3/8/f9vM//+fv+6O75WYjf4FTBAAAAG3RSTlMA3vDj0ZBqTB0JBvjr1cW6sZyTcVFFPxQSASd+cFewAAACXUlEQVRYw8WZi3aiMBBAJxhCqQ8ERLQDKr7qoz7a/v+/reK6uy4wCTjn9H7APZnMhGQG0BBHKvCk6LTbHSG9QEUxNMd1bIkFpO240IDx0LewAssfjqEer0ogiVCvdWINW6ilFRpH7gg0Qjhgwksfjem/gJaBhTWwBrpk2FgTm0zOqIe16Y2I7etiA7qVG/nWwka03irWR/g0xtI1jrrYmO6oJL89fIJeMdc2PoVdqGd8ksF/CbHwSazHxPTxafoP3xdkwPnrcwUSLHfr1XmBWoQLd0LSt04ufG6XqCP8U4LkEdklN6Z77YG5F6NCgkWW3FkdkEZBzpjcwdnFdNpPb8oZvZXidhcOkeBw9exxuf3MjdmO3MphLvSRYHUNNQ99luSsKaOf1wx1SPZXx+H3Yle5cUcdF7e8qD+miQHTj/LitrHAzac3ln90JBZIDMECEiBGTiHGECFnyBiBQs6koIIAc/RhZ+c1HW5OAJ6h8H2RpnO90ANpKPxKL8y1QgnCdIXfuVEnFNDRCGeT9F+2GmEH2hrhoy+daIRtdmHNkCczXchEUgiopEheoQSPN2QPAt6kBKB4hQoijXCb1go5gliXlPlV9P1umJQYQGqEN+OXmVBWv4WTB+PCcIU2ADj6OlyfM8M6dKov+kRD9UUPPp/QJx5LGe3LsIwh8Zzb0MIN8ZwrPyzHE+U7HbEERT6Jj5usMt7NkXwSQ4gshERb0QThcjc+3K0Ze/PI3d5yN+DsIwLuIQb3mIV7EMQ9quIepnGP+5gHktwjU+ahLvfYmXkwzjy6//mfC01/f/wCMBsXQjSlnkwAAAAASUVORK5CYII="
+
+/***/ }),
+
+/***/ 530:
 /*!*****************************************************************!*\
   !*** D:/wrok/wenlin/components/mescroll-uni/mescroll-mixins.js ***!
   \*****************************************************************/
@@ -22246,17 +22267,6 @@ MescrollMixin;exports.default = _default;
 
 /***/ }),
 
-/***/ 53:
-/*!************************************!*\
-  !*** D:/wrok/wenlin/static/p3.png ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAnFBMVEUAAAD/XYz/XYz/XI3/XYz/XY3/XY3/XYz/XI3/VY7/Ton/Xoz/XYz/XYz/XYz/XYz/Xo3/XY3/Xo3/XYz/Xo7/XIz/XYr/WYz/VY7/AAD/XJD/XYz////4QXf5Vob/7fL+yNj/9/n7lLP+bpj/YY//3uj/1OD//P3/ytr+ssn/p8H/mrf/i6z/g6f/dZ3/8/f9vM//+fv+6O75WYjf4FTBAAAAG3RSTlMA3vDj0ZBqTB0JBvjr1cW6sZyTcVFFPxQSASd+cFewAAACXUlEQVRYw8WZi3aiMBBAJxhCqQ8ERLQDKr7qoz7a/v+/reK6uy4wCTjn9H7APZnMhGQG0BBHKvCk6LTbHSG9QEUxNMd1bIkFpO240IDx0LewAssfjqEer0ogiVCvdWINW6ilFRpH7gg0Qjhgwksfjem/gJaBhTWwBrpk2FgTm0zOqIe16Y2I7etiA7qVG/nWwka03irWR/g0xtI1jrrYmO6oJL89fIJeMdc2PoVdqGd8ksF/CbHwSazHxPTxafoP3xdkwPnrcwUSLHfr1XmBWoQLd0LSt04ufG6XqCP8U4LkEdklN6Z77YG5F6NCgkWW3FkdkEZBzpjcwdnFdNpPb8oZvZXidhcOkeBw9exxuf3MjdmO3MphLvSRYHUNNQ99luSsKaOf1wx1SPZXx+H3Yle5cUcdF7e8qD+miQHTj/LitrHAzac3ln90JBZIDMECEiBGTiHGECFnyBiBQs6koIIAc/RhZ+c1HW5OAJ6h8H2RpnO90ANpKPxKL8y1QgnCdIXfuVEnFNDRCGeT9F+2GmEH2hrhoy+daIRtdmHNkCczXchEUgiopEheoQSPN2QPAt6kBKB4hQoijXCb1go5gliXlPlV9P1umJQYQGqEN+OXmVBWv4WTB+PCcIU2ADj6OlyfM8M6dKov+kRD9UUPPp/QJx5LGe3LsIwh8Zzb0MIN8ZwrPyzHE+U7HbEERT6Jj5usMt7NkXwSQ4gshERb0QThcjc+3K0Ze/PI3d5yN+DsIwLuIQb3mIV7EMQ9quIepnGP+5gHktwjU+ahLvfYmXkwzjy6//mfC01/f/wCMBsXQjSlnkwAAAAASUVORK5CYII="
-
-/***/ }),
-
 /***/ 54:
 /*!************************************!*\
   !*** D:/wrok/wenlin/static/p4.png ***!
@@ -22279,7 +22289,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5
 
 /***/ }),
 
-/***/ 558:
+/***/ 566:
 /*!****************************************!*\
   !*** D:/wrok/wenlin/static/pushc1.png ***!
   \****************************************/
@@ -22290,7 +22300,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 
 /***/ }),
 
-/***/ 559:
+/***/ 567:
 /*!****************************************!*\
   !*** D:/wrok/wenlin/static/pushc2.png ***!
   \****************************************/
@@ -22301,7 +22311,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 
 /***/ }),
 
-/***/ 560:
+/***/ 568:
 /*!****************************************!*\
   !*** D:/wrok/wenlin/static/pushc3.png ***!
   \****************************************/
@@ -22312,7 +22322,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 
 /***/ }),
 
-/***/ 561:
+/***/ 569:
 /*!****************************************!*\
   !*** D:/wrok/wenlin/static/pushc4.png ***!
   \****************************************/
@@ -22323,7 +22333,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 
 /***/ }),
 
-/***/ 562:
+/***/ 570:
 /*!****************************************!*\
   !*** D:/wrok/wenlin/static/pushc5.png ***!
   \****************************************/
@@ -22334,7 +22344,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 
 /***/ }),
 
-/***/ 563:
+/***/ 571:
 /*!****************************************!*\
   !*** D:/wrok/wenlin/static/pushc6.png ***!
   \****************************************/
@@ -22345,7 +22355,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 
 /***/ }),
 
-/***/ 564:
+/***/ 572:
 /*!****************************************!*\
   !*** D:/wrok/wenlin/static/pushc7.png ***!
   \****************************************/
@@ -22356,7 +22366,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAMAAAC+
 
 /***/ }),
 
-/***/ 565:
+/***/ 573:
 /*!****************************************!*\
   !*** D:/wrok/wenlin/static/pushc8.png ***!
   \****************************************/
@@ -22414,7 +22424,7 @@ bus;exports.default = _default;
 
 /***/ }),
 
-/***/ 692:
+/***/ 700:
 /*!****************************************************!*\
   !*** D:/wrok/wenlin/uview-ui/libs/util/emitter.js ***!
   \****************************************************/
@@ -22474,7 +22484,7 @@ function _broadcast(componentName, eventName, params) {
 
 /***/ }),
 
-/***/ 714:
+/***/ 722:
 /*!*****************************************************!*\
   !*** D:/wrok/wenlin/uview-ui/libs/util/province.js ***!
   \*****************************************************/
@@ -22486,7 +22496,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 715:
+/***/ 723:
 /*!*************************************************!*\
   !*** D:/wrok/wenlin/uview-ui/libs/util/city.js ***!
   \*************************************************/
@@ -22498,7 +22508,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 716:
+/***/ 724:
 /*!*************************************************!*\
   !*** D:/wrok/wenlin/uview-ui/libs/util/area.js ***!
   \*************************************************/
@@ -22510,7 +22520,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 759:
+/***/ 767:
 /*!**************************************************!*\
   !*** D:/wrok/wenlin/almost-utils/image-tools.js ***!
   \**************************************************/
@@ -22685,7 +22695,7 @@ var base64ToPath = function base64ToPath(base64) {
 
 /***/ }),
 
-/***/ 760:
+/***/ 768:
 /*!***************************************************!*\
   !*** D:/wrok/wenlin/almost-utils/almost-utils.js ***!
   \***************************************************/
@@ -22807,7 +22817,7 @@ var clearCacheFile = function clearCacheFile() {
 
 /***/ }),
 
-/***/ 768:
+/***/ 776:
 /*!***********************************************************************!*\
   !*** D:/wrok/wenlin/uview-ui/components/u-parse/libs/MpHtmlParser.js ***!
   \***********************************************************************/
@@ -22821,9 +22831,9 @@ var clearCacheFile = function clearCacheFile() {
  * @author JinYufeng
  * @listens MIT
  */
-var cfg = __webpack_require__(/*! ./config.js */ 769),
+var cfg = __webpack_require__(/*! ./config.js */ 777),
 blankChar = cfg.blankChar,
-CssHandler = __webpack_require__(/*! ./CssHandler.js */ 770),
+CssHandler = __webpack_require__(/*! ./CssHandler.js */ 778),
 windowWidth = uni.getSystemInfoSync().windowWidth;
 var emoji;
 
@@ -23353,7 +23363,7 @@ module.exports = MpHtmlParser;
 
 /***/ }),
 
-/***/ 769:
+/***/ 777:
 /*!*****************************************************************!*\
   !*** D:/wrok/wenlin/uview-ui/components/u-parse/libs/config.js ***!
   \*****************************************************************/
@@ -23443,14 +23453,14 @@ module.exports = cfg;
 
 /***/ }),
 
-/***/ 770:
+/***/ 778:
 /*!*********************************************************************!*\
   !*** D:/wrok/wenlin/uview-ui/components/u-parse/libs/CssHandler.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var cfg = __webpack_require__(/*! ./config.js */ 769),
+var cfg = __webpack_require__(/*! ./config.js */ 777),
 isLetter = function isLetter(c) {return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';};
 
 function CssHandler(tagStyle) {

@@ -374,10 +374,19 @@
 										from_user_id:pid
 									}
 									that.Api.inviteNeighbor(pdata).then((result)=>{
-				
-											uni.reLaunch({
-											  url: '/pages/index/index'
-											})
+											var url = uni.getStorageSync('paiUrl')
+											if(url){
+												uni.reLaunch({
+													url:url,
+													success() {
+														uni.removeStorageSync('paiUrl')
+													}
+												})
+											}else{
+												uni.reLaunch({
+												  url: '/pages/index/index'
+												})
+											}
 										
 									})
 								}else{
@@ -390,9 +399,19 @@
 										  }
 										})
 									}else{
-										uni.reLaunch({
-										  url: '/pages/index/index'
-										})
+										var url = uni.getStorageSync('paiUrl')
+										if(url){
+											uni.reLaunch({
+												url:url,
+												success() {
+													uni.removeStorageSync('paiUrl')
+												}
+											})
+										}else{
+											uni.reLaunch({
+											  url: '/pages/index/index'
+											})
+										}
 									}
 									
 								}

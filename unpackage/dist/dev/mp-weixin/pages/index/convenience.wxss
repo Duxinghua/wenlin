@@ -267,16 +267,9 @@ page.data-v-1f47e7de {
           border-radius: 4rpx;
 }
 .content .home .tagwrap.data-v-1f47e7de {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
   width: 100%;
   padding: 19rpx 30rpx;
   -webkit-box-sizing: border-box;
@@ -284,6 +277,9 @@ page.data-v-1f47e7de {
   overflow-x: scroll;
 }
 .content .home .tagwrap .tagitem.data-v-1f47e7de {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
   font-size: 26rpx;
   font-weight: 500;
   color: #020433;

@@ -254,6 +254,13 @@ const transferScore = (params) => wxRequest(params, baseURL + 'api/community/use
 //当前用户中心-我的领居列表-达人--1.1 /api/community/ucenter/myNeighbourDare
 const myNeighbourDare = (params) => wxRequest(params, baseURL + 'api/community/ucenter/myNeighbourDare', 'POST')
 
+//拜年列表
+const newyearGreetings = (params) => wxRequest(params, baseURL + 'api/community/newyear_greetings/getList', 'POST')
+// 发布内容  {{online}}/api/community/newyear_greetings/publishGreetings
+const publishGreetings = (params) => wxRequest(params, baseURL + 'api/community/newyear_greetings/publishGreetings', 'POST')
+//点赞功能 {{online}}/api/community/newyear_greetings/greetingsLike
+const greetingsLike = (params) => wxRequest(params, baseURL + 'api/community/newyear_greetings/greetingsLike', 'POST')
+
 
 export default {
 	wechatAuth,
@@ -368,5 +375,8 @@ export default {
 	questionAnswer,
 	nearDynamics,
 	transferScore,
-	myNeighbourDare
+	myNeighbourDare,
+	newyearGreetings,
+	publishGreetings,
+	greetingsLike
 }

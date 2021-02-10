@@ -204,10 +204,19 @@
 										
 									})
 								}else{
-			
+									var url = uni.getStorageSync('paiUrl')
+									if(url){
+										uni.reLaunch({
+											url:url,
+											success() {
+												uni.removeStorageSync('paiUrl')
+											}
+										})
+									}else{
 										uni.reLaunch({
 										  url: '/pages/index/index'
 										})
+									}
 									
 								}
 					

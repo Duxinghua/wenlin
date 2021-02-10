@@ -282,6 +282,21 @@
 			<view class="gtipbtn" @click="setcommunityOpenTodo">立即设置</view>
 		</view>
 		
+<!-- 		<view class="guestpop" v-if="guestPaiOpen">
+			<text class="gtiptext">登录之后加入小区才可以拜年</text>
+			<view class="gtipbtn" @click="guestLoginTodo">立即登录</view>
+		</view> -->
+		
+		<view class="popup" v-if="guestPaiOpen">
+			<view class="mb" @click="guestPaiOpen = !guestPaiOpen"></view>
+			<view class="tipslogin">
+				<view class="logintop">登录之后加入小区才可以拜年</view>
+				<view class="loginbottom">
+					<text class="textitem" @click="guestPaiOpen = !guestPaiOpen">取消</text>
+					<button open-type="getUserInfo" @getuserinfo="getUserInfo" class="textitem textitem-fix">微信登录</button>
+				</view>
+			</view>
+		</view>
 		
 		<!-- 挑错 -->
 		<LeaveWords :messageValue.sync="messageText" :messageShow.sync="messageShow" @textareaBlur="textareaBlur" @closeMessage="closeMessage" @submitTodo="submitTodo" />
@@ -311,20 +326,20 @@
 		</view>
 		<!-- 积分提示 -->
 		<Integraltip ref="integraltip" :types.sync="add_type" :score.sync="score_text" />
-		<u-mask :show="paiAd" @click="paiAd = false">
+		<u-mask :show="paiAd" @click.stop="paiAd = false">
 				<view class="paiwarp">
 					<view class="pairect">
 						<u-image :src="imgURl+'homepai.png'" width="100%" height="100%"></u-image>
 					</view>
-					<view class="paiclose" @click="paiAd = false">
+					<view class="paiclose" @click.stop="paiAd = false">
 						<u-image :src="imgURl+'paiclose.png'" width="100%" height="100%"></u-image>
 					</view>
-					<view class="paienter">
+					<view class="paienter" @click.stop="paiHandler">
 						<u-image :src="imgURl+'btnshare.png'" width="100%" height="100%"></u-image>
 					</view>
 				</view>
 		</u-mask>
-		<view class="xf">
+		<view class="xf" v-if="paiAd == false " @click.stop="paiHandler">
 			<u-image :src="imgURl+'xf.png'" width="100%" height="100%"></u-image>
 		</view>
 	</view>
@@ -479,7 +494,8 @@ export default {
 			darenObj:null,
 			guestdata:'暂无数据，请登录或者加入小区即可查看数据',
 			setcommunityOpen:false,
-			paiAd:false
+			paiAd:true,
+			guestPaiOpen:false
 		};
 	},
 	onLoad() {
@@ -491,6 +507,7 @@ export default {
 		}
 	},
 	mounted() {
+		this.paiAd = uni.getStorageSync('paiAd') == 1 ? false : true
 		if (!uni.getStorageSync('longitude')) {
 			uni.getLocation({
 				success: res => {
@@ -709,6 +726,17 @@ export default {
 	},
 	watch: {},
 	methods: {
+		paiHandler(){
+			if(this.token){
+				uni.navigateTo({
+					url:'/pages/update/newYear'
+				})
+			}else{
+				console.log(111)
+				this.guestPaiOpen = true
+				this.paiAd = false
+			}
+		},
 		danrenHandler(){
 			uni.navigateTo({
 				url:'/pages/push/edit?type=9'
@@ -1808,7 +1836,7 @@ page {
 		position: fixed;
 		right:0;
 		bottom: 300rpx;
-		z-index: 500000;
+		z-index: 50000;
 		width:205rpx;
 		height:123rpx;
 	}

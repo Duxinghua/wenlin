@@ -79,7 +79,7 @@ page.data-v-14a6ab35 {
   position: fixed;
   right: 0;
   bottom: 300rpx;
-  z-index: 500000;
+  z-index: 50000;
   width: 205rpx;
   height: 123rpx;
 }

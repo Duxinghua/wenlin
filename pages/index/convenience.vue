@@ -5,7 +5,7 @@
 			<view class="home-top" v-if="committeeList.length">
 			
 <!-- 			<view class="tagwrap"> -->
-			<scroll-view   scroll-x class="bg-white nav tagwrap" scroll-with-animation :scroll-left="scrollLeft">
+			<view class="tagwrap" >
 				<!-- 分类 cu-item nav-item-->
 				<view   :class="['tagitem', cateIndex == index ? 'active' : '']" v-for="(item, index) in committeeList" :key="index" @click="cateClick(index)" @tap="tabSelect" :data-id="index">
 				<image :src="item.logo"  class="image"></image>
@@ -18,7 +18,7 @@
 						</view>
 					</view>
 				</view>
-			</scroll-view>
+			</view>
 			</view>
 <!-- 			</view> -->
 			<view :class="['postwrap',(type == 3 && postList.length > 0) ? 'usedwrap' : '']">
@@ -381,7 +381,7 @@ export default {
 	onLoad() {},
 	computed:{
 		autoTop(){
-			return this.committeeList.length ? 300 : 130
+			return this.committeeList.length ? 280 : 130
 		}
 	},
 	mounted() {
@@ -1705,15 +1705,13 @@ page {
 			}
 		}
 		.tagwrap {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
+			display: inline-flex;
 			width: 100%;
 			padding:19upx 30upx;
 			box-sizing: border-box;
 			overflow-x: scroll;
 			.tagitem {
-	
+				display: flex;
 				font-size: 26upx;
 				font-weight: 500;
 				color: #020433;
