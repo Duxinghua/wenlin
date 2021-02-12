@@ -12,7 +12,8 @@
 				</view>
 			</view>
 			<view class="body">
-				<view class="list">
+				<view class="list" :style="{'height': height+'px'}">
+				<scroll-view scroll-y="true" :style="{'height': (height-20)+'px'}" @scrolltoupper="upper" @scrolltolower="lower" @scroll="scroll" >
 					<view class="listitem" v-for="(item,index) in yearList" :key="index">
 						<view class="no">
 							NO.{{item.number}}
@@ -23,7 +24,7 @@
 								<u-image :src="item.avatar" width="100%" height="100%" border-radius="50%"></u-image>
 								</view>
 								<view class="username">
-									{{item.user_nickname}}
+									{{item.user_nickname}}·{{item.building}}#
 								</view>
 								<view class="title">
 									给大家拜年了
@@ -48,6 +49,7 @@
 							</view>
 						</view>
 					</view>
+				</scroll-view>
 				</view>
 			</view>
 		</view>
@@ -123,7 +125,9 @@
 				community_id:'',
 				onShareShow:false,
 				isHome:false,
-				ios:false
+				ios:false,
+				height: 700,
+				todo:false
 			}
 		},
 		onLoad(options) {
@@ -132,43 +136,39 @@
 				success: (res) => {
 					that.ios = res.platform == 'ios' ? true : false
 				}
-			})
+		 	})
 			if(options.community_name){
 				this.community_name = options.community_name
+			}else{
+				if(uni.getStorageSync('all_community')){
+					this.community_name = uni.getStorageSync('all_community')[0].title
+				}
 			}
 			if(options.community_id){
 				this.community_id = options.community_id
 				this.getList()
 			}else{
 				this.community_id = uni.getStorageSync('community_id')
-				this.getList()
+				if(this.community_id){
+					this.getList()
+				}
 			}
-			var singPage = uni.getStorageSync('singPage');
-			if(singPage == 0){
-				var auth = new Promise(function(resolve, reject) {
-					var token = uni.getStorageSync('token');
-					var all_community = uni.getStorageSync('all_community');
-					if (!token && !all_community) {
-						uni.setStorageSync('paiUrl','/pages/update/newYear?community_id='+this.community_id)
-						resolve(true);
-					} else {
-						resolve(false);
-					}
-				});
-				auth.then(status => {
-					if(status){
-						uni.navigateTo({
-							url:'/pages/index/index'
-						})
-					}
-				});
-			}
+			
+			this.checkLogin()
+			var that = this
+			uni.getSystemInfo({
+				success: (res) => {
+					that.height = res.screenHeight - 280
+				}
+			})
 		},
 		onShow(){
 	
-			uni.setStorageSync('paiAd',1) 
-			if(uni.getStorageSync('all_community')){
-				this.community_name = uni.getStorageSync('all_community')[0].title
+			uni.setStorageSync('paiAd',1)
+			if(!this.community_name){
+				if(uni.getStorageSync('all_community')){
+					this.community_name = uni.getStorageSync('all_community')[0].title
+				}
 			}
 			this.avatar = uni.getStorageSync('user').avatar
 		},
@@ -176,7 +176,7 @@
 			this.scrollTop = e.scrollTop;
 		},
 		onShareAppMessage(e){
-			var  number =  this.yearList.length
+			var  number =  0
 			var title = ''
 			var user_id = uni.getStorageSync('user_id')
 			if(e.from == 'menu'){
@@ -191,9 +191,11 @@
 				title = '2021拜年接龙:我是第'+number+'个，给'+this.community_name+'邻居拜年啦！'	
 			}
 			var user = uni.getStorageSync('user').user_nickname
-			var community_id = uni.getStorageSync('community_id')
+			var community_id = this.community_id
 			
-			
+			if(number == 0){
+				title = '2021拜年接龙:已有'+this.yearList.length+'位'+this.community_name+'邻居参与，快来参与吧～'
+			}
 			var image = 'https://sq.wenlinapp.com/upload/mini/paishare.png'
 			return {
 				title: title,
@@ -203,9 +205,9 @@
 			}
 		},
 		onShareTimeline(e) {
-			var  number =  this.yearList.length
+			var  number =  0
 			var user_id = uni.getStorageSync('user_id')
-			var community_id = uni.getStorageSync('community_id')
+			var community_id = this.community_id
 			for(var i in this.yearList){
 				if(this.yearList[i].user_id == user_id){
 					number = this.yearList[i].number
@@ -214,6 +216,9 @@
 			}
 			var title = '2021拜年接龙:我是第'+number+'个，给'+this.community_name+'邻居拜年啦！'	
 			var image = 'https://sq.wenlinapp.com/upload/mini/paishare.png'
+			if(number == 0){
+				title = '2021拜年接龙:已有'+this.yearList.length+'位'+this.community_name+'邻居参与，快来参与吧～'
+			}
 			return {
 				title: title,
 				imageUrl: image,
@@ -221,6 +226,46 @@
 			};
 		},
 		methods:{
+			checkLogin(){
+				var singPage = uni.getStorageSync('singPage');
+				var that = this
+				if(singPage == 0){
+					var auth = new Promise(function(resolve, reject) {
+						var token = uni.getStorageSync('token');
+						if (!token) {
+							resolve(true);
+						} else {
+							resolve(false);
+						}
+					});
+					auth.then(status => {
+						if(status){
+							uni.navigateTo({
+								url:'/pages/index/index'
+							})
+						}else{
+							var all_community = uni.getStorageSync('all_community');
+							all_community.map((item)=>{
+								if(item.community_id == that.community_id){
+									that.todo = true
+								}
+							})
+						}
+					});
+				}
+			},
+			upper(){
+				
+			},
+			lower(e){
+				if(this.total_page > this.page){
+					this.page++
+					this.getList(true)
+				}
+			},
+			scroll(){
+				
+			},
 			goPer(item) {
 				uni.navigateTo({
 					url: '/pages/index/personalcard?user_id=' + item.user_id + '&community_id=' + item.community_id
@@ -245,6 +290,7 @@
 				})
 			},
 			shareHandler(){
+		
 				if (uni.getStorageSync('singPage') == 1) {
 					uni.showToast({
 						title: '请前往小程序使用完整服务',
@@ -253,6 +299,10 @@
 					});
 					return;
 				}else{
+					this.checkLogin()
+					if(!this.todo){
+						return this.$u.toast('您不是本小区用户，请返回首页进行拜年接龙')
+					}
 					if(this.ios){
 						return this.$u.toast('目前不支持苹果手机')
 					}
@@ -269,8 +319,12 @@
 					});
 					return;
 				}else{
+					this.checkLogin()
+					if(!this.todo){
+						return this.$u.toast('您不是本小区用户，请返回首页进行拜年接龙')
+					}
 					var data = {
-						community_id:uni.getStorageSync('community_id')
+						community_id:this.community_id
 					}
 					if(!this.paiinput){
 						return this.$u.toast('请输入内容')
@@ -301,8 +355,12 @@
 					});
 					return;
 				}else{
+					this.checkLogin()
+					if(!this.todo){
+						return this.$u.toast('您不是本小区用户，请返回首页进行拜年接龙')
+					}
 					var data = {
-						community_id:uni.getStorageSync('community_id'),
+						community_id:this.community_id,
 						id:item.id
 					}
 					this.Api.greetingsLike(data).then((result)=>{
@@ -324,14 +382,16 @@
 					});
 					return;
 				}else{
-					this.paisend  = true			}
+					this.checkLogin()
+					if(!this.todo){
+						return this.$u.toast('您不是本小区用户，请返回首页进行拜年接龙')
+					}
+					this.paisend  = true			
+				}
 			}
 		},
 		onReachBottom() {
-			if(this.total_page > this.page){
-				this.page++
-				this.getList(true)
-			}
+	
 		}
 	}
 </script>
@@ -359,13 +419,15 @@
 					z-index: 250;
 				}
 				.title{
-					font-size: 31rpx;
+					font-size: 42rpx;
 					font-family: Microsoft YaHei;
 					font-weight: bold;
 					color: #FFF8F3;
 					position: absolute;
 					top:48rpx;
-					left:352rpx;
+					left:50%;
+					white-space:nowrap;
+					transform: translateX(-25%);
 					z-index: 251;
 				}
 			}
@@ -379,7 +441,7 @@
 				display: flex;
 				flex-direction: column;
 				.list{
-					min-height: 900rpx;
+					height: 900rpx;
 					border-radius: 20rpx;		
 					background: linear-gradient(0deg, #CD4533, #A9242E);
 					.listitem{

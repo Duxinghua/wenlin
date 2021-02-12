@@ -870,6 +870,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
     },
     //选择小区 [{"community_id":1,"title":"加州橘郡","committee_id":1}]
     scallCommunity: function scallCommunity(e) {var _this4 = this;
+      var that = this;
       this.community_id = e.community_id;
       this.community_menu = e.title + ' (' + e.total + ') ';
       this.committee_id = e.committee_id;
@@ -886,6 +887,27 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               _this4.current = 1;
               _this4.cateIndex = 0;
               _this4.mescroll.resetUpScroll();
+              uni.login({
+                success: function success(res) {var
+                  errMsg = res.errMsg,code = res.code;
+                  if (errMsg == 'login:ok') {
+                    that.Api.wechatAuth({ code: code }).then(function (result) {
+                      if (result.code == 1) {
+                        if (result.data.all_community) {
+                          result.data.all_community.map(function (item) {
+                            item.title = item.community_name;
+                          });
+                        }
+                        uni.setStorageSync('token', result.data.token);
+                        uni.setStorageSync('user', result.data.user);
+                        uni.setStorageSync('maxJoin', result.data.max_join);
+                        uni.setStorageSync('mobile', result.data.user.mobile);
+                        uni.setStorageSync('all_community', result.data.all_community);
+                      }
+                    });
+                  }
+                } });
+
             } });
 
         }

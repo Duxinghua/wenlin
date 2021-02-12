@@ -970,6 +970,7 @@ export default {
 			this.community_id = e.community_id;
 			this.community_menu = e.title + ' (' + e.total + ') ';
 			this.committee_id = e.committee_id;
+			var that = this
 			this.Api.setDefaultCommunity({ community_id: e.community_id }).then(result => {
 				if (result.code == 1) {
 					this.getUser()
@@ -981,9 +982,32 @@ export default {
 							uni.setStorageSync('community_id', e.community_id);
 							uni.setStorageSync('community_menu', e.title + (e.total ? ' (' + e.total + ') ' : ''));
 							uni.setStorageSync('committee_id', e.committee_id);
+							uni.setStorageSync('community_name',e.title)
 							this.current = 1;
 							this.cateIndex = 0;
 							this.mescroll.resetUpScroll();
+							uni.login({
+								success: res => {
+									let { errMsg, code } = res;
+									if (errMsg == 'login:ok') {
+										that.Api.wechatAuth({ code: code }).then(result => {
+											if (result.code == 1) {
+												if(result.data.all_community){
+													result.data.all_community.map((item)=>{
+														item.title = item.community_name
+													})
+												}
+												uni.setStorageSync('token', result.data.token);
+												uni.setStorageSync('user', result.data.user);
+												uni.setStorageSync('maxJoin', result.data.max_join);
+												uni.setStorageSync('mobile', result.data.user.mobile);
+												uni.setStorageSync('all_community', result.data.all_community);
+												
+											}
+										});
+									}
+								}
+							});
 							
 						}
 					});

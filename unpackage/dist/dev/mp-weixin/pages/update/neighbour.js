@@ -210,6 +210,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 {
   data: function data() {
     return {
@@ -379,6 +380,14 @@ __webpack_require__.r(__webpack_exports__);
       } else if (this.navIndex == 3) {
         this.Api.myNeighbourDare(data).then(function (result) {
           if (result.code == 1) {
+            result.data.list.map(function (item) {
+              item.user = {
+                avatar: item.avatar,
+                user_nickname: item.user_nickname };
+
+              item.skill_desc = item.skill_desc;
+              item.type = 6;
+            });
             if (ismore) {
               _this2.total_page = result.data.total_page;
               _this2.list = _this2.list.concat(result.data.list);

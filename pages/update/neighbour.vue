@@ -17,7 +17,7 @@
 				<view :class="['navitem',navIndex === 2 ? 'acitve' : '']" @click="navClick(2)">
 					名人榜
 				</view>
-				<view :class="['navitem',navIndex === 3 ? 'acitve' : '']" @click="navClick(3)">
+				<view :class="['navitem',navIndex === 3 ? 'acitve' : '']" @click="navClick(3)" v-if="false">
 					达人榜
 				</view>
 			</view>
@@ -59,6 +59,7 @@
 						</text>
 					</view>
 				</view>
+
 			</view>
 		</view>
 		<!-- 分享 -->
@@ -247,6 +248,14 @@
 				}else if(this.navIndex == 3){
 					this.Api.myNeighbourDare(data).then((result)=>{
 						if(result.code == 1){
+							result.data.list.map((item)=>{
+								item.user = {
+									avatar:item.avatar,
+									user_nickname:item.user_nickname
+								}
+								item.skill_desc = item.skill_desc
+								item.type = 6
+							})
 							if(ismore){
 								this.total_page = result.data.total_page
 								this.list = this.list.concat(result.data.list)

@@ -286,7 +286,7 @@
 					{value:0,name:'匿名发布',check:true}
 				],
 				nameLabel:'匿名发布',
-				selectLabel:'本小区可见',
+				selectLabel:'所有人可见',
 				config: {
 					title: '', //title
 					bgcolor: 'white', //背景颜色
