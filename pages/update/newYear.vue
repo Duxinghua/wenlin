@@ -56,7 +56,7 @@
 		<u-popup v-model="paisend" mode="center" width="622rpx" height="695rpx" border-radius="20">
 			<view class="pushcontent">
 				<image :src="imgURl+'paiclose.png'" class="paiclose" @click.stop="paisend = false"></image>	
-				<u-input v-model="paiinput" type="textarea"   height="270"  placeholder="我们的社区，我们的家。新年有什么祝福邻居的话，尽情写出来吧"/>
+				<textarea v-model="paiinput" type="textarea" placeholder-class="placeholderclass" class="textarea"  height="270"  placeholder="我们的社区，我们的家。新年有什么祝福邻居的话，尽情写出来吧"/>
 				<view class="pushbtnwrap">
 					<view class="btns color" @click.stop="paisend = false">
 						取消
@@ -127,7 +127,9 @@
 				isHome:false,
 				ios:false,
 				height: 700,
-				todo:false
+				todo:false,
+				number:0,
+				total:0
 			}
 		},
 		onLoad(options) {
@@ -176,25 +178,24 @@
 			this.scrollTop = e.scrollTop;
 		},
 		onShareAppMessage(e){
-			var  number =  0
 			var title = ''
 			var user_id = uni.getStorageSync('user_id')
 			if(e.from == 'menu'){
-				title = '2021拜年接龙:我是第'+number+'个，给'+this.community_name+'邻居拜年啦！'
+				title = '2021拜年接龙:我是第'+this.number+'个，给'+this.community_name+'邻居拜年啦！'
 			}else if(e.from == 'button'){
-				for(var i in this.yearList){
-					if(this.yearList[i].user_id == user_id){
-						number = this.yearList[i].number
-						break;
-					}
-				}
-				title = '2021拜年接龙:我是第'+number+'个，给'+this.community_name+'邻居拜年啦！'	
+				// for(var i in this.yearList){
+				// 	if(this.yearList[i].user_id == user_id){
+				// 		number = this.yearList[i].number
+				// 		break;
+				// 	}
+				// }
+				title = '2021拜年接龙:我是第'+this.number+'个，给'+this.community_name+'邻居拜年啦！'	
 			}
 			var user = uni.getStorageSync('user').user_nickname
 			var community_id = this.community_id
 			
-			if(number == 0){
-				title = '2021拜年接龙:已有'+this.yearList.length+'位'+this.community_name+'邻居参与，快来参与吧～'
+			if(this.number == 0){
+				title = '2021拜年接龙:已有'+this.total+'位'+this.community_name+'邻居参与，快来参与吧～'
 			}
 			var image = 'https://sq.wenlinapp.com/upload/mini/paishare.png'
 			return {
@@ -205,19 +206,19 @@
 			}
 		},
 		onShareTimeline(e) {
-			var  number =  0
+			// var  number =  0
 			var user_id = uni.getStorageSync('user_id')
 			var community_id = this.community_id
-			for(var i in this.yearList){
-				if(this.yearList[i].user_id == user_id){
-					number = this.yearList[i].number
-					break;
-				}
-			}
-			var title = '2021拜年接龙:我是第'+number+'个，给'+this.community_name+'邻居拜年啦！'	
+			// for(var i in this.yearList){
+			// 	if(this.yearList[i].user_id == user_id){
+			// 		number = this.yearList[i].number
+			// 		break;
+			// 	}
+			// }
+			var title = '2021拜年接龙:我是第'+this.number+'个，给'+this.community_name+'邻居拜年啦！'	
 			var image = 'https://sq.wenlinapp.com/upload/mini/paishare.png'
-			if(number == 0){
-				title = '2021拜年接龙:已有'+this.yearList.length+'位'+this.community_name+'邻居参与，快来参与吧～'
+			if(this.number == 0){
+				title = '2021拜年接龙:已有'+this.total+'位'+this.community_name+'邻居参与，快来参与吧～'
 			}
 			return {
 				title: title,
@@ -279,7 +280,10 @@
 				}
 				this.Api.newyearGreetings(data).then((result)=>{
 					if(result.code == 1){
+						this.community_name = result.data.community.title
+						this.total = result.data.total
 						this.total_page = result.data.total_page
+						this.number = result.data.my_number
 						if(ismore){
 							this.yearList = this.yearList.concat(result.data.list)
 						}else{
@@ -484,17 +488,19 @@
 									overflow: hidden;
 									text-overflow: ellipsis;
 									white-space: nowrap;
+									color:white;
 								}
 								.title{
 									flex:1;
 									overflow: hidden;
 									text-overflow: ellipsis;
 									white-space: nowrap;
+									color:white;
 								}
 								
 							}
 							.paicont{
-								font-size: 30rpx;
+								font-size: 32rpx;
 								font-family: PingFang SC;
 								font-weight: 500;
 								color: #FFF7B2;
@@ -552,12 +558,25 @@
 				margin-left:auto;
 				margin-bottom: 80rpx;
 			}
-			/deep/ .u-input{
+			.textarea{
 				background: white;
 				width:580rpx;
 				border-radius: 20rpx;
 				padding:20rpx !important;
 				box-sizing: border-box;
+				word-wrap:break-word;
+				word-break:break-all;
+				font-size:28rpx;
+				line-height:41rpx;
+			}
+			.placeholderclass{
+				word-wrap:break-word;
+				word-break:break-all;
+				font-size: 28rpx;
+				font-family: PingFang SC;
+				font-weight: 400;
+				color: #000000;
+				line-height: 41rpx;
 			}
 			.avatar{
 				margin-top:40rpx;

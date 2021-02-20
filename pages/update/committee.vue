@@ -240,8 +240,14 @@ export default {
 			replyTextarea:false,
 			textareaautofocus:false,
 			isShowEmj:false,
-			heightPx:'-100px'
-			
+			heightPx:'-100px',
+			//{{online}}/api/community/committee/myCommitteeList 参数  type  0查询全部，111 => "居委会", 112 => "街道", 113 => "业委会"，114=>"物业"
+			typeList:{
+				111:'居委会',
+				112:'街道',
+				113:'业委会',
+				114:'物业'
+			}
 		};
 	},
 	onShareAppMessage: function() {

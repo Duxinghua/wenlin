@@ -689,7 +689,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
 
     },
     getCommitList: function getCommitList() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _this2.Api.myCommitteeList({}));case 2:result = _context.sent;
+                  _this2.Api.myCommitteeList({ type: 0 }));case 2:result = _context.sent;
                 if (result.code == 1) {
                   _this2.committeeList = result.data;
                   console.log(_this2.committeeList, 'committeeList');

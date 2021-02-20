@@ -560,7 +560,7 @@ export default {
 			})
 		},
 		async getCommitList(){
-			var result = await this.Api.myCommitteeList({})
+			var result = await this.Api.myCommitteeList({type:0})
 			if(result.code == 1){
 				this.committeeList = result.data
 				console.log(this.committeeList,'committeeList')

@@ -5,12 +5,32 @@
 	},
 	"setting": {
 		"urlCheck": true,
-		"es6": true
+		"es6": true,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "",
 	"appid": "wx84b740e715665e3c",
 	"projectname": "lindemoc",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -45,7 +65,6 @@
 					"id": -1,
 					"name": "pages/update/newYear",
 					"pathName": "pages/update/newYear",
-					"query": "community_id=13",
 					"scene": null
 				}
 			]

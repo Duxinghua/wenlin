@@ -508,7 +508,7 @@ export default {
 			display: flex;
 			flex-direction: column;
 			width: 100%;
-			margin-top:100upx;
+			margin-top:20upx;
 			/deep/ .nodata {
 				margin-top: 350upx;
 			}

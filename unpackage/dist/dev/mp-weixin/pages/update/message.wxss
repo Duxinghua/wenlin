@@ -126,7 +126,7 @@
   -webkit-flex-direction: column;
           flex-direction: column;
   width: 100%;
-  margin-top: 100rpx;
+  margin-top: 20rpx;
 }
 .integral .content .list.data-v-214954fa .nodata {
   margin-top: 350rpx;

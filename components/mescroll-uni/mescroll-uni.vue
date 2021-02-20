@@ -119,8 +119,11 @@
 				var width = uni.getStorageSync('width')
 				if(width < 345){
 					return this.isFixed ? (this.numTop + this.windowTop)* 2.6 + 'rpx' : 0
-				}else if(width >= 360 && width < 410){
+				}else if(width >= 360 && width < 370){
 					return this.isFixed ? (this.numTop + this.windowTop)* 2.35 + 'rpx' : 0
+				}else if(width >=371 && width < 410){
+					return this.isFixed ? (this.numTop + this.windowTop)* 2.5 + 'rpx' : 0
+					
 				}else if(width >=410 && width < 430){
 					return this.isFixed ? (this.numTop + this.windowTop)* 2.0 + 'rpx' : 0
 					
