@@ -103,9 +103,6 @@
 		},
 		methods:{
 			detailHandler(){
-				// uni.navigateTo({
-				// 	url:'answerdetail?answer_id='+this.answer_id
-				// })
 				if(this.detail.has_answer == 1){
 					return this.$u.toast('您已参加此次答题，请下次再来参与')
 				}else{

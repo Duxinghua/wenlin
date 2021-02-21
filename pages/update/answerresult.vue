@@ -9,7 +9,7 @@
 			<view class="text">
 				达到该成绩用时：{{time}}秒
 			</view>
-			<view class="btn1" @click="todo(1)" v-if="count == 100">
+			<view class="btn1" @click="todo(1)" v-if="count >= 100">
 				赶紧去抽奖 >
 			</view>
 			<view class="btn2" @click="todo(2)">

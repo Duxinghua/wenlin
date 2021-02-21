@@ -392,7 +392,7 @@ var _default =
             item.check = true;
             if (item.key == that.detail.answer) {
               if (that.currentIndex + 1 == that.list.length) {
-
+                that.next = true;
                 return;
               }
               setTimeout(function () {

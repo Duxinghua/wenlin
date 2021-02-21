@@ -26,7 +26,13 @@
 					</view>
 				</view>
 				<view class="posttitle" v-if="detail.title && type == 7">{{ detail.title }}</view>
-
+				<view class="sellwrap" v-if="detail.type == 1 && detail.seek_score > 0">
+					<view class="sellinfo">
+						<text class="t1">悬赏积分</text>
+						|
+						<text class="t2" >{{ detail.seek_score }}</text>
+					</view>
+				</view>
 				<view class="postcontent" v-if="type != 7 && type != 8">
 					<!-- 	<text class="postcate">#{{Tool.resultValue(detail.type)}}</text> -->
 					<text class="postdes">{{ detail.content }}</text>

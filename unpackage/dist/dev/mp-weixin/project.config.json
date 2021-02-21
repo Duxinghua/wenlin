@@ -63,8 +63,72 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/update/newYear",
-					"pathName": "pages/update/newYear",
+					"name": "pages/index/index",
+					"pathName": "pages/update/answer",
+					"query": "scene=answer_id%3D2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/update/answerresult",
+					"pathName": "pages/update/answerresult",
+					"query": "scene=answer_id%3D2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "scene=answer_id%3D2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "scene=answer_id%3D2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "scene=answer_id%3D2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/update/answer",
+					"query": "scene=answer_id%3D2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "scene=answer_id%3D2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/update/answerresult",
+					"pathName": "pages/update/answerresult",
+					"query": "scene=answer_id%3D2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/detail",
+					"pathName": "pages/index/detail",
+					"query": "id=1626&type=1",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "pages/index/detail",
+					"pathName": "pages/index/detail",
+					"query": "id=1619&type=1",
 					"scene": null
 				}
 			]
