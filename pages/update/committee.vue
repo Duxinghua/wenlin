@@ -388,6 +388,7 @@ export default {
 			this.Api.getCommitteeDetail(data).then((result) => {
 				if(result.code == 1){
 					this.detail = result.data
+					this.config.title = this.detail.type_title
 					var res = {
 						text:'固话',
 						num:this.detail.contacts

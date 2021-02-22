@@ -212,6 +212,31 @@ const joinStatus = function(index) {
 	}
 }
 
+const askStatus = function(index) {
+	if(index == 1){
+		return '立即答题'
+	}else if(index == 2){
+		return '已答题'
+	}else if(index ==3){
+		return '答题人数已满'
+	}else if(index == 4){
+		return '答题未开始'
+	}else if(index == 5 ){
+		return '答题已结束'
+	}
+}
+
+const publishType = function(index){
+	//110 => "街道", 111 => "居委会",113 => "业委会"，114=>"物业"
+	var obj = {
+		110:'街道',
+		111:'居委会',
+		113:'业委会',
+		114:'物业'
+	}
+	return obj[index]
+}
+
 const sellValue = function(index){
 	var buyList = [
 		{name:'出售',value:1,check:true},
@@ -274,6 +299,8 @@ module.exports = {
 	resultValue,
 	sellValue,
 	joinStatus,
+	askStatus,
 	listValue,
-	navList
+	navList,
+	publishType
 }

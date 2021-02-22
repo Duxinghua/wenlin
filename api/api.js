@@ -149,7 +149,9 @@ const myNeighbour = (params) => wxRequest(params, baseURL + 'api/community/ucent
 //POST 当前用户个人中心--我的达人信息
 const myDarenInfo = (params) => wxRequest(params, baseURL + 'api/community/ucenter/myDarenInfo', 'POST')
 //POST 当前用户个人中心--我的居委会
-const myCommitteeList = (params) => wxRequest(params, baseURL + 'api/community/ucenter/myCommitteeList', 'POST')
+//api/community/committee/myCommitteeList
+const myCommitteeList = (params) => wxRequest(params, baseURL + 'api/community/committee/myCommitteeList', 'POST')
+//const myCommitteeList = (params) => wxRequest(params, baseURL + 'api/community/ucenter/myCommitteeList', 'POST')
 //POST 当前用户个人中心--更新我的达人信息
 const updateMyDaren = (params) => wxRequest(params, baseURL + 'api/community/ucenter/updateMyDaren', 'POST')
 //POST 当前用户个人中心--我的未读消息统计

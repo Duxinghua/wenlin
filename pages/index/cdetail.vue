@@ -18,8 +18,8 @@
 			
 			{{detail.title}}
 			<text style="color:#FF9C00" v-if="false">【{{detail.status | joinStatus}}】</text>
-			<text style="color:#ED3269" v-if="detail.draw == 1 && detail.draw_id > 0 ">【抽奖】</text>
-				<text style="color:#ED3269" v-if="detail.answer == 1 && detail.answer_id > 0 ">【答题】</text>
+			<text style="color:#ED3269" v-if="detail.modular_type == 2">【抽奖】</text>
+				<text style="color:#ED3269" v-if="detail.modular_type == 1">【答题】</text>
 			</view>
 			<view class="postpush">
 				<text class="t1" @click="goComitee(detail.communitycommittee.committee_id)">{{detail.communitycommittee.title}}</text>
@@ -28,12 +28,12 @@
 				<text class="t4"  @click="fCollect" >{{detail.user_favorite == 0 ? '收藏' : '已收藏'}}</text>
 			</view>
 			<view class="alist">
-				<view class="aitem">
+				<view class="aitem" v-if="detail.activity_time">
 					<image src="../../static/aitem1.png" class="aitem1"></image>
 					<text class="label">活动时间:</text>
 					<text class="name">{{detail.activity_time}}</text>
 				</view>
-				<view class="aitem">
+				<view class="aitem" v-if="detail.address">
 					<image src="../../static/aitem2.png" class="aitem1"></image>
 					<text class="label">活动地址:</text>
 					<text class="name">{{detail.address }}</text>
@@ -43,12 +43,12 @@
 					<text class="label">活动人数:</text>
 					<text class="name">{{detail.max_joins == 0 ?  '无限制' : detail.max_joins+'人' }}</text>
 				</view>
-				<view class="aitem">
+				<view class="aitem" v-if="detail.join_time">
 					<image src="../../static/aitem1.png" class="aitem1"></image>
 					<text class="label">报名时间:</text>
 					<text class="name">{{detail.join_time}}</text>
 				</view>
-				<view class="aitem" >
+				<view class="aitem" v-if="detail.contacts.length">
 					<image src="../../static/aitem4.png" class="aitem1"></image>
 					<text class="label">联系人:</text>
 					<view class="name namec">
@@ -72,7 +72,8 @@
 			</view>
 		
 			<view class="detailnav">
-				<text :class="['navitem', navIndex == 3 ? 'active': '']" @click="navClick(3)">报名{{detail.joins? detail.joins : ''}}</text>
+				<text :class="['navitem', navIndex == 3 ? 'active': '']" @click="navClick(3)" v-if="detail.activity_type == 1">报名{{detail.joins? detail.joins : ''}}</text>
+				<text :class="['navitem', navIndex == 4 ? 'active': '']" @click="navClick(4)" v-if="detail.activity_type == 2">已答题{{detail.joins? detail.joins : ''}}</text>
 				<text :class="['navitem', navIndex == 1 ? 'active': '']" @click="navClick(1)">评论{{detail.comment_count ? detail.comment_count: ''}}</text>
 				<text :class="['navitem', navIndex == 2 ? 'active': '']" @click="navClick(2)">帮推{{detail.help_score ? detail.help_score : ''}}</text>
 				
@@ -130,8 +131,11 @@
 			</view>
 		</view>
 		<!-- 报名 -->
-		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="signupHandler">
+		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="signupHandler" v-if="detail.activity_type == 1">
 			{{detail.status | joinStatus}}
+		</view>
+		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="askHandler" v-if="detail.activity_type == 2">
+			立即答题
 		</view>
 		<!-- 回复框 -->
 		<view class="reply">
@@ -756,6 +760,33 @@
 					})
 				}
 			},
+			//答题处理
+			askHandler(){
+				if (uni.getStorageSync('singPage') == 1) {
+					uni.showToast({
+						title: '请前往小程序使用完整服务',
+						icon: 'none',
+						duration: 2000
+					});
+					return;
+				}else{
+					var token = uni.getStorageSync('token')
+					var all_community = uni.getStorageSync('all_community')
+					if(!token && all_community.length == 0 || token && all_community.length == 0){
+						this.$refs.confrims.text = '精彩活动，登录问邻即可报名'
+						this.$refs.confrims.id = -1
+						this.$refs.confrims.guestShow = true
+						return
+					}
+				}
+				
+
+					var answer_id =  this.detail.modular_id
+					uni.navigateTo({
+						url:'../update/answer?answer_id='+ answer_id
+					})
+				
+			},
 			//限制处理
 			limitClick(e){
 				this.limit = !this.limit
@@ -1124,6 +1155,9 @@
 							return
 						}
 						this.detail = result.data
+						if(this.detail.admin_id){
+							this.config.title = this.publishType(this.detail.committee.type) + '活动'
+						}
 						this.detail.content = this.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"')
 						this.detail.images = []
 						if(this.detail.image.length){
@@ -1132,9 +1166,9 @@
 							this.detail.images.push('https://sq.wenlinapp.com/appimg/act_post.png')
 						}
 						if(result.data.join_start_time == result.data.join_end_time){
-							this.detail.join_time = Tool.dateFormat('YY-mm-dd',result.data.join_end_time)
+							this.detail.join_time = result.data.join_end_time ? Tool.dateFormat('YY-mm-dd',result.data.join_end_time) : 0
 						}else{
-							this.detail.join_time = Tool.dateFormat('YY-mm-dd',new Date(result.data.join_start_time * 1000)) + ' 至 '+Tool.dateFormat('YY-mm-dd',new Date(result.data.join_end_time * 1000))
+							this.detail.join_time = result.data.join_start_time ? Tool.dateFormat('YY-mm-dd',new Date(result.data.join_start_time * 1000)) + ' 至 '+Tool.dateFormat('YY-mm-dd',new Date(result.data.join_end_time * 1000)) : 0
 						}
 						this.loading = false
 						this.$forceUpdate()

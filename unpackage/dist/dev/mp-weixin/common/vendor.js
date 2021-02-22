@@ -2094,7 +2094,9 @@ var myNeighbour = function myNeighbour(params) {return (0, _request.wxRequest)(p
 //POST 当前用户个人中心--我的达人信息
 var myDarenInfo = function myDarenInfo(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/ucenter/myDarenInfo', 'POST');};
 //POST 当前用户个人中心--我的居委会
-var myCommitteeList = function myCommitteeList(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/ucenter/myCommitteeList', 'POST');};
+//api/community/committee/myCommitteeList
+var myCommitteeList = function myCommitteeList(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/committee/myCommitteeList', 'POST');};
+//const myCommitteeList = (params) => wxRequest(params, baseURL + 'api/community/ucenter/myCommitteeList', 'POST')
 //POST 当前用户个人中心--更新我的达人信息
 var updateMyDaren = function updateMyDaren(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/ucenter/updateMyDaren', 'POST');};
 //POST 当前用户个人中心--我的未读消息统计
@@ -2758,6 +2760,31 @@ var joinStatus = function joinStatus(index) {
   }
 };
 
+var askStatus = function askStatus(index) {
+  if (index == 1) {
+    return '立即答题';
+  } else if (index == 2) {
+    return '已答题';
+  } else if (index == 3) {
+    return '答题人数已满';
+  } else if (index == 4) {
+    return '答题未开始';
+  } else if (index == 5) {
+    return '答题已结束';
+  }
+};
+
+var publishType = function publishType(index) {
+  //110 => "街道", 111 => "居委会",113 => "业委会"，114=>"物业"
+  var obj = {
+    110: '街道',
+    111: '居委会',
+    113: '业委会',
+    114: '物业' };
+
+  return obj[index];
+};
+
 var sellValue = function sellValue(index) {
   var buyList = [
   { name: '出售', value: 1, check: true },
@@ -2820,8 +2847,10 @@ module.exports = {
   resultValue: resultValue,
   sellValue: sellValue,
   joinStatus: joinStatus,
+  askStatus: askStatus,
   listValue: listValue,
-  navList: navList };
+  navList: navList,
+  publishType: publishType };
 
 /***/ }),
 

@@ -549,6 +549,7 @@ var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | com
       this.Api.getCommitteeDetail(data).then(function (result) {
         if (result.code == 1) {
           _this2.detail = result.data;
+          _this2.config.title = _this2.detail.type_title;
           var res = {
             text: '固话',
             num: _this2.detail.contacts };

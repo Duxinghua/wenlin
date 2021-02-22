@@ -59,6 +59,12 @@ Vue.prototype.formatTimeMd = function (n) {
 	
 }
 
+//发布者publishType
+Vue.prototype.publishType = function(type) {
+	return Tool.publishType(type)
+}
+
+
 Vue.prototype.$getMyscore = (cb) => {
 	Api.ucenterMyScore({}).then((result) => {
 		if(result.code == 1){
@@ -104,6 +110,13 @@ Vue.filter('sellType', function(type) {
 Vue.filter('joinStatus', function(type) {
 	return Tool.joinStatus(type);
 });
+
+//答题状态
+Vue.filter('askStatus', function(type) {
+	return Tool.askStatus(type);
+});
+
+
 
 
 

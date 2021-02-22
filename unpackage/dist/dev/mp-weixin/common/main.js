@@ -68,6 +68,12 @@ _vue.default.prototype.formatTimeMd = function (n) {
 
 };
 
+//发布者publishType
+_vue.default.prototype.publishType = function (type) {
+  return _tool.default.publishType(type);
+};
+
+
 _vue.default.prototype.$getMyscore = function (cb) {
   _api.default.ucenterMyScore({}).then(function (result) {
     if (result.code == 1) {
@@ -113,6 +119,13 @@ _vue.default.filter('sellType', function (type) {
 _vue.default.filter('joinStatus', function (type) {
   return _tool.default.joinStatus(type);
 });
+
+//答题状态
+_vue.default.filter('askStatus', function (type) {
+  return _tool.default.askStatus(type);
+});
+
+
 
 
 

@@ -134,8 +134,10 @@ var render = function() {
     }
   })
 
-  var f4 = _vm._f("joinStatus")(_vm.detail.status)
-
+  var f4 =
+    _vm.detail.activity_type == 1
+      ? _vm._f("joinStatus")(_vm.detail.status)
+      : null
   _vm.$mp.data = Object.assign(
     {},
     {
@@ -184,6 +186,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
 
 
 
@@ -941,6 +947,33 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
       }
     },
+    //答题处理
+    askHandler: function askHandler() {
+      if (uni.getStorageSync('singPage') == 1) {
+        uni.showToast({
+          title: '请前往小程序使用完整服务',
+          icon: 'none',
+          duration: 2000 });
+
+        return;
+      } else {
+        var token = uni.getStorageSync('token');
+        var all_community = uni.getStorageSync('all_community');
+        if (!token && all_community.length == 0 || token && all_community.length == 0) {
+          this.$refs.confrims.text = '精彩活动，登录问邻即可报名';
+          this.$refs.confrims.id = -1;
+          this.$refs.confrims.guestShow = true;
+          return;
+        }
+      }
+
+
+      var answer_id = this.detail.modular_id;
+      uni.navigateTo({
+        url: '../update/answer?answer_id=' + answer_id });
+
+
+    },
     //限制处理
     limitClick: function limitClick(e) {
       this.limit = !this.limit;
@@ -1309,6 +1342,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             return;
           }
           _this7.detail = result.data;
+          if (_this7.detail.admin_id) {
+            _this7.config.title = _this7.publishType(_this7.detail.committee.type) + '活动';
+          }
           _this7.detail.content = _this7.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
           _this7.detail.images = [];
           if (_this7.detail.image.length) {
@@ -1317,9 +1353,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             _this7.detail.images.push('https://sq.wenlinapp.com/appimg/act_post.png');
           }
           if (result.data.join_start_time == result.data.join_end_time) {
-            _this7.detail.join_time = _tool.default.dateFormat('YY-mm-dd', result.data.join_end_time);
+            _this7.detail.join_time = result.data.join_end_time ? _tool.default.dateFormat('YY-mm-dd', result.data.join_end_time) : 0;
           } else {
-            _this7.detail.join_time = _tool.default.dateFormat('YY-mm-dd', new Date(result.data.join_start_time * 1000)) + ' 至 ' + _tool.default.dateFormat('YY-mm-dd', new Date(result.data.join_end_time * 1000));
+            _this7.detail.join_time = result.data.join_start_time ? _tool.default.dateFormat('YY-mm-dd', new Date(result.data.join_start_time * 1000)) + ' 至 ' + _tool.default.dateFormat('YY-mm-dd', new Date(result.data.join_end_time * 1000)) : 0;
           }
           _this7.loading = false;
           _this7.$forceUpdate();
