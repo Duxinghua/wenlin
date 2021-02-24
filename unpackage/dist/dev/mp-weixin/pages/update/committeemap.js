@@ -215,6 +215,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       this.covers.push(res);
       this.$forceUpdate();
     }
+    if (this.$mp.query.title) {
+      this.config.title = this.$mp.query.title;
+    }
 
   },
   methods: {} };exports.default = _default;

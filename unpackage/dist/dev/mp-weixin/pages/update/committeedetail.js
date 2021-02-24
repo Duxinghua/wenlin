@@ -236,7 +236,7 @@ __webpack_require__.r(__webpack_exports__);
       } else if (obj.id == 2) {
 
         uni.navigateTo({
-          url: '/pages/update/committeeworker?id=' + this.committee_id });
+          url: '/pages/update/committeeworker?id=' + this.committee_id + '&title=' + this.detail.type_title });
 
       } else if (obj.id == 3) {
 
@@ -254,7 +254,7 @@ __webpack_require__.r(__webpack_exports__);
           images: images };
 
         uni.navigateTo({
-          url: '/pages/update/committeemap?data=' + JSON.stringify(data) });
+          url: '/pages/update/committeemap?data=' + JSON.stringify(data) + '&title=' + this.detail.type_title });
 
       } else if (obj.id == 5) {
         uni.navigateTo({
@@ -271,6 +271,7 @@ __webpack_require__.r(__webpack_exports__);
             text: '固话',
             num: _this.detail.contacts };
 
+          _this.config.title = _this.detail.type_title + '详情';
           _this.mobileList.push(res);
           _this.$forceUpdate();
 

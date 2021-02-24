@@ -51,6 +51,9 @@ export default {
 		if(options.type){
 			this.type = options.type
 		}
+		if(options.title){
+			this.config.title = options.title+'列表'
+		}
 		this.getList();
 	},
 	mounted() {

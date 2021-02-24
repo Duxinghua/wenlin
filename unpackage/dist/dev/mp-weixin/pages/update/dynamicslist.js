@@ -205,6 +205,9 @@ __webpack_require__.r(__webpack_exports__);
     if (options.type) {
       this.type = options.type;
     }
+    if (options.title) {
+      this.config.title = options.title + '列表';
+    }
     this.getList();
   },
   mounted: function mounted() {

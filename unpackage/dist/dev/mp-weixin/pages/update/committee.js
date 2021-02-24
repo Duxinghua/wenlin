@@ -629,19 +629,19 @@ var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | com
 
       } else if (obj.id == 2) {
         uni.navigateTo({
-          url: '/pages/update/dynamicslist?type=5' });
+          url: '/pages/update/dynamicslist?type=5&title=' + this.detail.type_title + '活动' });
 
         // uni.navigateTo({
         // 	url: '/pages/index/committeeworker?id='+this.committee_id
         // })
       } else if (obj.id == 3) {
         uni.navigateTo({
-          url: '/pages/update/dynamicslist?type=7' });
+          url: '/pages/update/dynamicslist?type=7&title=' + this.detail.type_title + '便民' });
 
         // this.wxsj = true
       } else if (obj.id == 4) {
         uni.navigateTo({
-          url: '/pages/update/dynamicslist?type=15' });
+          url: '/pages/update/dynamicslist?type=15&title=' + this.detail.type_title + '招聘' });
 
         // var {address,longitude,latitude,contacts,business_time,title,images,...data} = this.detail
         // var data = {
@@ -658,7 +658,7 @@ var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | com
         // })
       } else if (obj.id == 5) {
         uni.navigateTo({
-          url: '/pages/update/dynamicslist?type=8' });
+          url: '/pages/update/dynamicslist?type=8&title=' + this.detail.type_title + '动态' });
 
       }
     },

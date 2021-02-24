@@ -1,7 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "mescroll-uni": "/components/mescroll-uni/mescroll-uni",
     "post-item": "/components/postItem/postitem",
     "used-item": "/components/usedItem/useditem",
     "nodata": "/components/nodata/nodata",

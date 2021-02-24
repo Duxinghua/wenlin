@@ -104,7 +104,7 @@ export default {
 			}else if(obj.id == 2){
 
 				uni.navigateTo({
-					url: '/pages/update/committeeworker?id='+this.committee_id
+					url: '/pages/update/committeeworker?id='+this.committee_id+'&title='+this.detail.type_title
 				})
 			}else if(obj.id == 3){
 
@@ -122,7 +122,7 @@ export default {
 					images
 				}
 				uni.navigateTo({
-					url: '/pages/update/committeemap?data='+JSON.stringify(data)
+					url: '/pages/update/committeemap?data='+JSON.stringify(data)+'&title='+this.detail.type_title
 				})
 			}else if(obj.id == 5){
 				uni.navigateTo({
@@ -139,6 +139,7 @@ export default {
 						text:'固话',
 						num:this.detail.contacts
 					}
+					this.config.title = this.detail.type_title+'详情'
 					this.mobileList.push(res)
 					this.$forceUpdate()
 

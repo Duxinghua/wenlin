@@ -22,7 +22,8 @@
 				<text style="color:#ED3269" v-if="detail.modular_type == 1">【答题】</text>
 			</view>
 			<view class="postpush">
-				<text class="t1" @click="goComitee(detail.communitycommittee.committee_id)">{{detail.communitycommittee.title}}</text>
+<!-- 				<text class="t1" @click="goComitee(detail.communitycommittee.committee_id)">{{detail.communitycommittee.title}}</text> -->
+				<text class="t1" @click="goComitee(detail.committee.committee_id)">{{detail.committee.title}}</text>
 				<text class="t2">{{detail.create_time | formatTime}}</text>
 				<image class="t3"  @click="fCollect" :src="detail.user_favorite == 0 ? require('../../static/collect.png') : require('../../static/collected.png')"></image>
 				<text class="t4"  @click="fCollect" >{{detail.user_favorite == 0 ? '收藏' : '已收藏'}}</text>
@@ -367,6 +368,7 @@
 			}
 		},
 		mounted(){
+			console.log(this.$mp.query)
 			var singPage = uni.getStorageSync('singPage')
 			var that = this;
 			if(singPage == 0){

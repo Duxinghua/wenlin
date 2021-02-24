@@ -133,8 +133,9 @@
 			transform: translateX(-50%);
 			top:250rpx;
 			max-width: 680rpx;
-			white-space: nowrap;
+			width: fit-content;
 			padding:10rpx 50rpx;
+			text-align: center;
 			border-radius: 35rpx;
 			color:white;
 			font-weight: bold;

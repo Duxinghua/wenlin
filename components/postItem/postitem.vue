@@ -202,8 +202,10 @@
 			</view>
 		</view>
 		<view class="darenitem" v-if="pitem.type == 6">
-
-			<image :src="pitem.user.avatar" class="avatar"></image>
+			<view class="avatarwrap" >
+				<image :src="pitem.user.avatar"  class="avatar"></image>
+				<image src="../../static/da.png" class="da" v-if="pitem.user.daren == 1"></image>
+			</view>
 			<view class="dareninfo">
 				<view class="t1">
 					{{ pitem.user.user_nickname }}
@@ -852,12 +854,30 @@ export default {
 		align-items: center;
 		padding:30rpx 0;
 		border-bottom: 2rpx solid #F0F0F0;
-		.avatar{
+		.avatarwrap{
 			width:90rpx;
 			height:90rpx;
 			margin-right:26rpx;
-			border-radius: 50%;
+			position: relative;
+			.avatar{
+				position: absolute;
+				left:0;
+				top:0;
+				width:100%;
+				height: 100%;
+				border-radius: 50%;
+				
+			}
+			.da{
+				width:32rpx;
+				height:32rpx;
+				border-radius: 50%;
+				position: absolute;
+				right:0;
+				bottom: 0;
+			}
 		}
+	
 		.dareninfo{
 			display: flex;
 			flex-direction: column;

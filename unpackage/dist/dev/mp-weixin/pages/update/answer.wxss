@@ -48,8 +48,10 @@
           transform: translateX(-50%);
   top: 250rpx;
   max-width: 680rpx;
-  white-space: nowrap;
+  width: -webkit-fit-content;
+  width: fit-content;
   padding: 10rpx 50rpx;
+  text-align: center;
   -webkit-border-radius: 35rpx;
           border-radius: 35rpx;
   color: white;

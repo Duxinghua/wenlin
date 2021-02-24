@@ -62,6 +62,9 @@ export default {
 			}
 			this.getList(data)
 		}
+		if(this.$mp.query.title){
+			this.config.title = this.$mp.query.title
+		}
 	},
 	computed:{
 		headerHeight(){

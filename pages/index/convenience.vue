@@ -13,20 +13,20 @@
 						<view class="t1">
 							{{item.title}}
 						</view>
-						<view class="t2">
+<!-- 						<view class="t2">
 							{{item.address}}
-						</view>
+						</view> -->
 					</view>
 				</view>
 			</view>
 			</view>
 <!-- 			</view> -->
 			<view :class="['postwrap',(type == 3 && postList.length > 0) ? 'usedwrap' : '']">
-			 <mescroll-uni  :fixed="true"  :top="autoTop" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" >
-	
+			<!-- <mescroll-uni  :fixed="true"  :top="autoTop" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" > -->
+				<scroll-view scroll-y="true" :style="{height: height+'px'}" @scrolltoupper="upper" @scrolltolower="lower" >
 					<PostItem :pm="true" :allFlag="allFlag" :type="type" v-for="(item,index) in postList" :pitem="item" :key="index" @moreClick="moreClick" @helpPush="helpPush" @shareClick="shareClick" @toLogin="goDetails"></PostItem>
-				
-			</mescroll-uni>
+				</scroll-view>
+<!-- 			</mescroll-uni> -->
 				</view>
 			<!-- 闲置 -->
 		<!-- <view class="usedwrap"><UsedItem v-for="(item, index) in 4" :key="index" :usedIndex="index" /></view> -->
@@ -320,6 +320,7 @@ export default {
 			pickerId:false,//选择业主
 			setcommunityType:1,
 			setcommunityValue:'业主',
+			totalPage:0,
 			page:1,
 			page_size:10,
 			type:7,
@@ -374,11 +375,14 @@ export default {
 			add_type:'',
 			score_text:'',
 			committeeList:[],
-			setcommunityOpen:false
+			setcommunityOpen:false,
+			height:700
 	
 		};
 	},
-	onLoad() {},
+	onLoad() {
+
+	},
 	computed:{
 		autoTop(){
 			return this.committeeList.length ? 280 : 130
@@ -390,6 +394,8 @@ export default {
 				
 			})
 		})
+		var system = uni.getSystemInfoSync()
+		this.height = system.windowHeight - 188
 		if(uni.getStorageSync('token')){
 			this.$getCount((result) => {
 				var count = 0
@@ -481,7 +487,9 @@ export default {
 						if(result.code == 1){
 							this.getCommitList()
 							setTimeout(()=>{
-													this.mescroll.resetUpScroll()
+													this.page = 1
+													this.postList = []
+													this.upCallback()
 							},300)
 		
 							// this.setcommunity = true;
@@ -495,7 +503,9 @@ export default {
 						}else{
 							setTimeout(()=>{
 						this.getCommitList()
-								this.mescroll.resetUpScroll()
+								this.page = 1
+								this.postList = []
+								this.upCallback()
 							},3000)
 					
 						}
@@ -539,7 +549,9 @@ export default {
 				p.then((r)=>{
 					this.getCommitList()
 					setTimeout(()=>{
-									this.mescroll.resetUpScroll()
+									this.page = 1
+									this.postList = []
+									this.upCallback()
 					},300)
 		
 				})
@@ -554,6 +566,16 @@ export default {
 		
 	},
 	methods: {
+		upper(e){
+			
+		},
+		lower(e){
+			console.log(this.totalPage)
+			if(this.totalPage >= this.page){
+				this.page++
+				this.upCallback(true)
+			}
+		},
 		setcommunityOpenTodo(){
 			uni.navigateTo({
 				url:'../update/selectcommunity'
@@ -588,7 +610,9 @@ export default {
 				}
 				result = true
 				// this.current = 3
-				this.mescroll.resetUpScroll()
+				this.page = 1
+				this.postList = []
+				this.upCallback()
 				cb(result)
 				return
 			}
@@ -600,7 +624,9 @@ export default {
 					}
 					result = true
 					// this.current = 3
-					this.mescroll.resetUpScroll()
+					this.page = 1
+					this.postList = []
+					this.upCallback()
 					cb(result)
 					return
 			}
@@ -618,11 +644,11 @@ export default {
 				url:'/pages/update/secret'
 			})
 		},
-		upCallback(page) {
+		upCallback(ismore) {
 			//联网加载数据
 			var params = {
-				page:page.num,
-				page_size:page.size
+				page:this.page,
+				page_size:this.page_size
 				// community_id:uni.getStorageSync('community_id'),
 				// committee_id:uni.getStorageSync('committee_id'),
 				// type:this.type,
@@ -632,32 +658,32 @@ export default {
 			if(this.current == 1){
 				this.Api.getCommunityWiki(params).then((result)=>{
 					if(result.code == 1) {
-						var totalPage  = result.data.total_pages
-						var curPageLen = result.data.list.length; 
-						if(page.num == 1) this.postList = []
+						this.totalPage  = result.data.total_page
 						result.data.list.map((item)=>{
 							item.type = 7
 						})
-						this.postList = this.postList.concat(result.data.list);
-						this.mescroll.endByPage(curPageLen, totalPage);
+						if(ismore){
+							this.postList = this.postList.concat(result.data.list);
+						}else{
+							this.postList = result.data.list;
+						}
+				
 						if(this.postList.length){
 							this.flexNoData = true
 						}else{
 							this.flexNoData = false
 						}
 					}
-				}).catch(()=>{
-					//联网失败的回调,隐藏下拉刷新的状态
-					this.mescroll.endErr();
 				})
 			}else if(this.current == 2){
 				this.Api.nearByCommunityId(params).then((result)=>{
 					if(result.code == 1) {
-						var totalPage  = result.data.total_pages
-						var curPageLen = result.data.list.length; 
-						if(page.num == 1) this.postList = []
-						this.postList = this.postList.concat(result.data.list);
-						this.mescroll.endByPage(curPageLen, totalPage);
+						this.totalPage  = result.data.total_page
+						if(ismore){
+							this.postList = this.postList.concat(result.data.list);
+						}else{
+							this.postList = result.data.list;
+						}
 						if(this.postList.length){
 							this.flexNoData = true
 						}else{
@@ -665,27 +691,22 @@ export default {
 						}
 	
 					}
-				}).catch(()=>{
-					//联网失败的回调,隐藏下拉刷新的状态
-					this.mescroll.endErr();
 				})
 			}else if(this.current == 3){
 				this.Api.helpDynamicsByCommunityId(params).then((result)=>{
 					if(result.code == 1) {
-						var totalPage  = result.data.total_pages
-						var curPageLen = result.data.list.length; 
-						if(page.num == 1) this.postList = []
-						this.postList = this.postList.concat(result.data.list);
-						this.mescroll.endByPage(curPageLen, totalPage);
+						this.totalPage  = result.data.total_page
+						if(ismore){
+							this.postList = this.postList.concat(result.data.list);
+						}else{
+							this.postList = result.data.list;
+						}
 						if(this.postList.length){
 							this.flexNoData = true
 						}else{
 							this.flexNoData = false
 						}
 					}
-				}).catch(()=>{
-					//联网失败的回调,隐藏下拉刷新的状态
-					this.mescroll.endErr();
 				})
 			}
 		},
@@ -749,7 +770,9 @@ export default {
 							uni.setStorageSync('committee_id',e.committee_id);
 							this.current = 1
 							this.cateIndex = 0
-							this.mescroll.resetUpScroll()
+							this.page = 1
+							this.postList = []
+							this.upCallback()
 						}
 					})
 				}
@@ -770,7 +793,9 @@ export default {
 			this.loginFalse = false;
 			//this.current = 3;
 			this.guestShowOpen = true
-			this.mescroll.resetUpScroll()
+			this.page = 1
+			this.postList = []
+			this.upCallback()
 		},
 		// 手机号授权处理
 		getPhoneNumber(e) {
@@ -802,7 +827,9 @@ export default {
 				this.goLogin((data) => {
 					if(!data){
 						this.tagList = this.tagList2
-						this.mescroll.resetUpScroll()
+						this.page = 1
+						this.postList = []
+						this.upCallback()
 					}else{
 					   // this.current = 3;
 						
@@ -811,12 +838,16 @@ export default {
 
 			}else if(arg == 3){
 				this.tagList = this.tagList1
-				this.mescroll.resetUpScroll()
+				this.page = 1
+				this.postList = []
+				this.upCallback()
 			}else if(arg == 1){
 				this.goLogin((data) => {
 					if(!data){
 						this.tagList = this.tagList1
-						this.mescroll.resetUpScroll()
+						this.page = 1
+						this.postList = []
+						this.upCallback()
 					}else{
 					  //  this.current = 3;
 		
@@ -931,7 +962,9 @@ export default {
 									this.guestShow = false
 									this.userinforeg = true;
 									if(this.all_community.length){
-										this.mescroll.resetUpScroll()
+										this.page = 1
+										this.postList = []
+										this.upCallback()
 									}else{
 										//如果开通过小区，待审核 
 										// this.current = 3
@@ -1008,7 +1041,9 @@ export default {
 							uni.setStorageSync('community_menu',this.communityTitle);
 							this.community_menu = this.communityTitle
 							this.current = 1
-							this.mescroll.resetUpScroll()
+							this.page = 1
+							this.postList = []
+							this.upCallback()
 							this.setcommunity = false
 							this.guestShowOpen = false
 							//绑定上下级
@@ -1200,7 +1235,9 @@ export default {
 							duration: 2000
 						});
 						this.findFaultValue = false
-						this.mescroll.resetUpScroll()
+						this.page = 1
+						this.postList = []
+						this.upCallback()
 					}else{
 						uni.showToast({
 							title: result.msg,
@@ -1216,7 +1253,9 @@ export default {
 							duration: 2000
 						});
 						this.findFaultValue = false
-						this.mescroll.resetUpScroll()
+						this.page = 1
+						this.postList = []
+						this.upCallback()
 					}else{
 						uni.showToast({
 							title: result.msg,
@@ -1313,7 +1352,9 @@ export default {
 								this.score_text = ''
 								this.$refs.Help.inputValue = 0
 								this.$refs.integraltip.close()
-								this.mescroll.resetUpScroll()
+								this.page = 1
+								this.postList = []
+								this.upCallback()
 							},2000)
 							
 						}
@@ -1715,12 +1756,12 @@ page {
 				font-size: 26upx;
 				font-weight: 500;
 				color: #020433;
-				width:500upx;
+				width:395upx;
 				// padding-left: 20upx;
 				// padding-right: 20upx;
 				padding: 19upx 0;
 				height: 150upx;
-				margin-right: 70upx;
+				margin-right: 20upx;
 				background: transparent;
 				border-radius: 10upx;
 				.image{
@@ -1732,20 +1773,23 @@ page {
 				}
 				.list{
 					float:left;
-					width:320rpx;
+					width:280rpx;
+					display:flex;
+					align-items: center;
 					.t1{
 						font-size: 28rpx;
 						width:100%;
 						float: left;
-						line-height: 60rpx;
 						font-family: PingFang SC;
 						font-weight: bold;
 						color: #020433;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						white-space: nowrap;
-						-webkit-line-clamp: 1;
-						-webkit-box-orient: vertical;
+						 text-overflow: -o-ellipsis-lastline;
+						  overflow: hidden;
+						  text-overflow: ellipsis;
+						  display: -webkit-box;
+						  -webkit-line-clamp: 2;
+						  line-clamp: 2;
+						  -webkit-box-orient: vertical;
 					}
 					.t2{
 						width:320rpx;
@@ -1773,6 +1817,7 @@ page {
 		.postwrap {
 			display: flex;
 			flex-direction: column;
+			margin-top:20rpx;
 		}
 		.usedwrap {
 			display: flex;

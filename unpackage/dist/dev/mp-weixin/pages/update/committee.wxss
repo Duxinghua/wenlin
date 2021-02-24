@@ -65,10 +65,12 @@ page.data-v-17e096b0 {
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  margin-bottom: 16rpx;
   position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 140rpx;
   left: 0rpx;
-  bottom: 48rpx;
+  bottom: 0rpx;
 }
 .personalcard .pcontent .userheader .avatarwrap.data-v-17e096b0 {
   width: 96rpx;

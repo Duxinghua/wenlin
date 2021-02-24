@@ -198,6 +198,9 @@ __webpack_require__.r(__webpack_exports__);
 
       this.getList(data);
     }
+    if (this.$mp.query.title) {
+      this.config.title = this.$mp.query.title;
+    }
   },
   computed: {
     headerHeight: function headerHeight() {

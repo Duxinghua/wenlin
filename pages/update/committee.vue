@@ -101,7 +101,7 @@
 						maxlength="500"
 						type="text"
 						:disabled="true"
-						:placeholder="parent_text"
+						:placeholder="'给'+detail.type_title+'留言'"
 					/>
 				</view>
 		
@@ -119,7 +119,7 @@
 						maxlength="500"
 						type="text"
 						:fixed="true"
-						:placeholder="parent_text"
+						:placeholder="'给'+detail.type_title+'留言'"
 						:focus="!replyFlag"
 						:show-confirm-bar="showconfirmbar"
 						v-model="inputValue"
@@ -468,19 +468,19 @@ export default {
 				})
 			}else if(obj.id == 2){
 					uni.navigateTo({
-						url:'/pages/update/dynamicslist?type=5'
+						url:'/pages/update/dynamicslist?type=5&title='+this.detail.type_title+'活动'
 					})
 				// uni.navigateTo({
 				// 	url: '/pages/index/committeeworker?id='+this.committee_id
 				// })
 			}else if(obj.id == 3){
 					uni.navigateTo({
-						url:'/pages/update/dynamicslist?type=7'
+						url:'/pages/update/dynamicslist?type=7&title='+this.detail.type_title+'便民'
 					})
 				// this.wxsj = true
 			}else if(obj.id == 4){
 				uni.navigateTo({
-						url:'/pages/update/dynamicslist?type=15'
+						url:'/pages/update/dynamicslist?type=15&title='+this.detail.type_title+'招聘'
 				})
 				// var {address,longitude,latitude,contacts,business_time,title,images,...data} = this.detail
 				// var data = {
@@ -497,7 +497,7 @@ export default {
 				// })
 			}else if(obj.id == 5){
 				uni.navigateTo({
-						url:'/pages/update/dynamicslist?type=8'
+						url:'/pages/update/dynamicslist?type=8&title='+this.detail.type_title+'动态'
 				})
 			}
 		},
@@ -611,10 +611,12 @@ page {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
-			margin-bottom: 16upx;
 			position: absolute;
+			background: rgba(0,0,0,0.5);
+			width:100%;
+			height:140rpx;
 			left:0rpx;
-			bottom: 48rpx;
+			bottom: 0rpx;
 			.avatarwrap {
 				width: 96upx;
 				height: 96upx;
