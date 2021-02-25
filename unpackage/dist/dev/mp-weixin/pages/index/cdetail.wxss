@@ -409,7 +409,7 @@ page.data-v-a215c1e4 {
 .helpdetail .content .detailcontent .headerItem .userheader .userlist .usertop .like.data-v-a215c1e4 {
   width: 82rpx;
   height: 32rpx;
-  background: rgba(255, 156, 0, 0.1);
+  background: #08C299;
   -webkit-border-radius: 8rpx;
           border-radius: 8rpx;
   margin-right: 16rpx;
@@ -436,7 +436,7 @@ page.data-v-a215c1e4 {
   font-size: 20rpx;
   font-family: PingFang-SC-Medium,PingFang-SC;
   font-weight: 500;
-  color: rgba(255, 156, 0, 0.8);
+  color: white;
   line-height: 28rpx;
 }
 .helpdetail .content .detailcontent .headerItem .userheader .userlist .usertop .chuang.data-v-a215c1e4 {

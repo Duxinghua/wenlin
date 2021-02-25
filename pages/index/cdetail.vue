@@ -106,7 +106,7 @@
 					</view>
 				</view>
 				
-				<view class="headerItem" v-if="navIndex == 3" v-for="(item,index) in commentList" :key="index">
+				<view class="headerItem" v-if="navIndex == 3 || navIndex == 4" v-for="(item,index) in commentList" :key="index">
 					<view class="userheader">
 						<image :src="item.avatar" class="useravatar"></image>
 						<view class="userlist">
@@ -413,7 +413,7 @@
 				if(this.total > this.page){
 					this.page ++
 					
-					if(this.navIndex == 1 || this.navIndex == 2){
+					if(this.navIndex == 1 || this.navIndex == 2 || this.navIndex == 4){
 						this.getCommentList(true)
 					}else if(this.navIndex == 3){
 						this.getJoinUserList(true)
@@ -423,7 +423,7 @@
 			}
 		},
 		onPullDownRefresh(e){
-			if(this.navIndex == 1 || this.navIndex == 2){
+			if(this.navIndex == 1 || this.navIndex == 2 || this.navIndex == 4){
 				this.getCommentList()
 			}else if(this.navIndex == 3){
 				this.getJoinUserList()
@@ -893,6 +893,26 @@
 							}
 						}
 					})
+				}else if(this.navIndex == 4){
+					data.answer_id =  this.detail.answer_id
+					this.Api.answerresultList(data).then((result)=>{
+						if(result.code == 1){
+							if(ismore){
+									var res = result.data.list
+									this.total = result.data.total_page
+									this.commentList = this.commentList.concat(res)
+							}else{
+								var res = result.data.list
+								this.total = result.data.total_page
+								this.commentList = res
+							}
+							if(this.commentList.length){
+								this.nodataFlag = false
+							}else{
+								this.nodataFlag = true
+							}
+						}
+					})
 				}
 			},
 			//报名列表
@@ -1175,7 +1195,14 @@
 						this.loading = false
 						this.$forceUpdate()
 						// this.getCommentList()
-						this.getJoinUserList()
+						if(this.detail.activity_type == 1){
+							this.navIndex = 3
+							this.getJoinUserList()
+						}else if(this.detail.activity_type == 2){
+							this.navIndex = 4
+							this.getCommentList()
+						}
+						
 						if(this.srouce){
 							console.log('d2')
 							this.autoShare()
@@ -1788,7 +1815,7 @@
 								.like{
 									width:82upx;
 									height:32upx;
-									background:rgba(255,156,0,0.1);
+									background:#08C299;
 									border-radius:8upx;
 									margin-right:16upx;
 									display: flex;
@@ -1804,7 +1831,7 @@
 										font-size:20upx;
 										font-family:PingFang-SC-Medium,PingFang-SC;
 										font-weight:500;
-										color:rgba(255,156,0,0.8);
+										color:white;
 										line-height:28upx;
 									}
 								}

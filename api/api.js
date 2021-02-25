@@ -262,6 +262,8 @@ const newyearGreetings = (params) => wxRequest(params, baseURL + 'api/community/
 const publishGreetings = (params) => wxRequest(params, baseURL + 'api/community/newyear_greetings/publishGreetings', 'POST')
 //点赞功能 {{online}}/api/community/newyear_greetings/greetingsLike
 const greetingsLike = (params) => wxRequest(params, baseURL + 'api/community/newyear_greetings/greetingsLike', 'POST')
+//已答列表 {{online}}/api/answer/answer/resultList
+const answerresultList = (params) => wxRequest(params, baseURL + 'api/answer/answer/resultList', 'POST')
 
 
 export default {
@@ -380,5 +382,6 @@ export default {
 	myNeighbourDare,
 	newyearGreetings,
 	publishGreetings,
-	greetingsLike
+	greetingsLike,
+	answerresultList
 }

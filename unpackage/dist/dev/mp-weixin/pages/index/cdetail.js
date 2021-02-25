@@ -127,7 +127,10 @@ var render = function() {
   var l1 = _vm.__map(_vm.commentList, function(item, index) {
     var $orig = _vm.__get_orig(item)
 
-    var f3 = _vm.navIndex == 3 ? _vm._f("formatTime")(item.create_time) : null
+    var f3 =
+      _vm.navIndex == 3 || _vm.navIndex == 4
+        ? _vm._f("formatTime")(item.create_time)
+        : null
     return {
       $orig: $orig,
       f3: f3
@@ -600,7 +603,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       if (this.total > this.page) {
         this.page++;
 
-        if (this.navIndex == 1 || this.navIndex == 2) {
+        if (this.navIndex == 1 || this.navIndex == 2 || this.navIndex == 4) {
           this.getCommentList(true);
         } else if (this.navIndex == 3) {
           this.getJoinUserList(true);
@@ -610,7 +613,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     }
   },
   onPullDownRefresh: function onPullDownRefresh(e) {
-    if (this.navIndex == 1 || this.navIndex == 2) {
+    if (this.navIndex == 1 || this.navIndex == 2 || this.navIndex == 4) {
       this.getCommentList();
     } else if (this.navIndex == 3) {
       this.getJoinUserList();
@@ -1080,6 +1083,26 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             }
           }
         });
+      } else if (this.navIndex == 4) {
+        data.answer_id = this.detail.answer_id;
+        this.Api.answerresultList(data).then(function (result) {
+          if (result.code == 1) {
+            if (ismore) {
+              var res = result.data.list;
+              _this3.total = result.data.total_page;
+              _this3.commentList = _this3.commentList.concat(res);
+            } else {
+              var res = result.data.list;
+              _this3.total = result.data.total_page;
+              _this3.commentList = res;
+            }
+            if (_this3.commentList.length) {
+              _this3.nodataFlag = false;
+            } else {
+              _this3.nodataFlag = true;
+            }
+          }
+        });
       }
     },
     //报名列表
@@ -1362,7 +1385,14 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           _this7.loading = false;
           _this7.$forceUpdate();
           // this.getCommentList()
-          _this7.getJoinUserList();
+          if (_this7.detail.activity_type == 1) {
+            _this7.navIndex = 3;
+            _this7.getJoinUserList();
+          } else if (_this7.detail.activity_type == 2) {
+            _this7.navIndex = 4;
+            _this7.getCommentList();
+          }
+
           if (_this7.srouce) {
             console.log('d2');
             _this7.autoShare();

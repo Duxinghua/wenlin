@@ -2206,7 +2206,9 @@ var newyearGreetings = function newyearGreetings(params) {return (0, _request.wx
 // 发布内容  {{online}}/api/community/newyear_greetings/publishGreetings
 var publishGreetings = function publishGreetings(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/newyear_greetings/publishGreetings', 'POST');};
 //点赞功能 {{online}}/api/community/newyear_greetings/greetingsLike
-var greetingsLike = function greetingsLike(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/newyear_greetings/greetingsLike', 'POST');};var _default =
+var greetingsLike = function greetingsLike(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/newyear_greetings/greetingsLike', 'POST');};
+//已答列表 {{online}}/api/answer/answer/resultList
+var answerresultList = function answerresultList(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/answer/answer/resultList', 'POST');};var _default =
 
 
 {
@@ -2325,7 +2327,8 @@ var greetingsLike = function greetingsLike(params) {return (0, _request.wxReques
   myNeighbourDare: myNeighbourDare,
   newyearGreetings: newyearGreetings,
   publishGreetings: publishGreetings,
-  greetingsLike: greetingsLike };exports.default = _default;
+  greetingsLike: greetingsLike,
+  answerresultList: answerresultList };exports.default = _default;
 
 /***/ }),
 
