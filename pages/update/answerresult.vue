@@ -9,15 +9,15 @@
 			<view class="text">
 				达到该成绩用时：{{time}}秒
 			</view>
-			<view class="btn1" @click="todo(1)" v-if="count >= 100">
+			<view class="btn1" @click="todo(1)" v-if="count >= 90">
 				赶紧去抽奖 >
 			</view>
 			<view class="btn2" @click="todo(2)">
 				返回首页 >
 			</view>
 		</view>
-		<image :src="imgUrl + 'good.png'" class="good" v-if="count == 100"></image>
-		<image :src="imgUrl + 'overico.png'" class="good" v-if="count != 100"></image>
+		<image :src="imgUrl + 'good.png'" class="good" v-if="count == 90"></image>
+		<image :src="imgUrl + 'overico.png'" class="good" v-if="count != 90"></image>
 	</view>
 </template>
 
