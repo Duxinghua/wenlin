@@ -141,6 +141,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -150,10 +151,14 @@ var _default =
       detail: {
 
         detail: {
-          join_num: 0 } } };
+          join_num: 0 } },
 
 
+      mobile: '' };
 
+  },
+  onShow: function onShow() {
+    this.mobile = uni.getStorageSync('user') ? uni.getStorageSync('user').mobile : '';
   },
   onLoad: function onLoad(options) {var _this = this;
     var that = this;
@@ -234,6 +239,24 @@ var _default =
 
   },
   methods: {
+    getPhoneNumber: function getPhoneNumber(e) {var _this2 = this;
+      if (e.mp.detail.errMsg == 'getPhoneNumber:ok') {
+        var id = e.mp.currentTarget.dataset.id;var _e$detail =
+        e.detail,encryptedData = _e$detail.encryptedData,iv = _e$detail.iv;
+        this.Api.setUserPhoneBySecret({ encrypted_data: encryptedData, iv: iv }).then(function (result) {
+          if (result.code == 1) {
+            uni.setStorageSync('mobile', result.data);
+            if (result.data) {
+              uni.navigateTo({
+                url: 'answerdetail?answer_id=' + _this2.answer_id });
+
+            }
+          }
+        });
+      } else {
+        return;
+      }
+    },
     detailHandler: function detailHandler() {
       if (this.detail.has_answer == 1) {
         return this.$u.toast('您已参加此次答题，请下次再来参与');

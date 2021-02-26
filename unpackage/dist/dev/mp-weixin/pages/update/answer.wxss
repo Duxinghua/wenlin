@@ -58,6 +58,21 @@
   font-weight: bold;
   font-size: 50rpx;
 }
+.answer .btns.data-v-5ef583ca {
+  position: fixed;
+  width: 618rpx;
+  height: 100rpx;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  bottom: 250rpx;
+  color: white;
+  text-align: center;
+  line-height: 100rpx;
+  -webkit-border-radius: 50rpx;
+          border-radius: 50rpx;
+  background: #ff9c00;
+}
 .answer .answerbtn.data-v-5ef583ca {
   position: fixed;
   width: 618rpx;

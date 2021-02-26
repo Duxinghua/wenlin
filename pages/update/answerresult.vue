@@ -16,8 +16,8 @@
 				返回首页 >
 			</view>
 		</view>
-		<image :src="imgUrl + 'good.png'" class="good" v-if="count == 90"></image>
-		<image :src="imgUrl + 'overico.png'" class="good" v-if="count != 90"></image>
+		<image :src="imgUrl + 'good.png'" class="good" v-if="detail.pass == 1"></image>
+		<image :src="imgUrl + 'overico.png'" class="good" v-if="detail.pass == 0"></image>
 	</view>
 </template>
 
@@ -58,7 +58,7 @@
 			}
 			var result = await this.Api.questionAnswer(data)
 			if(result.code == 1){
-				
+				this.detail = result.data
 			}
 		},
 		

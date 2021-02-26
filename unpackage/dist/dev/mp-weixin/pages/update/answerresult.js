@@ -190,7 +190,7 @@ var _default =
 
                 _this.Api.questionAnswer(data));case 8:result = _context.sent;
               if (result.code == 1) {
-
+                _this.detail = result.data;
               }case 10:case "end":return _context.stop();}}}, _callee);}))();
   },
 

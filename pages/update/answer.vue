@@ -2,7 +2,8 @@
 	<view class="answer">
 		<image :src="Config.minUrl + 'anserbg.jpg'" class="bg"></image>
 		<view class="title">{{detail.detail.title}}</view>
-		<image  @click.stop="detailHandler" src="../../static/answerbtn.png" class="answerbtn" ></image>
+		<button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" class="btns" v-if="!mobile">获取手机号</button>
+		<image  @click.stop="detailHandler" src="../../static/answerbtn.png" class="answerbtn" v-if="mobile" ></image>
 		<view class="subtext">
 			已有 {{detail.detail ? detail.detail.join_num : 0}} 人参加活动
 		</view>
@@ -20,8 +21,12 @@
 					detail:{
 						join_num:0
 					}
-				}
+				},
+				mobile:''
 			}
+		},
+		onShow() {
+			this.mobile = uni.getStorageSync('user') ? uni.getStorageSync('user').mobile : ''
 		},
 		onLoad(options) {
 			var that = this
@@ -102,6 +107,24 @@
 				}
 		},
 		methods:{
+			getPhoneNumber(e){
+				if(e.mp.detail.errMsg == 'getPhoneNumber:ok'){
+					var id = e.mp.currentTarget.dataset.id
+						var { encryptedData, iv } = e.detail;
+						this.Api.setUserPhoneBySecret({ encrypted_data: encryptedData, iv: iv }).then(result => {
+							if (result.code == 1) {
+								uni.setStorageSync('mobile', result.data);
+								if(result.data){
+									uni.navigateTo({
+										url:'answerdetail?answer_id='+this.answer_id
+									})
+								}
+							}
+						})
+				}else{
+					return
+				}
+			},
 			detailHandler(){
 				if(this.detail.has_answer == 1){
 					return this.$u.toast('您已参加此次答题，请下次再来参与')
@@ -140,6 +163,19 @@
 			color:white;
 			font-weight: bold;
 			font-size:50rpx;
+		}
+		.btns{
+			position: fixed;
+			width:618rpx;
+			height:100rpx;
+			left:50%;
+			transform: translateX(-50%);
+			bottom: 250rpx;
+			color:white;
+			text-align: center;
+			line-height: 100rpx;
+			border-radius: 50rpx;
+			background: #ff9c00;
 		}
 		.answerbtn{
 			position: fixed;

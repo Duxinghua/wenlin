@@ -61,7 +61,8 @@
 				<image :src="imgUrl + 'awardbg.png'" class="abg"></image>
 				<u-icon name="close" color="#ffffff" size="36" @click="show = false"></u-icon>
 				<view class="title" v-if="selectObj.status == 1">恭喜您抽中</view>
-				<u-image v-if="selectObj.status == 1" src="https://gx.wenlinapp.com/upload/draw/20210111/b2df370abd8fb094d8b3847285a95121.png" width="134" height="134" border-radius="10"></u-image>
+				<!-- {{JSON.stringify(selectObj)}} -->
+				<u-image v-if="selectObj.status == 1" :src="imgs" width="134" height="134" border-radius="10"></u-image>
 				<view v-if="selectObj.status == 1" class="name">{{selectObj.object.prize_name}}</view>
 				<view class="titlerror" v-if="selectObj.status == 0">很遗憾没有抽中 下次再来试试～</view>
 			</view>
@@ -127,7 +128,8 @@ export default {
 				"has_draw_num": 0,  //当前用户已抽奖次数
 				"can_draw": 0 , //1 可抽奖（抽奖次数未用完）   0不可抽奖（抽奖次数已用完）
 				 draw_num:0   //抽奖次数
-			}
+			},
+			imgs:''
 		};
 	},
 	onLoad(options) {
@@ -208,7 +210,7 @@ export default {
 	methods: {
 		async getList(){
 			var data = {
-				draw_id:this.adraw_id,
+				draw_id:this.draw_id,
 				page:1,
 				page_size:10000
 			}
@@ -245,6 +247,7 @@ export default {
 					item.weight = 0
 				})
 				this.prizeList = res.data.prize_list
+				console.log(this.prizeList,'ps')
 			}
 			/*
 			return
@@ -309,9 +312,9 @@ export default {
 		},
 		// 本次抽奖开始
 		handleDrawStart() {
-			if(this.detail.can_draw == 0){
-				return this.$u.toast('您的抽奖次数已用完')
-			}
+			// if(this.detail.can_draw == 0){
+			// 	return this.$u.toast('您的抽奖次数已用完')
+			// }
 			
 			if (this.prizeing) return;
 			this.prizeing = true;
@@ -381,6 +384,7 @@ export default {
 									// 中奖下标
 									this.prizeIndex = i;
 									this.selectObj = result.data
+									this.imgs = item.prizeImage
 									this.$forceUpdate()
 									break;
 								}

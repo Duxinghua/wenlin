@@ -229,6 +229,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 {
   components: {
     navigationCustom: navigationCustom,
@@ -284,7 +285,8 @@ __webpack_require__.r(__webpack_exports__);
         "has_draw_num": 0, //当前用户已抽奖次数
         "can_draw": 0, //1 可抽奖（抽奖次数未用完）   0不可抽奖（抽奖次数已用完）
         draw_num: 0 //抽奖次数
-      } };
+      },
+      imgs: '' };
 
   },
   onLoad: function onLoad(options) {var _this = this;
@@ -365,7 +367,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getList: function getList() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var data, result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 data = {
-                  draw_id: _this2.adraw_id,
+                  draw_id: _this2.draw_id,
                   page: 1,
                   page_size: 10000 };_context.next = 3;return (
 
@@ -402,6 +404,7 @@ __webpack_require__.r(__webpack_exports__);
                     item.weight = 0;
                   });
                   _this3.prizeList = res.data.prize_list;
+                  console.log(_this3.prizeList, 'ps');
                 }
                 /*
                   return
@@ -466,9 +469,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     // 本次抽奖开始
     handleDrawStart: function handleDrawStart() {var _this4 = this;
-      if (this.detail.can_draw == 0) {
-        return this.$u.toast('您的抽奖次数已用完');
-      }
+      // if(this.detail.can_draw == 0){
+      // 	return this.$u.toast('您的抽奖次数已用完')
+      // }
 
       if (this.prizeing) return;
       this.prizeing = true;
@@ -538,6 +541,7 @@ __webpack_require__.r(__webpack_exports__);
                   // 中奖下标
                   _this4.prizeIndex = i;
                   _this4.selectObj = result.data;
+                  _this4.imgs = item.prizeImage;
                   _this4.$forceUpdate();
                   break;
                 }
