@@ -424,6 +424,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 597));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 625));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 639));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | components/bkhumor-emoji/index */ "components/bkhumor-emoji/index").then((function () {return resolve(__webpack_require__(/*! @/components/bkhumor-emoji/index.vue */ 646));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 611));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Firend = function Firend() {__webpack_require__.e(/*! require.ensure | components/onfirend/onfirend */ "components/onfirend/onfirend").then((function () {return resolve(__webpack_require__(/*! ../../components/onfirend/onfirend.vue */ 632));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 533));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UserHeader = function UserHeader() {__webpack_require__.e(/*! require.ensure | components/userHeader/userheader */ "components/userHeader/userheader").then((function () {return resolve(__webpack_require__(/*! @/components/userHeader/userheader.vue */ 653));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Comment = function Comment() {__webpack_require__.e(/*! require.ensure | components/comment/comment */ "components/comment/comment").then((function () {return resolve(__webpack_require__(/*! @/components/comment/comment.vue */ 660));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 547));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 667));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Confrimpop = function Confrimpop() {__webpack_require__.e(/*! require.ensure | components/confrim/confrim */ "components/confrim/confrim").then((function () {return resolve(__webpack_require__(/*! @/components/confrim/confrim.vue */ 674));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var DeleteTip = function DeleteTip() {__webpack_require__.e(/*! require.ensure | components/deletetip/deletetip */ "components/deletetip/deletetip").then((function () {return resolve(__webpack_require__(/*! @/components/deletetip/deletetip.vue */ 681));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
@@ -906,9 +907,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         this.nodatatext = '暂无帮推';
       } else if (index == 3) {
         this.nodatatext = '暂无报名';
+      } else if (index == 4) {
+        this.nodatatext = '暂无答题人';
       }
       setTimeout(function () {
-        if (_this2.navIndex == 1 || _this2.navIndex == 2) {
+        if (_this2.navIndex == 1 || _this2.navIndex == 2 || _this2.navIndex == 4) {
           _this2.getCommentList();
         } else if (_this2.navIndex == 3) {
           _this2.getJoinUserList();
@@ -1084,7 +1087,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           }
         });
       } else if (this.navIndex == 4) {
-        data.answer_id = this.detail.answer_id;
+        data.answer_id = this.detail.modular_id;
         this.Api.answerresultList(data).then(function (result) {
           if (result.code == 1) {
             if (ismore) {

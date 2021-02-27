@@ -108,11 +108,12 @@
 				
 				<view class="headerItem" v-if="navIndex == 3 || navIndex == 4" v-for="(item,index) in commentList" :key="index">
 					<view class="userheader">
-						<image :src="item.avatar" class="useravatar"></image>
+						<image :src="navIndex == 3 ? item.avatar : item.user.avatar" class="useravatar"></image>
 						<view class="userlist">
 							<view class="usertop">
 <!-- 								<text class="username">{{item.name}}·{{item.userinfo.building}}#</text> -->
-								<text class="username">{{item.user.user_nickname}}·{{ucommunityid == item.userinfo.community_id ? item.userinfo.building+'#' : item.userinfo.community_name}}</text>
+								<text class="username" v-if="navIndex == 3">{{item.user.user_nickname}}·{{ucommunityid == item.userinfo.community_id ? item.userinfo.building+'#' : item.userinfo.community_name}}</text>
+								<text class="username" v-if="navIndex == 4">{{item.user.user_nickname}}·{{ucommunityid == item.user_info.community_id ? item.user_info.building+'#' : item.user_info.community_name}}</text>
 								
 								<view class="like">
 									<image src="../../static/like.png" class="likeimg" />
@@ -716,9 +717,11 @@
 					this.nodatatext = '暂无帮推'
 				}else if(index == 3){
 					this.nodatatext = '暂无报名'
+				}else if(index == 4){
+					this.nodatatext = '暂无答题人'
 				}
 				setTimeout(()=>{
-					if(this.navIndex == 1 || this.navIndex == 2){
+					if(this.navIndex == 1 || this.navIndex == 2 || this.navIndex == 4){
 						this.getCommentList()
 					}else if(this.navIndex == 3){
 						this.getJoinUserList()
@@ -894,7 +897,7 @@
 						}
 					})
 				}else if(this.navIndex == 4){
-					data.answer_id =  this.detail.answer_id
+					data.answer_id =  this.detail.modular_id
 					this.Api.answerresultList(data).then((result)=>{
 						if(result.code == 1){
 							if(ismore){

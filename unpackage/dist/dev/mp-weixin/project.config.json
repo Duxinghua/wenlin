@@ -40,15 +40,7 @@
 			"current": -1,
 			"list": []
 		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
 		"game": {
-			"current": -1,
-			"list": []
-		},
-		"gamePlugin": {
 			"current": -1,
 			"list": []
 		},
@@ -56,73 +48,10 @@
 			"current": 1,
 			"list": [
 				{
-					"id": 0,
 					"name": "test",
-					"pathName": "pages/update/setVote",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/update/answer",
-					"query": "scene=answer_id%3D1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/update/answerdetail",
-					"pathName": "pages/update/answer",
-					"query": "scene=answer_id%3D2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/update/answer",
-					"pathName": "pages/update/answer",
-					"query": "scene=answer_id%3D2",
-					"scene": null
-				},
-				{
-					"id": 4,
-					"name": "pages/update/award",
-					"pathName": "pages/update/award",
-					"query": "award_id=3",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "scene=answer_id%3D1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/update/answer",
-					"query": "scene=answer_id%3D2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "scene=answer_id%3D2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/update/answer",
-					"query": "scene=answer_id%3D1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/update/answer",
-					"query": "scene=answer_id%3D1",
-					"scene": null
+					"query": "",
+					"id": 0,
+					"pathName": "pages/update/setVote"
 				}
 			]
 		}
