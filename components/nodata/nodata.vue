@@ -1,5 +1,5 @@
 <template>
-  <view class="nodata" :class="[type? 'small': '']">
+  <view class="nodata" :class="[type? 'small': '']" :style="{'position':name}">
     <image :src="imgUrl + 'nodata.png'" alt="">
     <text>{{text}}</text>
   </view>
@@ -15,6 +15,10 @@ export default {
 		text:{
 			type:[String],
 			default:'暂无数据'
+		},
+		name:{
+			type:[String],
+			default:'relative'
 		}
 	},
   data () {

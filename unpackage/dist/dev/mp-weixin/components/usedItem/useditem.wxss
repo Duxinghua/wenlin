@@ -37,6 +37,7 @@
   margin-bottom: 28rpx;
   margin-right: 14rpx;
   margin-left: 28rpx;
+  float: left;
 }
 .usedItem .usedimg.data-v-287d3838 {
   width: 344rpx;

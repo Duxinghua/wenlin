@@ -326,7 +326,8 @@
 		</view>
 		<!-- 积分提示 -->
 		<Integraltip ref="integraltip" :types.sync="add_type" :score.sync="score_text" />
-		<u-mask :show="paiAd" @click.stop="paiAd = false">
+		<!-- 拜年 -->
+		<u-mask :show="paiAd" @click.stop="false">
 				<view class="paiwarp">
 					<view class="pairect">
 						<u-image :src="imgURl+'homepai.png'" width="100%" height="100%"></u-image>
@@ -339,7 +340,7 @@
 					</view>
 				</view>
 		</u-mask>
-		<view class="xf" v-if="paiAd == false " @click.stop="paiHandler">
+		<view class="xf" v-if="false " @click.stop="paiHandler">
 			<u-image :src="imgURl+'xf.png'" width="100%" height="100%"></u-image>
 		</view>
 	</view>

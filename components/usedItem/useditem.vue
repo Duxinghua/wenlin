@@ -14,7 +14,7 @@
 			<view class="info">
 				<text class="infotype">{{pitem.sell_type | sellType}}</text>
 <!-- 				<text>￥{{pitem.sell_type == 2 ? 0 : pitem.sell_price}}</text> -->
-				<text  v-if="pitem.sell_type != 4">￥{{ pitem.sell_type == 2 ? 0 : pitem.sell_price }}</text>
+				<text  v-if="pitem.sell_type != 4">￥{{ pitem.sell_type == 2 ? 0 : pitem.sell_price == -1 ? '面议' : pitem.sell_price }}</text>
 				<text  v-if="pitem.sell_type == 4">{{ pitem.exchange_goods ? "物品："+ pitem.exchange_goods : "积分："+pitem.exchange_score }}</text>
 			</view>
 			<view class="infotime">{{pitem.create_time | formatTimeMd}}</view>
@@ -112,6 +112,7 @@
 	margin-bottom: 28upx;
 	margin-right: 14upx;
 	margin-left: 28upx;
+	float: left;
 	.usedimg {
 		width: 344upx;
 		height: 344upx;
@@ -160,7 +161,7 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		// display: -webkit-box;
-		// -webkit-line-clamp: 2;
+		// -webkit-line-clamp: 1;
 		// -webkit-box-orient: vertical;
 		margin-bottom: 20upx;
 	}

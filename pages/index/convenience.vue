@@ -23,7 +23,7 @@
 <!-- 			</view> -->
 			<view :class="['postwrap',(type == 3 && postList.length > 0) ? 'usedwrap' : '']">
 			<!-- <mescroll-uni  :fixed="true"  :top="autoTop" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" > -->
-				<scroll-view scroll-y="true" :style="{height: height+'px'}" @scrolltoupper="upper" @scrolltolower="lower" >
+				<scroll-view scroll-y="true" :style="{height: height+'px'}" class="listwrap" @scrolltoupper="upper" @scrolltolower="lower" >
 					<PostItem :pm="true" :allFlag="allFlag" :type="type" v-for="(item,index) in postList" :pitem="item" :key="index" @moreClick="moreClick" @helpPush="helpPush" @shareClick="shareClick" @toLogin="goDetails"></PostItem>
 				</scroll-view>
 <!-- 			</mescroll-uni> -->
@@ -1570,6 +1570,10 @@ export default {
 <style lang="scss" scoped>
 page {
 	background: white;
+}
+.listwrap{
+	padding-bottom: 100rpx;
+	box-sizing: border-box;
 }
 .content {
 	display: flex;

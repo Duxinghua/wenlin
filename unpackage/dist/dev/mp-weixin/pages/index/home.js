@@ -110,7 +110,7 @@ var render = function() {
 
     _vm.e4 = function($event) {
       $event.stopPropagation()
-      _vm.paiAd = false
+      return false($event)
     }
 
     _vm.e5 = function($event) {
@@ -152,6 +152,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
 
 
 
@@ -856,6 +857,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
 //
 //
 //
+//
 var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure | components/leavewords/leavewords */ "components/leavewords/leavewords").then((function () {return resolve(__webpack_require__(/*! @/components/leavewords/leavewords.vue */ 618));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var PostItem = function PostItem() {__webpack_require__.e(/*! require.ensure | components/postItem/postitem */ "components/postItem/postitem").then((function () {return resolve(__webpack_require__(/*! @/components/postItem/postitem.vue */ 795));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UsedItem = function UsedItem() {__webpack_require__.e(/*! require.ensure | components/usedItem/useditem */ "components/usedItem/useditem").then((function () {return resolve(__webpack_require__(/*! @/components/usedItem/useditem.vue */ 781));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 639));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 611));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 625));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 597));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 547));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 667));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { mixins: [_mescrollMixins.default], data: function data() {return { imgURl: this.Config.minUrl, guestFlag: false, isHome: false, smallNodata: true, flexType: false, downOption: { use: true, // 是否启用下拉刷新; 默认true
         auto: false, // 是否在初始化完毕之后自动执行下拉刷新的回调; 默认true
         native: false, // 是否使用系统自带的下拉刷新; 默认false; 仅mescroll-body生效 (值为true时,还需在pages配置enablePullDownRefresh:true;详请参考mescroll-native的案例)
@@ -912,8 +914,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });} });}} // this.Api.getCommunityWiki({}).then(result => {
       // 	console.log(result);
       // });
-    });}, watch: {}, methods: { paiHandler: function paiHandler() {if (this.token) {uni.navigateTo({ url: '/pages/update/newYear' });} else {console.log(111);this.guestPaiOpen = true;this.paiAd = false;}}, danrenHandler: function danrenHandler() {uni.navigateTo({ url: '/pages/push/edit?type=9' });}, moreHandler: function moreHandler() {uni.navigateTo({ url: '/pages/update/neighbour' });}, userHandler: function userHandler(item) {uni.navigateTo({ url: '/pages/index/personalcard?user_id=' + item.user_id + '&community_id=' + item.community_id });}, getUser: function getUser() {var _this2 = this;var params = { community_id: uni.getStorageSync('community_id') };this.Api.getNewNeighbor(params).then(function (result) {if (result.code == 1) {_this2.usersList = result.data;}
-      });
+    });}, watch: {}, methods: { paiHandler: function paiHandler() {if (this.token) {uni.navigateTo({ url: '/pages/update/newYear' });} else {console.log(111);this.guestPaiOpen = true;this.paiAd = false;}}, danrenHandler: function danrenHandler() {uni.navigateTo({ url: '/pages/push/edit?type=9' });}, moreHandler: function moreHandler() {uni.navigateTo({ url: '/pages/update/neighbour' });}, userHandler: function userHandler(item) {uni.navigateTo({ url: '/pages/index/personalcard?user_id=' + item.user_id + '&community_id=' + item.community_id });}, getUser: function getUser() {var _this2 = this;var params = { community_id: uni.getStorageSync('community_id') };this.Api.getNewNeighbor(params).then(function (result) {if (result.code == 1) {_this2.usersList = result.data;}});
     },
     guestLoginTodo: function guestLoginTodo() {
       this.guestShowOpen = false;

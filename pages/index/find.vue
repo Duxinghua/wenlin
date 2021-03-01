@@ -31,16 +31,17 @@
 			</scroll-view>
 			</view>
 <!-- 			</view> -->
-			<view :class="['postwrap',(type == 3 && postList.length > 0) ? 'usedwrap' : '']">
-			 <mescroll-uni  v-if="type != 3" :fixed="true"  top="250" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" >
-	
-					<PostItem :allFlag="allFlag" :type="current" v-for="(item,index) in postList" :pitem="item" :key="index" @moreClick="moreClick" @helpPush="helpPush" @shareClick="shareClick" @toLogin="goDetails"></PostItem>
+
+				<scroll-view :class="['postwrap',(type == 3) ? 'usedwrap' : '']" scroll-y="true" :style="{height: height+'px'}" class="listwrap" @scrolltoupper="upper" @scrolltolower="lower" >
+<!-- 			 <mescroll-uni  :fixed="true"  top="250" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" >
+ -->	
+					<PostItem  v-if="type != 3" :allFlag="allFlag" :type="current" v-for="(item,index) in postList" :pitem="item" :key="index" @moreClick="moreClick" @helpPush="helpPush" @shareClick="shareClick" @toLogin="goDetails"></PostItem>
 				
-			</mescroll-uni>
-			<mescroll-uni  v-if="type == 3"  :fixed="true" :flexType="flexType" top="250" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" :flexNoData="flexNoData">
-					<UsedItem  v-for="(item, index) in postList" :pitem="item" :key="index" :usedIndex="index"  @toLogin="goDetails" />
-			</mescroll-uni>
-				</view>
+<!-- 			</mescroll-uni> -->
+					<UsedItem  v-if="type == 3"  v-for="(item, index) in postList" :pitem="item" :key="index" :usedIndex="index"  @toLogin="goDetails" />
+					<Nodata v-if="flexNoData" name="fixed" />
+				</scroll-view>
+		
 			<!-- 闲置 -->
 		<!-- <view class="usedwrap"><UsedItem v-for="(item, index) in 4" :key="index" :usedIndex="index" /></view> -->
 		
@@ -373,12 +374,16 @@ export default {
 			guestShowOpen:false,
 			pos:'home',
 			add_type:'',
-			score_text:''
+			score_text:'',
+			height:700
 	
 		};
 	},
 	onLoad() {},
 	mounted() {
+		var system = uni.getSystemInfoSync()
+		this.height = system.windowHeight - 188
+		
 		this.$Bus.$on('noToken', (e) => {
 		    this.goLogin((res) => {
 				
@@ -473,7 +478,7 @@ export default {
 				//没有token要求用户授权
 				this.loginFalse = true;
 				this.current = 3
-				this.mescroll.resetUpScroll()
+				this.upCallback()
 			} else {
 				this.loginFalse = false;
 				//判断我是否设置小区
@@ -481,7 +486,7 @@ export default {
 					this.Api.checkUserCommunityOpening({}).then((result) => {
 						if(result.code == 1){
 							this.current = 3
-							this.mescroll.resetUpScroll()
+							this.upCallback()
 							// this.setcommunity = true;
 							this.setcommunityOpen = true
 							// uni.navigateTo({
@@ -496,7 +501,7 @@ export default {
 						}else{
 							setTimeout(()=>{
 								this.current = 3
-								this.mescroll.resetUpScroll()
+								this.upCallback()
 							},3000)
 					
 						}
@@ -526,7 +531,7 @@ export default {
 									duration: 2500
 								});
 								setTimeout(()=>{
-									this.mescroll.resetUpScroll()
+									this.upCallback()
 								},1000)
 							
 							}
@@ -539,13 +544,10 @@ export default {
 				})
 				p.then((r)=>{
 					
-					this.mescroll.resetUpScroll()
+					this.upCallback()
 				})
 				
 			}
-			this.Api.getCommunityWiki({}).then((result) => {
-				console.log(result)
-			})
 
 			
 		})
@@ -555,6 +557,16 @@ export default {
 		
 	},
 	methods: {
+		upper(){
+			
+		},
+		lower(e){
+			if(this.totalPage >= this.page.num){
+				this.page.num++
+				this.upCallback(true)
+			}
+			
+		},
 		setcommunityOpenTodo(){
 			uni.navigateTo({
 				url:'../update/selectcommunity'
@@ -564,7 +576,7 @@ export default {
 			this.currentText = !this.currentText
 			this.currentText ? this.$u.toast('已切换到当前位置的附近小区') : this.$u.toast('已切换到我的小区附近')
 			setTimeout(()=>{
-				this.mescroll.resetUpScroll()
+				this.upCallback()
 			},300)
 			
 		},
@@ -591,7 +603,7 @@ export default {
 				}
 				result = true
 				this.current = 3
-				this.mescroll.resetUpScroll()
+				this.upCallback()
 				cb(result)
 				return
 			}
@@ -605,7 +617,7 @@ export default {
 					}
 					result = true
 					this.current = 3
-					this.mescroll.resetUpScroll()
+					this.upCallback()
 					cb(result)
 					return
 			}
@@ -623,11 +635,11 @@ export default {
 				url:'/pages/update/secret'
 			})
 		},
-		upCallback(page) {
+		upCallback(ismore) {
 			//联网加载数据
 			var params = {
-				page:page.num,
-				page_size:page.size,
+				page:this.page.num,
+				page_size:this.page.size,
 				community_id:uni.getStorageSync('community_id'),
 				committee_id:uni.getStorageSync('committee_id'),
 				type:this.type,
@@ -644,57 +656,62 @@ export default {
 					if(result.code == 1) {
 						var totalPage  = result.data.total_pages
 						var curPageLen = result.data.list.length; 
-						if(page.num == 1) this.postList = []
-						this.postList = this.postList.concat(result.data.list);
-						this.mescroll.endByPage(curPageLen, totalPage);
-						if(this.postList.length){
-							this.flexNoData = true
+						if(this.page.num == 1) this.postList = []
+						if(ismore){
+							this.postList = this.postList.concat(result.data.list);
 						}else{
+							this.postList = result.data.list
+						}
+						
+						if(this.postList.length){
 							this.flexNoData = false
+						}else{
+							this.flexNoData = true
 						}
 					}
-				}).catch(()=>{
-					//联网失败的回调,隐藏下拉刷新的状态
-					this.mescroll.endErr();
 				})
 			}else if(this.current == 2){
 				this.Api.nearDynamics(params).then((result)=>{
 					if(result.code == 1) {
 						var totalPage  = result.data.total_pages
 						var curPageLen = result.data.list.length; 
-						if(page.num == 1) this.postList = []
-						this.postList = this.postList.concat(result.data.list);
-						this.mescroll.endByPage(curPageLen, totalPage);
-						if(this.postList.length){
-							this.flexNoData = true
+						if(this.page.num == 1) this.postList = []
+						if(ismore){
+							this.postList = this.postList.concat(result.data.list);
 						}else{
+							this.postList = result.data.list;
+						}
+					
+						if(this.postList.length){
 							this.flexNoData = false
+						}else{
+							this.flexNoData = true
 						}
 	
 					}
-				}).catch(()=>{
-					//联网失败的回调,隐藏下拉刷新的状态
-					this.mescroll.endErr();
 				})
 			}else if(this.current == 3){
 				this.Api.helpDynamicsByCommunityId(params).then((result)=>{
 					if(result.code == 1) {
 						var totalPage  = result.data.total_pages
 						var curPageLen = result.data.list.length; 
-						if(page.num == 1) this.postList = []
-						this.postList = this.postList.concat(result.data.list);
-						this.mescroll.endByPage(curPageLen, totalPage);
-						if(this.postList.length){
-							this.flexNoData = true
+						if(this.page.num == 1) this.postList = []
+						if(ismore){
+							this.postList = this.postList.concat(result.data.list);
 						}else{
+							this.postList = result.data.list;
+						}
+
+						if(this.postList.length){
 							this.flexNoData = false
+						}else{
+							this.flexNoData = true
 						}
 					}
-				}).catch(()=>{
-					//联网失败的回调,隐藏下拉刷新的状态
-					this.mescroll.endErr();
 				})
 			}
+			console.log(this.postList)
+			console.log(this.flexNoData)
 		},
 		scroll(){
 			console.log('mescroll元素id: '+this.mescroll.viewId+' , 滚动内容高度:'+this.mescroll.getScrollHeight() + ', mescroll高度:'+this.mescroll.getClientHeight() + ', 滚动条位置:'+this.mescroll.getScrollTop() + ', 距离底部:'+this.mescroll.getScrollBottom() + ', 是否向上滑:'+this.mescroll.isScrollUp)
@@ -757,7 +774,7 @@ export default {
 							uni.setStorageSync('committee_id',e.committee_id);
 							this.current = 1
 							this.cateIndex = 0
-							this.mescroll.resetUpScroll()
+							this.upCallback()
 							uni.login({
 								success: res => {
 									let { errMsg, code } = res;
@@ -799,7 +816,7 @@ export default {
 			this.loginFalse = false;
 			this.current = 3;
 			this.guestShowOpen = true
-			this.mescroll.resetUpScroll()
+			this.upCallback()
 		},
 		// 手机号授权处理
 		getPhoneNumber(e) {
@@ -837,7 +854,7 @@ export default {
 							}
 						})
 						this.tagList = [{id:0,tag:'全部'}].concat(list)
-						this.mescroll.resetUpScroll()
+						this.upCallback()
 					}else{
 					    this.current = 3;
 						
@@ -846,12 +863,12 @@ export default {
 
 			}else if(arg == 3){
 				this.tagList = [{id:0,tag:'全部'}].concat(this.Tool.navList)
-				this.mescroll.resetUpScroll()
+				this.upCallback()
 			}else if(arg == 1){
 				this.goLogin((data) => {
 					if(!data){
 						this.tagList = [{id:0,tag:'全部'}].concat(this.Tool.navList)
-						this.mescroll.resetUpScroll()
+						this.upCallback()
 					}else{
 					    this.current = 3;
 		
@@ -971,7 +988,7 @@ export default {
 									this.guestShow = false
 									this.userinforeg = true;
 									if(this.all_community.length){
-										this.mescroll.resetUpScroll()
+										this.upCallback()
 									}else{
 										//如果开通过小区，待审核 
 										this.current = 3
@@ -1046,7 +1063,7 @@ export default {
 							uni.setStorageSync('community_menu',this.communityTitle);
 							this.community_menu = this.communityTitle
 							this.current = 1
-							this.mescroll.resetUpScroll()
+							this.upCallback()
 							this.setcommunity = false
 							this.guestShowOpen = false
 							//绑定上下级
@@ -1212,8 +1229,8 @@ export default {
 				}else{
 					this.flexType = false
 				}
-				this.mescroll.scrollTo( 0, 300)
-				this.mescroll.resetUpScroll()
+				// this.mescroll.scrollTo( 0, 300)
+				this.upCallback()
 				this.$forceUpdate()
 			})
 
@@ -1247,7 +1264,7 @@ export default {
 							duration: 2000
 						});
 						this.findFaultValue = false
-						this.mescroll.resetUpScroll()
+						this.upCallback()
 					}else{
 						uni.showToast({
 							title: result.msg,
@@ -1263,7 +1280,7 @@ export default {
 							duration: 2000
 						});
 						this.findFaultValue = false
-						this.mescroll.resetUpScroll()
+						this.upCallback()
 					}else{
 						uni.showToast({
 							title: result.msg,
@@ -1360,7 +1377,7 @@ export default {
 								this.score_text = ''
 								this.$refs.Help.inputValue = 0
 								this.$refs.integraltip.close()
-								this.mescroll.resetUpScroll()
+								this.upCallback()
 							},2000)
 							
 						}
@@ -1577,6 +1594,7 @@ export default {
 page {
 	background: white;
 }
+
 .content {
 	display: flex;
 	flex-direction: column;
@@ -1782,11 +1800,16 @@ page {
 		.postwrap {
 			display: flex;
 			flex-direction: column;
+			padding-bottom: 100rpx;
+			box-sizing: border-box;
+
+
 		}
 		.usedwrap {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
+			align-content: flex-start;
 		},
 		.usedwrapfix{
 			display:flex;
