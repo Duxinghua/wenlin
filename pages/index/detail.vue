@@ -21,7 +21,7 @@
 					<view class="sellinfo">
 						<text class="t1">{{ detail.sell_type | sellType }}</text>
 						|
-						<text class="t2" v-if="detail.sell_type != 4">￥{{ detail.sell_type == 2 ? 0 : detail.sell_price == -1 ? '面议' : '' }}</text>
+						<text class="t2" v-if="detail.sell_type != 4">￥{{ detail.sell_price }}</text>
 						<text class="t2" v-if="detail.sell_type == 4">{{ detail.exchange_goods ? "物品："+ detail.exchange_goods : "积分："+detail.exchange_score }}</text>
 					</view>
 				</view>

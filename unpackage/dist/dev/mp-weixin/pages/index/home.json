@@ -2,8 +2,6 @@
   "component": true,
   "usingComponents": {
     "u-image": "/uview-ui/components/u-image/u-image",
-    "mescroll-uni": "/components/mescroll-uni/mescroll-uni",
-    "u-mask": "/uview-ui/components/u-mask/u-mask",
     "post-item": "/components/postItem/postitem",
     "used-item": "/components/usedItem/useditem",
     "nodata": "/components/nodata/nodata",

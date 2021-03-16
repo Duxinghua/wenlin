@@ -56,18 +56,8 @@
 			</view>
 			<!-- 			</view> -->
 			<view :class="['postwrap', type == 3 && postList.length > 0 ? 'usedwrap' : '']">
-				<mescroll-uni
-					v-if="type != 3"
-					:fixed="true"
-					:top="autoTop"
-					bottom="120"
-					ref="mescrollRef"
-					@init="mescrollInit"
-					@down="downCallback"
-					@up="upCallback"
-					:down="downOption"
-					:up="upOption"
-				>
+			<scroll-view scroll-y="true"  v-if="type != 3" :style="{height: height+'px'}" 
+			class="listwrap" @scrolltoupper="upper" @scrolltolower="lower" >
 					<PostItem
 						:allFlag="allFlag"
 						:type="current"
@@ -81,35 +71,25 @@
 						@danrenHandler="danrenHandler"
 					></PostItem>
 					<!-- https://sq.wenlinapp.com/upload/mini/regnodata.png -->
-					<view class="guestdata" v-if="guestFlag">
+					<view class="guestdata" v-if="flexNoData">
 						<u-image width="654" height="550" src="https://sq.wenlinapp.com/upload/mini/regnodata.png"></u-image>
 						<view class="guesttext">
 							{{guestdata}}
 						</view>
 					</view>
-				</mescroll-uni>
-				<mescroll-uni
-					v-if="type == 3"
-					:fixed="true"
-					:flexType="flexType"
-					:top="autoTop"
-					bottom="120"
-					ref="mescrollRef"
-					@init="mescrollInit"
-					@down="downCallback"
-					@up="upCallback"
-					:down="downOption"
-					:up="upOption"
-					:flexNoData="flexNoData"
-				>
+				</scroll-view>
+
+				<scroll-view scroll-y="true"  v-if="type == 3" :style="{height: height+'px'}"
+				class="listwrap" @scrolltoupper="upper" @scrolltolower="lower" >
 					<UsedItem v-for="(item, index) in postList" :pitem="item" :key="index" :usedIndex="index" @toLogin="goDetails" />
-					<view class="guestdata" v-if="guestFlag">
+	<!-- 				flexNoData guestFlag -->
+					<view class="guestdata" v-if="flexNoData">
 						<u-image width="654" height="550" src="https://sq.wenlinapp.com/upload/mini/regnodata.png"></u-image>
 						<view class="guesttext">
 							{{guestdata}}
 						</view>
 					</view>
-				</mescroll-uni>
+				</scroll-view>
 			</view>
 			<!-- 闲置 -->
 			<!-- <view class="usedwrap"><UsedItem v-for="(item, index) in 4" :key="index" :usedIndex="index" /></view> -->
@@ -327,7 +307,7 @@
 		<!-- 积分提示 -->
 		<Integraltip ref="integraltip" :types.sync="add_type" :score.sync="score_text" />
 		<!-- 拜年 -->
-		<u-mask :show="paiAd" @click.stop="false">
+<!-- 		<u-mask :show="paiAd" @click.stop="false">
 				<view class="paiwarp">
 					<view class="pairect">
 						<u-image :src="imgURl+'homepai.png'" width="100%" height="100%"></u-image>
@@ -342,7 +322,7 @@
 		</u-mask>
 		<view class="xf" v-if="false " @click.stop="paiHandler">
 			<u-image :src="imgURl+'xf.png'" width="100%" height="100%"></u-image>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -440,6 +420,7 @@ export default {
 			setcommunityValue: '业主',
 			page: 1,
 			page_size: 10,
+			totalPage:0,
 			type: 0,
 			postList: [],
 			scrollLeft: 0,
@@ -496,7 +477,8 @@ export default {
 			guestdata:'暂无数据，请登录或者加入小区即可查看数据',
 			setcommunityOpen:false,
 			paiAd:true,
-			guestPaiOpen:false
+			guestPaiOpen:false,
+			height:700
 		};
 	},
 	onLoad() {
@@ -508,6 +490,8 @@ export default {
 		}
 	},
 	mounted() {
+		var system = uni.getSystemInfoSync()
+		this.height = system.windowHeight - 330
 		this.paiAd = uni.getStorageSync('paiAd') == 1 ? false : true
 		if (!uni.getStorageSync('longitude')) {
 			uni.getLocation({
@@ -634,7 +618,7 @@ export default {
 							}
 							if (this.all_community.length) {
 								this.current = 1;
-								this.mescroll.resetUpScroll();
+								
 							}else{
 								this.guestFlag = true
 								this.setcommunityOpen = true
@@ -652,7 +636,8 @@ export default {
 							if (this.all_community.length) {
 								setTimeout(() => {
 									this.current = 1;
-									this.mescroll.resetUpScroll();
+									//this.getData();
+									this.getData()
 								}, 3000);
 							}
 						}
@@ -682,7 +667,7 @@ export default {
 								});
 								setTimeout(()=>{
 									resolve();
-									this.mescroll.resetUpScroll()
+									this.getData()
 								},1000)
 
 							}
@@ -691,7 +676,7 @@ export default {
 					resolve();
 				});
 				p.then(r => {
-					this.mescroll.resetUpScroll();
+					this.getData();
 				});
 			}else{
 
@@ -727,6 +712,16 @@ export default {
 	},
 	watch: {},
 	methods: {
+		upper(e){
+			
+		},
+		lower(e){
+			console.log(this.totalPage)
+			if(this.totalPage >= this.page){
+				this.page++
+				this.upCallback(true)
+			}
+		},
 		paiHandler(){
 			if(this.token){
 				uni.navigateTo({
@@ -760,6 +755,8 @@ export default {
 			this.Api.getNewNeighbor(params).then(result => {
 				if(result.code == 1){
 					this.usersList = result.data
+					var system = uni.getSystemInfoSync()
+					this.height = this.usersList.length ? system.windowHeight - 320 :  system.windowHeight - 240
 				}
 			});
 		},
@@ -794,7 +791,7 @@ export default {
 				result = true;
 				//不进行切换
 				// this.current = 3;
-				// this.mescroll.resetUpScroll();
+				// this.getData();
 				cb(result);
 				return;
 			}else{
@@ -813,7 +810,7 @@ export default {
 				this.guestFlag = true
 				
 				// this.current = 3;
-				// this.mescroll.resetUpScroll();
+				// this.getData();
 				cb(result);
 				return;
 			}
@@ -828,11 +825,19 @@ export default {
 				url: '/pages/update/secret'
 			});
 		},
-		upCallback(page) {
+		getData(){
+			this.flexNoData = false
+			this.page = 1
+			this.totalPage = 0
+			this.postList = []
+			this.upCallback()
+		},
+		upCallback(ismore) {
 			//联网加载数据
+			var that = this
 			var params = {
-				page: page.num,
-				page_size: page.size,
+				page: this.page,
+				page_size: this.page.size,
 				community_id: uni.getStorageSync('community_id'),
 				committee_id: uni.getStorageSync('committee_id'),
 				type: this.type,
@@ -843,89 +848,89 @@ export default {
 				this.Api.allByCommunityId(params)
 					.then(result => {
 						if (result.code == 1) {
-							var totalPage = result.data.total_pages;
-							var curPageLen = result.data.list.length;
-							if (page.num == 1) {
+							this.totalPage = result.data.total_pages;
+							if (this.page == 1) {
 								this.postList = [];
 								if(this.type == 6 && this.darenObj){
 									this.postList.push(this.darenObj)
 								}
 							}
-							this.postList = this.postList.concat(result.data.list);
-							this.mescroll.endByPage(curPageLen, totalPage);
+							if(ismore){
+								this.postList = this.postList.concat(result.data.list);
+							}else{
+								this.postList = result.data.list
+							}
+	
 							if (this.postList.length) {
-								this.flexNoData = true;
-							} else {
 								this.flexNoData = false;
+							} else {
+								this.flexNoData = true;
 							}
 						}
 					})
-					.catch(() => {
-						//联网失败的回调,隐藏下拉刷新的状态
-						this.mescroll.endErr();
-					});
 			} else if (this.current == 2) {
 				this.Api.nearByCommunityId(params)
 					.then(result => {
 						if (result.code == 1) {
-							var totalPage = result.data.total_pages;
-							var curPageLen = result.data.list.length;
-							if (page.num == 1) this.postList = [];
-							this.postList = this.postList.concat(result.data.list);
-							this.mescroll.endByPage(curPageLen, totalPage);
+							this.totalPage = result.data.total_pages;
+						
+							if(ismore){
+								this.postList = this.postList.concat(result.data.list);
+							}else{
+								this.postList = result.data.list;
+							}
+							
 							if (this.postList.length) {
-								this.flexNoData = true;
-							} else {
 								this.flexNoData = false;
+							} else {
+								this.flexNoData = true;
 							}
 						}
 					})
-					.catch(() => {
-						//联网失败的回调,隐藏下拉刷新的状态
-						this.mescroll.endErr();
-					});
 			} else if (this.current == 3) {
 				this.Api.helpDynamicsByCommunityId(params)
 					.then(result => {
 						if (result.code == 1) {
-							var totalPage = result.data.total_pages;
-							var curPageLen = result.data.list.length;
+							this.totalPage = result.data.total_pages;
+
 							if (page.num == 1) {
 								this.postList = [];
 								if(this.type == 6 && this.darenObj){
 									this.postList.push(this.darenObj)
 								}
 							}
-							this.postList = this.postList.concat(result.data.list);
-							this.mescroll.endByPage(curPageLen, totalPage);
+							if(ismore){
+								this.postList = this.postList.concat(result.data.list);
+							}else{
+								this.postList = result.data.list
+								
+							}
+						
 							if (this.postList.length) {
-								this.flexNoData = true;
-							} else {
 								this.flexNoData = false;
+							} else {
+								this.flexNoData = true;
 							}
 						}
 					})
-					.catch(() => {
-						//联网失败的回调,隐藏下拉刷新的状态
-						this.mescroll.endErr();
-					});
+
 			}
 		},
 		scroll() {
-			console.log(
-				'mescroll元素id: ' +
-					this.mescroll.viewId +
-					' , 滚动内容高度:' +
-					this.mescroll.getScrollHeight() +
-					', mescroll高度:' +
-					this.mescroll.getClientHeight() +
-					', 滚动条位置:' +
-					this.mescroll.getScrollTop() +
-					', 距离底部:' +
-					this.mescroll.getScrollBottom() +
-					', 是否向上滑:' +
-					this.mescroll.isScrollUp
-			);
+			// console.log(
+			// 	'mescroll元素id: ' +
+			// 		this.mescroll.viewId +
+			// 		' , 滚动内容高度:' +
+			// 		this.mescroll.getScrollHeight() +
+			// 		', mescroll高度:' +
+			// 		this.mescroll.getClientHeight() +
+			// 		', 滚动条位置:' +
+			// 		this.mescroll.getScrollTop() +
+			// 		', 距离底部:' +
+			// 		this.mescroll.getScrollBottom() +
+			// 		', 是否向上滑:' +
+			// 		this.mescroll.isScrollUp
+			// );
 		},
 		tabSelect(e) {
 			this.TabCur = e.currentTarget.dataset.id;
@@ -986,7 +991,7 @@ export default {
 							uni.setStorageSync('community_name',e.title)
 							this.current = 1;
 							this.cateIndex = 0;
-							this.mescroll.resetUpScroll();
+							this.getData();
 							uni.login({
 								success: res => {
 									let { errMsg, code } = res;
@@ -1031,7 +1036,7 @@ export default {
 			//首页不进行切换
 			// this.current = 3;
 			// this.guestShowOpen = true;
-			// this.mescroll.resetUpScroll();
+			// this.getData();
 		},
 		// 手机号授权处理
 		getPhoneNumber(e) {
@@ -1063,18 +1068,18 @@ export default {
 				this.goLogin(data => {
 					if (!data) {
 						this.tagList = this.tagList2;
-						this.mescroll.resetUpScroll();
+						this.getData();
 					} else {
 						this.current = 3;
 					}
 				});
 			} else if (arg == 3) {
 				
-				this.mescroll.resetUpScroll();
+				this.getData();
 			} else if (arg == 1) {
 				this.goLogin(data => {
 					if (!data) {
-						this.mescroll.resetUpScroll();
+						this.getData();
 					} else {
 						this.current = 3;
 					}
@@ -1194,7 +1199,7 @@ export default {
 										this.guestFlag = true
 									}
 									if (this.all_community.length) {
-										this.mescroll.resetUpScroll();
+										this.getData();
 									} else {
 										//如果开通过小区，待审核
 										//this.current = 3;
@@ -1270,7 +1275,7 @@ export default {
 							uni.setStorageSync('community_menu', this.communityTitle);
 							this.community_menu = this.communityTitle;
 							this.current = 1;
-							this.mescroll.resetUpScroll();
+							this.getData();
 							this.setcommunity = false;
 							this.guestShowOpen = false;
 							//绑定上下级
@@ -1450,20 +1455,20 @@ export default {
 								this.darenObj.regedit = true
 								this.darenObj.type = 6
 							}
-							this.mescroll.scrollTo(0, 300);
-								this.mescroll.resetUpScroll();
+								// this.mescroll.scrollTo(0, 300);
+								this.getData();
 								this.$forceUpdate();
 							
 						}else{
-							this.mescroll.scrollTo(0, 300);
-								this.mescroll.resetUpScroll();
+							// this.mescroll.scrollTo(0, 300);
+								this.getData();
 								this.$forceUpdate();
 							
 						}
 					})
 				}else{
-					this.mescroll.scrollTo(0, 300);
-					this.mescroll.resetUpScroll();
+					// this.mescroll.scrollTo(0, 300);
+					this.getData();
 					this.$forceUpdate();
 				}
 			});
@@ -1497,7 +1502,7 @@ export default {
 							duration: 2000
 						});
 						this.findFaultValue = false;
-						this.mescroll.resetUpScroll();
+						this.getData();
 					} else {
 						uni.showToast({
 							title: result.msg,
@@ -1513,7 +1518,7 @@ export default {
 							duration: 2000
 						});
 						this.findFaultValue = false;
-						this.mescroll.resetUpScroll();
+						this.getData();
 					} else {
 						uni.showToast({
 							title: result.msg,
@@ -1608,7 +1613,7 @@ export default {
 								this.score_text = '';
 								this.$refs.Help.inputValue = 0;
 								this.$refs.integraltip.close();
-								this.mescroll.resetUpScroll();
+								this.getData();
 							}, 2000);
 						}
 					});

@@ -79,12 +79,6 @@ __webpack_require__.r(__webpack_exports__);
 var components = {
   uImage: function() {
     return __webpack_require__.e(/*! import() | uview-ui/components/u-image/u-image */ "uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-image/u-image.vue */ 576))
-  },
-  mescrollUni: function() {
-    return Promise.all(/*! import() | components/mescroll-uni/mescroll-uni */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mescroll-uni/mescroll-uni")]).then(__webpack_require__.bind(null, /*! @/components/mescroll-uni/mescroll-uni.vue */ 518))
-  },
-  uMask: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-mask/u-mask */ "uview-ui/components/u-mask/u-mask").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-mask/u-mask.vue */ 825))
   }
 }
 var render = function() {
@@ -106,16 +100,6 @@ var render = function() {
 
     _vm.e3 = function($event) {
       _vm.guestPaiOpen = !_vm.guestPaiOpen
-    }
-
-    _vm.e4 = function($event) {
-      $event.stopPropagation()
-      return false($event)
-    }
-
-    _vm.e5 = function($event) {
-      $event.stopPropagation()
-      _vm.paiAd = false
     }
   }
 }
@@ -152,26 +136,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -838,26 +802,6 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure | components/leavewords/leavewords */ "components/leavewords/leavewords").then((function () {return resolve(__webpack_require__(/*! @/components/leavewords/leavewords.vue */ 618));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var PostItem = function PostItem() {__webpack_require__.e(/*! require.ensure | components/postItem/postitem */ "components/postItem/postitem").then((function () {return resolve(__webpack_require__(/*! @/components/postItem/postitem.vue */ 795));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UsedItem = function UsedItem() {__webpack_require__.e(/*! require.ensure | components/usedItem/useditem */ "components/usedItem/useditem").then((function () {return resolve(__webpack_require__(/*! @/components/usedItem/useditem.vue */ 781));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 639));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 611));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 625));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 597));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 547));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 667));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { mixins: [_mescrollMixins.default], data: function data() {return { imgURl: this.Config.minUrl, guestFlag: false, isHome: false, smallNodata: true, flexType: false, downOption: { use: true, // 是否启用下拉刷新; 默认true
         auto: false, // 是否在初始化完毕之后自动执行下拉刷新的回调; 默认true
         native: false, // 是否使用系统自带的下拉刷新; 默认false; 仅mescroll-body生效 (值为true时,还需在pages配置enablePullDownRefresh:true;详请参考mescroll-native的案例)
@@ -895,26 +839,63 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       community_menu: '', //小区名
       committee_id: '', //居委会
       pickerId: false, //选择业主
-      setcommunityType: 1, setcommunityValue: '业主', page: 1, page_size: 10, type: 0, postList: [], scrollLeft: 0, TabCur: 0, findFaultValue: false, findFaultCollect: false, findFaultType: 1, findFaultObject: {}, deliveryFlag: false, canvasFlag: true, posterData: { marginLR: 30, marginTB: 80, radius: 0.03, innerLR: 20, innerTB: 20, posterRatio: 1.3, posterImgUrl: '', title: '', titleFontSize: 15, desFontSize: 14, desLineHeight: 22, titleLineHeight: 24, posterCodeUrl: 'https://sq.wenlinapp.com/upload/share/20200821/20200821233746683.png', codeWidth: 0.22, codeRatio: 1, codeRadius: 0.5, codeMT: 15, codeName: '问邻', codeNameMT: 15, tips: '长按/扫描识别进入贴子', posterBgUrl: '', avatarUrl: uni.getStorageSync('user').avatar, des: '' }, messageShow: false, messageText: '', onShareShow: false, flexNoData: true, shareObj: {}, helpShow: false, helpObj: {}, allFlag: true, //控制显示
-      score: 0, textread: "\u300A\u95EE\u90BB\u670D\u52A1\u534F\u8BAE\u53CA\u9690\u79C1\u653F\u7B56\u300B", guestShow: false, notices_count: 0, guestShowOpen: false, pos: 'home', add_type: '', score_text: '', usersList: [], darenObj: null, guestdata: '暂无数据，请登录或者加入小区即可查看数据', setcommunityOpen: false, paiAd: true, guestPaiOpen: false };}, onLoad: function onLoad() {}, computed: { autoTop: function autoTop() {return this.usersList.length ? 375 : 300;} }, mounted: function mounted() {var _this = this;this.paiAd = uni.getStorageSync('paiAd') == 1 ? false : true;if (!uni.getStorageSync('longitude')) {uni.getLocation({ success: function success(res) {// latitude: 30.39085
+      setcommunityType: 1, setcommunityValue: '业主', page: 1, page_size: 10, totalPage: 0, type: 0, postList: [], scrollLeft: 0, TabCur: 0, findFaultValue: false, findFaultCollect: false, findFaultType: 1, findFaultObject: {}, deliveryFlag: false, canvasFlag: true, posterData: { marginLR: 30, marginTB: 80, radius: 0.03, innerLR: 20, innerTB: 20, posterRatio: 1.3, posterImgUrl: '', title: '', titleFontSize: 15, desFontSize: 14, desLineHeight: 22, titleLineHeight: 24, posterCodeUrl: 'https://sq.wenlinapp.com/upload/share/20200821/20200821233746683.png', codeWidth: 0.22, codeRatio: 1, codeRadius: 0.5, codeMT: 15, codeName: '问邻', codeNameMT: 15, tips: '长按/扫描识别进入贴子', posterBgUrl: '', avatarUrl: uni.getStorageSync('user').avatar, des: '' }, messageShow: false, messageText: '', onShareShow: false, flexNoData: true, shareObj: {}, helpShow: false, helpObj: {}, allFlag: true, //控制显示
+      score: 0, textread: "\u300A\u95EE\u90BB\u670D\u52A1\u534F\u8BAE\u53CA\u9690\u79C1\u653F\u7B56\u300B", guestShow: false, notices_count: 0, guestShowOpen: false, pos: 'home', add_type: '', score_text: '', usersList: [], darenObj: null, guestdata: '暂无数据，请登录或者加入小区即可查看数据', setcommunityOpen: false, paiAd: true, guestPaiOpen: false, height: 700 };}, onLoad: function onLoad() {}, computed: { autoTop: function autoTop() {return this.usersList.length ? 375 : 300;} }, mounted: function mounted() {var _this = this;var system = uni.getSystemInfoSync();this.height = system.windowHeight - 330;this.paiAd = uni.getStorageSync('paiAd') == 1 ? false : true;if (!uni.getStorageSync('longitude')) {uni.getLocation({ success: function success(res) {// latitude: 30.39085
           // longitude: 114.89495
           uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });} });}this.tagList = [{ id: 0, tag: '全部' }].concat(this.Tool.navList);this.$Bus.$on('noToken', function (e) {_this.goLogin(function (res) {});});if (uni.getStorageSync('token')) {this.$getCount(function (result) {var count = 0;if (result.code == 1) {if (!isNaN(result.data.comment_unread)) {count += result.data.comment_unread;count += result.data.leave_message_unread;count += result.data.sys_notices_unread;count += result.data.thanks_unread;_this.notices_count = count;} else {_this.notices_count = 0;}}});this.$Bus.$on('countmsg', function (countmsg) {_this.$getCount(function (result) {var count = 0;if (result.code == 1) {if (!isNaN(result.data.comment_unread)) {count += result.data.comment_unread;count += result.data.leave_message_unread;count += result.data.sys_notices_unread;count += result.data.thanks_unread;_this.notices_count = count;} else {_this.notices_count = 0;}}});});}uni.setStorageSync('o', 1); //菜单
     var that = this;var auth = new Promise(function (resolve, reject) {uni.login({ success: function success(res) {var errMsg = res.errMsg,code = res.code;if (errMsg == 'login:ok') {that.Api.wechatAuth({ code: code }).then(function (result) {if (result.code == 1) {if (result.data.all_community) {result.data.all_community.map(function (item) {item.title = item.community_name;});}uni.setStorageSync('token', result.data.token);uni.setStorageSync('user', result.data.user);uni.setStorageSync('maxJoin', result.data.max_join);uni.setStorageSync('mobile', result.data.user.mobile);uni.setStorageSync('all_community', result.data.all_community);resolve();}});}} });});auth.then(function (status) {_this.token = uni.getStorageSync('token');_this.all_community = uni.getStorageSync('all_community');if (_this.all_community.length) {_this.getUser();uni.setStorageSync('community_id', _this.all_community[0].community_id);uni.setStorageSync('committee_id', _this.all_community[0].committee_id);var url = uni.getStorageSync('url');if (url) {uni.removeStorageSync('url');uni.navigateTo({ url: url });}}_this.mobile = uni.getStorageSync('mobile');_this.community_id = uni.getStorageSync('community_id');_this.community_menu = uni.getStorageSync('community_menu') || _this.all_community.length ? _this.all_community[0].title + (_this.all_community[0].total ? ' (' + _this.all_community[0].total + ') ' : '') : '问邻';if (!_this.token) {//没有token要求用户授权
         _this.loginFalse = true;_this.guestFlag = true;_this.guestShowOpen = true;} else {_this.loginFalse = false;_this.guestFlag = false;_this.guestShowOpen = false; //判断我是否设置小区
-        if (_this.all_community.length == 0) {_this.Api.checkUserCommunityOpening({}).then(function (result) {if (result.code == 1) {if (result.data.opening == 1) {_this.guestdata = result.msg;}if (_this.all_community.length) {_this.current = 1;_this.mescroll.resetUpScroll();} else {_this.guestFlag = true;_this.setcommunityOpen = true;} //this.setcommunity = true;
+        if (_this.all_community.length == 0) {_this.Api.checkUserCommunityOpening({}).then(function (result) {if (result.code == 1) {if (result.data.opening == 1) {_this.guestdata = result.msg;}if (_this.all_community.length) {_this.current = 1;} else {_this.guestFlag = true;_this.setcommunityOpen = true;} //this.setcommunity = true;
               // uni.navigateTo({
               // 	url:'../update/openingcommunity'
               // })
-              var pid = uni.getStorageSync('pid');if (pid) {_this.community = uni.getStorageSync('ptitle');_this.communityId = uni.getStorageSync('pcommunity_id');}} else {if (_this.all_community.length) {setTimeout(function () {_this.current = 1;_this.mescroll.resetUpScroll();}, 3000);}}});} else {_this.setcommunity = false;}}if (_this.community_id) {var p = new Promise(function (resolve, reject) {if (!uni.getStorageSync('longitude')) {// resolve();
+              var pid = uni.getStorageSync('pid');if (pid) {_this.community = uni.getStorageSync('ptitle');_this.communityId = uni.getStorageSync('pcommunity_id');}} else {if (_this.all_community.length) {setTimeout(function () {_this.current = 1; //this.getData();
+                  _this.getData();}, 3000);}}});} else {_this.setcommunity = false;}}if (_this.community_id) {var p = new Promise(function (resolve, reject) {if (!uni.getStorageSync('longitude')) {// resolve();
             uni.getLocation({ success: function success(res) {// latitude: 30.39085
                 // longitude: 114.89495
-                uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });setTimeout(function () {resolve();_this.mescroll.resetUpScroll();}, 1000);} });}resolve();});p.then(function (r) {_this.mescroll.resetUpScroll();});} else {if (!uni.getStorageSync('longitude')) {// resolve();
+                uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });setTimeout(function () {resolve();_this.getData();}, 1000);} });}resolve();});p.then(function (r) {_this.getData();});} else {if (!uni.getStorageSync('longitude')) {// resolve();
           uni.getLocation({ success: function success(res) {// latitude: 30.39085
               // longitude: 114.89495
               uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });} });}} // this.Api.getCommunityWiki({}).then(result => {
       // 	console.log(result);
       // });
-    });}, watch: {}, methods: { paiHandler: function paiHandler() {if (this.token) {uni.navigateTo({ url: '/pages/update/newYear' });} else {console.log(111);this.guestPaiOpen = true;this.paiAd = false;}}, danrenHandler: function danrenHandler() {uni.navigateTo({ url: '/pages/push/edit?type=9' });}, moreHandler: function moreHandler() {uni.navigateTo({ url: '/pages/update/neighbour' });}, userHandler: function userHandler(item) {uni.navigateTo({ url: '/pages/index/personalcard?user_id=' + item.user_id + '&community_id=' + item.community_id });}, getUser: function getUser() {var _this2 = this;var params = { community_id: uni.getStorageSync('community_id') };this.Api.getNewNeighbor(params).then(function (result) {if (result.code == 1) {_this2.usersList = result.data;}});
+    });}, watch: {}, methods: { upper: function upper(e) {}, lower: function lower(e) {console.log(this.totalPage);if (this.totalPage >= this.page) {this.page++;this.upCallback(true);}}, paiHandler: function paiHandler() {
+      if (this.token) {
+        uni.navigateTo({
+          url: '/pages/update/newYear' });
+
+      } else {
+        console.log(111);
+        this.guestPaiOpen = true;
+        this.paiAd = false;
+      }
+    },
+    danrenHandler: function danrenHandler() {
+      uni.navigateTo({
+        url: '/pages/push/edit?type=9' });
+
+    },
+    moreHandler: function moreHandler() {
+      uni.navigateTo({
+        url: '/pages/update/neighbour' });
+
+    },
+    userHandler: function userHandler(item) {
+      uni.navigateTo({
+        url: '/pages/index/personalcard?user_id=' + item.user_id + '&community_id=' + item.community_id });
+
+    },
+    getUser: function getUser() {var _this2 = this;
+      var params = {
+        community_id: uni.getStorageSync('community_id') };
+
+      this.Api.getNewNeighbor(params).then(function (result) {
+        if (result.code == 1) {
+          _this2.usersList = result.data;
+          var system = uni.getSystemInfoSync();
+          _this2.height = _this2.usersList.length ? system.windowHeight - 320 : system.windowHeight - 240;
+        }
+      });
     },
     guestLoginTodo: function guestLoginTodo() {
       this.guestShowOpen = false;
@@ -947,7 +928,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         result = true;
         //不进行切换
         // this.current = 3;
-        // this.mescroll.resetUpScroll();
+        // this.getData();
         cb(result);
         return;
       } else {
@@ -966,7 +947,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         this.guestFlag = true;
 
         // this.current = 3;
-        // this.mescroll.resetUpScroll();
+        // this.getData();
         cb(result);
         return;
       }
@@ -981,11 +962,19 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         url: '/pages/update/secret' });
 
     },
-    upCallback: function upCallback(page) {var _this3 = this;
+    getData: function getData() {
+      this.flexNoData = false;
+      this.page = 1;
+      this.totalPage = 0;
+      this.postList = [];
+      this.upCallback();
+    },
+    upCallback: function upCallback(ismore) {var _this3 = this;
       //联网加载数据
+      var that = this;
       var params = {
-        page: page.num,
-        page_size: page.size,
+        page: this.page,
+        page_size: this.page.size,
         community_id: uni.getStorageSync('community_id'),
         committee_id: uni.getStorageSync('committee_id'),
         type: this.type,
@@ -996,89 +985,89 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         this.Api.allByCommunityId(params).
         then(function (result) {
           if (result.code == 1) {
-            var totalPage = result.data.total_pages;
-            var curPageLen = result.data.list.length;
-            if (page.num == 1) {
+            _this3.totalPage = result.data.total_pages;
+            if (_this3.page == 1) {
               _this3.postList = [];
               if (_this3.type == 6 && _this3.darenObj) {
                 _this3.postList.push(_this3.darenObj);
               }
             }
-            _this3.postList = _this3.postList.concat(result.data.list);
-            _this3.mescroll.endByPage(curPageLen, totalPage);
-            if (_this3.postList.length) {
-              _this3.flexNoData = true;
+            if (ismore) {
+              _this3.postList = _this3.postList.concat(result.data.list);
             } else {
+              _this3.postList = result.data.list;
+            }
+
+            if (_this3.postList.length) {
               _this3.flexNoData = false;
+            } else {
+              _this3.flexNoData = true;
             }
           }
-        }).
-        catch(function () {
-          //联网失败的回调,隐藏下拉刷新的状态
-          _this3.mescroll.endErr();
         });
       } else if (this.current == 2) {
         this.Api.nearByCommunityId(params).
         then(function (result) {
           if (result.code == 1) {
-            var totalPage = result.data.total_pages;
-            var curPageLen = result.data.list.length;
-            if (page.num == 1) _this3.postList = [];
-            _this3.postList = _this3.postList.concat(result.data.list);
-            _this3.mescroll.endByPage(curPageLen, totalPage);
-            if (_this3.postList.length) {
-              _this3.flexNoData = true;
+            _this3.totalPage = result.data.total_pages;
+
+            if (ismore) {
+              _this3.postList = _this3.postList.concat(result.data.list);
             } else {
+              _this3.postList = result.data.list;
+            }
+
+            if (_this3.postList.length) {
               _this3.flexNoData = false;
+            } else {
+              _this3.flexNoData = true;
             }
           }
-        }).
-        catch(function () {
-          //联网失败的回调,隐藏下拉刷新的状态
-          _this3.mescroll.endErr();
         });
       } else if (this.current == 3) {
         this.Api.helpDynamicsByCommunityId(params).
         then(function (result) {
           if (result.code == 1) {
-            var totalPage = result.data.total_pages;
-            var curPageLen = result.data.list.length;
+            _this3.totalPage = result.data.total_pages;
+
             if (page.num == 1) {
               _this3.postList = [];
               if (_this3.type == 6 && _this3.darenObj) {
                 _this3.postList.push(_this3.darenObj);
               }
             }
-            _this3.postList = _this3.postList.concat(result.data.list);
-            _this3.mescroll.endByPage(curPageLen, totalPage);
-            if (_this3.postList.length) {
-              _this3.flexNoData = true;
+            if (ismore) {
+              _this3.postList = _this3.postList.concat(result.data.list);
             } else {
+              _this3.postList = result.data.list;
+
+            }
+
+            if (_this3.postList.length) {
               _this3.flexNoData = false;
+            } else {
+              _this3.flexNoData = true;
             }
           }
-        }).
-        catch(function () {
-          //联网失败的回调,隐藏下拉刷新的状态
-          _this3.mescroll.endErr();
         });
+
       }
     },
     scroll: function scroll() {
-      console.log(
-      'mescroll元素id: ' +
-      this.mescroll.viewId +
-      ' , 滚动内容高度:' +
-      this.mescroll.getScrollHeight() +
-      ', mescroll高度:' +
-      this.mescroll.getClientHeight() +
-      ', 滚动条位置:' +
-      this.mescroll.getScrollTop() +
-      ', 距离底部:' +
-      this.mescroll.getScrollBottom() +
-      ', 是否向上滑:' +
-      this.mescroll.isScrollUp);
-
+      // console.log(
+      // 	'mescroll元素id: ' +
+      // 		this.mescroll.viewId +
+      // 		' , 滚动内容高度:' +
+      // 		this.mescroll.getScrollHeight() +
+      // 		', mescroll高度:' +
+      // 		this.mescroll.getClientHeight() +
+      // 		', 滚动条位置:' +
+      // 		this.mescroll.getScrollTop() +
+      // 		', 距离底部:' +
+      // 		this.mescroll.getScrollBottom() +
+      // 		', 是否向上滑:' +
+      // 		this.mescroll.isScrollUp
+      // );
     },
     tabSelect: function tabSelect(e) {
       this.TabCur = e.currentTarget.dataset.id;
@@ -1139,7 +1128,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               uni.setStorageSync('community_name', e.title);
               _this4.current = 1;
               _this4.cateIndex = 0;
-              _this4.mescroll.resetUpScroll();
+              _this4.getData();
               uni.login({
                 success: function success(res) {var
                   errMsg = res.errMsg,code = res.code;
@@ -1184,7 +1173,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       //首页不进行切换
       // this.current = 3;
       // this.guestShowOpen = true;
-      // this.mescroll.resetUpScroll();
+      // this.getData();
     },
     // 手机号授权处理
     getPhoneNumber: function getPhoneNumber(e) {var _this5 = this;
@@ -1216,18 +1205,18 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         this.goLogin(function (data) {
           if (!data) {
             _this6.tagList = _this6.tagList2;
-            _this6.mescroll.resetUpScroll();
+            _this6.getData();
           } else {
             _this6.current = 3;
           }
         });
       } else if (arg == 3) {
 
-        this.mescroll.resetUpScroll();
+        this.getData();
       } else if (arg == 1) {
         this.goLogin(function (data) {
           if (!data) {
-            _this6.mescroll.resetUpScroll();
+            _this6.getData();
           } else {
             _this6.current = 3;
           }
@@ -1347,7 +1336,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
                     _this8.guestFlag = true;
                   }
                   if (_this8.all_community.length) {
-                    _this8.mescroll.resetUpScroll();
+                    _this8.getData();
                   } else {
                     //如果开通过小区，待审核
                     //this.current = 3;
@@ -1423,7 +1412,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               uni.setStorageSync('community_menu', _this9.communityTitle);
               _this9.community_menu = _this9.communityTitle;
               _this9.current = 1;
-              _this9.mescroll.resetUpScroll();
+              _this9.getData();
               _this9.setcommunity = false;
               _this9.guestShowOpen = false;
               //绑定上下级
@@ -1603,20 +1592,20 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
                 _this13.darenObj.regedit = true;
                 _this13.darenObj.type = 6;
               }
-              _this13.mescroll.scrollTo(0, 300);
-              _this13.mescroll.resetUpScroll();
+              // this.mescroll.scrollTo(0, 300);
+              _this13.getData();
               _this13.$forceUpdate();
 
             } else {
-              _this13.mescroll.scrollTo(0, 300);
-              _this13.mescroll.resetUpScroll();
+              // this.mescroll.scrollTo(0, 300);
+              _this13.getData();
               _this13.$forceUpdate();
 
             }
           });
         } else {
-          _this13.mescroll.scrollTo(0, 300);
-          _this13.mescroll.resetUpScroll();
+          // this.mescroll.scrollTo(0, 300);
+          _this13.getData();
           _this13.$forceUpdate();
         }
       });
@@ -1650,7 +1639,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               duration: 2000 });
 
             _this15.findFaultValue = false;
-            _this15.mescroll.resetUpScroll();
+            _this15.getData();
           } else {
             uni.showToast({
               title: result.msg,
@@ -1666,7 +1655,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               duration: 2000 });
 
             _this15.findFaultValue = false;
-            _this15.mescroll.resetUpScroll();
+            _this15.getData();
           } else {
             uni.showToast({
               title: result.msg,
@@ -1761,7 +1750,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
                 _this18.score_text = '';
                 _this18.$refs.Help.inputValue = 0;
                 _this18.$refs.integraltip.close();
-                _this18.mescroll.resetUpScroll();
+                _this18.getData();
               }, 2000);
             } });
 
