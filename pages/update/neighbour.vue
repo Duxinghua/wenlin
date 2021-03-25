@@ -22,6 +22,7 @@
 				</view>
 			</view>
 			<view class="list">
+				
 				<view class="listitem" v-if="navIndex == 2 " v-for="(item,index) in list" :key="index" :index="index" @click="getPro(item)">
 					<view class="avatar">
 						<image v-if="item.daren == 1" src="../../static/da.png" class="da"></image>

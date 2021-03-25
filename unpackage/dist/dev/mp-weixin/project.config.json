@@ -40,7 +40,15 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
+			"current": -1,
+			"list": []
+		},
+		"gamePlugin": {
 			"current": -1,
 			"list": []
 		},
@@ -48,10 +56,16 @@
 			"current": 1,
 			"list": [
 				{
-					"name": "test",
-					"query": "",
 					"id": 0,
-					"pathName": "pages/update/setVote"
+					"name": "test",
+					"pathName": "pages/update/setVote",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/update/neighbour",
+					"pathName": "pages/update/neighbour",
+					"scene": null
 				}
 			]
 		}

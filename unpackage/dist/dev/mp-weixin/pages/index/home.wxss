@@ -220,6 +220,8 @@ page.data-v-14a6ab35 {
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
+  margin-right: 0 !important;
+  margin-left: 10rpx !important;
 }
 .content .home .joinlist .join-user .grap .rr.data-v-14a6ab35 {
   width: 8rpx;

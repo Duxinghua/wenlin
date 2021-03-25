@@ -754,9 +754,11 @@ export default {
 			};
 			this.Api.getNewNeighbor(params).then(result => {
 				if(result.code == 1){
-					this.usersList = result.data
-					var system = uni.getSystemInfoSync()
-					this.height = this.usersList.length ? system.windowHeight - 320 :  system.windowHeight - 240
+					this.$nextTick(() => {
+						this.usersList = result.data
+						var system = uni.getSystemInfoSync()
+						this.height = this.usersList.length ? system.windowHeight - 320 :  system.windowHeight - 240
+					})
 				}
 			});
 		},
@@ -979,6 +981,7 @@ export default {
 			var that = this
 			this.Api.setDefaultCommunity({ community_id: e.community_id }).then(result => {
 				if (result.code == 1) {
+					this.usersList = []
 					this.getUser()
 					uni.showToast({
 						icon: 'success',
@@ -1968,6 +1971,8 @@ page {
 				flex-direction: row;
 				justify-content: center;
 				align-items: center;
+				margin-right: 0!important;
+				margin-left:10rpx!important;
 				.rr{
 					width:8rpx;
 					height:8rpx;

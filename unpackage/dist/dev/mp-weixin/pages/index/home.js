@@ -891,9 +891,11 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
 
       this.Api.getNewNeighbor(params).then(function (result) {
         if (result.code == 1) {
-          _this2.usersList = result.data;
-          var system = uni.getSystemInfoSync();
-          _this2.height = _this2.usersList.length ? system.windowHeight - 320 : system.windowHeight - 240;
+          _this2.$nextTick(function () {
+            _this2.usersList = result.data;
+            var system = uni.getSystemInfoSync();
+            _this2.height = _this2.usersList.length ? system.windowHeight - 320 : system.windowHeight - 240;
+          });
         }
       });
     },
@@ -1116,6 +1118,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       var that = this;
       this.Api.setDefaultCommunity({ community_id: e.community_id }).then(function (result) {
         if (result.code == 1) {
+          _this4.usersList = [];
           _this4.getUser();
           uni.showToast({
             icon: 'success',
