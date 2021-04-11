@@ -57,7 +57,10 @@
 						</view>
 					</view>
 					<view class="openinfo">以上信息仅用于核实小区邻居真实身份，请放心填写，点击进入小区即代表同意<text class="rcolor" @click="gosecret"> {{textread}}</text> 。</view>
-					<view :class="['graybtn',subFlag ? 'openbutton' : '']" hover-class="hover-openbutton" @click="setcommunityHandler">申请开通</view>
+					<view v-if="testShow" :class="['graybtn', 'openbutton' ]" hover-class="hover-openbutton" @click="testHandler">体验开通</view>
+					
+					<view v-if="!testShow" :class="['graybtn',subFlag ? 'openbutton' : '']" hover-class="hover-openbutton" @click="setcommunityHandler">申请开通</view>
+					
 				</view>
 				<!-- 选择业主身份 -->
 					<u-popup mode="bottom" border-radius="60" v-model="pickerId">
@@ -78,6 +81,9 @@
 					</u-popup>
 <!-- 					<u-picker mode="region" @confirm="confirmHandler" confirm-color="#ff9c00" v-model="areaShow" :area-code='["13", "1303", "130304"]'></u-picker>
  -->					<!-- 推荐 -->
+ 
+					<u-select v-model="areaShow" mode="mutil-column-auto" :list="adList" @confirm="confirmadd"></u-select>
+ 
 					<u-popup mode="bottom" border-radius="60" v-model="recommend">
 						<view class="relist">
 							<view class="reheader">附近的小区</view>
@@ -100,7 +106,7 @@
 							</view>
 						</view>
 					</u-popup>
-					<u-popup mode="bottom" border-radius="60" v-model="areaShow">
+<!-- 					<u-popup mode="bottom" border-radius="60" v-model="areaShow">
 						<view class="toolbar">
 							<view class="cancel" @click="areaShow = false">
 								取消
@@ -114,7 +120,7 @@
 					  :area-list="areaList"
 					  :columns-placeholder="['请选择', '请选择', '请选择']"
 					/>
-					</u-popup>
+					</u-popup> -->
 			</view>
 			
 
@@ -122,7 +128,6 @@
 
 <script>
 	import navigationCustom from '../../components/struggler-navigationCustom/navigation-custom';
-	import areaList from '@/common/area.js'
 	export default{
 		components:{
 			navigationCustom
@@ -171,7 +176,7 @@
 				finish:false,
 				recommend:false,
 				recommendList:[],
-				areaList:areaList,
+				areaList:[],
 				uploadList:[],
 				params:{
 					title:'',
@@ -186,16 +191,28 @@
 					type:1,
 					images:''
 				},
-				subFlag:false
+				subFlag:false,
+				testShow:false,
+				adList:[],
+				adshow:false
 			}
 				
 		},
 		onLoad() {
-			console.log(areaList)
 			console.log('aaa')
+			this.getAdlist()
 		},
 		onShow() {
-			console.log('bbb')
+			var data = {
+				version:this.version
+			}
+			this.Api.showTestLogin(data).then((result)=>{
+				if(result.code == 1){
+					this.testShow = true
+				}else {
+					this.testShow = false
+				}
+			})
 		},
 		watch:{
 			params:{
@@ -219,6 +236,16 @@
 			}
 		},
 		methods:{
+			getAdlist(){
+				this.Api.getJsCity({}).then((result)=>{
+					if(result.code == 1){
+						this.$nextTick(() =>{
+							this.adList = result.data
+							this.$forceUpdate()
+						})	
+					}
+				})
+			},
 			joinHandler(item){
 				uni.navigateTo({
 					url:'personal?data='+encodeURIComponent(JSON.stringify(item))
@@ -247,17 +274,18 @@
 				})
 				
 			},
-			confirmadd(){
-				if(this.areaObj[0].name && this.areaObj[1].name && this.areaObj[2].name){
-					this.areaValue = this.areaObj[0].name+this.areaObj[1].name+this.areaObj[2].name
-					this.params.province = this.areaObj[0].code
-					this.params.city = this.areaObj[1].code
-					this.params.area = this.areaObj[2].code
+			confirmadd(e){
+				this.areaObj = e
+				console.log(e)
+
+				if(this.areaObj[0].label && this.areaObj[1].label && this.areaObj[2].label){
+					this.areaValue = this.areaObj[0].label+this.areaObj[1].label+this.areaObj[2].label
+					this.params.province = this.areaObj[0].value
+					this.params.city = this.areaObj[1].value
+					this.params.area = this.areaObj[2].value
 					this.areaShow = false
 					this.communityInput()
 					
-				}else{
-					return this.$u.toast('请选择省市区')
 				}
 			},
 			changeHandler(e){
@@ -349,6 +377,11 @@
 					return this.$u.toast('请请入小区名')
 				}
 				this.areaShow = true
+			},
+			testHandler(){
+				uni.redirectTo({
+					url:'/pages/update/login'
+				})
 			},
 			//设置小区
 			setcommunityHandler() {

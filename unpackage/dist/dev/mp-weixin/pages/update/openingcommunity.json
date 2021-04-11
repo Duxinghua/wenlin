@@ -2,7 +2,7 @@
   "navigationBarTitleText": "申请开通小区",
   "usingComponents": {
     "u-popup": "/uview-ui/components/u-popup/u-popup",
-    "van-area": "/wxcomponents/vant/area/index",
+    "u-select": "/uview-ui/components/u-select/u-select",
     "navigation-custom": "/components/struggler-navigationCustom/navigation-custom"
   }
 }

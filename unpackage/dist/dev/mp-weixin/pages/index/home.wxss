@@ -919,6 +919,23 @@ page.data-v-14a6ab35 {
   width: 30rpx;
   height: 30rpx;
 }
+.content .popup .content .testBtn.data-v-14a6ab35 {
+  position: fixed;
+  top: 440rpx;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 300rpx;
+  height: 90rpx;
+  background: #ff9c00;
+  color: white;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+  font-size: 36rpx;
+  line-height: 90rpx;
+  text-align: center;
+  z-index: 3004;
+}
 .content .popup .content .loginwrap.data-v-14a6ab35 {
   position: fixed;
   top: 460rpx;

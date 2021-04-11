@@ -56,7 +56,8 @@
         "committeeworker",
         "committeedetail",
         "dynamicslist",
-        "newYear"
+        "newYear",
+        "login"
       ]
     }
   ],

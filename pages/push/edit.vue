@@ -282,8 +282,8 @@
 					{value:0,name:'本小区可见',check:false}
 				],
 				nameList:[
-					{value:1,name:'实名发布',check:false},
-					{value:0,name:'匿名发布',check:true}
+					{value:0,name:'实名发布',check:false},
+					{value:1,name:'匿名发布',check:true}
 				],
 				nameLabel:'匿名发布',
 				selectLabel:'所有人可见',
@@ -797,6 +797,8 @@
 						}
 					})
 				}
+				console.log(JSON.stringify(data))
+
 				this.radioList.map((item)=>{
 					if(item.check){
 						data.opening = item.value

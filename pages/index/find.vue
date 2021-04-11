@@ -382,8 +382,7 @@ export default {
 	onLoad() {},
 	mounted() {
 		var system = uni.getSystemInfoSync()
-		this.height = system.windowHeight - 188
-		
+		this.height = system.windowHeight - uni.upx2px(180);
 		this.$Bus.$on('noToken', (e) => {
 		    this.goLogin((res) => {
 				

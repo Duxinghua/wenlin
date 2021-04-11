@@ -395,7 +395,7 @@ export default {
 			})
 		})
 		var system = uni.getSystemInfoSync()
-		this.height = system.windowHeight - 188
+		this.height = system.windowHeight - uni.upx2px(188)
 		if(uni.getStorageSync('token')){
 			this.$getCount((result) => {
 				var count = 0

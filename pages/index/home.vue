@@ -216,6 +216,9 @@
 				<image src="../../static/close.png" class="popupclose" @click="guestClick"></image>
 				<image class="wlimg" src="https://sq.wenlinapp.com/appimg/share500400.jpg" />
 				<view class="logintitles"></view>
+<!-- 				<view class="testBtn" @click="loginHandler">
+					测试专用登录
+				</view> -->
 				<view class="loginwrap">
 					<view class="logintitle">选择登录方式</view>
 					<view class="logintype">
@@ -491,7 +494,8 @@ export default {
 	},
 	mounted() {
 		var system = uni.getSystemInfoSync()
-		this.height = system.windowHeight - 330
+		this.height = system.windowHeight - uni.upx2px(188);
+		console.log(this.height,'height')
 		this.paiAd = uni.getStorageSync('paiAd') == 1 ? false : true
 		if (!uni.getStorageSync('longitude')) {
 			uni.getLocation({
@@ -712,6 +716,25 @@ export default {
 	},
 	watch: {},
 	methods: {
+		loginHandler(){
+			var data = {
+				mobile:'13920876192',
+				password: '123456'
+			}
+			this.Api.loginByMobile(data).then((result)=>{
+				if(result.code == 1){
+					uni.setStorageSync('token', result.data.token);
+					uni.setStorageSync('user', result.data.user);
+					uni.setStorageSync('maxJoin', result.data.max_join);
+					uni.setStorageSync('mobile', result.data.user.mobile);
+					uni.setStorageSync('all_community', result.data.all_community);
+					this.loginFalse = false
+					uni.switchTab({
+						url:'/pages/my/index'
+					})
+				}
+			})
+		},
 		upper(e){
 			
 		},
@@ -757,7 +780,7 @@ export default {
 					this.$nextTick(() => {
 						this.usersList = result.data
 						var system = uni.getSystemInfoSync()
-						this.height = this.usersList.length ? system.windowHeight - 320 :  system.windowHeight - 240
+						this.height = this.usersList.length ? system.windowHeight - uni.upx2px(320) :  system.windowHeight - uni.upx2px(240)
 					})
 				}
 			});
@@ -2117,6 +2140,7 @@ page {
 				border-radius: 4upx;
 			}
 		}
+
 		.tagwrap {
 			display: flex;
 			flex-direction: row;
@@ -2519,6 +2543,21 @@ page {
 				width: 30upx;
 				height: 30upx;
 			}
+				.testBtn{
+					position: fixed;
+					top:440upx;
+					left:50%;
+					transform: translateX(-50%);
+					width:300upx;
+					height:90upx;
+					background: rgba(255, 156, 0, 1);
+					color:white;
+					border-radius: 10upx;
+					font-size: 36upx;
+					line-height: 90upx;
+					text-align: center;
+					z-index: 3004;
+				}
 			.loginwrap {
 				position: fixed;
 				top: 460upx;
@@ -2528,7 +2567,6 @@ page {
 				display: flex;
 				flex-direction: column;
 				z-index: 3003;
-
 				.logintitle {
 					text-align: center;
 					width: 180upx;

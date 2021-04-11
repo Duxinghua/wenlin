@@ -116,10 +116,7 @@
 			{
 				"path": "openingcommunity",
 				"style": {
-					"navigationBarTitleText": "申请开通小区",
-					"usingComponents": {
-					  "van-area": "/wxcomponents/vant/area/index"
-					}
+					"navigationBarTitleText": "申请开通小区"
 				}
 			},
 			{
@@ -342,6 +339,12 @@
 				"path": "newYear",
 				"style": {
 					"navigationBarTitleText": "拜年接龙"
+				}
+			},
+			{
+				"path": "login",
+				"style": {
+					"navigationBarTitleText": "登录"
 				}
 			}
 			

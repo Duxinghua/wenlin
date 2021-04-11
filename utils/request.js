@@ -26,6 +26,12 @@ function wxRequest(data, url, method) {
 			mask: true
 		});
 	}
+	
+	if(url.indexOf('api/wxapp/public/communityLoginByCode') > -1){
+		if(uni.getStorageSync('test')){
+			data.version = Config.version
+		}
+	}
 	return new Promise((resolve, reject) => {
 		uni.request({
 			url: url,
@@ -76,12 +82,14 @@ function wxRequest(data, url, method) {
 					// 		mask: true
 					// 	});
 					// }
-					uni.showToast({
-						title: res.data.msg,
-						icon: "none",
-						duration: 3000,
-						mask: true
-					});
+					if(url.indexOf('api/wxapp/public/communityLoginByCode') == -1){
+						uni.showToast({
+							title: res.data.msg,
+							icon: "none",
+							duration: 3000,
+							mask: true
+						});
+					}
 
 				}
 			},

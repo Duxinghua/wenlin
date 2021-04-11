@@ -3,6 +3,7 @@ import {baseURL} from '../utils/config.js'
 // var baseURL = 'https://sq.wenlinapp.com/'
 
 
+
 //POST 用户模块
 const wechatAuth = (params) => wxRequest(params, baseURL + 'api/wxapp/public/communityLoginByCode', 'POST')
 // POST 授权获取手机号 /api/wxapp/public/setUserPhoneBySecret
@@ -264,6 +265,12 @@ const publishGreetings = (params) => wxRequest(params, baseURL + 'api/community/
 const greetingsLike = (params) => wxRequest(params, baseURL + 'api/community/newyear_greetings/greetingsLike', 'POST')
 //已答列表 {{online}}/api/answer/answer/resultList
 const answerresultList = (params) => wxRequest(params, baseURL + 'api/answer/answer/resultList', 'POST')
+//通过手机号登录 {{localhost}}/api/wxapp/public/loginByMobile
+const loginByMobile = (params) => wxRequest(params, baseURL + 'api/wxapp/public/loginByMobile', 'POST')
+//显示测试 {{localhost}}/api/wxapp/public/showTestLogin
+const showTestLogin = (params) => wxRequest(params, baseURL + 'api/wxapp/public/showTestLogin', 'POST')
+//城市 服务 /api/community/public/getJsCity
+const getJsCity = (params) => wxRequest(params, baseURL + 'api/community/public/getJsCity', 'POST')
 
 
 export default {
@@ -383,5 +390,8 @@ export default {
 	newyearGreetings,
 	publishGreetings,
 	greetingsLike,
-	answerresultList
+	answerresultList,
+	loginByMobile,
+	showTestLogin,
+	getJsCity
 }

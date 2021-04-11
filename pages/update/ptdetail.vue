@@ -448,23 +448,24 @@ export default {
 			return {
 				title: this.detail.title,
 				imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
-				path: '/pages/index/detail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
+				path: '/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
 			};
 		} else if (this.detail.publish_type == 1) {
 			var content = this.detail.content
 			if(this.detail.sell_type && this.detail.sell_type == 2){
 				content = '赠送:'+content
 			}
+			console.log('/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id)
 			return {
 				title: content.length > 30 ? content.substr(0, 30) + '...' : content,
 				imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
-				path: '/pages/index/detail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
+				path: '/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
 			};
 		} else {
 			return {
 				title: this.detail.title,
 				imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
-				path: '/pages/index/detail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
+				path: '/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
 			};
 		}
 	},
@@ -612,7 +613,6 @@ export default {
 			}
 		},
 		loginTodoHander() {
-			console.log(this.$mp.query)
 			if (this.$mp.query.scene) {
 				this.srouce = 1;
 				var scene = decodeURIComponent(this.$mp.query.scene);

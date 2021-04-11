@@ -15,6 +15,7 @@ const subscription = {
 	vote:'wedVxVL7kxxEMfcnjhVgWCottnrhwHzZ9SYZaWiGs48',
 	jointuan:'8acnia-tVCSVzY49oVA3jteQCh1qhxrEc9DIfpsEIfg'
 }
+const version = 2
 module.exports = {
 	appid,
 	sec,
@@ -23,5 +24,6 @@ module.exports = {
 	baseURL,
 	upload,
 	subscription,
-	minUrl
+	minUrl,
+	version
 }

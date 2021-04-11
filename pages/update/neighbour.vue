@@ -17,12 +17,45 @@
 				<view :class="['navitem',navIndex === 2 ? 'acitve' : '']" @click="navClick(2)">
 					名人榜
 				</view>
-				<view :class="['navitem',navIndex === 3 ? 'acitve' : '']" @click="navClick(3)" v-if="false">
+				<view :class="['navitem',navIndex === 3 ? 'acitve' : '']" @click="navClick(3)"  v-if="false">
 					达人榜
 				</view>
 			</view>
 			<view class="list">
-				
+				<view class="listitem listitemself" v-if="false">
+					<view class="avatar">
+						<image v-if="item.daren == 1" src="../../static/da.png" class="da"></image>
+						<image :src="item.avatar" class="headerav"></image>
+					</view>
+					<view class="userinfo">
+						<view class="name">我是用户自己</view>
+						<view class="des">
+							暂无达人标签，等待报名
+						</view>
+					</view>
+					<view class="apply">
+						立即报名
+					</view>
+				</view>
+				<view class="listitem listitemother" v-for="(item,index) in list" :key="index" :index="index" v-if="false">
+					<view class="number">
+						NO.{{index}}
+					</view>
+					<view class="avatar">
+						<image v-if="item.daren == 1" src="../../static/da.png" class="da"></image>
+						<image :src="item.avatar" class="headerav"></image>
+					</view>
+					<view class="userinfo">
+						<view class="name">{{item.user_nickname}}</view>
+						<view class="dalist" v-for="(sitem,sindex) in item.skill_desc_list" :key="sindex" :index="sindex">
+							<view class="daitem">{{sitem}}</view>
+						</view>
+					</view>
+					<view class="scoreinfo">
+						<image src="../../static/push-a.png" class="ico"></image>
+						<view class="icotext">111</view>
+					</view>
+				</view>
 				<view class="listitem" v-if="navIndex == 2 " v-for="(item,index) in list" :key="index" :index="index" @click="getPro(item)">
 					<view class="avatar">
 						<image v-if="item.daren == 1" src="../../static/da.png" class="da"></image>
@@ -254,7 +287,7 @@
 									avatar:item.avatar,
 									user_nickname:item.user_nickname
 								}
-								item.skill_desc = item.skill_desc
+								item.skill_desc_list = item.skill_desc.split(",")
 								item.type = 6
 							})
 							if(ismore){
@@ -364,6 +397,99 @@
 			.list{
 				display: flex;
 				flex-direction: column;
+				.listitemself{
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					padding-left:120upx;
+					.userinfo{
+						display: flex;
+						flex-direction: column;
+						.name{
+							font-size: 30upx;
+							font-family: PingFang SC;
+							font-weight: 500;
+							color: #FF9C00;
+						}
+						.des{
+							font-size: 22upx;
+							font-family: PingFang SC;
+							font-weight: 500;
+							color: #404B69;
+						}
+					}
+					.apply{
+						width: 170upx;
+						height: 61upx;
+						background: linear-gradient(44deg, #FEAA0E, #FFC000);
+						border-radius: 10upx;
+						line-height: 61upx;
+						text-align: center;
+						font-size: 26upx;
+						font-family: PingFang SC;
+						font-weight: 500;
+						color: #FFFFFF;
+						margin-left:auto;
+					}
+				}
+				.listitemother{
+					.number{
+						width: 120upx;
+						font-size: 18upx;
+						font-family: PingFang SC;
+						font-weight: 800;
+						color: #020433;
+					}
+					.userinfo{
+						display: flex;
+						flex-direction: column;
+						width: 350upx;
+						overflow: hidden;
+						.name{
+							font-size: 30upx;
+							font-family: PingFang SC;
+							font-weight: 500;
+							color: #020433;
+						}
+						.dalist {
+							display: flex;
+							flex-direction: row;
+							align-content: flex-start;
+							flex-wrap: nowrap;
+							// flex-wrap: wrap;
+							margin-top: 15upx;
+							// margin-bottom: 20upx;
+							.daitem {
+								width: fit-content;
+								height: 42upx;
+								line-height: 42upx;
+								background: #95A0B6;
+								color: white;
+								border-radius: 21upx;
+								padding-left: 20upx;
+								padding-right: 20upx;
+								margin-right: 20upx;
+								// margin-bottom: 20upx;
+							}
+						}
+					}
+					.scoreinfo{
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						margin-left: auto;
+						.ico{
+							width: 38upx;
+							height:38upx;
+						}
+						.icotext{
+							font-size: 30upx;
+							font-family: PingFang SC;
+							font-weight: 500;
+							color: #FF9C00;
+						}
+					}
+				}
 				.listitem{
 					display: flex;
 					flex-direction: row;

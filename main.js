@@ -42,7 +42,10 @@ Vue.config.productionTip = false
 Vue.prototype.$Bus = Bus
 Vue.prototype.Api = Api
 Vue.prototype.Tool = Tool
+
 Vue.prototype.Config = Config
+//版本控制 
+Vue.prototype.version = Config.version
 Vue.prototype.$getCount = (cb) => {
 	Api.myUnread({community_id: uni.getStorageSync('community_id')}).then((result) => {
 		if(result.code == 1){
