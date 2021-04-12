@@ -245,6 +245,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 {
   data: function data() {
     return {
@@ -297,15 +298,20 @@ __webpack_require__.r(__webpack_exports__);
 
       simpleFlag: false,
       scrollFiexd: false,
-      onShareShow: false };
+      onShareShow: false,
+      userinfo: {
+        avatar: '',
+        daren: 0 } };
+
 
   },
   onPageScroll: function onPageScroll(e) {
     this.scrollTop = e.scrollTop;
   },
-  mounted: function mounted() {
+  onLoad: function onLoad() {
     this.community_name = uni.getStorageSync('community_name');
     this.myNeighbour();
+    this.getmyCenter();
   },
   onShareAppMessage: function onShareAppMessage() {
     return {
@@ -315,6 +321,23 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   methods: {
+    danrenHandler: function danrenHandler() {
+      uni.navigateTo({
+        url: '/pages/push/edit?type=9' });
+
+    },
+    goCard: function goCard() {
+      uni.navigateTo({
+        url: '/pages/index/communitycard?community_id=' + uni.getStorageSync('community_id') });
+
+    },
+    getmyCenter: function getmyCenter() {var _this = this;
+      this.Api.myCenter({ community_id: uni.getStorageSync('community_id') }).then(function (result) {
+        if (result.code == 1) {
+          _this.userinfo = result.data;
+        }
+      });
+    },
     //转发朋友圈
     onsend: function onsend() {
       this.onShareShow = false;
@@ -329,7 +352,7 @@ __webpack_require__.r(__webpack_exports__);
     onShowshare: function onShowshare() {
       this.onShareShow = false;
     },
-    onShowtodo: function onShowtodo() {var _this = this;
+    onShowtodo: function onShowtodo() {var _this2 = this;
       this.scrollFiexd = true;
       var pages = getCurrentPages(); //获取加载的页面
 
@@ -344,26 +367,26 @@ __webpack_require__.r(__webpack_exports__);
 
       this.Api.getWXACodeUnlimit(data).then(function (result) {
         if (result.code == 1) {
-          _this.$nextTick(function () {
-            _this.onShareShow = false;
-            _this.posterData.posterImgUrl = 'https://sq.wenlinapp.com/appimg/share500400.jpg';
+          _this2.$nextTick(function () {
+            _this2.onShareShow = false;
+            _this2.posterData.posterImgUrl = 'https://sq.wenlinapp.com/appimg/share500400.jpg';
 
-            _this.posterData.title = uni.getStorageSync('user').user_nickname + '邀请你加入' + _this.community_name + '小区邻里互助平台';
+            _this2.posterData.title = uni.getStorageSync('user').user_nickname + '邀请你加入' + _this2.community_name + '小区邻里互助平台';
 
-            _this.posterData.avatarUrl = uni.getStorageSync('user').avatar;
-            _this.posterData.posterCodeUrl = result.data;
-            _this.posterData.des = '';
-            _this.$forceUpdate();
+            _this2.posterData.avatarUrl = uni.getStorageSync('user').avatar;
+            _this2.posterData.posterCodeUrl = result.data;
+            _this2.posterData.des = '';
+            _this2.$forceUpdate();
             setTimeout(function () {
-              _this.canvasFlag = false; //显示canvas海报
-              _this.deliveryFlag = false; //关闭分享弹窗
-              _this.$refs.hchPoster.posterShow();
+              _this2.canvasFlag = false; //显示canvas海报
+              _this2.deliveryFlag = false; //关闭分享弹窗
+              _this2.$refs.hchPoster.posterShow();
             }, 500);
 
           });
 
         } else {
-          _this.scrollFiexd = false;
+          _this2.scrollFiexd = false;
         }
       });
 
@@ -389,7 +412,7 @@ __webpack_require__.r(__webpack_exports__);
         url: '/pages/index/personalcard?user_id=' + obj.user_id + '&community_id=' + obj.community_id });
 
     },
-    myNeighbour: function myNeighbour(ismore) {var _this2 = this;
+    myNeighbour: function myNeighbour(ismore) {var _this3 = this;
       var data = {
         page: this.page,
         page_size: this.page_size,
@@ -400,14 +423,14 @@ __webpack_require__.r(__webpack_exports__);
         this.Api.myNeighbour(data).then(function (result) {
           if (result.code == 1) {
             if (ismore) {
-              _this2.total_page = result.data.total_page;
-              _this2.list = _this2.list.concat(result.data.list);
-              _this2.total = result.data.total;
+              _this3.total_page = result.data.total_page;
+              _this3.list = _this3.list.concat(result.data.list);
+              _this3.total = result.data.total;
 
             } else {
-              _this2.total_page = result.data.total_page;
-              _this2.list = result.data.list;
-              _this2.total = result.data.total;
+              _this3.total_page = result.data.total_page;
+              _this3.list = result.data.list;
+              _this3.total = result.data.total;
             }
           }
         });
@@ -423,14 +446,14 @@ __webpack_require__.r(__webpack_exports__);
               item.type = 6;
             });
             if (ismore) {
-              _this2.total_page = result.data.total_page;
-              _this2.list = _this2.list.concat(result.data.list);
-              _this2.total = result.data.total;
+              _this3.total_page = result.data.total_page;
+              _this3.list = _this3.list.concat(result.data.list);
+              _this3.total = result.data.total;
 
             } else {
-              _this2.total_page = result.data.total_page;
-              _this2.list = result.data.list;
-              _this2.total = result.data.total;
+              _this3.total_page = result.data.total_page;
+              _this3.list = result.data.list;
+              _this3.total = result.data.total;
             }
           }
 

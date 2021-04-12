@@ -20,7 +20,7 @@
 					<view class="t2">创</view>
 				</view>
 			</view>
-			<text @click="singleHandler" :class="['single', userinfo.is_sign == 1 ? 'singlefix':'']">{{userinfo.is_sign == 1 ? '已签到' :'签到'}}</text>
+			<button  open-type="getUserInfo" @getuserinfo="singleHandler" :class="['single', userinfo.is_sign == 1 ? 'singlefix':'']">{{userinfo.is_sign == 1 ? '已签到' :'签到'}}</button>
 		</view>
 		<view class="personalwrap">
 			<view class="personitem" @click="targetClick(11)">
@@ -62,7 +62,7 @@
 				<text class="navtext">我的邻居</text>
 				<image src="../../static/mearrow.png" class="cardico"></image>
 			</view>
-			<view class="navitem" @click="targetClick(7)">
+			<view class="navitem" @click="targetClick(7)" v-if="false">
 				<image src="../../static/me5.png" class="mico"></image>
 				<text class="navtext">我的居委会</text>
 				<image src="../../static/mearrow.png" class="cardico"></image>
@@ -239,36 +239,44 @@ export default {
 			this.singShow = false
 		},
 		//签到
-		singleHandler(){
-			if(this.userinfo.is_sign != 1){
-				if(this.isSingFlag){
-					this.isSingFlag = false
-					this.Api.userSaveSign({}).then((result) => {
-						if(result.code == 1){
-							uni.showToast({
-								title:result.msg,
-								icon:'success',
-								duration:1500,
-								success: () => {
-									this.getMyinfo()
-									this.singShow = true
-									this.singValue = result.data
-									setTimeout(()=>{
-										this.singShow = false
-									},1500)
+		singleHandler(e){
+			var imgUrl = e.detail.userInfo.avatarUrl
+			this.Api.updateUserInfo({avatarUrl:imgUrl}).then((dd)=>{
+				if(dd.code == 1){
+					if(this.userinfo.is_sign != 1){
+						if(this.isSingFlag){
+							this.isSingFlag = false
+							this.Api.userSaveSign({}).then((result) => {
+								if(result.code == 1){
+									uni.showToast({
+										title:result.msg,
+										icon:'success',
+										duration:1500,
+										success: () => {
+											this.getMyinfo()
+											this.singShow = true
+											this.singValue = result.data
+											setTimeout(()=>{
+												this.singShow = false
+											},1500)
+										}
+									})
+						
 								}
 							})
-				
 						}
-					})
+					}else{
+						uni.showToast({
+							title:'您已签到',
+							icon:'none',
+							duration:1000
+						})
+					}
+				
 				}
-			}else{
-				uni.showToast({
-					title:'您已签到',
-					icon:'none',
-					duration:1000
-				})
-			}
+			})
+
+
 		},	
 		customConduct(e){
 	

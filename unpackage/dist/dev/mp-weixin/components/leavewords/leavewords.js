@@ -141,6 +141,7 @@ var _default =
 {
   data: function data() {
     return {
+      autoBottom: 0,
       message: this.messageValue };
 
   },
@@ -165,6 +166,17 @@ var _default =
     }
   },
   methods: {
+    InputFocus: function InputFocus(e) {
+      this.autoBottom = e.detail.height;
+    },
+    keyboardHandler: function keyboardHandler(e) {
+      var height = e.detail.height;
+      if (this.autoBottom == height) {
+        return;
+      } else {
+        this.autoBottom = height;
+      }
+    },
     textareaBlur: function textareaBlur() {
       this.$emit('textareaBlur', this.message);
     },

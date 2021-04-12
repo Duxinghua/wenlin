@@ -342,7 +342,9 @@ __webpack_require__.r(__webpack_exports__);
       },
       scrollTop: 0, // 当linear为true的时候需要通过onpagescroll传递参数
       scrollMaxHeight: 200, //滑动的高度限制，超过这个高度即背景全部显示
-      detail: {},
+      detail: {
+        total_score: 0 },
+
       community_id: '',
       indicatorDots: true,
       autoplay: true,
@@ -440,6 +442,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
     this.getDetail();
+    this.getImgs();
     this.mobile = uni.getStorageSync('mobile');
   },
   onShareAppMessage: function onShareAppMessage() {
@@ -478,6 +481,11 @@ __webpack_require__.r(__webpack_exports__);
       uni.navigateTo({
         url: '/pages/index/personalcard?user_id=' + item.user_id + '&community_id=' + item.community_id });
 
+    },
+    getImgs: function getImgs() {
+      this.Api.communityDynamicsImg({ community_id: uni.getStorageSync('community_id') }).then(function (result) {
+        console.log(result);
+      });
     },
     goHome: function goHome() {
       uni.navigateTo({

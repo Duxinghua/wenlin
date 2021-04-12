@@ -355,36 +355,44 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.singShow = false;
     },
     //签到
-    singleHandler: function singleHandler() {var _this3 = this;
-      if (this.userinfo.is_sign != 1) {
-        if (this.isSingFlag) {
-          this.isSingFlag = false;
-          this.Api.userSaveSign({}).then(function (result) {
-            if (result.code == 1) {
-              uni.showToast({
-                title: result.msg,
-                icon: 'success',
-                duration: 1500,
-                success: function success() {
-                  _this3.getMyinfo();
-                  _this3.singShow = true;
-                  _this3.singValue = result.data;
-                  setTimeout(function () {
-                    _this3.singShow = false;
-                  }, 1500);
-                } });
+    singleHandler: function singleHandler(e) {var _this3 = this;
+      var imgUrl = e.detail.userInfo.avatarUrl;
+      this.Api.updateUserInfo({ avatarUrl: imgUrl }).then(function (dd) {
+        if (dd.code == 1) {
+          if (_this3.userinfo.is_sign != 1) {
+            if (_this3.isSingFlag) {
+              _this3.isSingFlag = false;
+              _this3.Api.userSaveSign({}).then(function (result) {
+                if (result.code == 1) {
+                  uni.showToast({
+                    title: result.msg,
+                    icon: 'success',
+                    duration: 1500,
+                    success: function success() {
+                      _this3.getMyinfo();
+                      _this3.singShow = true;
+                      _this3.singValue = result.data;
+                      setTimeout(function () {
+                        _this3.singShow = false;
+                      }, 1500);
+                    } });
 
 
+                }
+              });
             }
-          });
-        }
-      } else {
-        uni.showToast({
-          title: '您已签到',
-          icon: 'none',
-          duration: 1000 });
+          } else {
+            uni.showToast({
+              title: '您已签到',
+              icon: 'none',
+              duration: 1000 });
 
-      }
+          }
+
+        }
+      });
+
+
     },
     customConduct: function customConduct(e) {
 

@@ -4,9 +4,10 @@
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
 		<view class="content">
 			<view class="header">
-				<text>共{{total}}名邻居（{{community_name}}小区）</text>
+				<view class="leftbtn" @click="goCard">
+					小区名片
+				</view>
 				<view class="rightneig" @click="onActivelink">
-					<image src="../../static/invited.png" class="joinimg"></image>
 					<text class="jointext">邀请邻居</text>
 				</view>
 			</view>
@@ -17,29 +18,29 @@
 				<view :class="['navitem',navIndex === 2 ? 'acitve' : '']" @click="navClick(2)">
 					名人榜
 				</view>
-				<view :class="['navitem',navIndex === 3 ? 'acitve' : '']" @click="navClick(3)"  v-if="false">
+				<view :class="['navitem',navIndex === 3 ? 'acitve' : '']" @click="navClick(3)">
 					达人榜
 				</view>
 			</view>
 			<view class="list">
-				<view class="listitem listitemself" v-if="false">
+				<view class="listitem listitemself" v-if="navIndex === 3 && userinfo.daren === 0">
 					<view class="avatar">
 						<image v-if="item.daren == 1" src="../../static/da.png" class="da"></image>
-						<image :src="item.avatar" class="headerav"></image>
+						<image :src="userinfo.avatar" class="headerav"></image>
 					</view>
 					<view class="userinfo">
-						<view class="name">我是用户自己</view>
+						<view class="name">{{userinfo.user_nickname}}</view>
 						<view class="des">
 							暂无达人标签，等待报名
 						</view>
 					</view>
-					<view class="apply">
+					<view class="apply" @click="danrenHandler">
 						立即报名
 					</view>
 				</view>
-				<view class="listitem listitemother" v-for="(item,index) in list" :key="index" :index="index" v-if="false">
+				<view class="listitem listitemother" v-for="(item,index) in list" :key="index" :index="index" v-if="navIndex === 3">
 					<view class="number">
-						NO.{{index}}
+						NO.{{index+1}}
 					</view>
 					<view class="avatar">
 						<image v-if="item.daren == 1" src="../../static/da.png" class="da"></image>
@@ -47,13 +48,13 @@
 					</view>
 					<view class="userinfo">
 						<view class="name">{{item.user_nickname}}</view>
-						<view class="dalist" v-for="(sitem,sindex) in item.skill_desc_list" :key="sindex" :index="sindex">
-							<view class="daitem">{{sitem}}</view>
+						<view class="dalist">
+							<view class="daitem" v-for="(sitem,sindex) in item.skill_desc_list" :key="sindex" :index="sindex">{{sitem}}</view>
 						</view>
 					</view>
 					<view class="scoreinfo">
 						<image src="../../static/push-a.png" class="ico"></image>
-						<view class="icotext">111</view>
+						<view class="icotext">{{item.help_score}}</view>
 					</view>
 				</view>
 				<view class="listitem" v-if="navIndex == 2 " v-for="(item,index) in list" :key="index" :index="index" @click="getPro(item)">
@@ -165,15 +166,20 @@
 				},
 				simpleFlag:false,
 				scrollFiexd:false,
-				onShareShow:false
+				onShareShow:false,
+				userinfo:{
+					avatar:'',
+					daren:0
+				}
 			};
 		},
 		onPageScroll(e) {
 			this.scrollTop = e.scrollTop;
 		},
-		mounted() {
+		onLoad() {
 			this.community_name = uni.getStorageSync('community_name')
 			this.myNeighbour()
+			this.getmyCenter()
 		},
 		onShareAppMessage:function(){
 			return {
@@ -183,6 +189,23 @@
 			}
 		},
 		methods:{
+			danrenHandler(){
+				uni.navigateTo({
+					url:'/pages/push/edit?type=9'
+				})
+			},
+			goCard(){
+				uni.navigateTo({
+					url:'/pages/index/communitycard?community_id='+uni.getStorageSync('community_id')
+				})
+			},
+			getmyCenter(){
+				this.Api.myCenter({community_id:uni.getStorageSync('community_id')}).then((result)=>{
+					if(result.code == 1){
+						this.userinfo = result.data
+					}
+				})
+			},
 			//转发朋友圈
 			onsend(){
 				this.onShareShow = false
@@ -330,35 +353,45 @@
 			flex-direction: column;
 			padding-left:24upx;
 			padding-right:24upx;
+			padding-bottom: 130upx;
 			box-sizing: border-box;
 			.header{
 				display: flex;
 				flex-direction: row;
-				justify-content: space-between;
-				height:60upx;
-				font-size:28upx;
-				font-family:PingFang-SC-Medium,PingFang-SC;
-				font-weight:500;
-				color:#404B69;
-				line-height:60upx;
-				text-align: left;
-				.rightneig{
-					margin-left:auto;
+				justify-content: center;
+				align-items: center;
+				position: fixed;
+				width: 666rpx;
+				left:50%;
+				transform: translateX(-50%);
+				bottom: 20upx;
+				z-index: 1000;
+				.leftbtn{
+					width: 323rpx;
+					height: 99rpx;
+					background: #EEF2FA;
+					font-size: 38rpx;
+					color:#0D1C3F;
+					font-family:PingFang-SC-Medium,PingFang-SC;
+					font-weight:bold;
 					display: flex;
-					flex-direction: row;
+					justify-content: center;
 					align-items: center;
-					.joinimg{
-						width:45upx;
-						height:45upx;
-						margin-right:10upx;
-					}
-					.jointext{
-						font-size:28upx;
-						font-family:PingFang-SC-Medium,PingFang-SC;
-						font-weight:bold;
-						color:#404B69;
-						line-height:34upx;
-					}
+					margin-right: 20upx;
+					border-radius: 20upx;
+				}
+				.rightneig{
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width:323rpx;
+					height: 99rpx;
+					background: linear-gradient(44deg, #FEAA0E, #FFC000);
+					font-size:38upx;
+					font-family:PingFang-SC-Medium,PingFang-SC;
+					font-weight:bold;
+					color:white;
+					border-radius: 20upx;
 				}
 			}
 			.navwrap{
@@ -401,7 +434,7 @@
 					display: flex;
 					flex-direction: row;
 					align-items: center;
-					padding-left:120upx;
+					padding-left:80upx;
 					.userinfo{
 						display: flex;
 						flex-direction: column;
@@ -434,7 +467,7 @@
 				}
 				.listitemother{
 					.number{
-						width: 120upx;
+						width: 80upx;
 						font-size: 18upx;
 						font-family: PingFang SC;
 						font-weight: 800;
@@ -443,13 +476,16 @@
 					.userinfo{
 						display: flex;
 						flex-direction: column;
-						width: 350upx;
+						width: 390upx;
 						overflow: hidden;
 						.name{
 							font-size: 30upx;
 							font-family: PingFang SC;
 							font-weight: 500;
 							color: #020433;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
 						}
 						.dalist {
 							display: flex;
@@ -458,9 +494,11 @@
 							flex-wrap: nowrap;
 							// flex-wrap: wrap;
 							margin-top: 15upx;
+							overflow-x: auto;
 							// margin-bottom: 20upx;
 							.daitem {
 								width: fit-content;
+								flex-shrink:0;
 								height: 42upx;
 								line-height: 42upx;
 								background: #95A0B6;

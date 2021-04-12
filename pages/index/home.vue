@@ -862,7 +862,7 @@ export default {
 			var that = this
 			var params = {
 				page: this.page,
-				page_size: this.page.size,
+				page_size: this.page_size,
 				community_id: uni.getStorageSync('community_id'),
 				committee_id: uni.getStorageSync('committee_id'),
 				type: this.type,
@@ -876,14 +876,15 @@ export default {
 							this.totalPage = result.data.total_pages;
 							if (this.page == 1) {
 								this.postList = [];
-								if(this.type == 6 && this.darenObj){
-									this.postList.push(this.darenObj)
-								}
 							}
 							if(ismore){
 								this.postList = this.postList.concat(result.data.list);
 							}else{
-								this.postList = result.data.list
+								var list = []
+								if(this.type == 6 && this.darenObj){
+									list.push(this.darenObj)
+								}
+								this.postList = list.concat(result.data.list)
 							}
 	
 							if (this.postList.length) {
@@ -891,6 +892,7 @@ export default {
 							} else {
 								this.flexNoData = true;
 							}
+							console.log(this.postList,'xxx')
 						}
 					})
 			} else if (this.current == 2) {
@@ -918,16 +920,18 @@ export default {
 						if (result.code == 1) {
 							this.totalPage = result.data.total_pages;
 
-							if (page.num == 1) {
+							if (this.page == 1) {
 								this.postList = [];
-								if(this.type == 6 && this.darenObj){
-									this.postList.push(this.darenObj)
-								}
+		
 							}
 							if(ismore){
 								this.postList = this.postList.concat(result.data.list);
 							}else{
-								this.postList = result.data.list
+								var list = []
+								if(this.type == 6 && this.darenObj){
+									list.push(this.darenObj)
+								}
+								this.postList = list.concat(result.data.list)
 								
 							}
 						
@@ -1472,6 +1476,7 @@ export default {
 					}
 					this.Api.myCenter(data).then((result)=>{
 						if(result.code == 1){
+							console.log(result.data.daren == 0,'esult.data.daren == 0')
 							if(result.data.daren == 0){
 								this.darenObj = result.data
 								this.darenObj.user = {

@@ -2,7 +2,7 @@
 	<!-- 留言组件 -->
 	<view class="popup" v-if="messageShow">
 		<view class="mb" @click="closeMessage"></view>
-		<view class="message">
+		<view class="message" :style="{ bottom: autoBottom + 'px' }">
 			<view class="openheader">
 				<text>{{typeFlag ? '留言' : '挑错有礼' }}</text>
 				<image src="../../static/close.png" class="opencolse" @click="closeMessage" />
@@ -12,8 +12,8 @@
 					<text class="t1">{{message.length}}</text>
 					<text class="t2">/200</text>
 				</view>
-				<textarea v-if="typeFlag" class="textarea" placeholder="想对TA说点什么，不超过200字" v-model="message" @blur="textareaBlur"></textarea>
-				<textarea v-if="!typeFlag" class="textarea" placeholder="请输入错误内容，不超过200字" v-model="message" @blur="textareaBlur"></textarea>
+				<textarea  @focus="InputFocus"	bindkeyboardheightchange="keyboardHandler" v-if="typeFlag" class="textarea" placeholder="想对TA说点什么，不超过200字" v-model="message" @blur="textareaBlur"></textarea>
+				<textarea  @focus="InputFocus"		bindkeyboardheightchange="keyboardHandler" v-if="!typeFlag" class="textarea" placeholder="请输入错误内容，不超过200字" v-model="message" @blur="textareaBlur"></textarea>
 				
 			</view>
 			<view hover-class="hoverclass" @click="submitHandler">提交</view>
@@ -25,6 +25,7 @@
 export default {
 	data() {
 		return {
+			autoBottom:0,
 			message:this.messageValue
 		};
 	},
@@ -49,6 +50,17 @@ export default {
 		}
 	},
 	methods: {
+		InputFocus(e){
+			this.autoBottom = e.detail.height;
+		},
+		keyboardHandler(e) {
+			var height = e.detail.height;
+			if (this.autoBottom == height) {
+				return;
+			} else {
+				this.autoBottom = height;
+			}
+		},
 		textareaBlur(){
 			this.$emit('textareaBlur',this.message)
 		},

@@ -44,7 +44,7 @@
 				</view>
 				<view class="labelitem">
 					<view class="labelnum">
-						9k
+						{{detail.total_score}}
 					</view>
 					<view class="labeltext">
 						社区公益
@@ -196,7 +196,9 @@
 				},
 				scrollTop: 0, // 当linear为true的时候需要通过onpagescroll传递参数
 				scrollMaxHeight: 200, //滑动的高度限制，超过这个高度即背景全部显示
-				detail:{},
+				detail:{
+					total_score:0
+				},
 				community_id:'',
 				indicatorDots: true,
 				autoplay: true,
@@ -294,6 +296,7 @@
 				}
 			}
 			this.getDetail()
+			this.getImgs()
 			this.mobile = uni.getStorageSync('mobile')
 		},
 		onShareAppMessage:function(){
@@ -331,6 +334,11 @@
 			userHandler(item){
 				uni.navigateTo({
 					url:'/pages/index/personalcard?user_id='+item.user_id+'&community_id='+item.community_id
+				})
+			},
+			getImgs(){
+				this.Api.communityDynamicsImg({community_id:uni.getStorageSync('community_id')}).then((result)=>{
+					console.log(result)
 				})
 			},
 			goHome(){

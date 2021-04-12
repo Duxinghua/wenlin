@@ -999,7 +999,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       var that = this;
       var params = {
         page: this.page,
-        page_size: this.page.size,
+        page_size: this.page_size,
         community_id: uni.getStorageSync('community_id'),
         committee_id: uni.getStorageSync('committee_id'),
         type: this.type,
@@ -1013,14 +1013,15 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
             _this4.totalPage = result.data.total_pages;
             if (_this4.page == 1) {
               _this4.postList = [];
-              if (_this4.type == 6 && _this4.darenObj) {
-                _this4.postList.push(_this4.darenObj);
-              }
             }
             if (ismore) {
               _this4.postList = _this4.postList.concat(result.data.list);
             } else {
-              _this4.postList = result.data.list;
+              var list = [];
+              if (_this4.type == 6 && _this4.darenObj) {
+                list.push(_this4.darenObj);
+              }
+              _this4.postList = list.concat(result.data.list);
             }
 
             if (_this4.postList.length) {
@@ -1028,6 +1029,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
             } else {
               _this4.flexNoData = true;
             }
+            console.log(_this4.postList, 'xxx');
           }
         });
       } else if (this.current == 2) {
@@ -1055,16 +1057,18 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
           if (result.code == 1) {
             _this4.totalPage = result.data.total_pages;
 
-            if (page.num == 1) {
+            if (_this4.page == 1) {
               _this4.postList = [];
-              if (_this4.type == 6 && _this4.darenObj) {
-                _this4.postList.push(_this4.darenObj);
-              }
+
             }
             if (ismore) {
               _this4.postList = _this4.postList.concat(result.data.list);
             } else {
-              _this4.postList = result.data.list;
+              var list = [];
+              if (_this4.type == 6 && _this4.darenObj) {
+                list.push(_this4.darenObj);
+              }
+              _this4.postList = list.concat(result.data.list);
 
             }
 
@@ -1609,6 +1613,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
 
           _this14.Api.myCenter(data).then(function (result) {
             if (result.code == 1) {
+              console.log(result.data.daren == 0, 'esult.data.daren == 0');
               if (result.data.daren == 0) {
                 _this14.darenObj = result.data;
                 _this14.darenObj.user = {

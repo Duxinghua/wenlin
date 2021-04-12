@@ -10,12 +10,8 @@
 				<view   :class="['tagitem', cateIndex == index ? 'active' : '']" v-for="(item, index) in committeeList" :key="index" @click="cateClick(index)" @tap="tabSelect" :data-id="index">
 				<image :src="item.logo"  class="image"></image>
 					<view class="list">
-						<view class="t1">
+	
 							{{item.title}}
-						</view>
-<!-- 						<view class="t2">
-							{{item.address}}
-						</view> -->
 					</view>
 				</view>
 			</view>
@@ -1752,20 +1748,22 @@ page {
 		.tagwrap {
 			display: inline-flex;
 			width: 100%;
-			padding:19upx 30upx;
+			padding:5upx 30upx;
 			box-sizing: border-box;
 			overflow-x: scroll;
 			.tagitem {
 				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
 				font-size: 26upx;
 				font-weight: 500;
 				color: #020433;
-				width:395upx;
+				width:170upx;
 				// padding-left: 20upx;
 				// padding-right: 20upx;
-				padding: 19upx 0;
-				height: 150upx;
-				margin-right: 20upx;
+				height: 180upx;
+				margin-right: 40upx;
 				background: transparent;
 				border-radius: 10upx;
 				.image{
@@ -1776,40 +1774,15 @@ page {
 					border-radius: 50%;
 				}
 				.list{
-					float:left;
-					width:280rpx;
-					display:flex;
-					align-items: center;
-					.t1{
 						font-size: 28rpx;
 						width:100%;
 						float: left;
 						font-family: PingFang SC;
 						font-weight: bold;
 						color: #020433;
-						 text-overflow: -o-ellipsis-lastline;
 						  overflow: hidden;
 						  text-overflow: ellipsis;
-						  display: -webkit-box;
-						  -webkit-line-clamp: 2;
-						  line-clamp: 2;
-						  -webkit-box-orient: vertical;
-					}
-					.t2{
-						width:320rpx;
-						line-height: 60rpx;
-						float:left;
-						font-size: 26rpx;
-						font-family: PingFang SC;
-						font-weight: 400;
-						color: #020433;
-						line-height: 48rpx;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						white-space: nowrap;
-						-webkit-line-clamp: 1;
-						-webkit-box-orient: vertical;
-					}
+						  white-space: nowrap;
 				}
 				
 			}

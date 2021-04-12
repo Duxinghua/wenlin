@@ -43,6 +43,7 @@
           flex-direction: column;
   padding-left: 24rpx;
   padding-right: 24rpx;
+  padding-bottom: 130rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -54,41 +55,61 @@
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-          justify-content: space-between;
-  height: 60rpx;
-  font-size: 28rpx;
-  font-family: PingFang-SC-Medium,PingFang-SC;
-  font-weight: 500;
-  color: #404B69;
-  line-height: 60rpx;
-  text-align: left;
-}
-.neighbour .content .header .rightneig.data-v-2eb1f350 {
-  margin-left: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
+  position: fixed;
+  width: 666rpx;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  bottom: 20rpx;
+  z-index: 1000;
 }
-.neighbour .content .header .rightneig .joinimg.data-v-2eb1f350 {
-  width: 45rpx;
-  height: 45rpx;
-  margin-right: 10rpx;
-}
-.neighbour .content .header .rightneig .jointext.data-v-2eb1f350 {
-  font-size: 28rpx;
+.neighbour .content .header .leftbtn.data-v-2eb1f350 {
+  width: 323rpx;
+  height: 99rpx;
+  background: #EEF2FA;
+  font-size: 38rpx;
+  color: #0D1C3F;
   font-family: PingFang-SC-Medium,PingFang-SC;
   font-weight: bold;
-  color: #404B69;
-  line-height: 34rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-right: 20rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
+}
+.neighbour .content .header .rightneig.data-v-2eb1f350 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  width: 323rpx;
+  height: 99rpx;
+  background: -webkit-linear-gradient(46deg, #FEAA0E, #FFC000);
+  background: linear-gradient(44deg, #FEAA0E, #FFC000);
+  font-size: 38rpx;
+  font-family: PingFang-SC-Medium,PingFang-SC;
+  font-weight: bold;
+  color: white;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
 }
 .neighbour .content .navwrap.data-v-2eb1f350 {
   display: -webkit-box;
@@ -153,7 +174,7 @@
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  padding-left: 120rpx;
+  padding-left: 80rpx;
 }
 .neighbour .content .list .listitemself .userinfo.data-v-2eb1f350 {
   display: -webkit-box;
@@ -192,7 +213,7 @@
   margin-left: auto;
 }
 .neighbour .content .list .listitemother .number.data-v-2eb1f350 {
-  width: 120rpx;
+  width: 80rpx;
   font-size: 18rpx;
   font-family: PingFang SC;
   font-weight: 800;
@@ -206,7 +227,7 @@
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
           flex-direction: column;
-  width: 350rpx;
+  width: 390rpx;
   overflow: hidden;
 }
 .neighbour .content .list .listitemother .userinfo .name.data-v-2eb1f350 {
@@ -214,6 +235,9 @@
   font-family: PingFang SC;
   font-weight: 500;
   color: #020433;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .neighbour .content .list .listitemother .userinfo .dalist.data-v-2eb1f350 {
   display: -webkit-box;
@@ -228,10 +252,13 @@
   -webkit-flex-wrap: nowrap;
           flex-wrap: nowrap;
   margin-top: 15rpx;
+  overflow-x: auto;
 }
 .neighbour .content .list .listitemother .userinfo .dalist .daitem.data-v-2eb1f350 {
   width: -webkit-fit-content;
   width: fit-content;
+  -webkit-flex-shrink: 0;
+          flex-shrink: 0;
   height: 42rpx;
   line-height: 42rpx;
   background: #95A0B6;

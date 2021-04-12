@@ -271,7 +271,8 @@ const loginByMobile = (params) => wxRequest(params, baseURL + 'api/wxapp/public/
 const showTestLogin = (params) => wxRequest(params, baseURL + 'api/wxapp/public/showTestLogin', 'POST')
 //城市 服务 /api/community/public/getJsCity
 const getJsCity = (params) => wxRequest(params, baseURL + 'api/community/public/getJsCity', 'POST')
-
+//小区图片 /api/community/communityDynamics/communityDynamics
+const communityDynamicsImg =  (params) => wxRequest(params, baseURL + 'api/community/communityDynamics/communityDynamics', 'POST')
 
 export default {
 	wechatAuth,
@@ -393,5 +394,7 @@ export default {
 	answerresultList,
 	loginByMobile,
 	showTestLogin,
-	getJsCity
+	getJsCity,
+	updateUserInfo,
+	communityDynamicsImg
 }
