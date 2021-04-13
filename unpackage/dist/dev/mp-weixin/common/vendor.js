@@ -2217,7 +2217,7 @@ var showTestLogin = function showTestLogin(params) {return (0, _request.wxReques
 //城市 服务 /api/community/public/getJsCity
 var getJsCity = function getJsCity(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/public/getJsCity', 'POST');};
 //小区图片 /api/community/communityDynamics/communityDynamics
-var communityDynamicsImg = function communityDynamicsImg(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/communityDynamics/communityDynamics', 'POST');};var _default = (_wechatAuth$setUserPh = {
+var communityDynamicsImg = function communityDynamicsImg(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/community_dynamics/communityDynamics', 'POST');};var _default = (_wechatAuth$setUserPh = {
 
 
   wechatAuth: wechatAuth,

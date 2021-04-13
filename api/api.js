@@ -272,7 +272,7 @@ const showTestLogin = (params) => wxRequest(params, baseURL + 'api/wxapp/public/
 //城市 服务 /api/community/public/getJsCity
 const getJsCity = (params) => wxRequest(params, baseURL + 'api/community/public/getJsCity', 'POST')
 //小区图片 /api/community/communityDynamics/communityDynamics
-const communityDynamicsImg =  (params) => wxRequest(params, baseURL + 'api/community/communityDynamics/communityDynamics', 'POST')
+const communityDynamicsImg =  (params) => wxRequest(params, baseURL + 'api/community/community_dynamics/communityDynamics', 'POST')
 
 export default {
 	wechatAuth,

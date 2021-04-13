@@ -407,7 +407,8 @@ __webpack_require__.r(__webpack_exports__);
       communityId: '',
       setcommunityType: 1,
       setcommunityValue: '业主',
-      onShareShow: false };
+      onShareShow: false,
+      imagelist: [] };
 
   },
   onLoad: function onLoad(options) {
@@ -482,9 +483,17 @@ __webpack_require__.r(__webpack_exports__);
         url: '/pages/index/personalcard?user_id=' + item.user_id + '&community_id=' + item.community_id });
 
     },
-    getImgs: function getImgs() {
+    getImgs: function getImgs() {var _this = this;
       this.Api.communityDynamicsImg({ community_id: uni.getStorageSync('community_id') }).then(function (result) {
-        console.log(result);
+        if (result.code == 1) {
+          var list = [];
+          result.data.map(function (item) {
+            if (item.images.length) {
+              list.push(item.images[0]);
+            }
+          });
+          _this.imagelist = list;
+        }
       });
     },
     goHome: function goHome() {
@@ -624,19 +633,19 @@ __webpack_require__.r(__webpack_exports__);
       this.openCommunity = false;
     },
     // 手机号授权处理
-    getPhoneNumber: function getPhoneNumber(e) {var _this = this;
+    getPhoneNumber: function getPhoneNumber(e) {var _this2 = this;
       console.log(e);var _e$detail =
       e.detail,encryptedData = _e$detail.encryptedData,iv = _e$detail.iv;
 
       this.Api.setUserPhoneBySecret({ encrypted_data: encryptedData, iv: iv }).then(function (result) {
         if (result.code == 1) {
-          _this.mobile = result.data;
+          _this2.mobile = result.data;
           uni.setStorageSync('mobile', result.data);
         }
       });
     },
     //开通小区获取地址
-    getAddress: function getAddress() {var _this2 = this;
+    getAddress: function getAddress() {var _this3 = this;
       var p = new Promise(function (resolve, reject) {
         if (!uni.getStorageSync('longitude')) {
           uni.getLocation({
@@ -655,13 +664,13 @@ __webpack_require__.r(__webpack_exports__);
         resolve();
       });
       p.then(function (data) {
-        var that = _this2;
+        var that = _this3;
         if (uni.getStorageSync('longitude')) {
           uni.chooseLocation({
             latitude: uni.getStorageSync('latitude'),
             longitude: uni.getStorageSync('longitude'),
             success: function success(res) {
-              _this2.communityAddress = res.address;
+              _this3.communityAddress = res.address;
             } });
 
         } else {
@@ -719,18 +728,18 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    getDetail: function getDetail() {var _this3 = this;
+    getDetail: function getDetail() {var _this4 = this;
       var data = {
         community_id: this.community_id };
 
       this.Api.communityDetail(data).then(function (result) {
         if (result.code == 1) {
-          _this3.detail = result.data;
-          _this3.detail.logo = _this3.detail.logo ? _this3.detail.logo : _this3.Config.minUrl + 'logovi.jpg';
-          _this3.communityTitle = result.data.title;
-          _this3.communityAddress = result.data.address;
-          if (!_this3.detail.images.length) {
-            _this3.detail.images = ['https://sq.wenlinapp.com/appimg/send54.png'];
+          _this4.detail = result.data;
+          _this4.detail.logo = _this4.detail.logo ? _this4.detail.logo : _this4.Config.minUrl + 'logovi.jpg';
+          _this4.communityTitle = result.data.title;
+          _this4.communityAddress = result.data.address;
+          if (!_this4.detail.images.length) {
+            _this4.detail.images = ['https://sq.wenlinapp.com/appimg/send54.png'];
           }
           uni.setStorageSync('pcommittee_id', result.data.committee_id);
           uni.setStorageSync('ptitle', result.data.title);
@@ -738,7 +747,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    goJoin: function goJoin() {var _this4 = this;
+    goJoin: function goJoin() {var _this5 = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -779,10 +788,10 @@ __webpack_require__.r(__webpack_exports__);
             var all = uni.getStorageSync('all_community');
             var maxJoin = uni.getStorageSync('maxJoin');
             console.log(JSON.stringify(all), 'all');
-            console.log(_this4.detail.title, 'title');
+            console.log(_this5.detail.title, 'title');
             var flag = false;
             all.map(function (item) {
-              if (item.title == _this4.detail.title) {
+              if (item.title == _this5.detail.title) {
                 flag = true;
               }
             });
@@ -802,10 +811,10 @@ __webpack_require__.r(__webpack_exports__);
 
               return;
             } else {
-              _this4.setcommunity = true;
+              _this5.setcommunity = true;
             }
-            _this4.community = uni.getStorageSync('ptitle');
-            _this4.community_id = uni.getStorageSync('pcommunity_id');
+            _this5.community = uni.getStorageSync('ptitle');
+            _this5.community_id = uni.getStorageSync('pcommunity_id');
 
           } else {
             uni.navigateTo({
@@ -817,7 +826,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
     },
-    onShowtodo: function onShowtodo() {var _this5 = this;
+    onShowtodo: function onShowtodo() {var _this6 = this;
       this.onShareShow = false;
       this.scrollFixed = true;
       var pages = getCurrentPages(); //获取加载的页面
@@ -834,16 +843,16 @@ __webpack_require__.r(__webpack_exports__);
 
       this.Api.getWXACodeUnlimit(data).then(function (result) {
         if (result.code == 1) {
-          _this5.$nextTick(function () {
-            _this5.posterData.posterImgUrl = _this5.detail.images.length ? _this5.detail.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
-            _this5.posterData.avatarUrl = uni.getStorageSync('user').avatar;
-            _this5.posterData.posterCodeUrl = result.data;
-            _this5.posterData.title = uni.getStorageSync('user').user_nickname + '邀请你加入' + _this5.detail.title + '小区邻里互助平台';
-            _this5.$forceUpdate();
+          _this6.$nextTick(function () {
+            _this6.posterData.posterImgUrl = _this6.detail.images.length ? _this6.detail.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
+            _this6.posterData.avatarUrl = uni.getStorageSync('user').avatar;
+            _this6.posterData.posterCodeUrl = result.data;
+            _this6.posterData.title = uni.getStorageSync('user').user_nickname + '邀请你加入' + _this6.detail.title + '小区邻里互助平台';
+            _this6.$forceUpdate();
             setTimeout(function () {
-              _this5.canvasFlag = false; //显示canvas海报
-              _this5.deliveryFlag = false; //关闭分享弹窗
-              _this5.$refs.hchPoster.posterShow();
+              _this6.canvasFlag = false; //显示canvas海报
+              _this6.deliveryFlag = false; //关闭分享弹窗
+              _this6.$refs.hchPoster.posterShow();
             }, 500);
 
           });
@@ -857,7 +866,7 @@ __webpack_require__.r(__webpack_exports__);
       this.scrollFixed = false;
       this.canvasFlag = val;
     },
-    setcommunityHandler: function setcommunityHandler() {var _this6 = this;
+    setcommunityHandler: function setcommunityHandler() {var _this7 = this;
       if (!this.community_id) {
         uni.showToast({
           title: '请选择小区',
@@ -906,7 +915,7 @@ __webpack_require__.r(__webpack_exports__);
             success: function success() {
               uni.setStorageSync('committee_id', result.data.committee_id);
               uni.setStorageSync('community_id', result.data.community_id);
-              uni.setStorageSync('community_menu', _this6.communityTitle);
+              uni.setStorageSync('community_menu', _this7.communityTitle);
               that.setcommunity = false;
               //绑定上下级
               var pid = uni.getStorageSync('pid');

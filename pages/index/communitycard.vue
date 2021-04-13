@@ -53,8 +53,8 @@
 			</view>
 			<view class="swiper-wrap">
 				
-						<view class="swiperimg" v-for="(item,index) in detail.images" :key="index" :index="index">
-							<u-image :src="item" :height="sheaderHeight"  mode="aspectFill"></u-image>
+						<view class="swiperimg" v-for="(item,index) in imagelist" :key="index" :index="index">
+							<u-image :src="item" v-if="index < 9" :height="sheaderHeight"  mode="aspectFill"></u-image>
 						</view>
 			
 			</view>
@@ -261,7 +261,8 @@
 				communityId: '',
 				setcommunityType:1,
 				setcommunityValue:'业主',
-				onShareShow:false
+				onShareShow:false,
+				imagelist:[]
 			}
 		},
 		onLoad(options){
@@ -338,7 +339,15 @@
 			},
 			getImgs(){
 				this.Api.communityDynamicsImg({community_id:uni.getStorageSync('community_id')}).then((result)=>{
-					console.log(result)
+					if(result.code == 1){
+						var list = []
+						result.data.map((item)=>{
+							if(item.images.length){
+								list.push(item.images[0])
+							}
+						})
+						this.imagelist = list
+					}
 				})
 			},
 			goHome(){
@@ -960,6 +969,7 @@
 				width:100%;
 				border-top: 20upx solid #F7F9FF;
 				padding-top:20upx;
+				padding-bottom: 200upx;
 				display: flex;
 				flex-direction: row;
 				flex-wrap: wrap;
