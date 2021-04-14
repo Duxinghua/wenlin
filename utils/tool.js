@@ -95,20 +95,34 @@ const resultValue = function(index) {
 	})
 	return value
 }
-const navList = [{
-			id: 1,
-			tag: '求助'
-		}, {
-			id: 2,
-			tag: '新鲜事'
-		},
+const navList = [
 		{
 			id: 3,
 			tag: '闲置'
 		},
 		{
+			id:17,
+			tag:'邻里团'
+		},
+		{
 			id: 6,
 			tag: '达人'
+		},
+		{
+			id: 2,
+			tag: '新鲜事'
+		},
+		{
+					id: 1,
+					tag: '求助'
+		},		
+		{
+			id:18,
+			tag:'曝光台'
+		},
+		{
+			id:16,
+			tag:'议事厅'
 		},
 		{
 			id:14,
@@ -117,18 +131,6 @@ const navList = [{
 		{
 			id:15,
 			tag:'招聘'
-		},
-		{
-			id:16,
-			tag:'议事厅'
-		},
-		{
-			id:17,
-			tag:'邻里团'
-		},
-		{
-			id:18,
-			tag:'曝光台'
 		}
 ]
 //

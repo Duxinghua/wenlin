@@ -97,7 +97,7 @@
 						已完成
 					</view>
 				</view>
-				<view class="listitem">
+				<view class="listitem" v-if="false">
 					<view class="listinfos">
 						<text class="t1">挑错成功</text>
 						<text class="t2">+{{detail.task.wiki_pick.score}} 积分, 次数不限</text>

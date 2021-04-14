@@ -4,7 +4,7 @@
 		<view class="mb" @click="close"></view>
 		<view class="findFault">
 			<image :src=" imgUrl + 'helpicol2.png'" class="helpico" ></image>
-			<view class="title">输入的积分越多，得到帮助的机会越大</view>
+			<view class="title">帖子被帮推的积分越多，排序越靠前</view>
 			<view class="inputwarp">
 				<text class="source-text">悬赏积分：</text>
 				<input type="number" class="source" v-model="inputValue" @input="sourceinput">

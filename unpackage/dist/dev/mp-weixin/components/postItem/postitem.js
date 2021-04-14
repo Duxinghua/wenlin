@@ -395,6 +395,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -448,15 +449,19 @@ var _default =
       }
     },
     autoType: function autoType() {
-      if (this.allFlag) {
-        return true;
+      if (this.type == 7) {
+        return false;
       } else {
-        if (this.pitem.type == 6) {
+        if (this.allFlag) {
           return true;
-        } else if (this.pitem.type == 7) {
-          return false;
         } else {
-          return true;
+          if (this.pitem.type == 6) {
+            return true;
+          } else if (this.pitem.type == 7) {
+            return false;
+          } else {
+            return true;
+          }
         }
       }
     },

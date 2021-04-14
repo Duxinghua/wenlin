@@ -30,7 +30,7 @@
 					<view class="imgwrap">
 						<view class="imgitem"  v-for="(item,index) in uploadList" :key="index"  v-if="uploadList.length">
 							<image src="../../static/imguploaddel.png" class="uploadclose" @click="uploadDel(index)" />
-							<image :src="item.http_url"></image>
+							<image mode="aspectFill" :src="item.http_url"></image>
 						</view>
 						
 						<view class="imgupload"  @click="chooseImage" v-if="uploadList.length<9">

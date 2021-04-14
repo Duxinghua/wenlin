@@ -50,6 +50,7 @@
 				<view class="morewrap" @click.stop="moreClick(pitem)"><image src="../../static/more.png" class="more"></image></view>
 			</view>
 			<view class="postcontent">
+			
 				<image v-if="pitem.is_top == 1" src="../../static/ding.png" class="ding"></image>
 				<text v-if="autoType" :class="['postcate', pitem.is_top == 1 ? 'postcateFix' : '']">#{{ pitem.type | filterType }}</text>
 				<view
@@ -284,15 +285,19 @@ export default {
 			}
 		},
 		autoType() {
-			if (this.allFlag) {
-				return true;
-			} else {
-				if (this.pitem.type == 6) {
+			if(this.type == 7){
+				return false
+			}else{
+				if (this.allFlag) {
 					return true;
-				} else if (this.pitem.type == 7) {
-					return false;
 				} else {
-					return true;
+					if (this.pitem.type == 6) {
+						return true;
+					} else if (this.pitem.type == 7) {
+						return false;
+					} else {
+						return true;
+					}
 				}
 			}
 		},
