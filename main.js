@@ -120,6 +120,28 @@ Vue.filter('askStatus', function(type) {
 });
 
 
+Vue.mixin({
+	data(){
+		return{
+			regIds:'FMdFQqlu0P3i50txbGTdYI2543cpO7IG4xe371lf428',
+			comIds:'WKmoq7K1gmAiAhnzQqUK_9SvKevZStaxPK67-qV6P7U',
+			tuanIds:'Lso3WnGo9gkMpiZMWq3E9KRh_-TewTOEhm7ltdI2U6E'
+		}
+	},
+	methods:{
+		subMessageTodo(tmplIds,type,cb){
+			uni.requestSubscribeMessage({
+			  tmplIds: [tmplIds],
+			  success (res) { 
+				  Api.addMessage({types:type}).then((result)=>{
+					  cb(result)
+				  })
+			  }
+			})
+		}
+	}
+})
+
 
 
 

@@ -619,6 +619,12 @@ page.data-v-2f94bc36 {
   -webkit-border-radius: 10rpx;
           border-radius: 10rpx;
 }
+.push .content .stockfix.data-v-2f94bc36 {
+  margin-top: 10rpx;
+}
+.push .content .stockfix.data-v-2f94bc36 .u-input {
+  width: 440rpx !important;
+}
 .push .content .contentinfo.data-v-2f94bc36 {
   display: -webkit-box;
   display: -webkit-flex;

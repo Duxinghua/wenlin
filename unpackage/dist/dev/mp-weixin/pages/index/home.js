@@ -1299,6 +1299,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       this.communityTitle = e.detail.value;
     },
     openCommunityHandler: function openCommunityHandler() {var _this8 = this;
+
       this.Api.communityOpening({ title: this.communityTitle, address: this.communityAddress, contact_phone: this.mobile }).then(function (result) {
         if (result.code == 1) {
           uni.showToast({

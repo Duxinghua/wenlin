@@ -1352,57 +1352,62 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
         return;
       }
-      var data = {
-        dynamics_id: this.detail.id,
-        object_type: this.type,
-        content: this.inputValue,
-        parent_id: this.parent_id,
-        community_id: uni.getStorageSync('community_id') };
 
-      if (this.type == 7 || this.type == 5) {
-        data.third_id = this.id;
-      }
-      if (this.type == 7) {
-        data.dynamics_id = this.dynamics_id;
-      }
-      this.Api.setComments(data).then(function (result) {
-        if (result.code == 1) {
-          uni.showToast({
-            title: result.msg,
-            duration: 2000,
-            success: function success() {
-              _this8.replyTextarea = false;
-              _this8.textareaautofocus = false;
-              _this8.scrollFixed = false;
-              // this.isShowEmj = false
-              // this.inputValue = ''
-              // this.parent_id = ''
-              // this.replyFlag = true
-              // this.parent_text = '说说你的看法'
-              // this.getCommentList()
-              _this8.isShowEmj = false;
-              _this8.inputValue = '';
-              _this8.parent_id = '';
-              _this8.replyFlag = true;
-              _this8.parent_text = '说说你的看法';
-              if (result.data.add) {
-                _this8.add_type = result.data.add == -1 ? '-' : '+';
-                _this8.score_text = result.data.score;
-                _this8.$refs.integraltip.show();
-                setTimeout(function () {
-                  _this8.add_type = '';
-                  _this8.score_text = '';
+      this.subMessageTodo(this.comIds, 3, function (ss) {
+        var data = {
+          dynamics_id: _this8.detail.id,
+          object_type: _this8.type,
+          content: _this8.inputValue,
+          parent_id: _this8.parent_id,
+          community_id: uni.getStorageSync('community_id') };
 
-                  _this8.$refs.integraltip.close();
-                  _this8.getCommentList();
-                }, 2000);
-              } else {
-                _this8.getCommentList();
-              }
-            } });
-
+        if (_this8.type == 7 || _this8.type == 5) {
+          data.third_id = _this8.id;
         }
+        if (_this8.type == 7) {
+          data.dynamics_id = _this8.dynamics_id;
+        }
+        _this8.Api.setComments(data).then(function (result) {
+          if (result.code == 1) {
+            uni.showToast({
+              title: result.msg,
+              duration: 2000,
+              success: function success() {
+                _this8.replyTextarea = false;
+                _this8.textareaautofocus = false;
+                _this8.scrollFixed = false;
+                // this.isShowEmj = false
+                // this.inputValue = ''
+                // this.parent_id = ''
+                // this.replyFlag = true
+                // this.parent_text = '说说你的看法'
+                // this.getCommentList()
+                _this8.isShowEmj = false;
+                _this8.inputValue = '';
+                _this8.parent_id = '';
+                _this8.replyFlag = true;
+                _this8.parent_text = '说说你的看法';
+                if (result.data.add) {
+                  _this8.add_type = result.data.add == -1 ? '-' : '+';
+                  _this8.score_text = result.data.score;
+                  _this8.$refs.integraltip.show();
+                  setTimeout(function () {
+                    _this8.add_type = '';
+                    _this8.score_text = '';
+
+                    _this8.$refs.integraltip.close();
+                    _this8.getCommentList();
+                  }, 2000);
+                } else {
+                  _this8.getCommentList();
+                }
+              } });
+
+          }
+        });
+
       });
+
     },
     //复制功能
     copy: function copy(index) {

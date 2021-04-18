@@ -405,7 +405,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
 var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -680,8 +694,8 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
       title: '', content: '', TabCur: 0, scrollLeft: 0, navlist: [], type: 1, //1求助 2新鲜事 3闲置 4鹊桥 6达人
       uploadList: [], liketext: '', buyIndex: 0, buyFlag: false, buyList: [{ name: '出售', value: 1, check: true }, { name: '赠送', value: 2, check: false }, { name: '出租', value: 3, check: false }, { name: '置换', value: 4, check: false }, { name: '求购', value: 5, check: false }], houseIndex: 0, living_type: [{ name: '出租', value: 1, check: true }, { name: '求租', value: 2, check: false }, { name: '卖房', value: 3, check: false }, { name: '买房', value: 4, check: false }], recruitIndex: 0, recruit_type: [{ name: '招聘', value: 1, check: true }, { name: '求职', value: 2, check: false }], mobile: '', weixin: '', images: '', opening: 1, //是否公开
       sell_type: 1, sell_price: '面议', sell_price1: '', sell_price2: '', inputType: 1, priceView: false, skillBoolean: false, //添加技能控制 
-      list: { 1: '曝光小区不文明行为（人像注意打马赛克、车牌号注意挡住部分号码、如曝光有侵权行为，平台有权删帖以保护被曝光人隐私不受侵犯）', 2: '请说明您想和邻居一起讨论的议题和观点（发布违规话题管理员有权删除）', 3: '发布邻里房产信息～', 4: '发布邻里招聘或求职信息～', 5: '身边的新鲜事，随时随地分享给邻居～', 6: '发布求助内容，有困难找邻居帮助～', 7: '请输入置换信息~', 8: '请输入邻里团信息~' }, skillList: [], add_type: '', score_text: '', isShow: false, selList: [], titleType: { 1: '发布曝光台信息', 2: '发布议事厅信息', 3: '发布房产信息', 4: '发布招聘求职信息', 5: '发布新鲜事信息', 6: '发布求助信息', 7: '发布置换信息', 8: '发布邻里团信息' }, voteValue: '未添加', helpShow: false, score: 0, input_score: 0, input_entity: '请填写', changeShow: false, height: 200, exchange_goods: '', group_price: '', specifications: '', groupbuy_info: [{ 'group_price': '', 'group_min': '' }], group_endtime: '请选择截止时间', timeShow: false, flagsoce: 0 //积分区分
-    };}, onPageScroll: function onPageScroll(e) {this.scrollTop = e.scrollTop;}, onLoad: function onLoad(option) {var _this = this;this.type = option.type;this.config.title = this.titleType[this.type];if (option.data) {var data = decodeURIComponent(option.data);data = JSON.parse(data);this.skillList = data;}var selectLabel = uni.getStorageSync('selectLabel');if (selectLabel) {this.radioList.map(function (sitem) {if (sitem.name == selectLabel) {_this.selectLabel = selectLabel;sitem.check = true;} else {sitem.check = false;}});}var nameLabel = uni.getStorageSync('nameLabel');if (nameLabel) {this.nameList.map(function (sitem) {if (sitem.name == nameLabel) {_this.nameLabel = nameLabel;sitem.check = true;} else {sitem.check = false;}});}this.$forceUpdate();if (this.type == 1) {this.content = uni.getStorageSync('obj1');} else if (this.type == 2) {this.content = uni.getStorageSync('obj2');} else if (this.type == 3) {this.content = uni.getStorageSync('obj3');} else if (this.type == 4) {this.content = uni.getStorageSync('obj4');} else if (this.type == 6) {this.content = uni.getStorageSync('obj6');} else if (this.type == 7) {this.content = uni.getStorageSync('obj7');} else if (this.type == 8) {this.content = uni.getStorageSync('obj8');}}, onShow: function onShow() {if (this.type == 2) {var vote = uni.getStorageSync('voteobj');if (vote) {this.voteValue = '已添加';} else {this.voteValue = '未添加';}} else if (this.type == 7) {this.buyFlag = true;} else if (this.type == 6) {this.sell_price = '';}if (this.type != 2) {this.mobile = uni.getStorageSync('mobile');this.weixin = uni.getStorageSync('weixin');} else {this.mobile = '';this.weixin = '';}}, methods: { confirmHandler: function confirmHandler(e) {this.group_endtime = e.year + '-' + e.month + '-' + e.day + ' ' + e.hour + ':' + e.minute;}, timerHandler: function timerHandler() {this.timeShow = true;}, formatMoney: function formatMoney() {var _this2 = this;this.$nextTick(function () {_this2.group_price = _this2.group_price.replace(/[^\d.]/g, '');_this2.$forceUpdate();});}, formatNumber: function formatNumber(type, index, item) {var _this3 = this;this.$nextTick(function () {if (type == 'group_price') {var a = item[type].replace(/[^\d.]/g, '');_this3.groupbuy_info.map(function (item, sindex) {if (sindex == index) {item.group_price = a;}});} else {var a = item[type].replace(/[^\d]/g, '');_this3.groupbuy_info.map(function (item, sindex) {if (sindex == index) {item.group_min = a;}});}_this3.$forceUpdate();});}, addgroupHandler: function addgroupHandler() {var i = 0;this.groupbuy_info.map(function (item) {if (!item.group_price || !item.group_min || !item.group_price && !item.group_min || !item.group_price && item.group_min || item.group_price && !item.group_min) {i++;}});if (i == 0) {this.groupbuy_info.push({ 'group_price': '',
+      list: { 1: '曝光小区不文明行为（人像注意打马赛克、车牌号注意挡住部分号码、如曝光有侵权行为，平台有权删帖以保护被曝光人隐私不受侵犯）', 2: '请说明您想和邻居一起讨论的议题和观点（发布违规话题管理员有权删除）', 3: '发布邻里房产信息～', 4: '发布邻里招聘或求职信息～', 5: '身边的新鲜事，随时随地分享给邻居～', 6: '发布求助内容，有困难找邻居帮助～', 7: '请输入置换信息~', 8: '请输入邻里团信息~' }, skillList: [], add_type: '', score_text: '', isShow: false, selList: [], titleType: { 1: '发布曝光台信息', 2: '发布议事厅信息', 3: '发布房产信息', 4: '发布招聘求职信息', 5: '发布新鲜事信息', 6: '发布求助信息', 7: '发布置换信息', 8: '发布邻里团信息' }, voteValue: '未添加', helpShow: false, score: 0, input_score: 0, input_entity: '请填写', changeShow: false, height: 200, exchange_goods: '', group_price: '', specifications: '', groupbuy_info: [{ 'group_price': '', 'group_min': '' }], group_endtime: '请选择截止时间', timeShow: false, stock: null, flagsoce: 0 //积分区分
+    };}, onPageScroll: function onPageScroll(e) {this.scrollTop = e.scrollTop;}, onLoad: function onLoad(option) {var _this = this;this.type = option.type;this.config.title = this.titleType[this.type];if (option.data) {var data = decodeURIComponent(option.data);data = JSON.parse(data);this.skillList = data;}var selectLabel = uni.getStorageSync('selectLabel');if (selectLabel) {this.radioList.map(function (sitem) {if (sitem.name == selectLabel) {_this.selectLabel = selectLabel;sitem.check = true;} else {sitem.check = false;}});}var nameLabel = uni.getStorageSync('nameLabel');if (nameLabel) {this.nameList.map(function (sitem) {if (sitem.name == nameLabel) {_this.nameLabel = nameLabel;sitem.check = true;} else {sitem.check = false;}});}this.$forceUpdate();if (this.type == 1) {this.content = uni.getStorageSync('obj1');} else if (this.type == 2) {this.content = uni.getStorageSync('obj2');} else if (this.type == 3) {this.content = uni.getStorageSync('obj3');} else if (this.type == 4) {this.content = uni.getStorageSync('obj4');} else if (this.type == 6) {this.content = uni.getStorageSync('obj6');} else if (this.type == 7) {this.content = uni.getStorageSync('obj7');} else if (this.type == 8) {this.content = uni.getStorageSync('obj8');}}, onShow: function onShow() {if (this.type == 2) {var vote = uni.getStorageSync('voteobj');if (vote) {this.voteValue = '已添加';} else {this.voteValue = '未添加';}} else if (this.type == 7) {this.buyFlag = true;} else if (this.type == 6) {this.sell_price = '';}if (this.type != 2) {this.mobile = uni.getStorageSync('mobile');this.weixin = uni.getStorageSync('weixin');} else {this.mobile = '';this.weixin = '';}}, methods: { confirmHandler: function confirmHandler(e) {this.group_endtime = e.year + '-' + e.month + '-' + e.day + ' ' + e.hour + ':' + e.minute;}, timerHandler: function timerHandler() {this.timeShow = true;}, formatMoney: function formatMoney() {var _this2 = this;this.$nextTick(function () {_this2.group_price = _this2.group_price.replace(/[^\d.]/g, '');_this2.$forceUpdate();});}, formatstock: function formatstock(e) {var _this3 = this;this.$nextTick(function () {_this3.stock = _this3.stock.replace(/[^\d]/g, '');_this3.$forceUpdate();});}, formatNumber: function formatNumber(type, index, item) {var _this4 = this;this.$nextTick(function () {if (type == 'group_price') {var a = item[type].replace(/[^\d.]/g, '');_this4.groupbuy_info.map(function (item, sindex) {if (sindex == index) {item.group_price = a;}});} else {var a = item[type].replace(/[^\d]/g, '');_this4.groupbuy_info.map(function (item, sindex) {if (sindex == index) {item.group_min = a;}});}_this4.$forceUpdate();});}, addgroupHandler: function addgroupHandler() {var i = 0;this.groupbuy_info.map(function (item) {if (!item.group_price || !item.group_min || !item.group_price && !item.group_min || !item.group_price && item.group_min || item.group_price && !item.group_min) {i++;}});if (i == 0) {this.groupbuy_info.push({ 'group_price': '',
           'group_min': '' });
 
       } else {
@@ -702,11 +716,11 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
     changeHandler: function changeHandler() {
       this.changeShow = true;
     },
-    seekHelpClick: function seekHelpClick(flag) {var _this4 = this;
+    seekHelpClick: function seekHelpClick(flag) {var _this5 = this;
       this.$getMyscore(function (res) {
         if (res.code == 1) {
-          _this4.score = res.data.score;
-          if (_this4.score == 0) {
+          _this5.score = res.data.score;
+          if (_this5.score == 0) {
             uni.showToast({
               title: '您的积分不足，请参加积分任务',
               icon: 'none',
@@ -718,11 +732,11 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
 
             }, 2000);
           } else {
-            _this4.priceView = true;
+            _this5.priceView = true;
           }
-          _this4.flagsoce = flag;
+          _this5.flagsoce = flag;
           if (flag == 2) {
-            _this4.sell_price = '';
+            _this5.sell_price = '';
           }
         }
       });
@@ -763,16 +777,16 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
         }
       });
     },
-    buysHandler: function buysHandler(obj, index) {var _this5 = this;
+    buysHandler: function buysHandler(obj, index) {var _this6 = this;
       this.buyIndex = index;
       this.buyList.map(function (sitem, i) {
         if (i == index) {
           sitem.check = true;
-          _this5.sell_type = sitem.value;
+          _this6.sell_type = sitem.value;
           if (sitem.value == 4) {
-            _this5.buyFlag = false;
+            _this6.buyFlag = false;
           } else {
-            _this5.buyFlag = true;
+            _this6.buyFlag = true;
 
           }
         } else {
@@ -799,12 +813,12 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
     closeHandler: function closeHandler() {
       this.isShow = false;
     },
-    selectHandler: function selectHandler(item) {var _this6 = this;
+    selectHandler: function selectHandler(item) {var _this7 = this;
       if (this.selectType == 'name') {
         this.nameList.map(function (sitem) {
           if (sitem.name == item.name) {
-            _this6.nameLabel = sitem.name;
-            uni.setStorageSync('nameLabel', _this6.nameLabel);
+            _this7.nameLabel = sitem.name;
+            uni.setStorageSync('nameLabel', _this7.nameLabel);
             sitem.check = true;
           } else {
             sitem.check = false;
@@ -813,8 +827,8 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
       } else if (this.selectType == 'show') {
         this.radioList.map(function (sitem) {
           if (sitem.name == item.name) {
-            _this6.selectLabel = sitem.name;
-            uni.setStorageSync('selectLabel', _this6.selectLabel);
+            _this7.selectLabel = sitem.name;
+            uni.setStorageSync('selectLabel', _this7.selectLabel);
             sitem.check = true;
           } else {
             sitem.check = false;
@@ -824,13 +838,13 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
       this.isShow = false;
     },
     // 手机号授权处理
-    getPhoneNumber: function getPhoneNumber(e) {var _this7 = this;
+    getPhoneNumber: function getPhoneNumber(e) {var _this8 = this;
       console.log(e);var _e$detail =
       e.detail,encryptedData = _e$detail.encryptedData,iv = _e$detail.iv;
 
       this.Api.setUserPhoneBySecret({ encrypted_data: encryptedData, iv: iv }).then(function (result) {
         if (result.code == 1) {
-          _this7.mobile = result.data;
+          _this8.mobile = result.data;
           uni.setStorageSync('mobile', result.data);
         }
       });
@@ -841,13 +855,13 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
 
     },
     // 获取技能
-    getcommunitySkill: function getcommunitySkill() {var _this8 = this;
+    getcommunitySkill: function getcommunitySkill() {var _this9 = this;
       this.Api.communitySkill({}).then(function (result) {
         if (result.code == 1) {
           result.data.map(function (item) {
             item.check = false;
           });
-          _this8.navlist = result.data;
+          _this9.navlist = result.data;
         }
       });
     },
@@ -927,564 +941,572 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
 
     },
     //发布处理
-    pushClick: function pushClick(e) {
-      var data = {
-        title: this.title,
-        content: this.content,
-        phone: this.mobile,
-        weixin: this.weixin,
-        community_id: uni.getStorageSync('community_id') };
+    pushClick: function pushClick(e) {var _this10 = this;
+      this.subMessageTodo(this.comIds, '2,3', function (rs) {
+        var data = {
+          title: _this10.title,
+          content: _this10.content,
+          phone: _this10.mobile,
+          weixin: _this10.weixin,
+          community_id: uni.getStorageSync('community_id') };
 
-      if (this.type == 1 || this.type == 2) {
-        this.nameList.map(function (item) {
+        if (_this10.type == 1 || _this10.type == 2) {
+          _this10.nameList.map(function (item) {
+            if (item.check) {
+              data.anonymous = item.value;
+            }
+          });
+        }
+        console.log(JSON.stringify(data));
+
+        _this10.radioList.map(function (item) {
           if (item.check) {
-            data.anonymous = item.value;
+            data.opening = item.value;
           }
         });
-      }
-      console.log(JSON.stringify(data));
+        var images = [];
+        _this10.uploadList.map(function (item) {
+          images.push(item.url);
+        });
+        if (!data.content) {
+          uni.showToast({
+            title: '请输入内容',
+            icon: 'none',
+            duration: 2000 });
 
-      this.radioList.map(function (item) {
-        if (item.check) {
-          data.opening = item.value;
+          return;
         }
-      });
-      var images = [];
-      this.uploadList.map(function (item) {
-        images.push(item.url);
-      });
-      if (!data.content) {
-        uni.showToast({
-          title: '请输入内容',
-          icon: 'none',
-          duration: 2000 });
-
-        return;
-      }
-      if (!data.weixin) {
-        // uni.showToast({
-        //     title: '请输入微信号',
-        //     duration: 2000
-        // });
-        // return
-      } else {
-        uni.setStorageSync('weixin', data.weixin);
-      }
-      if (this.type == 2) {
-        var vote = uni.getStorageSync('voteobj');
-        if (vote) {
-          vote = JSON.parse(vote);
-          data.vote_json = JSON.stringify(vote);
+        if (!data.weixin) {
+          // uni.showToast({
+          //     title: '请输入微信号',
+          //     duration: 2000
+          // });
+          // return
         } else {
-          return this.$u.toast('请输入议事厅选项');
+          uni.setStorageSync('weixin', data.weixin);
         }
-
-      }
-      if (this.type == 3) {
-        data.sell_type = this.sell_type;
-        this.living_type.map(function (item) {
-          if (item.check) {
-            data.sell_type = item.value;
-          }
-        });
-        data.sell_price = this.sell_price == '面议' ? -1 : this.sell_price;
-      }
-      if (this.type == 4) {
-        this.recruit_type.map(function (item) {
-          if (item.check) {
-            data.recruit_type = item.value;
-          }
-        });
-      }
-      if (this.type == 5) {
-        data.type = 2;
-      }
-      // if(this.type == 3 && data.sell_type != 4 || this.type != 3){
-      // 	if(images.length == 0){
-      // 		uni.showToast({
-      // 			title: '至少上传一张图片',
-      // 			duration: 2000
-      // 		});
-      // 		return
-      // 	}
-      // 	data.images = images.join(',')
-      // }
-      if (images.length) {
-        data.images = images.join(',');
-      }
-      if (this.type == 6) {
-        data.score = this.input_score;
-      }
-      if (this.type == 7) {
-        if (this.sell_type == 4) {
-          var exchange_score = 0;
-          var exchange_goods = '';
-          if (this.input_score != 0) {
-            exchange_score = this.input_score;
-          }
-          if (this.exchange_goods) {
-            exchange_goods = this.exchange_goods;
-          }
-          if (exchange_score && exchange_goods) {
-            data.exchange_goods = exchange_goods;
-          }
-          if (exchange_score && !exchange_goods) {
-            data.exchange_score = exchange_score;
-          }
-          if (!exchange_score && exchange_goods) {
-            data.exchange_goods = exchange_goods;
-          }
-          if (!exchange_score && !exchange_goods) {
-            return this.$u.toast('置换需要选填一项，积分或者换实物');
+        if (_this10.type == 2) {
+          var vote = uni.getStorageSync('voteobj');
+          if (vote) {
+            vote = JSON.parse(vote);
+            data.vote_json = JSON.stringify(vote);
+          } else {
+            return _this10.$u.toast('请输入议事厅选项');
           }
 
         }
-        this.buyList.map(function (item) {
-          if (item.check) {
-            data.sell_type = item.value;
+        if (_this10.type == 3) {
+          data.sell_type = _this10.sell_type;
+          _this10.living_type.map(function (item) {
+            if (item.check) {
+              data.sell_type = item.value;
+            }
+          });
+          data.sell_price = _this10.sell_price == '面议' ? -1 : _this10.sell_price;
+        }
+        if (_this10.type == 4) {
+          _this10.recruit_type.map(function (item) {
+            if (item.check) {
+              data.recruit_type = item.value;
+            }
+          });
+        }
+        if (_this10.type == 5) {
+          data.type = 2;
+        }
+        // if(this.type == 3 && data.sell_type != 4 || this.type != 3){
+        // 	if(images.length == 0){
+        // 		uni.showToast({
+        // 			title: '至少上传一张图片',
+        // 			duration: 2000
+        // 		});
+        // 		return
+        // 	}
+        // 	data.images = images.join(',')
+        // }
+        if (images.length) {
+          data.images = images.join(',');
+        }
+        if (_this10.type == 6) {
+          data.score = _this10.input_score;
+        }
+        if (_this10.type == 7) {
+          if (_this10.sell_type == 4) {
+            var exchange_score = 0;
+            var exchange_goods = '';
+            if (_this10.input_score != 0) {
+              exchange_score = _this10.input_score;
+            }
+            if (_this10.exchange_goods) {
+              exchange_goods = _this10.exchange_goods;
+            }
+            if (exchange_score && exchange_goods) {
+              data.exchange_goods = exchange_goods;
+            }
+            if (exchange_score && !exchange_goods) {
+              data.exchange_score = exchange_score;
+            }
+            if (!exchange_score && exchange_goods) {
+              data.exchange_goods = exchange_goods;
+            }
+            if (!exchange_score && !exchange_goods) {
+              return _this10.$u.toast('置换需要选填一项，积分或者换实物');
+            }
+
           }
-        });
-        if (data.sell_type != 4) {
-          if (data.sell_type != 2) {
-            if (this.sell_price == '面议') {
-              data.sell_price = -1;
-            } else {
-              data.sell_price = this.sell_price;
+          _this10.buyList.map(function (item) {
+            if (item.check) {
+              data.sell_type = item.value;
+            }
+          });
+          if (data.sell_type != 4) {
+            if (data.sell_type != 2) {
+              if (_this10.sell_price == '面议') {
+                data.sell_price = -1;
+              } else {
+                data.sell_price = _this10.sell_price;
+              }
             }
           }
         }
-      }
 
-      if (this.type == 8) {
-        if (!this.group_price) {
-          return this.$u.toast('请输入团购价格');
+        if (_this10.type == 8) {
+          if (!_this10.group_price) {
+            return _this10.$u.toast('请输入团购价格');
+          }
+          if (!_this10.specifications) {
+            return _this10.$u.toast('请输入团购规格');
+          }
+          if (!_this10.stock) {
+            return _this10.$u.toast('请输入团购库存');
+          }
+          var i = 0;
+          _this10.groupbuy_info.map(function (item) {
+            if (!item.group_price) {
+              i++;
+            }
+            if (!item.group_min) {
+              i++;
+            }
+
+          });
+          if (i != 0) {
+            return _this10.$u.toast('请输入拼团信息');
+          }
+          if (!_this10.group_endtime) {
+            return _this10.$u.toast('请选择拼团结束时间');
+          }
+          data.group_endtime = _this10.group_endtime;
+          data.specifications = _this10.specifications;
+          data.groupbuy_info = JSON.stringify(_this10.groupbuy_info);
+          data.price = _this10.group_price;
+          data.stock = _this10.stock;
         }
-        if (!this.specifications) {
-          return this.$u.toast('请输入团购规格');
-        }
-        var i = 0;
-        this.groupbuy_info.map(function (item) {
-          if (!item.group_price) {
-            i++;
-          }
-          if (!item.group_min) {
-            i++;
-          }
 
-        });
-        if (i != 0) {
-          return this.$u.toast('请输入拼团信息');
-        }
-        if (!this.group_endtime) {
-          return this.$u.toast('请选择拼团结束时间');
-        }
-        data.group_endtime = this.group_endtime;
-        data.specifications = this.specifications;
-        data.groupbuy_info = JSON.stringify(this.groupbuy_info);
-        data.price = this.group_price;
-      }
-
-      // if(this.type == 6){
-      // 	var skill = []
-      // 	this.skillList.map((item) => {
-      // 		skill.push(item.skill_id)
-      // 	})
-      // 	if(skill.length == 0){
-      // 		uni.showToast({
-      // 		    title: '请选择技能',
-      // 			icon: 'none',
-      // 		    duration: 2000
-      // 		});
-      // 		return
-      // 	}
-      // 	data.skill = skill.join(',')
-      // 	if(this.type != 6){
-      // 		if(!data.title){
-      // 			uni.showToast({
-      // 				title: '请输入标题',
-      // 				icon:'none',
-      // 				duration: 2000
-      // 			});
-      // 			return
-      // 		}
-      // 	}
-      // }
-      var that = this;
-      //曝光台
-      console.log(data, 'submit');
-      if (this.type == 1) {
-        this.Api.publishDynamicsExposure(data).then(function (result) {
-          if (result.code == 1) {
-            uni.showToast({
-              title: result.msg,
-              duration: 2000,
-              success: function success() {
-                uni.removeStorageSync('selectLabel');
-                uni.removeStorageSync('nameLabel');
-                if (result.data.add) {
-                  uni.removeStorageSync('obj1');
-                  that.add_type = result.data.add == -1 ? '-' : '+';
-                  that.score_text = result.data.score;
-                  that.$refs.integraltip.show();
-                  setTimeout(function () {
-                    that.add_type = '';
-                    that.score_text = '';
-                    that.$refs.integraltip.close();
-                    // uni.navigateBack({
-                    // 	delta:2
-                    // })
-                    that.goIndex();
-
-                  }, 2000);
-                } else {
-
-                  that.goIndex();
-                }
-
-
-              } });
-
-          } else {
-            uni.showToast({
-              title: result.msg,
-              icon: 'none',
-              duration: 2000 });
-
-          }
-        });
-      } else if (this.type == 2) {
-        this.Api.publishDynamicsYishi(data).then(function (result) {
-          if (result.code == 1) {
-            uni.showToast({
-              title: result.msg,
-              duration: 2000,
-              success: function success() {
-                uni.removeStorageSync('selectLabel');
-                uni.removeStorageSync('nameLabel');
-                uni.removeStorageSync('voteobj');
-                if (result.data.add) {
-                  uni.removeStorageSync('obj1');
-                  that.add_type = result.data.add == -1 ? '-' : '+';
-                  that.score_text = result.data.score;
-                  that.$refs.integraltip.show();
-                  setTimeout(function () {
-                    that.add_type = '';
-                    that.score_text = '';
-                    that.$refs.integraltip.close();
-                    // uni.navigateBack({
-                    // 	delta:2
-                    // })
-                    that.goIndex();
-
-                  }, 2000);
-                } else {
-
-                  that.goIndex();
-                }
-
-
-              } });
-
-          } else {
-            uni.showToast({
-              title: result.msg,
-              icon: 'none',
-              duration: 2000 });
-
-          }
-
-        });
-      } else if (this.type == 3) {
-        this.Api.publishDynamicsLiving(data).then(function (result) {
-          if (result.code == 1) {
-            uni.showToast({
-              title: result.msg,
-              duration: 2000,
-              success: function success() {
-                uni.removeStorageSync('selectLabel');
-                uni.removeStorageSync('nameLabel');
-                if (result.data.add) {
-                  uni.removeStorageSync('obj3');
-                  that.add_type = result.data.add == -1 ? '-' : '+';
-                  that.score_text = result.data.score;
-                  that.$refs.integraltip.show();
-                  setTimeout(function () {
-                    that.add_type = '';
-                    that.score_text = '';
-                    that.$refs.integraltip.close();
-                    // uni.navigateBack({
-                    // 	delta:2
-                    // })
-                    that.goIndex();
-
-                  }, 2000);
-                } else {
-
-                  that.goIndex();
-                }
-
-
-              } });
-
-          } else {
-            uni.showToast({
-              title: result.msg,
-              icon: 'none',
-              duration: 2000 });
-
-          }
-        });
-      } else if (this.type == 4) {
-        this.Api.publishDynamicsRecruit(data).then(function (result) {
-          if (result.code == 1) {
-            uni.showToast({
-              title: result.msg,
-              duration: 2000,
-              success: function success() {
-                uni.removeStorageSync('selectLabel');
-                uni.removeStorageSync('nameLabel');
-                if (result.data.add) {
-                  uni.removeStorageSync('obj4');
-                  that.add_type = result.data.add == -1 ? '-' : '+';
-                  that.score_text = result.data.score;
-                  that.$refs.integraltip.show();
-                  setTimeout(function () {
-                    that.add_type = '';
-                    that.score_text = '';
-                    that.$refs.integraltip.close();
-                    // uni.navigateBack({
-                    // 	delta:2
-                    // })
-                    that.goIndex();
-
-                  }, 2000);
-                } else {
-
-                  that.goIndex();
-                }
-
-
-              } });
-
-          } else {
-            uni.showToast({
-              title: result.msg,
-              icon: 'none',
-              duration: 2000 });
-
-          }
-        });
-      } else if (this.type == 5) {
-        this.Api.publishDynamics(data).then(function (result) {
-          if (result.code == 1) {
-            uni.showToast({
-              title: result.msg,
-              duration: 2000,
-              success: function success() {
-                if (result.data.add) {
-                  if (that.type == 1) {
+        // if(this.type == 6){
+        // 	var skill = []
+        // 	this.skillList.map((item) => {
+        // 		skill.push(item.skill_id)
+        // 	})
+        // 	if(skill.length == 0){
+        // 		uni.showToast({
+        // 		    title: '请选择技能',
+        // 			icon: 'none',
+        // 		    duration: 2000
+        // 		});
+        // 		return
+        // 	}
+        // 	data.skill = skill.join(',')
+        // 	if(this.type != 6){
+        // 		if(!data.title){
+        // 			uni.showToast({
+        // 				title: '请输入标题',
+        // 				icon:'none',
+        // 				duration: 2000
+        // 			});
+        // 			return
+        // 		}
+        // 	}
+        // }
+        var that = _this10;
+        //曝光台
+        console.log(data, 'submit');
+        if (_this10.type == 1) {
+          _this10.Api.publishDynamicsExposure(data).then(function (result) {
+            if (result.code == 1) {
+              uni.showToast({
+                title: result.msg,
+                duration: 2000,
+                success: function success() {
+                  uni.removeStorageSync('selectLabel');
+                  uni.removeStorageSync('nameLabel');
+                  if (result.data.add) {
                     uni.removeStorageSync('obj1');
-                  } else if (that.type == 2) {
-                    uni.removeStorageSync('obj2');
-                  } else if (that.type == 4) {
-                    uni.removeStorageSync('obj4');
+                    that.add_type = result.data.add == -1 ? '-' : '+';
+                    that.score_text = result.data.score;
+                    that.$refs.integraltip.show();
+                    setTimeout(function () {
+                      that.add_type = '';
+                      that.score_text = '';
+                      that.$refs.integraltip.close();
+                      // uni.navigateBack({
+                      // 	delta:2
+                      // })
+                      that.goIndex();
+
+                    }, 2000);
+                  } else {
+
+                    that.goIndex();
                   }
-                  that.add_type = result.data.add == -1 ? '-' : '+';
-                  that.score_text = result.data.score;
-                  that.$refs.integraltip.show();
-                  setTimeout(function () {
-                    that.add_type = '';
-                    that.score_text = '';
-                    that.$refs.integraltip.close();
-                    // uni.navigateBack({
-                    // 	delta:2
-                    // })
-                    that.goIndex();
-
-                  }, 2000);
-                } else {
-                  // uni.navigateBack({
-                  // 	delta:2
-                  // })
-                  that.goIndex();
-                }
 
 
-              } });
+                } });
 
-          } else {
-            uni.showToast({
-              title: result.msg,
-              icon: 'none',
-              duration: 2000 });
+            } else {
+              uni.showToast({
+                title: result.msg,
+                icon: 'none',
+                duration: 2000 });
 
-          }
-        });
-      } else if (this.type == 6) {
-        this.Api.publishHelpDynamics(data).then(function (result) {
-          if (result.code == 1) {
-            uni.showToast({
-              title: result.msg,
-              duration: 2000,
-              success: function success() {
-                if (result.data.add) {
-                  uni.removeStorageSync('obj6');
-                  that.add_type = result.data.add == -1 ? '-' : '+';
-                  that.score_text = result.data.score;
-                  that.$refs.integraltip.show();
-                  setTimeout(function () {
-                    that.add_type = '';
-                    that.score_text = '';
-                    that.$refs.integraltip.close();
-                    // uni.navigateBack({
-                    // 	delta:2
-                    // })
-                    that.goIndex();
-
-                  }, 2000);
-                } else {
-                  // uni.navigateBack({
-                  // 	delta:2
-                  // })
-                  that.goIndex();
-                }
-
-
-              } });
-
-          } else {
-            uni.showToast({
-              title: result.msg,
-              icon: 'none',
-              duration: 2000 });
-
-          }
-        });
-      } else if (this.type == 7) {
-        this.Api.publishDynamicsSell(data).then(function (result) {
-          if (result.code == 1) {
-            uni.showToast({
-              title: result.msg,
-              duration: 2000,
-              success: function success() {
-                if (result.data.add) {
-                  uni.removeStorageSync('obj7');
-                  that.add_type = result.data.add == -1 ? '-' : '+';
-                  that.score_text = result.data.score;
-                  that.$refs.integraltip.show();
-                  setTimeout(function () {
-                    that.add_type = '';
-                    that.score_text = '';
-                    that.$refs.integraltip.close();
-                    // uni.navigateBack({
-                    // 	delta:2
-                    // })
-                    that.goIndex();
-
-                  }, 2000);
-                } else {
-                  // uni.navigateBack({
-                  // 	delta:2
-                  // })
-                  that.goIndex();
-                }
-
-
-              } });
-
-          } else {
-            uni.showToast({
-              title: result.msg,
-              icon: 'none',
-              duration: 2000 });
-
-          }
-        });
-
-      } else if (this.type == 8) {
-        this.Api.publishGroupbuy(data).then(function (result) {
-          if (result.code == 1) {
-            uni.showToast({
-              title: result.msg,
-              duration: 2000,
-              success: function success() {
-                if (result.data.add) {
-                  uni.removeStorageSync('obj8');
-                  that.add_type = result.data.add == -1 ? '-' : '+';
-                  that.score_text = result.data.score;
-                  that.$refs.integraltip.show();
-                  setTimeout(function () {
-                    that.add_type = '';
-                    that.score_text = '';
-                    that.$refs.integraltip.close();
-                    // uni.navigateBack({
-                    // 	delta:2
-                    // })
-                    that.goIndex();
-
-                  }, 2000);
-                } else {
-                  // uni.navigateBack({
-                  // 	delta:2
-                  // })
-                  that.goIndex();
-                }
-
-
-              } });
-
-          } else {
-            uni.showToast({
-              title: result.msg,
-              icon: 'none',
-              duration: 2000 });
-
-          }
-        });
-
-
-      } else if (this.type == 61) {
-        this.Api.publishDynamicsDaren(data).then(function (result) {
-          if (result.code == 1) {
-            if (that.type == 6) {
-              uni.removeStorageSync('obj6');
             }
-            uni.showToast({
-              title: result.msg,
-              duration: 2000,
-              success: function success() {
-                if (result.data.add) {
-                  that.add_type = result.data.add == -1 ? '-' : '+';
-                  that.score_text = result.data.score;
-                  that.$refs.integraltip.show();
-                  setTimeout(function () {
-                    that.add_type = '';
-                    that.score_text = '';
-                    that.$refs.integraltip.close();
+          });
+        } else if (_this10.type == 2) {
+          _this10.Api.publishDynamicsYishi(data).then(function (result) {
+            if (result.code == 1) {
+              uni.showToast({
+                title: result.msg,
+                duration: 2000,
+                success: function success() {
+                  uni.removeStorageSync('selectLabel');
+                  uni.removeStorageSync('nameLabel');
+                  uni.removeStorageSync('voteobj');
+                  if (result.data.add) {
+                    uni.removeStorageSync('obj1');
+                    that.add_type = result.data.add == -1 ? '-' : '+';
+                    that.score_text = result.data.score;
+                    that.$refs.integraltip.show();
+                    setTimeout(function () {
+                      that.add_type = '';
+                      that.score_text = '';
+                      that.$refs.integraltip.close();
+                      // uni.navigateBack({
+                      // 	delta:2
+                      // })
+                      that.goIndex();
+
+                    }, 2000);
+                  } else {
+
+                    that.goIndex();
+                  }
+
+
+                } });
+
+            } else {
+              uni.showToast({
+                title: result.msg,
+                icon: 'none',
+                duration: 2000 });
+
+            }
+
+          });
+        } else if (_this10.type == 3) {
+          _this10.Api.publishDynamicsLiving(data).then(function (result) {
+            if (result.code == 1) {
+              uni.showToast({
+                title: result.msg,
+                duration: 2000,
+                success: function success() {
+                  uni.removeStorageSync('selectLabel');
+                  uni.removeStorageSync('nameLabel');
+                  if (result.data.add) {
+                    uni.removeStorageSync('obj3');
+                    that.add_type = result.data.add == -1 ? '-' : '+';
+                    that.score_text = result.data.score;
+                    that.$refs.integraltip.show();
+                    setTimeout(function () {
+                      that.add_type = '';
+                      that.score_text = '';
+                      that.$refs.integraltip.close();
+                      // uni.navigateBack({
+                      // 	delta:2
+                      // })
+                      that.goIndex();
+
+                    }, 2000);
+                  } else {
+
+                    that.goIndex();
+                  }
+
+
+                } });
+
+            } else {
+              uni.showToast({
+                title: result.msg,
+                icon: 'none',
+                duration: 2000 });
+
+            }
+          });
+        } else if (_this10.type == 4) {
+          _this10.Api.publishDynamicsRecruit(data).then(function (result) {
+            if (result.code == 1) {
+              uni.showToast({
+                title: result.msg,
+                duration: 2000,
+                success: function success() {
+                  uni.removeStorageSync('selectLabel');
+                  uni.removeStorageSync('nameLabel');
+                  if (result.data.add) {
+                    uni.removeStorageSync('obj4');
+                    that.add_type = result.data.add == -1 ? '-' : '+';
+                    that.score_text = result.data.score;
+                    that.$refs.integraltip.show();
+                    setTimeout(function () {
+                      that.add_type = '';
+                      that.score_text = '';
+                      that.$refs.integraltip.close();
+                      // uni.navigateBack({
+                      // 	delta:2
+                      // })
+                      that.goIndex();
+
+                    }, 2000);
+                  } else {
+
+                    that.goIndex();
+                  }
+
+
+                } });
+
+            } else {
+              uni.showToast({
+                title: result.msg,
+                icon: 'none',
+                duration: 2000 });
+
+            }
+          });
+        } else if (_this10.type == 5) {
+          _this10.Api.publishDynamics(data).then(function (result) {
+            if (result.code == 1) {
+              uni.showToast({
+                title: result.msg,
+                duration: 2000,
+                success: function success() {
+                  if (result.data.add) {
+                    if (that.type == 1) {
+                      uni.removeStorageSync('obj1');
+                    } else if (that.type == 2) {
+                      uni.removeStorageSync('obj2');
+                    } else if (that.type == 4) {
+                      uni.removeStorageSync('obj4');
+                    }
+                    that.add_type = result.data.add == -1 ? '-' : '+';
+                    that.score_text = result.data.score;
+                    that.$refs.integraltip.show();
+                    setTimeout(function () {
+                      that.add_type = '';
+                      that.score_text = '';
+                      that.$refs.integraltip.close();
+                      // uni.navigateBack({
+                      // 	delta:2
+                      // })
+                      that.goIndex();
+
+                    }, 2000);
+                  } else {
                     // uni.navigateBack({
                     // 	delta:2
                     // })
                     that.goIndex();
+                  }
 
-                  }, 2000);
-                } else {
-                  // uni.navigateBack({
-                  // 	delta:2
-                  // })
-                  that.goIndex();
-                }
 
-              } });
+                } });
 
-          } else {
-            uni.showToast({
-              title: result.msg,
-              icon: 'none',
-              duration: 2000 });
+            } else {
+              uni.showToast({
+                title: result.msg,
+                icon: 'none',
+                duration: 2000 });
 
-          }
-        });
-      }
+            }
+          });
+        } else if (_this10.type == 6) {
+          _this10.Api.publishHelpDynamics(data).then(function (result) {
+            if (result.code == 1) {
+              uni.showToast({
+                title: result.msg,
+                duration: 2000,
+                success: function success() {
+                  if (result.data.add) {
+                    uni.removeStorageSync('obj6');
+                    that.add_type = result.data.add == -1 ? '-' : '+';
+                    that.score_text = result.data.score;
+                    that.$refs.integraltip.show();
+                    setTimeout(function () {
+                      that.add_type = '';
+                      that.score_text = '';
+                      that.$refs.integraltip.close();
+                      // uni.navigateBack({
+                      // 	delta:2
+                      // })
+                      that.goIndex();
+
+                    }, 2000);
+                  } else {
+                    // uni.navigateBack({
+                    // 	delta:2
+                    // })
+                    that.goIndex();
+                  }
+
+
+                } });
+
+            } else {
+              uni.showToast({
+                title: result.msg,
+                icon: 'none',
+                duration: 2000 });
+
+            }
+          });
+        } else if (_this10.type == 7) {
+          _this10.Api.publishDynamicsSell(data).then(function (result) {
+            if (result.code == 1) {
+              uni.showToast({
+                title: result.msg,
+                duration: 2000,
+                success: function success() {
+                  if (result.data.add) {
+                    uni.removeStorageSync('obj7');
+                    that.add_type = result.data.add == -1 ? '-' : '+';
+                    that.score_text = result.data.score;
+                    that.$refs.integraltip.show();
+                    setTimeout(function () {
+                      that.add_type = '';
+                      that.score_text = '';
+                      that.$refs.integraltip.close();
+                      // uni.navigateBack({
+                      // 	delta:2
+                      // })
+                      that.goIndex();
+
+                    }, 2000);
+                  } else {
+                    // uni.navigateBack({
+                    // 	delta:2
+                    // })
+                    that.goIndex();
+                  }
+
+
+                } });
+
+            } else {
+              uni.showToast({
+                title: result.msg,
+                icon: 'none',
+                duration: 2000 });
+
+            }
+          });
+
+        } else if (_this10.type == 8) {
+          _this10.Api.publishGroupbuy(data).then(function (result) {
+            if (result.code == 1) {
+              uni.showToast({
+                title: result.msg,
+                duration: 2000,
+                success: function success() {
+                  if (result.data.add) {
+                    uni.removeStorageSync('obj8');
+                    that.add_type = result.data.add == -1 ? '-' : '+';
+                    that.score_text = result.data.score;
+                    that.$refs.integraltip.show();
+                    setTimeout(function () {
+                      that.add_type = '';
+                      that.score_text = '';
+                      that.$refs.integraltip.close();
+                      // uni.navigateBack({
+                      // 	delta:2
+                      // })
+                      that.goIndex();
+
+                    }, 2000);
+                  } else {
+                    // uni.navigateBack({
+                    // 	delta:2
+                    // })
+                    that.goIndex();
+                  }
+
+
+                } });
+
+            } else {
+              uni.showToast({
+                title: result.msg,
+                icon: 'none',
+                duration: 2000 });
+
+            }
+          });
+
+
+        } else if (_this10.type == 61) {
+          _this10.Api.publishDynamicsDaren(data).then(function (result) {
+            if (result.code == 1) {
+              if (that.type == 6) {
+                uni.removeStorageSync('obj6');
+              }
+              uni.showToast({
+                title: result.msg,
+                duration: 2000,
+                success: function success() {
+                  if (result.data.add) {
+                    that.add_type = result.data.add == -1 ? '-' : '+';
+                    that.score_text = result.data.score;
+                    that.$refs.integraltip.show();
+                    setTimeout(function () {
+                      that.add_type = '';
+                      that.score_text = '';
+                      that.$refs.integraltip.close();
+                      // uni.navigateBack({
+                      // 	delta:2
+                      // })
+                      that.goIndex();
+
+                    }, 2000);
+                  } else {
+                    // uni.navigateBack({
+                    // 	delta:2
+                    // })
+                    that.goIndex();
+                  }
+
+                } });
+
+            } else {
+              uni.showToast({
+                title: result.msg,
+                icon: 'none',
+                duration: 2000 });
+
+            }
+          });
+        }
+
+      });
+
     },
     //上传图片处理
     chooseImage: function chooseImage() {
@@ -1539,21 +1561,21 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
         }
       });
     },
-    buyClick: function buyClick(obj) {var _this9 = this;
+    buyClick: function buyClick(obj) {var _this11 = this;
       this.buyList.map(function (item) {
-        _this9.sell_type = obj.value;
+        _this11.sell_type = obj.value;
         if (item.name == obj.name) {
           item.check = true;
-          if (_this9.sell_type != 2) {
-            _this9.sell_price = '面议';
+          if (_this11.sell_type != 2) {
+            _this11.sell_price = '面议';
           } else {
-            _this9.sell_price = 0;
+            _this11.sell_price = 0;
           }
 
         } else {
           item.check = false;
         }
-        _this9.$forceUpdate();
+        _this11.$forceUpdate();
       });
     },
     //添加技能
@@ -1563,7 +1585,7 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
     skillClose: function skillClose() {
       this.skillBoolean = false;
     },
-    addLikebtn: function addLikebtn() {var _this10 = this;
+    addLikebtn: function addLikebtn() {var _this12 = this;
       if (!this.liketext) {
         uni.showToast({
           title: '请输入技能',
@@ -1580,8 +1602,8 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
             title: result.msg,
             duration: 2000 });
 
-          _this10.skillBoolean = false;
-          _this10.getcommunitySkill();
+          _this12.skillBoolean = false;
+          _this12.getcommunitySkill();
         } else {
           uni.showToast({
             title: result.msg,
@@ -1592,11 +1614,11 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
       });
     },
     //是否公开
-    radioClick: function radioClick(obj) {var _this11 = this;
+    radioClick: function radioClick(obj) {var _this13 = this;
       this.radioList.map(function (item) {
         if (item.name == obj.name) {
           item.check = true;
-          _this11.opening = item.value;
+          _this13.opening = item.value;
         } else {
           item.check = false;
         }

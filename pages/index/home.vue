@@ -1162,6 +1162,7 @@ export default {
 			this.communityTitle = e.detail.value;
 		},
 		openCommunityHandler() {
+		
 			this.Api.communityOpening({ title: this.communityTitle, address: this.communityAddress, contact_phone: this.mobile }).then(result => {
 				if (result.code == 1) {
 					uni.showToast({

@@ -2551,7 +2551,7 @@ var subscription = {
   vote: 'wedVxVL7kxxEMfcnjhVgWCottnrhwHzZ9SYZaWiGs48',
   jointuan: '8acnia-tVCSVzY49oVA3jteQCh1qhxrEc9DIfpsEIfg' };
 
-var version = 2;
+var version = 4;
 module.exports = {
   appid: appid,
   sec: sec,

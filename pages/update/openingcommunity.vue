@@ -389,24 +389,50 @@
 					return this.$u.toast('请认真填写资料')
 				}
 				var that = this
-				this.Api.communityOpening(this.params).then(result => {
-					if (result.code == 1) {
-						uni.showToast({
-							title: result.msg,
-							duration: 2000,
-							success: () => {
-								uni.setStorageSync('committee_id', result.data.committee_id);
-								uni.setStorageSync('community_id', result.data.community_id);
-								uni.setStorageSync('community_menu',this.communityTitle);
-								this.community_menu = this.communityTitle
-								//绑定上下级
-								var pid = uni.getStorageSync('pid')
-			
-								if(pid){
-									var pdata = {
-										from_user_id:pid
-									}
-									that.Api.inviteNeighbor(pdata).then((result)=>{
+				this.subMessageTodo(this.regIds,1,(res)=>{
+					this.Api.communityOpening(this.params).then(result => {
+						if (result.code == 1) {
+							uni.showToast({
+								title: result.msg,
+								duration: 2000,
+								success: () => {
+									uni.setStorageSync('committee_id', result.data.committee_id);
+									uni.setStorageSync('community_id', result.data.community_id);
+									uni.setStorageSync('community_menu',this.communityTitle);
+									this.community_menu = this.communityTitle
+									//绑定上下级
+									var pid = uni.getStorageSync('pid')
+								
+									if(pid){
+										var pdata = {
+											from_user_id:pid
+										}
+										that.Api.inviteNeighbor(pdata).then((result)=>{
+												var url = uni.getStorageSync('paiUrl')
+												if(url){
+													uni.reLaunch({
+														url:url,
+														success() {
+															uni.removeStorageSync('paiUrl')
+														}
+													})
+												}else{
+													uni.reLaunch({
+													  url: '/pages/index/index'
+													})
+												}
+											
+										})
+									}else{
+										var url = uni.getStorageSync('url')
+										if(url){
+											uni.reLaunch({
+											  url: url,
+											  success() {
+											  	uni.removeStorageSync('url')
+											  }
+											})
+										}else{
 											var url = uni.getStorageSync('paiUrl')
 											if(url){
 												uni.reLaunch({
@@ -420,40 +446,16 @@
 												  url: '/pages/index/index'
 												})
 											}
-										
-									})
-								}else{
-									var url = uni.getStorageSync('url')
-									if(url){
-										uni.reLaunch({
-										  url: url,
-										  success() {
-										  	uni.removeStorageSync('url')
-										  }
-										})
-									}else{
-										var url = uni.getStorageSync('paiUrl')
-										if(url){
-											uni.reLaunch({
-												url:url,
-												success() {
-													uni.removeStorageSync('paiUrl')
-												}
-											})
-										}else{
-											uni.reLaunch({
-											  url: '/pages/index/index'
-											})
 										}
+										
 									}
-									
+						
 								}
+							});
 					
-							}
-						});
-				
-					}
-				});
+						}
+					});
+				})
 			},
 			openPicker(e){
 				this.pickerId = true

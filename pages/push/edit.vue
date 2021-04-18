@@ -127,6 +127,13 @@
 				</view>
 			</view>
 			
+			<view class="pricewrap stockfix" v-if="type == 8" >
+				<text class="label">库存</text>
+				<view class="pricerulewrap">
+					<u-input v-model="stock" placeholder="请输入库存" type="number" @input="formatstock"  />
+				</view>
+			</view>
+			
 			<view class="pricewrap pricemg" v-if="type == 8" @click="timerHandler">
 				<text class="label">截止时间</text>
 				<view class="pricetype">
@@ -409,6 +416,7 @@
 				],
 				group_endtime:'请选择截止时间',
 				timeShow:false,
+				stock:null,
 				flagsoce:0//积分区分
 			}
 		},
@@ -498,6 +506,12 @@
 					this.group_price = this.group_price.replace(/[^\d.]/g,'')
 					this.$forceUpdate()
 					
+				})
+			},
+			formatstock(e){
+				this.$nextTick(()=>{
+					this.stock = this.stock.replace(/[^\d]/g,'')
+					this.$forceUpdate()
 				})
 			},
 			formatNumber(type,index,item){
@@ -783,563 +797,571 @@
 			},
 			//发布处理
 			pushClick(e){
-				var data = {
-					title:this.title,
-					content:this.content,
-					phone:this.mobile,
-					weixin:this.weixin,
-					community_id:uni.getStorageSync('community_id')
-				}
-				if(this.type == 1 || this.type == 2){
-					this.nameList.map((item)=>{
+				this.subMessageTodo(this.comIds,'2,3',(rs)=>{
+					var data = {
+						title:this.title,
+						content:this.content,
+						phone:this.mobile,
+						weixin:this.weixin,
+						community_id:uni.getStorageSync('community_id')
+					}
+					if(this.type == 1 || this.type == 2){
+						this.nameList.map((item)=>{
+							if(item.check){
+								data.anonymous = item.value
+							}
+						})
+					}
+					console.log(JSON.stringify(data))
+					
+					this.radioList.map((item)=>{
 						if(item.check){
-							data.anonymous = item.value
+							data.opening = item.value
 						}
 					})
-				}
-				console.log(JSON.stringify(data))
-
-				this.radioList.map((item)=>{
-					if(item.check){
-						data.opening = item.value
+					var images = []
+					this.uploadList.map((item) => {
+						images.push(item.url)
+					})
+					if(!data.content){
+						uni.showToast({
+						    title: '请输入内容',
+							icon:'none',
+						    duration: 2000
+						});
+						return
 					}
-				})
-				var images = []
-				this.uploadList.map((item) => {
-					images.push(item.url)
-				})
-				if(!data.content){
-					uni.showToast({
-					    title: '请输入内容',
-						icon:'none',
-					    duration: 2000
-					});
-					return
-				}
-				if(!data.weixin){
-					// uni.showToast({
-					//     title: '请输入微信号',
-					//     duration: 2000
-					// });
-					// return
-				}else{
-					uni.setStorageSync('weixin',data.weixin)
-				}
-				if(this.type == 2){
-					var vote = uni.getStorageSync('voteobj')
-					if(vote){
-						vote = JSON.parse(vote)
-						data.vote_json = JSON.stringify(vote)
+					if(!data.weixin){
+						// uni.showToast({
+						//     title: '请输入微信号',
+						//     duration: 2000
+						// });
+						// return
 					}else{
-						return this.$u.toast('请输入议事厅选项')
+						uni.setStorageSync('weixin',data.weixin)
 					}
-					
-				}
-				if(this.type == 3){
-					data.sell_type = this.sell_type
-					this.living_type.map((item)=>{
-						if(item.check){
-							data.sell_type = item.value
-						}
-					})
-					data.sell_price = this.sell_price == '面议' ? -1 : this.sell_price
-				}
-				if(this.type == 4){
-					this.recruit_type.map((item)=>{
-						if(item.check){
-							data.recruit_type = item.value
-						}
-					})
-				}
-				if(this.type == 5){
-					data.type = 2
-				}
-				// if(this.type == 3 && data.sell_type != 4 || this.type != 3){
-				// 	if(images.length == 0){
-				// 		uni.showToast({
-				// 			title: '至少上传一张图片',
-				// 			duration: 2000
-				// 		});
-				// 		return
-				// 	}
-				// 	data.images = images.join(',')
-				// }
-				if(images.length){
-					data.images = images.join(',')
-				}
-				if(this.type == 6){
-					data.score = this.input_score
-				}
-				if(this.type == 7){
-					if(this.sell_type == 4){
-						var exchange_score = 0
-						var exchange_goods = ''
-						if(this.input_score != 0){
-							exchange_score = this.input_score
-						}
-						if(this.exchange_goods){
-							exchange_goods = this.exchange_goods
-						}
-						if(exchange_score && exchange_goods){
-							data.exchange_goods = exchange_goods
-						}
-						if(exchange_score && !exchange_goods){
-							data.exchange_score = exchange_score
-						}
-						if(!exchange_score && exchange_goods){
-							data.exchange_goods = exchange_goods
-						}
-						if(!exchange_score && !exchange_goods){
-							return this.$u.toast('置换需要选填一项，积分或者换实物')
+					if(this.type == 2){
+						var vote = uni.getStorageSync('voteobj')
+						if(vote){
+							vote = JSON.parse(vote)
+							data.vote_json = JSON.stringify(vote)
+						}else{
+							return this.$u.toast('请输入议事厅选项')
 						}
 						
 					}
-					this.buyList.map((item)=>{
-						if(item.check){
-							data.sell_type = item.value
+					if(this.type == 3){
+						data.sell_type = this.sell_type
+						this.living_type.map((item)=>{
+							if(item.check){
+								data.sell_type = item.value
+							}
+						})
+						data.sell_price = this.sell_price == '面议' ? -1 : this.sell_price
+					}
+					if(this.type == 4){
+						this.recruit_type.map((item)=>{
+							if(item.check){
+								data.recruit_type = item.value
+							}
+						})
+					}
+					if(this.type == 5){
+						data.type = 2
+					}
+					// if(this.type == 3 && data.sell_type != 4 || this.type != 3){
+					// 	if(images.length == 0){
+					// 		uni.showToast({
+					// 			title: '至少上传一张图片',
+					// 			duration: 2000
+					// 		});
+					// 		return
+					// 	}
+					// 	data.images = images.join(',')
+					// }
+					if(images.length){
+						data.images = images.join(',')
+					}
+					if(this.type == 6){
+						data.score = this.input_score
+					}
+					if(this.type == 7){
+						if(this.sell_type == 4){
+							var exchange_score = 0
+							var exchange_goods = ''
+							if(this.input_score != 0){
+								exchange_score = this.input_score
+							}
+							if(this.exchange_goods){
+								exchange_goods = this.exchange_goods
+							}
+							if(exchange_score && exchange_goods){
+								data.exchange_goods = exchange_goods
+							}
+							if(exchange_score && !exchange_goods){
+								data.exchange_score = exchange_score
+							}
+							if(!exchange_score && exchange_goods){
+								data.exchange_goods = exchange_goods
+							}
+							if(!exchange_score && !exchange_goods){
+								return this.$u.toast('置换需要选填一项，积分或者换实物')
+							}
+							
 						}
-					})
-					if(data.sell_type != 4){
-						if(data.sell_type != 2){
-							if(this.sell_price == '面议'){
-								data.sell_price = -1
-							}else{
-								data.sell_price =  this.sell_price
+						this.buyList.map((item)=>{
+							if(item.check){
+								data.sell_type = item.value
+							}
+						})
+						if(data.sell_type != 4){
+							if(data.sell_type != 2){
+								if(this.sell_price == '面议'){
+									data.sell_price = -1
+								}else{
+									data.sell_price =  this.sell_price
+								}
 							}
 						}
 					}
-				}
-				
-				if(this.type == 8){
-					if(!this.group_price){
-						return this.$u.toast('请输入团购价格')
-					}
-					if(!this.specifications){
-						return this.$u.toast('请输入团购规格')
-					}
-					var i = 0
-					this.groupbuy_info.map((item)=>{
-						if(!item.group_price){
-							i++
+					
+					if(this.type == 8){
+						if(!this.group_price){
+							return this.$u.toast('请输入团购价格')
 						}
-						if(!item.group_min){
-							i++
+						if(!this.specifications){
+							return this.$u.toast('请输入团购规格')
 						}
-						
-					})
-					if(i != 0){
-						return this.$u.toast('请输入拼团信息')
-					}
-					if(!this.group_endtime){
-						return this.$u.toast('请选择拼团结束时间')
-					}
-					data.group_endtime = this.group_endtime
-					data.specifications = this.specifications
-					data.groupbuy_info = JSON.stringify(this.groupbuy_info)
-					data.price = this.group_price
-				}
-				
-				// if(this.type == 6){
-				// 	var skill = []
-				// 	this.skillList.map((item) => {
-				// 		skill.push(item.skill_id)
-				// 	})
-				// 	if(skill.length == 0){
-				// 		uni.showToast({
-				// 		    title: '请选择技能',
-				// 			icon: 'none',
-				// 		    duration: 2000
-				// 		});
-				// 		return
-				// 	}
-				// 	data.skill = skill.join(',')
-				// 	if(this.type != 6){
-				// 		if(!data.title){
-				// 			uni.showToast({
-				// 				title: '请输入标题',
-				// 				icon:'none',
-				// 				duration: 2000
-				// 			});
-				// 			return
-				// 		}
-				// 	}
-				// }
-				var that = this
-				//曝光台
-				console.log(data,'submit')
-				if(this.type == 1){
-					this.Api.publishDynamicsExposure(data).then((result)=>{
-						if(result.code == 1){
-							uni.showToast({
-								title: result.msg,
-								duration: 2000,
-								success: () => {
-									uni.removeStorageSync('selectLabel')
-									uni.removeStorageSync('nameLabel')
-									if(result.data.add){
-										uni.removeStorageSync('obj1')
-										that.add_type = result.data.add == -1 ? '-' : '+'
-										that.score_text = result.data.score
-										that.$refs.integraltip.show()
-										setTimeout(()=>{
-											that.add_type = ''
-											that.score_text = ''
-											that.$refs.integraltip.close()
-											// uni.navigateBack({
-											// 	delta:2
-											// })
-											that.goIndex()
-											
-										},2000)
-									}else{
-
-										that.goIndex()
-									}
+						if(!this.stock){
+							return this.$u.toast('请输入团购库存')
+						}
+						var i = 0
+						this.groupbuy_info.map((item)=>{
+							if(!item.group_price){
+								i++
+							}
+							if(!item.group_min){
+								i++
+							}
 							
-								
-								}
-							});
-						}else{
-							uni.showToast({
-								title: result.msg,
-								icon:'none',
-								duration: 2000
-							});
+						})
+						if(i != 0){
+							return this.$u.toast('请输入拼团信息')
 						}
-					})
-				}else if(this.type == 2){
-					this.Api.publishDynamicsYishi(data).then((result)=>{
-						if(result.code == 1){
-							uni.showToast({
-								title: result.msg,
-								duration: 2000,
-								success: () => {
-									uni.removeStorageSync('selectLabel')
-									uni.removeStorageSync('nameLabel')
-									uni.removeStorageSync('voteobj')
-									if(result.data.add){
-										uni.removeStorageSync('obj1')
-										that.add_type = result.data.add == -1 ? '-' : '+'
-										that.score_text = result.data.score
-										that.$refs.integraltip.show()
-										setTimeout(()=>{
-											that.add_type = ''
-											that.score_text = ''
-											that.$refs.integraltip.close()
-											// uni.navigateBack({
-											// 	delta:2
-											// })
-											that.goIndex()
-											
-										},2000)
-									}else{
-						
-										that.goIndex()
-									}
-							
-								
-								}
-							});
-						}else{
-							uni.showToast({
-								title: result.msg,
-								icon:'none',
-								duration: 2000
-							});
+						if(!this.group_endtime){
+							return this.$u.toast('请选择拼团结束时间')
 						}
-						
-					})
-				}else if(this.type == 3){
-					this.Api.publishDynamicsLiving(data).then((result)=>{
-						if(result.code == 1){
-							uni.showToast({
-								title: result.msg,
-								duration: 2000,
-								success: () => {
-									uni.removeStorageSync('selectLabel')
-									uni.removeStorageSync('nameLabel')
-									if(result.data.add){
-										uni.removeStorageSync('obj3')
-										that.add_type = result.data.add == -1 ? '-' : '+'
-										that.score_text = result.data.score
-										that.$refs.integraltip.show()
-										setTimeout(()=>{
-											that.add_type = ''
-											that.score_text = ''
-											that.$refs.integraltip.close()
-											// uni.navigateBack({
-											// 	delta:2
-											// })
-											that.goIndex()
-											
-										},2000)
-									}else{
-						
-										that.goIndex()
-									}
-							
-								
-								}
-							});
-						}else{
-							uni.showToast({
-								title: result.msg,
-								icon:'none',
-								duration: 2000
-							});
-						}
-					})
-				}else if(this.type == 4){
-					this.Api.publishDynamicsRecruit(data).then((result)=>{
-						if(result.code == 1){
-							uni.showToast({
-								title: result.msg,
-								duration: 2000,
-								success: () => {
-									uni.removeStorageSync('selectLabel')
-									uni.removeStorageSync('nameLabel')
-									if(result.data.add){
-										uni.removeStorageSync('obj4')
-										that.add_type = result.data.add == -1 ? '-' : '+'
-										that.score_text = result.data.score
-										that.$refs.integraltip.show()
-										setTimeout(()=>{
-											that.add_type = ''
-											that.score_text = ''
-											that.$refs.integraltip.close()
-											// uni.navigateBack({
-											// 	delta:2
-											// })
-											that.goIndex()
-											
-										},2000)
-									}else{
-						
-										that.goIndex()
-									}
-							
-								
-								}
-							});
-						}else{
-							uni.showToast({
-								title: result.msg,
-								icon:'none',
-								duration: 2000
-							});
-						}
-					})
-				}else if(this.type == 5){
-					this.Api.publishDynamics(data).then((result) => {
-						if(result.code == 1){
-							uni.showToast({
-								title: result.msg,
-								duration: 2000,
-								success: () => {
-									if(result.data.add){
-										if(that.type == 1){
+						data.group_endtime = this.group_endtime
+						data.specifications = this.specifications
+						data.groupbuy_info = JSON.stringify(this.groupbuy_info)
+						data.price = this.group_price
+						data.stock = this.stock
+					}
+					
+					// if(this.type == 6){
+					// 	var skill = []
+					// 	this.skillList.map((item) => {
+					// 		skill.push(item.skill_id)
+					// 	})
+					// 	if(skill.length == 0){
+					// 		uni.showToast({
+					// 		    title: '请选择技能',
+					// 			icon: 'none',
+					// 		    duration: 2000
+					// 		});
+					// 		return
+					// 	}
+					// 	data.skill = skill.join(',')
+					// 	if(this.type != 6){
+					// 		if(!data.title){
+					// 			uni.showToast({
+					// 				title: '请输入标题',
+					// 				icon:'none',
+					// 				duration: 2000
+					// 			});
+					// 			return
+					// 		}
+					// 	}
+					// }
+					var that = this
+					//曝光台
+					console.log(data,'submit')
+					if(this.type == 1){
+						this.Api.publishDynamicsExposure(data).then((result)=>{
+							if(result.code == 1){
+								uni.showToast({
+									title: result.msg,
+									duration: 2000,
+									success: () => {
+										uni.removeStorageSync('selectLabel')
+										uni.removeStorageSync('nameLabel')
+										if(result.data.add){
 											uni.removeStorageSync('obj1')
-										}else if(that.type == 2){
-											uni.removeStorageSync('obj2')
-										}else if(that.type == 4){
-											uni.removeStorageSync('obj4')
+											that.add_type = result.data.add == -1 ? '-' : '+'
+											that.score_text = result.data.score
+											that.$refs.integraltip.show()
+											setTimeout(()=>{
+												that.add_type = ''
+												that.score_text = ''
+												that.$refs.integraltip.close()
+												// uni.navigateBack({
+												// 	delta:2
+												// })
+												that.goIndex()
+												
+											},2000)
+										}else{
+					
+											that.goIndex()
 										}
-										that.add_type = result.data.add == -1 ? '-' : '+'
-										that.score_text = result.data.score
-										that.$refs.integraltip.show()
-										setTimeout(()=>{
-											that.add_type = ''
-											that.score_text = ''
-											that.$refs.integraltip.close()
-											// uni.navigateBack({
-											// 	delta:2
-											// })
-											that.goIndex()
-											
-										},2000)
-									}else{
-										// uni.navigateBack({
-										// 	delta:2
-										// })
-										that.goIndex()
-									}
-							
-		
-								}
-							});
-						}else{
-							uni.showToast({
-								title: result.msg,
-								icon:'none',
-								duration: 2000
-							});
-						}
-					})
-				}else if(this.type == 6){
-					this.Api.publishHelpDynamics(data).then((result) => {
-						if(result.code == 1){
-							uni.showToast({
-								title: result.msg,
-								duration: 2000,
-								success: () => {
-									if(result.data.add){
-										uni.removeStorageSync('obj6')
-										that.add_type = result.data.add == -1 ? '-' : '+'
-										that.score_text = result.data.score
-										that.$refs.integraltip.show()
-										setTimeout(()=>{
-											that.add_type = ''
-											that.score_text = ''
-											that.$refs.integraltip.close()
-											// uni.navigateBack({
-											// 	delta:2
-											// })
-											that.goIndex()
-											
-										},2000)
-									}else{
-										// uni.navigateBack({
-										// 	delta:2
-										// })
-										that.goIndex()
-									}
-							
 								
-								}
-							});
-						}else{
-							uni.showToast({
-								title: result.msg,
-								icon:'none',
-								duration: 2000
-							});
-						}
-					})
-				}else if(this.type == 7){
-					this.Api.publishDynamicsSell(data).then((result)=>{
-						if(result.code == 1){
-							uni.showToast({
-								title: result.msg,
-								duration: 2000,
-								success: () => {
-									if(result.data.add){
-										uni.removeStorageSync('obj7')
-										that.add_type = result.data.add == -1 ? '-' : '+'
-										that.score_text = result.data.score
-										that.$refs.integraltip.show()
-										setTimeout(()=>{
-											that.add_type = ''
-											that.score_text = ''
-											that.$refs.integraltip.close()
-											// uni.navigateBack({
-											// 	delta:2
-											// })
-											that.goIndex()
-											
-										},2000)
-									}else{
-										// uni.navigateBack({
-										// 	delta:2
-										// })
-										that.goIndex()
+									
 									}
-							
-								
-								}
-							});
-						}else{
-							uni.showToast({
-								title: result.msg,
-								icon:'none',
-								duration: 2000
-							});
-						}
-					})
-					
-				}else if(this.type == 8){
-					this.Api.publishGroupbuy(data).then((result)=>{
-						if(result.code == 1){
-							uni.showToast({
-								title: result.msg,
-								duration: 2000,
-								success: () => {
-									if(result.data.add){
-										uni.removeStorageSync('obj8')
-										that.add_type = result.data.add == -1 ? '-' : '+'
-										that.score_text = result.data.score
-										that.$refs.integraltip.show()
-										setTimeout(()=>{
-											that.add_type = ''
-											that.score_text = ''
-											that.$refs.integraltip.close()
-											// uni.navigateBack({
-											// 	delta:2
-											// })
-											that.goIndex()
-											
-										},2000)
-									}else{
-										// uni.navigateBack({
-										// 	delta:2
-										// })
-										that.goIndex()
-									}
-							
-								
-								}
-							});
-						}else{
-							uni.showToast({
-								title: result.msg,
-								icon:'none',
-								duration: 2000
-							});
-						}
-					})
-					
-				
-				}else if(this.type == 61){
-					this.Api.publishDynamicsDaren(data).then((result) => {
-						if(result.code == 1){
-							if(that.type == 6){
-								uni.removeStorageSync('obj6')
+								});
+							}else{
+								uni.showToast({
+									title: result.msg,
+									icon:'none',
+									duration: 2000
+								});
 							}
-							uni.showToast({
-								title: result.msg,
-								duration: 2000,
-								success: () => {
-									if(result.data.add){
-										that.add_type = result.data.add == -1 ? '-' : '+'
-										that.score_text = result.data.score
-										that.$refs.integraltip.show()
-										setTimeout(()=>{
-											that.add_type = ''
-											that.score_text = ''
-											that.$refs.integraltip.close()
+						})
+					}else if(this.type == 2){
+						this.Api.publishDynamicsYishi(data).then((result)=>{
+							if(result.code == 1){
+								uni.showToast({
+									title: result.msg,
+									duration: 2000,
+									success: () => {
+										uni.removeStorageSync('selectLabel')
+										uni.removeStorageSync('nameLabel')
+										uni.removeStorageSync('voteobj')
+										if(result.data.add){
+											uni.removeStorageSync('obj1')
+											that.add_type = result.data.add == -1 ? '-' : '+'
+											that.score_text = result.data.score
+											that.$refs.integraltip.show()
+											setTimeout(()=>{
+												that.add_type = ''
+												that.score_text = ''
+												that.$refs.integraltip.close()
+												// uni.navigateBack({
+												// 	delta:2
+												// })
+												that.goIndex()
+												
+											},2000)
+										}else{
+							
+											that.goIndex()
+										}
+								
+									
+									}
+								});
+							}else{
+								uni.showToast({
+									title: result.msg,
+									icon:'none',
+									duration: 2000
+								});
+							}
+							
+						})
+					}else if(this.type == 3){
+						this.Api.publishDynamicsLiving(data).then((result)=>{
+							if(result.code == 1){
+								uni.showToast({
+									title: result.msg,
+									duration: 2000,
+									success: () => {
+										uni.removeStorageSync('selectLabel')
+										uni.removeStorageSync('nameLabel')
+										if(result.data.add){
+											uni.removeStorageSync('obj3')
+											that.add_type = result.data.add == -1 ? '-' : '+'
+											that.score_text = result.data.score
+											that.$refs.integraltip.show()
+											setTimeout(()=>{
+												that.add_type = ''
+												that.score_text = ''
+												that.$refs.integraltip.close()
+												// uni.navigateBack({
+												// 	delta:2
+												// })
+												that.goIndex()
+												
+											},2000)
+										}else{
+							
+											that.goIndex()
+										}
+								
+									
+									}
+								});
+							}else{
+								uni.showToast({
+									title: result.msg,
+									icon:'none',
+									duration: 2000
+								});
+							}
+						})
+					}else if(this.type == 4){
+						this.Api.publishDynamicsRecruit(data).then((result)=>{
+							if(result.code == 1){
+								uni.showToast({
+									title: result.msg,
+									duration: 2000,
+									success: () => {
+										uni.removeStorageSync('selectLabel')
+										uni.removeStorageSync('nameLabel')
+										if(result.data.add){
+											uni.removeStorageSync('obj4')
+											that.add_type = result.data.add == -1 ? '-' : '+'
+											that.score_text = result.data.score
+											that.$refs.integraltip.show()
+											setTimeout(()=>{
+												that.add_type = ''
+												that.score_text = ''
+												that.$refs.integraltip.close()
+												// uni.navigateBack({
+												// 	delta:2
+												// })
+												that.goIndex()
+												
+											},2000)
+										}else{
+							
+											that.goIndex()
+										}
+								
+									
+									}
+								});
+							}else{
+								uni.showToast({
+									title: result.msg,
+									icon:'none',
+									duration: 2000
+								});
+							}
+						})
+					}else if(this.type == 5){
+						this.Api.publishDynamics(data).then((result) => {
+							if(result.code == 1){
+								uni.showToast({
+									title: result.msg,
+									duration: 2000,
+									success: () => {
+										if(result.data.add){
+											if(that.type == 1){
+												uni.removeStorageSync('obj1')
+											}else if(that.type == 2){
+												uni.removeStorageSync('obj2')
+											}else if(that.type == 4){
+												uni.removeStorageSync('obj4')
+											}
+											that.add_type = result.data.add == -1 ? '-' : '+'
+											that.score_text = result.data.score
+											that.$refs.integraltip.show()
+											setTimeout(()=>{
+												that.add_type = ''
+												that.score_text = ''
+												that.$refs.integraltip.close()
+												// uni.navigateBack({
+												// 	delta:2
+												// })
+												that.goIndex()
+												
+											},2000)
+										}else{
 											// uni.navigateBack({
 											// 	delta:2
 											// })
 											that.goIndex()
-											
-										},2000)
-									}else{
-										// uni.navigateBack({
-										// 	delta:2
-										// })
-										that.goIndex()
-									}
+										}
+								
 							
+									}
+								});
+							}else{
+								uni.showToast({
+									title: result.msg,
+									icon:'none',
+									duration: 2000
+								});
+							}
+						})
+					}else if(this.type == 6){
+						this.Api.publishHelpDynamics(data).then((result) => {
+							if(result.code == 1){
+								uni.showToast({
+									title: result.msg,
+									duration: 2000,
+									success: () => {
+										if(result.data.add){
+											uni.removeStorageSync('obj6')
+											that.add_type = result.data.add == -1 ? '-' : '+'
+											that.score_text = result.data.score
+											that.$refs.integraltip.show()
+											setTimeout(()=>{
+												that.add_type = ''
+												that.score_text = ''
+												that.$refs.integraltip.close()
+												// uni.navigateBack({
+												// 	delta:2
+												// })
+												that.goIndex()
+												
+											},2000)
+										}else{
+											// uni.navigateBack({
+											// 	delta:2
+											// })
+											that.goIndex()
+										}
+								
+									
+									}
+								});
+							}else{
+								uni.showToast({
+									title: result.msg,
+									icon:'none',
+									duration: 2000
+								});
+							}
+						})
+					}else if(this.type == 7){
+						this.Api.publishDynamicsSell(data).then((result)=>{
+							if(result.code == 1){
+								uni.showToast({
+									title: result.msg,
+									duration: 2000,
+									success: () => {
+										if(result.data.add){
+											uni.removeStorageSync('obj7')
+											that.add_type = result.data.add == -1 ? '-' : '+'
+											that.score_text = result.data.score
+											that.$refs.integraltip.show()
+											setTimeout(()=>{
+												that.add_type = ''
+												that.score_text = ''
+												that.$refs.integraltip.close()
+												// uni.navigateBack({
+												// 	delta:2
+												// })
+												that.goIndex()
+												
+											},2000)
+										}else{
+											// uni.navigateBack({
+											// 	delta:2
+											// })
+											that.goIndex()
+										}
+								
+									
+									}
+								});
+							}else{
+								uni.showToast({
+									title: result.msg,
+									icon:'none',
+									duration: 2000
+								});
+							}
+						})
+						
+					}else if(this.type == 8){
+						this.Api.publishGroupbuy(data).then((result)=>{
+							if(result.code == 1){
+								uni.showToast({
+									title: result.msg,
+									duration: 2000,
+									success: () => {
+										if(result.data.add){
+											uni.removeStorageSync('obj8')
+											that.add_type = result.data.add == -1 ? '-' : '+'
+											that.score_text = result.data.score
+											that.$refs.integraltip.show()
+											setTimeout(()=>{
+												that.add_type = ''
+												that.score_text = ''
+												that.$refs.integraltip.close()
+												// uni.navigateBack({
+												// 	delta:2
+												// })
+												that.goIndex()
+												
+											},2000)
+										}else{
+											// uni.navigateBack({
+											// 	delta:2
+											// })
+											that.goIndex()
+										}
+								
+									
+									}
+								});
+							}else{
+								uni.showToast({
+									title: result.msg,
+									icon:'none',
+									duration: 2000
+								});
+							}
+						})
+						
+					
+					}else if(this.type == 61){
+						this.Api.publishDynamicsDaren(data).then((result) => {
+							if(result.code == 1){
+								if(that.type == 6){
+									uni.removeStorageSync('obj6')
 								}
-							});
-						}else{
-							uni.showToast({
-								title: result.msg,
-								icon: 'none',
-								duration: 2000
-							});
-						}
-					})
-				}
+								uni.showToast({
+									title: result.msg,
+									duration: 2000,
+									success: () => {
+										if(result.data.add){
+											that.add_type = result.data.add == -1 ? '-' : '+'
+											that.score_text = result.data.score
+											that.$refs.integraltip.show()
+											setTimeout(()=>{
+												that.add_type = ''
+												that.score_text = ''
+												that.$refs.integraltip.close()
+												// uni.navigateBack({
+												// 	delta:2
+												// })
+												that.goIndex()
+												
+											},2000)
+										}else{
+											// uni.navigateBack({
+											// 	delta:2
+											// })
+											that.goIndex()
+										}
+								
+									}
+								});
+							}else{
+								uni.showToast({
+									title: result.msg,
+									icon: 'none',
+									duration: 2000
+								});
+							}
+						})
+					}
+				
+				})
+				
 			},
 			//上传图片处理
 			chooseImage(){
@@ -1902,6 +1924,12 @@
 						background: #F5F6FA;	
 						border-radius: 10upx;
 					}
+				}
+			}
+			.stockfix{
+				margin-top: 10upx;
+				/deep/ .u-input{
+					width:440upx!important;
 				}
 			}
 			.contentinfo{

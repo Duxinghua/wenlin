@@ -528,70 +528,72 @@ __webpack_require__.r(__webpack_exports__);
         return this.$u.toast('请认真填写资料');
       }
       var that = this;
-      this.Api.communityOpening(this.params).then(function (result) {
-        if (result.code == 1) {
-          uni.showToast({
-            title: result.msg,
-            duration: 2000,
-            success: function success() {
-              uni.setStorageSync('committee_id', result.data.committee_id);
-              uni.setStorageSync('community_id', result.data.community_id);
-              uni.setStorageSync('community_menu', _this9.communityTitle);
-              _this9.community_menu = _this9.communityTitle;
-              //绑定上下级
-              var pid = uni.getStorageSync('pid');
+      this.subMessageTodo(this.regIds, 1, function (res) {
+        _this9.Api.communityOpening(_this9.params).then(function (result) {
+          if (result.code == 1) {
+            uni.showToast({
+              title: result.msg,
+              duration: 2000,
+              success: function success() {
+                uni.setStorageSync('committee_id', result.data.committee_id);
+                uni.setStorageSync('community_id', result.data.community_id);
+                uni.setStorageSync('community_menu', _this9.communityTitle);
+                _this9.community_menu = _this9.communityTitle;
+                //绑定上下级
+                var pid = uni.getStorageSync('pid');
 
-              if (pid) {
-                var pdata = {
-                  from_user_id: pid };
+                if (pid) {
+                  var pdata = {
+                    from_user_id: pid };
 
-                that.Api.inviteNeighbor(pdata).then(function (result) {
-                  var url = uni.getStorageSync('paiUrl');
-                  if (url) {
-                    uni.reLaunch({
-                      url: url,
-                      success: function success() {
-                        uni.removeStorageSync('paiUrl');
-                      } });
+                  that.Api.inviteNeighbor(pdata).then(function (result) {
+                    var url = uni.getStorageSync('paiUrl');
+                    if (url) {
+                      uni.reLaunch({
+                        url: url,
+                        success: function success() {
+                          uni.removeStorageSync('paiUrl');
+                        } });
 
-                  } else {
-                    uni.reLaunch({
-                      url: '/pages/index/index' });
+                    } else {
+                      uni.reLaunch({
+                        url: '/pages/index/index' });
 
-                  }
+                    }
 
-                });
-              } else {
-                var url = uni.getStorageSync('url');
-                if (url) {
-                  uni.reLaunch({
-                    url: url,
-                    success: function success() {
-                      uni.removeStorageSync('url');
-                    } });
-
+                  });
                 } else {
-                  var url = uni.getStorageSync('paiUrl');
+                  var url = uni.getStorageSync('url');
                   if (url) {
                     uni.reLaunch({
                       url: url,
                       success: function success() {
-                        uni.removeStorageSync('paiUrl');
+                        uni.removeStorageSync('url');
                       } });
 
                   } else {
-                    uni.reLaunch({
-                      url: '/pages/index/index' });
+                    var url = uni.getStorageSync('paiUrl');
+                    if (url) {
+                      uni.reLaunch({
+                        url: url,
+                        success: function success() {
+                          uni.removeStorageSync('paiUrl');
+                        } });
 
+                    } else {
+                      uni.reLaunch({
+                        url: '/pages/index/index' });
+
+                    }
                   }
+
                 }
 
-              }
-
-            } });
+              } });
 
 
-        }
+          }
+        });
       });
     },
     openPicker: function openPicker(e) {

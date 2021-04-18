@@ -509,11 +509,13 @@ export default {
 				return this.$u.toast('请输入拼团微信号')
 			}
 			this.tuanObj.community_id = uni.getStorageSync('community_id')
-			this.Api.jionGroupbuy(this.tuanObj).then((result)=>{
-				if(result.code == 1){
-					this.joinShow = false
-					return this.$u.toast(result.msg)
-				}
+			this.subMessageTodo(this.tuanIds,7,(ss) => {
+				this.Api.jionGroupbuy(this.tuanObj).then((result)=>{
+					if(result.code == 1){
+						this.joinShow = false
+						return this.$u.toast(result.msg)
+					}
+				})
 			})
 		},
 		//加入拼团
@@ -1320,57 +1322,59 @@ export default {
 				});
 				return;
 			}
-			var data = {
-				dynamics_id: this.dynamics_id,
-				object_type: this.type,
-				content: this.inputValue,
-				parent_id: this.parent_id,
-				community_id: uni.getStorageSync('community_id')
-			};
-			if (this.type == 7 || this.type == 5) {
-				data.third_id = this.id;
-			}
-			if (this.type == 7) {
-				data.dynamics_id = this.dynamics_id;
-			}
-			this.Api.setComments(data).then(result => {
-				if (result.code == 1) {
-					uni.showToast({
-						title: result.msg,
-						duration: 2000,
-						success: () => {
-							this.replyTextarea = false;
-							this.textareaautofocus = false;
-							this.scrollFixed = false;
-							// this.isShowEmj = false
-							// this.inputValue = ''
-							// this.parent_id = ''
-							// this.replyFlag = true
-							// this.parent_text = '说说你的看法'
-							// this.getCommentList()
-							this.isShowEmj = false;
-							this.inputValue = '';
-							this.parent_id = '';
-							this.replyFlag = true;
-							this.parent_text = '说说你的看法';
-							if (result.data.add) {
-								this.add_type = result.data.add == -1 ? '-' : '+';
-								this.score_text = result.data.score;
-								this.$refs.integraltip.show();
-								setTimeout(() => {
-									this.add_type = '';
-									this.score_text = '';
-
-									this.$refs.integraltip.close();
-									this.getCommentList();
-								}, 2000);
-							} else {
-								this.getCommentList();
-							}
-						}
-					});
+			this.subMessageTodo(this.comIds,3,(ss) => {
+				var data = {
+					dynamics_id: this.dynamics_id,
+					object_type: this.type,
+					content: this.inputValue,
+					parent_id: this.parent_id,
+					community_id: uni.getStorageSync('community_id')
+				};
+				if (this.type == 7 || this.type == 5) {
+					data.third_id = this.id;
 				}
-			});
+				if (this.type == 7) {
+					data.dynamics_id = this.dynamics_id;
+				}
+				this.Api.setComments(data).then(result => {
+					if (result.code == 1) {
+						uni.showToast({
+							title: result.msg,
+							duration: 2000,
+							success: () => {
+								this.replyTextarea = false;
+								this.textareaautofocus = false;
+								this.scrollFixed = false;
+								// this.isShowEmj = false
+								// this.inputValue = ''
+								// this.parent_id = ''
+								// this.replyFlag = true
+								// this.parent_text = '说说你的看法'
+								// this.getCommentList()
+								this.isShowEmj = false;
+								this.inputValue = '';
+								this.parent_id = '';
+								this.replyFlag = true;
+								this.parent_text = '说说你的看法';
+								if (result.data.add) {
+									this.add_type = result.data.add == -1 ? '-' : '+';
+									this.score_text = result.data.score;
+									this.$refs.integraltip.show();
+									setTimeout(() => {
+										this.add_type = '';
+										this.score_text = '';
+
+										this.$refs.integraltip.close();
+										this.getCommentList();
+									}, 2000);
+								} else {
+									this.getCommentList();
+								}
+							}
+						});
+					}
+				});
+			})
 		},
 		//复制功能
 		copy(index) {

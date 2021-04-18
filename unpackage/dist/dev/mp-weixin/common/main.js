@@ -129,6 +129,28 @@ _vue.default.filter('askStatus', function (type) {
 });
 
 
+_vue.default.mixin({
+  data: function data() {
+    return {
+      regIds: 'FMdFQqlu0P3i50txbGTdYI2543cpO7IG4xe371lf428',
+      comIds: 'WKmoq7K1gmAiAhnzQqUK_9SvKevZStaxPK67-qV6P7U',
+      tuanIds: 'Lso3WnGo9gkMpiZMWq3E9KRh_-TewTOEhm7ltdI2U6E' };
+
+  },
+  methods: {
+    subMessageTodo: function subMessageTodo(tmplIds, type, cb) {
+      uni.requestSubscribeMessage({
+        tmplIds: [tmplIds],
+        success: function success(res) {
+          _api.default.addMessage({ types: type }).then(function (result) {
+            cb(result);
+          });
+        } });
+
+    } } });
+
+
+
 
 
 
