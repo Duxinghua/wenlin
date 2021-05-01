@@ -15,7 +15,7 @@ const subscription = {
 	vote:'wedVxVL7kxxEMfcnjhVgWCottnrhwHzZ9SYZaWiGs48',
 	jointuan:'8acnia-tVCSVzY49oVA3jteQCh1qhxrEc9DIfpsEIfg'
 }
-const version = 4
+const version = 5
 module.exports = {
 	appid,
 	sec,
