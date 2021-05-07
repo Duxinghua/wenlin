@@ -2028,7 +2028,7 @@ var communityDynamicsAddSkill = function communityDynamicsAddSkill(params) {retu
 
 //POST 上传图片（单个）
 // 文件上传
-var uploadOne = function uploadOne(params) {return (0, _request.wxUploadFile)(params, _config.baseURL + 'api/wxadmin/upload/one');};
+var uploadOne = function uploadOne(params) {return (0, _request.wxUploadFile)(params, _config.baseURL + 'api/community/upload/one');};
 // 生成海报  api/wxapp/wxapp/getWXACodeUnlimit
 var getWXACodeUnlimit = function getWXACodeUnlimit(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/wxapp/wxapp/getWXACodeUnlimit', 'POST');};
 
@@ -2543,7 +2543,7 @@ var subscription = {
   vote: 'wedVxVL7kxxEMfcnjhVgWCottnrhwHzZ9SYZaWiGs48',
   jointuan: '8acnia-tVCSVzY49oVA3jteQCh1qhxrEc9DIfpsEIfg' };
 
-var version = 5;
+var version = 6;
 module.exports = {
   appid: appid,
   sec: sec,

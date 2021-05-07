@@ -91,7 +91,7 @@ const communityDynamicsAddSkill = (params) => wxRequest(params, baseURL + 'api/c
 
 //POST 上传图片（单个）
 // 文件上传
-const uploadOne = (params) => wxUploadFile(params, baseURL + 'api/wxadmin/upload/one')
+const uploadOne = (params) => wxUploadFile(params, baseURL + 'api/community/upload/one')
 // 生成海报  api/wxapp/wxapp/getWXACodeUnlimit
 const getWXACodeUnlimit = (params) => wxRequest(params, baseURL + 'api/wxapp/wxapp/getWXACodeUnlimit', 'POST')
 
