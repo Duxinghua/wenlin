@@ -667,7 +667,7 @@
 				}
 				var data = {
 					community_id: uni.getStorageSync('community_id'),
-					dynamics_id: this.detail.dynamics_id,
+					object_id: this.detail.id,
 					object_type: this.type
 				}
 				if(this.detail.user_favorite == 0){
@@ -1090,7 +1090,7 @@
 				}
 				this.subMessageTodo(this.comIds,3,(ss) => {
 					var data = {
-						dynamics_id:this.dynamics_id,
+						object_id:this.id,
 						object_type:this.type,
 						content:this.inputValue,
 						parent_id:this.parent_id,
@@ -1171,7 +1171,7 @@
 				})
 			},
 			getDetail(){
-				this.Api.activityDetail({id:this.id}).then((result) =>{
+				this.Api.pactivityDetail({object_id:this.id,object_type:this.type}).then((result) =>{
 					if(result.code == 1){
 						if(!result.data.id){
 							// uni.redirectTo({
@@ -1330,8 +1330,8 @@
 					return
 				}
 				var data = {
-					dynamics_id:this.detail.dynamics_id,
-					type:5,
+					object_id:this.detail.id,
+					object_type:5,
 					community_id:uni.getStorageSync('community_id'),
 					score:score
 				}

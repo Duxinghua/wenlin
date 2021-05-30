@@ -822,7 +822,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1987,6 +1987,10 @@ var checkUserCommunityOpening = function checkUserCommunityOpening(params) {retu
 //POST 开通小区
 var communityOpening = function communityOpening(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/community/communityOpening', 'POST');};
 //POST 发布小区动态--1、求助，2、新鲜事，4、鹊桥
+// Post新鲜事 publishNewthingDynamics
+
+var publishNewthingDynamics = function publishNewthingDynamics(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/community_dynamics/publishNewthingDynamics', 'POST');};
+
 var publishDynamics = function publishDynamics(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/community_dynamics/publishDynamics', 'POST');};
 //{{onlineurl}}/api/community/ucenter/setDefaultCommunity 设置默认
 var setDefaultCommunity = function setDefaultCommunity(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/ucenter/setDefaultCommunity', 'POST');};
@@ -2041,7 +2045,7 @@ var getLeaveMessages = function getLeaveMessages(params) {return (0, _request.wx
 //POST 给居委会留言
 var setLeaveMessage = function setLeaveMessage(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/committee/setLeaveMessage', 'POST');};
 //POST 居委会动态详情 {{onlineurl}}/api/community/community_dynamics/dongtaiDetail dynamics_id  帖子id
-var dongtaiDetail = function dongtaiDetail(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/community_dynamics/dongtaiDetail', 'POST');};
+var dongtaiDetail = function dongtaiDetail(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/community_dynamics/detail', 'POST');};
 // POST 居委会动态
 var committeeDynamics = function committeeDynamics(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/community_dynamics/committeeDynamics', 'POST');};
 //POST 活动详情
@@ -2209,7 +2213,9 @@ var showTestLogin = function showTestLogin(params) {return (0, _request.wxReques
 //城市 服务 /api/community/public/getJsCity
 var getJsCity = function getJsCity(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/public/getJsCity', 'POST');};
 //小区图片 /api/community/communityDynamics/communityDynamics
-var communityDynamicsImg = function communityDynamicsImg(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/community_dynamics/communityDynamics', 'POST');};var _default = (_wechatAuth$setUserPh = {
+var communityDynamicsImg = function communityDynamicsImg(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/community_dynamics/communityDynamics', 'POST');};
+// 活动 {{test}}/api/community/activity/detail
+var pactivityDetail = function pactivityDetail(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/activity/detail', 'POST');};var _default = (_wechatAuth$setUserPh = {
 
 
   wechatAuth: wechatAuth,
@@ -2333,7 +2339,9 @@ var communityDynamicsImg = function communityDynamicsImg(params) {return (0, _re
   showTestLogin: showTestLogin,
   getJsCity: getJsCity }, _defineProperty(_wechatAuth$setUserPh, "updateUserInfo",
 updateUserInfo), _defineProperty(_wechatAuth$setUserPh, "communityDynamicsImg",
-communityDynamicsImg), _wechatAuth$setUserPh);exports.default = _default;
+communityDynamicsImg), _defineProperty(_wechatAuth$setUserPh, "publishNewthingDynamics",
+publishNewthingDynamics), _defineProperty(_wechatAuth$setUserPh, "pactivityDetail",
+pactivityDetail), _wechatAuth$setUserPh);exports.default = _default;
 
 /***/ }),
 
@@ -2534,7 +2542,7 @@ var minUrl = 'https://sq.wenlinapp.com/upload/mini/';
 var baseURL = 'https://sq.wenlinapp.com/';
 var type = 'wxapp';
 var flag = 'update';
-if (flag == 'test') {
+if (flag == 'update') {
   baseURL = 'https://gx.wenlinapp.com/';
   upload = 'https://gx.wenlinapp.com/upload/';
 }
@@ -14129,7 +14137,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -14150,14 +14158,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -14243,7 +14251,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -19584,7 +19592,7 @@ parser.prototype.Content = function () {
 var formatRegExp = /%[sdj%]/g;
 var warning = function warning() {}; // don't print warning message when in production env or node runtime
 
-if (typeof process !== 'undefined' && Object({"NODE_ENV":"development","VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}) && "development" !== 'production' && typeof window !==
+if (typeof process !== 'undefined' && Object({"VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}) && "development" !== 'production' && typeof window !==
 'undefined' && typeof document !== 'undefined') {
   warning = function warning(type, errors) {
     if (typeof console !== 'undefined' && console.warn) {

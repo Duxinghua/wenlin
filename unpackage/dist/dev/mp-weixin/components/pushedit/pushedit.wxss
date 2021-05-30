@@ -97,7 +97,7 @@
 }
 .popup .pushcatewrap .pushcateitem text.data-v-356b1af8 {
   margin-top: 15rpx;
-  margin-bottom: 40rpx;
+  margin-bottom: 64rpx;
   font-size: 29rpx;
   font-family: PingFang SC;
   font-weight: bold;

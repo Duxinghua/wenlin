@@ -6,7 +6,7 @@ var minUrl = 'https://sq.wenlinapp.com/upload/mini/'
 var  baseURL = 'https://sq.wenlinapp.com/'
 const type = 'wxapp'
 const flag = 'update'
-if(flag == 'test'){
+if(flag == 'update'){
 	 baseURL = 'https://gx.wenlinapp.com/'
 	 upload = 'https://gx.wenlinapp.com/upload/'
 }

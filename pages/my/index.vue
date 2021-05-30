@@ -21,6 +21,7 @@
 				</view>
 			</view>
 			<button  open-type="getUserInfo" @getuserinfo="singleHandler" :class="['single', userinfo.is_sign == 1 ? 'singlefix':'']">{{userinfo.is_sign == 1 ? '已签到' :'签到'}}</button>
+<!-- 			<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button> -->
 		</view>
 		<view class="personalwrap">
 			<view class="personitem" @click="targetClick(11)">
@@ -240,6 +241,7 @@ export default {
 		},
 		//签到
 		singleHandler(e){
+			console.log(e)
 			var imgUrl = e.detail.userInfo.avatarUrl
 			this.Api.updateUserInfo({avatarUrl:imgUrl}).then((dd)=>{
 				if(dd.code == 1){

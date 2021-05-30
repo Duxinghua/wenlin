@@ -1373,12 +1373,12 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
     //收藏处理
     fCollect: function fCollect(e) {var _this15 = this;
       var data = {
-        dynamics_id: this.findFaultObject.id,
+        object_id: this.findFaultObject.id,
         object_type: this.findFaultObject.type,
         community_id: uni.getStorageSync('community_id') };
 
       if (e.type == 5 || e.type == 7) {
-        data.dynamics_id = this.findFaultObject.object_id;
+        data.object_id = this.findFaultObject.object_id;
       }
       if (this.findFaultObject.user_favorite == 0) {
         this.Api.setFavorites(data).then(function (result) {
@@ -1476,8 +1476,8 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         return;
       }
       var data = {
-        dynamics_id: this.helpObj.id,
-        type: this.helpObj.type,
+        object_id: this.helpObj.id,
+        object_type: this.helpObj.type,
         community_id: uni.getStorageSync('community_id'),
         score: score };
 

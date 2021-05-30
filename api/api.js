@@ -50,6 +50,10 @@ const checkUserCommunityOpening = (params) => wxRequest(params, baseURL + 'api/c
 //POST 开通小区
 const communityOpening = (params) => wxRequest(params, baseURL + 'api/community/community/communityOpening', 'POST')
 //POST 发布小区动态--1、求助，2、新鲜事，4、鹊桥
+// Post新鲜事 publishNewthingDynamics
+
+const publishNewthingDynamics = (params) => wxRequest(params, baseURL + 'api/community/community_dynamics/publishNewthingDynamics', 'POST')
+
 const publishDynamics = (params) => wxRequest(params, baseURL + 'api/community/community_dynamics/publishDynamics', 'POST')
 //{{onlineurl}}/api/community/ucenter/setDefaultCommunity 设置默认
 const setDefaultCommunity = (params) => wxRequest(params, baseURL + 'api/community/ucenter/setDefaultCommunity', 'POST')
@@ -104,7 +108,7 @@ const getLeaveMessages = (params) => wxRequest(params, baseURL + 'api/community/
 //POST 给居委会留言
 const setLeaveMessage = (params) => wxRequest(params, baseURL + 'api/community/committee/setLeaveMessage', 'POST')
 //POST 居委会动态详情 {{onlineurl}}/api/community/community_dynamics/dongtaiDetail dynamics_id  帖子id
-const dongtaiDetail = (params) => wxRequest(params, baseURL + 'api/community/community_dynamics/dongtaiDetail', 'POST')
+const dongtaiDetail = (params) => wxRequest(params, baseURL + 'api/community/community_dynamics/detail', 'POST')
 // POST 居委会动态
 const committeeDynamics = (params) => wxRequest(params, baseURL + 'api/community/community_dynamics/committeeDynamics', 'POST')
 //POST 活动详情
@@ -273,6 +277,8 @@ const showTestLogin = (params) => wxRequest(params, baseURL + 'api/wxapp/public/
 const getJsCity = (params) => wxRequest(params, baseURL + 'api/community/public/getJsCity', 'POST')
 //小区图片 /api/community/communityDynamics/communityDynamics
 const communityDynamicsImg =  (params) => wxRequest(params, baseURL + 'api/community/community_dynamics/communityDynamics', 'POST')
+// 活动 {{test}}/api/community/activity/detail
+const pactivityDetail = (params) => wxRequest(params, baseURL + 'api/community/activity/detail', 'POST')
 
 export default {
 	wechatAuth,
@@ -396,5 +402,7 @@ export default {
 	showTestLogin,
 	getJsCity,
 	updateUserInfo,
-	communityDynamicsImg
+	communityDynamicsImg,
+	publishNewthingDynamics,
+	pactivityDetail
 }

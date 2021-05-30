@@ -178,7 +178,7 @@ export default {
 						}
 						text {
 							margin-top:15upx;
-							margin-bottom: 40upx;
+							margin-bottom: 64upx;
 							font-size: 29upx;
 							font-family: PingFang SC;
 							font-weight: bold;

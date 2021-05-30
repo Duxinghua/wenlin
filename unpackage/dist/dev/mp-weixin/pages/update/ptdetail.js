@@ -1207,13 +1207,13 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         return;
       }
       var data = {
-        dynamics_id: this.id,
+        object_id: this.id,
         community_id: uni.getStorageSync('community_id'),
-        type: this.type,
+        object_type: this.type,
         score: score };
 
       if (this.type == 7 || this.type == 8) {
-        data.dynamics_id = this.dynamics_id;
+        data.object_id = this.dynamics_id;
       }
       this.Api.communityDynamicsPushDynamics(data).then(function (result) {
         if (result.code == 1) {
@@ -1246,7 +1246,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     getCommentList: function getCommentList(ismore) {var _this8 = this;
       //所有的都是10
       var data = {
-        dynamics_id: this.id,
+        object_id: this.id,
         object_type: this.type,
         page: this.page,
         page_size: 10 };
@@ -1254,7 +1254,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       if (this.type == 7 || this.type == 8) {
         data.object_type = this.type;
         data.type = this.type;
-        data.dynamics_id = this.dynamics_id;
+        data.object_id = this.dynamics_id;
       }
       if (this.navIndex == 1) {
         this.Api.getMultistageComments(data).then(function (result) {
@@ -1526,7 +1526,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       this.subMessageTodo(this.comIds, 3, function (ss) {
         var data = {
-          dynamics_id: _this10.dynamics_id,
+          object_id: _this10.dynamics_id,
           object_type: _this10.type,
           content: _this10.inputValue,
           parent_id: _this10.parent_id,
@@ -1536,7 +1536,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           data.third_id = _this10.id;
         }
         if (_this10.type == 7) {
-          data.dynamics_id = _this10.dynamics_id;
+          data.object_id = _this10.dynamics_id;
         }
         _this10.Api.setComments(data).then(function (result) {
           if (result.code == 1) {
@@ -1657,7 +1657,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       });
     },
     getDetail: function getDetail() {var _this12 = this;
-      this.Api.groupbuyDetail({ groupbuy_id: this.id }).then(function (result) {
+      this.Api.groupbuyDetail({ object_id: this.id, object_type: this.type }).then(function (result) {
         if (result.code == 1) {
           if (!result.data.groupbuy_id) {
             // uni.redirectTo({
@@ -1781,11 +1781,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       var data = {
         community_id: uni.getStorageSync('community_id'),
-        dynamics_id: this.id,
+        object_id: this.id,
         object_type: this.detail.type };
 
       if (this.type == 8) {
-        data.dynamics_id = this.dynamics_id;
+        data.object_id = this.dynamics_id;
       }
       if (this.detail.user_favorite == 0) {
         this.Api.setFavorites(data).then(function (result) {

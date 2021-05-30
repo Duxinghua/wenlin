@@ -1072,13 +1072,13 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         return;
       }
       var data = {
-        dynamics_id: this.id,
+        object_id: this.id,
         community_id: uni.getStorageSync('community_id'),
-        type: this.type,
+        object_type: this.type,
         score: score };
 
       if (this.type == 7 || this.type == 8) {
-        data.dynamics_id = this.dynamics_id;
+        data.object_id = this.dynamics_id;
       }
       this.Api.communityDynamicsPushDynamics(data).then(function (result) {
         if (result.code == 1) {
@@ -1111,7 +1111,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     getCommentList: function getCommentList(ismore) {var _this6 = this;
       //所有的都是10
       var data = {
-        dynamics_id: this.id,
+        object_id: this.id,
         object_type: this.detail.type,
         page: this.page,
         page_size: 10 };
@@ -1119,7 +1119,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       if (this.type == 7 || this.type == 8) {
         data.object_type = this.type;
         data.type = this.type;
-        data.dynamics_id = this.dynamics_id;
+        data.object_id = this.id;
       }
       if (this.navIndex == 1) {
         this.Api.getMultistageComments(data).then(function (result) {
@@ -1374,7 +1374,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
       this.subMessageTodo(this.comIds, 3, function (ss) {
         var data = {
-          dynamics_id: _this8.detail.id,
+          object_id: _this8.detail.id,
           object_type: _this8.type,
           content: _this8.inputValue,
           parent_id: _this8.parent_id,
@@ -1384,7 +1384,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           data.third_id = _this8.id;
         }
         if (_this8.type == 7) {
-          data.dynamics_id = _this8.dynamics_id;
+          data.object_id = _this8.dynamics_id;
         }
         _this8.Api.setComments(data).then(function (result) {
           if (result.code == 1) {
@@ -1478,7 +1478,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
     },
     getDdetail: function getDdetail() {var _this9 = this;
-      this.Api.dongtaiDetail({ dynamics_id: this.dynamics_id }).then(function (result) {
+      this.Api.dongtaiDetail({ object_id: this.id, object_type: this.type }).then(function (result) {
         if (result.code == 1) {
           if (!result.data.id) {
             // uni.redirectTo({
@@ -1507,7 +1507,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       });
     },
     getDetail: function getDetail() {var _this10 = this;
-      this.Api.communityDynamicsDetail({ dynamics_id: this.id }).then(function (result) {
+      this.Api.communityDynamicsDetail({ object_id: this.id, object_type: this.type }).then(function (result) {
         if (result.code == 1) {
           if (!result.data.id) {
             // uni.redirectTo({
@@ -1622,11 +1622,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       var data = {
         community_id: uni.getStorageSync('community_id'),
-        dynamics_id: this.id,
+        object_id: this.id,
         object_type: this.detail.type };
 
       if (this.type == 8) {
-        data.dynamics_id = this.dynamics_id;
+        data.object_id = this.dynamics_id;
       }
       if (this.detail.user_favorite == 0) {
         this.Api.setFavorites(data).then(function (result) {

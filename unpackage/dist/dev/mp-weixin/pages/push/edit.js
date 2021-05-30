@@ -1313,7 +1313,7 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
             }
           });
         } else if (_this10.type == 5) {
-          _this10.Api.publishDynamics(data).then(function (result) {
+          _this10.Api.publishNewthingDynamics(data).then(function (result) {
             if (result.code == 1) {
               uni.showToast({
                 title: result.msg,

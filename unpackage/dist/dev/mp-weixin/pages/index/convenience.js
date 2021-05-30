@@ -1448,8 +1448,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
         return;
       }
       var data = {
-        dynamics_id: this.helpObj.id,
-        type: this.helpObj.type,
+        object_id: this.helpObj.id,
+        object_type: this.helpObj.type,
         community_id: uni.getStorageSync('community_id'),
         score: score };
 

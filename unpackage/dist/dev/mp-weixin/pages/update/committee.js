@@ -492,21 +492,22 @@ var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | com
       this.parent_text = '给居委会留言';
     },
     postDetail: function postDetail(pitem) {
+      console.log(pitem);
       var type = pitem.type;
       var publish_type = pitem.publish_type; //2为居委会 3小区
-      if (type == 5 && publish_type == 2) {
+      if (type == 5) {
         uni.navigateTo({
           url: '/pages/index/cdetail?dynamics_id=' + pitem.id + '&type=' + pitem.type + '&id=' + pitem.object_id });
 
       } else {
         if (type == 7 || type == 8) {
           uni.navigateTo({
-            url: '/pages/index/detail?dynamics_id=' + pitem.id + '&type=' + pitem.type + '&id=' + pitem.object_id });
+            url: '/pages/index/detail?dynamics_id=' + pitem.wiki_id + '&type=' + pitem.type + '&id=' + pitem.object_id });
 
 
         } else {
           uni.navigateTo({
-            url: '/pages/index/detail?id=' + pitem.id + '&type=' + pitem.type });
+            url: '/pages/index/detail?id=' + pitem.wiki_id + '&type=' + pitem.type });
 
         }
       }

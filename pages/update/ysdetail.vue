@@ -1059,7 +1059,7 @@ export default {
 		getCommentList(ismore) {
 			//所有的都是10
 			var data = {
-				dynamics_id: this.id,
+				object_id: this.id,
 				object_type: this.detail.type,
 				page: this.page,
 				page_size: 10
@@ -1067,7 +1067,7 @@ export default {
 			if (this.type == 7 || this.type == 8) {
 				data.object_type = this.type;
 				data.type = this.type;
-				data.dynamics_id = this.dynamics_id;
+				data.object_id = this.dynamics_id;
 			}
 			if (this.navIndex == 1) {
 				this.Api.getMultistageComments(data).then(result => {
@@ -1452,7 +1452,7 @@ export default {
 			});
 		},
 		getDetail() {
-			this.Api.dynamicsVoteDetail({ dynamics_id: this.id }).then(result => {
+			this.Api.dynamicsVoteDetail({ object_id: this.id,object_type:this.type}).then(result => {
 				if (result.code == 1) {
 					if (!result.data.id) {
 						// uni.redirectTo({

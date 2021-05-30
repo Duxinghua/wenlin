@@ -233,12 +233,12 @@ var _default =
       }
       if (this.pitem.opening == 1) {
         uni.navigateTo({
-          url: '/pages/index/detail?id=' + this.pitem.id + '&type=' + this.pitem.type });
+          url: '/pages/index/detail?id=' + this.pitem.object_id + '&type=' + this.pitem.type });
 
       } else {
         if (this.pitem.community_id == uni.getStorageSync('community_id')) {
           uni.navigateTo({
-            url: '/pages/index/detail?id=' + this.pitem.id + '&type=' + this.pitem.type });
+            url: '/pages/index/detail?id=' + this.pitem.object_id + '&type=' + this.pitem.type });
 
         } else {
           uni.showToast({

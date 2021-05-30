@@ -563,16 +563,16 @@ var _default =
           }
         }
       }
-      if (type == 5 && publish_type == 2) {
+      if (type == 5) {
         uni.navigateTo({
-          url: '/pages/index/cdetail?dynamics_id=' + this.pitem.id + '&type=' + this.pitem.type + '&id=' + this.pitem.object_id });
+          url: '/pages/index/cdetail?dynamics_id=' + this.pitem.object_id + '&type=' + this.pitem.type + '&id=' + this.pitem.object_id });
 
       } else {
 
         if (type == 7 || type == 8) {
           if (!this.pm) {
             uni.navigateTo({
-              url: '/pages/index/detail?dynamics_id=' + this.pitem.id + '&type=' + this.pitem.type + '&id=' + this.pitem.object_id });
+              url: '/pages/index/detail?dynamics_id=' + this.pitem.object_id + '&type=' + this.pitem.type + '&id=' + this.pitem.object_id });
 
           } else {
             uni.navigateTo({
@@ -581,15 +581,15 @@ var _default =
           }
         } else if (type == 16) {
           uni.navigateTo({
-            url: '/pages/update/ysdetail?dynamics_id=' + this.pitem.id + '&type=' + this.pitem.type + '&id=' + this.pitem.object_id });
+            url: '/pages/update/ysdetail?dynamics_id=' + this.pitem.object_id + '&type=' + this.pitem.type + '&id=' + this.pitem.object_id });
 
         } else if (type == 17) {
           uni.navigateTo({
-            url: '/pages/update/ptdetail?dynamics_id=' + this.pitem.id + '&type=' + this.pitem.type + '&id=' + this.pitem.object_id });
+            url: '/pages/update/ptdetail?dynamics_id=' + this.pitem.object_id + '&type=' + this.pitem.type + '&id=' + this.pitem.object_id });
 
         } else {
           uni.navigateTo({
-            url: '/pages/index/detail?id=' + this.pitem.id + '&type=' + this.pitem.type });
+            url: '/pages/index/detail?id=' + this.pitem.object_id + '&type=' + this.pitem.type });
 
         }
       }
@@ -635,9 +635,9 @@ var _default =
     //帮助
     helpPush: function helpPush() {
       if (this.pitem.type == 5 || this.pitem.type == 7) {
-        this.$emit('helpPush', { id: this.pitem.id, type: this.pitem.type });
+        this.$emit('helpPush', { id: this.pitem.object_id, type: this.pitem.type });
       } else {
-        this.$emit('helpPush', { id: this.pitem.id, type: this.pitem.type });
+        this.$emit('helpPush', { id: this.pitem.object_id, type: this.pitem.type });
       }
     },
     //分享操作

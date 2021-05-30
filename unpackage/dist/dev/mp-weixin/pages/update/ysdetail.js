@@ -1284,7 +1284,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     getCommentList: function getCommentList(ismore) {var _this8 = this;
       //所有的都是10
       var data = {
-        dynamics_id: this.id,
+        object_id: this.id,
         object_type: this.detail.type,
         page: this.page,
         page_size: 10 };
@@ -1292,7 +1292,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       if (this.type == 7 || this.type == 8) {
         data.object_type = this.type;
         data.type = this.type;
-        data.dynamics_id = this.dynamics_id;
+        data.object_id = this.dynamics_id;
       }
       if (this.navIndex == 1) {
         this.Api.getMultistageComments(data).then(function (result) {
@@ -1677,7 +1677,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       });
     },
     getDetail: function getDetail() {var _this12 = this;
-      this.Api.dynamicsVoteDetail({ dynamics_id: this.id }).then(function (result) {
+      this.Api.dynamicsVoteDetail({ object_id: this.id, object_type: this.type }).then(function (result) {
         if (result.code == 1) {
           if (!result.data.id) {
             // uni.redirectTo({

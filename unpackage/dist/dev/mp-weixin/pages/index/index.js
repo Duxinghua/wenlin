@@ -238,6 +238,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 540));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
   data: function data() {
@@ -356,6 +357,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     },
     //签到
     singleHandler: function singleHandler(e) {var _this3 = this;
+      console.log(e);
       var imgUrl = e.detail.userInfo.avatarUrl;
       this.Api.updateUserInfo({ avatarUrl: imgUrl }).then(function (dd) {
         if (dd.code == 1) {

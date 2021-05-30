@@ -765,7 +765,7 @@ export default {
 		},
 		//便民详情
 		getPDetail() {
-			this.Api.communitydynamicswikiDetail({ wiki_id: this.id }).then(result => {
+			this.Api.communitydynamicswikiDetail({ wiki_id: this.id}).then(result => {
 				if (result.code == 1) {
 					if (!result.data.wiki_id) {
 						// uni.redirectTo({
@@ -887,13 +887,13 @@ export default {
 				return;
 			}
 			var data = {
-				dynamics_id: this.id,
+				object_id: this.id,
 				community_id: uni.getStorageSync('community_id'),
-				type: this.type,
+				object_type: this.type,
 				score: score
 			};
 			if (this.type == 7 || this.type == 8) {
-				data.dynamics_id = this.dynamics_id;
+				data.object_id = this.dynamics_id;
 			}
 			this.Api.communityDynamicsPushDynamics(data).then(result => {
 				if (result.code == 1) {
@@ -926,7 +926,7 @@ export default {
 		getCommentList(ismore) {
 			//所有的都是10
 			var data = {
-				dynamics_id: this.id,
+				object_id: this.id,
 				object_type: this.detail.type,
 				page: this.page,
 				page_size: 10
@@ -934,7 +934,7 @@ export default {
 			if (this.type == 7 || this.type == 8) {
 				data.object_type = this.type;
 				data.type = this.type;
-				data.dynamics_id = this.dynamics_id;
+				data.object_id = this.id;
 			}
 			if (this.navIndex == 1) {
 				this.Api.getMultistageComments(data).then(result => {
@@ -1189,7 +1189,7 @@ export default {
 			
 			this.subMessageTodo(this.comIds,3,(ss) => {
 				var data = {
-					dynamics_id: this.detail.id,
+					object_id: this.detail.id,
 					object_type: this.type,
 					content: this.inputValue,
 					parent_id: this.parent_id,
@@ -1199,7 +1199,7 @@ export default {
 					data.third_id = this.id;
 				}
 				if (this.type == 7) {
-					data.dynamics_id = this.dynamics_id;
+					data.object_id = this.dynamics_id;
 				}
 				this.Api.setComments(data).then(result => {
 					if (result.code == 1) {
@@ -1293,7 +1293,7 @@ export default {
 			});
 		},
 		getDdetail() {
-			this.Api.dongtaiDetail({ dynamics_id: this.dynamics_id }).then(result => {
+			this.Api.dongtaiDetail({ object_id: this.id,object_type:this.type }).then(result => {
 				if (result.code == 1) {
 					if (!result.data.id) {
 						// uni.redirectTo({
@@ -1322,7 +1322,7 @@ export default {
 			});
 		},
 		getDetail() {
-			this.Api.communityDynamicsDetail({ dynamics_id: this.id }).then(result => {
+			this.Api.communityDynamicsDetail({ object_id: this.id,object_type:this.type }).then(result => {
 				if (result.code == 1) {
 					if (!result.data.id) {
 						// uni.redirectTo({
@@ -1437,11 +1437,11 @@ export default {
 			}
 			var data = {
 				community_id: uni.getStorageSync('community_id'),
-				dynamics_id: this.id,
+				object_id: this.id,
 				object_type: this.detail.type
 			};
 			if (this.type == 8) {
-				data.dynamics_id = this.dynamics_id;
+				data.object_id = this.dynamics_id;
 			}
 			if (this.detail.user_favorite == 0) {
 				this.Api.setFavorites(data).then(result => {

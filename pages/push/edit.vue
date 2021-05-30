@@ -1149,7 +1149,7 @@
 							}
 						})
 					}else if(this.type == 5){
-						this.Api.publishDynamics(data).then((result) => {
+						this.Api.publishNewthingDynamics(data).then((result) => {
 							if(result.code == 1){
 								uni.showToast({
 									title: result.msg,

@@ -876,7 +876,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       var data = {
         community_id: uni.getStorageSync('community_id'),
-        dynamics_id: this.detail.dynamics_id,
+        object_id: this.detail.id,
         object_type: this.type };
 
       if (this.detail.user_favorite == 0) {
@@ -1299,7 +1299,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       this.subMessageTodo(this.comIds, 3, function (ss) {
         var data = {
-          dynamics_id: _this6.dynamics_id,
+          object_id: _this6.id,
           object_type: _this6.type,
           content: _this6.inputValue,
           parent_id: _this6.parent_id,
@@ -1380,7 +1380,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
     },
     getDetail: function getDetail() {var _this7 = this;
-      this.Api.activityDetail({ id: this.id }).then(function (result) {
+      this.Api.pactivityDetail({ object_id: this.id, object_type: this.type }).then(function (result) {
         if (result.code == 1) {
           if (!result.data.id) {
             // uni.redirectTo({
@@ -1539,8 +1539,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         return;
       }
       var data = {
-        dynamics_id: this.detail.dynamics_id,
-        type: 5,
+        object_id: this.detail.id,
+        object_type: 5,
         community_id: uni.getStorageSync('community_id'),
         score: score };
 

@@ -1005,13 +1005,13 @@ export default {
 				return;
 			}
 			var data = {
-				dynamics_id: this.id,
+				object_id: this.id,
 				community_id: uni.getStorageSync('community_id'),
-				type: this.type,
+				object_type: this.type,
 				score: score
 			};
 			if (this.type == 7 || this.type == 8) {
-				data.dynamics_id = this.dynamics_id;
+				data.object_id = this.dynamics_id;
 			}
 			this.Api.communityDynamicsPushDynamics(data).then(result => {
 				if (result.code == 1) {
@@ -1044,7 +1044,7 @@ export default {
 		getCommentList(ismore) {
 			//所有的都是10
 			var data = {
-				dynamics_id: this.id,
+				object_id: this.id,
 				object_type: this.type,
 				page: this.page,
 				page_size: 10
@@ -1052,7 +1052,7 @@ export default {
 			if (this.type == 7 || this.type == 8) {
 				data.object_type = this.type;
 				data.type = this.type;
-				data.dynamics_id = this.dynamics_id;
+				data.object_id = this.dynamics_id;
 			}
 			if (this.navIndex == 1) {
 				this.Api.getMultistageComments(data).then(result => {
@@ -1324,7 +1324,7 @@ export default {
 			}
 			this.subMessageTodo(this.comIds,3,(ss) => {
 				var data = {
-					dynamics_id: this.dynamics_id,
+					object_id: this.dynamics_id,
 					object_type: this.type,
 					content: this.inputValue,
 					parent_id: this.parent_id,
@@ -1334,7 +1334,7 @@ export default {
 					data.third_id = this.id;
 				}
 				if (this.type == 7) {
-					data.dynamics_id = this.dynamics_id;
+					data.object_id = this.dynamics_id;
 				}
 				this.Api.setComments(data).then(result => {
 					if (result.code == 1) {
@@ -1455,7 +1455,7 @@ export default {
 			});
 		},
 		getDetail() {
-			this.Api.groupbuyDetail({ groupbuy_id: this.id }).then(result => {
+			this.Api.groupbuyDetail({ object_id: this.id,object_type:this.type }).then(result => {
 				if (result.code == 1) {
 					if (!result.data.groupbuy_id) {
 						// uni.redirectTo({
@@ -1579,11 +1579,11 @@ export default {
 			}
 			var data = {
 				community_id: uni.getStorageSync('community_id'),
-				dynamics_id: this.id,
+				object_id: this.id,
 				object_type: this.detail.type
 			};
 			if (this.type == 8) {
-				data.dynamics_id = this.dynamics_id;
+				data.object_id = this.dynamics_id;
 			}
 			if (this.detail.user_favorite == 0) {
 				this.Api.setFavorites(data).then(result => {
