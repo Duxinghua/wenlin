@@ -468,6 +468,8 @@
 				this.content = uni.getStorageSync('obj7')
 			}else if(this.type == 8){
 				this.content = uni.getStorageSync('obj8')
+			}else if(this.type == 9){
+				this.content = uni.getStorageSync('obj9')
 			}
 		},
 		onShow(){
@@ -958,31 +960,21 @@
 						data.stock = this.stock
 					}
 					
-					// if(this.type == 6){
-					// 	var skill = []
-					// 	this.skillList.map((item) => {
-					// 		skill.push(item.skill_id)
-					// 	})
-					// 	if(skill.length == 0){
-					// 		uni.showToast({
-					// 		    title: '请选择技能',
-					// 			icon: 'none',
-					// 		    duration: 2000
-					// 		});
-					// 		return
-					// 	}
-					// 	data.skill = skill.join(',')
-					// 	if(this.type != 6){
-					// 		if(!data.title){
-					// 			uni.showToast({
-					// 				title: '请输入标题',
-					// 				icon:'none',
-					// 				duration: 2000
-					// 			});
-					// 			return
-					// 		}
-					// 	}
-					// }
+					if(this.type == 9){
+						var skill = []
+						this.skillList.map((item) => {
+							skill.push(item.skill_id)
+						})
+						if(skill.length == 0){
+							uni.showToast({
+							    title: '请选择技能',
+								icon: 'none',
+							    duration: 2000
+							});
+							return
+						}
+						data.skill = skill.join(',')
+					}
 					var that = this
 					//曝光台
 					console.log(data,'submit')
@@ -1317,11 +1309,11 @@
 						})
 						
 					
-					}else if(this.type == 61){
+					}else if(this.type == 9){
 						this.Api.publishDynamicsDaren(data).then((result) => {
 							if(result.code == 1){
-								if(that.type == 6){
-									uni.removeStorageSync('obj6')
+								if(that.type == 9){
+									uni.removeStorageSync('obj9')
 								}
 								uni.showToast({
 									title: result.msg,

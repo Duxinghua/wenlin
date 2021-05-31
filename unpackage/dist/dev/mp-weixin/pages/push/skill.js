@@ -259,7 +259,7 @@ var Skill = function Skill() {__webpack_require__.e(/*! require.ensure | compone
 
       } else {
         uni.redirectTo({
-          url: '/pages/push/edit?data=' + data + '&type=6' });
+          url: '/pages/push/edit?data=' + data + '&type=9' });
 
       }
     },

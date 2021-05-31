@@ -17,12 +17,14 @@ export default {
 		return {
 			guestShow: false,
 			id:'',
+			type:'',
+			obj:{},
 			text:'删除我的评论'
 		}
 	},
 	methods: {
 		del() {
-			this.$emit('del',this.id);
+			this.$emit('del',this.obj);
 		}
 	}
 };

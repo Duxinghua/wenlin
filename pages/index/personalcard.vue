@@ -376,6 +376,7 @@
 				})
 			},
 			getOtherUserInfo(data){
+				data = this.query
 				this.Api.getOtherUserInfo(data).then((result)=>{
 					if(result.code == 1){
 						this.detail = result.data

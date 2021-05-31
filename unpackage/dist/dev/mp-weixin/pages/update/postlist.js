@@ -162,7 +162,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _methods;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var Confrimpop = function Confrimpop() {__webpack_require__.e(/*! require.ensure | components/confrim/confrim */ "components/confrim/confrim").then((function () {return resolve(__webpack_require__(/*! @/components/confrim/confrim.vue */ 681));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 674));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 604));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 540));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Confrimpop = function Confrimpop() {__webpack_require__.e(/*! require.ensure | components/confrim/confrim */ "components/confrim/confrim").then((function () {return resolve(__webpack_require__(/*! @/components/confrim/confrim.vue */ 681));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 674));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 604));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 540));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -237,8 +237,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 {
-  data: function data() {var _ref;
-    return _ref = {
+  data: function data() {
+    return {
       config: {
         title: '我的发贴', //title
         bgcolor: 'white', //背景颜色
@@ -273,9 +273,7 @@ __webpack_require__.r(__webpack_exports__);
       score_text: '',
       guestShow: false,
       guestObj: {},
-      refresh_dynamics_score: 0 }, _defineProperty(_ref, "scrollLeft",
-    0), _defineProperty(_ref, "TabCur",
-    0), _ref;
+      refresh_dynamics_score: 0 };
 
 
   },
@@ -291,7 +289,7 @@ __webpack_require__.r(__webpack_exports__);
       return 160;
     } },
 
-  methods: (_methods = {
+  methods: {
     tabSelect: function tabSelect(e) {
       this.TabCur = e.currentTarget.dataset.id;
       this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60;
@@ -314,148 +312,189 @@ __webpack_require__.r(__webpack_exports__);
       this.page_size = 10;
       this.list = [];
       this.getMyDynamicsList();
-    } }, _defineProperty(_methods, "tabSelect", function tabSelect(
-  e) {
-    this.TabCur = e.currentTarget.dataset.id;
-    this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60;
-  }), _defineProperty(_methods, "goDetail", function goDetail(
-  obj) {
-    var type = obj.type;
-    var id = obj.id;
-    if (type == 7) {
-      uni.navigateTo({
-        url: '/pages/index/detail?dynamics_id=' + obj.id + '&type=' + obj.type + '&id=' + obj.object_id });
+    },
+    goDetail: function goDetail(obj) {
+      var pitem = obj;
+      var type = pitem.type;
+      if (type == 5) {
+        uni.navigateTo({
+          url: '/pages/index/cdetail?dynamics_id=' + pitem.object_id + '&type=' + pitem.type + '&id=' + pitem.object_id });
 
-
-    } else {
-      uni.navigateTo({
-        url: '/pages/index/detail?id=' + obj.id + '&type=' + obj.type });
-
-    }
-  }), _defineProperty(_methods, "deleteDynamics", function deleteDynamics(
-  obj) {
-    this.$refs.confrims.guestShow = true;
-    this.$refs.confrims.id = obj.id;
-    this.$refs.confrims.text = '是否删除本贴?';
-  }), _defineProperty(_methods, "condelHandler", function condelHandler(
-  id) {var _this = this;
-    this.Api.deleteDynamics({ dynamics_id: id, community_id: uni.getStorageSync('community_id') }).then(function (result) {
-      if (result.code == 1) {
-        uni.showToast({
-          icon: 'success',
-          title: result.msg,
-          duration: 2000,
-          success: function success() {
-            _this.$refs.confrims.guestShow = false;
-            _this.getMyDynamicsList();
-          } });
-
-      }
-    });
-  }), _defineProperty(_methods, "refreshMyDynamicsHandler", function refreshMyDynamicsHandler(
-  item) {var _this2 = this;
-    this.guestObj = item;
-    this.Api.getScoreSetting({}).then(function (result) {
-      if (result.code == 1) {
-        _this2.refresh_dynamics_score = result.data.refresh_dynamics;
-        _this2.guestShow = true;
       } else {
-        uni.showToast({
-          icon: 'none',
-          title: result.msg,
-          duration: 2000 });
 
+        if (type == 7 || type == 8) {
+          if (type == 8) {
+            uni.navigateTo({
+              url: '/pages/index/detail?dynamics_id=' + pitem.object_id + '&type=' + pitem.type + '&id=' + pitem.object_id });
+
+          } else {
+            uni.navigateTo({
+              url: '/pages/index/detail?dynamics_id=' + pitem.wiki_id + '&type=' + type + '&id=' + pitem.wiki_id });
+
+          }
+        } else if (type == 16) {
+          uni.navigateTo({
+            url: '/pages/update/ysdetail?dynamics_id=' + pitem.object_id + '&type=' + pitem.type + '&id=' + pitem.object_id });
+
+        } else if (type == 17) {
+          uni.navigateTo({
+            url: '/pages/update/ptdetail?dynamics_id=' + pitem.object_id + '&type=' + pitem.type + '&id=' + pitem.object_id });
+
+        } else {
+          uni.navigateTo({
+            url: '/pages/index/detail?id=' + pitem.object_id + '&type=' + pitem.type });
+
+        }
       }
-    });
+    },
+    deleteDynamics: function deleteDynamics(obj) {
+      console.log(obj);
+      this.$refs.confrims.guestShow = true;
+      this.$refs.confrims.id = obj.id;
+      this.$refs.confrims.id = obj.type;
+      this.$refs.confrims.obj = obj;
+      this.$refs.confrims.text = '是否删除本贴?';
+    },
+    condelHandler: function condelHandler(obj) {var _this = this;
+      var pitem = obj;
+      var object_id = '';
+      var type = pitem.type;
+      var object_type = pitem.type;
+      if (type == 5) {
+        object_id = pitem.object_id;
+      } else {
 
-  }), _defineProperty(_methods, "refreshMyDynamics", function refreshMyDynamics(
-  obj) {var _this3 = this;
-    var data = {
-      dynamics_id: this.guestObj.id,
-      type: this.guestObj.type };
+        if (type == 7 || type == 8) {
+          if (type == 8) {
+            object_id = pitem.object_id;
+          } else {
+            object_id = pitem.wiki_id;
+          }
+        } else if (type == 16) {
+          object_id = pitem.object_id;
+        } else if (type == 17) {
+          object_id = pitem.object_id;
+        } else {
+          object_id = pitem.object_id;
+        }
+      }
+      this.Api.deleteDynamics({ object_type: object_type, object_id: object_id, community_id: uni.getStorageSync('community_id') }).then(function (result) {
+        if (result.code == 1) {
+          uni.showToast({
+            icon: 'success',
+            title: result.msg,
+            duration: 2000,
+            success: function success() {
+              _this.$refs.confrims.guestShow = false;
+              _this.getMyDynamicsList();
+            } });
 
-    this.Api.refreshMyDynamics(data).then(function (result) {
-      if (result.code == 1) {
-        _this3.guestShow = false;
-        if (result.data.add) {
-          _this3.add_type = result.data.add == -1 ? '-' : '+';
-          _this3.score_text = result.data.score;
-          _this3.$refs.integraltip.show();
-          setTimeout(function () {
-            _this3.add_type = '';
-            _this3.score_text = '';
+        }
+      });
+    },
+    refreshMyDynamicsHandler: function refreshMyDynamicsHandler(item) {var _this2 = this;
+      this.guestObj = item;
+      this.Api.getScoreSetting({}).then(function (result) {
+        if (result.code == 1) {
+          _this2.refresh_dynamics_score = result.data.refresh_dynamics;
+          _this2.guestShow = true;
+        } else {
+          uni.showToast({
+            icon: 'none',
+            title: result.msg,
+            duration: 2000 });
 
-            _this3.$refs.integraltip.close();
+        }
+      });
+
+    },
+    refreshMyDynamics: function refreshMyDynamics(obj) {var _this3 = this;
+      var data = {
+        dynamics_id: this.guestObj.id,
+        type: this.guestObj.type };
+
+      this.Api.refreshMyDynamics(data).then(function (result) {
+        if (result.code == 1) {
+          _this3.guestShow = false;
+          if (result.data.add) {
+            _this3.add_type = result.data.add == -1 ? '-' : '+';
+            _this3.score_text = result.data.score;
+            _this3.$refs.integraltip.show();
+            setTimeout(function () {
+              _this3.add_type = '';
+              _this3.score_text = '';
+
+              _this3.$refs.integraltip.close();
+              uni.showToast({
+                icon: 'success',
+                title: result.msg,
+                duration: 2000 });
+
+            }, 2000);
+          } else {
             uni.showToast({
               icon: 'success',
               title: result.msg,
               duration: 2000 });
 
-          }, 2000);
-        } else {
-          uni.showToast({
-            icon: 'success',
-            title: result.msg,
-            duration: 2000 });
+          }
 
         }
-
-      }
-    });
-  }), _defineProperty(_methods, "customConduct", function customConduct(
-  e) {
-    console.log(e);
-  }), _defineProperty(_methods, "cateClick", function cateClick(
-  obj) {var _this4 = this;
-    this.cateIndex = obj;
-    this.catelist.forEach(function (i, v) {
-      if (obj == v) {
-        _this4.type = i.id;
-      }
-    });
-    this.page = 0;
-    this.page_size = 10;
-    this.list = [];
-    this.total_page = 0;
-    this.getMyDynamicsList();
-  }), _defineProperty(_methods, "getMyDynamicsList", function getMyDynamicsList(
-  ismore) {var _this5 = this;
-    var data = {
-      community_id: uni.getStorageSync('community_id'),
-      type: this.type,
-      page: this.page,
-      title: this.title,
-      page_size: this.page_size };
-
-    this.Api.getMyDynamicsList(data).then(function (result) {
-      if (result.code == 1) {
-        if (ismore) {
-          var imgs = [];
-          var list = result.data.list;
-          list.map(function (item) {
-            item.images = item.images.slice(0, 3);
-            imgs.push(item);
-          });
-          _this5.list = _this5.list.concat(imgs);
-          _this5.total_page = result.data.total_pages;
-        } else {
-          var imgs = [];
-          var list = result.data.list;
-          list.map(function (item) {
-            item.images = item.images.slice(0, 3);
-            imgs.push(item);
-          });
-          _this5.list = imgs;
-          _this5.total_page = result.data.total_pages;
+      });
+    },
+    customConduct: function customConduct(e) {
+      console.log(e);
+    },
+    cateClick: function cateClick(obj) {var _this4 = this;
+      this.cateIndex = obj;
+      this.catelist.forEach(function (i, v) {
+        if (obj == v) {
+          _this4.type = i.id;
         }
-        if (_this5.list.length == 0) {
-          _this5.resultfalse = true;
-        } else {
-          _this5.resultfalse = false;
+      });
+      this.page = 0;
+      this.page_size = 10;
+      this.list = [];
+      this.total_page = 0;
+      this.getMyDynamicsList();
+    },
+    getMyDynamicsList: function getMyDynamicsList(ismore) {var _this5 = this;
+      var data = {
+        community_id: uni.getStorageSync('community_id'),
+        type: this.type,
+        page: this.page,
+        title: this.title,
+        page_size: this.page_size };
+
+      this.Api.getMyDynamicsList(data).then(function (result) {
+        if (result.code == 1) {
+          if (ismore) {
+            var imgs = [];
+            var list = result.data.list;
+            list.map(function (item) {
+              item.images = item.images.slice(0, 3);
+              imgs.push(item);
+            });
+            _this5.list = _this5.list.concat(imgs);
+            _this5.total_page = result.data.total_pages;
+          } else {
+            var imgs = [];
+            var list = result.data.list;
+            list.map(function (item) {
+              item.images = item.images.slice(0, 3);
+              imgs.push(item);
+            });
+            _this5.list = imgs;
+            _this5.total_page = result.data.total_pages;
+          }
+          if (_this5.list.length == 0) {
+            _this5.resultfalse = true;
+          } else {
+            _this5.resultfalse = false;
+          }
         }
-      }
-    });
-  }), _methods),
+      });
+    } },
 
   onReachBottom: function onReachBottom() {
     console.log(1, this.total_page, this.page);

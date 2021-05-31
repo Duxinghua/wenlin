@@ -88,12 +88,12 @@
 				},
 				scrollTop: 0, // 当linear为true的时候需要通过onpagescroll传递参数
 				scrollMaxHeight: 200, //滑动的高度限制，超过这个高度即背景全部显示
-		catelist:[
-		{
-			id:0,
-			tag:'全部'
-		}
-		],
+				catelist:[
+				{
+					id:0,
+					tag:'全部'
+				}
+				],
 				cateIndex:0,
 				list:[],
 				page:1,
@@ -109,9 +109,7 @@
 				score_text:'',
 				guestShow:false,
 				guestObj:{},
-				refresh_dynamics_score:0,
-				scrollLeft: 0,
-				TabCur: 0
+				refresh_dynamics_score:0
 			
 			};
 		},
@@ -151,31 +149,72 @@
 				this.list = []
 				this.getMyDynamicsList()
 			},
-			tabSelect(e) {
-					this.TabCur = e.currentTarget.dataset.id;
-					this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60
-			},
 			goDetail(obj){
-				var type = obj.type
-				var id = obj.id
-				if( type == 7 ){
+				var pitem = obj
+				var type = pitem.type
+				if (type == 5) {
 					uni.navigateTo({
-							url:'/pages/index/detail?dynamics_id='+obj.id+'&type='+obj.type+'&id='+obj.object_id
-					})
-					
-				}else{
-					uni.navigateTo({
-						url:'/pages/index/detail?id='+obj.id+'&type='+obj.type
-					})
+						url: '/pages/index/cdetail?dynamics_id=' + pitem.object_id + '&type=' + pitem.type + '&id=' + pitem.object_id
+					});
+				} else {
+				
+					if (type == 7 || type == 8) {
+						if(type == 8){
+							uni.navigateTo({
+								url: '/pages/index/detail?dynamics_id=' + pitem.object_id + '&type=' +pitem.type + '&id=' + pitem.object_id
+							});
+						}else{
+							uni.navigateTo({
+								url: '/pages/index/detail?dynamics_id=' + pitem.wiki_id + '&type=' + type + '&id=' +pitem.wiki_id
+							});
+						}
+					} else if(type == 16){
+						uni.navigateTo({
+							url: '/pages/update/ysdetail?dynamics_id=' + pitem.object_id + '&type=' + pitem.type + '&id=' + pitem.object_id
+						});
+					}else if(type == 17){
+						uni.navigateTo({
+							url: '/pages/update/ptdetail?dynamics_id=' + pitem.object_id + '&type=' + pitem.type + '&id=' + pitem.object_id
+						});
+					}else{
+						uni.navigateTo({
+							url: '/pages/index/detail?id=' + pitem.object_id + '&type=' + pitem.type
+						});
+					}
 				}
 			},
 			deleteDynamics(obj){
+				console.log(obj)
 				this.$refs.confrims.guestShow = true
 				this.$refs.confrims.id = obj.id
+				this.$refs.confrims.id = obj.type
+				this.$refs.confrims.obj = obj
 				this.$refs.confrims.text = '是否删除本贴?'
 			},
-			condelHandler(id){
-				this.Api.deleteDynamics({dynamics_id:id,community_id:uni.getStorageSync('community_id')}).then((result) => {
+			condelHandler(obj){
+				var pitem = obj
+				var object_id = ''
+				var type = pitem.type
+				var object_type = pitem.type
+				if (type == 5) {
+					object_id = pitem.object_id	
+				} else {
+				
+					if (type == 7 || type == 8) {
+						if(type == 8){
+							object_id = pitem.object_id	
+						}else{
+							object_id = pitem.wiki_id
+						}
+					} else if(type == 16){
+						object_id = pitem.object_id	
+					}else if(type == 17){
+						object_id = pitem.object_id	
+					}else{
+						object_id = pitem.object_id	
+					}
+				}
+				this.Api.deleteDynamics({object_type:object_type,object_id:object_id,community_id:uni.getStorageSync('community_id')}).then((result) => {
 					if(result.code == 1){
 						uni.showToast({
 							icon:'success',

@@ -131,7 +131,7 @@
 			unsetCancel(e){
 				var data = {
 					community_id: uni.getStorageSync('community_id'),
-					dynamics_id: e.object_id,
+					object_id: e.object_id,
 					object_type:e.object_type,
 					title:this.title
 				}

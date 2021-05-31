@@ -386,6 +386,7 @@
       });
     },
     getOtherUserInfo: function getOtherUserInfo(data) {var _this7 = this;
+      data = this.query;
       this.Api.getOtherUserInfo(data).then(function (result) {
         if (result.code == 1) {
           _this7.detail = result.data;
