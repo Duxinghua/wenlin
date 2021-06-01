@@ -22,7 +22,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -63,15 +63,9 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/update/postlist",
-					"pathName": "pages/update/postlist",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/update/collect",
-					"pathName": "pages/update/collect",
+					"name": "pages/update/committee",
+					"pathName": "pages/update/committee",
+					"query": "id=8",
 					"scene": null
 				}
 			]

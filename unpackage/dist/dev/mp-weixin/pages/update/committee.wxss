@@ -27,31 +27,7 @@
 page.data-v-17e096b0 {
   background: white !important;
 }
-.personalcard.data-v-17e096b0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  background: whtie !important;
-  min-height: 100vh;
-  padding-bottom: 320rpx;
-}
-.personalcard .pcontent.data-v-17e096b0 {
-  padding: 24rpx 0rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-}
-.personalcard .pcontent .userheader.data-v-17e096b0 {
+.userheader.data-v-17e096b0 {
   padding: 0rpx 24rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -65,14 +41,10 @@ page.data-v-17e096b0 {
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  position: absolute;
-  background: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 140rpx;
-  left: 0rpx;
-  bottom: 0rpx;
 }
-.personalcard .pcontent .userheader .avatarwrap.data-v-17e096b0 {
+.userheader .avatarwrap.data-v-17e096b0 {
   width: 96rpx;
   height: 96rpx;
   margin-right: 16rpx;
@@ -81,7 +53,7 @@ page.data-v-17e096b0 {
   overflow: hidden;
   position: relative;
 }
-.personalcard .pcontent .userheader .avatarwrap .heading.data-v-17e096b0 {
+.userheader .avatarwrap .heading.data-v-17e096b0 {
   position: absolute;
   left: 0;
   top: 0;
@@ -91,14 +63,14 @@ page.data-v-17e096b0 {
           border-radius: 50%;
   overflow: hidden;
 }
-.personalcard .pcontent .userheader .avatarwrap .daing.data-v-17e096b0 {
+.userheader .avatarwrap .daing.data-v-17e096b0 {
   position: absolute;
   right: 0;
   bottom: 0;
   width: 40rpx;
   height: 40rpx;
 }
-.personalcard .pcontent .userheader .userinfo.data-v-17e096b0 {
+.userheader .userinfo.data-v-17e096b0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -107,15 +79,15 @@ page.data-v-17e096b0 {
   -webkit-flex-direction: column;
           flex-direction: column;
 }
-.personalcard .pcontent .userheader .userinfo .username.data-v-17e096b0 {
+.userheader .userinfo .username.data-v-17e096b0 {
   height: 42rpx;
   font-size: 30rpx;
   font-family: PingFang-SC-Regular,PingFang-SC-Bold, PingFang-SC;
   font-weight: bold;
-  color: #ffffff;
+  color: #333333;
   line-height: 42rpx;
 }
-.personalcard .pcontent .userheader .userinfo .userdes.data-v-17e096b0 {
+.userheader .userinfo .userdes.data-v-17e096b0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -128,15 +100,15 @@ page.data-v-17e096b0 {
           align-items: center;
   margin-top: 8rpx;
 }
-.personalcard .pcontent .userheader .userinfo .userdes .u1.data-v-17e096b0 {
+.userheader .userinfo .userdes .u1.data-v-17e096b0 {
   font-size: 24rpx;
   font-family: PingFang-SC-Regular,PingFang-SC-Medium, PingFang-SC;
   font-weight: 500;
-  color: #ffffff;
+  color: #333333;
   line-height: 34rpx;
   margin-right: 24rpx;
 }
-.personalcard .pcontent .userheader .userinfo .userdes .u2.data-v-17e096b0 {
+.userheader .userinfo .userdes .u2.data-v-17e096b0 {
   width: 36rpx;
   height: 32rpx;
   background: rgba(255, 156, 0, 0.1);
@@ -149,7 +121,7 @@ page.data-v-17e096b0 {
   line-height: 32rpx;
   text-align: center;
 }
-.personalcard .pcontent .userheader .userbtn.data-v-17e096b0 {
+.userheader .userbtn.data-v-17e096b0 {
   width: 126rpx;
   -webkit-border-radius: 8rpx;
           border-radius: 8rpx;
@@ -163,10 +135,33 @@ page.data-v-17e096b0 {
   text-align: center;
   margin-left: auto;
 }
+.personalcard.data-v-17e096b0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  background: whtie !important;
+  min-height: 100vh;
+  padding-bottom: 320rpx;
+}
+.personalcard .pcontent.data-v-17e096b0 {
+  padding: 0rpx 24rpx 0rpx 24rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
 .personalcard .pcontent .swiper-wrap.data-v-17e096b0 {
   width: 100%;
   height: 629rpx;
-  margin-top: 26rpx;
   position: relative;
 }
 .personalcard .pcontent .swiper-wrap .swiper.data-v-17e096b0 {

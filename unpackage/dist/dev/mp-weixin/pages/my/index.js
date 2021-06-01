@@ -255,6 +255,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 540));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
   data: function data() {
@@ -371,44 +374,51 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     closeSingShow: function closeSingShow() {
       this.singShow = false;
     },
-    //签到
-    singleHandler: function singleHandler(e) {var _this3 = this;
-      console.log(e);
+    getaHandler: function getaHandler(e) {var _this3 = this;
       var imgUrl = e.detail.userInfo.avatarUrl;
       this.Api.updateUserInfo({ avatarUrl: imgUrl }).then(function (dd) {
-        if (dd.code == 1) {
-          if (_this3.userinfo.is_sign != 1) {
-            if (_this3.isSingFlag) {
-              _this3.isSingFlag = false;
-              _this3.Api.userSaveSign({}).then(function (result) {
-                if (result.code == 1) {
-                  uni.showToast({
-                    title: result.msg,
-                    icon: 'success',
-                    duration: 1500,
-                    success: function success() {
-                      _this3.getMyinfo();
-                      _this3.singShow = true;
-                      _this3.singValue = result.data;
-                      setTimeout(function () {
-                        _this3.singShow = false;
-                      }, 1500);
-                    } });
+        _this3.targetClick(15);
 
-
-                }
-              });
-            }
-          } else {
-            uni.showToast({
-              title: '您已签到',
-              icon: 'none',
-              duration: 1000 });
-
-          }
-
-        }
       });
+    },
+    //签到
+    singleHandler: function singleHandler(e) {var _this4 = this;
+      // console.log(e)
+      // var imgUrl = e.detail.userInfo.avatarUrl
+      // this.Api.updateUserInfo({avatarUrl:imgUrl}).then((dd)=>{
+      // 	if(dd.code == 1){
+      if (this.userinfo.is_sign != 1) {
+        if (this.isSingFlag) {
+          this.isSingFlag = false;
+          this.Api.userSaveSign({}).then(function (result) {
+            if (result.code == 1) {
+              uni.showToast({
+                title: result.msg,
+                icon: 'success',
+                duration: 1500,
+                success: function success() {
+                  _this4.getMyinfo();
+                  _this4.singShow = true;
+                  _this4.singValue = result.data;
+                  setTimeout(function () {
+                    _this4.singShow = false;
+                  }, 1500);
+                } });
+
+
+            }
+          });
+        }
+      } else {
+        uni.showToast({
+          title: '您已签到',
+          icon: 'none',
+          duration: 1000 });
+
+      }
+
+      // 	}
+      // })
 
 
     },

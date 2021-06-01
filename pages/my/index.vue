@@ -8,9 +8,12 @@
 				<image :src="userinfo.avatar" class="avatar"></image>
 			</view>
 			<view class="nameinfo">
-				<view class="useredit"  @click="targetClick(15)">
+				<!-- @click="targetClick(15)" -->
+				<view class="useredit"  >
 					<text class="name">{{userinfo.user_nickname}}·{{userinfo.building}}#</text>
+					<button  open-type="getUserInfo" @getuserinfo="getaHandler" :class="['','edit',userinfo.is_sign == 1 ? '':'']">
 					<image src="../../static/edit.png" class="edit"></image>
+					</button>
 				</view>
 				<view class="usersex">
 					<image :src="userinfo.sex == 1 ? '../../static/man.png' : (userinfo.sex == 0 ? '../../static/mi.png' : '../../static/wuman.png' )" class="sexico" ></image>
@@ -20,7 +23,7 @@
 					<view class="t2">创</view>
 				</view>
 			</view>
-			<button  open-type="getUserInfo" @getuserinfo="singleHandler" :class="['single', userinfo.is_sign == 1 ? 'singlefix':'']">{{userinfo.is_sign == 1 ? '已签到' :'签到'}}</button>
+			<button @click="singleHandler" :class="['single', userinfo.is_sign == 1 ? 'singlefix':'']">{{userinfo.is_sign == 1 ? '已签到' :'签到'}}</button>
 <!-- 			<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button> -->
 		</view>
 		<view class="personalwrap">
@@ -239,12 +242,19 @@ export default {
 		closeSingShow(){
 			this.singShow = false
 		},
-		//签到
-		singleHandler(e){
-			console.log(e)
+		getaHandler(e){
 			var imgUrl = e.detail.userInfo.avatarUrl
 			this.Api.updateUserInfo({avatarUrl:imgUrl}).then((dd)=>{
-				if(dd.code == 1){
+				this.targetClick(15)
+			
+			})
+		},
+		//签到
+		singleHandler(e){
+			// console.log(e)
+			// var imgUrl = e.detail.userInfo.avatarUrl
+			// this.Api.updateUserInfo({avatarUrl:imgUrl}).then((dd)=>{
+			// 	if(dd.code == 1){
 					if(this.userinfo.is_sign != 1){
 						if(this.isSingFlag){
 							this.isSingFlag = false
@@ -275,8 +285,8 @@ export default {
 						})
 					}
 				
-				}
-			})
+			// 	}
+			// })
 
 
 		},	

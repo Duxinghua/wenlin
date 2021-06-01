@@ -1,8 +1,22 @@
 <template>
 	<!-- 居委会 -->
-	<view :class="['personalcard',scrollFixed ? 'pcontentfix' : '']">
+	<view :class="['personalcard']">
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
-		<view class="pcontent" :style="{'margin-top':heightPx}">
+		<view class="userheader">
+						<view class="avatarwrap">
+		<!-- 					<view class="header"> -->
+								<u-image :src="detail.logo" :height="headerHeight" ></u-image>
+					<!-- 		</view> -->
+						<!-- 	<image :src="detail.logo" class="heading"></image> -->
+							
+							<!-- 					<image src="../../static/da.png" class="daing"></image> -->
+						</view>
+						<view class="userinfo">
+							<text class="username">{{detail.title}}</text>
+							<view class="userdes"><text class="u1">{{detail.create_time | formatTimeYMD}} 创建</text></view>
+						</view>
+		</view>
+		<view class="pcontent">
 			<view class="swiper-wrap">
 				<swiper
 					class="swiper"
@@ -20,20 +34,7 @@
 					</swiper-item>
 
 				</swiper>
-				<view class="userheader">
-								<view class="avatarwrap">
-				<!-- 					<view class="header"> -->
-										<u-image :src="detail.logo" :height="headerHeight" ></u-image>
-							<!-- 		</view> -->
-								<!-- 	<image :src="detail.logo" class="heading"></image> -->
-									
-									<!-- 					<image src="../../static/da.png" class="daing"></image> -->
-								</view>
-								<view class="userinfo">
-									<text class="username">{{detail.title}}</text>
-									<view class="userdes"><text class="u1">{{detail.create_time | formatTimeYMD}} 创建</text></view>
-								</view>
-							</view>
+
 			</view>
 			<view class="navlist">
 				<view class="navitem" v-for="(item,index) in navList" :key="index" @click="navClick(item)">
@@ -157,7 +158,7 @@ export default {
 				bgcolor: 'white', //背景颜色
 				fontcolor: 'rgba(51, 51, 51, 1)', //文字颜色，默认白色
 				type: 1, //type 1，3胶囊 2，4无胶囊模式
-				transparent: true, //是否背景透明 默认白色
+				transparent: false, //是否背景透明 默认白色
 				linear: false, //是为开启下滑渐变
 				share: false //是否将主页按钮显示为分享按钮
 				// menuIcon:"../static/icon/back_.png", 当type为3或者4的时候左边的icon文件位置，注意位置与当前页面不一样
@@ -270,6 +271,7 @@ export default {
 		};
 	},
 	mounted(){
+		console.log(this.$mp.query,'mp')
 		this.committee_id = this.$mp.query.id
 		var data ={
 			committee_id:this.committee_id
@@ -595,29 +597,14 @@ export default {
 page {
 	background: white !important;
 }
-.personalcard {
-	display: flex;
-	flex-direction: column;
-	background: whtie !important;
-	min-height: 100vh;
-	padding-bottom: 320upx;
-	.pcontent {
-		padding: 24upx 0upx;
-		box-sizing: border-box;
-		display: flex;
-		flex-direction: column;
 		.userheader {
 			padding: 0upx 24upx;
 			box-sizing: border-box;
 			display: flex;
 			flex-direction: row;
 			align-items: center;
-			position: absolute;
-			background: rgba(0,0,0,0.5);
 			width:100%;
 			height:140rpx;
-			left:0rpx;
-			bottom: 0rpx;
 			.avatarwrap {
 				width: 96upx;
 				height: 96upx;
@@ -650,7 +637,7 @@ page {
 					font-size: 30upx;
 					font-family: PingFang-SC-Regular,PingFang-SC-Bold, PingFang-SC;
 					font-weight: bold;
-					color: #ffffff;
+					color: #333333;
 					line-height: 42upx;
 				}
 				.userdes {
@@ -662,7 +649,7 @@ page {
 						font-size: 24upx;
 						font-family: PingFang-SC-Regular,PingFang-SC-Medium, PingFang-SC;
 						font-weight: 500;
-						color: #ffffff;
+						color: #333333;
 						line-height: 34upx;
 						margin-right: 24upx;
 					}
@@ -694,10 +681,21 @@ page {
 				margin-left: auto;
 			}
 		}
+.personalcard {
+	display: flex;
+	flex-direction: column;
+	background: whtie !important;
+	min-height: 100vh;
+	padding-bottom: 320upx;
+	.pcontent {
+		padding:0upx 24upx 0upx 24upx;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
 		.swiper-wrap {
 			width: 100%;
 			height: 629upx;
-			margin-top: 26upx;
+			// margin-top: 26upx;
 			position: relative;
 			.swiper {
 				width: 100%;
