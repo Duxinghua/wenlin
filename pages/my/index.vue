@@ -243,8 +243,15 @@ export default {
 			this.singShow = false
 		},
 		getaHandler(e){
-			var imgUrl = e.detail.userInfo.avatarUrl
-			this.Api.updateUserInfo({avatarUrl:imgUrl}).then((dd)=>{
+			var u = e.detail.userInfo
+			var data = {
+				avatarUrl:u.avatarUrl,
+				city:u.city,
+				country:u.country,
+				gender:u.gender,
+				nickName:u.nickName
+			}
+			this.Api.updateUs(data).then((dd)=>{
 				this.targetClick(15)
 			
 			})

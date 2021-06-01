@@ -359,8 +359,15 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.singShow = false;
     },
     getaHandler: function getaHandler(e) {var _this3 = this;
-      var imgUrl = e.detail.userInfo.avatarUrl;
-      this.Api.updateUserInfo({ avatarUrl: imgUrl }).then(function (dd) {
+      var u = e.detail.userInfo;
+      var data = {
+        avatarUrl: u.avatarUrl,
+        city: u.city,
+        country: u.country,
+        gender: u.gender,
+        nickName: u.nickName };
+
+      this.Api.updateUs(data).then(function (dd) {
         _this3.targetClick(15);
 
       });

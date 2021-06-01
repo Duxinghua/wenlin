@@ -280,6 +280,9 @@ const communityDynamicsImg =  (params) => wxRequest(params, baseURL + 'api/commu
 // 活动 {{test}}/api/community/activity/detail
 const pactivityDetail = (params) => wxRequest(params, baseURL + 'api/community/activity/detail', 'POST')
 
+// 更新用户信息微信（头像、昵称等） https://sq.wenlinapp.com/api/wxapp/public/updateUserInfo 
+const updateUs = (params) => wxRequest(params, baseURL + 'api/wxapp/public/updateUserInfo', 'POST')
+
 export default {
 	wechatAuth,
 	setUserPhoneBySecret,
@@ -404,5 +407,6 @@ export default {
 	updateUserInfo,
 	communityDynamicsImg,
 	publishNewthingDynamics,
-	pactivityDetail
+	pactivityDetail,
+	updateUs
 }

@@ -2215,7 +2215,10 @@ var getJsCity = function getJsCity(params) {return (0, _request.wxRequest)(param
 //小区图片 /api/community/communityDynamics/communityDynamics
 var communityDynamicsImg = function communityDynamicsImg(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/community_dynamics/communityDynamics', 'POST');};
 // 活动 {{test}}/api/community/activity/detail
-var pactivityDetail = function pactivityDetail(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/activity/detail', 'POST');};var _default = (_wechatAuth$setUserPh = {
+var pactivityDetail = function pactivityDetail(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/activity/detail', 'POST');};
+
+// 更新用户信息微信（头像、昵称等） https://sq.wenlinapp.com/api/wxapp/public/updateUserInfo 
+var updateUs = function updateUs(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/wxapp/public/updateUserInfo', 'POST');};var _default = (_wechatAuth$setUserPh = {
 
 
   wechatAuth: wechatAuth,
@@ -2341,7 +2344,8 @@ var pactivityDetail = function pactivityDetail(params) {return (0, _request.wxRe
 updateUserInfo), _defineProperty(_wechatAuth$setUserPh, "communityDynamicsImg",
 communityDynamicsImg), _defineProperty(_wechatAuth$setUserPh, "publishNewthingDynamics",
 publishNewthingDynamics), _defineProperty(_wechatAuth$setUserPh, "pactivityDetail",
-pactivityDetail), _wechatAuth$setUserPh);exports.default = _default;
+pactivityDetail), _defineProperty(_wechatAuth$setUserPh, "updateUs",
+updateUs), _wechatAuth$setUserPh);exports.default = _default;
 
 /***/ }),
 
