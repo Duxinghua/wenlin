@@ -125,17 +125,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   var f0 = _vm._f("formatTime")(_vm.detail.create_time)
 
-  var f1 =
-    _vm.detail.type == 3 ? _vm._f("sellType")(_vm.detail.sell_type) : null
-  var f2 = _vm.type == 8 ? _vm._f("formatTime")(_vm.detail.create_time) : null
+  var f1 = _vm.type == 8 ? _vm._f("formatTime")(_vm.detail.create_time) : null
 
   var l0 = _vm.__map(_vm.commentList, function(item, index) {
     var $orig = _vm.__get_orig(item)
 
-    var f3 = _vm.navIndex == 2 ? _vm._f("formatTime")(item.create_time) : null
+    var f2 = _vm.navIndex == 2 ? _vm._f("formatTime")(item.create_time) : null
     return {
       $orig: $orig,
-      f3: f3
+      f2: f2
     }
   })
 
@@ -145,7 +143,6 @@ var render = function() {
       $root: {
         f0: f0,
         f1: f1,
-        f2: f2,
         l0: l0
       }
     }

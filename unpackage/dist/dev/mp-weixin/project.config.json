@@ -40,15 +40,7 @@
 			"current": -1,
 			"list": []
 		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
 		"game": {
-			"current": -1,
-			"list": []
-		},
-		"gamePlugin": {
 			"current": -1,
 			"list": []
 		},
@@ -56,17 +48,10 @@
 			"current": 1,
 			"list": [
 				{
-					"id": 0,
 					"name": "test",
-					"pathName": "pages/update/setVote",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "pages/update/committee",
-					"pathName": "pages/update/committee",
-					"query": "id=8",
-					"scene": null
+					"query": "",
+					"id": 0,
+					"pathName": "pages/update/setVote"
 				}
 			]
 		}

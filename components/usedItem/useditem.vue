@@ -1,8 +1,8 @@
 <template>
 	<!-- 闲置 -->
 	<view :class="['usedItem',autoRight ? 'useditemfix' : '']" @click="goDetail">
-		<view  class="usedimg" >
-			<u-image :src="autoImage" :height="autoHeight" mode="aspectFill"  v-if="pitem.images.length"></u-image>
+		<view  class="usedimg"  v-if="pitem.images.length">
+			<u-image :src="autoImage" :height="autoHeight" mode="aspectFill" ></u-image>
 		</view>
 <!-- 		<image class="usedimg" :src="autoImage" mode="aspectFill" v-if="pitem.images.length"></image> -->
 		<view class="imgnodata" v-if="pitem.images.length == 0">
@@ -12,7 +12,7 @@
 		<text class="usedtitle">{{pitem.content}}</text>
 		<view class="usedprice">
 			<view class="info">
-				<text class="infotype">{{pitem.sell_type | sellType}}</text>
+			<!-- 	<text class="infotype">{{pitem.sell_type | sellType}}</text> -->
 <!-- 				<text>￥{{pitem.sell_type == 2 ? 0 : pitem.sell_price}}</text> -->
 				<text  v-if="pitem.sell_type != 4">￥{{ pitem.sell_type == 2 ? 0 : pitem.sell_price == -1 ? '面议' : pitem.sell_price }}</text>
 				<text  v-if="pitem.sell_type == 4">{{ pitem.exchange_goods ? "物品："+ pitem.exchange_goods : "积分："+pitem.exchange_score }}</text>

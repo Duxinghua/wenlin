@@ -1017,20 +1017,20 @@ var SeekHelp = function SeekHelp() {__webpack_require__.e(/*! require.ensure | c
 
         }
         if (_this10.type == 3) {
-          data.sell_type = _this10.sell_type;
-          _this10.living_type.map(function (item) {
-            if (item.check) {
-              data.sell_type = item.value;
-            }
-          });
+          // data.sell_type = this.sell_type
+          // this.living_type.map((item)=>{
+          // 	if(item.check){
+          // 		data.sell_type = item.value
+          // 	}
+          // })
           data.sell_price = _this10.sell_price == '面议' ? -1 : _this10.sell_price;
         }
         if (_this10.type == 4) {
-          _this10.recruit_type.map(function (item) {
-            if (item.check) {
-              data.recruit_type = item.value;
-            }
-          });
+          // this.recruit_type.map((item)=>{
+          // 	if(item.check){
+          // 		data.recruit_type = item.value
+          // 	}
+          // })
         }
         if (_this10.type == 5) {
           data.type = 2;

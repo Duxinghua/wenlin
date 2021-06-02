@@ -37,17 +37,17 @@
 							<image src="../../static/uploadico.png" class="imgjia"></image>
 						</view>
 					</view>
-					<view class="houselist" v-if="type == 3">
+					<view class="houselist" v-if="false">
 						<view :class="['houseitem',houseIndex == index ? 'houseitemactive' :'']" v-for="(item,index) in living_type" :key="index" :index="index" @click.stop="houseHandler(item,index)">
 							{{item.name}}
 						</view>
 					</view>
-					<view class="houselist" v-if="type == 4">
+					<view class="houselist" v-if="false">
 						<view :class="['houseitem',recruitIndex == index ? 'houseitemactive' :'']" v-for="(item,index) in recruit_type" :key="index" :index="index" @click.stop="recruitHandler(item,index)">
 							{{item.name}}
 						</view>
 					</view>
-					<view class="houselist" v-if="type == 7">
+					<view class="houselist" v-if="false">
 						<view :class="['houseitem',buyIndex == index ? 'houseitemactive' :'']" v-for="(item,index) in buyList" :key="index" :index="index" @click.stop="buysHandler(item,index)">
 							{{item.name}}
 						</view>
@@ -853,20 +853,20 @@
 						
 					}
 					if(this.type == 3){
-						data.sell_type = this.sell_type
-						this.living_type.map((item)=>{
-							if(item.check){
-								data.sell_type = item.value
-							}
-						})
+						// data.sell_type = this.sell_type
+						// this.living_type.map((item)=>{
+						// 	if(item.check){
+						// 		data.sell_type = item.value
+						// 	}
+						// })
 						data.sell_price = this.sell_price == '面议' ? -1 : this.sell_price
 					}
 					if(this.type == 4){
-						this.recruit_type.map((item)=>{
-							if(item.check){
-								data.recruit_type = item.value
-							}
-						})
+						// this.recruit_type.map((item)=>{
+						// 	if(item.check){
+						// 		data.recruit_type = item.value
+						// 	}
+						// })
 					}
 					if(this.type == 5){
 						data.type = 2
