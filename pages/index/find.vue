@@ -15,7 +15,7 @@
 				</view> -->
 				<view class="menuwrap">
 					<text :class="[current == 2 ? 'active' : '']" @click="itemClick(2)">附近</text>
-					<text :class="[current == 3 ? 'active' : '']" @click="itemClick(3)">推榜</text>
+					<text v-if="false" :class="[current == 3 ? 'active' : '']" @click="itemClick(3)">推榜</text>
 					<view class="nearbywrap" v-if="current == 2" @click="nearHandler">
 						<image src="../../static/nearby2.png" class="nerico"></image>
 						<view class="nearbytext">

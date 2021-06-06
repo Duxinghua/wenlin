@@ -17,7 +17,7 @@
 				<view class="dalist" v-if="detail.type == 6">
 					<view class="daitem" v-for="(item, index) in skillList" :key="index" :index="index">{{ item }}</view>
 				</view>
-				<view class="sellwrap" v-if="detail.type == 3">
+				<view class="sellwrap" v-if="detail.type == 3 || detail.type == 14">
 					<view class="sellinfo">
 			<!-- 			<text class="t1">{{ detail.sell_type | sellType }}</text>
 						| -->
@@ -897,6 +897,7 @@ export default {
 			}
 			this.Api.communityDynamicsPushDynamics(data).then(result => {
 				if (result.code == 1) {
+					this.navIndex = 2
 					uni.showToast({
 						title: result.msg,
 						duration: 2000,
@@ -1059,6 +1060,7 @@ export default {
 					return;
 				}
 			}
+			console.log(e,'xxx')
 			this.$refs.confrims.guestShow = true;
 			this.$refs.confrims.id = e.id;
 		},
@@ -1118,6 +1120,7 @@ export default {
 				}
 				this.Api.unsetLikes(data).then(result => {
 					if (result.code == 1) {
+				
 						// uni.showToast({
 						// 	title: result.msg,
 						// 	duration: 2000,
@@ -1203,6 +1206,7 @@ export default {
 				}
 				this.Api.setComments(data).then(result => {
 					if (result.code == 1) {
+						this.navIndex = 1
 						uni.showToast({
 							title: result.msg,
 							duration: 2000,
@@ -1346,7 +1350,9 @@ export default {
 							this.config.title = this.detail.community.title + Tool.resultValue(this.type);
 						}
 					}
+					if(result.data.skill_desc){
 					this.skillList = result.data.skill_desc.split(',');
+					}
 					this.author = result.data.user_id;
 					this.getCommentList();
 					if (this.srouce) {
@@ -1733,6 +1739,8 @@ export default {
 			this.canvasFlag = val;
 		},
 		condelHandler(e) {
+			console.log(e)
+
 			if (e == -1) {
 				var url = '';
 				if (this.type == 7 || this.type == 8) {
@@ -2021,6 +2029,7 @@ page {
 			box-sizing: border-box;
 			display: flex;
 			flex-direction: row;
+			// justify-content: center;
 			align-items: center;
 			.sellinfo {
 				height: 48upx;
@@ -2035,10 +2044,10 @@ page {
 				color: rgba(255, 156, 0, 1);
 				line-height: 48upx;
 				.t1 {
-					padding-right: 10upx;
+					// padding-right: 10upx;
 				}
 				.t2 {
-					padding-left: 10upx;
+					// padding-left: 10upx;
 				}
 			}
 		}

@@ -1158,6 +1158,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       this.$getMyscore(function (res) {
         if (res.code == 1) {
+          _this6.navIndex = 2;
           _this6.score = res.data.score;
           if (_this6.score == 0) {
             uni.showToast({
@@ -1436,6 +1437,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         }
         this.Api.setLikes(data).then(function (result) {
           if (result.code == 1) {
+
             // uni.showToast({
             // 	title: result.msg,
             // 	duration: 2000,
@@ -1540,6 +1542,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         }
         _this10.Api.setComments(data).then(function (result) {
           if (result.code == 1) {
+            _this10.navIndex = 1;
             uni.showToast({
               title: result.msg,
               duration: 2000,

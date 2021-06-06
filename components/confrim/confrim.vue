@@ -24,7 +24,7 @@ export default {
 	},
 	methods: {
 		del() {
-			this.$emit('del',this.obj);
+			this.$emit('del',this.id);
 		}
 	}
 };

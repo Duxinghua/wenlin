@@ -72,7 +72,7 @@
 							<text class="flovertext">{{ item.score }}</text>
 						</view>
 					</view>
-		<!-- 			<Nodata v-if="nodataFlag" :text.sync="nodatatext" /> -->
+					<Nodata v-if="nodataFlag" :text.sync="nodatatext" />
 				</view>
 			</view>
 		</view>
@@ -956,6 +956,7 @@ export default {
 			}
 			this.$getMyscore(res => {
 				if (res.code == 1) {
+					this.navIndex = 2
 					this.score = res.data.score;
 					if (this.score == 0) {
 						uni.showToast({
@@ -1234,6 +1235,7 @@ export default {
 				}
 				this.Api.setLikes(data).then(result => {
 					if (result.code == 1) {
+						
 						// uni.showToast({
 						// 	title: result.msg,
 						// 	duration: 2000,
@@ -1338,6 +1340,7 @@ export default {
 				}
 				this.Api.setComments(data).then(result => {
 					if (result.code == 1) {
+						this.navIndex = 1
 						uni.showToast({
 							title: result.msg,
 							duration: 2000,

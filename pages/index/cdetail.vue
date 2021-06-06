@@ -825,7 +825,7 @@
 			},
 			getCommentList(ismore){
 				var data = {
-					dynamics_id:this.dynamics_id,
+					object_id:this.dynamics_id,
 					object_type:this.type,
 					page:this.page,
 					page_size:10
@@ -1102,6 +1102,7 @@
 		
 					this.Api.setComments(data).then((result) => {
 						if(result.code == 1){
+							this.navIndex = 1
 							uni.showToast({
 								title: result.msg,
 								duration: 2000,
@@ -1297,8 +1298,11 @@
 				}
 				this.$getMyscore((res) => {
 					if(res.code == 1){
+						this.navIndex = 2
+						this.getCommentList()
 						this.score = res.data.score
 						if(this.score == 0){
+							
 							uni.showToast({
 								title: '您的积分不足，请参加积分任务',
 								icon:'none',
@@ -1341,6 +1345,7 @@
 				// }
 				this.Api.communityDynamicsPushDynamics(data).then((result) => {
 					if(result.code == 1){
+						this.navIndex = 2
 						uni.showToast({
 							title: result.msg,
 							duration: 2000,

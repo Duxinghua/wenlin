@@ -1079,6 +1079,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       this.Api.communityDynamicsPushDynamics(data).then(function (result) {
         if (result.code == 1) {
+          _this5.navIndex = 2;
           uni.showToast({
             title: result.msg,
             duration: 2000,
@@ -1241,6 +1242,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           return;
         }
       }
+      console.log(e, 'xxx');
       this.$refs.confrims.guestShow = true;
       this.$refs.confrims.id = e.id;
     },
@@ -1300,6 +1302,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         }
         this.Api.unsetLikes(data).then(function (result) {
           if (result.code == 1) {
+
             // uni.showToast({
             // 	title: result.msg,
             // 	duration: 2000,
@@ -1385,6 +1388,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         }
         _this8.Api.setComments(data).then(function (result) {
           if (result.code == 1) {
+            _this8.navIndex = 1;
             uni.showToast({
               title: result.msg,
               duration: 2000,
@@ -1528,7 +1532,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
               _this10.config.title = _this10.detail.community.title + _tool.default.resultValue(_this10.type);
             }
           }
-          _this10.skillList = result.data.skill_desc.split(',');
+          if (result.data.skill_desc) {
+            _this10.skillList = result.data.skill_desc.split(',');
+          }
           _this10.author = result.data.user_id;
           _this10.getCommentList();
           if (_this10.srouce) {
@@ -1915,6 +1921,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.canvasFlag = val;
     },
     condelHandler: function condelHandler(e) {var _this16 = this;
+      console.log(e);
+
       if (e == -1) {
         var url = '';
         if (this.type == 7 || this.type == 8) {

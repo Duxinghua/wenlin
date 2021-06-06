@@ -233,7 +233,6 @@
           this.onRotateStart()
         } else {
           console.info('旋转结束，prizeIndex 已重置')
-		  this.$emit('overHandler',{})
         }
       }
     },
@@ -361,8 +360,9 @@
           // 设置文本位置并处理换行
           // 是否需要换行
           let isLineBreak = rewardName.length > this.strLineLen
-          let textOffsetX = this.fontSize === 12 ? 0 : this.textRadius
+          let textOffsetX = this.fontSize === 18 ? 0 : this.textRadius
           if (isLineBreak) {
+			  console.log('xxx2 xxs line')
             // 获得多行文本数组
             rewardName = rewardName.substring(0, this.strLineLen) + ',' + rewardName.substring(this.strLineLen)
             let rewardNames = rewardName.split(',')
@@ -378,7 +378,7 @@
 
                 // 等待页面重新渲染
                 await this.$nextTick()
-
+				console.log('xxxxss')
                 let textWidth = await this.getTextWidth()
 
                 ctx.fillText(rewardNames[j], -(textWidth / 2 + textOffsetX), j * this.lineHeight)
@@ -386,10 +386,11 @@
               }
             }
           } else {
+			  console.log('11xxxxss')
             if (ctx.measureText && ctx.measureText(rewardName).width) {
               // 文本的宽度信息
               let tempStrSize = ctx.measureText(rewardName)
-              ctx.fillText(rewardName, -(tempStrSize.width / 2 + textOffsetX), 0)
+              ctx.fillText(rewardName, -(tempStrSize.width / 2 + textOffsetX), this.lineHeight)
             } else {
               this.measureText = rewardName
 
@@ -397,7 +398,7 @@
               await this.$nextTick()
 
               let textWidth = await this.getTextWidth()
-              ctx.fillText(rewardName, -(textWidth / 2 + textOffsetX), 0)
+              ctx.fillText(rewardName, -(textWidth / 2 + textOffsetX), 15)
             }
           }
 

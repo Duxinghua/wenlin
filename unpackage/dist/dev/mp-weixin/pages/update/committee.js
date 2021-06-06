@@ -325,7 +325,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
 //
 //
 //
@@ -486,10 +492,11 @@ var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | com
       mobileList: [], inputValues: '', //留言处理
       inputValue: '', commitList: [], page: 1, page_size: 10, total_pages: 0, parent_text: '给居委会留言', replyFlag: false, autoBottom: 0, scrollFixed: false, showconfirmbar: false, adjustposition: false, replyTextarea: false, textareaautofocus: false, isShowEmj: false, heightPx: '-100px', //{{online}}/api/community/committee/myCommitteeList 参数  type  0查询全部，111 => "居委会", 112 => "街道", 113 => "业委会"，114=>"物业"
       typeList: { 111: '居委会', 112: '街道', 113: '业委会', 114: '物业' } };}, onShareAppMessage: function onShareAppMessage() {return { title: this.detail.title, imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png' };}, onShareTimeline: function onShareTimeline(e) {var title = this.detail.title;var query = { id: this.committee_id, community_id: uni.getStorageSync('community_id') }; // query=JSON.stringify(query);
-    return { title: title, imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png', query: query };}, mounted: function mounted() {console.log(this.$mp.query, 'mp');this.committee_id = this.$mp.query.id;var data = { committee_id: this.committee_id };uni.setStorageSync('committee_id', this.committee_id);if (this.$mp.query.community_id) {uni.setStorageSync('community_id', this.$mp.query.community_id);}this.getDetail(data);this.getList();}, methods: { height: function height() {var _uni$getSystemInfoSyn = uni.getSystemInfoSync(),platform = _uni$getSystemInfoSyn.platform,statusBarHeight = _uni$getSystemInfoSyn.statusBarHeight;var height = statusBarHeight + 4; //ios 24px
+    return { title: title, imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png', query: query };}, mounted: function mounted() {console.log(this.$mp.query, 'mp');this.committee_id = this.$mp.query.id;var data = { committee_id: this.committee_id };uni.setStorageSync('committee_id', this.committee_id);if (this.$mp.query.community_id) {uni.setStorageSync('community_id', this.$mp.query.community_id);}this.getDetail(data);this.getList();}, methods: { getSign: function getSign() {this.subMessageTodo(this.orgIds, '9', function (rs) {});}, height: function height() {var _uni$getSystemInfoSyn = uni.getSystemInfoSync(),platform = _uni$getSystemInfoSyn.platform,statusBarHeight = _uni$getSystemInfoSyn.statusBarHeight;var height = statusBarHeight + 4; //ios 24px
       if (platform.toLowerCase() == "android") {height += 4; //android 28px
       } // 胶囊高度 32px 下边框6px height 状态栏高度
-      return "-" + height + 38 + "px";}, replyInit: function replyInit() {if (uni.getStorageSync('singPage') == 1) {uni.showToast({ title: '请前往小程序使用完整服务', icon: 'none', duration: 2000 });return;}this.replyTextarea = true;this.textareaautofocus = true;this.scrollFixed = true;}, closeReplyInit: function closeReplyInit() {this.replyTextarea = false;this.textareaautofocus = false;
+      return "-" + height + 38 + "px";}, replyInit: function replyInit() {if (uni.getStorageSync('singPage') == 1) {uni.showToast({ title: '请前往小程序使用完整服务', icon: 'none', duration: 2000 });return;}this.replyTextarea = true;this.textareaautofocus = true;this.scrollFixed = true;}, closeReplyInit: function closeReplyInit() {this.replyTextarea = false;
+      this.textareaautofocus = false;
       this.scrollFixed = false;
       this.parent_text = '给居委会留言';
     },

@@ -249,6 +249,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 {
   components: {
     navigationCustom: navigationCustom,
@@ -415,15 +417,31 @@ __webpack_require__.r(__webpack_exports__);
                   _this3.statusValue = res.data.status;
                   _this3.rule = res.data.rule;
                   _this3.detail = res.data;
-                  res.data.prize_list.map(function (item) {
-                    item.prizeImage = item.image;
-                    item.prizeId = item.prize_id;
-                    item.name = item.prize_name;
-                    item.stock = 10000;
-                    item.weight = 0;
-                  });
-                  _this3.prizeList = res.data.prize_list;
+                  if (res.data.prize_list.length) {
+                    res.data.prize_list.map(function (item) {
+                      // item.prizeImage = item.image
+                      item.prizeId = item.prize_id;
+                      item.name = item.prize_name;
+                      item.stock = 10000;
+                      item.weight = 0;
+                    });
+                    _this3.prizeList = res.data.prize_list;
+                  }
                   console.log(_this3.prizeList, 'ps');
+                  // this.prizeList = [
+                  // 	{ prizeId: 1, name: '0.1元现金', stock: 10, weight: 0, prizeImage: that.Config.minUrl + 'committe.jpg' },
+                  // 	{
+                  // 		prizeId: 2,
+                  // 		name: '10元现金',
+                  // 		stock: 0,
+                  // 		weight: 0,
+                  // 		//prizeImage: 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/56f085e0-bcfe-11ea-b244-a9f5e5565f30.png'
+                  // 	},
+                  // 	{ prizeId: 3, name: '5元话费', stock: 1, weight: 0 },
+                  // 	{ prizeId: 4, name: '50元现金', stock: 0, weight: 0 },
+                  // 	{ prizeId: 5, name: '1卷抽纸', stock: 3, weight: 0 },
+                  // 	{ prizeId: 6, name: '谢谢参与', stock: 100, weight: 0 }
+                  // ]
                 }
                 /*
                   return

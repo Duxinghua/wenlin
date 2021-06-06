@@ -1034,7 +1034,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     },
     getCommentList: function getCommentList(ismore) {var _this3 = this;
       var data = {
-        dynamics_id: this.dynamics_id,
+        object_id: this.dynamics_id,
         object_type: this.type,
         page: this.page,
         page_size: 10 };
@@ -1311,6 +1311,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
         _this6.Api.setComments(data).then(function (result) {
           if (result.code == 1) {
+            _this6.navIndex = 1;
             uni.showToast({
               title: result.msg,
               duration: 2000,
@@ -1506,8 +1507,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       this.$getMyscore(function (res) {
         if (res.code == 1) {
+          _this8.navIndex = 2;
+          _this8.getCommentList();
           _this8.score = res.data.score;
           if (_this8.score == 0) {
+
             uni.showToast({
               title: '您的积分不足，请参加积分任务',
               icon: 'none',
@@ -1550,6 +1554,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       // }
       this.Api.communityDynamicsPushDynamics(data).then(function (result) {
         if (result.code == 1) {
+          _this9.navIndex = 2;
           uni.showToast({
             title: result.msg,
             duration: 2000,

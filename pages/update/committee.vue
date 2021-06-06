@@ -15,6 +15,9 @@
 							<text class="username">{{detail.title}}</text>
 							<view class="userdes"><text class="u1">{{detail.create_time | formatTimeYMD}} 创建</text></view>
 						</view>
+						<view class="userbtn" @click="getSign">
+							订阅
+						</view>
 		</view>
 		<view class="pcontent">
 			<view class="swiper-wrap">
@@ -284,6 +287,10 @@ export default {
 		this.getList()
 	},
 	methods: {
+		getSign(){
+			this.subMessageTodo(this.orgIds,'9',(rs)=>{
+			})
+		},
 		height(){
 			const {platform,statusBarHeight} = uni.getSystemInfoSync()
 			let height = statusBarHeight +4 //ios 24px
@@ -675,8 +682,12 @@ page {
 				font-size: 26upx;
 				font-family: PingFang-SC-Regular,PingFang-SC-Bold, PingFang-SC;
 				font-weight: bold;
-				color: rgba(255, 156, 0, 1);
+				color:white;
+				background: rgba(255, 156, 0, 1);
 				line-height: 56upx;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				text-align: center;
 				margin-left: auto;
 			}

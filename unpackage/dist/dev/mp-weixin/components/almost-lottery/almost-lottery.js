@@ -349,7 +349,6 @@ var _almostUtils = __webpack_require__(/*! @/almost-utils/almost-utils.js */ 782
         this.onRotateStart();
       } else {
         console.info('旋转结束，prizeIndex 已重置');
-        this.$emit('overHandler', {});
       }
     } },
 
@@ -429,7 +428,7 @@ var _almostUtils = __webpack_require__(/*! @/almost-utils/almost-utils.js */ 782
 
                 // 注意，开始画的位置是从0°角的位置开始画的。也就是水平向右的方向。
                 // 画具体内容
-                i = 0;case 9:if (!(i < prizeCount)) {_context.next = 77;break;}
+                i = 0;case 9:if (!(i < prizeCount)) {_context.next = 80;break;}
                 prizeItem = _this2.prizeList[i];
                 // 当前角度
                 angle = i * baseAngle;
@@ -477,56 +476,58 @@ var _almostUtils = __webpack_require__(/*! @/almost-utils/almost-utils.js */ 782
                 // 设置文本位置并处理换行
                 // 是否需要换行
                 isLineBreak = rewardName.length > _this2.strLineLen;
-                textOffsetX = _this2.fontSize === 12 ? 0 : _this2.textRadius;if (!
-                isLineBreak) {_context.next = 49;break;}
+                textOffsetX = _this2.fontSize === 18 ? 0 : _this2.textRadius;if (!
+                isLineBreak) {_context.next = 51;break;}
+                console.log('xxx2 xxs line');
                 // 获得多行文本数组
                 rewardName = rewardName.substring(0, _this2.strLineLen) + ',' + rewardName.substring(_this2.strLineLen);
                 rewardNames = rewardName.split(',');
 
                 // 循环文本数组，计算每一行的文本宽度
-                j = 0;case 31:if (!(j < rewardNames.length)) {_context.next = 47;break;}if (!(
-                ctx.measureText && ctx.measureText(rewardNames[j]).width)) {_context.next = 37;break;}
+                j = 0;case 32:if (!(j < rewardNames.length)) {_context.next = 49;break;}if (!(
+                ctx.measureText && ctx.measureText(rewardNames[j]).width)) {_context.next = 38;break;}
                 // 文本的宽度信息
                 tempStrSize = ctx.measureText(rewardNames[j]);
-                ctx.fillText(rewardNames[j], -(tempStrSize.width / 2 + textOffsetX), j * _this2.lineHeight);_context.next = 44;break;case 37:
+                ctx.fillText(rewardNames[j], -(tempStrSize.width / 2 + textOffsetX), j * _this2.lineHeight);_context.next = 46;break;case 38:
 
                 _this2.measureText = rewardNames[j];
 
                 // 等待页面重新渲染
-                _context.next = 40;return _this2.$nextTick();case 40:_context.next = 42;return (
-
-                  _this2.getTextWidth());case 42:textWidth = _context.sent;
+                _context.next = 41;return _this2.$nextTick();case 41:
+                console.log('xxxxss');_context.next = 44;return (
+                  _this2.getTextWidth());case 44:textWidth = _context.sent;
 
                 ctx.fillText(rewardNames[j], -(textWidth / 2 + textOffsetX), j * _this2.lineHeight);
                 // console.log(rewardNames[j], textWidth, i)
-              case 44:j++;_context.next = 31;break;case 47:_context.next = 61;break;case 49:if (!(
+              case 46:j++;_context.next = 32;break;case 49:_context.next = 64;break;case 51:
 
 
-                ctx.measureText && ctx.measureText(rewardName).width)) {_context.next = 54;break;}
+                console.log('11xxxxss');if (!(
+                ctx.measureText && ctx.measureText(rewardName).width)) {_context.next = 57;break;}
                 // 文本的宽度信息
                 _tempStrSize = ctx.measureText(rewardName);
-                ctx.fillText(rewardName, -(_tempStrSize.width / 2 + textOffsetX), 0);_context.next = 61;break;case 54:
+                ctx.fillText(rewardName, -(_tempStrSize.width / 2 + textOffsetX), _this2.lineHeight);_context.next = 64;break;case 57:
 
                 _this2.measureText = rewardName;
 
                 // 等待页面重新渲染
-                _context.next = 57;return _this2.$nextTick();case 57:_context.next = 59;return (
+                _context.next = 60;return _this2.$nextTick();case 60:_context.next = 62;return (
 
-                  _this2.getTextWidth());case 59:_textWidth = _context.sent;
-                ctx.fillText(rewardName, -(_textWidth / 2 + textOffsetX), 0);case 61:if (!
-
-
+                  _this2.getTextWidth());case 62:_textWidth = _context.sent;
+                ctx.fillText(rewardName, -(_textWidth / 2 + textOffsetX), 15);case 64:if (!
 
 
-                prizeItem.prizeImage) {_context.next = 73;break;}
+
+
+                prizeItem.prizeImage) {_context.next = 76;break;}
                 // App-Android平台 系统 webview 更新到 Chrome84+ 后 canvas 组件绘制本地图像 uni.canvasToTempFilePath 会报错
                 // 统一将图片处理成 base64
                 // https://ask.dcloud.net.cn/question/103303
                 reg = /^(https|http)/g;
                 // 处理远程图片
-                if (!reg.test(prizeItem.prizeImage)) {_context.next = 72;break;}
-                console.warn('###当前数据列表中的奖品图片为网络图片，开始下载图片...###');_context.next = 67;return (
-                  (0, _almostUtils.downloadFile)(prizeItem.prizeImage));case 67:res = _context.sent;
+                if (!reg.test(prizeItem.prizeImage)) {_context.next = 75;break;}
+                console.warn('###当前数据列表中的奖品图片为网络图片，开始下载图片...###');_context.next = 70;return (
+                  (0, _almostUtils.downloadFile)(prizeItem.prizeImage));case 70:res = _context.sent;
                 console.log('处理远程图片', res);
                 if (res.ok) {
                   tempFilePath = res.tempFilePath;
@@ -536,17 +537,17 @@ var _almostUtils = __webpack_require__(/*! @/almost-utils/almost-utils.js */ 782
 
                   prizeItem.prizeImage = tempFilePath;
 
-                }_context.next = 72;break;case 72:
+                }_context.next = 75;break;case 75:
 
 
 
 
 
 
-                ctx.drawImage(prizeItem.prizeImage, -(_this2.imageWidth / 2), canvasW / 10, _this2.imageWidth, _this2.imageHeight);case 73:
+                ctx.drawImage(prizeItem.prizeImage, -(_this2.imageWidth / 2), canvasW / 10, _this2.imageWidth, _this2.imageHeight);case 76:
 
 
-                ctx.restore();case 74:i++;_context.next = 9;break;case 77:
+                ctx.restore();case 77:i++;_context.next = 9;break;case 80:
 
 
                 // 保存绘图并导出图片
@@ -600,7 +601,7 @@ var _almostUtils = __webpack_require__(/*! @/almost-utils/almost-utils.js */ 782
                     _this2);
 
                   }, 500);
-                });case 78:case "end":return _context.stop();}}}, _callee);}))();
+                });case 81:case "end":return _context.stop();}}}, _callee);}))();
     },
     // 处理导出的图片
     handlePrizeImg: function handlePrizeImg(res) {var _this3 = this;

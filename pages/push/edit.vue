@@ -147,9 +147,9 @@
 			<view class="contentinfo">
 				<text class="label">联系方式</text>
 				<view class="inputwrap">
-					<text class="label-text">手机号:</text>
+					<text class="label-text">电话:</text>
 <!-- 					<button class="openmobile" plain="true" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" style="display: none;">一键授权</button>
- -->					<input class="label-inputs" placeholder-class="label-input" type="number" v-model="mobile"  />
+ -->					<input class="label-inputs" placeholder-class="label-input" type="number" v-model="mobile"   placeholder="可以填座机和手机"/>
 				</view>
 				<view class="inputwrap">
 					<text class="label-text">微信号:</text>
@@ -424,6 +424,7 @@
 			this.scrollTop = e.scrollTop;
 		},
 		onLoad(option){
+			console.log(option,'xxx')
 			this.type = option.type
 			this.config.title = this.titleType[this.type]
 			if(option.data){
@@ -981,10 +982,12 @@
 					if(this.type == 1){
 						this.Api.publishDynamicsExposure(data).then((result)=>{
 							if(result.code == 1){
+								uni.removeStorageSync('obj1')
 								uni.showToast({
 									title: result.msg,
 									duration: 2000,
 									success: () => {
+										uni.removeStorageSync('selectLabel')
 										uni.removeStorageSync('selectLabel')
 										uni.removeStorageSync('nameLabel')
 										if(result.data.add){
@@ -1021,6 +1024,7 @@
 					}else if(this.type == 2){
 						this.Api.publishDynamicsYishi(data).then((result)=>{
 							if(result.code == 1){
+								uni.removeStorageSync('obj2')
 								uni.showToast({
 									title: result.msg,
 									duration: 2000,
@@ -1063,6 +1067,7 @@
 					}else if(this.type == 3){
 						this.Api.publishDynamicsLiving(data).then((result)=>{
 							if(result.code == 1){
+								uni.removeStorageSync('obj3')
 								uni.showToast({
 									title: result.msg,
 									duration: 2000,
@@ -1103,6 +1108,7 @@
 					}else if(this.type == 4){
 						this.Api.publishDynamicsRecruit(data).then((result)=>{
 							if(result.code == 1){
+								uni.removeStorageSync('obj4')
 								uni.showToast({
 									title: result.msg,
 									duration: 2000,
@@ -1143,6 +1149,7 @@
 					}else if(this.type == 5){
 						this.Api.publishNewthingDynamics(data).then((result) => {
 							if(result.code == 1){
+								uni.removeStorageSync('obj5')
 								uni.showToast({
 									title: result.msg,
 									duration: 2000,
@@ -1189,6 +1196,7 @@
 					}else if(this.type == 6){
 						this.Api.publishHelpDynamics(data).then((result) => {
 							if(result.code == 1){
+								uni.removeStorageSync('obj6')
 								uni.showToast({
 									title: result.msg,
 									duration: 2000,
@@ -1229,6 +1237,7 @@
 					}else if(this.type == 7){
 						this.Api.publishDynamicsSell(data).then((result)=>{
 							if(result.code == 1){
+								uni.removeStorageSync('obj7')
 								uni.showToast({
 									title: result.msg,
 									duration: 2000,
@@ -1270,6 +1279,7 @@
 					}else if(this.type == 8){
 						this.Api.publishGroupbuy(data).then((result)=>{
 							if(result.code == 1){
+								uni.removeStorageSync('obj8')
 								uni.showToast({
 									title: result.msg,
 									duration: 2000,
@@ -1312,6 +1322,7 @@
 					}else if(this.type == 9){
 						this.Api.publishDynamicsDaren(data).then((result) => {
 							if(result.code == 1){
+								uni.removeStorageSync('obj9')
 								if(that.type == 9){
 									uni.removeStorageSync('obj9')
 								}
@@ -1829,10 +1840,14 @@
 					display: flex;
 					flex-direction: row;
 					align-items: center;
+					/deep/ .u-input__input{
+						text-align: center;
+					}
 					/deep/ .u-input{
 						border: 2upx solid #404B69;
 						border-radius: 10upx;
 						width:210upx;
+						text-align: center;
 						margin-left:20upx;
 					}
 					/deep/ .u-input:nth-child(2n){
@@ -1897,6 +1912,7 @@
 							border: 2upx solid #404B69;
 							border-radius: 10upx;
 							// width:180upx;
+							text-align: center;
 							margin-left:20upx;
 						}
 						/deep/ .u-icon{
@@ -1904,6 +1920,9 @@
 						}
 						/deep/ .u-input:nth-child(2n){
 							margin-left:0upx!important;
+						}
+						/deep/ .u-input__input{
+							text-align: center;
 						}
 					}
 					.labelbtn{

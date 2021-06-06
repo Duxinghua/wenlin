@@ -8,6 +8,8 @@
 				<almost-lottery
 					:prize-list="prizeList"
 					:ring-count="5"
+					:font-size="18"
+					:line-height="22"
 					:duration="10"
 					:canvas-width="canvasData.width"
 					:canvas-height="canvasData.height"
@@ -239,15 +241,31 @@ export default {
 				this.statusValue = res.data.status
 				this.rule = res.data.rule
 				this.detail = res.data
+				if(res.data.prize_list.length){
 				res.data.prize_list.map((item)=>{
-					item.prizeImage = item.image
+					// item.prizeImage = item.image
 					item.prizeId = item.prize_id
 					item.name = item.prize_name
 					item.stock = 10000
 					item.weight = 0
 				})
 				this.prizeList = res.data.prize_list
+				}
 				console.log(this.prizeList,'ps')
+				// this.prizeList = [
+				// 	{ prizeId: 1, name: '0.1元现金', stock: 10, weight: 0, prizeImage: that.Config.minUrl + 'committe.jpg' },
+				// 	{
+				// 		prizeId: 2,
+				// 		name: '10元现金',
+				// 		stock: 0,
+				// 		weight: 0,
+				// 		//prizeImage: 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/56f085e0-bcfe-11ea-b244-a9f5e5565f30.png'
+				// 	},
+				// 	{ prizeId: 3, name: '5元话费', stock: 1, weight: 0 },
+				// 	{ prizeId: 4, name: '50元现金', stock: 0, weight: 0 },
+				// 	{ prizeId: 5, name: '1卷抽纸', stock: 3, weight: 0 },
+				// 	{ prizeId: 6, name: '谢谢参与', stock: 100, weight: 0 }
+				// ]
 			}
 			/*
 			return
