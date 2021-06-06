@@ -1536,7 +1536,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           return;
         }
       }
-      if (!this.inputValue) {
+      if (this.inputValue.length < 1) {
         uni.showToast({
           title: '请输入评论内容',
           icon: 'none',

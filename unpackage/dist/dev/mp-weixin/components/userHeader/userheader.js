@@ -212,8 +212,9 @@ var _default =
       }
     },
     goCom: function goCom() {
+      console.log(this.pitem);
       uni.navigateTo({
-        url: '/pages/update/committee?id=' + this.pitem.communitycommittee.committee_id });
+        url: '/pages/update/committee?id=' + this.pitem.committee.committee_id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

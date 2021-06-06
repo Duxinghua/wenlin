@@ -34,13 +34,16 @@
 			</view>
 			<view class="postheader" v-if="pitem.publish_type != 1">
 				<view class="headerimg" @click.stop="goCom(pitem.committee)">
-					<image :src="pitem.publish_type == 2 ? pitem.committee.logo : (pitem.admin.avatar ? pitem.admin.avatar : imgUrl + 'logovi.jpg')" class="avatar"></image>
+					<image :src="pitem.committee.logo ? pitem.committee.logo : imgUrl + 'logovi.jpg'" class="avatar"></image>
+<!-- 					<image :src="pitem.publish_type == 2 ? pitem.committee.logo : (pitem.admin.avatar ? pitem.admin.avatar : imgUrl + 'logovi.jpg')" class="avatar"></image>
+ -->				<!-- <image v-if="pitem.publish_type == 114"  :src="pitem.committee.logo ? pitem.committee.logo : imgUrl + 'logovi.jpg'" class="avatar"></image> -->
 					<image style="display: none;" src="../../static/da.png" class="da"></image>
 				</view>
 				<view class="userinfo" @click.stop="goCom(pitem.committee)">
 					<view class="userwrap">
-						<text class="name">{{ pitem.publish_type == 2 ? pitem.committee.title : (pitem.admin.user_nickname ? pitem.admin.user_nickname : '问邻管理员') }}</text>
-					</view>
+						<text class="name">{{ pitem.committee.title ?  pitem.committee.title : '问邻管理员' }}</text>
+<!-- 						<text v-if="pitem.publish_type == 114" class="name">{{pitem.committee.title ?  pitem.committee.title : '问邻管理员' }}</text>
+ -->					</view>
 					<view class="usertime">
 						{{ pitem.create_time | formatTime }}
 						<text class="ph">{{pitem.post_hits}}人浏览</text>
