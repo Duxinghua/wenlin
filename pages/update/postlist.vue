@@ -16,7 +16,7 @@
 							{{item.tag}}
 					</view>
 				</view> -->
-				<scroll-view   scroll-x class="bg-white nav tagwrap" scroll-with-animation :scroll-left="scrollLeft">
+				<scroll-view  v-if="false"  scroll-x class="bg-white nav tagwrap" scroll-with-animation :scroll-left="scrollLeft">
 					<!-- 分类 -->
 					<view  class="cu-item nav-item" :class="['tagitem', cateIndex == item.id ? 'active' : '']" v-for="(item, index) in catelist" :key="index" @click="navClick(item)" @tap="tabSelect" :data-id="index">{{ item.tag }}</view>
 				</scroll-view>
@@ -363,7 +363,7 @@
 				left:0;
 				top:0;
 				width: 100%;
-				height:180upx;
+				// height:180upx;
 				background: white;
 				opacity: 1;
 				padding-left:24upx;
@@ -521,7 +521,7 @@
 			.searchlist{
 				display: flex;
 				flex-direction: column;
-				margin-top:180upx;
+				margin-top:80upx;
 				/deep/ .nodata{
 					top:400upx;
 				}

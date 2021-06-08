@@ -486,6 +486,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/components/mescroll-uni/mescroll-mixins.js */ 537));
 
 
@@ -497,6 +498,7 @@ var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/component
 
 
 var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
 //
 //
 //
@@ -884,7 +886,9 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });} });}} // this.Api.getCommunityWiki({}).then(result => {
       // 	console.log(result);
       // });
-    });}, watch: {}, methods: { loginHandler: function loginHandler() {var _this2 = this;var data = { mobile: '13920876192', password: '123456' };this.Api.loginByMobile(data).then(function (result) {if (result.code == 1) {uni.setStorageSync('token', result.data.token);uni.setStorageSync('user', result.data.user);uni.setStorageSync('maxJoin', result.data.max_join);uni.setStorageSync('mobile', result.data.user.mobile);uni.setStorageSync('all_community', result.data.all_community);_this2.loginFalse = false;
+    });}, watch: {}, methods: { flushHandler: function flushHandler() {this.upCallback();}, loginHandler: function loginHandler() {var _this2 = this;var data = { mobile: '13920876192', password: '123456' };this.Api.loginByMobile(data).then(function (result) {if (result.code == 1) {uni.setStorageSync('token', result.data.token);uni.setStorageSync('user', result.data.user);uni.setStorageSync('maxJoin', result.data.max_join);uni.setStorageSync('mobile', result.data.user.mobile);
+          uni.setStorageSync('all_community', result.data.all_community);
+          _this2.loginFalse = false;
           uni.switchTab({
             url: '/pages/my/index' });
 

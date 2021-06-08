@@ -22,11 +22,11 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "",
+	"libVersion": "2.11.0",
 	"appid": "wx84b740e715665e3c",
 	"projectname": "lindemoc",
 	"simulatorType": "wechat",

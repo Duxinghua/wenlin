@@ -35,7 +35,7 @@
 				<scroll-view :class="['postwrap',(type == 3) ? 'usedwrap' : '']" scroll-y="true" :style="{height: height+'px'}" class="listwrap" @scrolltoupper="upper" @scrolltolower="lower" >
 <!-- 			 <mescroll-uni  :fixed="true"  top="250" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" >
  -->	
-					<PostItem  v-if="type != 3" :allFlag="allFlag" :type="current" v-for="(item,index) in postList" :pitem="item" :key="index" @moreClick="moreClick" @helpPush="helpPush" @shareClick="shareClick" @toLogin="goDetails"></PostItem>
+					<PostItem  v-if="type != 3" :allFlag="allFlag" :type="current" v-for="(item,index) in postList" :pitem="item" :key="index" @flush="flushHandler" @moreClick="moreClick" @helpPush="helpPush" @shareClick="shareClick" @toLogin="goDetails"></PostItem>
 				
 <!-- 			</mescroll-uni> -->
 					<UsedItem  v-if="type == 3"  v-for="(item, index) in postList" :pitem="item" :key="index" :usedIndex="index"  @toLogin="goDetails" />
@@ -556,6 +556,9 @@ export default {
 		
 	},
 	methods: {
+		flushHandler(){
+			this.upCallback()
+		},
 		upper(){
 			
 		},

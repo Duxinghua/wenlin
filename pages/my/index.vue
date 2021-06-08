@@ -3,7 +3,7 @@
 	<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
 	<view class="content">
 		<view class="header">
-			<view class="avatarwrap">
+			<view class="avatarwrap" @click="targetClick(15)">
 				<image src="../../static/da.png" class="da" v-if="userinfo.daren"></image>
 				<image :src="userinfo.avatar" class="avatar"></image>
 			</view>
@@ -11,8 +11,8 @@
 				<!-- @click="targetClick(15)" -->
 				<view class="useredit"  >
 					<text class="name">{{userinfo.user_nickname}}·{{userinfo.building}}#</text>
-					<button  open-type="getUserInfo" @getuserinfo="getaHandler" :class="['','edit',userinfo.is_sign == 1 ? '':'']">
-					<image src="../../static/edit.png" class="edit"></image>
+					<button   @click="getaHandler" :class="['','editfix']">
+					更新
 					</button>
 				</view>
 				<view class="usersex">
@@ -243,18 +243,30 @@ export default {
 			this.singShow = false
 		},
 		getaHandler(e){
-			var u = e.detail.userInfo
-			var data = {
-				avatarUrl:u.avatarUrl,
-				city:u.city,
-				country:u.country,
-				gender:u.gender,
-				nickName:u.nickName
-			}
-			this.Api.updateUs(data).then((dd)=>{
-				this.targetClick(15)
-			
-			})
+			 wx.getUserProfile({
+			      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+			      success: (res) => {
+			        
+					var u = res.userInfo
+					var data = {
+						avatarUrl:u.avatarUrl,
+						city:u.city,
+						country:u.country,
+						gender:u.gender,
+						nickName:u.nickName
+					}
+					this.Api.updateUs(data).then((dd)=>{
+							this.getMyinfo()
+							uni.showToast({
+								title:'更新成功',
+								icon:'none',
+								duration:1000
+							})
+					
+					})
+			      }
+			 })
+
 		},
 		//签到
 		singleHandler(e){
@@ -683,6 +695,16 @@ export default {
 		}
 		.popupfix{
 			z-index: 50000;
+		}
+		.editfix{
+			color:#333;
+			width:80rpx;
+			height: 40rpx;
+			border-radius: 16rpx;
+			background: #F8F8F8;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 </style>

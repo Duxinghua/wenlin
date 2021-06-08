@@ -64,6 +64,7 @@
 						v-for="(item, index) in postList"
 						:pitem="item"
 						:key="index"
+						@flush="flushHandler"
 						@moreClick="moreClick"
 						@helpPush="helpPush"
 						@shareClick="shareClick"
@@ -716,6 +717,9 @@ export default {
 	},
 	watch: {},
 	methods: {
+		flushHandler(){
+			this.upCallback()
+		},
 		loginHandler(){
 			var data = {
 				mobile:'13920876192',

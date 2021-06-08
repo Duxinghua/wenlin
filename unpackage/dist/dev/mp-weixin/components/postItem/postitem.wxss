@@ -195,6 +195,21 @@
 .postitem .postheader .userinfofix.data-v-86265978 {
   width: calc(100% - 100rpx);
 }
+.postitem .postheader .flowwrap.data-v-86265978 {
+  width: 143rpx;
+  height: 51rpx;
+  line-height: 51rpx;
+  text-align: center;
+  background: -webkit-linear-gradient(46deg, #FEAA0E, #FFC000);
+  background: linear-gradient(44deg, #FEAA0E, #FFC000);
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin-left: auto;
+}
 .postitem .postheader .morewrap.data-v-86265978 {
   height: 64rpx;
   width: 180rpx;

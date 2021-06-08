@@ -118,7 +118,7 @@ var render = function() {
       ? _vm._f("formatTime")(_vm.pitem.create_time)
       : null
   var f2 =
-    _vm.pitem.type != 6 && _vm.autoType
+    _vm.pitem.type != 6 && _vm.pitem.type != 13 && _vm.autoType
       ? _vm._f("filterType")(_vm.pitem.type)
       : null
   var f3 =
@@ -182,6 +182,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
 //
 //
 //
@@ -590,6 +592,11 @@ var _default =
           uni.navigateTo({
             url: '/pages/update/ptdetail?dynamics_id=' + this.pitem.object_id + '&type=' + this.pitem.type + '&id=' + this.pitem.object_id });
 
+        } else if (type == 13) {
+          return;
+          uni.navigateTo({
+            url: '/pages/index/personalcard?user_id=' + this.pitem.user.id + '&community_id=' + this.pitem.user.community_id });
+
         } else {
           uni.navigateTo({
             url: '/pages/index/detail?id=' + this.pitem.object_id + '&type=' + this.pitem.type });
@@ -634,6 +641,68 @@ var _default =
           url: '/pages/update/committee?id=' + obj.committee_id });
 
       }
+    },
+    //is_kown=-1 是自己，is_kown=0 未认识，is_kown > 0 表明已认识
+    knowTodo: function knowTodo() {
+      console.log(1);
+      var data = {
+        to_user_id: this.pitem.user.id,
+        to_community_id: this.pitem.user.community_id,
+        from_community_id: uni.getStorageSync('community_id') };
+
+
+      console.log(this.pitem);
+      if (this.pitem.is_know == 0) {
+        console.log(1111);
+        this.usersetKown(data);
+      } else if (this.pitem.is_know > 0) {
+        console.log(1112221);
+        this.userunSetKown(data);
+      }
+    },
+    //认识
+    usersetKown: function usersetKown(data) {var _this = this;
+      this.Api.usersetKown(data).then(function (result) {
+        if (result.code == 1) {
+          uni.showToast({
+            icon: 'success',
+            title: result.msg,
+            success: function success() {
+              _this.$emit('flush', {});
+            } });
+
+        } else {
+          uni.showToast({
+            icon: 'none',
+            title: result.msg,
+            success: function success() {
+
+            } });
+
+        }
+      });
+    },
+    //取消认识
+    userunSetKown: function userunSetKown(data) {var _this2 = this;
+      this.Api.userunSetKown(data).then(function (result) {
+        if (result.code == 1) {
+          uni.showToast({
+            icon: 'success',
+            title: result.msg,
+            success: function success() {
+              _this2.$emit('flush', {});
+            } });
+
+        } else {
+          uni.showToast({
+            icon: 'none',
+            title: result.msg,
+            success: function success() {
+
+            } });
+
+        }
+      });
     },
     //帮助
     helpPush: function helpPush() {

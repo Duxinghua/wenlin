@@ -125,6 +125,10 @@ const navList = [
 			tag:'议事厅'
 		},
 		{
+			id:13,
+			tag:'邻居'
+		},
+		{
 			id:14,
 			tag:'房产'
 		},
@@ -168,7 +172,7 @@ const listValue = function(index) {
 		},
 		{
 			id:13,
-			tag:'新的用户（邻居）'
+			tag:'邻居'
 		},
 		{
 			id:14,

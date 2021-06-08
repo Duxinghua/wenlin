@@ -30,7 +30,9 @@
 						<text class="juli" v-if="type != 1">{{ pitem.juli }}</text>
 					</view>
 				</view>
-				<view class="morewrap" @click.stop="moreClick(pitem)"><image src="../../static/more.png" class="more"></image></view>
+				<!-- is_know  0 不认识  1 已认识  2 自己 -->
+				<view class="flowwrap" v-if="pitem.type == 13" @click.stop="knowTodo">{{pitem.is_know == 0 ? '认识 TA' : (pitem.is_know == 1 ? '已认识 TA' : '自己')}}</view>
+				<view class="morewrap" v-if="pitem.type != 13" @click.stop="moreClick(pitem)"><image src="../../static/more.png" class="more"></image></view>
 			</view>
 			<view class="postheader" v-if="pitem.publish_type != 1">
 				<view class="headerimg" @click.stop="goCom(pitem.committee)">
@@ -50,9 +52,9 @@
 						<text class="juli" v-if="type != 1">{{ pitem.juli }}</text>
 					</view>
 				</view>
-				<view class="morewrap" @click.stop="moreClick(pitem)"><image src="../../static/more.png" class="more"></image></view>
+				<view class="morewrap"  @click.stop="moreClick(pitem)"><image src="../../static/more.png" class="more"></image></view>
 			</view>
-			<view class="postcontent">
+			<view class="postcontent" v-if="pitem.type != 13">
 			
 				<image v-if="pitem.is_top == 1" src="../../static/ding.png" class="ding"></image>
 				<text v-if="autoType" :class="['postcate', pitem.is_top == 1 ? 'postcateFix' : '']">#{{ pitem.type | filterType }}</text>
@@ -189,7 +191,7 @@
 		<view class="yishi" v-if="pitem.type == 16">
 			<text class="ren">{{pitem.vote_num}}</text>人参加投票
 		</view>
-		<view class="posttool" v-if="pitem.type != 6" :class="[pitem.images.length == 0 ? 'posttoolfix' : '']">
+		<view class="posttool" v-if="pitem.type != 6 && pitem.type != 13" :class="[pitem.images.length == 0 ? 'posttoolfix' : '']">
 			<view class="toolitem"  open-type="share" @click.stop="shareClick">
 				<image class="toolico" src="../../static/forward.png"></image>
 				<text class="tooltext">分享</text>
@@ -407,6 +409,11 @@ export default {
 					uni.navigateTo({
 						url: '/pages/update/ptdetail?dynamics_id=' + this.pitem.object_id + '&type=' + this.pitem.type + '&id=' + this.pitem.object_id
 					});
+				}else if(type == 13){
+					return
+					uni.navigateTo({
+						url: '/pages/index/personalcard?user_id=' + this.pitem.user.id + '&community_id=' + this.pitem.user.community_id
+					});
 				}else{
 					uni.navigateTo({
 						url: '/pages/index/detail?id=' + this.pitem.object_id + '&type=' + this.pitem.type
@@ -451,6 +458,68 @@ export default {
 					url: '/pages/update/committee?id=' + obj.committee_id
 				});
 			}
+		},
+		//is_kown=-1 是自己，is_kown=0 未认识，is_kown > 0 表明已认识
+		knowTodo(){
+			console.log(1)
+			var data = {
+				to_user_id:this.pitem.user.id,
+				to_community_id: this.pitem.user.community_id,
+				from_community_id: uni.getStorageSync('community_id')
+			}
+			
+			console.log(this.pitem)
+			if(this.pitem.is_know == 0){
+				console.log(1111)
+				this.usersetKown(data)
+			}else if(this.pitem.is_know > 0){
+					console.log(1112221)
+				this.userunSetKown(data)
+			}
+		},
+		//认识
+		usersetKown(data){
+			this.Api.usersetKown(data).then((result) => {
+				if(result.code == 1){
+					uni.showToast({
+						icon:'success',
+						title:result.msg,
+						success: () => {
+							this.$emit('flush',{})
+						}
+					})
+				}else{
+					uni.showToast({
+						icon:'none',
+						title:result.msg,
+						success: () => {
+							
+						}
+					})
+				}
+			})
+		},
+		//取消认识
+		userunSetKown(data){
+			this.Api.userunSetKown(data).then((result) => {
+				if(result.code == 1){
+					uni.showToast({
+						icon:'success',
+						title:result.msg,
+						success: () => {
+							this.$emit('flush',{})
+						}
+					})
+				}else{
+					uni.showToast({
+						icon:'none',
+						title:result.msg,
+						success: () => {
+							
+						}
+					})
+				}
+			})
 		},
 		//帮助
 		helpPush() {
@@ -614,6 +683,19 @@ export default {
 		}
 		.userinfofix {
 			width: calc(100% - 100upx);
+		}
+		.flowwrap{
+			width: 143rpx;
+			height: 51rpx;
+			line-height: 51rpx;
+			text-align: center;
+			background: linear-gradient(44deg, #FEAA0E, #FFC000);
+			border-radius: 10rpx;
+			font-size: 26rpx;
+			font-family: PingFang SC;
+			font-weight: 500;
+			color: #FFFFFF;
+			margin-left:auto;
 		}
 		.morewrap {
 			height: 64upx;

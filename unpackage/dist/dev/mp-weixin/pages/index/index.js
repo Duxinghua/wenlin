@@ -359,18 +359,30 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.singShow = false;
     },
     getaHandler: function getaHandler(e) {var _this3 = this;
-      var u = e.detail.userInfo;
-      var data = {
-        avatarUrl: u.avatarUrl,
-        city: u.city,
-        country: u.country,
-        gender: u.gender,
-        nickName: u.nickName };
+      wx.getUserProfile({
+        desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+        success: function success(res) {
 
-      this.Api.updateUs(data).then(function (dd) {
-        _this3.targetClick(15);
+          var u = res.userInfo;
+          var data = {
+            avatarUrl: u.avatarUrl,
+            city: u.city,
+            country: u.country,
+            gender: u.gender,
+            nickName: u.nickName };
 
-      });
+          _this3.Api.updateUs(data).then(function (dd) {
+            _this3.getMyinfo();
+            uni.showToast({
+              title: '更新成功',
+              icon: 'none',
+              duration: 1000 });
+
+
+          });
+        } });
+
+
     },
     //签到
     singleHandler: function singleHandler(e) {var _this4 = this;

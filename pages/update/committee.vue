@@ -40,7 +40,7 @@
 
 			</view>
 			<view class="navlist">
-				<view class="navitem" v-for="(item,index) in navList" :key="index" @click="navClick(item)">
+				<view class="navitem" v-for="(item,index) in navLists" :key="index" @click="navClick(item)">
 					<image :src="item.image" mode=""></image>
 					<text>{{item.value}}</text>
 				</view>

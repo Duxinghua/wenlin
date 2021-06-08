@@ -681,6 +681,9 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
 
 
   methods: {
+    flushHandler: function flushHandler() {
+      this.upCallback();
+    },
     upper: function upper() {
 
     },
