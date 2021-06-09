@@ -358,6 +358,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/components/mescroll-uni/mescroll-mixins.js */ 537));
 
 
@@ -602,7 +607,12 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
 //
 //
 //
-var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure | components/leavewords/leavewords */ "components/leavewords/leavewords").then((function () {return resolve(__webpack_require__(/*! @/components/leavewords/leavewords.vue */ 625));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var PostItem = function PostItem() {__webpack_require__.e(/*! require.ensure | components/postItem/postitem */ "components/postItem/postitem").then((function () {return resolve(__webpack_require__(/*! @/components/postItem/postitem.vue */ 809));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UsedItem = function UsedItem() {__webpack_require__.e(/*! require.ensure | components/usedItem/useditem */ "components/usedItem/useditem").then((function () {return resolve(__webpack_require__(/*! @/components/usedItem/useditem.vue */ 795));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 646));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 618));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 632));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 604));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 554));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 674));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { mixins: [_mescrollMixins.default], data: function data() {return { setcommunityOpen: false, currentText: false, isHome: false, smallNodata: true, flexType: false, downOption: { use: true, // 是否启用下拉刷新; 默认true
+//
+//
+//
+//
+//
+var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure | components/leavewords/leavewords */ "components/leavewords/leavewords").then((function () {return resolve(__webpack_require__(/*! @/components/leavewords/leavewords.vue */ 625));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var PostItem = function PostItem() {__webpack_require__.e(/*! require.ensure | components/postItem/postitem */ "components/postItem/postitem").then((function () {return resolve(__webpack_require__(/*! @/components/postItem/postitem.vue */ 809));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UsedItem = function UsedItem() {__webpack_require__.e(/*! require.ensure | components/usedItem/useditem */ "components/usedItem/useditem").then((function () {return resolve(__webpack_require__(/*! @/components/usedItem/useditem.vue */ 795));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 646));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 618));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 632));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 604));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 554));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 674));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { mixins: [_mescrollMixins.default], data: function data() {return { scroll_refresher_enabled: false, findsh: false, setcommunityOpen: false, currentText: false, isHome: false, smallNodata: true, flexType: false, downOption: { use: true, // 是否启用下拉刷新; 默认true
         auto: false, // 是否在初始化完毕之后自动执行下拉刷新的回调; 默认true
         native: false, // 是否使用系统自带的下拉刷新; 默认false; 仅mescroll-body生效 (值为true时,还需在pages配置enablePullDownRefresh:true;详请参考mescroll-native的案例)
         autoShowLoading: false, // 如果设置auto=true(在初始化完毕之后自动执行下拉刷新的回调),那么是否显示下拉刷新的进度; 默认false
@@ -650,10 +660,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               var pid = uni.getStorageSync('pid');if (pid) {_this.community = uni.getStorageSync('ptitle');_this.communityId = uni.getStorageSync('pcommunity_id');}} else {setTimeout(function () {_this.current = 3;_this.upCallback();}, 3000);}});} else {_this.setcommunity = false;}}if (_this.community_id) {var p = new Promise(function (resolve, reject) {if (!uni.getStorageSync('longitude')) {// resolve();
             uni.getLocation({ success: function success(res) {// latitude: 30.39085
                 // longitude: 114.89495
-                uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权',
-                  icon: 'none',
-                  duration: 2500 });
-
+                uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });
                 setTimeout(function () {
                   _this.upCallback();
                 }, 1000);
@@ -681,6 +688,34 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
 
 
   methods: {
+    refresh: function refresh(e) {var _this2 = this;
+      console.log(e, '===');
+      if (this.findsh) return;
+      this.findsh = true;
+      setTimeout(function () {
+        _this2.findsh = false;
+        _this2.scroll_refresher_enabled = false;
+      }, 250);
+    },
+    pulling: function pulling() {var _this3 = this;
+      setTimeout(function () {
+        _this3.scroll_refresher_enabled = true;
+      }, 500);
+
+      this.getData();
+
+    },
+    getData: function getData() {
+      this.flexNoData = false;
+      this.page = 1;
+      this.totalPage = 0;
+      this.postList = [];
+      this.upCallback();
+
+    },
+    scroll: function scroll(e) {
+      console.log(e, 'xxxx');
+    },
     flushHandler: function flushHandler() {
       this.upCallback();
     },
@@ -699,11 +734,11 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         url: '../update/selectcommunity' });
 
     },
-    nearHandler: function nearHandler() {var _this2 = this;
+    nearHandler: function nearHandler() {var _this4 = this;
       this.currentText = !this.currentText;
       this.currentText ? this.$u.toast('已切换到当前位置的附近小区') : this.$u.toast('已切换到我的小区附近');
       setTimeout(function () {
-        _this2.upCallback();
+        _this4.upCallback();
       }, 300);
 
     },
@@ -762,7 +797,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         url: '/pages/update/secret' });
 
     },
-    upCallback: function upCallback(ismore) {var _this3 = this;
+    upCallback: function upCallback(ismore) {var _this5 = this;
       //联网加载数据
       var params = {
         page: this.page.num,
@@ -783,17 +818,17 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
           if (result.code == 1) {
             var totalPage = result.data.total_pages;
             var curPageLen = result.data.list.length;
-            if (_this3.page.num == 1) _this3.postList = [];
+            if (_this5.page.num == 1) _this5.postList = [];
             if (ismore) {
-              _this3.postList = _this3.postList.concat(result.data.list);
+              _this5.postList = _this5.postList.concat(result.data.list);
             } else {
-              _this3.postList = result.data.list;
+              _this5.postList = result.data.list;
             }
 
-            if (_this3.postList.length) {
-              _this3.flexNoData = false;
+            if (_this5.postList.length) {
+              _this5.flexNoData = false;
             } else {
-              _this3.flexNoData = true;
+              _this5.flexNoData = true;
             }
           }
         });
@@ -802,17 +837,17 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
           if (result.code == 1) {
             var totalPage = result.data.total_pages;
             var curPageLen = result.data.list.length;
-            if (_this3.page.num == 1) _this3.postList = [];
+            if (_this5.page.num == 1) _this5.postList = [];
             if (ismore) {
-              _this3.postList = _this3.postList.concat(result.data.list);
+              _this5.postList = _this5.postList.concat(result.data.list);
             } else {
-              _this3.postList = result.data.list;
+              _this5.postList = result.data.list;
             }
 
-            if (_this3.postList.length) {
-              _this3.flexNoData = false;
+            if (_this5.postList.length) {
+              _this5.flexNoData = false;
             } else {
-              _this3.flexNoData = true;
+              _this5.flexNoData = true;
             }
 
           }
@@ -822,26 +857,23 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
           if (result.code == 1) {
             var totalPage = result.data.total_pages;
             var curPageLen = result.data.list.length;
-            if (_this3.page.num == 1) _this3.postList = [];
+            if (_this5.page.num == 1) _this5.postList = [];
             if (ismore) {
-              _this3.postList = _this3.postList.concat(result.data.list);
+              _this5.postList = _this5.postList.concat(result.data.list);
             } else {
-              _this3.postList = result.data.list;
+              _this5.postList = result.data.list;
             }
 
-            if (_this3.postList.length) {
-              _this3.flexNoData = false;
+            if (_this5.postList.length) {
+              _this5.flexNoData = false;
             } else {
-              _this3.flexNoData = true;
+              _this5.flexNoData = true;
             }
           }
         });
       }
       console.log(this.postList);
       console.log(this.flexNoData);
-    },
-    scroll: function scroll() {
-      console.log('mescroll元素id: ' + this.mescroll.viewId + ' , 滚动内容高度:' + this.mescroll.getScrollHeight() + ', mescroll高度:' + this.mescroll.getClientHeight() + ', 滚动条位置:' + this.mescroll.getScrollTop() + ', 距离底部:' + this.mescroll.getScrollBottom() + ', 是否向上滑:' + this.mescroll.isScrollUp);
     },
     tabSelect: function tabSelect(e) {
       this.TabCur = e.currentTarget.dataset.id;
@@ -884,7 +916,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       });
     },
     //选择小区 [{"community_id":1,"title":"加州橘郡","committee_id":1}]
-    scallCommunity: function scallCommunity(e) {var _this4 = this;
+    scallCommunity: function scallCommunity(e) {var _this6 = this;
       var that = this;
       this.community_id = e.community_id;
       this.community_menu = e.title + ' (' + e.total + ') ';
@@ -899,9 +931,9 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               uni.setStorageSync('community_id', e.community_id);
               uni.setStorageSync('community_menu', e.title + (e.total ? ' (' + e.total + ') ' : ''));
               uni.setStorageSync('committee_id', e.committee_id);
-              _this4.current = 1;
-              _this4.cateIndex = 0;
-              _this4.upCallback();
+              _this6.current = 1;
+              _this6.cateIndex = 0;
+              _this6.upCallback();
               uni.login({
                 success: function success(res) {var
                   errMsg = res.errMsg,code = res.code;
@@ -946,13 +978,13 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       this.upCallback();
     },
     // 手机号授权处理
-    getPhoneNumber: function getPhoneNumber(e) {var _this5 = this;
+    getPhoneNumber: function getPhoneNumber(e) {var _this7 = this;
       console.log(e);var _e$detail =
       e.detail,encryptedData = _e$detail.encryptedData,iv = _e$detail.iv;
 
       this.Api.setUserPhoneBySecret({ encrypted_data: encryptedData, iv: iv }).then(function (result) {
         if (result.code == 1) {
-          _this5.mobile = result.data;
+          _this7.mobile = result.data;
           uni.setStorageSync('mobile', result.data);
         }
       });
@@ -965,7 +997,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
     hides: function hides() {
       this.isShow = false;
     },
-    itemClick: function itemClick(arg) {var _this6 = this;
+    itemClick: function itemClick(arg) {var _this8 = this;
       this.cateIndex = 0;
       this.scrollLeft = 0;
       this.type = 0;
@@ -975,15 +1007,15 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         this.goLogin(function (data) {
           if (!data) {
             var list = [];
-            _this6.Tool.navList.map(function (item) {
+            _this8.Tool.navList.map(function (item) {
               if (item.tag != '便民') {
                 list.push(item);
               }
             });
-            _this6.tagList = [{ id: 0, tag: '全部' }].concat(list);
-            _this6.upCallback();
+            _this8.tagList = [{ id: 0, tag: '全部' }].concat(list);
+            _this8.upCallback();
           } else {
-            _this6.current = 3;
+            _this8.current = 3;
 
           }
         });
@@ -994,10 +1026,10 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       } else if (arg == 1) {
         this.goLogin(function (data) {
           if (!data) {
-            _this6.tagList = [{ id: 0, tag: '全部' }].concat(_this6.Tool.navList);
-            _this6.upCallback();
+            _this8.tagList = [{ id: 0, tag: '全部' }].concat(_this8.Tool.navList);
+            _this8.upCallback();
           } else {
-            _this6.current = 3;
+            _this8.current = 3;
 
           }
         });
@@ -1050,14 +1082,14 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
     communityTitleInput: function communityTitleInput(e) {
       this.communityTitle = e.detail.value;
     },
-    openCommunityHandler: function openCommunityHandler() {var _this7 = this;
+    openCommunityHandler: function openCommunityHandler() {var _this9 = this;
       this.Api.communityOpening({ title: this.communityTitle, address: this.communityAddress, contact_phone: this.mobile }).then(function (result) {
         if (result.code == 1) {
           uni.showToast({
             title: result.msg,
             duration: 2000 });
 
-          _this7.openCommunity = false;
+          _this9.openCommunity = false;
         } else {
           uni.showToast({
             title: result.msg,
@@ -1068,7 +1100,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       });
     },
     //授权处理
-    getUserInfo: function getUserInfo(e) {var _this8 = this;
+    getUserInfo: function getUserInfo(e) {var _this10 = this;
       var p = new Promise(function (resolve, reject) {
         // uni.getLocation({
         // 	success: res => {
@@ -1097,7 +1129,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
                 raw_data: rawData,
                 iv: iv };
 
-              _this8.Api.communityLogin(params).then(function (res) {
+              _this10.Api.communityLogin(params).then(function (res) {
                 if (res.code == 1) {
                   if (res.data.all_community) {
                     res.data.all_community.map(function (item) {
@@ -1107,18 +1139,18 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
                   uni.setStorageSync('token', res.data.token);
                   uni.setStorageSync('user', res.data.user);
                   uni.setStorageSync('all_community', res.data.all_community);
-                  _this8.community_id = res.data.all_community.length ? res.data.all_community[0].community_id : '';
-                  uni.setStorageSync('community_id', _this8.community_id);
-                  _this8.community_menu = res.data.all_community.length ? res.data.all_community[0].title + (res.data.all_community[0].total ? res.data.all_community[0].total : '') : '问邻';
-                  _this8.all_community = res.data.all_community;
-                  _this8.loginFalse = false;
-                  _this8.guestShow = false;
-                  _this8.userinforeg = true;
-                  if (_this8.all_community.length) {
-                    _this8.upCallback();
+                  _this10.community_id = res.data.all_community.length ? res.data.all_community[0].community_id : '';
+                  uni.setStorageSync('community_id', _this10.community_id);
+                  _this10.community_menu = res.data.all_community.length ? res.data.all_community[0].title + (res.data.all_community[0].total ? res.data.all_community[0].total : '') : '问邻';
+                  _this10.all_community = res.data.all_community;
+                  _this10.loginFalse = false;
+                  _this10.guestShow = false;
+                  _this10.userinforeg = true;
+                  if (_this10.all_community.length) {
+                    _this10.upCallback();
                   } else {
                     //如果开通过小区，待审核 
-                    _this8.current = 3;
+                    _this10.current = 3;
                     // this.setcommunity = true
                     uni.navigateTo({
                       url: '../update/setcommunity' });
@@ -1126,8 +1158,8 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
                     console.log('pid');
                     var pid = uni.getStorageSync('pid');
                     if (pid) {
-                      _this8.community = uni.getStorageSync('ptitle');
-                      _this8.communityId = uni.getStorageSync('pcommunity_id');
+                      _this10.community = uni.getStorageSync('ptitle');
+                      _this10.communityId = uni.getStorageSync('pcommunity_id');
                     }
                   }
                 }
@@ -1138,7 +1170,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       });
     },
     //设置小区
-    setcommunityHandler: function setcommunityHandler() {var _this9 = this;
+    setcommunityHandler: function setcommunityHandler() {var _this11 = this;
       if (!this.communityId) {
         uni.showToast({
           title: '请选择小区',
@@ -1187,12 +1219,12 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
             success: function success() {
               uni.setStorageSync('committee_id', result.data.committee_id);
               uni.setStorageSync('community_id', result.data.community_id);
-              uni.setStorageSync('community_menu', _this9.communityTitle);
-              _this9.community_menu = _this9.communityTitle;
-              _this9.current = 1;
-              _this9.upCallback();
-              _this9.setcommunity = false;
-              _this9.guestShowOpen = false;
+              uni.setStorageSync('community_menu', _this11.communityTitle);
+              _this11.community_menu = _this11.communityTitle;
+              _this11.current = 1;
+              _this11.upCallback();
+              _this11.setcommunity = false;
+              _this11.guestShowOpen = false;
               //绑定上下级
               var pid = uni.getStorageSync('pid');
 
@@ -1223,7 +1255,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
     },
 
     //选择小区
-    chooseInput: function chooseInput(e) {var _this10 = this;
+    chooseInput: function chooseInput(e) {var _this12 = this;
       this.community_text = e.detail.value;
       var data = {
         title: this.community_text };
@@ -1237,11 +1269,11 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       }
       this.Api.searchCommunity(data).then(function (result) {
         if (result.code == 1) {
-          _this10.searchCommunityList = result.data;
+          _this12.searchCommunityList = result.data;
         }
       });
     },
-    searchCommunity: function searchCommunity() {var _this11 = this;
+    searchCommunity: function searchCommunity() {var _this13 = this;
       var data = {
         title: this.community_text };
 
@@ -1255,12 +1287,12 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       }
       this.Api.searchCommunity(data).then(function (result) {
         if (result.code == 1) {
-          _this11.searchCommunityList = result.data;
+          _this13.searchCommunityList = result.data;
         }
       });
     },
     //是否通过地图选择
-    getMap: function getMap() {var _this12 = this;
+    getMap: function getMap() {var _this14 = this;
       // var that = this;
       // if (uni.getStorageSync('longitude')) {
       // 	uni.chooseLocation({
@@ -1299,7 +1331,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         resolve();
       });
       p.then(function (data) {
-        var that = _this12;
+        var that = _this14;
         // if (uni.getStorageSync('longitude')) {
         // 	uni.chooseLocation({
         // 		latitude: uni.getStorageSync('latitude'),
@@ -1341,7 +1373,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       this.room = e.detail.value.replace(/[^a-z|0-9]/gi, '');
     },
     // 分类点击
-    cateClick: function cateClick(index) {var _this13 = this;
+    cateClick: function cateClick(index) {var _this15 = this;
       this.postList = [];
       this.cateIndex = index;
       if (index == 0) {
@@ -1351,30 +1383,30 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       }
       this.type = this.tagList[index].id;
       this.$nextTick(function () {
-        if (_this13.type == 3) {
-          _this13.flexType = true;
+        if (_this15.type == 3) {
+          _this15.flexType = true;
         } else {
-          _this13.flexType = false;
+          _this15.flexType = false;
         }
         // this.mescroll.scrollTo( 0, 300)
-        _this13.upCallback();
-        _this13.$forceUpdate();
+        _this15.upCallback();
+        _this15.$forceUpdate();
       });
 
     },
     //收藏处理
-    moreClick: function moreClick(e) {var _this14 = this;
+    moreClick: function moreClick(e) {var _this16 = this;
       this.goLogin(function (res) {
         if (!res) {
-          _this14.findFaultType = e.type;
-          _this14.findFaultCollect = e.user_favorite == 0 ? false : true;
-          _this14.findFaultObject = e;
-          _this14.findFaultValue = true;
+          _this16.findFaultType = e.type;
+          _this16.findFaultCollect = e.user_favorite == 0 ? false : true;
+          _this16.findFaultObject = e;
+          _this16.findFaultValue = true;
         }
       });
     },
     //收藏处理
-    fCollect: function fCollect(e) {var _this15 = this;
+    fCollect: function fCollect(e) {var _this17 = this;
       var data = {
         object_id: this.findFaultObject.id,
         object_type: this.findFaultObject.type,
@@ -1390,8 +1422,8 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               title: result.msg,
               duration: 2000 });
 
-            _this15.findFaultValue = false;
-            _this15.upCallback();
+            _this17.findFaultValue = false;
+            _this17.upCallback();
           } else {
             uni.showToast({
               title: result.msg,
@@ -1406,8 +1438,8 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               title: result.msg,
               duration: 2000 });
 
-            _this15.findFaultValue = false;
-            _this15.upCallback();
+            _this17.findFaultValue = false;
+            _this17.upCallback();
           } else {
             uni.showToast({
               title: result.msg,
@@ -1425,12 +1457,12 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       this.messageShow = true;
 
     },
-    report: function report() {var _this16 = this;
+    report: function report() {var _this18 = this;
       //findFaultObject
       uni.navigateTo({
         url: '/pages/update/report?object_id=' + this.findFaultObject.id + '&object_type=' + this.findFaultObject.type,
         success: function success() {
-          _this16.findFaultValue = false;
+          _this18.findFaultValue = false;
         } });
 
     },
@@ -1438,14 +1470,14 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       this.findFaultValue = false;
     },
     //帮推处理
-    helpPush: function helpPush(e) {var _this17 = this;
+    helpPush: function helpPush(e) {var _this19 = this;
       this.goLogin(function (res) {
         if (!res) {
-          _this17.helpObj = e;
-          _this17.$getMyscore(function (res) {
+          _this19.helpObj = e;
+          _this19.$getMyscore(function (res) {
             if (res.code == 1) {
-              _this17.score = res.data.score;
-              if (_this17.score == 0) {
+              _this19.score = res.data.score;
+              if (_this19.score == 0) {
                 uni.showToast({
                   title: '您的积分不足，请参加积分任务',
                   icon: 'none',
@@ -1458,7 +1490,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
                 }, 2000);
 
               } else {
-                _this17.helpShow = true;
+                _this19.helpShow = true;
               }
             }
           });
@@ -1468,7 +1500,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
     Helpcancel: function Helpcancel() {
       this.helpShow = false;
     },
-    ok: function ok(e) {var _this18 = this;
+    ok: function ok(e) {var _this20 = this;
       var score = this.$refs.Help.inputValue;
       if (!score) {
         uni.showToast({
@@ -1495,16 +1527,16 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
             title: result.msg,
             duration: 2000,
             success: function success() {
-              _this18.add_type = result.data.add == -1 ? '-' : '+';
-              _this18.score_text = result.data.score;
-              _this18.helpShow = false;
-              _this18.$refs.integraltip.show();
+              _this20.add_type = result.data.add == -1 ? '-' : '+';
+              _this20.score_text = result.data.score;
+              _this20.helpShow = false;
+              _this20.$refs.integraltip.show();
               setTimeout(function () {
-                _this18.add_type = '';
-                _this18.score_text = '';
-                _this18.$refs.Help.inputValue = 0;
-                _this18.$refs.integraltip.close();
-                _this18.upCallback();
+                _this20.add_type = '';
+                _this20.score_text = '';
+                _this20.$refs.Help.inputValue = 0;
+                _this20.$refs.integraltip.close();
+                _this20.upCallback();
               }, 2000);
 
             } });
@@ -1527,7 +1559,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
     closeMessage: function closeMessage() {
       this.messageShow = false;
     },
-    submitTodo: function submitTodo(e) {var _this19 = this;
+    submitTodo: function submitTodo(e) {var _this21 = this;
       if (!e) {
         uni.showToast({
           icon: 'none',
@@ -1547,7 +1579,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
             duration: 1000,
             title: result.msg,
             success: function success() {
-              _this19.messageShow = false;
+              _this21.messageShow = false;
             } });
 
 
@@ -1555,12 +1587,12 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       });
     },
     // 分享弹窗
-    shareClick: function shareClick(e) {var _this20 = this;
+    shareClick: function shareClick(e) {var _this22 = this;
       this.goLogin(function (data) {
         if (!data) {
-          _this20.findFaultObject = e;
+          _this22.findFaultObject = e;
           console.log(e, 'e1');
-          _this20.onShareShow = true;
+          _this22.onShareShow = true;
         }
       });
 
@@ -1568,7 +1600,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
     onShowclose: function onShowclose() {
       this.onShareShow = false;
     },
-    onShowtodo: function onShowtodo() {var _this21 = this;
+    onShowtodo: function onShowtodo() {var _this23 = this;
       var pages = getCurrentPages(); //获取加载的页面
 
       var currentPage = pages[pages.length - 1]; //获取当前页面的对象
@@ -1601,27 +1633,27 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       }
       this.Api.getWXACodeUnlimit(data).then(function (result) {
         if (result.code == 1) {
-          _this21.$nextTick(function () {
-            _this21.onShareShow = false;
-            _this21.posterData.posterImgUrl = _this21.findFaultObject.images.length ? _this21.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
-            if (_this21.findFaultObject.publish_type == 3 || _this21.findFaultObject.publish_type == 2) {
-              _this21.posterData.title = _this21.findFaultObject.title;
-            } else if (_this21.findFaultObject.publish_type == 1) {
-              _this21.posterData.title = _this21.findFaultObject.content;
+          _this23.$nextTick(function () {
+            _this23.onShareShow = false;
+            _this23.posterData.posterImgUrl = _this23.findFaultObject.images.length ? _this23.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
+            if (_this23.findFaultObject.publish_type == 3 || _this23.findFaultObject.publish_type == 2) {
+              _this23.posterData.title = _this23.findFaultObject.title;
+            } else if (_this23.findFaultObject.publish_type == 1) {
+              _this23.posterData.title = _this23.findFaultObject.content;
             } else {
-              _this21.posterData.title = _this21.findFaultObject.title;
+              _this23.posterData.title = _this23.findFaultObject.title;
             }
-            if (_this21.posterData.title.length > 35) {
-              _this21.posterData.title = _this21.posterData.title.substr(0, 35) + '...';
+            if (_this23.posterData.title.length > 35) {
+              _this23.posterData.title = _this23.posterData.title.substr(0, 35) + '...';
             }
-            _this21.posterData.avatarUrl = uni.getStorageSync('user').avatar;
-            _this21.posterData.posterCodeUrl = result.data;
-            _this21.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this21.findFaultObject.type) + '信息';
-            _this21.$forceUpdate();
+            _this23.posterData.avatarUrl = uni.getStorageSync('user').avatar;
+            _this23.posterData.posterCodeUrl = result.data;
+            _this23.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this23.findFaultObject.type) + '信息';
+            _this23.$forceUpdate();
             setTimeout(function () {
-              _this21.canvasFlag = false; //显示canvas海报
-              _this21.deliveryFlag = false; //关闭分享弹窗
-              _this21.$refs.hchPoster.posterShow();
+              _this23.canvasFlag = false; //显示canvas海报
+              _this23.deliveryFlag = false; //关闭分享弹窗
+              _this23.$refs.hchPoster.posterShow();
             }, 500);
           });
 
@@ -1658,7 +1690,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         }
       });
     },
-    createCanvasImageEvn: function createCanvasImageEvn() {var _this22 = this;
+    createCanvasImageEvn: function createCanvasImageEvn() {var _this24 = this;
       // 这个是固定写死的小程序码
       Object.assign(this.posterData,
       {
@@ -1672,9 +1704,9 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       });
       this.$forceUpdate(); //强制渲染数据
       setTimeout(function () {
-        _this22.canvasFlag = false; //显示canvas海报
-        _this22.deliveryFlag = false; //关闭分享弹窗
-        _this22.$refs.hchPoster.createCanvasImage(); //调用子组件的方法
+        _this24.canvasFlag = false; //显示canvas海报
+        _this24.deliveryFlag = false; //关闭分享弹窗
+        _this24.$refs.hchPoster.createCanvasImage(); //调用子组件的方法
       }, 500);
       // 这个是固定写死的小程序码 end
       // 以下是根据后端接口动态生成小程序码

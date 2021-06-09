@@ -90,7 +90,7 @@
 						<text class="t1">申请达人</text>
 						<text class="t2">+{{detail.task.join_daren.score}} 积分{{detail.task.join_daren.num != 0 ? '，剩余'+detail.task.join_daren.num+'次': ''}}</text>
 					</view>
-					<navigator  class="jfinfos" url="/pages/push/edit?type=6&source=my" v-if="detail.task.join_daren.num != 0" >
+					<navigator  class="jfinfos" url="/pages/push/edit?type=9&source=my" v-if="detail.task.join_daren.num != 0" >
 						去完成
 					</navigator>
 					<view class="jfinfos1" v-if="detail.task.join_daren.num == 0">

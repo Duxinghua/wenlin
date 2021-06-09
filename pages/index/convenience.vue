@@ -19,7 +19,12 @@
 <!-- 			</view> -->
 			<view :class="['postwrap',(type == 3 && postList.length > 0) ? 'usedwrap' : '']">
 			<!-- <mescroll-uni  :fixed="true"  :top="autoTop" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" > -->
-				<scroll-view scroll-y="true" :style="{height: height+'px'}" class="listwrap" @scrolltoupper="upper" @scrolltolower="lower" >
+				<scroll-view scroll-y="true" :style="{height: height+'px'}" class="listwrap" @scrolltoupper="upper"
+				 @refresherpulling="pulling"
+				 @refresherrefresh="refresh"
+				 :refresher-triggered="scroll_refresher_enabled"
+				 :refresher-enabled="true"
+				 @scrolltolower="lower" >
 					<PostItem :pm="true" :allFlag="allFlag" :type="type" v-for="(item,index) in postList" :pitem="item" :key="index" @moreClick="moreClick" @helpPush="helpPush" @shareClick="shareClick" @toLogin="goDetails"></PostItem>
 				</scroll-view>
 <!-- 			</mescroll-uni> -->
@@ -231,6 +236,8 @@ export default {
 	mixins: [MescrollMixin], 
 	data() {
 		return {
+				scroll_refresher_enabled:false,
+				findsh:false,
 			    isHome:false,
 			    smallNodata:true,
 				flexType:false,
@@ -562,6 +569,32 @@ export default {
 		
 	},
 	methods: {
+		refresh(e){
+			console.log(e,'===')
+			if(this.findsh) return;
+			this.findsh = true
+			setTimeout(()=>{
+				this.findsh = false
+				this.scroll_refresher_enabled = false
+			},250)
+		},
+		pulling(){
+			setTimeout(()=>{
+				this.scroll_refresher_enabled = true
+			},500)
+			this.getData()
+		},
+		getData(){
+			this.flexNoData = false
+			this.page = 1
+			this.totalPage = 0
+			this.postList = []
+			this.upCallback()
+			
+		},
+		scroll(e) {
+			console.log(e,'xxxx')
+		},
 		upper(e){
 			
 		},

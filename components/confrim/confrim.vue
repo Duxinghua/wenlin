@@ -24,7 +24,11 @@ export default {
 	},
 	methods: {
 		del() {
-			this.$emit('del',this.id);
+			if(this.type){
+				this.$emit('del',this.obj);
+			}else{
+				this.$emit('del',this.id);
+			}
 		}
 	}
 };

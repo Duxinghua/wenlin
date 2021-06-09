@@ -13,7 +13,7 @@
 		</cu-custom>
 		<view class="home">
 			<view class="home-top" id="hometop" >
-				<view class="joinlist" v-if="usersList.length">
+				<view class="joinlist" v-if="usersList.length &&　false">
 					<view class="join-user" >
 						<view class="imgwrap" @click.stop="userHandler(item)" v-for="(item, index) in usersList" :key="index" v-if="index < 7">
 							<u-image width="100%" height="100%" :src="item.avatar" border-radius="32rpx"></u-image>
@@ -57,7 +57,15 @@
 			<!-- 			</view> -->
 			<view :class="['postwrap', type == 3 && postList.length > 0 ? 'usedwrap' : '']">
 			<scroll-view scroll-y="true"  v-if="type != 3" :style="{height: height+'px'}" 
-			class="listwrap" @scrolltoupper="upper" @scrolltolower="lower" >
+			class="listwrap" @scrolltoupper="upper" @scrolltolower="lower"
+			upper-threshold="1"
+			lower-threshold="1"
+			@scroll="scroll"
+			@refresherpulling="pulling"
+			@refresherrefresh="refresh"
+			:refresher-triggered="scroll_refresher_enabled"
+			:refresher-enabled="true"
+			 >
 					<PostItem
 						:allFlag="allFlag"
 						:type="current"
@@ -81,7 +89,13 @@
 				</scroll-view>
 
 				<scroll-view scroll-y="true"  v-if="type == 3" :style="{height: height+'px'}"
-				class="listwrap" @scrolltoupper="upper" @scrolltolower="lower" >
+				class="listwrap" @scrolltoupper="upper" @scrolltolower="lower" 
+				@scroll="scroll"
+				@refresherpulling="pulling"
+				@refresherrefresh="refresh"
+				:refresher-triggered="scroll_refresher_enabled"
+				:refresher-enabled="true"
+				>
 					<UsedItem v-for="(item, index) in postList" :pitem="item" :key="index" :usedIndex="index" @toLogin="goDetails" />
 	<!-- 				flexNoData guestFlag -->
 					<view class="guestdata" v-if="flexNoData">
@@ -346,6 +360,9 @@ export default {
 	mixins: [MescrollMixin],
 	data() {
 		return {
+			scroll_refresher_enabled:false,
+			findsh:false,
+			apirequire:true,
 			imgURl:this.Config.minUrl,
 			guestFlag:false,
 			isHome: false,
@@ -493,6 +510,7 @@ export default {
 			return this.usersList.length ? 375 : 300
 		}
 	},
+
 	mounted() {
 		var system = uni.getSystemInfoSync()
 		this.height = system.windowHeight - uni.upx2px(188);
@@ -717,6 +735,46 @@ export default {
 	},
 	watch: {},
 	methods: {
+		throttle(fn,wait){
+		    var timer = null;
+		    return function(){
+		        var context = this;
+		        var args = arguments;
+		        if(!timer){
+		            timer = setTimeout(function(){
+		                fn.apply(context,args);
+		                timer = null;
+		            },wait)
+		        }
+		    }
+		},
+		refresh(e){
+			console.log(e,'===')
+			if(this.findsh) return;
+			console.log(e,'====')
+			this.findsh = true
+			setTimeout(()=>{
+				
+				this.findsh = false
+				this.scroll_refresher_enabled = false
+			},1000)
+		},
+		pulling(){
+			if(!this.scroll_refresher_enabled){
+				this.getData()
+			}
+			setTimeout(()=>{
+				this.scroll_refresher_enabled = true
+			},300)
+	
+
+			//this.throttle(this.getData(),2000)
+			
+		},
+		scroll(e) {
+			console.log(e,'xxxx')
+			
+		},
 		flushHandler(){
 			this.upCallback()
 		},
@@ -782,7 +840,8 @@ export default {
 			this.Api.getNewNeighbor(params).then(result => {
 				if(result.code == 1){
 					this.$nextTick(() => {
-						this.usersList = result.data
+						// this.usersList = result.data
+						this.usersList = []
 						var system = uni.getSystemInfoSync()
 						this.height = this.usersList.length ? system.windowHeight - uni.upx2px(320) :  system.windowHeight - uni.upx2px(240)
 					})
@@ -948,22 +1007,6 @@ export default {
 					})
 
 			}
-		},
-		scroll() {
-			// console.log(
-			// 	'mescroll元素id: ' +
-			// 		this.mescroll.viewId +
-			// 		' , 滚动内容高度:' +
-			// 		this.mescroll.getScrollHeight() +
-			// 		', mescroll高度:' +
-			// 		this.mescroll.getClientHeight() +
-			// 		', 滚动条位置:' +
-			// 		this.mescroll.getScrollTop() +
-			// 		', 距离底部:' +
-			// 		this.mescroll.getScrollBottom() +
-			// 		', 是否向上滑:' +
-			// 		this.mescroll.isScrollUp
-			// );
 		},
 		tabSelect(e) {
 			this.TabCur = e.currentTarget.dataset.id;

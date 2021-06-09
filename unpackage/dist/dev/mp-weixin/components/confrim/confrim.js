@@ -149,7 +149,11 @@ var _default =
   },
   methods: {
     del: function del() {
-      this.$emit('del', this.id);
+      if (this.type) {
+        this.$emit('del', this.obj);
+      } else {
+        this.$emit('del', this.id);
+      }
     } } };exports.default = _default;
 
 /***/ }),

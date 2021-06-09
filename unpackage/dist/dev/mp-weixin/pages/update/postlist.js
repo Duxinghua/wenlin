@@ -351,11 +351,12 @@ __webpack_require__.r(__webpack_exports__);
       console.log(obj);
       this.$refs.confrims.guestShow = true;
       this.$refs.confrims.id = obj.id;
-      this.$refs.confrims.id = obj.type;
+      this.$refs.confrims.type = obj.type;
       this.$refs.confrims.obj = obj;
       this.$refs.confrims.text = '是否删除本贴?';
     },
     condelHandler: function condelHandler(obj) {var _this = this;
+      console.log(obj);
       var pitem = obj;
       var object_id = '';
       var type = pitem.type;

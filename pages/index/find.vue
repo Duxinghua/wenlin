@@ -15,7 +15,7 @@
 				</view> -->
 				<view class="menuwrap">
 					<text :class="[current == 2 ? 'active' : '']" @click="itemClick(2)">附近</text>
-					<text v-if="false" :class="[current == 3 ? 'active' : '']" @click="itemClick(3)">推榜</text>
+					<text :class="[current == 3 ? 'active' : '']" @click="itemClick(3)">推榜</text>
 					<view class="nearbywrap" v-if="current == 2" @click="nearHandler">
 						<image src="../../static/nearby2.png" class="nerico"></image>
 						<view class="nearbytext">
@@ -32,7 +32,12 @@
 			</view>
 <!-- 			</view> -->
 
-				<scroll-view :class="['postwrap',(type == 3) ? 'usedwrap' : '']" scroll-y="true" :style="{height: height+'px'}" class="listwrap" @scrolltoupper="upper" @scrolltolower="lower" >
+				<scroll-view :class="['postwrap',(type == 3) ? 'usedwrap' : '']" scroll-y="true" :style="{height: height+'px'}" class="listwrap" @scrolltoupper="upper"
+				 @refresherpulling="pulling"
+				 @refresherrefresh="refresh"
+				 :refresher-triggered="scroll_refresher_enabled"
+				 :refresher-enabled="true"
+				 @scrolltolower="lower" >
 <!-- 			 <mescroll-uni  :fixed="true"  top="250" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" >
  -->	
 					<PostItem  v-if="type != 3" :allFlag="allFlag" :type="current" v-for="(item,index) in postList" :pitem="item" :key="index" @flush="flushHandler" @moreClick="moreClick" @helpPush="helpPush" @shareClick="shareClick" @toLogin="goDetails"></PostItem>
@@ -248,6 +253,8 @@ export default {
 	mixins: [MescrollMixin], 
 	data() {
 		return {
+				scroll_refresher_enabled:false,
+				findsh:false,
 				setcommunityOpen:false,
 				currentText:false,
 			    isHome:false,
@@ -556,6 +563,34 @@ export default {
 		
 	},
 	methods: {
+		refresh(e){
+			console.log(e,'===')
+			if(this.findsh) return;
+			this.findsh = true
+			setTimeout(()=>{
+				this.findsh = false
+				this.scroll_refresher_enabled = false
+			},250)
+		},
+		pulling(){
+			setTimeout(()=>{
+				this.scroll_refresher_enabled = true
+			},500)
+
+			this.getData()
+			
+		},
+		getData(){
+			this.flexNoData = false
+			this.page = 1
+			this.totalPage = 0
+			this.postList = []
+			this.upCallback()
+			
+		},
+		scroll(e) {
+			console.log(e,'xxxx')
+		},
 		flushHandler(){
 			this.upCallback()
 		},
@@ -714,9 +749,6 @@ export default {
 			}
 			console.log(this.postList)
 			console.log(this.flexNoData)
-		},
-		scroll(){
-			console.log('mescroll元素id: '+this.mescroll.viewId+' , 滚动内容高度:'+this.mescroll.getScrollHeight() + ', mescroll高度:'+this.mescroll.getClientHeight() + ', 滚动条位置:'+this.mescroll.getScrollTop() + ', 距离底部:'+this.mescroll.getScrollBottom() + ', 是否向上滑:'+this.mescroll.isScrollUp)
 		},
 		tabSelect(e) {
 				this.TabCur = e.currentTarget.dataset.id;

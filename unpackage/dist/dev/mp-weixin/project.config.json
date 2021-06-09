@@ -26,7 +26,7 @@
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.0",
+	"libVersion": "",
 	"appid": "wx84b740e715665e3c",
 	"projectname": "lindemoc",
 	"simulatorType": "wechat",

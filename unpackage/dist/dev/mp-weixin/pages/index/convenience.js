@@ -340,6 +340,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/components/mescroll-uni/mescroll-mixins.js */ 537));
 
 
@@ -351,11 +356,13 @@ var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/component
 
 
 
-var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 540));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure | components/leavewords/leavewords */ "components/leavewords/leavewords").then((function () {return resolve(__webpack_require__(/*! @/components/leavewords/leavewords.vue */ 625));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var PostItem = function PostItem() {__webpack_require__.e(/*! require.ensure | components/postItem/postitem */ "components/postItem/postitem").then((function () {return resolve(__webpack_require__(/*! @/components/postItem/postitem.vue */ 809));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UsedItem = function UsedItem() {__webpack_require__.e(/*! require.ensure | components/usedItem/useditem */ "components/usedItem/useditem").then((function () {return resolve(__webpack_require__(/*! @/components/usedItem/useditem.vue */ 795));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 646));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 618));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 632));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 604));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 554));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 674));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14));var _methods;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 540));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure | components/leavewords/leavewords */ "components/leavewords/leavewords").then((function () {return resolve(__webpack_require__(/*! @/components/leavewords/leavewords.vue */ 625));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var PostItem = function PostItem() {__webpack_require__.e(/*! require.ensure | components/postItem/postitem */ "components/postItem/postitem").then((function () {return resolve(__webpack_require__(/*! @/components/postItem/postitem.vue */ 809));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UsedItem = function UsedItem() {__webpack_require__.e(/*! require.ensure | components/usedItem/useditem */ "components/usedItem/useditem").then((function () {return resolve(__webpack_require__(/*! @/components/usedItem/useditem.vue */ 795));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 646));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 618));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 632));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 604));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 554));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 674));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
   mixins: [_mescrollMixins.default],
   data: function data() {
     return {
+      scroll_refresher_enabled: false,
+      findsh: false,
       isHome: false,
       smallNodata: true,
       flexType: false,
@@ -686,7 +693,33 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
   watch: {},
 
 
-  methods: {
+  methods: (_methods = {
+    refresh: function refresh(e) {var _this2 = this;
+      console.log(e, '===');
+      if (this.findsh) return;
+      this.findsh = true;
+      setTimeout(function () {
+        _this2.findsh = false;
+        _this2.scroll_refresher_enabled = false;
+      }, 250);
+    },
+    pulling: function pulling() {var _this3 = this;
+      setTimeout(function () {
+        _this3.scroll_refresher_enabled = true;
+      }, 500);
+      this.getData();
+    },
+    getData: function getData() {
+      this.flexNoData = false;
+      this.page = 1;
+      this.totalPage = 0;
+      this.postList = [];
+      this.upCallback();
+
+    },
+    scroll: function scroll(e) {
+      console.log(e, 'xxxx');
+    },
     upper: function upper(e) {
 
     },
@@ -702,12 +735,12 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
         url: '../update/selectcommunity' });
 
     },
-    getCommitList: function getCommitList() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _this2.Api.myCommitteeList({ type: 0 }));case 2:result = _context.sent;
+    getCommitList: function getCommitList() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this4.Api.myCommitteeList({ type: 0 }));case 2:result = _context.sent;
                 if (result.code == 1) {
-                  _this2.committeeList = result.data;
-                  console.log(_this2.committeeList, 'committeeList');
-                  _this2.$forceUpdate();
+                  _this4.committeeList = result.data;
+                  console.log(_this4.committeeList, 'committeeList');
+                  _this4.$forceUpdate();
                 }case 4:case "end":return _context.stop();}}}, _callee);}))();
     },
     guestLoginTodo: function guestLoginTodo() {
@@ -765,7 +798,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
         url: '/pages/update/secret' });
 
     },
-    upCallback: function upCallback(ismore) {var _this3 = this;
+    upCallback: function upCallback(ismore) {var _this5 = this;
       //联网加载数据
       var params = {
         page: this.page,
@@ -779,36 +812,36 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
       if (this.current == 1) {
         this.Api.getCommunityWiki(params).then(function (result) {
           if (result.code == 1) {
-            _this3.totalPage = result.data.total_page;
+            _this5.totalPage = result.data.total_page;
             result.data.list.map(function (item) {
               item.type = 7;
             });
             if (ismore) {
-              _this3.postList = _this3.postList.concat(result.data.list);
+              _this5.postList = _this5.postList.concat(result.data.list);
             } else {
-              _this3.postList = result.data.list;
+              _this5.postList = result.data.list;
             }
 
-            if (_this3.postList.length) {
-              _this3.flexNoData = true;
+            if (_this5.postList.length) {
+              _this5.flexNoData = true;
             } else {
-              _this3.flexNoData = false;
+              _this5.flexNoData = false;
             }
           }
         });
       } else if (this.current == 2) {
         this.Api.nearByCommunityId(params).then(function (result) {
           if (result.code == 1) {
-            _this3.totalPage = result.data.total_page;
+            _this5.totalPage = result.data.total_page;
             if (ismore) {
-              _this3.postList = _this3.postList.concat(result.data.list);
+              _this5.postList = _this5.postList.concat(result.data.list);
             } else {
-              _this3.postList = result.data.list;
+              _this5.postList = result.data.list;
             }
-            if (_this3.postList.length) {
-              _this3.flexNoData = true;
+            if (_this5.postList.length) {
+              _this5.flexNoData = true;
             } else {
-              _this3.flexNoData = false;
+              _this5.flexNoData = false;
             }
 
           }
@@ -816,859 +849,859 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
       } else if (this.current == 3) {
         this.Api.helpDynamicsByCommunityId(params).then(function (result) {
           if (result.code == 1) {
-            _this3.totalPage = result.data.total_page;
+            _this5.totalPage = result.data.total_page;
             if (ismore) {
-              _this3.postList = _this3.postList.concat(result.data.list);
+              _this5.postList = _this5.postList.concat(result.data.list);
             } else {
-              _this3.postList = result.data.list;
+              _this5.postList = result.data.list;
             }
-            if (_this3.postList.length) {
-              _this3.flexNoData = true;
+            if (_this5.postList.length) {
+              _this5.flexNoData = true;
             } else {
-              _this3.flexNoData = false;
+              _this5.flexNoData = false;
             }
           }
         });
       }
-    },
-    scroll: function scroll() {
-      console.log('mescroll元素id: ' + this.mescroll.viewId + ' , 滚动内容高度:' + this.mescroll.getScrollHeight() + ', mescroll高度:' + this.mescroll.getClientHeight() + ', 滚动条位置:' + this.mescroll.getScrollTop() + ', 距离底部:' + this.mescroll.getScrollBottom() + ', 是否向上滑:' + this.mescroll.isScrollUp);
-    },
-    tabSelect: function tabSelect(e) {
-      this.TabCur = e.currentTarget.dataset.id;
-      this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60;
-    },
-    //开通小区
-    openCommunityTodo: function openCommunityTodo() {
-      this.chooseCommunity = false;
-      this.setcommunity = false;
-      this.openCommunity = true;
+    } }, _defineProperty(_methods, "scroll", function scroll()
+  {
+    console.log('mescroll元素id: ' + this.mescroll.viewId + ' , 滚动内容高度:' + this.mescroll.getScrollHeight() + ', mescroll高度:' + this.mescroll.getClientHeight() + ', 滚动条位置:' + this.mescroll.getScrollTop() + ', 距离底部:' + this.mescroll.getScrollBottom() + ', 是否向上滑:' + this.mescroll.isScrollUp);
+  }), _defineProperty(_methods, "tabSelect", function tabSelect(
+  e) {
+    this.TabCur = e.currentTarget.dataset.id;
+    this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60;
+  }), _defineProperty(_methods, "openCommunityTodo", function openCommunityTodo()
 
-    },
-    //选择业主事件
-    openPicker: function openPicker(e) {
-      this.pickerId = true;
-    },
-    closePicker: function closePicker(e) {
-      this.pickerId = false;
-    },
-    //业主选择
-    pickerChange: function pickerChange(e) {
-      var target = e.detail.value[0];
-      this.pickerValue = target;
-    },
-    pickerClick: function pickerClick(e) {
-      this.setcommunityType = this.picker[this.pickerValue].value;
-      this.setcommunityValue = this.picker[this.pickerValue].label;
-      this.pickerId = false;
-    },
-    openCommunityClose: function openCommunityClose() {
-      this.openCommunity = false;
-    },
-    setcommunityClose: function setcommunityClose() {
-      this.setcommunity = false;
-    },
-    //搜索附近小区
-    searchNearCommunity: function searchNearCommunity(data) {
-      this.ApigetNearCommunity(data).then(function (result) {
-        console.log(result);
-      });
-    },
-    //选择小区 [{"community_id":1,"title":"加州橘郡","committee_id":1}]
-    scallCommunity: function scallCommunity(e) {var _this4 = this;
-      this.community_id = e.community_id;
-      this.community_menu = e.title + ' (' + e.total + ') ';
-      this.committee_id = e.committee_id;
-      this.Api.setDefaultCommunity({ community_id: e.community_id }).then(function (result) {
-        if (result.code == 1) {
-          uni.showToast({
-            icon: 'success',
-            title: result.msg,
-            duration: 2000,
-            success: function success() {
-              uni.setStorageSync('community_id', e.community_id);
-              uni.setStorageSync('community_menu', e.title + (e.total ? ' (' + e.total + ') ' : ''));
-              uni.setStorageSync('committee_id', e.committee_id);
-              _this4.current = 1;
-              _this4.cateIndex = 0;
-              _this4.page = 1;
-              _this4.postList = [];
-              _this4.upCallback();
-            } });
+  {
+    this.chooseCommunity = false;
+    this.setcommunity = false;
+    this.openCommunity = true;
+
+  }), _defineProperty(_methods, "openPicker", function openPicker(
+
+  e) {
+    this.pickerId = true;
+  }), _defineProperty(_methods, "closePicker", function closePicker(
+  e) {
+    this.pickerId = false;
+  }), _defineProperty(_methods, "pickerChange", function pickerChange(
+
+  e) {
+    var target = e.detail.value[0];
+    this.pickerValue = target;
+  }), _defineProperty(_methods, "pickerClick", function pickerClick(
+  e) {
+    this.setcommunityType = this.picker[this.pickerValue].value;
+    this.setcommunityValue = this.picker[this.pickerValue].label;
+    this.pickerId = false;
+  }), _defineProperty(_methods, "openCommunityClose", function openCommunityClose()
+  {
+    this.openCommunity = false;
+  }), _defineProperty(_methods, "setcommunityClose", function setcommunityClose()
+  {
+    this.setcommunity = false;
+  }), _defineProperty(_methods, "searchNearCommunity", function searchNearCommunity(
+
+  data) {
+    this.ApigetNearCommunity(data).then(function (result) {
+      console.log(result);
+    });
+  }), _defineProperty(_methods, "scallCommunity", function scallCommunity(
+
+  e) {var _this6 = this;
+    this.community_id = e.community_id;
+    this.community_menu = e.title + ' (' + e.total + ') ';
+    this.committee_id = e.committee_id;
+    this.Api.setDefaultCommunity({ community_id: e.community_id }).then(function (result) {
+      if (result.code == 1) {
+        uni.showToast({
+          icon: 'success',
+          title: result.msg,
+          duration: 2000,
+          success: function success() {
+            uni.setStorageSync('community_id', e.community_id);
+            uni.setStorageSync('community_menu', e.title + (e.total ? ' (' + e.total + ') ' : ''));
+            uni.setStorageSync('committee_id', e.committee_id);
+            _this6.current = 1;
+            _this6.cateIndex = 0;
+            _this6.page = 1;
+            _this6.postList = [];
+            _this6.upCallback();
+          } });
+
+      }
+    });
+
+  }), _defineProperty(_methods, "selectCommunity", function selectCommunity(
+  obj) {
+    this.communityId = obj.community_id;
+    this.communityTitle = obj.title;
+    this.community = obj.title;
+    this.chooseCommunity = false;
+  }), _defineProperty(_methods, "closeCommunity", function closeCommunity()
+  {
+    this.chooseCommunity = false;
+  }), _defineProperty(_methods, "guestClick", function guestClick()
+
+  {
+    this.loginFalse = false;
+    //this.current = 3;
+    this.guestShowOpen = true;
+    this.page = 1;
+    this.postList = [];
+    this.upCallback();
+  }), _defineProperty(_methods, "getPhoneNumber", function getPhoneNumber(
+
+  e) {var _this7 = this;
+    console.log(e);var _e$detail =
+    e.detail,encryptedData = _e$detail.encryptedData,iv = _e$detail.iv;
+
+    this.Api.setUserPhoneBySecret({ encrypted_data: encryptedData, iv: iv }).then(function (result) {
+      if (result.code == 1) {
+        _this7.mobile = result.data;
+        uni.setStorageSync('mobile', result.data);
+      }
+    });
+  }), _defineProperty(_methods, "shows", function shows()
+  {
+    if (this.all_community.length > 1) {
+      this.isShow = !this.isShow;
+    }
+  }), _defineProperty(_methods, "hides", function hides()
+  {
+    this.isShow = false;
+  }), _defineProperty(_methods, "itemClick", function itemClick(
+  arg) {var _this8 = this;
+    this.cateIndex = 0;
+    this.scrollLeft = 0;
+    this.type = 0;
+    this.postList = [];
+    this.current = arg;
+    if (arg == 2) {
+      this.goLogin(function (data) {
+        if (!data) {
+          _this8.tagList = _this8.tagList2;
+          _this8.page = 1;
+          _this8.postList = [];
+          _this8.upCallback();
+        } else {
+          // this.current = 3;
 
         }
       });
 
-    },
-    selectCommunity: function selectCommunity(obj) {
-      this.communityId = obj.community_id;
-      this.communityTitle = obj.title;
-      this.community = obj.title;
-      this.chooseCommunity = false;
-    },
-    closeCommunity: function closeCommunity() {
-      this.chooseCommunity = false;
-    },
-    //游客访问
-    guestClick: function guestClick() {
-      this.loginFalse = false;
-      //this.current = 3;
-      this.guestShowOpen = true;
+    } else if (arg == 3) {
+      this.tagList = this.tagList1;
       this.page = 1;
       this.postList = [];
       this.upCallback();
-    },
-    // 手机号授权处理
-    getPhoneNumber: function getPhoneNumber(e) {var _this5 = this;
-      console.log(e);var _e$detail =
-      e.detail,encryptedData = _e$detail.encryptedData,iv = _e$detail.iv;
-
-      this.Api.setUserPhoneBySecret({ encrypted_data: encryptedData, iv: iv }).then(function (result) {
-        if (result.code == 1) {
-          _this5.mobile = result.data;
-          uni.setStorageSync('mobile', result.data);
-        }
-      });
-    },
-    shows: function shows() {
-      if (this.all_community.length > 1) {
-        this.isShow = !this.isShow;
-      }
-    },
-    hides: function hides() {
-      this.isShow = false;
-    },
-    itemClick: function itemClick(arg) {var _this6 = this;
-      this.cateIndex = 0;
-      this.scrollLeft = 0;
-      this.type = 0;
-      this.postList = [];
-      this.current = arg;
-      if (arg == 2) {
-        this.goLogin(function (data) {
-          if (!data) {
-            _this6.tagList = _this6.tagList2;
-            _this6.page = 1;
-            _this6.postList = [];
-            _this6.upCallback();
-          } else {
-            // this.current = 3;
-
-          }
-        });
-
-      } else if (arg == 3) {
-        this.tagList = this.tagList1;
-        this.page = 1;
-        this.postList = [];
-        this.upCallback();
-      } else if (arg == 1) {
-        this.goLogin(function (data) {
-          if (!data) {
-            _this6.tagList = _this6.tagList1;
-            _this6.page = 1;
-            _this6.postList = [];
-            _this6.upCallback();
-          } else {
-            //  this.current = 3;
-
-          }
-        });
-      }
-
-    },
-    //开通小区获取地址
-    getAddress: function getAddress() {
-      var p = new Promise(function (resolve, reject) {
-        if (!uni.getStorageSync('longitude')) {
-          resolve();
-          // uni.getLocation({
-          // 	success: res => {
-          // 		// latitude: 30.39085
-          // 		// longitude: 114.89495
-          // 		uni.setStorageSync('latitude', res.latitude);
-          // 		uni.setStorageSync('longitude', res.longitude);
-          //      resolve();
-          // 	},
-          // 	fail: err => {
-          // 		console.log(err);
-          // 	}
-          // });
-
-        }
-        resolve();
-      });
-      p.then(function (data) {
-        // var that = this;
-        // if (uni.getStorageSync('longitude')) {
-        // 	uni.chooseLocation({
-        // 		latitude: uni.getStorageSync('latitude'),
-        // 		longitude: uni.getStorageSync('longitude'),
-        // 		success: res => {
-        // 			this.communityAddress = res.address
-        // 		}
-        // 	});
-        // } else {
-        // 	uni.showToast({
-        // 		title: '您未开通地图授权，请输入地址',
-        // 		icon:'none',
-        // 		duration: 2000
-        // 	});
-        // }
-      });
-    },
-    communityAddressInput: function communityAddressInput(e) {
-      this.communityAddress = e.detail.value;
-    },
-    communityTitleInput: function communityTitleInput(e) {
-      this.communityTitle = e.detail.value;
-    },
-    openCommunityHandler: function openCommunityHandler() {var _this7 = this;
-      this.Api.communityOpening({ title: this.communityTitle, address: this.communityAddress, contact_phone: this.mobile }).then(function (result) {
-        if (result.code == 1) {
-          uni.showToast({
-            title: result.msg,
-            duration: 2000 });
-
-          _this7.openCommunity = false;
+    } else if (arg == 1) {
+      this.goLogin(function (data) {
+        if (!data) {
+          _this8.tagList = _this8.tagList1;
+          _this8.page = 1;
+          _this8.postList = [];
+          _this8.upCallback();
         } else {
-          uni.showToast({
-            title: result.msg,
-            icon: 'none',
-            duration: 2000 });
+          //  this.current = 3;
 
         }
       });
-    },
-    //授权处理
-    getUserInfo: function getUserInfo(e) {var _this8 = this;
-      var p = new Promise(function (resolve, reject) {
+    }
+
+  }), _defineProperty(_methods, "getAddress", function getAddress()
+
+  {
+    var p = new Promise(function (resolve, reject) {
+      if (!uni.getStorageSync('longitude')) {
+        resolve();
         // uni.getLocation({
         // 	success: res => {
         // 		// latitude: 30.39085
         // 		// longitude: 114.89495
         // 		uni.setStorageSync('latitude', res.latitude);
         // 		uni.setStorageSync('longitude', res.longitude);
+        //      resolve();
         // 	},
         // 	fail: err => {
         // 		console.log(err);
         // 	}
         // });
-        resolve();
-      });
-      p.then(function (data) {
-        //登录授权
-        var _e$detail2 = e.detail,encryptedData = _e$detail2.encryptedData,iv = _e$detail2.iv,rawData = _e$detail2.rawData,signature = _e$detail2.signature;
-        uni.login({
-          success: function success(result) {var
-            errMsg = result.errMsg,code = result.code;
-            if (errMsg == 'login:ok') {
-              var params = {
-                code: code,
-                encrypted_data: encryptedData,
-                signature: signature,
-                raw_data: rawData,
-                iv: iv };
 
-              _this8.Api.communityLogin(params).then(function (res) {
-                if (res.code == 1) {
-                  uni.setStorageSync('token', res.data.token);
-                  uni.setStorageSync('user', res.data.user);
-                  uni.setStorageSync('all_community', res.data.all_community);
-                  _this8.community_id = res.data.all_community.length ? res.data.all_community[0].community_id : '';
-                  uni.setStorageSync('community_id', _this8.community_id);
-                  _this8.community_menu = res.data.all_community.length ? res.data.all_community[0].title + (res.data.all_community[0].total ? res.data.all_community[0].total : '') : '问邻';
-                  _this8.all_community = res.data.all_community;
-                  _this8.loginFalse = false;
-                  _this8.guestShow = false;
-                  _this8.userinforeg = true;
-                  if (_this8.all_community.length) {
-                    _this8.page = 1;
-                    _this8.postList = [];
-                    _this8.upCallback();
-                  } else {
-                    //如果开通过小区，待审核 
-                    // this.current = 3
-                    // this.setcommunity = true
-                    if (_this8.all_community.legnth == 0) {
-                      uni.navigateTo({
-                        url: '../update/selectcommunity' });
-
-                    }
-                    console.log('pid');
-                    var pid = uni.getStorageSync('pid');
-                    if (pid) {
-                      _this8.community = uni.getStorageSync('ptitle');
-                      _this8.communityId = uni.getStorageSync('pcommunity_id');
-                    }
-                  }
-                }
-              });
-            }
-          } });
-
-      });
-    },
-    //设置小区
-    setcommunityHandler: function setcommunityHandler() {var _this9 = this;
-      if (!this.communityId) {
-        uni.showToast({
-          title: '请选择小区',
-          icon: 'none',
-          duration: 2000 });
-
-        return;
       }
-      if (!this.building) {
-        uni.showToast({
-          title: '请输入楼栋号',
-          icon: 'none',
-          duration: 2000 });
-
-        return;
-      }
-      if (!this.unit) {
-        uni.showToast({
-          title: '请输入单元号',
-          icon: 'none',
-          duration: 2000 });
-
-        return;
-      }
-      if (!this.room) {
-        uni.showToast({
-          title: '请输入门牌号',
-          icon: 'none',
-          duration: 2000 });
-
-        return;
-      }
-      var data = {
-        building: this.building,
-        unit: this.unit,
-        community_id: this.communityId,
-        room: this.room,
-        type: this.setcommunityType };
-
-      var that = this;
-      this.Api.setUserCommunityInfo(data).then(function (result) {
-        if (result.code == 1) {
-          uni.showToast({
-            title: result.msg,
-            duration: 2000,
-            success: function success() {
-              uni.setStorageSync('committee_id', result.data.committee_id);
-              uni.setStorageSync('community_id', result.data.community_id);
-              uni.setStorageSync('community_menu', _this9.communityTitle);
-              _this9.community_menu = _this9.communityTitle;
-              _this9.current = 1;
-              _this9.page = 1;
-              _this9.postList = [];
-              _this9.upCallback();
-              _this9.setcommunity = false;
-              _this9.guestShowOpen = false;
-              //绑定上下级
-              var pid = uni.getStorageSync('pid');
-
-              if (pid) {
-                var pdata = {
-                  from_user_id: pid };
-
-                that.Api.inviteNeighbor(pdata).then(function (result) {
-
-                  uni.reLaunch({
-                    url: '/pages/index/index' });
-
-
-                });
-              } else {
-
-                uni.reLaunch({
-                  url: '/pages/index/index' });
-
-
-              }
-
-            } });
-
-
-        }
-      });
-    },
-
-    //选择小区
-    chooseInput: function chooseInput(e) {var _this10 = this;
-      this.community_text = e.detail.value;
-      var data = {
-        title: this.community_text };
-
-      if (!isNaN(this.community_text)) {
-        this.community_text = 0;
-        return;
-      }
-      if (this.community_text.length == 0) {
-        return;
-      }
-      this.Api.searchCommunity(data).then(function (result) {
-        if (result.code == 1) {
-          _this10.searchCommunityList = result.data;
-        }
-      });
-    },
-    searchCommunity: function searchCommunity() {var _this11 = this;
-      var data = {
-        title: this.community_text };
-
-      if (!this.community_text) {
-        uni.showToast({
-          title: '请输入要搜索的小区',
-          icon: 'none',
-          duration: 2000 });
-
-        return;
-      }
-      this.Api.searchCommunity(data).then(function (result) {
-        if (result.code == 1) {
-          _this11.searchCommunityList = result.data;
-        }
-      });
-    },
-    //是否通过地图选择
-    getMap: function getMap() {var _this12 = this;
+      resolve();
+    });
+    p.then(function (data) {
       // var that = this;
       // if (uni.getStorageSync('longitude')) {
       // 	uni.chooseLocation({
       // 		latitude: uni.getStorageSync('latitude'),
       // 		longitude: uni.getStorageSync('longitude'),
       // 		success: res => {
-      // 			console.log(res);
-      // 			this.community = res.name;
+      // 			this.communityAddress = res.address
       // 		}
       // 	});
       // } else {
+      // 	uni.showToast({
+      // 		title: '您未开通地图授权，请输入地址',
+      // 		icon:'none',
+      // 		duration: 2000
+      // 	});
       // }
-      var that = this;
-      var p = new Promise(function (resolve, reject) {
-        if (!uni.getStorageSync('longitude')) {
-          uni.getLocation({
-            success: function success(res) {
-              // latitude: 30.39085
-              // longitude: 114.89495
-              uni.setStorageSync('latitude', res.latitude);
-              uni.setStorageSync('longitude', res.longitude);
-
-            },
-            fail: function fail(err) {
-              uni.showToast({
-                title: '您未开通地图授权，请打开授权',
-                icon: 'none',
-                duration: 2000 });
-
-            } });
-
-          resolve();
-
-        }
-
-        resolve();
-      });
-      p.then(function (data) {
-        var that = _this12;
-        // if (uni.getStorageSync('longitude')) {
-        // 	uni.chooseLocation({
-        // 		latitude: uni.getStorageSync('latitude'),
-        // 		longitude: uni.getStorageSync('longitude'),
-        // 		success: res => {
-        // 			this.communityAddress = res.address
-        // 		}
-        // 	});
-        // } else {
-        // 	uni.showToast({
-        // 		title: '您未开通地图授权，请输入地址',
-        // 		duration: 2000
-        // 	});
-        // }
-        that.Api.getNearCommunity({ latitude: uni.getStorageSync('latitude'), longitude: uni.getStorageSync('longitude') }).then(function (result) {
-          if (result.code == 1) {
-            that.searchCommunityList = result.data;
-            that.community_text = '';
-            that.chooseCommunity = true;
-          }
-        });
-
-      });
-
-
-    },
-    //小区处理
-    communityInput: function communityInput(e) {
-      this.community = e.detail.value;
-    },
-    //楼栋处理 // replace(/[^\w\.\/]/ig,''
-    buildingInput: function buildingInput(e) {
-      this.building = e.detail.value.replace(/[^a-z|0-9]/gi, '');
-    },
-    unitInput: function unitInput(e) {
-      this.unit = e.detail.value.replace(/[^a-z|0-9]/gi, '');
-    },
-    roomInput: function roomInput(e) {
-      this.room = e.detail.value.replace(/[^a-z|0-9]/gi, '');
-    },
-    // 分类点击
-    cateClick: function cateClick(index) {
-      this.cateIndex = index;
-      if (index == 0) {
-        this.allFlag = true;
-      } else {
-        this.allFlag = false;
-      }
-      var obj = this.committeeList[index];
-      uni.navigateTo({
-        url: '../update/committee?id=' + obj.committee_id });
-
-    },
-    //收藏处理
-    moreClick: function moreClick(e) {var _this13 = this;
-      this.goLogin(function (res) {
-        if (!res) {
-          _this13.findFaultType = e.type;
-          _this13.findFaultCollect = e.user_favorite == 0 ? false : true;
-          _this13.findFaultObject = e;
-          _this13.findFaultValue = true;
-        }
-      });
-    },
-    //收藏处理
-    fCollect: function fCollect(e) {var _this14 = this;
-      var data = {
-        dynamics_id: this.findFaultObject.id,
-        object_type: this.findFaultObject.type,
-        community_id: uni.getStorageSync('community_id') };
-
-      if (e.type == 5 || e.type == 7) {
-        data.dynamics_id = this.findFaultObject.object_id;
-      }
-      if (this.findFaultObject.user_favorite == 0) {
-        this.Api.setFavorites(data).then(function (result) {
-          if (result.code == 1) {
-            uni.showToast({
-              title: result.msg,
-              duration: 2000 });
-
-            _this14.findFaultValue = false;
-            _this14.page = 1;
-            _this14.postList = [];
-            _this14.upCallback();
-          } else {
-            uni.showToast({
-              title: result.msg,
-              duration: 2000 });
-
-          }
-        });
-      } else if (this.findFaultObject.user_favorite == 1) {
-        this.Api.unsetFavorites(data).then(function (result) {
-          if (result.code == 1) {
-            uni.showToast({
-              title: result.msg,
-              duration: 2000 });
-
-            _this14.findFaultValue = false;
-            _this14.page = 1;
-            _this14.postList = [];
-            _this14.upCallback();
-          } else {
-            uni.showToast({
-              title: result.msg,
-              duration: 2000 });
-
-          }
-        });
-      }
-    },
-    //找错处理
-    fFind: function fFind(e) {
-      this.findFaultValue = false;
-      this.messageText = '';
-      this.$forceUpdate();
-      this.messageShow = true;
-
-    },
-    report: function report() {var _this15 = this;
-      //findFaultObject
-      uni.navigateTo({
-        url: '/pages/update/report?object_id=' + this.findFaultObject.id + '&object_type=' + this.findFaultObject.type,
-        success: function success() {
-          _this15.findFaultValue = false;
-        } });
-
-    },
-    fClose: function fClose() {
-      this.findFaultValue = false;
-    },
-    //帮推处理
-    helpPush: function helpPush(e) {var _this16 = this;
-      this.goLogin(function (res) {
-        if (!res) {
-          _this16.helpObj = e;
-          _this16.$getMyscore(function (res) {
-            if (res.code == 1) {
-              _this16.score = res.data.score;
-              if (_this16.score == 0) {
-                uni.showToast({
-                  title: '您的积分不足，请参加积分任务',
-                  icon: 'none',
-                  duration: 2000 });
-
-                setTimeout(function () {
-                  uni.navigateTo({
-                    url: '/pages/update/integral' });
-
-                }, 2000);
-
-              } else {
-                _this16.helpShow = true;
-              }
-            }
-          });
-        }
-      });
-    },
-    Helpcancel: function Helpcancel() {
-      this.helpShow = false;
-    },
-    ok: function ok(e) {var _this17 = this;
-      var score = this.$refs.Help.inputValue;
-      if (!score) {
+    });
+  }), _defineProperty(_methods, "communityAddressInput", function communityAddressInput(
+  e) {
+    this.communityAddress = e.detail.value;
+  }), _defineProperty(_methods, "communityTitleInput", function communityTitleInput(
+  e) {
+    this.communityTitle = e.detail.value;
+  }), _defineProperty(_methods, "openCommunityHandler", function openCommunityHandler()
+  {var _this9 = this;
+    this.Api.communityOpening({ title: this.communityTitle, address: this.communityAddress, contact_phone: this.mobile }).then(function (result) {
+      if (result.code == 1) {
         uni.showToast({
-          title: '请输入帮推积分',
+          title: result.msg,
+          duration: 2000 });
+
+        _this9.openCommunity = false;
+      } else {
+        uni.showToast({
+          title: result.msg,
           icon: 'none',
           duration: 2000 });
 
-        return;
       }
-      var data = {
-        object_id: this.helpObj.id,
-        object_type: this.helpObj.type,
-        community_id: uni.getStorageSync('community_id'),
-        score: score };
+    });
+  }), _defineProperty(_methods, "getUserInfo", function getUserInfo(
+
+  e) {var _this10 = this;
+    var p = new Promise(function (resolve, reject) {
+      // uni.getLocation({
+      // 	success: res => {
+      // 		// latitude: 30.39085
+      // 		// longitude: 114.89495
+      // 		uni.setStorageSync('latitude', res.latitude);
+      // 		uni.setStorageSync('longitude', res.longitude);
+      // 	},
+      // 	fail: err => {
+      // 		console.log(err);
+      // 	}
+      // });
+      resolve();
+    });
+    p.then(function (data) {
+      //登录授权
+      var _e$detail2 = e.detail,encryptedData = _e$detail2.encryptedData,iv = _e$detail2.iv,rawData = _e$detail2.rawData,signature = _e$detail2.signature;
+      uni.login({
+        success: function success(result) {var
+          errMsg = result.errMsg,code = result.code;
+          if (errMsg == 'login:ok') {
+            var params = {
+              code: code,
+              encrypted_data: encryptedData,
+              signature: signature,
+              raw_data: rawData,
+              iv: iv };
+
+            _this10.Api.communityLogin(params).then(function (res) {
+              if (res.code == 1) {
+                uni.setStorageSync('token', res.data.token);
+                uni.setStorageSync('user', res.data.user);
+                uni.setStorageSync('all_community', res.data.all_community);
+                _this10.community_id = res.data.all_community.length ? res.data.all_community[0].community_id : '';
+                uni.setStorageSync('community_id', _this10.community_id);
+                _this10.community_menu = res.data.all_community.length ? res.data.all_community[0].title + (res.data.all_community[0].total ? res.data.all_community[0].total : '') : '问邻';
+                _this10.all_community = res.data.all_community;
+                _this10.loginFalse = false;
+                _this10.guestShow = false;
+                _this10.userinforeg = true;
+                if (_this10.all_community.length) {
+                  _this10.page = 1;
+                  _this10.postList = [];
+                  _this10.upCallback();
+                } else {
+                  //如果开通过小区，待审核 
+                  // this.current = 3
+                  // this.setcommunity = true
+                  if (_this10.all_community.legnth == 0) {
+                    uni.navigateTo({
+                      url: '../update/selectcommunity' });
+
+                  }
+                  console.log('pid');
+                  var pid = uni.getStorageSync('pid');
+                  if (pid) {
+                    _this10.community = uni.getStorageSync('ptitle');
+                    _this10.communityId = uni.getStorageSync('pcommunity_id');
+                  }
+                }
+              }
+            });
+          }
+        } });
+
+    });
+  }), _defineProperty(_methods, "setcommunityHandler", function setcommunityHandler()
+
+  {var _this11 = this;
+    if (!this.communityId) {
+      uni.showToast({
+        title: '请选择小区',
+        icon: 'none',
+        duration: 2000 });
+
+      return;
+    }
+    if (!this.building) {
+      uni.showToast({
+        title: '请输入楼栋号',
+        icon: 'none',
+        duration: 2000 });
+
+      return;
+    }
+    if (!this.unit) {
+      uni.showToast({
+        title: '请输入单元号',
+        icon: 'none',
+        duration: 2000 });
+
+      return;
+    }
+    if (!this.room) {
+      uni.showToast({
+        title: '请输入门牌号',
+        icon: 'none',
+        duration: 2000 });
+
+      return;
+    }
+    var data = {
+      building: this.building,
+      unit: this.unit,
+      community_id: this.communityId,
+      room: this.room,
+      type: this.setcommunityType };
+
+    var that = this;
+    this.Api.setUserCommunityInfo(data).then(function (result) {
+      if (result.code == 1) {
+        uni.showToast({
+          title: result.msg,
+          duration: 2000,
+          success: function success() {
+            uni.setStorageSync('committee_id', result.data.committee_id);
+            uni.setStorageSync('community_id', result.data.community_id);
+            uni.setStorageSync('community_menu', _this11.communityTitle);
+            _this11.community_menu = _this11.communityTitle;
+            _this11.current = 1;
+            _this11.page = 1;
+            _this11.postList = [];
+            _this11.upCallback();
+            _this11.setcommunity = false;
+            _this11.guestShowOpen = false;
+            //绑定上下级
+            var pid = uni.getStorageSync('pid');
+
+            if (pid) {
+              var pdata = {
+                from_user_id: pid };
+
+              that.Api.inviteNeighbor(pdata).then(function (result) {
+
+                uni.reLaunch({
+                  url: '/pages/index/index' });
 
 
-      //
-      // if(this.helpObj.type == 7 || this.helpObj.type == 5){
-      // 	data.dynamics_id = this.helpObj.id
+              });
+            } else {
+
+              uni.reLaunch({
+                url: '/pages/index/index' });
+
+
+            }
+
+          } });
+
+
+      }
+    });
+  }), _defineProperty(_methods, "chooseInput", function chooseInput(
+
+
+  e) {var _this12 = this;
+    this.community_text = e.detail.value;
+    var data = {
+      title: this.community_text };
+
+    if (!isNaN(this.community_text)) {
+      this.community_text = 0;
+      return;
+    }
+    if (this.community_text.length == 0) {
+      return;
+    }
+    this.Api.searchCommunity(data).then(function (result) {
+      if (result.code == 1) {
+        _this12.searchCommunityList = result.data;
+      }
+    });
+  }), _defineProperty(_methods, "searchCommunity", function searchCommunity()
+  {var _this13 = this;
+    var data = {
+      title: this.community_text };
+
+    if (!this.community_text) {
+      uni.showToast({
+        title: '请输入要搜索的小区',
+        icon: 'none',
+        duration: 2000 });
+
+      return;
+    }
+    this.Api.searchCommunity(data).then(function (result) {
+      if (result.code == 1) {
+        _this13.searchCommunityList = result.data;
+      }
+    });
+  }), _defineProperty(_methods, "getMap", function getMap()
+
+  {var _this14 = this;
+    // var that = this;
+    // if (uni.getStorageSync('longitude')) {
+    // 	uni.chooseLocation({
+    // 		latitude: uni.getStorageSync('latitude'),
+    // 		longitude: uni.getStorageSync('longitude'),
+    // 		success: res => {
+    // 			console.log(res);
+    // 			this.community = res.name;
+    // 		}
+    // 	});
+    // } else {
+    // }
+    var that = this;
+    var p = new Promise(function (resolve, reject) {
+      if (!uni.getStorageSync('longitude')) {
+        uni.getLocation({
+          success: function success(res) {
+            // latitude: 30.39085
+            // longitude: 114.89495
+            uni.setStorageSync('latitude', res.latitude);
+            uni.setStorageSync('longitude', res.longitude);
+
+          },
+          fail: function fail(err) {
+            uni.showToast({
+              title: '您未开通地图授权，请打开授权',
+              icon: 'none',
+              duration: 2000 });
+
+          } });
+
+        resolve();
+
+      }
+
+      resolve();
+    });
+    p.then(function (data) {
+      var that = _this14;
+      // if (uni.getStorageSync('longitude')) {
+      // 	uni.chooseLocation({
+      // 		latitude: uni.getStorageSync('latitude'),
+      // 		longitude: uni.getStorageSync('longitude'),
+      // 		success: res => {
+      // 			this.communityAddress = res.address
+      // 		}
+      // 	});
+      // } else {
+      // 	uni.showToast({
+      // 		title: '您未开通地图授权，请输入地址',
+      // 		duration: 2000
+      // 	});
       // }
-      this.Api.communityDynamicsPushDynamics(data).then(function (result) {
+      that.Api.getNearCommunity({ latitude: uni.getStorageSync('latitude'), longitude: uni.getStorageSync('longitude') }).then(function (result) {
+        if (result.code == 1) {
+          that.searchCommunityList = result.data;
+          that.community_text = '';
+          that.chooseCommunity = true;
+        }
+      });
+
+    });
+
+
+  }), _defineProperty(_methods, "communityInput", function communityInput(
+
+  e) {
+    this.community = e.detail.value;
+  }), _defineProperty(_methods, "buildingInput", function buildingInput(
+
+  e) {
+    this.building = e.detail.value.replace(/[^a-z|0-9]/gi, '');
+  }), _defineProperty(_methods, "unitInput", function unitInput(
+  e) {
+    this.unit = e.detail.value.replace(/[^a-z|0-9]/gi, '');
+  }), _defineProperty(_methods, "roomInput", function roomInput(
+  e) {
+    this.room = e.detail.value.replace(/[^a-z|0-9]/gi, '');
+  }), _defineProperty(_methods, "cateClick", function cateClick(
+
+  index) {
+    this.cateIndex = index;
+    if (index == 0) {
+      this.allFlag = true;
+    } else {
+      this.allFlag = false;
+    }
+    var obj = this.committeeList[index];
+    uni.navigateTo({
+      url: '../update/committee?id=' + obj.committee_id });
+
+  }), _defineProperty(_methods, "moreClick", function moreClick(
+
+  e) {var _this15 = this;
+    this.goLogin(function (res) {
+      if (!res) {
+        _this15.findFaultType = e.type;
+        _this15.findFaultCollect = e.user_favorite == 0 ? false : true;
+        _this15.findFaultObject = e;
+        _this15.findFaultValue = true;
+      }
+    });
+  }), _defineProperty(_methods, "fCollect", function fCollect(
+
+  e) {var _this16 = this;
+    var data = {
+      dynamics_id: this.findFaultObject.id,
+      object_type: this.findFaultObject.type,
+      community_id: uni.getStorageSync('community_id') };
+
+    if (e.type == 5 || e.type == 7) {
+      data.dynamics_id = this.findFaultObject.object_id;
+    }
+    if (this.findFaultObject.user_favorite == 0) {
+      this.Api.setFavorites(data).then(function (result) {
         if (result.code == 1) {
           uni.showToast({
             title: result.msg,
-            duration: 2000,
-            success: function success() {
-              _this17.add_type = result.data.add == -1 ? '-' : '+';
-              _this17.score_text = result.data.score;
-              _this17.helpShow = false;
-              _this17.$refs.integraltip.show();
+            duration: 2000 });
+
+          _this16.findFaultValue = false;
+          _this16.page = 1;
+          _this16.postList = [];
+          _this16.upCallback();
+        } else {
+          uni.showToast({
+            title: result.msg,
+            duration: 2000 });
+
+        }
+      });
+    } else if (this.findFaultObject.user_favorite == 1) {
+      this.Api.unsetFavorites(data).then(function (result) {
+        if (result.code == 1) {
+          uni.showToast({
+            title: result.msg,
+            duration: 2000 });
+
+          _this16.findFaultValue = false;
+          _this16.page = 1;
+          _this16.postList = [];
+          _this16.upCallback();
+        } else {
+          uni.showToast({
+            title: result.msg,
+            duration: 2000 });
+
+        }
+      });
+    }
+  }), _defineProperty(_methods, "fFind", function fFind(
+
+  e) {
+    this.findFaultValue = false;
+    this.messageText = '';
+    this.$forceUpdate();
+    this.messageShow = true;
+
+  }), _defineProperty(_methods, "report", function report()
+  {var _this17 = this;
+    //findFaultObject
+    uni.navigateTo({
+      url: '/pages/update/report?object_id=' + this.findFaultObject.id + '&object_type=' + this.findFaultObject.type,
+      success: function success() {
+        _this17.findFaultValue = false;
+      } });
+
+  }), _defineProperty(_methods, "fClose", function fClose()
+  {
+    this.findFaultValue = false;
+  }), _defineProperty(_methods, "helpPush", function helpPush(
+
+  e) {var _this18 = this;
+    this.goLogin(function (res) {
+      if (!res) {
+        _this18.helpObj = e;
+        _this18.$getMyscore(function (res) {
+          if (res.code == 1) {
+            _this18.score = res.data.score;
+            if (_this18.score == 0) {
+              uni.showToast({
+                title: '您的积分不足，请参加积分任务',
+                icon: 'none',
+                duration: 2000 });
+
               setTimeout(function () {
-                _this17.add_type = '';
-                _this17.score_text = '';
-                _this17.$refs.Help.inputValue = 0;
-                _this17.$refs.integraltip.close();
-                _this17.page = 1;
-                _this17.postList = [];
-                _this17.upCallback();
+                uni.navigateTo({
+                  url: '/pages/update/integral' });
+
               }, 2000);
 
-            } });
-
-        } else {
-          uni.showToast({
-            title: result.msg,
-            duration: 2000,
-            success: function success() {
-
-            } });
-
-        }
-      });
-    },
-    //挑错处理
-    textareaBlur: function textareaBlur(e) {
-      console.log(e.detail);
-    },
-    closeMessage: function closeMessage() {
-      this.messageShow = false;
-    },
-    submitTodo: function submitTodo(e) {var _this18 = this;
-      if (!e) {
-        uni.showToast({
-          icon: 'none',
-          title: '请输入挑错内容' });
-
-        return;
+            } else {
+              _this18.helpShow = true;
+            }
+          }
+        });
       }
-      var data = {
-        wiki_id: this.findFaultObject.object_id,
-        community_id: uni.getStorageSync('community_id'),
-        content: e };
+    });
+  }), _defineProperty(_methods, "Helpcancel", function Helpcancel()
+  {
+    this.helpShow = false;
+  }), _defineProperty(_methods, "ok", function ok(
+  e) {var _this19 = this;
+    var score = this.$refs.Help.inputValue;
+    if (!score) {
+      uni.showToast({
+        title: '请输入帮推积分',
+        icon: 'none',
+        duration: 2000 });
 
-      this.Api.communitydynamicswikiCorrection(data).then(function (result) {
-        if (result.code == 1) {
-          uni.showToast({
-            icon: 'success',
-            duration: 1000,
-            title: result.msg,
-            success: function success() {
-              _this18.messageShow = false;
-            } });
+      return;
+    }
+    var data = {
+      object_id: this.helpObj.id,
+      object_type: this.helpObj.type,
+      community_id: uni.getStorageSync('community_id'),
+      score: score };
 
 
-        }
-      });
-    },
-    // 分享弹窗
-    shareClick: function shareClick(e) {var _this19 = this;
-      this.goLogin(function (data) {
-        if (!data) {
-          _this19.findFaultObject = e;
-          _this19.onShareShow = true;
-        }
-      });
+    //
+    // if(this.helpObj.type == 7 || this.helpObj.type == 5){
+    // 	data.dynamics_id = this.helpObj.id
+    // }
+    this.Api.communityDynamicsPushDynamics(data).then(function (result) {
+      if (result.code == 1) {
+        uni.showToast({
+          title: result.msg,
+          duration: 2000,
+          success: function success() {
+            _this19.add_type = result.data.add == -1 ? '-' : '+';
+            _this19.score_text = result.data.score;
+            _this19.helpShow = false;
+            _this19.$refs.integraltip.show();
+            setTimeout(function () {
+              _this19.add_type = '';
+              _this19.score_text = '';
+              _this19.$refs.Help.inputValue = 0;
+              _this19.$refs.integraltip.close();
+              _this19.page = 1;
+              _this19.postList = [];
+              _this19.upCallback();
+            }, 2000);
 
-    },
-    onShowclose: function onShowclose() {
-      this.onShareShow = false;
-    },
-    onShowtodo: function onShowtodo() {var _this20 = this;
-      var pages = getCurrentPages(); //获取加载的页面
+          } });
 
-      var currentPage = pages[pages.length - 1]; //获取当前页面的对象
-      console.log(currentPage.route);
-      // return
-      var data = {};
-      if (this.findFaultObject.publish_type == 1 || this.findFaultObject.publish_type == 3) {
-        data.page = 'pages/index/detail';
-      } else if (this.findFaultObject.publish_type == 2) {
-        if (this.findFaultObject.type == 5) {
-          data.page = 'pages/index/cdetail';
-        } else {
-          data.page = 'pages/index/detail';
-        }
+      } else {
+        uni.showToast({
+          title: result.msg,
+          duration: 2000,
+          success: function success() {
+
+          } });
+
+      }
+    });
+  }), _defineProperty(_methods, "textareaBlur", function textareaBlur(
+
+  e) {
+    console.log(e.detail);
+  }), _defineProperty(_methods, "closeMessage", function closeMessage()
+  {
+    this.messageShow = false;
+  }), _defineProperty(_methods, "submitTodo", function submitTodo(
+  e) {var _this20 = this;
+    if (!e) {
+      uni.showToast({
+        icon: 'none',
+        title: '请输入挑错内容' });
+
+      return;
+    }
+    var data = {
+      wiki_id: this.findFaultObject.object_id,
+      community_id: uni.getStorageSync('community_id'),
+      content: e };
+
+    this.Api.communitydynamicswikiCorrection(data).then(function (result) {
+      if (result.code == 1) {
+        uni.showToast({
+          icon: 'success',
+          duration: 1000,
+          title: result.msg,
+          success: function success() {
+            _this20.messageShow = false;
+          } });
+
+
+      }
+    });
+  }), _defineProperty(_methods, "shareClick", function shareClick(
+
+  e) {var _this21 = this;
+    this.goLogin(function (data) {
+      if (!data) {
+        _this21.findFaultObject = e;
+        _this21.onShareShow = true;
+      }
+    });
+
+  }), _defineProperty(_methods, "onShowclose", function onShowclose()
+  {
+    this.onShareShow = false;
+  }), _defineProperty(_methods, "onShowtodo", function onShowtodo()
+  {var _this22 = this;
+    var pages = getCurrentPages(); //获取加载的页面
+
+    var currentPage = pages[pages.length - 1]; //获取当前页面的对象
+    console.log(currentPage.route);
+    // return
+    var data = {};
+    if (this.findFaultObject.publish_type == 1 || this.findFaultObject.publish_type == 3) {
+      data.page = 'pages/index/detail';
+    } else if (this.findFaultObject.publish_type == 2) {
+      if (this.findFaultObject.type == 5) {
+        data.page = 'pages/index/cdetail';
       } else {
         data.page = 'pages/index/detail';
       }
-      if (this.findFaultObject.type == 5) {
-        if (this.findFaultObject.publish_type == 2) {
-          data.scene = 'id=' + this.findFaultObject.object_id + '&type=' + this.findFaultObject.type + '&d_id=' + this.findFaultObject.id;
-        } else {
-          data.scene = 'id=' + this.findFaultObject.id + '&type=' + this.findFaultObject.type;
-        }
-      } else if (this.findFaultObject.type == 7) {
-        data.scene = 'id=' + this.findFaultObject.object_id + '&type=' + this.findFaultObject.type + '&d_id=' + this.findFaultObject.id;
-      } else if (this.findFaultObject.type == 8) {
+    } else {
+      data.page = 'pages/index/detail';
+    }
+    if (this.findFaultObject.type == 5) {
+      if (this.findFaultObject.publish_type == 2) {
         data.scene = 'id=' + this.findFaultObject.object_id + '&type=' + this.findFaultObject.type + '&d_id=' + this.findFaultObject.id;
       } else {
         data.scene = 'id=' + this.findFaultObject.id + '&type=' + this.findFaultObject.type;
       }
-      this.Api.getWXACodeUnlimit(data).then(function (result) {
-        if (result.code == 1) {
-          _this20.$nextTick(function () {
-            _this20.onShareShow = false;
-            _this20.posterData.posterImgUrl = _this20.findFaultObject.images.length ? _this20.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
-            if (_this20.findFaultObject.publish_type == 3 || _this20.findFaultObject.publish_type == 2) {
-              _this20.posterData.title = _this20.findFaultObject.title;
-            } else if (_this20.findFaultObject.publish_type == 1) {
-              _this20.posterData.title = _this20.findFaultObject.content;
-            } else {
-              _this20.posterData.title = _this20.findFaultObject.title;
-            }
-            if (_this20.posterData.title.length > 35) {
-              _this20.posterData.title = _this20.posterData.title.substr(0, 35) + '...';
-            }
-            _this20.posterData.avatarUrl = uni.getStorageSync('user').avatar;
-            _this20.posterData.posterCodeUrl = result.data;
-            _this20.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this20.findFaultObject.type) + '信息';
-            _this20.$forceUpdate();
-            setTimeout(function () {
-              _this20.canvasFlag = false; //显示canvas海报
-              _this20.deliveryFlag = false; //关闭分享弹窗
-              _this20.$refs.hchPoster.posterShow();
-            }, 500);
-          });
+    } else if (this.findFaultObject.type == 7) {
+      data.scene = 'id=' + this.findFaultObject.object_id + '&type=' + this.findFaultObject.type + '&d_id=' + this.findFaultObject.id;
+    } else if (this.findFaultObject.type == 8) {
+      data.scene = 'id=' + this.findFaultObject.object_id + '&type=' + this.findFaultObject.type + '&d_id=' + this.findFaultObject.id;
+    } else {
+      data.scene = 'id=' + this.findFaultObject.id + '&type=' + this.findFaultObject.type;
+    }
+    this.Api.getWXACodeUnlimit(data).then(function (result) {
+      if (result.code == 1) {
+        _this22.$nextTick(function () {
+          _this22.onShareShow = false;
+          _this22.posterData.posterImgUrl = _this22.findFaultObject.images.length ? _this22.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
+          if (_this22.findFaultObject.publish_type == 3 || _this22.findFaultObject.publish_type == 2) {
+            _this22.posterData.title = _this22.findFaultObject.title;
+          } else if (_this22.findFaultObject.publish_type == 1) {
+            _this22.posterData.title = _this22.findFaultObject.content;
+          } else {
+            _this22.posterData.title = _this22.findFaultObject.title;
+          }
+          if (_this22.posterData.title.length > 35) {
+            _this22.posterData.title = _this22.posterData.title.substr(0, 35) + '...';
+          }
+          _this22.posterData.avatarUrl = uni.getStorageSync('user').avatar;
+          _this22.posterData.posterCodeUrl = result.data;
+          _this22.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this22.findFaultObject.type) + '信息';
+          _this22.$forceUpdate();
+          setTimeout(function () {
+            _this22.canvasFlag = false; //显示canvas海报
+            _this22.deliveryFlag = false; //关闭分享弹窗
+            _this22.$refs.hchPoster.posterShow();
+          }, 500);
+        });
 
-        }
-      });
+      }
+    });
 
 
-    },
-    canvasCancel: function canvasCancel(val) {
-      this.scrollFixed = false;
-      this.canvasFlag = val;
-    },
-    onShowshare: function onShowshare() {
-      this.findFaultValue = false;
-      this.onShareShow = false;
-    },
-    //信息处理
-    messageLink: function messageLink() {
-      this.goLogin(function (res) {
-        if (!res) {
-          uni.navigateTo({
-            url: '/pages/update/message' });
+  }), _defineProperty(_methods, "canvasCancel", function canvasCancel(
+  val) {
+    this.scrollFixed = false;
+    this.canvasFlag = val;
+  }), _defineProperty(_methods, "onShowshare", function onShowshare()
+  {
+    this.findFaultValue = false;
+    this.onShareShow = false;
+  }), _defineProperty(_methods, "messageLink", function messageLink()
 
-        }
-      });
-    },
-    //搜索处理
-    searchLink: function searchLink() {
-      this.goLogin(function (res) {
-        if (!res) {
-          uni.navigateTo({
-            url: '/pages/update/search' });
+  {
+    this.goLogin(function (res) {
+      if (!res) {
+        uni.navigateTo({
+          url: '/pages/update/message' });
 
-        }
-      });
-    },
-    createCanvasImageEvn: function createCanvasImageEvn() {var _this21 = this;
-      // 这个是固定写死的小程序码
-      Object.assign(this.posterData,
-      {
-        url: 'https://img0.zuipin.cn/mp_zuipin/poster/hch-pro.jpg', //商品主图
-        icon: 'https://img0.zuipin.cn/mp_zuipin/poster/hch-hyj.png', //醉品价图标
-        title: "诗酒茶系列 武夷大红袍 2018年 花香型中火 一级 体验装 16g", //标题
-        des: " 以下是根据后端接口动态生成小程序码  以下是根据后端接口动态生成小程序码  以下是根据后端接口动态生成小程序码  以下是根据后端接口动态生成小程序码  以下是根据后端接口动态生成小程序码 ",
-        discountPrice: "250.00", //折后价格 以下是根据后端接口动态生成小程序码  以下是根据后端接口动态生成小程序码 
-        orignPrice: "300.00", //原价
-        code: 'https://img0.zuipin.cn/mp_zuipin/poster/hch-code.png' //小程序码
-      });
-      this.$forceUpdate(); //强制渲染数据
-      setTimeout(function () {
-        _this21.canvasFlag = false; //显示canvas海报
-        _this21.deliveryFlag = false; //关闭分享弹窗
-        _this21.$refs.hchPoster.createCanvasImage(); //调用子组件的方法
-      }, 500);
-      // 这个是固定写死的小程序码 end
-      // 以下是根据后端接口动态生成小程序码
-      // let code="https://img0.zuipin.cn/mp_zuipin/poster/hch-code.png";
-      // this.codeImg().then((res)=>{
-      // 	code = res;
-      // 	Object.assign(this.posterData,
-      // 	{
-      // 		url:'https://img0.zuipin.cn/mp_zuipin/poster/hch-pro.jpg',//商品主图
-      // 		icon:'https://img0.zuipin.cn/mp_zuipin/poster/hch-hyj.png',//醉品价图标
-      // 		title:"诗酒茶系列 武夷大红袍 2018年 花香型中火 一级 体验装 16g",//标题
-      // 		discountPrice:"250.00",//折后价格
-      // 		orignPrice:"300.00",//原价
-      // 		code:code,//小程序码
-      // 	})
-      // 	this.$forceUpdate();//强制渲染数据
-      // 	setTimeout(()=>{
-      // 		this.canvasFlag=false;//显示canvas海报
-      // 		this.deliveryFlag = false;//关闭分享弹窗
-      // 		this.$refs.hchPoster.createCanvasImage();//调用子组件的方法
-      // 	},500)
-      // })
-      // 以下是根据后端接口动态生成小程序码 end
-    } },
+      }
+    });
+  }), _defineProperty(_methods, "searchLink", function searchLink()
+
+  {
+    this.goLogin(function (res) {
+      if (!res) {
+        uni.navigateTo({
+          url: '/pages/update/search' });
+
+      }
+    });
+  }), _defineProperty(_methods, "createCanvasImageEvn", function createCanvasImageEvn()
+  {var _this23 = this;
+    // 这个是固定写死的小程序码
+    Object.assign(this.posterData,
+    {
+      url: 'https://img0.zuipin.cn/mp_zuipin/poster/hch-pro.jpg', //商品主图
+      icon: 'https://img0.zuipin.cn/mp_zuipin/poster/hch-hyj.png', //醉品价图标
+      title: "诗酒茶系列 武夷大红袍 2018年 花香型中火 一级 体验装 16g", //标题
+      des: " 以下是根据后端接口动态生成小程序码  以下是根据后端接口动态生成小程序码  以下是根据后端接口动态生成小程序码  以下是根据后端接口动态生成小程序码  以下是根据后端接口动态生成小程序码 ",
+      discountPrice: "250.00", //折后价格 以下是根据后端接口动态生成小程序码  以下是根据后端接口动态生成小程序码 
+      orignPrice: "300.00", //原价
+      code: 'https://img0.zuipin.cn/mp_zuipin/poster/hch-code.png' //小程序码
+    });
+    this.$forceUpdate(); //强制渲染数据
+    setTimeout(function () {
+      _this23.canvasFlag = false; //显示canvas海报
+      _this23.deliveryFlag = false; //关闭分享弹窗
+      _this23.$refs.hchPoster.createCanvasImage(); //调用子组件的方法
+    }, 500);
+    // 这个是固定写死的小程序码 end
+    // 以下是根据后端接口动态生成小程序码
+    // let code="https://img0.zuipin.cn/mp_zuipin/poster/hch-code.png";
+    // this.codeImg().then((res)=>{
+    // 	code = res;
+    // 	Object.assign(this.posterData,
+    // 	{
+    // 		url:'https://img0.zuipin.cn/mp_zuipin/poster/hch-pro.jpg',//商品主图
+    // 		icon:'https://img0.zuipin.cn/mp_zuipin/poster/hch-hyj.png',//醉品价图标
+    // 		title:"诗酒茶系列 武夷大红袍 2018年 花香型中火 一级 体验装 16g",//标题
+    // 		discountPrice:"250.00",//折后价格
+    // 		orignPrice:"300.00",//原价
+    // 		code:code,//小程序码
+    // 	})
+    // 	this.$forceUpdate();//强制渲染数据
+    // 	setTimeout(()=>{
+    // 		this.canvasFlag=false;//显示canvas海报
+    // 		this.deliveryFlag = false;//关闭分享弹窗
+    // 		this.$refs.hchPoster.createCanvasImage();//调用子组件的方法
+    // 	},500)
+    // })
+    // 以下是根据后端接口动态生成小程序码 end
+  }), _methods),
 
   components: {
     PostItem: PostItem,
