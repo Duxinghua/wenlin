@@ -100,6 +100,8 @@ page.data-v-0925af0f {
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
           flex-direction: column;
+  position: fixed;
+  left: 0;
   width: 100%;
   background: white;
 }

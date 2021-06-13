@@ -162,6 +162,9 @@ page.data-v-14a6ab35 {
   box-sizing: border-box;
 }
 .content .home .home-top.data-v-14a6ab35 {
+  position: fixed;
+  top: 0;
+  width: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;

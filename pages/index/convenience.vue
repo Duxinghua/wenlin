@@ -1,8 +1,8 @@
 <template>
 	<view class="content">
-		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
+		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxheight="scrollMaxheight" />
 		<view class="home">
-			<view class="home-top" v-if="committeeList.length">
+			<view class="home-top"  :style="[{top:CustomBar + 'px'}]" v-if="committeeList.length">
 			
 <!-- 			<view class="tagwrap"> -->
 			<view class="tagwrap" >
@@ -19,18 +19,18 @@
 <!-- 			</view> -->
 			<view :class="['postwrap',(type == 3 && postList.length > 0) ? 'usedwrap' : '']">
 			<!-- <mescroll-uni  :fixed="true"  :top="autoTop" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" > -->
-				<scroll-view scroll-y="true" :style="{height: height+'px'}" class="listwrap" @scrolltoupper="upper"
-				 @scrolltolower="lower"
-				 @refresherpulling="pulling"
-				 @refresherrefresh="refresh"
-				 @refresherrestore="onRestore" 
-				 @refresherabort="onAbort"
-				 :refresher-threshold="100"
-				 :refresher-triggered="scroll_refresher_enabled"
-				 :refresher-enabled="true"
+				<mescroll-uni scroll-y="true" :style="{height: height+'px'}" class="listwrap" 
+					top="300"
+					bottom="120"
+					ref="mescrollRef"
+					@init="mescrollInit"
+					@down="downCallback"
+					@up="upCallback"
+					:down="downOption"
+					:up="upOption"
 				 >
 					<PostItem :pm="true" :allFlag="allFlag" :type="type" v-for="(item,index) in postList" :pitem="item" :key="index" @moreClick="moreClick" @helpPush="helpPush" @shareClick="shareClick" @toLogin="goDetails"></PostItem>
-				</scroll-view>
+				</mescroll-uni>
 <!-- 			</mescroll-uni> -->
 				</view>
 			<!-- 闲置 -->
@@ -240,6 +240,7 @@ export default {
 	mixins: [MescrollMixin], 
 	data() {
 		return {
+				CustomBar:this.CustomBar,
 				scroll_refresher_enabled:false,
 				findsh:false,
 			    isHome:false,
@@ -265,7 +266,7 @@ export default {
 					// menuText:"返回", 当type为3或4的时候icon右边的文字
 				},
 				scrollTop: 0, // 当linear为true的时候需要通过onpagescroll传递参数
-				scrollMaxHeight: 200, //滑动的高度限制，超过这个高度即背景全部显示
+				scrollMaxheight: 200, //滑动的高度限制，超过这个高度即背景全部显示
 				upOption: {
 					use: true, // 是否启用上拉加载; 默认true
 					auto: false, // 是否在初始化完毕之后自动执行上拉加载的回调; 默认true
@@ -351,8 +352,8 @@ export default {
 				title: '',
 				titleFontSize: 15,
 				desFontSize: 14,
-				desLineHeight: 22,
-				titleLineHeight: 24,
+				desLineheight: 22,
+				titleLineheight: 24,
 				posterCodeUrl: 'https://sq.wenlinapp.com/upload/share/20200821/20200821233746683.png',
 				codeWidth: 0.22,
 				codeRatio: 1,
@@ -402,7 +403,7 @@ export default {
 			})
 		})
 		var system = uni.getSystemInfoSync()
-		this.height = system.windowHeight - uni.upx2px(188)
+		this.height = system.windowheight - uni.upx2px(188)
 		if(uni.getStorageSync('token')){
 			this.$getCount((result) => {
 				var count = 0
@@ -496,7 +497,7 @@ export default {
 							setTimeout(()=>{
 													this.page = 1
 													this.postList = []
-													this.upCallback()
+													this.mescroll.resetUpScroll()
 							},300)
 		
 							// this.setcommunity = true;
@@ -512,7 +513,7 @@ export default {
 						this.getCommitList()
 								this.page = 1
 								this.postList = []
-								this.upCallback()
+								this.mescroll.resetUpScroll()
 							},3000)
 					
 						}
@@ -558,7 +559,7 @@ export default {
 					setTimeout(()=>{
 									this.page = 1
 									this.postList = []
-									this.upCallback()
+									this.mescroll.resetUpScroll()
 					},300)
 		
 				})
@@ -589,7 +590,7 @@ export default {
 			    this.scroll_refresher_enabled = false;
 			    this._freshing = false;
 			}, 3000)
-			this.getData()
+			this.mescroll.resetUpScroll()
 		},
 		pulling(){
 
@@ -599,7 +600,7 @@ export default {
 			this.page = 1
 			this.totalPage = 0
 			this.postList = []
-			this.upCallback()
+			this.mescroll.resetUpScroll()
 			
 		},
 		scroll(e) {
@@ -651,7 +652,7 @@ export default {
 				// this.current = 3
 				this.page = 1
 				this.postList = []
-				this.upCallback()
+				this.mescroll.resetUpScroll()
 				cb(result)
 				return
 			}
@@ -665,7 +666,7 @@ export default {
 					// this.current = 3
 					this.page = 1
 					this.postList = []
-					this.upCallback()
+					this.mescroll.resetUpScroll()
 					cb(result)
 					return
 			}
@@ -683,11 +684,11 @@ export default {
 				url:'/pages/update/secret'
 			})
 		},
-		upCallback(ismore) {
+		upCallback(page) {
 			//联网加载数据
 			var params = {
-				page:this.page,
-				page_size:this.page_size
+				page:page.num,
+				page_size:page.size
 				// community_id:uni.getStorageSync('community_id'),
 				// committee_id:uni.getStorageSync('committee_id'),
 				// type:this.type,
@@ -701,56 +702,80 @@ export default {
 						result.data.list.map((item)=>{
 							item.type = 7
 						})
-						if(ismore){
-							this.postList = this.postList.concat(result.data.list);
-						}else{
-							this.postList = result.data.list;
-						}
+						var totalPage  = result.data.total_pages
+						var curPageLen = result.data.list.length; 
+						if(page.num == 1) this.postList = []
+						this.postList = this.postList.concat(result.data.list);
+						this.mescroll.endByPage(curPageLen, totalPage);
+				// 		if(ismore){
+				// 			this.postList = this.postList.concat(result.data.list);
+				// 		}else{
+				// 			this.postList = result.data.list;
+				// 		}
 				
-						if(this.postList.length){
-							this.flexNoData = true
-						}else{
-							this.flexNoData = false
-						}
+				// 		if(this.postList.length){
+				// 			this.flexNoData = true
+				// 		}else{
+				// 			this.flexNoData = false
+				// 		}
 					}
+				})
+				.catch(()=>{
+					//联网失败的回调,隐藏下拉刷新的状态
+					this.mescroll.endErr();
 				})
 			}else if(this.current == 2){
 				this.Api.nearByCommunityId(params).then((result)=>{
 					if(result.code == 1) {
 						this.totalPage  = result.data.total_page
-						if(ismore){
-							this.postList = this.postList.concat(result.data.list);
-						}else{
-							this.postList = result.data.list;
-						}
-						if(this.postList.length){
-							this.flexNoData = true
-						}else{
-							this.flexNoData = false
-						}
+						var totalPage  = result.data.total_pages
+						var curPageLen = result.data.list.length; 
+						if(page.num == 1) this.postList = []
+						this.postList = this.postList.concat(result.data.list);
+						this.mescroll.endByPage(curPageLen, totalPage);
+						// if(ismore){
+						// 	this.postList = this.postList.concat(result.data.list);
+						// }else{
+						// 	this.postList = result.data.list;
+						// }
+						// if(this.postList.length){
+						// 	this.flexNoData = true
+						// }else{
+						// 	this.flexNoData = false
+						// }
 	
 					}
+				})
+				.catch(()=>{
+					//联网失败的回调,隐藏下拉刷新的状态
+					this.mescroll.endErr();
 				})
 			}else if(this.current == 3){
 				this.Api.helpDynamicsByCommunityId(params).then((result)=>{
 					if(result.code == 1) {
 						this.totalPage  = result.data.total_page
-						if(ismore){
-							this.postList = this.postList.concat(result.data.list);
-						}else{
-							this.postList = result.data.list;
-						}
-						if(this.postList.length){
-							this.flexNoData = true
-						}else{
-							this.flexNoData = false
-						}
+						var totalPage  = result.data.total_pages
+						var curPageLen = result.data.list.length; 
+						if(page.num == 1) this.postList = []
+						this.postList = this.postList.concat(result.data.list);
+						this.mescroll.endByPage(curPageLen, totalPage);
+						// if(ismore){
+						// 	this.postList = this.postList.concat(result.data.list);
+						// }else{
+						// 	this.postList = result.data.list;
+						// }
+						// if(this.postList.length){
+						// 	this.flexNoData = true
+						// }else{
+						// 	this.flexNoData = false
+						// }
 					}
 				})
+				.catch(()=>{
+					//联网失败的回调,隐藏下拉刷新的状态
+					this.mescroll.endErr();
+				})
 			}
-		},
-		scroll(){
-			console.log('mescroll元素id: '+this.mescroll.viewId+' , 滚动内容高度:'+this.mescroll.getScrollHeight() + ', mescroll高度:'+this.mescroll.getClientHeight() + ', 滚动条位置:'+this.mescroll.getScrollTop() + ', 距离底部:'+this.mescroll.getScrollBottom() + ', 是否向上滑:'+this.mescroll.isScrollUp)
 		},
 		tabSelect(e) {
 				this.TabCur = e.currentTarget.dataset.id;
@@ -811,7 +836,7 @@ export default {
 							this.cateIndex = 0
 							this.page = 1
 							this.postList = []
-							this.upCallback()
+							this.mescroll.resetUpScroll()
 						}
 					})
 				}
@@ -834,7 +859,7 @@ export default {
 			this.guestShowOpen = true
 			this.page = 1
 			this.postList = []
-			this.upCallback()
+			this.mescroll.resetUpScroll()
 		},
 		// 手机号授权处理
 		getPhoneNumber(e) {
@@ -868,7 +893,7 @@ export default {
 						this.tagList = this.tagList2
 						this.page = 1
 						this.postList = []
-						this.upCallback()
+						this.mescroll.resetUpScroll()
 					}else{
 					   // this.current = 3;
 						
@@ -879,14 +904,14 @@ export default {
 				this.tagList = this.tagList1
 				this.page = 1
 				this.postList = []
-				this.upCallback()
+				this.mescroll.resetUpScroll()
 			}else if(arg == 1){
 				this.goLogin((data) => {
 					if(!data){
 						this.tagList = this.tagList1
 						this.page = 1
 						this.postList = []
-						this.upCallback()
+						this.mescroll.resetUpScroll()
 					}else{
 					  //  this.current = 3;
 		
@@ -1003,7 +1028,7 @@ export default {
 									if(this.all_community.length){
 										this.page = 1
 										this.postList = []
-										this.upCallback()
+										this.mescroll.resetUpScroll()
 									}else{
 										//如果开通过小区，待审核 
 										// this.current = 3
@@ -1082,7 +1107,7 @@ export default {
 							this.current = 1
 							this.page = 1
 							this.postList = []
-							this.upCallback()
+							this.mescroll.resetUpScroll()
 							this.setcommunity = false
 							this.guestShowOpen = false
 							//绑定上下级
@@ -1276,7 +1301,7 @@ export default {
 						this.findFaultValue = false
 						this.page = 1
 						this.postList = []
-						this.upCallback()
+						this.mescroll.resetUpScroll()
 					}else{
 						uni.showToast({
 							title: result.msg,
@@ -1294,7 +1319,7 @@ export default {
 						this.findFaultValue = false
 						this.page = 1
 						this.postList = []
-						this.upCallback()
+						this.mescroll.resetUpScroll()
 					}else{
 						uni.showToast({
 							title: result.msg,
@@ -1393,7 +1418,7 @@ export default {
 								this.$refs.integraltip.close()
 								this.page = 1
 								this.postList = []
-								this.upCallback()
+								this.mescroll.resetUpScroll()
 							},2000)
 							
 						}
@@ -1666,6 +1691,8 @@ page {
 			flex-direction: column;
 			width: 100%;
 			background: white;
+			position: fixed;
+			left:0;
 		}
 		.search {
 			width: 100%;

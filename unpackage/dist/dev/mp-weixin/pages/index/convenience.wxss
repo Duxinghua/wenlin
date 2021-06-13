@@ -107,6 +107,8 @@ page.data-v-1f47e7de {
           flex-direction: column;
   width: 100%;
   background: white;
+  position: fixed;
+  left: 0;
 }
 .content .home .search.data-v-1f47e7de {
   width: 100%;

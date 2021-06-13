@@ -2,7 +2,7 @@
 	<view class="content">
 		<cu-custom bgColor="bg-white-pink" :isShow="isShow" @shows="shows" :allCommunity="all_community" :communityMenu="community_menu"  @hides="hides" @scallCommunity="scallCommunity"><block slot="content"></block></cu-custom>
 		<view class="home">
-			<view class="home-top">
+			<view class="home-top" :style="[{top:CustomBar + 'px'}]" >
 <!-- 				<view class="search">
 					<view class="searchleft" @click="searchLink">
 						<image src="../../static/search.png" class="ico"></image>
@@ -32,15 +32,15 @@
 			</view>
 <!-- 			</view> -->
 
-				<scroll-view :class="['postwrap',(type == 3) ? 'usedwrap' : '']" scroll-y="true" :style="{height: height+'px'}" class="listwrap" @scrolltoupper="upper"
-				 @scrolltolower="lower" 
-				 @refresherpulling="pulling"
-				 @refresherrefresh="refresh"
-				 @refresherrestore="onRestore" 
-				 @refresherabort="onAbort"
-				 :refresher-threshold="100"
-				 :refresher-triggered="scroll_refresher_enabled"
-				 :refresher-enabled="true"
+				<mescroll-uni :class="['postwrap',(type == 3) ? 'usedwrap' : '']" scroll-y="true" :style="{height: height+'px'}" class="listwrap" 
+					top="300"
+					bottom="120"
+					ref="mescrollRef"
+					@init="mescrollInit"
+					@down="downCallback"
+					@up="upCallback"
+					:down="downOption"
+					:up="upOption"
 				 >
 <!-- 			 <mescroll-uni  :fixed="true"  top="250" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" >
  -->	
@@ -48,8 +48,8 @@
 				
 <!-- 			</mescroll-uni> -->
 					<UsedItem  v-if="type == 3"  v-for="(item, index) in postList" :pitem="item" :key="index" :usedIndex="index"  @toLogin="goDetails" />
-					<Nodata v-if="flexNoData" name="fixed" />
-				</scroll-view>
+				<!-- 	<Nodata v-if="flexNoData" name="fixed" /> -->
+				</mescroll-uni>
 		
 			<!-- 闲置 -->
 		<!-- <view class="usedwrap"><UsedItem v-for="(item, index) in 4" :key="index" :usedIndex="index" /></view> -->
@@ -257,6 +257,7 @@ export default {
 	mixins: [MescrollMixin], 
 	data() {
 		return {
+				CustomBar:this.CustomBar,
 				scroll_refresher_enabled:false,
 				findsh:false,
 				setcommunityOpen:false,
@@ -488,7 +489,7 @@ export default {
 				//没有token要求用户授权
 				this.loginFalse = true;
 				this.current = 3
-				this.upCallback()
+				this.mescroll.resetUpScroll()
 			} else {
 				this.loginFalse = false;
 				//判断我是否设置小区
@@ -496,7 +497,7 @@ export default {
 					this.Api.checkUserCommunityOpening({}).then((result) => {
 						if(result.code == 1){
 							this.current = 3
-							this.upCallback()
+							this.mescroll.resetUpScroll()
 							// this.setcommunity = true;
 							this.setcommunityOpen = true
 							// uni.navigateTo({
@@ -511,7 +512,7 @@ export default {
 						}else{
 							setTimeout(()=>{
 								this.current = 3
-								this.upCallback()
+								this.mescroll.resetUpScroll()
 							},3000)
 					
 						}
@@ -541,7 +542,7 @@ export default {
 									duration: 2500
 								});
 								setTimeout(()=>{
-									this.upCallback()
+									this.mescroll.resetUpScroll()
 								},1000)
 							
 							}
@@ -554,7 +555,7 @@ export default {
 				})
 				p.then((r)=>{
 					
-					this.upCallback()
+					this.mescroll.resetUpScroll()
 				})
 				
 			}
@@ -583,7 +584,7 @@ export default {
 			    this.scroll_refresher_enabled = false;
 			    this._freshing = false;
 			}, 3000)
-			this.getData()
+			this.mescroll.resetUpScroll()
 		},
 		pulling(){
 		
@@ -594,14 +595,14 @@ export default {
 			this.page = 1
 			this.totalPage = 0
 			this.postList = []
-			this.upCallback()
+			this.mescroll.resetUpScroll()
 			
 		},
 		scroll(e) {
 			console.log(e,'xxxx')
 		},
 		flushHandler(){
-			this.upCallback()
+			this.mescroll.resetUpScroll()
 		},
 		upper(){
 			
@@ -622,7 +623,7 @@ export default {
 			this.currentText = !this.currentText
 			this.currentText ? this.$u.toast('已切换到当前位置的附近小区') : this.$u.toast('已切换到我的小区附近')
 			setTimeout(()=>{
-				this.upCallback()
+				this.mescroll.resetUpScroll()
 			},300)
 			
 		},
@@ -649,7 +650,7 @@ export default {
 				}
 				result = true
 				this.current = 3
-				this.upCallback()
+				this.mescroll.resetUpScroll()
 				cb(result)
 				return
 			}
@@ -663,7 +664,7 @@ export default {
 					}
 					result = true
 					this.current = 3
-					this.upCallback()
+					this.mescroll.resetUpScroll()
 					cb(result)
 					return
 			}
@@ -681,11 +682,11 @@ export default {
 				url:'/pages/update/secret'
 			})
 		},
-		upCallback(ismore) {
+		upCallback(page) {
 			//联网加载数据
 			var params = {
-				page:this.page.num,
-				page_size:this.page.size,
+				page:page.num,
+				page_size:page.size,
 				community_id:uni.getStorageSync('community_id'),
 				committee_id:uni.getStorageSync('committee_id'),
 				type:this.type,
@@ -703,18 +704,24 @@ export default {
 						var totalPage  = result.data.total_pages
 						var curPageLen = result.data.list.length; 
 						if(this.page.num == 1) this.postList = []
-						if(ismore){
-							this.postList = this.postList.concat(result.data.list);
-						}else{
-							this.postList = result.data.list
-						}
+						this.postList = this.postList.concat(result.data.list);
+						this.mescroll.endByPage(curPageLen, totalPage);
+						// if(ismore){
+						// 	this.postList = this.postList.concat(result.data.list);
+						// }else{
+						// 	this.postList = result.data.list
+						// }
 						
-						if(this.postList.length){
-							this.flexNoData = false
-						}else{
-							this.flexNoData = true
-						}
+						// if(this.postList.length){
+						// 	this.flexNoData = false
+						// }else{
+						// 	this.flexNoData = true
+						// }
 					}
+				})
+				.catch(()=>{
+					//联网失败的回调,隐藏下拉刷新的状态
+					this.mescroll.endErr();
 				})
 			}else if(this.current == 2){
 				this.Api.nearDynamics(params).then((result)=>{
@@ -722,19 +729,25 @@ export default {
 						var totalPage  = result.data.total_pages
 						var curPageLen = result.data.list.length; 
 						if(this.page.num == 1) this.postList = []
-						if(ismore){
-							this.postList = this.postList.concat(result.data.list);
-						}else{
-							this.postList = result.data.list;
-						}
+						this.postList = this.postList.concat(result.data.list);
+						this.mescroll.endByPage(curPageLen, totalPage);
+					// 	if(ismore){
+					// 		this.postList = this.postList.concat(result.data.list);
+					// 	}else{
+					// 		this.postList = result.data.list;
+					// 	}
 					
-						if(this.postList.length){
-							this.flexNoData = false
-						}else{
-							this.flexNoData = true
-						}
+					// 	if(this.postList.length){
+					// 		this.flexNoData = false
+					// 	}else{
+					// 		this.flexNoData = true
+					// 	}
 	
 					}
+				})
+				.catch(()=>{
+					//联网失败的回调,隐藏下拉刷新的状态
+					this.mescroll.endErr();
 				})
 			}else if(this.current == 3){
 				this.Api.helpDynamicsByCommunityId(params).then((result)=>{
@@ -742,18 +755,24 @@ export default {
 						var totalPage  = result.data.total_pages
 						var curPageLen = result.data.list.length; 
 						if(this.page.num == 1) this.postList = []
-						if(ismore){
-							this.postList = this.postList.concat(result.data.list);
-						}else{
-							this.postList = result.data.list;
-						}
+						this.postList = this.postList.concat(result.data.list);
+						this.mescroll.endByPage(curPageLen, totalPage);
+						// if(ismore){
+						// 	this.postList = this.postList.concat(result.data.list);
+						// }else{
+						// 	this.postList = result.data.list;
+						// }
 
-						if(this.postList.length){
-							this.flexNoData = false
-						}else{
-							this.flexNoData = true
-						}
+						// if(this.postList.length){
+						// 	this.flexNoData = false
+						// }else{
+						// 	this.flexNoData = true
+						// }
 					}
+				})
+				.catch(()=>{
+						//联网失败的回调,隐藏下拉刷新的状态
+						this.mescroll.endErr();
 				})
 			}
 			console.log(this.postList)
@@ -817,7 +836,7 @@ export default {
 							uni.setStorageSync('committee_id',e.committee_id);
 							this.current = 1
 							this.cateIndex = 0
-							this.upCallback()
+							this.mescroll.resetUpScroll()
 							uni.login({
 								success: res => {
 									let { errMsg, code } = res;
@@ -859,7 +878,7 @@ export default {
 			this.loginFalse = false;
 			this.current = 3;
 			this.guestShowOpen = true
-			this.upCallback()
+			this.mescroll.resetUpScroll()
 		},
 		// 手机号授权处理
 		getPhoneNumber(e) {
@@ -897,7 +916,7 @@ export default {
 							}
 						})
 						this.tagList = [{id:0,tag:'全部'}].concat(list)
-						this.upCallback()
+						this.mescroll.resetUpScroll()
 					}else{
 					    this.current = 3;
 						
@@ -906,12 +925,12 @@ export default {
 
 			}else if(arg == 3){
 				this.tagList = [{id:0,tag:'全部'}].concat(this.Tool.navList)
-				this.upCallback()
+				this.mescroll.resetUpScroll()
 			}else if(arg == 1){
 				this.goLogin((data) => {
 					if(!data){
 						this.tagList = [{id:0,tag:'全部'}].concat(this.Tool.navList)
-						this.upCallback()
+						this.mescroll.resetUpScroll()
 					}else{
 					    this.current = 3;
 		
@@ -1031,7 +1050,7 @@ export default {
 									this.guestShow = false
 									this.userinforeg = true;
 									if(this.all_community.length){
-										this.upCallback()
+										this.mescroll.resetUpScroll()
 									}else{
 										//如果开通过小区，待审核 
 										this.current = 3
@@ -1106,7 +1125,7 @@ export default {
 							uni.setStorageSync('community_menu',this.communityTitle);
 							this.community_menu = this.communityTitle
 							this.current = 1
-							this.upCallback()
+							this.mescroll.resetUpScroll()
 							this.setcommunity = false
 							this.guestShowOpen = false
 							//绑定上下级
@@ -1273,7 +1292,7 @@ export default {
 					this.flexType = false
 				}
 				// this.mescroll.scrollTo( 0, 300)
-				this.upCallback()
+				this.mescroll.resetUpScroll()
 				this.$forceUpdate()
 			})
 
@@ -1307,7 +1326,7 @@ export default {
 							duration: 2000
 						});
 						this.findFaultValue = false
-						this.upCallback()
+						this.mescroll.resetUpScroll()
 					}else{
 						uni.showToast({
 							title: result.msg,
@@ -1323,7 +1342,7 @@ export default {
 							duration: 2000
 						});
 						this.findFaultValue = false
-						this.upCallback()
+						this.mescroll.resetUpScroll()
 					}else{
 						uni.showToast({
 							title: result.msg,
@@ -1420,7 +1439,7 @@ export default {
 								this.score_text = ''
 								this.$refs.Help.inputValue = 0
 								this.$refs.integraltip.close()
-								this.upCallback()
+								this.mescroll.resetUpScroll()
 							},2000)
 							
 						}
@@ -1688,6 +1707,8 @@ page {
 		.home-top{
 			display: flex;
 			flex-direction: column;
+			position: fixed;
+			left:0;
 			width: 100%;
 			background: white;
 		}

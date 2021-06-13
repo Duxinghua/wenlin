@@ -12,7 +12,7 @@
 			<block slot="content"></block>
 		</cu-custom>
 		<view class="home">
-			<view class="home-top" id="hometop" >
+			<view class="home-top" id="hometop"  :style="[{top:CustomBar + 'px'}]" >
 				<view class="joinlist" v-if="usersList.length &&　false">
 					<view class="join-user" >
 						<view class="imgwrap" @click.stop="userHandler(item)" v-for="(item, index) in usersList" :key="index" v-if="index < 7">
@@ -56,16 +56,16 @@
 			</view>
 			<!-- 			</view> -->
 			<view :class="['postwrap', type == 3 && postList.length > 0 ? 'usedwrap' : '']">
-			<scroll-view scroll-y="true"  v-if="type != 3" :style="{height: height+'px'}" 
-			class="listwrap" @scrolltoupper="upper" @scrolltolower="lower"
-			@scroll="scroll"
-			@refresherpulling="pulling"
-			@refresherrefresh="refresh"
-			@refresherrestore="onRestore" 
-			@refresherabort="onAbort"
-			:refresher-threshold="100"
-			:refresher-triggered="scroll_refresher_enabled"
-			:refresher-enabled="true"
+			<mescroll-uni scroll-y="true"  v-if="type != 3" :style="{height: height+'px'}" 
+			class="listwrap"
+			top="300"
+			bottom="120"
+			ref="mescrollRef"
+			@init="mescrollInit"
+			@down="downCallback"
+			@up="upCallback"
+			:down="downOption"
+			:up="upOption"
 			 >
 <!-- 			 //@refresherpulling="pulling" -->
 					<PostItem
@@ -82,34 +82,34 @@
 						@danrenHandler="danrenHandler"
 					></PostItem>
 					<!-- https://sq.wenlinapp.com/upload/mini/regnodata.png -->
-					<view class="guestdata" v-if="flexNoData">
+<!-- 					<view class="guestdata" v-if="flexNoData">
 						<u-image width="654" height="550" src="https://sq.wenlinapp.com/upload/mini/regnodata.png"></u-image>
 						<view class="guesttext">
 							{{guestdata}}
 						</view>
-					</view>
-				</scroll-view>
+					</view> -->
+				</mescroll-uni>
 
-				<scroll-view scroll-y="true"  v-if="type == 3" :style="{height: height+'px'}"
-				class="listwrap" @scrolltoupper="upper" @scrolltolower="lower" 
-				@scroll="scroll"
-				@refresherpulling="pulling"
-				@refresherrefresh="refresh"
-				@refresherrestore="onRestore"
-				@refresherabort="onAbort"
-				:refresher-threshold="100"
-				:refresher-triggered="scroll_refresher_enabled"
-				:refresher-enabled="true"
+				<mescroll-uni scroll-y="true"  v-if="type == 3" :style="{height: height+'px'}"
+				class="listwrap"
+				top="300"
+				bottom="120"
+				ref="mescrollRef"
+				@init="mescrollInit"
+				@down="downCallback"
+				@up="upCallback"
+				:down="downOption"
+				:up="upOption"
 				>
 					<UsedItem v-for="(item, index) in postList" :pitem="item" :key="index" :usedIndex="index" @toLogin="goDetails" />
 	<!-- 				flexNoData guestFlag -->
-					<view class="guestdata" v-if="flexNoData">
+<!-- 					<view class="guestdata" v-if="flexNoData">
 						<u-image width="654" height="550" src="https://sq.wenlinapp.com/upload/mini/regnodata.png"></u-image>
 						<view class="guesttext">
 							{{guestdata}}
 						</view>
-					</view>
-				</scroll-view>
+					</view> -->
+				</mescroll-uni>
 			</view>
 			<!-- 闲置 -->
 			<!-- <view class="usedwrap"><UsedItem v-for="(item, index) in 4" :key="index" :usedIndex="index" /></view> -->
@@ -365,6 +365,7 @@ export default {
 	mixins: [MescrollMixin],
 	data() {
 		return {
+			CustomBar:this.CustomBar,
 			scroll_refresher_enabled:false,
 			findsh:false,
 			apirequire:true,
@@ -664,8 +665,8 @@ export default {
 							if (this.all_community.length) {
 								setTimeout(() => {
 									this.current = 1;
-									//this.getData();
-									this.getData()
+									//this.mescroll.resetUpScroll();
+									this.mescroll.resetUpScroll()
 								}, 3000);
 							}
 						}
@@ -695,7 +696,7 @@ export default {
 								});
 								setTimeout(()=>{
 									resolve();
-									this.getData()
+									this.mescroll.resetUpScroll()
 								},1000)
 
 							}
@@ -704,7 +705,7 @@ export default {
 					resolve();
 				});
 				p.then(r => {
-					this.getData();
+					this.mescroll.resetUpScroll();
 				});
 			}else{
 
@@ -740,9 +741,6 @@ export default {
 		setTimeout(()=>{
 			this.scroll_refresher_enabled = true;
 		},1000)
-		setInterval(()=>{
-			console.log(this.scroll_refresher_enabled,'==')
-		},500)
 	},
 	watch: {
 		scroll_refresher_enabled:{
@@ -782,7 +780,7 @@ export default {
 			    this.scroll_refresher_enabled = false;
 			    this._freshing = false;
 			}, 3000)
-			this.getData()
+			this.mescroll.resetUpScroll()
 		},
 		pulling(e){
 			console.log("onpulling", e);
@@ -902,7 +900,7 @@ export default {
 				result = true;
 				//不进行切换
 				// this.current = 3;
-				// this.getData();
+				// this.mescroll.resetUpScroll();
 				cb(result);
 				return;
 			}else{
@@ -921,7 +919,7 @@ export default {
 				this.guestFlag = true
 				
 				// this.current = 3;
-				// this.getData();
+				// this.mescroll.resetUpScroll();
 				cb(result);
 				return;
 			}
@@ -943,17 +941,17 @@ export default {
 			this.postList = []
 			this.upCallback()
 		},
-		upCallback(ismore) {
+		upCallback(page) {
 			//联网加载数据
 			var that = this
 			var params = {
-				page: this.page,
-				page_size: this.page_size,
+				page: page.num,
+				page_size: page.size,
 				community_id: uni.getStorageSync('community_id'),
 				committee_id: uni.getStorageSync('committee_id'),
 				type: this.type,
 				latitude: uni.getStorageSync('latitude'),
-				longitude: uni.getStorageSync('longitude')
+				 longitude: uni.getStorageSync('longitude')
 			};
 			if (this.current == 1) {
 				this.Api.allByCommunityId(params)
@@ -961,74 +959,120 @@ export default {
 	
 						if (result.code == 1) {
 							this.totalPage = result.data.total_pages;
+							var totalPage = result.data.total_pages;
+							var curPageLen = result.data.list.length;
 							if (this.page == 1) {
 								this.postList = [];
-							}
-							if(ismore){
-								this.postList = this.postList.concat(result.data.list);
-							}else{
 								var list = []
 								if(this.type == 6 && this.darenObj){
 									list.push(this.darenObj)
 								}
 								this.postList = list.concat(result.data.list)
+							}else{
+								this.postList = this.postList.concat(result.data.list);
 							}
+							this.mescroll.endByPage(curPageLen, totalPage);
+	// 						if(ismore){
+	// 							this.postList = this.postList.concat(result.data.list);
+	// 						}else{
+	// 							var list = []
+	// 							if(this.type == 6 && this.darenObj){
+	// 								list.push(this.darenObj)
+	// 							}
+	// 							this.postList = list.concat(result.data.list)
+	// 						}
 	
-							if (this.postList.length) {
-								this.flexNoData = false;
-							} else {
-								this.flexNoData = true;
-							}
-							console.log(this.postList,'xxx')
+							// if (this.postList.length) {
+							// 	this.flexNoData = false;
+							// } else {
+							// 	this.flexNoData = true;
+							// }
+				
 						}
 					})
+					.catch(() => {
+						//联网失败的回调,隐藏下拉刷新的状态
+						this.mescroll.endErr();
+					});
 			} else if (this.current == 2) {
 				this.Api.nearByCommunityId(params)
 					.then(result => {
 						if (result.code == 1) {
-							this.totalPage = result.data.total_pages;
+						// 	this.totalPage = result.data.total_pages;
 						
-							if(ismore){
-								this.postList = this.postList.concat(result.data.list);
-							}else{
-								this.postList = result.data.list;
-							}
+						// 	if(ismore){
+						// 		this.postList = this.postList.concat(result.data.list);
+						// 	}else{
+						// 		this.postList = result.data.list;
+						// 	}
 							
-							if (this.postList.length) {
-								this.flexNoData = false;
-							} else {
-								this.flexNoData = true;
-							}
+						// 	if (this.postList.length) {
+						// 		this.flexNoData = false;
+						// 	} else {
+						// 		this.flexNoData = true;
+						// 	}
+							var totalPage = result.data.total_pages;
+							var curPageLen = result.data.list.length;
+							if (page.num == 1) this.postList = [];
+							this.postList = this.postList.concat(result.data.list);
+							this.mescroll.endByPage(curPageLen, totalPage);
+							// if (this.postList.length) {
+							// 	this.flexNoData = true;
+							// } else {
+							// 	this.flexNoData = false;
+							// }
 						}
 					})
+					.catch(() => {
+						//联网失败的回调,隐藏下拉刷新的状态
+						this.mescroll.endErr();
+					});
 			} else if (this.current == 3) {
 				this.Api.helpDynamicsByCommunityId(params)
 					.then(result => {
 						if (result.code == 1) {
-							this.totalPage = result.data.total_pages;
-
+							// this.totalPage = result.data.total_pages;
+							var totalPage = result.data.total_pages;
+							var curPageLen = result.data.list.length;
 							if (this.page == 1) {
 								this.postList = [];
-		
-							}
-							if(ismore){
-								this.postList = this.postList.concat(result.data.list);
-							}else{
 								var list = []
 								if(this.type == 6 && this.darenObj){
 									list.push(this.darenObj)
 								}
 								this.postList = list.concat(result.data.list)
+		
+							}else{
+								this.postList = this.postList.concat(result.data.list);
+								this.mescroll.endByPage(curPageLen, totalPage);
+							}
+							// if (this.postList.length) {
+							// 	this.flexNoData = true;
+							// } else {
+							// 	this.flexNoData = false;
+							// }
+						// 	if(ismore){
+						// 		this.postList = this.postList.concat(result.data.list);
+						// 	}else{
+						// 		var list = []
+						// 		if(this.type == 6 && this.darenObj){
+						// 			list.push(this.darenObj)
+						// 		}
+						// 		this.postList = list.concat(result.data.list)
 								
-							}
+						// 	}
 						
-							if (this.postList.length) {
-								this.flexNoData = false;
-							} else {
-								this.flexNoData = true;
-							}
+						// 	if (this.postList.length) {
+						// 		this.flexNoData = false;
+						// 	} else {
+						// 		this.flexNoData = true;
+						// 	}
 						}
 					})
+					.catch(() => {
+						//联网失败的回调,隐藏下拉刷新的状态
+						this.mescroll.endErr();
+					});
 
 			}
 		},
@@ -1092,7 +1136,7 @@ export default {
 							uni.setStorageSync('community_name',e.title)
 							this.current = 1;
 							this.cateIndex = 0;
-							this.getData();
+							this.mescroll.resetUpScroll();
 							uni.login({
 								success: res => {
 									let { errMsg, code } = res;
@@ -1137,7 +1181,7 @@ export default {
 			//首页不进行切换
 			// this.current = 3;
 			// this.guestShowOpen = true;
-			// this.getData();
+			// this.mescroll.resetUpScroll();
 		},
 		// 手机号授权处理
 		getPhoneNumber(e) {
@@ -1169,18 +1213,18 @@ export default {
 				this.goLogin(data => {
 					if (!data) {
 						this.tagList = this.tagList2;
-						this.getData();
+						this.mescroll.resetUpScroll();
 					} else {
 						this.current = 3;
 					}
 				});
 			} else if (arg == 3) {
 				
-				this.getData();
+				this.mescroll.resetUpScroll();
 			} else if (arg == 1) {
 				this.goLogin(data => {
 					if (!data) {
-						this.getData();
+						this.mescroll.resetUpScroll();
 					} else {
 						this.current = 3;
 					}
@@ -1301,7 +1345,7 @@ export default {
 										this.guestFlag = true
 									}
 									if (this.all_community.length) {
-										this.getData();
+										this.mescroll.resetUpScroll();
 									} else {
 										//如果开通过小区，待审核
 										//this.current = 3;
@@ -1377,7 +1421,7 @@ export default {
 							uni.setStorageSync('community_menu', this.communityTitle);
 							this.community_menu = this.communityTitle;
 							this.current = 1;
-							this.getData();
+							this.mescroll.resetUpScroll();
 							this.setcommunity = false;
 							this.guestShowOpen = false;
 							//绑定上下级
@@ -1559,19 +1603,19 @@ export default {
 								this.darenObj.type = 6
 							}
 								// this.mescroll.scrollTo(0, 300);
-								this.getData();
+								this.mescroll.resetUpScroll();
 								this.$forceUpdate();
 							
 						}else{
 							// this.mescroll.scrollTo(0, 300);
-								this.getData();
+								this.mescroll.resetUpScroll();
 								this.$forceUpdate();
 							
 						}
 					})
 				}else{
 					// this.mescroll.scrollTo(0, 300);
-					this.getData();
+					this.mescroll.resetUpScroll();
 					this.$forceUpdate();
 				}
 			});
@@ -1605,7 +1649,7 @@ export default {
 							duration: 2000
 						});
 						this.findFaultValue = false;
-						this.getData();
+						this.mescroll.resetUpScroll();
 					} else {
 						uni.showToast({
 							title: result.msg,
@@ -1621,7 +1665,7 @@ export default {
 							duration: 2000
 						});
 						this.findFaultValue = false;
-						this.getData();
+						this.mescroll.resetUpScroll();
 					} else {
 						uni.showToast({
 							title: result.msg,
@@ -1716,7 +1760,7 @@ export default {
 								this.score_text = '';
 								this.$refs.Help.inputValue = 0;
 								this.$refs.integraltip.close();
-								this.getData();
+								this.mescroll.resetUpScroll();
 							}, 2000);
 						}
 					});
@@ -2031,6 +2075,9 @@ page {
 
 		box-sizing: border-box;
 		.home-top {
+			position: fixed;
+			top:0;
+			width:0;
 			display: flex;
 			flex-direction: column;
 			width: 100%;

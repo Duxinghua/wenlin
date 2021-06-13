@@ -81,6 +81,9 @@ try {
   components = {
     uImage: function() {
       return __webpack_require__.e(/*! import() | uview-ui/components/u-image/u-image */ "uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-image/u-image.vue */ 583))
+    },
+    mescrollUni: function() {
+      return Promise.all(/*! import() | components/mescroll-uni/mescroll-uni */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mescroll-uni/mescroll-uni")]).then(__webpack_require__.bind(null, /*! @/components/mescroll-uni/mescroll-uni.vue */ 525))
     }
   }
 } catch (e) {
@@ -867,7 +870,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
 //
 //
 //
-var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure | components/leavewords/leavewords */ "components/leavewords/leavewords").then((function () {return resolve(__webpack_require__(/*! @/components/leavewords/leavewords.vue */ 625));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var PostItem = function PostItem() {__webpack_require__.e(/*! require.ensure | components/postItem/postitem */ "components/postItem/postitem").then((function () {return resolve(__webpack_require__(/*! @/components/postItem/postitem.vue */ 809));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UsedItem = function UsedItem() {__webpack_require__.e(/*! require.ensure | components/usedItem/useditem */ "components/usedItem/useditem").then((function () {return resolve(__webpack_require__(/*! @/components/usedItem/useditem.vue */ 795));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 646));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 618));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 632));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 604));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 554));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 674));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { mixins: [_mescrollMixins.default], data: function data() {return { scroll_refresher_enabled: false, findsh: false, apirequire: true, imgURl: this.Config.minUrl, guestFlag: false, isHome: false, smallNodata: true, flexType: false, downOption: { use: true, // 是否启用下拉刷新; 默认true
+var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure | components/leavewords/leavewords */ "components/leavewords/leavewords").then((function () {return resolve(__webpack_require__(/*! @/components/leavewords/leavewords.vue */ 625));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var PostItem = function PostItem() {__webpack_require__.e(/*! require.ensure | components/postItem/postitem */ "components/postItem/postitem").then((function () {return resolve(__webpack_require__(/*! @/components/postItem/postitem.vue */ 809));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UsedItem = function UsedItem() {__webpack_require__.e(/*! require.ensure | components/usedItem/useditem */ "components/usedItem/useditem").then((function () {return resolve(__webpack_require__(/*! @/components/usedItem/useditem.vue */ 795));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 646));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 618));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 632));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 604));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 554));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 674));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { mixins: [_mescrollMixins.default], data: function data() {return { CustomBar: this.CustomBar, scroll_refresher_enabled: false, findsh: false, apirequire: true, imgURl: this.Config.minUrl, guestFlag: false, isHome: false, smallNodata: true, flexType: false, downOption: { use: true, // 是否启用下拉刷新; 默认true
         auto: false, // 是否在初始化完毕之后自动执行下拉刷新的回调; 默认true
         native: false, // 是否使用系统自带的下拉刷新; 默认false; 仅mescroll-body生效 (值为true时,还需在pages配置enablePullDownRefresh:true;详请参考mescroll-native的案例)
         autoShowLoading: false, // 如果设置auto=true(在初始化完毕之后自动执行下拉刷新的回调),那么是否显示下拉刷新的进度; 默认false
@@ -914,19 +917,17 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               // uni.navigateTo({
               // 	url:'../update/openingcommunity'
               // })
-              var pid = uni.getStorageSync('pid');if (pid) {_this.community = uni.getStorageSync('ptitle');_this.communityId = uni.getStorageSync('pcommunity_id');}} else {if (_this.all_community.length) {setTimeout(function () {_this.current = 1; //this.getData();
-                  _this.getData();}, 3000);}}});} else {_this.setcommunity = false;}}if (_this.community_id) {var p = new Promise(function (resolve, reject) {if (!uni.getStorageSync('longitude')) {// resolve();
+              var pid = uni.getStorageSync('pid');if (pid) {_this.community = uni.getStorageSync('ptitle');_this.communityId = uni.getStorageSync('pcommunity_id');}} else {if (_this.all_community.length) {setTimeout(function () {_this.current = 1; //this.mescroll.resetUpScroll();
+                  _this.mescroll.resetUpScroll();}, 3000);}}});} else {_this.setcommunity = false;}}if (_this.community_id) {var p = new Promise(function (resolve, reject) {if (!uni.getStorageSync('longitude')) {// resolve();
             uni.getLocation({ success: function success(res) {// latitude: 30.39085
                 // longitude: 114.89495
-                uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });setTimeout(function () {resolve();_this.getData();}, 1000);} });}resolve();});p.then(function (r) {_this.getData();});} else {if (!uni.getStorageSync('longitude')) {// resolve();
+                uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });setTimeout(function () {resolve();_this.mescroll.resetUpScroll();}, 1000);} });}resolve();});p.then(function (r) {_this.mescroll.resetUpScroll();});} else {if (!uni.getStorageSync('longitude')) {// resolve();
           uni.getLocation({ success: function success(res) {// latitude: 30.39085
               // longitude: 114.89495
               uni.setStorageSync('latitude', res.latitude);uni.setStorageSync('longitude', res.longitude);resolve();}, fail: function fail(err) {uni.showToast({ title: '您未开通地图授权，请打开授权', icon: 'none', duration: 2500 });} });}} // this.Api.getCommunityWiki({}).then(result => {
       // 	console.log(result);
       // });
-    });setTimeout(function () {_this.scroll_refresher_enabled = true;}, 1000);setInterval(function () {console.log(_this.scroll_refresher_enabled, '==');}, 500);}, watch: { scroll_refresher_enabled: { deep: true, handler: function handler(data) {console.log(data, 'data');if (!data) {this.onRestore();}} } }, methods: { throttle: function throttle(fn, wait) {var timer = null;return function () {var context = this;var args = arguments;if (!timer) {timer = setTimeout(function () {fn.apply(context, args);timer = null;}, wait);}};},
-    onRestore: function onRestore(e) {
-      console.log(e, 'onrestore');
+    });setTimeout(function () {_this.scroll_refresher_enabled = true;}, 1000);}, watch: { scroll_refresher_enabled: { deep: true, handler: function handler(data) {console.log(data, 'data');if (!data) {this.onRestore();}} } }, methods: { throttle: function throttle(fn, wait) {var timer = null;return function () {var context = this;var args = arguments;if (!timer) {timer = setTimeout(function () {fn.apply(context, args);timer = null;}, wait);}};}, onRestore: function onRestore(e) {console.log(e, 'onrestore');
     },
     onAbort: function onAbort(e) {
       console.log(e, 'onabort');
@@ -938,7 +939,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         _this2.scroll_refresher_enabled = false;
         _this2._freshing = false;
       }, 3000);
-      this.getData();
+      this.mescroll.resetUpScroll();
     },
     pulling: function pulling(e) {
       console.log("onpulling", e);
@@ -1058,7 +1059,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         result = true;
         //不进行切换
         // this.current = 3;
-        // this.getData();
+        // this.mescroll.resetUpScroll();
         cb(result);
         return;
       } else {
@@ -1077,7 +1078,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         this.guestFlag = true;
 
         // this.current = 3;
-        // this.getData();
+        // this.mescroll.resetUpScroll();
         cb(result);
         return;
       }
@@ -1099,12 +1100,12 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       this.postList = [];
       this.upCallback();
     },
-    upCallback: function upCallback(ismore) {var _this5 = this;
+    upCallback: function upCallback(page) {var _this5 = this;
       //联网加载数据
       var that = this;
       var params = {
-        page: this.page,
-        page_size: this.page_size,
+        page: page.num,
+        page_size: page.size,
         community_id: uni.getStorageSync('community_id'),
         committee_id: uni.getStorageSync('committee_id'),
         type: this.type,
@@ -1117,73 +1118,119 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
 
           if (result.code == 1) {
             _this5.totalPage = result.data.total_pages;
+            var totalPage = result.data.total_pages;
+            var curPageLen = result.data.list.length;
             if (_this5.page == 1) {
               _this5.postList = [];
-            }
-            if (ismore) {
-              _this5.postList = _this5.postList.concat(result.data.list);
-            } else {
               var list = [];
               if (_this5.type == 6 && _this5.darenObj) {
                 list.push(_this5.darenObj);
               }
               _this5.postList = list.concat(result.data.list);
-            }
-
-            if (_this5.postList.length) {
-              _this5.flexNoData = false;
             } else {
-              _this5.flexNoData = true;
+              _this5.postList = _this5.postList.concat(result.data.list);
             }
-            console.log(_this5.postList, 'xxx');
+            _this5.mescroll.endByPage(curPageLen, totalPage);
+            // 						if(ismore){
+            // 							this.postList = this.postList.concat(result.data.list);
+            // 						}else{
+            // 							var list = []
+            // 							if(this.type == 6 && this.darenObj){
+            // 								list.push(this.darenObj)
+            // 							}
+            // 							this.postList = list.concat(result.data.list)
+            // 						}
+
+            // if (this.postList.length) {
+            // 	this.flexNoData = false;
+            // } else {
+            // 	this.flexNoData = true;
+            // }
+
           }
+        }).
+        catch(function () {
+          //联网失败的回调,隐藏下拉刷新的状态
+          _this5.mescroll.endErr();
         });
       } else if (this.current == 2) {
         this.Api.nearByCommunityId(params).
         then(function (result) {
           if (result.code == 1) {
-            _this5.totalPage = result.data.total_pages;
+            // 	this.totalPage = result.data.total_pages;
 
-            if (ismore) {
-              _this5.postList = _this5.postList.concat(result.data.list);
-            } else {
-              _this5.postList = result.data.list;
-            }
+            // 	if(ismore){
+            // 		this.postList = this.postList.concat(result.data.list);
+            // 	}else{
+            // 		this.postList = result.data.list;
+            // 	}
 
-            if (_this5.postList.length) {
-              _this5.flexNoData = false;
-            } else {
-              _this5.flexNoData = true;
-            }
+            // 	if (this.postList.length) {
+            // 		this.flexNoData = false;
+            // 	} else {
+            // 		this.flexNoData = true;
+            // 	}
+            var totalPage = result.data.total_pages;
+            var curPageLen = result.data.list.length;
+            if (page.num == 1) _this5.postList = [];
+            _this5.postList = _this5.postList.concat(result.data.list);
+            _this5.mescroll.endByPage(curPageLen, totalPage);
+            // if (this.postList.length) {
+            // 	this.flexNoData = true;
+            // } else {
+            // 	this.flexNoData = false;
+            // }
           }
+        }).
+        catch(function () {
+          //联网失败的回调,隐藏下拉刷新的状态
+          _this5.mescroll.endErr();
         });
       } else if (this.current == 3) {
         this.Api.helpDynamicsByCommunityId(params).
         then(function (result) {
           if (result.code == 1) {
-            _this5.totalPage = result.data.total_pages;
-
+            // this.totalPage = result.data.total_pages;
+            var totalPage = result.data.total_pages;
+            var curPageLen = result.data.list.length;
             if (_this5.page == 1) {
               _this5.postList = [];
-
-            }
-            if (ismore) {
-              _this5.postList = _this5.postList.concat(result.data.list);
-            } else {
               var list = [];
               if (_this5.type == 6 && _this5.darenObj) {
                 list.push(_this5.darenObj);
               }
               _this5.postList = list.concat(result.data.list);
 
-            }
-
-            if (_this5.postList.length) {
-              _this5.flexNoData = false;
             } else {
-              _this5.flexNoData = true;
+              _this5.postList = _this5.postList.concat(result.data.list);
+              _this5.mescroll.endByPage(curPageLen, totalPage);
             }
+            // if (this.postList.length) {
+            // 	this.flexNoData = true;
+            // } else {
+            // 	this.flexNoData = false;
+            // }
+            // 	if(ismore){
+            // 		this.postList = this.postList.concat(result.data.list);
+            // 	}else{
+            // 		var list = []
+            // 		if(this.type == 6 && this.darenObj){
+            // 			list.push(this.darenObj)
+            // 		}
+            // 		this.postList = list.concat(result.data.list)
+
+            // 	}
+
+            // 	if (this.postList.length) {
+            // 		this.flexNoData = false;
+            // 	} else {
+            // 		this.flexNoData = true;
+            // 	}
           }
+        }).
+        catch(function () {
+          //联网失败的回调,隐藏下拉刷新的状态
+          _this5.mescroll.endErr();
         });
 
       }
@@ -1248,7 +1295,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               uni.setStorageSync('community_name', e.title);
               _this6.current = 1;
               _this6.cateIndex = 0;
-              _this6.getData();
+              _this6.mescroll.resetUpScroll();
               uni.login({
                 success: function success(res) {var
                   errMsg = res.errMsg,code = res.code;
@@ -1293,7 +1340,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       //首页不进行切换
       // this.current = 3;
       // this.guestShowOpen = true;
-      // this.getData();
+      // this.mescroll.resetUpScroll();
     },
     // 手机号授权处理
     getPhoneNumber: function getPhoneNumber(e) {var _this7 = this;
@@ -1325,18 +1372,18 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         this.goLogin(function (data) {
           if (!data) {
             _this8.tagList = _this8.tagList2;
-            _this8.getData();
+            _this8.mescroll.resetUpScroll();
           } else {
             _this8.current = 3;
           }
         });
       } else if (arg == 3) {
 
-        this.getData();
+        this.mescroll.resetUpScroll();
       } else if (arg == 1) {
         this.goLogin(function (data) {
           if (!data) {
-            _this8.getData();
+            _this8.mescroll.resetUpScroll();
           } else {
             _this8.current = 3;
           }
@@ -1457,7 +1504,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
                     _this10.guestFlag = true;
                   }
                   if (_this10.all_community.length) {
-                    _this10.getData();
+                    _this10.mescroll.resetUpScroll();
                   } else {
                     //如果开通过小区，待审核
                     //this.current = 3;
@@ -1533,7 +1580,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               uni.setStorageSync('community_menu', _this11.communityTitle);
               _this11.community_menu = _this11.communityTitle;
               _this11.current = 1;
-              _this11.getData();
+              _this11.mescroll.resetUpScroll();
               _this11.setcommunity = false;
               _this11.guestShowOpen = false;
               //绑定上下级
@@ -1715,19 +1762,19 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
                 _this15.darenObj.type = 6;
               }
               // this.mescroll.scrollTo(0, 300);
-              _this15.getData();
+              _this15.mescroll.resetUpScroll();
               _this15.$forceUpdate();
 
             } else {
               // this.mescroll.scrollTo(0, 300);
-              _this15.getData();
+              _this15.mescroll.resetUpScroll();
               _this15.$forceUpdate();
 
             }
           });
         } else {
           // this.mescroll.scrollTo(0, 300);
-          _this15.getData();
+          _this15.mescroll.resetUpScroll();
           _this15.$forceUpdate();
         }
       });
@@ -1761,7 +1808,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               duration: 2000 });
 
             _this17.findFaultValue = false;
-            _this17.getData();
+            _this17.mescroll.resetUpScroll();
           } else {
             uni.showToast({
               title: result.msg,
@@ -1777,7 +1824,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
               duration: 2000 });
 
             _this17.findFaultValue = false;
-            _this17.getData();
+            _this17.mescroll.resetUpScroll();
           } else {
             uni.showToast({
               title: result.msg,
@@ -1872,7 +1919,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
                 _this20.score_text = '';
                 _this20.$refs.Help.inputValue = 0;
                 _this20.$refs.integraltip.close();
-                _this20.getData();
+                _this20.mescroll.resetUpScroll();
               }, 2000);
             } });
 
