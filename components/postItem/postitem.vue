@@ -31,7 +31,7 @@
 					</view>
 				</view>
 				<!-- is_know  0 不认识  1 已认识  2 自己 -->
-				<view class="flowwrap" v-if="pitem.type == 13" @click.stop="knowTodo">{{pitem.is_know == 0 ? '认识 TA' : (pitem.is_know == 1 ? '已认识 TA' : '自己')}}</view>
+				<view class="flowwrap" v-if="pitem.type == 13" @click.stop="knowTodo">{{pitem.is_know == 0 ? '认识 TA' : (pitem.is_know == 1 ? '取消认识' : '自己')}}</view>
 				<view class="morewrap" v-if="pitem.type != 13" @click.stop="moreClick(pitem)"><image src="../../static/more.png" class="more"></image></view>
 			</view>
 			<view class="postheader" v-if="pitem.publish_type != 1">

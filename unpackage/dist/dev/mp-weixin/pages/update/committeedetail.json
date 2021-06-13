@@ -3,6 +3,7 @@
   "usingComponents": {
     "navigation-custom": "/components/struggler-navigationCustom/navigation-custom",
     "reply": "/components/reply/reply",
-    "mobile": "/components/mobile/mobile"
+    "mobile": "/components/mobile/mobile",
+    "nodata": "/components/nodata/nodata"
   }
 }

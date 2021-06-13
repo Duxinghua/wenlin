@@ -345,6 +345,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/components/mescroll-uni/mescroll-mixins.js */ 537));
 
 
@@ -688,26 +692,32 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
 
 
     });
+    setTimeout(function () {
+      _this.scroll_refresher_enabled = true;
+    }, 1000);
 
   },
   watch: {},
 
 
   methods: (_methods = {
-    refresh: function refresh(e) {var _this2 = this;
-      console.log(e, '===');
-      if (this.findsh) return;
-      this.findsh = true;
-      setTimeout(function () {
-        _this2.findsh = false;
-        _this2.scroll_refresher_enabled = false;
-      }, 250);
+    onRestore: function onRestore(e) {
+      console.log(e, 'onrestore');
     },
-    pulling: function pulling() {var _this3 = this;
+    onAbort: function onAbort(e) {
+      console.log(e, 'onabort');
+    },
+    refresh: function refresh(e) {var _this2 = this;
+      if (this._freshing) return;
+      this._freshing = true;
       setTimeout(function () {
-        _this3.scroll_refresher_enabled = true;
-      }, 500);
+        _this2.scroll_refresher_enabled = false;
+        _this2._freshing = false;
+      }, 3000);
       this.getData();
+    },
+    pulling: function pulling() {
+
     },
     getData: function getData() {
       this.flexNoData = false;
@@ -735,12 +745,12 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
         url: '../update/selectcommunity' });
 
     },
-    getCommitList: function getCommitList() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _this4.Api.myCommitteeList({ type: 0 }));case 2:result = _context.sent;
+    getCommitList: function getCommitList() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this3.Api.myCommitteeList({ type: 0 }));case 2:result = _context.sent;
                 if (result.code == 1) {
-                  _this4.committeeList = result.data;
-                  console.log(_this4.committeeList, 'committeeList');
-                  _this4.$forceUpdate();
+                  _this3.committeeList = result.data;
+                  console.log(_this3.committeeList, 'committeeList');
+                  _this3.$forceUpdate();
                 }case 4:case "end":return _context.stop();}}}, _callee);}))();
     },
     guestLoginTodo: function guestLoginTodo() {
@@ -798,7 +808,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
         url: '/pages/update/secret' });
 
     },
-    upCallback: function upCallback(ismore) {var _this5 = this;
+    upCallback: function upCallback(ismore) {var _this4 = this;
       //联网加载数据
       var params = {
         page: this.page,
@@ -812,36 +822,36 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
       if (this.current == 1) {
         this.Api.getCommunityWiki(params).then(function (result) {
           if (result.code == 1) {
-            _this5.totalPage = result.data.total_page;
+            _this4.totalPage = result.data.total_page;
             result.data.list.map(function (item) {
               item.type = 7;
             });
             if (ismore) {
-              _this5.postList = _this5.postList.concat(result.data.list);
+              _this4.postList = _this4.postList.concat(result.data.list);
             } else {
-              _this5.postList = result.data.list;
+              _this4.postList = result.data.list;
             }
 
-            if (_this5.postList.length) {
-              _this5.flexNoData = true;
+            if (_this4.postList.length) {
+              _this4.flexNoData = true;
             } else {
-              _this5.flexNoData = false;
+              _this4.flexNoData = false;
             }
           }
         });
       } else if (this.current == 2) {
         this.Api.nearByCommunityId(params).then(function (result) {
           if (result.code == 1) {
-            _this5.totalPage = result.data.total_page;
+            _this4.totalPage = result.data.total_page;
             if (ismore) {
-              _this5.postList = _this5.postList.concat(result.data.list);
+              _this4.postList = _this4.postList.concat(result.data.list);
             } else {
-              _this5.postList = result.data.list;
+              _this4.postList = result.data.list;
             }
-            if (_this5.postList.length) {
-              _this5.flexNoData = true;
+            if (_this4.postList.length) {
+              _this4.flexNoData = true;
             } else {
-              _this5.flexNoData = false;
+              _this4.flexNoData = false;
             }
 
           }
@@ -849,16 +859,16 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
       } else if (this.current == 3) {
         this.Api.helpDynamicsByCommunityId(params).then(function (result) {
           if (result.code == 1) {
-            _this5.totalPage = result.data.total_page;
+            _this4.totalPage = result.data.total_page;
             if (ismore) {
-              _this5.postList = _this5.postList.concat(result.data.list);
+              _this4.postList = _this4.postList.concat(result.data.list);
             } else {
-              _this5.postList = result.data.list;
+              _this4.postList = result.data.list;
             }
-            if (_this5.postList.length) {
-              _this5.flexNoData = true;
+            if (_this4.postList.length) {
+              _this4.flexNoData = true;
             } else {
-              _this5.flexNoData = false;
+              _this4.flexNoData = false;
             }
           }
         });
@@ -908,7 +918,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     });
   }), _defineProperty(_methods, "scallCommunity", function scallCommunity(
 
-  e) {var _this6 = this;
+  e) {var _this5 = this;
     this.community_id = e.community_id;
     this.community_menu = e.title + ' (' + e.total + ') ';
     this.committee_id = e.committee_id;
@@ -922,11 +932,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
             uni.setStorageSync('community_id', e.community_id);
             uni.setStorageSync('community_menu', e.title + (e.total ? ' (' + e.total + ') ' : ''));
             uni.setStorageSync('committee_id', e.committee_id);
-            _this6.current = 1;
-            _this6.cateIndex = 0;
-            _this6.page = 1;
-            _this6.postList = [];
-            _this6.upCallback();
+            _this5.current = 1;
+            _this5.cateIndex = 0;
+            _this5.page = 1;
+            _this5.postList = [];
+            _this5.upCallback();
           } });
 
       }
@@ -952,13 +962,13 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     this.upCallback();
   }), _defineProperty(_methods, "getPhoneNumber", function getPhoneNumber(
 
-  e) {var _this7 = this;
+  e) {var _this6 = this;
     console.log(e);var _e$detail =
     e.detail,encryptedData = _e$detail.encryptedData,iv = _e$detail.iv;
 
     this.Api.setUserPhoneBySecret({ encrypted_data: encryptedData, iv: iv }).then(function (result) {
       if (result.code == 1) {
-        _this7.mobile = result.data;
+        _this6.mobile = result.data;
         uni.setStorageSync('mobile', result.data);
       }
     });
@@ -971,7 +981,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
   {
     this.isShow = false;
   }), _defineProperty(_methods, "itemClick", function itemClick(
-  arg) {var _this8 = this;
+  arg) {var _this7 = this;
     this.cateIndex = 0;
     this.scrollLeft = 0;
     this.type = 0;
@@ -980,10 +990,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     if (arg == 2) {
       this.goLogin(function (data) {
         if (!data) {
-          _this8.tagList = _this8.tagList2;
-          _this8.page = 1;
-          _this8.postList = [];
-          _this8.upCallback();
+          _this7.tagList = _this7.tagList2;
+          _this7.page = 1;
+          _this7.postList = [];
+          _this7.upCallback();
         } else {
           // this.current = 3;
 
@@ -998,10 +1008,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     } else if (arg == 1) {
       this.goLogin(function (data) {
         if (!data) {
-          _this8.tagList = _this8.tagList1;
-          _this8.page = 1;
-          _this8.postList = [];
-          _this8.upCallback();
+          _this7.tagList = _this7.tagList1;
+          _this7.page = 1;
+          _this7.postList = [];
+          _this7.upCallback();
         } else {
           //  this.current = 3;
 
@@ -1056,14 +1066,14 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
   e) {
     this.communityTitle = e.detail.value;
   }), _defineProperty(_methods, "openCommunityHandler", function openCommunityHandler()
-  {var _this9 = this;
+  {var _this8 = this;
     this.Api.communityOpening({ title: this.communityTitle, address: this.communityAddress, contact_phone: this.mobile }).then(function (result) {
       if (result.code == 1) {
         uni.showToast({
           title: result.msg,
           duration: 2000 });
 
-        _this9.openCommunity = false;
+        _this8.openCommunity = false;
       } else {
         uni.showToast({
           title: result.msg,
@@ -1074,7 +1084,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     });
   }), _defineProperty(_methods, "getUserInfo", function getUserInfo(
 
-  e) {var _this10 = this;
+  e) {var _this9 = this;
     var p = new Promise(function (resolve, reject) {
       // uni.getLocation({
       // 	success: res => {
@@ -1103,27 +1113,27 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
               raw_data: rawData,
               iv: iv };
 
-            _this10.Api.communityLogin(params).then(function (res) {
+            _this9.Api.communityLogin(params).then(function (res) {
               if (res.code == 1) {
                 uni.setStorageSync('token', res.data.token);
                 uni.setStorageSync('user', res.data.user);
                 uni.setStorageSync('all_community', res.data.all_community);
-                _this10.community_id = res.data.all_community.length ? res.data.all_community[0].community_id : '';
-                uni.setStorageSync('community_id', _this10.community_id);
-                _this10.community_menu = res.data.all_community.length ? res.data.all_community[0].title + (res.data.all_community[0].total ? res.data.all_community[0].total : '') : '问邻';
-                _this10.all_community = res.data.all_community;
-                _this10.loginFalse = false;
-                _this10.guestShow = false;
-                _this10.userinforeg = true;
-                if (_this10.all_community.length) {
-                  _this10.page = 1;
-                  _this10.postList = [];
-                  _this10.upCallback();
+                _this9.community_id = res.data.all_community.length ? res.data.all_community[0].community_id : '';
+                uni.setStorageSync('community_id', _this9.community_id);
+                _this9.community_menu = res.data.all_community.length ? res.data.all_community[0].title + (res.data.all_community[0].total ? res.data.all_community[0].total : '') : '问邻';
+                _this9.all_community = res.data.all_community;
+                _this9.loginFalse = false;
+                _this9.guestShow = false;
+                _this9.userinforeg = true;
+                if (_this9.all_community.length) {
+                  _this9.page = 1;
+                  _this9.postList = [];
+                  _this9.upCallback();
                 } else {
                   //如果开通过小区，待审核 
                   // this.current = 3
                   // this.setcommunity = true
-                  if (_this10.all_community.legnth == 0) {
+                  if (_this9.all_community.legnth == 0) {
                     uni.navigateTo({
                       url: '../update/selectcommunity' });
 
@@ -1131,8 +1141,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
                   console.log('pid');
                   var pid = uni.getStorageSync('pid');
                   if (pid) {
-                    _this10.community = uni.getStorageSync('ptitle');
-                    _this10.communityId = uni.getStorageSync('pcommunity_id');
+                    _this9.community = uni.getStorageSync('ptitle');
+                    _this9.communityId = uni.getStorageSync('pcommunity_id');
                   }
                 }
               }
@@ -1143,7 +1153,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     });
   }), _defineProperty(_methods, "setcommunityHandler", function setcommunityHandler()
 
-  {var _this11 = this;
+  {var _this10 = this;
     if (!this.communityId) {
       uni.showToast({
         title: '请选择小区',
@@ -1192,14 +1202,14 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
           success: function success() {
             uni.setStorageSync('committee_id', result.data.committee_id);
             uni.setStorageSync('community_id', result.data.community_id);
-            uni.setStorageSync('community_menu', _this11.communityTitle);
-            _this11.community_menu = _this11.communityTitle;
-            _this11.current = 1;
-            _this11.page = 1;
-            _this11.postList = [];
-            _this11.upCallback();
-            _this11.setcommunity = false;
-            _this11.guestShowOpen = false;
+            uni.setStorageSync('community_menu', _this10.communityTitle);
+            _this10.community_menu = _this10.communityTitle;
+            _this10.current = 1;
+            _this10.page = 1;
+            _this10.postList = [];
+            _this10.upCallback();
+            _this10.setcommunity = false;
+            _this10.guestShowOpen = false;
             //绑定上下级
             var pid = uni.getStorageSync('pid');
 
@@ -1230,7 +1240,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
   }), _defineProperty(_methods, "chooseInput", function chooseInput(
 
 
-  e) {var _this12 = this;
+  e) {var _this11 = this;
     this.community_text = e.detail.value;
     var data = {
       title: this.community_text };
@@ -1244,11 +1254,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     }
     this.Api.searchCommunity(data).then(function (result) {
       if (result.code == 1) {
-        _this12.searchCommunityList = result.data;
+        _this11.searchCommunityList = result.data;
       }
     });
   }), _defineProperty(_methods, "searchCommunity", function searchCommunity()
-  {var _this13 = this;
+  {var _this12 = this;
     var data = {
       title: this.community_text };
 
@@ -1262,12 +1272,12 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     }
     this.Api.searchCommunity(data).then(function (result) {
       if (result.code == 1) {
-        _this13.searchCommunityList = result.data;
+        _this12.searchCommunityList = result.data;
       }
     });
   }), _defineProperty(_methods, "getMap", function getMap()
 
-  {var _this14 = this;
+  {var _this13 = this;
     // var that = this;
     // if (uni.getStorageSync('longitude')) {
     // 	uni.chooseLocation({
@@ -1306,7 +1316,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
       resolve();
     });
     p.then(function (data) {
-      var that = _this14;
+      var that = _this13;
       // if (uni.getStorageSync('longitude')) {
       // 	uni.chooseLocation({
       // 		latitude: uni.getStorageSync('latitude'),
@@ -1361,18 +1371,18 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
 
   }), _defineProperty(_methods, "moreClick", function moreClick(
 
-  e) {var _this15 = this;
+  e) {var _this14 = this;
     this.goLogin(function (res) {
       if (!res) {
-        _this15.findFaultType = e.type;
-        _this15.findFaultCollect = e.user_favorite == 0 ? false : true;
-        _this15.findFaultObject = e;
-        _this15.findFaultValue = true;
+        _this14.findFaultType = e.type;
+        _this14.findFaultCollect = e.user_favorite == 0 ? false : true;
+        _this14.findFaultObject = e;
+        _this14.findFaultValue = true;
       }
     });
   }), _defineProperty(_methods, "fCollect", function fCollect(
 
-  e) {var _this16 = this;
+  e) {var _this15 = this;
     var data = {
       dynamics_id: this.findFaultObject.id,
       object_type: this.findFaultObject.type,
@@ -1388,10 +1398,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
             title: result.msg,
             duration: 2000 });
 
-          _this16.findFaultValue = false;
-          _this16.page = 1;
-          _this16.postList = [];
-          _this16.upCallback();
+          _this15.findFaultValue = false;
+          _this15.page = 1;
+          _this15.postList = [];
+          _this15.upCallback();
         } else {
           uni.showToast({
             title: result.msg,
@@ -1406,10 +1416,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
             title: result.msg,
             duration: 2000 });
 
-          _this16.findFaultValue = false;
-          _this16.page = 1;
-          _this16.postList = [];
-          _this16.upCallback();
+          _this15.findFaultValue = false;
+          _this15.page = 1;
+          _this15.postList = [];
+          _this15.upCallback();
         } else {
           uni.showToast({
             title: result.msg,
@@ -1427,12 +1437,12 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     this.messageShow = true;
 
   }), _defineProperty(_methods, "report", function report()
-  {var _this17 = this;
+  {var _this16 = this;
     //findFaultObject
     uni.navigateTo({
       url: '/pages/update/report?object_id=' + this.findFaultObject.id + '&object_type=' + this.findFaultObject.type,
       success: function success() {
-        _this17.findFaultValue = false;
+        _this16.findFaultValue = false;
       } });
 
   }), _defineProperty(_methods, "fClose", function fClose()
@@ -1440,14 +1450,14 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     this.findFaultValue = false;
   }), _defineProperty(_methods, "helpPush", function helpPush(
 
-  e) {var _this18 = this;
+  e) {var _this17 = this;
     this.goLogin(function (res) {
       if (!res) {
-        _this18.helpObj = e;
-        _this18.$getMyscore(function (res) {
+        _this17.helpObj = e;
+        _this17.$getMyscore(function (res) {
           if (res.code == 1) {
-            _this18.score = res.data.score;
-            if (_this18.score == 0) {
+            _this17.score = res.data.score;
+            if (_this17.score == 0) {
               uni.showToast({
                 title: '您的积分不足，请参加积分任务',
                 icon: 'none',
@@ -1460,7 +1470,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
               }, 2000);
 
             } else {
-              _this18.helpShow = true;
+              _this17.helpShow = true;
             }
           }
         });
@@ -1470,7 +1480,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
   {
     this.helpShow = false;
   }), _defineProperty(_methods, "ok", function ok(
-  e) {var _this19 = this;
+  e) {var _this18 = this;
     var score = this.$refs.Help.inputValue;
     if (!score) {
       uni.showToast({
@@ -1497,18 +1507,18 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
           title: result.msg,
           duration: 2000,
           success: function success() {
-            _this19.add_type = result.data.add == -1 ? '-' : '+';
-            _this19.score_text = result.data.score;
-            _this19.helpShow = false;
-            _this19.$refs.integraltip.show();
+            _this18.add_type = result.data.add == -1 ? '-' : '+';
+            _this18.score_text = result.data.score;
+            _this18.helpShow = false;
+            _this18.$refs.integraltip.show();
             setTimeout(function () {
-              _this19.add_type = '';
-              _this19.score_text = '';
-              _this19.$refs.Help.inputValue = 0;
-              _this19.$refs.integraltip.close();
-              _this19.page = 1;
-              _this19.postList = [];
-              _this19.upCallback();
+              _this18.add_type = '';
+              _this18.score_text = '';
+              _this18.$refs.Help.inputValue = 0;
+              _this18.$refs.integraltip.close();
+              _this18.page = 1;
+              _this18.postList = [];
+              _this18.upCallback();
             }, 2000);
 
           } });
@@ -1531,7 +1541,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
   {
     this.messageShow = false;
   }), _defineProperty(_methods, "submitTodo", function submitTodo(
-  e) {var _this20 = this;
+  e) {var _this19 = this;
     if (!e) {
       uni.showToast({
         icon: 'none',
@@ -1551,7 +1561,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
           duration: 1000,
           title: result.msg,
           success: function success() {
-            _this20.messageShow = false;
+            _this19.messageShow = false;
           } });
 
 
@@ -1559,11 +1569,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     });
   }), _defineProperty(_methods, "shareClick", function shareClick(
 
-  e) {var _this21 = this;
+  e) {var _this20 = this;
     this.goLogin(function (data) {
       if (!data) {
-        _this21.findFaultObject = e;
-        _this21.onShareShow = true;
+        _this20.findFaultObject = e;
+        _this20.onShareShow = true;
       }
     });
 
@@ -1571,7 +1581,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
   {
     this.onShareShow = false;
   }), _defineProperty(_methods, "onShowtodo", function onShowtodo()
-  {var _this22 = this;
+  {var _this21 = this;
     var pages = getCurrentPages(); //获取加载的页面
 
     var currentPage = pages[pages.length - 1]; //获取当前页面的对象
@@ -1604,27 +1614,27 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     }
     this.Api.getWXACodeUnlimit(data).then(function (result) {
       if (result.code == 1) {
-        _this22.$nextTick(function () {
-          _this22.onShareShow = false;
-          _this22.posterData.posterImgUrl = _this22.findFaultObject.images.length ? _this22.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
-          if (_this22.findFaultObject.publish_type == 3 || _this22.findFaultObject.publish_type == 2) {
-            _this22.posterData.title = _this22.findFaultObject.title;
-          } else if (_this22.findFaultObject.publish_type == 1) {
-            _this22.posterData.title = _this22.findFaultObject.content;
+        _this21.$nextTick(function () {
+          _this21.onShareShow = false;
+          _this21.posterData.posterImgUrl = _this21.findFaultObject.images.length ? _this21.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
+          if (_this21.findFaultObject.publish_type == 3 || _this21.findFaultObject.publish_type == 2) {
+            _this21.posterData.title = _this21.findFaultObject.title;
+          } else if (_this21.findFaultObject.publish_type == 1) {
+            _this21.posterData.title = _this21.findFaultObject.content;
           } else {
-            _this22.posterData.title = _this22.findFaultObject.title;
+            _this21.posterData.title = _this21.findFaultObject.title;
           }
-          if (_this22.posterData.title.length > 35) {
-            _this22.posterData.title = _this22.posterData.title.substr(0, 35) + '...';
+          if (_this21.posterData.title.length > 35) {
+            _this21.posterData.title = _this21.posterData.title.substr(0, 35) + '...';
           }
-          _this22.posterData.avatarUrl = uni.getStorageSync('user').avatar;
-          _this22.posterData.posterCodeUrl = result.data;
-          _this22.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this22.findFaultObject.type) + '信息';
-          _this22.$forceUpdate();
+          _this21.posterData.avatarUrl = uni.getStorageSync('user').avatar;
+          _this21.posterData.posterCodeUrl = result.data;
+          _this21.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this21.findFaultObject.type) + '信息';
+          _this21.$forceUpdate();
           setTimeout(function () {
-            _this22.canvasFlag = false; //显示canvas海报
-            _this22.deliveryFlag = false; //关闭分享弹窗
-            _this22.$refs.hchPoster.posterShow();
+            _this21.canvasFlag = false; //显示canvas海报
+            _this21.deliveryFlag = false; //关闭分享弹窗
+            _this21.$refs.hchPoster.posterShow();
           }, 500);
         });
 
@@ -1661,7 +1671,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
       }
     });
   }), _defineProperty(_methods, "createCanvasImageEvn", function createCanvasImageEvn()
-  {var _this23 = this;
+  {var _this22 = this;
     // 这个是固定写死的小程序码
     Object.assign(this.posterData,
     {
@@ -1675,9 +1685,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
     });
     this.$forceUpdate(); //强制渲染数据
     setTimeout(function () {
-      _this23.canvasFlag = false; //显示canvas海报
-      _this23.deliveryFlag = false; //关闭分享弹窗
-      _this23.$refs.hchPoster.createCanvasImage(); //调用子组件的方法
+      _this22.canvasFlag = false; //显示canvas海报
+      _this22.deliveryFlag = false; //关闭分享弹窗
+      _this22.$refs.hchPoster.createCanvasImage(); //调用子组件的方法
     }, 500);
     // 这个是固定写死的小程序码 end
     // 以下是根据后端接口动态生成小程序码

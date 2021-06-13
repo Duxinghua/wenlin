@@ -33,11 +33,15 @@
 <!-- 			</view> -->
 
 				<scroll-view :class="['postwrap',(type == 3) ? 'usedwrap' : '']" scroll-y="true" :style="{height: height+'px'}" class="listwrap" @scrolltoupper="upper"
+				 @scrolltolower="lower" 
 				 @refresherpulling="pulling"
 				 @refresherrefresh="refresh"
+				 @refresherrestore="onRestore" 
+				 @refresherabort="onAbort"
+				 :refresher-threshold="100"
 				 :refresher-triggered="scroll_refresher_enabled"
 				 :refresher-enabled="true"
-				 @scrolltolower="lower" >
+				 >
 <!-- 			 <mescroll-uni  :fixed="true"  top="250" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" >
  -->	
 					<PostItem  v-if="type != 3" :allFlag="allFlag" :type="current" v-for="(item,index) in postList" :pitem="item" :key="index" @flush="flushHandler" @moreClick="moreClick" @helpPush="helpPush" @shareClick="shareClick" @toLogin="goDetails"></PostItem>
@@ -557,27 +561,32 @@ export default {
 
 			
 		})
+		setTimeout(()=>{
+			this.scroll_refresher_enabled = true;
+		},1000)
 		
 	},
 	watch:{
 		
 	},
 	methods: {
+		onRestore(e){
+			console.log(e,'onrestore')
+		},
+		onAbort(e){
+			console.log(e,'onabort')
+		},
 		refresh(e){
-			console.log(e,'===')
-			if(this.findsh) return;
-			this.findsh = true
-			setTimeout(()=>{
-				this.findsh = false
-				this.scroll_refresher_enabled = false
-			},250)
+			if (this._freshing) return;
+			this._freshing = true;
+			setTimeout(() => {
+			    this.scroll_refresher_enabled = false;
+			    this._freshing = false;
+			}, 3000)
+			this.getData()
 		},
 		pulling(){
-			setTimeout(()=>{
-				this.scroll_refresher_enabled = true
-			},500)
-
-			this.getData()
+		
 			
 		},
 		getData(){

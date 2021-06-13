@@ -13,15 +13,18 @@
 				</view>
 				<text class="mobile" @click="callPhone(item.contact_phone)">联系电话</text>
 			</view>
+			<Nodata v-if="NodataFlag" />
 		</view>
-
+		
 	</view>
 </template>
 
 <script>
+import Nodata from '@/components/nodata/nodata.vue';
 import navigationCustom from '../../components/struggler-navigationCustom/navigation-custom';
 export default {
 	components:{
+		Nodata,
 		navigationCustom
 	},
 	data() {
@@ -38,7 +41,7 @@ export default {
 				}
 			],
 			config: {
-				title: '居委会', //title
+				title: '工作人员', //title
 				bgcolor: 'white', //背景颜色
 				fontcolor: 'rgba(51, 51, 51, 1)', //文字颜色，默认白色
 				type: 1, //type 1，3胶囊 2，4无胶囊模式
@@ -51,7 +54,8 @@ export default {
 			scrollTop: 0, // 当linear为true的时候需要通过onpagescroll传递参数
 			scrollMaxHeight: 200, //滑动的高度限制，超过这个高度即背景全部显示
 			committee_id:'',
-			list:[]
+			list:[],
+			NodataFlag:false
 		};
 	},
 	mounted() {
@@ -76,6 +80,11 @@ export default {
 			this.Api.getPersonnels(data).then((result) => {
 				if(result.code == 1){
 					this.list = result.data
+					if(this.list.length){
+						this.NodataFlag = false
+					}else{
+						this.NodataFlag = true
+					}
 				}
 			})
 		},
@@ -97,6 +106,9 @@ export default {
 			box-sizing: border-box;
 			display: flex;
 			flex-direction: column;
+			/deep/ .nodata{
+				
+			}
 			.workeritem{
 				width:100%;
 				display: flex;

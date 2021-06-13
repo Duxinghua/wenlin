@@ -3,7 +3,7 @@
 	<view class="personalcard">
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
 		<view class="pcontent">
-			<view class="itemwrap">
+			<view class="itemwrap" v-if="false">
 				<view class="item" v-for="(item,index) in navList" :key="index" @click.stop="itemHandler(index)">
 					<view :class="['imagewrap',navIndex == index ? 'active' : '']">
 						<image :src="item.image" v-if="navIndex != index"></image>
@@ -15,8 +15,10 @@
 				</view>
 			</view>
 			<view class="dcontent">
+				
 				<rich-text :nodes="content"></rich-text>
 			</view>
+			<Nodata v-if="content.length == 0" />
 		</view>
 	<Mobile @closewxsj="closewxsj" :wxsj="wxsj" :list="mobileList"></Mobile>
 	</view>
@@ -25,6 +27,7 @@
 <script>
 	
 import navigationCustom from '../../components/struggler-navigationCustom/navigation-custom';
+import Nodata from '@/components/nodata/nodata.vue';
 import Reply from '@/components/reply/reply.vue'
 import Mobile from '../../components/mobile/mobile.vue'
 
@@ -162,7 +165,8 @@ export default {
 	components: {
 		navigationCustom,
 		Reply,
-		Mobile
+		Mobile,
+		Nodata
 	}
 };
 </script>
@@ -180,6 +184,9 @@ page {
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
+		/deep/ .nodata{
+			margin-top:400rpx;
+		}
 		.dcontent{
 			padding: 48rpx;
 			box-sizing: border-box;

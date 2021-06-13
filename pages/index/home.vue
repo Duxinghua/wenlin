@@ -58,14 +58,16 @@
 			<view :class="['postwrap', type == 3 && postList.length > 0 ? 'usedwrap' : '']">
 			<scroll-view scroll-y="true"  v-if="type != 3" :style="{height: height+'px'}" 
 			class="listwrap" @scrolltoupper="upper" @scrolltolower="lower"
-			upper-threshold="1"
-			lower-threshold="1"
 			@scroll="scroll"
 			@refresherpulling="pulling"
 			@refresherrefresh="refresh"
+			@refresherrestore="onRestore" 
+			@refresherabort="onAbort"
+			:refresher-threshold="100"
 			:refresher-triggered="scroll_refresher_enabled"
 			:refresher-enabled="true"
 			 >
+<!-- 			 //@refresherpulling="pulling" -->
 					<PostItem
 						:allFlag="allFlag"
 						:type="current"
@@ -93,6 +95,9 @@
 				@scroll="scroll"
 				@refresherpulling="pulling"
 				@refresherrefresh="refresh"
+				@refresherrestore="onRestore"
+				@refresherabort="onAbort"
+				:refresher-threshold="100"
 				:refresher-triggered="scroll_refresher_enabled"
 				:refresher-enabled="true"
 				>
@@ -732,8 +737,24 @@ export default {
 			// 	console.log(result);
 			// });
 		});
+		setTimeout(()=>{
+			this.scroll_refresher_enabled = true;
+		},1000)
+		setInterval(()=>{
+			console.log(this.scroll_refresher_enabled,'==')
+		},500)
 	},
-	watch: {},
+	watch: {
+		scroll_refresher_enabled:{
+			deep:true,
+			handler:function(data){
+				console.log(data,'data')
+				if(!data){
+					this.onRestore()
+				}
+			}
+		}
+	},
 	methods: {
 		throttle(fn,wait){
 		    var timer = null;
@@ -748,32 +769,34 @@ export default {
 		        }
 		    }
 		},
-		refresh(e){
-			console.log(e,'===')
-			if(this.findsh) return;
-			console.log(e,'====')
-			this.findsh = true
-			setTimeout(()=>{
-				
-				this.findsh = false
-				this.scroll_refresher_enabled = false
-			},1000)
+		onRestore(e){
+			console.log(e,'onrestore')
 		},
-		pulling(){
-			if(!this.scroll_refresher_enabled){
-				this.getData()
-			}
-			setTimeout(()=>{
-				this.scroll_refresher_enabled = true
-			},300)
-	
-
-			//this.throttle(this.getData(),2000)
-			
+		onAbort(e){
+			console.log(e,'onabort')
+		},
+		refresh(e){
+			if (this._freshing) return;
+			this._freshing = true;
+			setTimeout(() => {
+			    this.scroll_refresher_enabled = false;
+			    this._freshing = false;
+			}, 3000)
+			this.getData()
+		},
+		pulling(e){
+			console.log("onpulling", e);
+			// if(this.page == 1){
+			// 	this.scroll_refresher_enabled = false;
+			// 	this.findsh = false;
+			// }
 		},
 		scroll(e) {
 			console.log(e,'xxxx')
-			
+			// if(this.page == 1){
+			// 	this.scroll_refresher_enabled = false;
+			// 	this.findsh = false;
+			// }
 		},
 		flushHandler(){
 			this.upCallback()
@@ -935,6 +958,7 @@ export default {
 			if (this.current == 1) {
 				this.Api.allByCommunityId(params)
 					.then(result => {
+	
 						if (result.code == 1) {
 							this.totalPage = result.data.total_pages;
 							if (this.page == 1) {

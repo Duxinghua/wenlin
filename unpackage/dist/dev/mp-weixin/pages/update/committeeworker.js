@@ -153,7 +153,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 540));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 604));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 540));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
 
 
 
@@ -177,6 +179,7 @@ __webpack_require__.r(__webpack_exports__);
 
 {
   components: {
+    Nodata: Nodata,
     navigationCustom: navigationCustom },
 
   data: function data() {
@@ -193,7 +196,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
       config: {
-        title: '居委会', //title
+        title: '工作人员', //title
         bgcolor: 'white', //背景颜色
         fontcolor: 'rgba(51, 51, 51, 1)', //文字颜色，默认白色
         type: 1, //type 1，3胶囊 2，4无胶囊模式
@@ -206,7 +209,8 @@ __webpack_require__.r(__webpack_exports__);
       scrollTop: 0, // 当linear为true的时候需要通过onpagescroll传递参数
       scrollMaxHeight: 200, //滑动的高度限制，超过这个高度即背景全部显示
       committee_id: '',
-      list: [] };
+      list: [],
+      NodataFlag: false };
 
   },
   mounted: function mounted() {
@@ -231,6 +235,11 @@ __webpack_require__.r(__webpack_exports__);
       this.Api.getPersonnels(data).then(function (result) {
         if (result.code == 1) {
           _this.list = result.data;
+          if (_this.list.length) {
+            _this.NodataFlag = false;
+          } else {
+            _this.NodataFlag = true;
+          }
         }
       });
     },

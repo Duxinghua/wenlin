@@ -477,34 +477,43 @@ export default {
 					url: '/pages/update/committeedetail?id='+this.committee_id
 				})
 			}else if(obj.id == 2){
-					uni.navigateTo({
-						url:'/pages/update/dynamicslist?type=5&title='+this.detail.type_title+'活动'
-					})
-				// uni.navigateTo({
-				// 	url: '/pages/index/committeeworker?id='+this.committee_id
-				// })
-			}else if(obj.id == 3){
-					uni.navigateTo({
-						url:'/pages/update/dynamicslist?type=7&title='+this.detail.type_title+'便民'
-					})
-				// this.wxsj = true
-			}else if(obj.id == 4){
+					// uni.navigateTo({
+					// 	url:'/pages/update/dynamicslist?type=5&title='+this.detail.type_title+'活动'
+					// })
 				uni.navigateTo({
-						url:'/pages/update/dynamicslist?type=15&title='+this.detail.type_title+'招聘'
+					url: '/pages/update/committeeworker?id='+this.committee_id
 				})
-				// var {address,longitude,latitude,contacts,business_time,title,images,...data} = this.detail
-				// var data = {
-				// 	title,
-				// 	address,
-				// 	longitude,
-				// 	latitude,
-				// 	contacts,
-				// 	business_time,
-				// 	images
-				// }
+			}else if(obj.id == 3){
+					// uni.navigateTo({
+					// 	url:'/pages/update/dynamicslist?type=7&title='+this.detail.type_title+'便民'
+					// })
+				var {address,longitude,latitude,contacts,business_time,title,images,...data} = this.detail
+				if(contacts){
+					this.wxsj = true
+				}else{
+					uni.showToast({
+						icon:'none',
+						title:'暂无联系方式'
+					})
+					return;
+				}
+			}else if(obj.id == 4){
 				// uni.navigateTo({
-				// 	url: '/pages/index/committeemap?data='+JSON.stringify(data)
+				// 		url:'/pages/update/dynamicslist?type=15&title='+this.detail.type_title+'招聘'
 				// })
+				var {address,longitude,latitude,contacts,business_time,title,images,...data} = this.detail
+				var data = {
+					title,
+					address,
+					longitude,
+					latitude,
+					contacts,
+					business_time,
+					images
+				}
+				uni.navigateTo({
+					url: '/pages/update/committeemap?data='+JSON.stringify(data)
+				})
 			}else if(obj.id == 5){
 				uni.navigateTo({
 						url:'/pages/update/dynamicslist?type=8&title='+this.detail.type_title+'动态'

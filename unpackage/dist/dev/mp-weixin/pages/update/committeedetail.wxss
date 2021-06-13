@@ -49,6 +49,9 @@ page.data-v-218eac81 {
   -webkit-flex-direction: column;
           flex-direction: column;
 }
+.personalcard .pcontent.data-v-218eac81 .nodata {
+  margin-top: 400rpx;
+}
 .personalcard .pcontent .dcontent.data-v-218eac81 {
   padding: 48rpx;
   -webkit-box-sizing: border-box;

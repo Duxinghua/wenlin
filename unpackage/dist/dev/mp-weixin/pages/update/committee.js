@@ -328,156 +328,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | components/bkhumor-emoji/index */ "components/bkhumor-emoji/index").then((function () {return resolve(__webpack_require__(/*! @/components/bkhumor-emoji/index.vue */ 653));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Comment = function Comment() {__webpack_require__.e(/*! require.ensure | components/comment/comment */ "components/comment/comment").then((function () {return resolve(__webpack_require__(/*! @/components/comment/comment.vue */ 667));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Mobile = function Mobile() {__webpack_require__.e(/*! require.ensure | components/mobile/mobile */ "components/mobile/mobile").then((function () {return resolve(__webpack_require__(/*! ../../components/mobile/mobile.vue */ 818));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 540));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { config: { title: '居委会', //title
+var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectWithoutProperties(source, excluded) {if (source == null) return {};var target = _objectWithoutPropertiesLoose(source, excluded);var key, i;if (Object.getOwnPropertySymbols) {var sourceSymbolKeys = Object.getOwnPropertySymbols(source);for (i = 0; i < sourceSymbolKeys.length; i++) {key = sourceSymbolKeys[i];if (excluded.indexOf(key) >= 0) continue;if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;target[key] = source[key];}}return target;}function _objectWithoutPropertiesLoose(source, excluded) {if (source == null) return {};var target = {};var sourceKeys = Object.keys(source);var key, i;for (i = 0; i < sourceKeys.length; i++) {key = sourceKeys[i];if (excluded.indexOf(key) >= 0) continue;target[key] = source[key];}return target;}var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | components/bkhumor-emoji/index */ "components/bkhumor-emoji/index").then((function () {return resolve(__webpack_require__(/*! @/components/bkhumor-emoji/index.vue */ 653));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Comment = function Comment() {__webpack_require__.e(/*! require.ensure | components/comment/comment */ "components/comment/comment").then((function () {return resolve(__webpack_require__(/*! @/components/comment/comment.vue */ 667));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Mobile = function Mobile() {__webpack_require__.e(/*! require.ensure | components/mobile/mobile */ "components/mobile/mobile").then((function () {return resolve(__webpack_require__(/*! ../../components/mobile/mobile.vue */ 818));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 540));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+{
+  data: function data() {
+    return {
+      config: {
+        title: '居委会', //title
         bgcolor: 'white', //背景颜色
         fontcolor: 'rgba(51, 51, 51, 1)', //文字颜色，默认白色
         type: 1, //type 1，3胶囊 2，4无胶囊模式
@@ -486,16 +346,156 @@ var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | com
         share: false //是否将主页按钮显示为分享按钮
         // menuIcon:"../static/icon/back_.png", 当type为3或者4的时候左边的icon文件位置，注意位置与当前页面不一样
         // menuText:"返回", 当type为3或4的时候icon右边的文字
-      }, scrollTop: 0, // 当linear为true的时候需要通过onpagescroll传递参数
+      },
+      scrollTop: 0, // 当linear为true的时候需要通过onpagescroll传递参数
       scrollMaxHeight: 200, //滑动的高度限制，超过这个高度即背景全部显示
-      indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorColor: 'rgba(255, 255, 255, 1)', indicatorActiveColor: 'rgba(255, 156, 0, 1)', navList: [{ id: 1, value: '简介', image: __webpack_require__(/*! ../../static/com1ico.png */ 436) }, { id: 2, value: '活动', image: __webpack_require__(/*! ../../static/com2ico.png */ 437) }, { id: 3, value: '便民', image: __webpack_require__(/*! ../../static/com3ico.png */ 438) }, { id: 4, value: '招聘', image: __webpack_require__(/*! ../../static/com4ico.png */ 439) }, { id: 5, value: '动态', image: __webpack_require__(/*! ../../static/com4ico.png */ 439) }], navLists: [{ id: 1, value: '简介', image: __webpack_require__(/*! ../../static/c-d-ico.png */ 440) }, { id: 2, value: '工作人员', image: __webpack_require__(/*! ../../static/c-w-ico.png */ 441) }, { id: 3, value: '电话', image: __webpack_require__(/*! ../../static/c-p-ico.png */ 442) }, { id: 4, value: '导航', image: __webpack_require__(/*! ../../static/c-l-ico.png */ 443) }], showReply: false, committee_id: '', detail: {}, wxsj: false, //手机号显示 控制 
-      mobileList: [], inputValues: '', //留言处理
-      inputValue: '', commitList: [], page: 1, page_size: 10, total_pages: 0, parent_text: '给居委会留言', replyFlag: false, autoBottom: 0, scrollFixed: false, showconfirmbar: false, adjustposition: false, replyTextarea: false, textareaautofocus: false, isShowEmj: false, heightPx: '-100px', //{{online}}/api/community/committee/myCommitteeList 参数  type  0查询全部，111 => "居委会", 112 => "街道", 113 => "业委会"，114=>"物业"
-      typeList: { 111: '居委会', 112: '街道', 113: '业委会', 114: '物业' } };}, onShareAppMessage: function onShareAppMessage() {return { title: this.detail.title, imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png' };}, onShareTimeline: function onShareTimeline(e) {var title = this.detail.title;var query = { id: this.committee_id, community_id: uni.getStorageSync('community_id') }; // query=JSON.stringify(query);
-    return { title: title, imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png', query: query };}, mounted: function mounted() {console.log(this.$mp.query, 'mp');this.committee_id = this.$mp.query.id;var data = { committee_id: this.committee_id };uni.setStorageSync('committee_id', this.committee_id);if (this.$mp.query.community_id) {uni.setStorageSync('community_id', this.$mp.query.community_id);}this.getDetail(data);this.getList();}, methods: { getSign: function getSign() {this.subMessageTodo(this.orgIds, '9', function (rs) {});}, height: function height() {var _uni$getSystemInfoSyn = uni.getSystemInfoSync(),platform = _uni$getSystemInfoSyn.platform,statusBarHeight = _uni$getSystemInfoSyn.statusBarHeight;var height = statusBarHeight + 4; //ios 24px
-      if (platform.toLowerCase() == "android") {height += 4; //android 28px
-      } // 胶囊高度 32px 下边框6px height 状态栏高度
-      return "-" + height + 38 + "px";}, replyInit: function replyInit() {if (uni.getStorageSync('singPage') == 1) {uni.showToast({ title: '请前往小程序使用完整服务', icon: 'none', duration: 2000 });return;}this.replyTextarea = true;this.textareaautofocus = true;this.scrollFixed = true;}, closeReplyInit: function closeReplyInit() {this.replyTextarea = false;
+      indicatorDots: true,
+      autoplay: true,
+      interval: 2000,
+      duration: 500,
+      indicatorColor: 'rgba(255, 255, 255, 1)',
+      indicatorActiveColor: 'rgba(255, 156, 0, 1)',
+      navList: [
+      {
+        id: 1,
+        value: '简介',
+        image: __webpack_require__(/*! ../../static/com1ico.png */ 436) },
+
+      {
+        id: 2,
+        value: '活动',
+        image: __webpack_require__(/*! ../../static/com2ico.png */ 437) },
+
+      {
+        id: 3,
+        value: '便民',
+        image: __webpack_require__(/*! ../../static/com3ico.png */ 438) },
+
+      {
+        id: 4,
+        value: '招聘',
+        image: __webpack_require__(/*! ../../static/com4ico.png */ 439) },
+
+      {
+        id: 5,
+        value: '动态',
+        image: __webpack_require__(/*! ../../static/com4ico.png */ 439) }],
+
+
+      navLists: [
+      {
+        id: 1,
+        value: '简介',
+        image: __webpack_require__(/*! ../../static/c-d-ico.png */ 440) },
+
+      {
+        id: 2,
+        value: '工作人员',
+        image: __webpack_require__(/*! ../../static/c-w-ico.png */ 441) },
+
+      {
+        id: 3,
+        value: '电话',
+        image: __webpack_require__(/*! ../../static/c-p-ico.png */ 442) },
+
+      {
+        id: 4,
+        value: '导航',
+        image: __webpack_require__(/*! ../../static/c-l-ico.png */ 443) }],
+
+
+      showReply: false,
+      committee_id: '',
+      detail: {},
+      wxsj: false, //手机号显示 控制 
+      mobileList: [],
+      inputValues: '', //留言处理
+      inputValue: '',
+      commitList: [],
+      page: 1,
+      page_size: 10,
+      total_pages: 0,
+      parent_text: '给居委会留言',
+      replyFlag: false,
+      autoBottom: 0,
+      scrollFixed: false,
+      showconfirmbar: false,
+      adjustposition: false,
+      replyTextarea: false,
+      textareaautofocus: false,
+      isShowEmj: false,
+      heightPx: '-100px',
+      //{{online}}/api/community/committee/myCommitteeList 参数  type  0查询全部，111 => "居委会", 112 => "街道", 113 => "业委会"，114=>"物业"
+      typeList: {
+        111: '居委会',
+        112: '街道',
+        113: '业委会',
+        114: '物业' } };
+
+
+  },
+  onShareAppMessage: function onShareAppMessage() {
+    return {
+      title: this.detail.title,
+      imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png' };
+
+  },
+  onShareTimeline: function onShareTimeline(e) {
+    var title = this.detail.title;
+    var query = {
+      id: this.committee_id,
+      community_id: uni.getStorageSync('community_id') };
+
+    // query=JSON.stringify(query);
+    return {
+      title: title,
+      imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
+      query: query };
+
+  },
+  mounted: function mounted() {
+    console.log(this.$mp.query, 'mp');
+    this.committee_id = this.$mp.query.id;
+    var data = {
+      committee_id: this.committee_id };
+
+    uni.setStorageSync('committee_id', this.committee_id);
+    if (this.$mp.query.community_id) {
+      uni.setStorageSync('community_id', this.$mp.query.community_id);
+    }
+    this.getDetail(data);
+    this.getList();
+  },
+  methods: {
+    getSign: function getSign() {
+      this.subMessageTodo(this.orgIds, '9', function (rs) {
+      });
+    },
+    height: function height() {var _uni$getSystemInfoSyn =
+      uni.getSystemInfoSync(),platform = _uni$getSystemInfoSyn.platform,statusBarHeight = _uni$getSystemInfoSyn.statusBarHeight;
+      var height = statusBarHeight + 4; //ios 24px
+      if (platform.toLowerCase() == "android") {
+        height += 4; //android 28px
+      }
+      // 胶囊高度 32px 下边框6px height 状态栏高度
+
+      return "-" + height + 38 + "px";
+    },
+    replyInit: function replyInit() {
+      if (uni.getStorageSync('singPage') == 1) {
+        uni.showToast({
+          title: '请前往小程序使用完整服务',
+          icon: 'none',
+          duration: 2000 });
+
+        return;
+      }
+      this.replyTextarea = true;
+      this.textareaautofocus = true;
+      this.scrollFixed = true;
+    },
+    closeReplyInit: function closeReplyInit() {
+      this.replyTextarea = false;
       this.textareaautofocus = false;
       this.scrollFixed = false;
       this.parent_text = '给居委会留言';
@@ -657,34 +657,43 @@ var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | com
           url: '/pages/update/committeedetail?id=' + this.committee_id });
 
       } else if (obj.id == 2) {
-        uni.navigateTo({
-          url: '/pages/update/dynamicslist?type=5&title=' + this.detail.type_title + '活动' });
-
         // uni.navigateTo({
-        // 	url: '/pages/index/committeeworker?id='+this.committee_id
+        // 	url:'/pages/update/dynamicslist?type=5&title='+this.detail.type_title+'活动'
         // })
+        uni.navigateTo({
+          url: '/pages/update/committeeworker?id=' + this.committee_id });
+
       } else if (obj.id == 3) {
-        uni.navigateTo({
-          url: '/pages/update/dynamicslist?type=7&title=' + this.detail.type_title + '便民' });
-
-        // this.wxsj = true
-      } else if (obj.id == 4) {
-        uni.navigateTo({
-          url: '/pages/update/dynamicslist?type=15&title=' + this.detail.type_title + '招聘' });
-
-        // var {address,longitude,latitude,contacts,business_time,title,images,...data} = this.detail
-        // var data = {
-        // 	title,
-        // 	address,
-        // 	longitude,
-        // 	latitude,
-        // 	contacts,
-        // 	business_time,
-        // 	images
-        // }
         // uni.navigateTo({
-        // 	url: '/pages/index/committeemap?data='+JSON.stringify(data)
+        // 	url:'/pages/update/dynamicslist?type=7&title='+this.detail.type_title+'便民'
         // })
+        var _this$detail = this.detail,address = _this$detail.address,longitude = _this$detail.longitude,latitude = _this$detail.latitude,contacts = _this$detail.contacts,business_time = _this$detail.business_time,title = _this$detail.title,images = _this$detail.images,data = _objectWithoutProperties(_this$detail, ["address", "longitude", "latitude", "contacts", "business_time", "title", "images"]);
+        if (contacts) {
+          this.wxsj = true;
+        } else {
+          uni.showToast({
+            icon: 'none',
+            title: '暂无联系方式' });
+
+          return;
+        }
+      } else if (obj.id == 4) {
+        // uni.navigateTo({
+        // 		url:'/pages/update/dynamicslist?type=15&title='+this.detail.type_title+'招聘'
+        // })
+        var _this$detail2 = this.detail,address = _this$detail2.address,longitude = _this$detail2.longitude,latitude = _this$detail2.latitude,contacts = _this$detail2.contacts,business_time = _this$detail2.business_time,title = _this$detail2.title,images = _this$detail2.images,data = _objectWithoutProperties(_this$detail2, ["address", "longitude", "latitude", "contacts", "business_time", "title", "images"]);
+        var data = {
+          title: title,
+          address: address,
+          longitude: longitude,
+          latitude: latitude,
+          contacts: contacts,
+          business_time: business_time,
+          images: images };
+
+        uni.navigateTo({
+          url: '/pages/update/committeemap?data=' + JSON.stringify(data) });
+
       } else if (obj.id == 5) {
         uni.navigateTo({
           url: '/pages/update/dynamicslist?type=8&title=' + this.detail.type_title + '动态' });
