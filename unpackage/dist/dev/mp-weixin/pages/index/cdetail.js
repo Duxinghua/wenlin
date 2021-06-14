@@ -124,53 +124,50 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   var f0 = false ? undefined : null
-
-  var f1 = _vm._f("formatTime")(_vm.detail.create_time)
-
   var m0 =
-    _vm.detail.user_favorite == 0 ? __webpack_require__(/*! ../../static/collect.png */ 89) : null
-  var m1 = !(_vm.detail.user_favorite == 0)
-    ? __webpack_require__(/*! ../../static/collected.png */ 90)
-    : null
+     false
+      ? undefined
+      : null
+  var m1 =
+     false
+      ? undefined
+      : null
 
   var l0 = _vm.__map(_vm.commentList, function(item, index) {
     var $orig = _vm.__get_orig(item)
 
-    var f2 = _vm.navIndex == 2 ? _vm._f("formatTime")(item.create_time) : null
+    var f1 = _vm.navIndex == 2 ? _vm._f("formatTime")(item.create_time) : null
     return {
       $orig: $orig,
-      f2: f2
+      f1: f1
     }
   })
 
   var l1 = _vm.__map(_vm.commentList, function(item, index) {
     var $orig = _vm.__get_orig(item)
 
-    var f3 =
+    var f2 =
       _vm.navIndex == 3 || _vm.navIndex == 4
         ? _vm._f("formatTime")(item.create_time)
         : null
     return {
       $orig: $orig,
-      f3: f3
+      f2: f2
     }
   })
 
-  var f4 =
-    _vm.detail.activity_type == 1
-      ? _vm._f("joinStatus")(_vm.detail.status)
-      : null
+  var f3 =
+    _vm.detail.open_join == 1 ? _vm._f("joinStatus")(_vm.detail.status) : null
   _vm.$mp.data = Object.assign(
     {},
     {
       $root: {
         f0: f0,
-        f1: f1,
         m0: m0,
         m1: m1,
         l0: l0,
         l1: l1,
-        f4: f4
+        f3: f3
       }
     }
   )
@@ -208,6 +205,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
 
 
 
@@ -939,6 +941,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     },
     //报名处理
     signupHandler: function signupHandler() {
+      console.log('xxx', this.detail.status);
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -956,9 +959,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           return;
         }
       }
-      if (this.detail.status == 1 && !this.detail.draw_id && !this.detail.answer_id) {
+      // && !this.detail.draw_id && !this.detail.answer_id
+      if (this.detail.status == 1) {
         uni.navigateTo({
-          url: '/pages/update/committeeactivity?id=' + this.id });
+          url: '/pages/index/committeeactivity?id=' + this.id });
 
       }
       if (this.detail.draw == 1 && this.detail.draw_id > 0) {
@@ -1396,10 +1400,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             _this7.config.title = _this7.publishType(_this7.detail.committee.type) + '活动';
           }
           _this7.detail.content = _this7.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
-          _this7.detail.images = [];
-          if (_this7.detail.image.length) {
-            _this7.detail.images.push(_this7.detail.image);
-          } else {
+          if (_this7.detail.images.length == 0) {
             _this7.detail.images.push('https://sq.wenlinapp.com/appimg/act_post.png');
           }
           if (result.data.join_start_time == result.data.join_end_time) {
@@ -1555,6 +1556,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.Api.communityDynamicsPushDynamics(data).then(function (result) {
         if (result.code == 1) {
           _this9.navIndex = 2;
+          _this9.getCommentList();
           uni.showToast({
             title: result.msg,
             duration: 2000,

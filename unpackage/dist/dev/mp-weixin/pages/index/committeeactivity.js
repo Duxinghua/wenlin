@@ -274,6 +274,8 @@ __webpack_require__.r(__webpack_exports__);
     this.sex = uni.getStorageSync('user').sex;
     if (this.sex == 1) {
       this.sexText = '男';
+    } else if (this.sex == 0) {
+      this.sexText = '保密';
     } else {
       this.sexText = '女';
     }

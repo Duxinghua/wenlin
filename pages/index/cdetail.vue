@@ -2,8 +2,10 @@
 	<!-- 居委会活动详情 -->
 	<view :class="['helpdetail','u-skeleton',scrollFixed ? 'helpdetailfix' : '' ]">
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight"/>
+		<UserHeader :type.sync="type" :pitem.sync="detail" @moreClick="moreClick" @goPer="goPer"  />
 		<view class="content">
-			<view class="swiper-wrap">
+
+			<view class="swiper-wrap" v-if="false">
 <!-- 				<swiper class="screen-swiper" :circular="true" @change="swiperChange"
 				 :autoplay="true" interval="5000" duration="500"> -->
 <!-- 					<swiper-item > -->
@@ -17,11 +19,11 @@
 			<view class="detail-title">
 			
 			{{detail.title}}
-			<text style="color:#FF9C00" v-if="false">【{{detail.status | joinStatus}}】</text>
-			<text style="color:#ED3269" v-if="detail.modular_type == 2">【抽奖】</text>
-				<text style="color:#ED3269" v-if="detail.modular_type == 1">【答题】</text>
+<!-- 				<text style="color:#FF9C00" v-if="false">【{{detail.status | joinStatus}}】</text>
+				<text style="color:#ED3269" v-if="detail.modular_type == 2">【抽奖】</text>
+				<text style="color:#ED3269" v-if="detail.modular_type == 1">【答题】</text> -->
 			</view>
-			<view class="postpush">
+			<view class="postpush" v-if="false">
 <!-- 				<text class="t1" @click="goComitee(detail.communitycommittee.committee_id)">{{detail.communitycommittee.title}}</text> -->
 				<text class="t1" @click="goComitee(detail.committee.committee_id)">{{detail.committee.title}}</text>
 				<text class="t2">{{detail.create_time | formatTime}}</text>
@@ -30,45 +32,48 @@
 			</view>
 			<view class="alist">
 				<view class="aitem" v-if="detail.activity_time">
-					<image src="../../static/aitem1.png" class="aitem1"></image>
+		<!-- 			<image src="../../static/aitem1.png" class="aitem1"></image> -->
 					<text class="label">活动时间:</text>
 					<text class="name">{{detail.activity_time}}</text>
 				</view>
 				<view class="aitem" v-if="detail.address">
-					<image src="../../static/aitem2.png" class="aitem1"></image>
+	<!-- 				<image src="../../static/aitem2.png" class="aitem1"></image> -->
 					<text class="label">活动地址:</text>
 					<text class="name">{{detail.address }}</text>
 				</view>
 				<view class="aitem">
-					<image src="../../static/aitem3.png" class="aitem1"></image>
+			<!-- 		<image src="../../static/aitem3.png" class="aitem1"></image> -->
 					<text class="label">活动人数:</text>
 					<text class="name">{{detail.max_joins == 0 ?  '无限制' : detail.max_joins+'人' }}</text>
 				</view>
 				<view class="aitem" v-if="detail.join_time">
-					<image src="../../static/aitem1.png" class="aitem1"></image>
+	<!-- 				<image src="../../static/aitem1.png" class="aitem1"></image> -->
 					<text class="label">报名时间:</text>
 					<text class="name">{{detail.join_time}}</text>
 				</view>
 				<view class="aitem" v-if="detail.contacts.length">
-					<image src="../../static/aitem4.png" class="aitem1"></image>
+				<!-- 	<image src="../../static/aitem4.png" class="aitem1"></image> -->
 					<text class="label">联系人:</text>
 					<view class="name namec">
-						<text v-for="(item,index) in detail.contacts" :key="index" @click="mobilecall(item.phone)">{{item.name}} {{item.phone}}</text>
+						<text v-for="(item,index) in detail.contacts" :key="index" @click="mobilecall(item.phone)">{{item.name}}</text>
 					</view>
 					
 				</view>
 			</view>
 			<view class="postcontent">
-				<view class="postkey">
+				<view class="postkey" v-if="false">
 					活动详情
 				</view>
 				<view :class="['postdes',limit ? 'limit-postcontent' : '']">
-					<rich-text :nodes="detail.content"></rich-text>
+					{{detail.content}}
 				</view>
-				<view class="dpo">{{detail.post_hits}}人浏览</view>
+<!-- 				<view class="dpo">{{detail.post_hits}}人浏览</view>
 				<view class="contentmore" @click="limitClick">
 						<image class="moreico" src="../../static/acontentshow.png"></image>
 						<text class="moretext">{{limittext}}</text>
+				</view> -->
+				<view class="swiper-imgs" mode="widthFix" v-for="(item, index) in detail.images" :key="index" @click="previewImage(index)">
+					<u-image :src="item" mode="widthFix"></u-image>
 				</view>
 			</view>
 		
@@ -133,10 +138,10 @@
 			</view>
 		</view>
 		<!-- 报名 -->
-		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="signupHandler" v-if="detail.activity_type == 1">
+		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="signupHandler" v-if="detail.open_join == 1">
 			{{detail.status | joinStatus}}
 		</view>
-		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="askHandler" v-if="detail.activity_type == 2">
+		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="askHandler" v-if="detail.open_join == 0">
 			立即答题
 		</view>
 		<!-- 回复框 -->
@@ -730,6 +735,7 @@
 			},
 			//报名处理
 			signupHandler(){
+				console.log('xxx',this.detail.status)
 				if (uni.getStorageSync('singPage') == 1) {
 					uni.showToast({
 						title: '请前往小程序使用完整服务',
@@ -747,9 +753,10 @@
 						return
 					}
 				}
-				if(this.detail.status == 1 && !this.detail.draw_id && !this.detail.answer_id){
+				// && !this.detail.draw_id && !this.detail.answer_id
+				if(this.detail.status == 1){
 					uni.navigateTo({
-						url:'/pages/update/committeeactivity?id='+this.id
+						url:'/pages/index/committeeactivity?id='+this.id
 					})
 				}
 				if(this.detail.draw == 1 && this.detail.draw_id >0){
@@ -1187,10 +1194,7 @@
 							this.config.title = this.publishType(this.detail.committee.type) + '活动'
 						}
 						this.detail.content = this.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"')
-						this.detail.images = []
-						if(this.detail.image.length){
-							this.detail.images.push(this.detail.image)
-						}else{
+						if(this.detail.images.length == 0){
 							this.detail.images.push('https://sq.wenlinapp.com/appimg/act_post.png')
 						}
 						if(result.data.join_start_time == result.data.join_end_time){
@@ -1346,6 +1350,7 @@
 				this.Api.communityDynamicsPushDynamics(data).then((result) => {
 					if(result.code == 1){
 						this.navIndex = 2
+						this.getCommentList()
 						uni.showToast({
 							title: result.msg,
 							duration: 2000,
@@ -1550,7 +1555,7 @@
 				font-size:40upx;
 				font-family:PingFang-SC-Bold,PingFang-SC;
 				font-weight:bold;
-				color:rgba(51,51,51,1);
+				color:#020433;
 				line-height:52upx;
 				text-align: left;
 			}
@@ -1596,7 +1601,9 @@
 			.alist{
 				display: flex;
 				flex-direction: column;
-				margin-bottom: 14upx;
+				padding-bottom: 20upx;
+				box-sizing: border-box;
+				border-bottom: 2upx solid #F0F0F0;
 				.aitem{
 					display: inline-flex;
 					flex-direction: row;
@@ -1610,7 +1617,7 @@
 						font-size:28upx;
 						font-family:PingFang-SC-Medium,PingFang-SC;
 						font-weight:500;
-						color:rgba(51,51,51,1);
+						color:#020433;
 						line-height:40upx;
 						margin-right:15upx;
 					}
@@ -1636,7 +1643,9 @@
 				display: flex;
 				flex-direction: column;
 				width:100%;
-				padding-bottom: 28upx;
+				padding-bottom:40upx;
+				padding-top:40upx;
+				box-sizing: border-box;
 				font-family: PingFang-SC-Regular;
 				.postkey{
 					font-size:40upx;
@@ -1659,10 +1668,10 @@
 					top: 0;
 				}
 				.postdes {
-					font-size: 30upx;
+					font-size: 34upx;
 					font-weight: 500;
-					line-height: 42upx;
-					text-align: left;
+					color: #020433;
+					margin-bottom: 20upx;
 					// overflow: hidden;
 					// text-overflow: ellipsis;
 					// display: -webkit-box;
@@ -1757,6 +1766,9 @@
 				// font-weight:bold;
 				color:rgba(51,51,51,1);
 				line-height:52upx;
+				padding-bottom: 20upx;
+				margin-bottom: 20upx;
+				border-bottom: 1upx solid #F0F0F0;
 			}
 			.detailnav{
 				display: flex;
