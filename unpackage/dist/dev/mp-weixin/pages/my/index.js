@@ -1,6 +1,6 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pages/my/index"],{
 
-/***/ 144:
+/***/ 142:
 /*!************************************************************!*\
   !*** D:/wrok/wenlin/main.js?{"page":"pages%2Fmy%2Findex"} ***!
   \************************************************************/
@@ -258,7 +258,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 540));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 538));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
   data: function data() {
     return {
@@ -549,5 +549,5 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ })
 
-},[[144,"common/runtime","common/vendor"]]]);
+},[[142,"common/runtime","common/vendor"]]]);
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/my/index.js.map

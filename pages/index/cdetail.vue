@@ -138,11 +138,14 @@
 			</view>
 		</view>
 		<!-- 报名 -->
-		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="signupHandler" v-if="detail.open_join == 1">
+<!-- 		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="signupHandler" v-if="detail.open_join == 1">
 			{{detail.status | joinStatus}}
 		</view>
 		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="askHandler" v-if="detail.open_join == 0">
 			立即答题
+		</view> -->
+		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="signupHandler">
+			{{autoJOinStatus}}
 		</view>
 		<!-- 回复框 -->
 		<view class="reply">
@@ -467,6 +470,45 @@
 		    }
 		},
 		methods:{
+			winStatus(index) {
+				if(index == 1){
+					return '立即抽奖'
+				}else if(index == 2){
+					return '已抽奖'
+				}else if(index ==3){
+					return '抽奖人数已满'
+				}else if(index == 4){
+					return '抽奖未开始'
+				}else if(index == 5 ){
+					return '抽奖已结束'
+				}
+			},
+			askStatus(index) {
+				if(index == 1){
+					return '立即答题'
+				}else if(index == 2){
+					return '已答题'
+				}else if(index ==3){
+					return '答题人数已满'
+				}else if(index == 4){
+					return '答题未开始'
+				}else if(index == 5 ){
+					return '答题已结束'
+				}
+			},
+			joinStatus(index) {
+				if(index == 1){
+					return '立即报名'
+				}else if(index == 2){
+					return '已报名'
+				}else if(index ==3){
+					return '报名人数已满'
+				}else if(index == 4){
+					return '报名未开始'
+				}else if(index == 5 ){
+					return '报名已结束'
+				}
+			},
 			loginTodoHander(){
 				if(this.$mp.query.scene){
 					this.srouce = 1
@@ -735,7 +777,7 @@
 			},
 			//报名处理
 			signupHandler(){
-				console.log('xxx',this.detail.status)
+		
 				if (uni.getStorageSync('singPage') == 1) {
 					uni.showToast({
 						title: '请前往小程序使用完整服务',
@@ -753,24 +795,80 @@
 						return
 					}
 				}
-				// && !this.detail.draw_id && !this.detail.answer_id
-				if(this.detail.status == 1){
+				//modular_type  管理其他模块类型 1 答题 2抽奖
+				//open_join  0不开启报名，1开启报名
+				var modular_type = this.detail.modular_type
+				var open_modular = this.detail.open_modular
+				var modular_id = this.detail.modular_id
+				var status = this.detail.status
+				var open_join = this.detail.open_join
+				if(open_join == 1 && status == 1){
 					uni.navigateTo({
 						url:'/pages/index/committeeactivity?id='+this.id
 					})
+				}else if(open_join == 1 && status != 1){
+					if(modular_type == 1){
+						console.log(111)
+						uni.showToast({
+							title: this.askStatus(status),
+							icon: 'none',
+							duration: 2000
+						});
+					}else if(modular_type == 2){
+						console.log(222)
+						uni.showToast({
+							title: this.winStatus(status),
+							icon: 'none',
+							duration: 2000
+						});
+					}else if(modular_type == 0){
+						uni.showToast({
+							title: this.joinStatus(status),
+							icon: 'none',
+							duration: 2000
+						});
+					}
+				}else if(open_join == 0){
+					if(status == 1){
+						if(modular_type == 1){
+							uni.navigateTo({
+								url:'../update/answer?answer_id='+ modular_id
+							})
+						}else if(modular_type == 2){
+							uni.navigateTo({
+								url:'../update/award?draw_id='+ modular_id
+							})
+						}
+					}else{
+						if(modular_type == 1){
+							console.log(111)
+							uni.showToast({
+								title: this.askStatus(status),
+								icon: 'none',
+								duration: 2000
+							});
+						}else if(modular_type == 2){
+							console.log(222)
+							uni.showToast({
+								title: this.winStatus(status),
+								icon: 'none',
+								duration: 2000
+							});
+						}
+					}
 				}
-				if(this.detail.draw == 1 && this.detail.draw_id >0){
-					var draw_id =  this.detail.draw_id
-					uni.navigateTo({
-						url:'../update/award?draw_id='+ draw_id
-					})
-				}
-				if(this.detail.answer == 1 && this.detail.answer_id >0){
-					var answer_id =  this.detail.answer_id
-					uni.navigateTo({
-						url:'../update/answer?answer_id='+ answer_id
-					})
-				}
+				// if(this.detail.draw == 1 && this.detail.draw_id >0){
+				// 	var draw_id =  this.detail.draw_id
+				// 	uni.navigateTo({
+				// 		url:'../update/award?draw_id='+ draw_id
+				// 	})
+				// }
+				// if(this.detail.answer == 1 && this.detail.answer_id >0){
+				// 	var answer_id =  this.detail.answer_id
+				// 	uni.navigateTo({
+				// 		url:'../update/answer?answer_id='+ answer_id
+				// 	})
+				// }
 			},
 			//答题处理
 			askHandler(){
@@ -1508,6 +1606,25 @@
 			DeleteTip
 		},
 		computed:{
+			autoJOinStatus(){
+				var modular_type = this.detail.modular_type
+				var open_modular = this.detail.open_modular
+				var modular_id = this.detail.modular_id
+				var status = this.detail.status
+				var open_join = this.detail.open_join
+				//modular_type  管理其他模块类型 1 答题 2抽奖
+				//open_join  0不开启报名，1开启报名
+				if(modular_type == 0){
+					//普通 活动
+					console.log(status,'====')
+					return this.joinStatus(status)
+				}else if(modular_type == 1){
+					//关联活动
+					return this.askStatus(status)
+				}else if(modular_type == 2){
+					return this.winStatus(status)
+				}
+			},
 			imgIndex () {
 				return this.swiperIndex +'/'+ this.detail.images.length
 			},
