@@ -1005,53 +1005,86 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       var modular_id = this.detail.modular_id;
       var status = this.detail.status;
       var open_join = this.detail.open_join;
-      if (open_join == 1 && status == 1) {
-        uni.navigateTo({
-          url: '/pages/index/committeeactivity?id=' + this.id });
 
-      } else if (open_join == 1 && status != 1) {
-        if (modular_type == 1) {
-          console.log(111);
-          uni.showToast({
-            title: this.askStatus(status),
-            icon: 'none',
-            duration: 2000 });
-
-        } else if (modular_type == 2) {
-          console.log(222);
-          uni.showToast({
-            title: this.winStatus(status),
-            icon: 'none',
-            duration: 2000 });
-
-        } else if (modular_type == 0) {
-          uni.showToast({
-            title: this.joinStatus(status),
-            icon: 'none',
-            duration: 2000 });
-
-        }
-      } else if (open_join == 0) {
-        if (status == 1) {
-          if (modular_type == 1) {
+      if (modular_type == 0) {
+        //普通 活动
+        if (open_join == 1) {
+          if (status == 1) {
             uni.navigateTo({
-              url: '../update/answer?answer_id=' + modular_id });
+              url: '/pages/index/committeeactivity?id=' + this.id });
 
-          } else if (modular_type == 2) {
-            uni.navigateTo({
-              url: '../update/award?draw_id=' + modular_id });
+          } else {
+            uni.showToast({
+              title: this.joinStatus(status),
+              icon: 'none',
+              duration: 2000 });
 
           }
         } else {
-          if (modular_type == 1) {
-            console.log(111);
+          if (status == 1) {
+            uni.showToast({
+              title: '无需报名',
+              icon: 'none',
+              duration: 2000 });
+
+          } else {
+            uni.showToast({
+              title: this.joinStatus(status),
+              icon: 'none',
+              duration: 2000 });
+
+          }
+        }
+
+      } else if (modular_type == 1) {
+        //关联活动
+        if (open_join == 1) {
+          if (status != 1 && status != 5) {
+            uni.navigateTo({
+              url: '../update/answer?answer_id=' + modular_id });
+
+          } else {
             uni.showToast({
               title: this.askStatus(status),
               icon: 'none',
               duration: 2000 });
 
-          } else if (modular_type == 2) {
-            console.log(222);
+          }
+        } else if (open_join == 0) {
+          if (status == 1) {
+            uni.showToast({
+              title: '无需报名',
+              icon: 'none',
+              duration: 2000 });
+
+          } else {
+            uni.showToast({
+              title: this.askStatus(status),
+              icon: 'none',
+              duration: 2000 });
+
+          }
+        }
+
+      } else if (modular_type == 2) {
+        if (open_join == 1) {
+          if (status != 1 && status != 5) {
+            uni.navigateTo({
+              url: '../update/award?award_id=' + modular_id });
+
+          } else {
+            uni.navigateTo({
+              url: '/pages/index/committeeactivity?id=' + this.id });
+
+          }
+        } else if (open_join == 0) {
+          if (status == 1) {
+            uni.showToast({
+              title: '无需报名',
+              icon: 'none',
+              duration: 2000 });
+
+          } else {
             uni.showToast({
               title: this.winStatus(status),
               icon: 'none',
@@ -1059,7 +1092,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
           }
         }
+
       }
+
       // if(this.detail.draw == 1 && this.detail.draw_id >0){
       // 	var draw_id =  this.detail.draw_id
       // 	uni.navigateTo({
@@ -1819,13 +1854,51 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       //open_join  0不开启报名，1开启报名
       if (modular_type == 0) {
         //普通 活动
-        console.log(status, '====');
-        return this.joinStatus(status);
+        if (open_join == 1) {
+          return this.joinStatus(status);
+        } else {
+          if (status == 1) {
+            return '无需报名';
+          } else {
+            return this.joinStatus(status);
+          }
+        }
+
       } else if (modular_type == 1) {
         //关联活动
-        return this.askStatus(status);
+        if (open_join == 1) {
+          if (status != 1 && status != 5) {
+            return '开始答题';
+          } else if (status == 1) {
+            return '立即报名';
+          } else {
+            return this.askStatus(status);
+          }
+        } else if (open_join == 0) {
+          if (status != 1 && status != 5) {
+            return '开始答题';
+          } else {
+            return this.askStatus(status);
+          }
+        }
+
       } else if (modular_type == 2) {
-        return this.winStatus(status);
+        if (open_join == 1) {
+          if (status != 1 && status != 5) {
+            return '开始抽奖';
+          } else if (status == 1) {
+            return '立即报名';
+          } else {
+            return this.winStatus(status);
+          }
+        } else if (open_join == 0) {
+          if (status != 1 && status != 5) {
+            return '开始抽奖';
+          } else {
+            return this.winStatus(status);
+          }
+        }
+
       }
     },
     imgIndex: function imgIndex() {
