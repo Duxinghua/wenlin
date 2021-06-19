@@ -446,6 +446,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 602));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 630));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 644));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | components/bkhumor-emoji/index */ "components/bkhumor-emoji/index").then((function () {return resolve(__webpack_require__(/*! @/components/bkhumor-emoji/index.vue */ 651));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 616));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Firend = function Firend() {__webpack_require__.e(/*! require.ensure | components/onfirend/onfirend */ "components/onfirend/onfirend").then((function () {return resolve(__webpack_require__(/*! ../../components/onfirend/onfirend.vue */ 637));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 538));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UserHeader = function UserHeader() {__webpack_require__.e(/*! require.ensure | components/userHeader/userheader */ "components/userHeader/userheader").then((function () {return resolve(__webpack_require__(/*! @/components/userHeader/userheader.vue */ 658));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Comment = function Comment() {__webpack_require__.e(/*! require.ensure | components/comment/comment */ "components/comment/comment").then((function () {return resolve(__webpack_require__(/*! @/components/comment/comment.vue */ 665));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 552));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 672));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Confrimpop = function Confrimpop() {__webpack_require__.e(/*! require.ensure | components/confrim/confrim */ "components/confrim/confrim").then((function () {return resolve(__webpack_require__(/*! @/components/confrim/confrim.vue */ 679));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var DeleteTip = function DeleteTip() {__webpack_require__.e(/*! require.ensure | components/deletetip/deletetip */ "components/deletetip/deletetip").then((function () {return resolve(__webpack_require__(/*! @/components/deletetip/deletetip.vue */ 686));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
@@ -576,10 +578,14 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       adjustposition: false,
       isHome: true,
       rule: false,
-      loading: true };
+      loading: true,
+      mobile: '' };
 
   },
   mounted: function mounted() {
+
+    this.mobile = uni.getStorageSync('user') ? uni.getStorageSync('user').mobile : '';
+
     console.log(this.$mp.query);
     var singPage = uni.getStorageSync('singPage');
     var that = this;
@@ -673,6 +679,39 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
   },
   methods: {
+    getPhoneNumber: function getPhoneNumber(e) {var _this = this;
+      if (uni.getStorageSync('singPage') == 1) {
+        uni.showToast({
+          title: '请前往小程序使用完整服务',
+          icon: 'none',
+          duration: 2000 });
+
+        return;
+      } else {
+        var token = uni.getStorageSync('token');
+        var all_community = uni.getStorageSync('all_community');
+        if (!token && all_community.length == 0 || token && all_community.length == 0) {
+          this.$refs.confrims.text = '精彩活动，登录问邻即可报名';
+          this.$refs.confrims.id = -1;
+          this.$refs.confrims.guestShow = true;
+          return;
+        }
+      }
+      if (e.mp.detail.errMsg == 'getPhoneNumber:ok') {
+        var id = e.mp.currentTarget.dataset.id;var _e$detail =
+        e.detail,encryptedData = _e$detail.encryptedData,iv = _e$detail.iv;
+        this.Api.setUserPhoneBySecret({ encrypted_data: encryptedData, iv: iv }).then(function (result) {
+          if (result.code == 1) {
+            uni.setStorageSync('mobile', result.data);
+            if (result.data) {
+              _this.stodo();
+            }
+          }
+        });
+      } else {
+        return;
+      }
+    },
     winStatus: function winStatus(index) {
       if (index == 1) {
         return '立即抽奖';
@@ -815,7 +854,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         url: '/pages/index/index' });
 
     },
-    autoShare: function autoShare() {var _this = this;
+    autoShare: function autoShare() {var _this2 = this;
       if (this.srouce == 1) {
         if (uni.getStorageSync('token')) {
           if (this.opening == 0 && this.detail.publish_type == 1) {
@@ -860,9 +899,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
               uni.setStorageSync('committee_id', all_community[0].committee_id);
 
             } else {
-              _this.srouceText = '提示您尚未登录，请登录后操作';
-              _this.srouceBtnText = '登录';
-              _this.srouceShow = true;
+              _this2.srouceText = '提示您尚未登录，请登录后操作';
+              _this2.srouceBtnText = '登录';
+              _this2.srouceShow = true;
             }
 
 
@@ -956,7 +995,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.$forceUpdate();
     },
     //切换
-    navClick: function navClick(index) {var _this2 = this;
+    navClick: function navClick(index) {var _this3 = this;
       this.page = 1;
       this.total = 0;
       this.commentList = [];
@@ -971,33 +1010,14 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         this.nodatatext = '暂无答题人';
       }
       setTimeout(function () {
-        if (_this2.navIndex == 1 || _this2.navIndex == 2 || _this2.navIndex == 4) {
-          _this2.getCommentList();
-        } else if (_this2.navIndex == 3) {
-          _this2.getJoinUserList();
+        if (_this3.navIndex == 1 || _this3.navIndex == 2 || _this3.navIndex == 4) {
+          _this3.getCommentList();
+        } else if (_this3.navIndex == 3) {
+          _this3.getJoinUserList();
         }
       }, 300);
     },
-    //报名处理
-    signupHandler: function signupHandler() {
-
-      if (uni.getStorageSync('singPage') == 1) {
-        uni.showToast({
-          title: '请前往小程序使用完整服务',
-          icon: 'none',
-          duration: 2000 });
-
-        return;
-      } else {
-        var token = uni.getStorageSync('token');
-        var all_community = uni.getStorageSync('all_community');
-        if (!token && all_community.length == 0 || token && all_community.length == 0) {
-          this.$refs.confrims.text = '精彩活动，登录问邻即可报名';
-          this.$refs.confrims.id = -1;
-          this.$refs.confrims.guestShow = true;
-          return;
-        }
-      }
+    stodo: function stodo() {
       //modular_type  管理其他模块类型 1 答题 2抽奖
       //open_join  0不开启报名，1开启报名
       var modular_type = this.detail.modular_type;
@@ -1094,19 +1114,29 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         }
 
       }
+    },
+    //报名处理
+    signupHandler: function signupHandler() {
 
-      // if(this.detail.draw == 1 && this.detail.draw_id >0){
-      // 	var draw_id =  this.detail.draw_id
-      // 	uni.navigateTo({
-      // 		url:'../update/award?draw_id='+ draw_id
-      // 	})
-      // }
-      // if(this.detail.answer == 1 && this.detail.answer_id >0){
-      // 	var answer_id =  this.detail.answer_id
-      // 	uni.navigateTo({
-      // 		url:'../update/answer?answer_id='+ answer_id
-      // 	})
-      // }
+      if (uni.getStorageSync('singPage') == 1) {
+        uni.showToast({
+          title: '请前往小程序使用完整服务',
+          icon: 'none',
+          duration: 2000 });
+
+        return;
+      } else {
+        var token = uni.getStorageSync('token');
+        var all_community = uni.getStorageSync('all_community');
+        if (!token && all_community.length == 0 || token && all_community.length == 0) {
+          this.$refs.confrims.text = '精彩活动，登录问邻即可报名';
+          this.$refs.confrims.id = -1;
+          this.$refs.confrims.guestShow = true;
+          return;
+        }
+      }
+      this.stodo();
+
     },
     //答题处理
     askHandler: function askHandler() {
@@ -1166,7 +1196,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         phoneNumber: phone });
 
     },
-    getCommentList: function getCommentList(ismore) {var _this3 = this;
+    getCommentList: function getCommentList(ismore) {var _this4 = this;
       var data = {
         object_id: this.dynamics_id,
         object_type: this.type,
@@ -1178,7 +1208,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (result.code == 1) {
             if (ismore) {
               var res = result.data.list;
-              _this3.total = result.data.total_page;
+              _this4.total = result.data.total_page;
               res.map(function (item) {
                 item.nodes = '<p style="display:inline-flex;align-items:center;">' + new String(item.content).
                 toString().
@@ -1191,11 +1221,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
                   });
                 }
               });
-              _this3.commentList = _this3.commentList.concat(res);
-              _this3.commentpageTotal = result.data.total_page;
+              _this4.commentList = _this4.commentList.concat(res);
+              _this4.commentpageTotal = result.data.total_page;
             } else {
               var res = result.data.list;
-              _this3.total = result.data.total_page;
+              _this4.total = result.data.total_page;
               res.map(function (item) {
                 item.nodes = '<p style="display:inline-flex;align-items:center;">' + new String(item.content).
                 toString().
@@ -1208,13 +1238,13 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
                   });
                 }
               });
-              _this3.commentList = res;
-              _this3.commentpageTotal = result.data.total_page;
+              _this4.commentList = res;
+              _this4.commentpageTotal = result.data.total_page;
             }
-            if (_this3.commentList.length) {
-              _this3.nodataFlag = false;
+            if (_this4.commentList.length) {
+              _this4.nodataFlag = false;
             } else {
-              _this3.nodataFlag = true;
+              _this4.nodataFlag = true;
             }
           }
         });
@@ -1225,17 +1255,17 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (result.code == 1) {
             if (ismore) {
               var res = result.data.list;
-              _this3.total = result.data.total_page;
-              _this3.commentList = _this3.commentList.concat(res);
+              _this4.total = result.data.total_page;
+              _this4.commentList = _this4.commentList.concat(res);
             } else {
               var res = result.data.list;
-              _this3.total = result.data.total_page;
-              _this3.commentList = res;
+              _this4.total = result.data.total_page;
+              _this4.commentList = res;
             }
-            if (_this3.commentList.length) {
-              _this3.nodataFlag = false;
+            if (_this4.commentList.length) {
+              _this4.nodataFlag = false;
             } else {
-              _this3.nodataFlag = true;
+              _this4.nodataFlag = true;
             }
           }
         });
@@ -1245,24 +1275,24 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (result.code == 1) {
             if (ismore) {
               var res = result.data.list;
-              _this3.total = result.data.total_page;
-              _this3.commentList = _this3.commentList.concat(res);
+              _this4.total = result.data.total_page;
+              _this4.commentList = _this4.commentList.concat(res);
             } else {
               var res = result.data.list;
-              _this3.total = result.data.total_page;
-              _this3.commentList = res;
+              _this4.total = result.data.total_page;
+              _this4.commentList = res;
             }
-            if (_this3.commentList.length) {
-              _this3.nodataFlag = false;
+            if (_this4.commentList.length) {
+              _this4.nodataFlag = false;
             } else {
-              _this3.nodataFlag = true;
+              _this4.nodataFlag = true;
             }
           }
         });
       }
     },
     //报名列表
-    getJoinUserList: function getJoinUserList(ismore) {var _this4 = this;
+    getJoinUserList: function getJoinUserList(ismore) {var _this5 = this;
       var data = {
         activity_id: this.id,
         page: this.page,
@@ -1272,19 +1302,19 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         if (result.code == 1) {
           if (ismore) {
             var res = result.data.list;
-            _this4.total = result.data.total_page;
-            _this4.commentList = _this4.commentList.concat(res);
-            _this4.commentpageTotal = result.data.total_page;
+            _this5.total = result.data.total_page;
+            _this5.commentList = _this5.commentList.concat(res);
+            _this5.commentpageTotal = result.data.total_page;
           } else {
             var res = result.data.list;
-            _this4.total = result.data.total_page;
-            _this4.commentList = res;
-            _this4.commentpageTotal = result.data.total_page;
+            _this5.total = result.data.total_page;
+            _this5.commentList = res;
+            _this5.commentpageTotal = result.data.total_page;
           }
-          if (_this4.commentList.length) {
-            _this4.nodataFlag = false;
+          if (_this5.commentList.length) {
+            _this5.nodataFlag = false;
           } else {
-            _this4.nodataFlag = true;
+            _this5.nodataFlag = true;
           }
         }
       });
@@ -1316,7 +1346,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.isShowEmj = !this.isShowEmj;
     },
     //评论点赞
-    floverHandler: function floverHandler(e) {var _this5 = this;
+    floverHandler: function floverHandler(e) {var _this6 = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -1349,7 +1379,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             // 	title:result.msg,
             // 	duration:2000,
             // 	success: () => {
-            _this5.getCommentList();
+            _this6.getCommentList();
             // 	}
             // })
           }
@@ -1368,7 +1398,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             // 	title:result.msg,
             // 	duration:2000,
             // 	success: () => {
-            _this5.getCommentList();
+            _this6.getCommentList();
             // 	}
             // })
           }
@@ -1405,7 +1435,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.autoBottom = 0;
     },
 
-    inputValueHander: function inputValueHander(e) {var _this6 = this;
+    inputValueHander: function inputValueHander(e) {var _this7 = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -1433,19 +1463,19 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       this.subMessageTodo(this.comIds, 3, function (ss) {
         var data = {
-          object_id: _this6.id,
-          object_type: _this6.type,
-          content: _this6.inputValue,
-          parent_id: _this6.parent_id,
+          object_id: _this7.id,
+          object_type: _this7.type,
+          content: _this7.inputValue,
+          parent_id: _this7.parent_id,
           community_id: uni.getStorageSync('community_id') };
 
-        if (_this6.type == 7 || _this6.type == 5) {
-          data.third_id = _this6.id;
+        if (_this7.type == 7 || _this7.type == 5) {
+          data.third_id = _this7.id;
         }
 
-        _this6.Api.setComments(data).then(function (result) {
+        _this7.Api.setComments(data).then(function (result) {
           if (result.code == 1) {
-            _this6.navIndex = 1;
+            _this7.navIndex = 1;
             uni.showToast({
               title: result.msg,
               duration: 2000,
@@ -1455,26 +1485,26 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
                 // this.replyFlag = true
                 // this.parent_text = '说说你的看法'
                 // this.getCommentList()
-                _this6.replyTextarea = false;
-                _this6.textareaautofocus = false;
-                _this6.scrollFixed = false;
-                _this6.inputValue = '';
-                _this6.parent_id = '';
-                _this6.replyFlag = true;
-                _this6.parent_text = '说说你的看法';
+                _this7.replyTextarea = false;
+                _this7.textareaautofocus = false;
+                _this7.scrollFixed = false;
+                _this7.inputValue = '';
+                _this7.parent_id = '';
+                _this7.replyFlag = true;
+                _this7.parent_text = '说说你的看法';
                 if (result.data.add) {
-                  _this6.add_type = result.data.add == -1 ? '-' : '+';
-                  _this6.score_text = result.data.score;
-                  _this6.$refs.integraltip.show();
+                  _this7.add_type = result.data.add == -1 ? '-' : '+';
+                  _this7.score_text = result.data.score;
+                  _this7.$refs.integraltip.show();
                   setTimeout(function () {
-                    _this6.add_type = '';
-                    _this6.score_text = '';
+                    _this7.add_type = '';
+                    _this7.score_text = '';
 
-                    _this6.$refs.integraltip.close();
-                    _this6.getCommentList();
+                    _this7.$refs.integraltip.close();
+                    _this7.getCommentList();
                   }, 2000);
                 } else {
-                  _this6.getCommentList();
+                  _this7.getCommentList();
                 }
               } });
 
@@ -1514,44 +1544,44 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         } });
 
     },
-    getDetail: function getDetail() {var _this7 = this;
+    getDetail: function getDetail() {var _this8 = this;
       this.Api.pactivityDetail({ object_id: this.id, object_type: this.type }).then(function (result) {
         if (result.code == 1) {
           if (!result.data.id) {
             // uni.redirectTo({
             // 	url:'/pages/index/404'
             // })
-            _this7.$refs.deletetip.deleteShow = true;
+            _this8.$refs.deletetip.deleteShow = true;
 
             return;
           }
-          _this7.detail = result.data;
-          if (_this7.detail.admin_id) {
-            _this7.config.title = _this7.publishType(_this7.detail.committee.type) + '活动';
+          _this8.detail = result.data;
+          if (_this8.detail.admin_id) {
+            _this8.config.title = _this8.publishType(_this8.detail.committee.type) + '活动';
           }
-          _this7.detail.content = _this7.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
-          if (_this7.detail.images.length == 0) {
-            _this7.detail.images.push('https://sq.wenlinapp.com/appimg/act_post.png');
+          _this8.detail.content = _this8.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
+          if (_this8.detail.images.length == 0) {
+            _this8.detail.images.push('https://sq.wenlinapp.com/appimg/act_post.png');
           }
           if (result.data.join_start_time == result.data.join_end_time) {
-            _this7.detail.join_time = result.data.join_end_time ? _tool.default.dateFormat('YY-mm-dd', result.data.join_end_time) : 0;
+            _this8.detail.join_time = result.data.join_end_time ? _tool.default.dateFormat('YY-mm-dd', result.data.join_end_time) : 0;
           } else {
-            _this7.detail.join_time = result.data.join_start_time ? _tool.default.dateFormat('YY-mm-dd', new Date(result.data.join_start_time * 1000)) + ' 至 ' + _tool.default.dateFormat('YY-mm-dd', new Date(result.data.join_end_time * 1000)) : 0;
+            _this8.detail.join_time = result.data.join_start_time ? _tool.default.dateFormat('YY-mm-dd', new Date(result.data.join_start_time * 1000)) + ' 至 ' + _tool.default.dateFormat('YY-mm-dd', new Date(result.data.join_end_time * 1000)) : 0;
           }
-          _this7.loading = false;
-          _this7.$forceUpdate();
+          _this8.loading = false;
+          _this8.$forceUpdate();
           // this.getCommentList()
-          if (_this7.detail.activity_type == 1) {
-            _this7.navIndex = 3;
-            _this7.getJoinUserList();
-          } else if (_this7.detail.activity_type == 2) {
-            _this7.navIndex = 4;
-            _this7.getCommentList();
+          if (_this8.detail.activity_type == 1) {
+            _this8.navIndex = 3;
+            _this8.getJoinUserList();
+          } else if (_this8.detail.activity_type == 2) {
+            _this8.navIndex = 4;
+            _this8.getCommentList();
           }
 
-          if (_this7.srouce) {
+          if (_this8.srouce) {
             console.log('d2');
-            _this7.autoShare();
+            _this8.autoShare();
           }
         }
       });
@@ -1618,7 +1648,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       // parent_text:'说说你的看法',
     },
     //帮助处理
-    helpPush: function helpPush() {var _this8 = this;
+    helpPush: function helpPush() {var _this9 = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -1638,10 +1668,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       this.$getMyscore(function (res) {
         if (res.code == 1) {
-          _this8.navIndex = 2;
-          _this8.getCommentList();
-          _this8.score = res.data.score;
-          if (_this8.score == 0) {
+          _this9.navIndex = 2;
+          _this9.getCommentList();
+          _this9.score = res.data.score;
+          if (_this9.score == 0) {
 
             uni.showToast({
               title: '您的积分不足，请参加积分任务',
@@ -1655,7 +1685,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             }, 2000);
 
           } else {
-            _this8.helpShow = true;
+            _this9.helpShow = true;
           }
         }
       });
@@ -1663,7 +1693,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     Helpcancel: function Helpcancel() {
       this.helpShow = false;
     },
-    ok: function ok(e) {var _this9 = this;
+    ok: function ok(e) {var _this10 = this;
       var score = this.$refs.Help.inputValue;
       if (!score) {
         uni.showToast({
@@ -1685,21 +1715,21 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       // }
       this.Api.communityDynamicsPushDynamics(data).then(function (result) {
         if (result.code == 1) {
-          _this9.navIndex = 2;
-          _this9.getCommentList();
+          _this10.navIndex = 2;
+          _this10.getCommentList();
           uni.showToast({
             title: result.msg,
             duration: 2000,
             success: function success() {
-              _this9.add_type = result.data.add == -1 ? '-' : '+';
-              _this9.score_text = result.data.score;
-              _this9.$refs.Help.inputValue = 0;
-              _this9.helpShow = false;
-              _this9.$refs.integraltip.show();
+              _this10.add_type = result.data.add == -1 ? '-' : '+';
+              _this10.score_text = result.data.score;
+              _this10.$refs.Help.inputValue = 0;
+              _this10.helpShow = false;
+              _this10.$refs.integraltip.show();
               setTimeout(function () {
-                _this9.add_type = '';
-                _this9.score_text = '';
-                _this9.$refs.integraltip.close();
+                _this10.add_type = '';
+                _this10.score_text = '';
+                _this10.$refs.integraltip.close();
 
               }, 2000);
 
@@ -1741,7 +1771,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     onShowclose: function onShowclose() {
       this.onShareShow = false;
     },
-    onShowtodo: function onShowtodo() {var _this10 = this;
+    onShowtodo: function onShowtodo() {var _this11 = this;
       this.scrollFixed = true;
       var pages = getCurrentPages(); //获取加载的页面
 
@@ -1763,32 +1793,32 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
       this.Api.getWXACodeUnlimit(data).then(function (result) {
         if (result.code == 1) {
-          _this10.$nextTick(function () {
-            _this10.onShareShow = false;
-            _this10.posterData.posterImgUrl = _this10.findFaultObject.images.length ? _this10.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
-            if (_this10.type == 7 || _this10.type == 8 || _this10.type == 5) {
-              _this10.posterData.title = _this10.findFaultObject.title;
+          _this11.$nextTick(function () {
+            _this11.onShareShow = false;
+            _this11.posterData.posterImgUrl = _this11.findFaultObject.images.length ? _this11.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
+            if (_this11.type == 7 || _this11.type == 8 || _this11.type == 5) {
+              _this11.posterData.title = _this11.findFaultObject.title;
             } else {
-              _this10.posterData.title = _this10.findFaultObject.content;
+              _this11.posterData.title = _this11.findFaultObject.content;
             }
-            if (_this10.posterData.title.length > 35) {
-              _this10.posterData.title = _this10.posterData.title.substr(0, 35) + '...';
+            if (_this11.posterData.title.length > 35) {
+              _this11.posterData.title = _this11.posterData.title.substr(0, 35) + '...';
             }
-            _this10.posterData.avatarUrl = uni.getStorageSync('user').avatar;
-            _this10.posterData.posterCodeUrl = result.data;
-            _this10.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this10.type) + '信息';
-            _this10.$forceUpdate();
+            _this11.posterData.avatarUrl = uni.getStorageSync('user').avatar;
+            _this11.posterData.posterCodeUrl = result.data;
+            _this11.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this11.type) + '信息';
+            _this11.$forceUpdate();
             setTimeout(function () {
-              _this10.canvasFlag = false; //显示canvas海报
-              _this10.deliveryFlag = false; //关闭分享弹窗
-              _this10.$refs.hchPoster.posterShow();
+              _this11.canvasFlag = false; //显示canvas海报
+              _this11.deliveryFlag = false; //关闭分享弹窗
+              _this11.$refs.hchPoster.posterShow();
             }, 500);
 
 
           });
 
         } else {
-          _this10.scrollFixed = false;
+          _this11.scrollFixed = false;
         }
       });
 
@@ -1802,7 +1832,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.findFaultValue = false;
       this.onShareShow = false;
     },
-    condelHandler: function condelHandler(e) {var _this11 = this;
+    condelHandler: function condelHandler(e) {var _this12 = this;
       if (e == -1) {
         var url = '/pages/index/cdetail?dynamics_id=' + this.dynamics_id + '&type=' + this.type + '&id=' + this.id;
         uni.setStorageSync('url', url);
@@ -1820,8 +1850,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             title: result.msg,
             duration: 2000,
             success: function success() {
-              _this11.$refs.confrims.guestShow = false;
-              _this11.getCommentList();
+              _this12.$refs.confrims.guestShow = false;
+              _this12.getCommentList();
             } });
 
         }

@@ -144,9 +144,11 @@
 		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="askHandler" v-if="detail.open_join == 0">
 			立即答题
 		</view> -->
-		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="signupHandler">
+		<view :class="['signup',autoStyle ? 'signupfix': '']" @click="signupHandler" v-if="mobile">
 			{{autoJOinStatus}}
 		</view>
+		<button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" class="btns" v-if="!mobile">{{autoJOinStatus}}</button>
+		
 		<!-- 回复框 -->
 		<view class="reply">
 			<view class="inputrow">
@@ -373,10 +375,14 @@
 				adjustposition:false,
 				isHome:true,
 				rule:false,
-				loading:true
+				loading:true,
+				mobile:''
 			}
 		},
 		mounted(){
+	
+			this.mobile = uni.getStorageSync('user') ? uni.getStorageSync('user').mobile : ''
+
 			console.log(this.$mp.query)
 			var singPage = uni.getStorageSync('singPage')
 			var that = this;
@@ -470,6 +476,39 @@
 		    }
 		},
 		methods:{
+			getPhoneNumber(e){
+				if (uni.getStorageSync('singPage') == 1) {
+					uni.showToast({
+						title: '请前往小程序使用完整服务',
+						icon: 'none',
+						duration: 2000
+					});
+					return;
+				}else{
+					var token = uni.getStorageSync('token')
+					var all_community = uni.getStorageSync('all_community')
+					if(!token && all_community.length == 0 || token && all_community.length == 0){
+						this.$refs.confrims.text = '精彩活动，登录问邻即可报名'
+						this.$refs.confrims.id = -1
+						this.$refs.confrims.guestShow = true
+						return
+					}
+				}
+				if(e.mp.detail.errMsg == 'getPhoneNumber:ok'){
+					var id = e.mp.currentTarget.dataset.id
+						var { encryptedData, iv } = e.detail;
+						this.Api.setUserPhoneBySecret({ encrypted_data: encryptedData, iv: iv }).then(result => {
+							if (result.code == 1) {
+								uni.setStorageSync('mobile', result.data);
+								if(result.data){
+									this.stodo()
+								}
+							}
+						})
+				}else{
+					return
+				}
+			},
 			winStatus(index) {
 				if(index == 1){
 					return '立即抽奖'
@@ -775,26 +814,7 @@
 					}
 				},300)
 			},
-			//报名处理
-			signupHandler(){
-		
-				if (uni.getStorageSync('singPage') == 1) {
-					uni.showToast({
-						title: '请前往小程序使用完整服务',
-						icon: 'none',
-						duration: 2000
-					});
-					return;
-				}else{
-					var token = uni.getStorageSync('token')
-					var all_community = uni.getStorageSync('all_community')
-					if(!token && all_community.length == 0 || token && all_community.length == 0){
-						this.$refs.confrims.text = '精彩活动，登录问邻即可报名'
-						this.$refs.confrims.id = -1
-						this.$refs.confrims.guestShow = true
-						return
-					}
-				}
+			stodo(){
 				//modular_type  管理其他模块类型 1 答题 2抽奖
 				//open_join  0不开启报名，1开启报名
 				var modular_type = this.detail.modular_type
@@ -889,21 +909,31 @@
 							});
 						}
 					}
-			
+							
 				}
-			
-				// if(this.detail.draw == 1 && this.detail.draw_id >0){
-				// 	var draw_id =  this.detail.draw_id
-				// 	uni.navigateTo({
-				// 		url:'../update/award?draw_id='+ draw_id
-				// 	})
-				// }
-				// if(this.detail.answer == 1 && this.detail.answer_id >0){
-				// 	var answer_id =  this.detail.answer_id
-				// 	uni.navigateTo({
-				// 		url:'../update/answer?answer_id='+ answer_id
-				// 	})
-				// }
+			},
+			//报名处理
+			signupHandler(){
+		
+				if (uni.getStorageSync('singPage') == 1) {
+					uni.showToast({
+						title: '请前往小程序使用完整服务',
+						icon: 'none',
+						duration: 2000
+					});
+					return;
+				}else{
+					var token = uni.getStorageSync('token')
+					var all_community = uni.getStorageSync('all_community')
+					if(!token && all_community.length == 0 || token && all_community.length == 0){
+						this.$refs.confrims.text = '精彩活动，登录问邻即可报名'
+						this.$refs.confrims.id = -1
+						this.$refs.confrims.guestShow = true
+						return
+					}
+				}
+				this.stodo()
+				
 			},
 			//答题处理
 			askHandler(){
