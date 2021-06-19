@@ -348,6 +348,8 @@ var _almostUtils = __webpack_require__(/*! @/almost-utils/almost-utils.js */ 780
         this.targetIndex = newVal;
         this.onRotateStart();
       } else {
+        console.log('xxxx=xxx');
+        this.$emit('overHandler');
         console.info('旋转结束，prizeIndex 已重置');
       }
     } },

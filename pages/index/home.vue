@@ -58,7 +58,7 @@
 			<view :class="['postwrap', type == 3 && postList.length > 0 ? 'usedwrap' : '']">
 			<mescroll-uni scroll-y="true"  v-if="type != 3" :style="{height: height+'px'}" 
 			class="listwrap"
-			top="300"
+			:top="topFixed"
 			bottom="120"
 			ref="mescrollRef"
 			@init="mescrollInit"
@@ -92,7 +92,7 @@
 
 				<mescroll-uni scroll-y="true"  v-if="type == 3" :style="{height: height+'px'}"
 				class="listwrap"
-				top="300"
+				:top="topFixed"
 				bottom="120"
 				ref="mescrollRef"
 				@init="mescrollInit"
@@ -505,12 +505,15 @@ export default {
 			setcommunityOpen:false,
 			paiAd:true,
 			guestPaiOpen:false,
-			height:700
+			height:700,
+			rate:0,
+			topFixed:0
 		};
 	},
 	onLoad() {
 
 	},
+
 	computed:{
 		autoTop(){
 			return this.usersList.length ? 375 : 300
@@ -519,6 +522,9 @@ export default {
 
 	mounted() {
 		var system = uni.getSystemInfoSync()
+		let rate = 750 / system.windowWidth 
+		this.rate = rate
+		this.topFixed = 190+this.CustomBar*rate
 		this.height = system.windowHeight - uni.upx2px(188);
 		console.log(this.height,'height')
 		this.paiAd = uni.getStorageSync('paiAd') == 1 ? false : true
@@ -2149,7 +2155,7 @@ page {
 			flex-direction: row;
 			justify-content: flex-start;
 			align-items: center;
-			padding: 20upx 48upx;
+			padding: 20upx 45upx;
 			box-sizing: border-box;
 			// margin-bottom: 24upx;
 			.searchleft {

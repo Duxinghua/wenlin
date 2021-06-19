@@ -232,6 +232,8 @@
           this.targetIndex = newVal
           this.onRotateStart()
         } else {
+			console.log('xxxx=xxx')
+			this.$emit('overHandler')
           console.info('旋转结束，prizeIndex 已重置')
         }
       }

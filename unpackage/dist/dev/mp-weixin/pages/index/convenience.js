@@ -532,7 +532,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
       score_text: '',
       committeeList: [],
       setcommunityOpen: false,
-      height: 700 };
+      height: 700,
+      topFixed: '',
+      rate: 0 };
 
 
   },
@@ -551,6 +553,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
       });
     });
     var system = uni.getSystemInfoSync();
+    var rate = 750 / system.windowWidth;
+    this.rate = rate;
+    this.topFixed = 200 + this.CustomBar * rate;
     this.height = system.windowheight - uni.upx2px(188);
     if (uni.getStorageSync('token')) {
       this.$getCount(function (result) {

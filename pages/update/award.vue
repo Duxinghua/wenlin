@@ -402,11 +402,16 @@ export default {
 									// 中奖下标
 									this.prizeIndex = i;
 									this.selectObj = result.data
-									this.imgs = item.prizeImage
+									this.imgs = item.image
+									console.log(this.imgs,'xxx=xx',item)
 									this.$forceUpdate()
 									break;
 								}
 							}
+							// this.show = true
+							// if(result.data.status == 1){
+							// 	this.getList()
+							// }
 							this.getPrizeList()
 							this.showObj = result.data
 					

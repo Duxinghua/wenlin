@@ -578,11 +578,16 @@ __webpack_require__.r(__webpack_exports__);
                   // 中奖下标
                   _this4.prizeIndex = i;
                   _this4.selectObj = result.data;
-                  _this4.imgs = item.prizeImage;
+                  _this4.imgs = item.image;
+                  console.log(_this4.imgs, 'xxx=xx', item);
                   _this4.$forceUpdate();
                   break;
                 }
               }
+              // this.show = true
+              // if(result.data.status == 1){
+              // 	this.getList()
+              // }
               _this4.getPrizeList();
               _this4.showObj = result.data;
 

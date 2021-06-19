@@ -263,7 +263,7 @@ page.data-v-14a6ab35 {
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  padding: 20rpx 48rpx;
+  padding: 20rpx 45rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }

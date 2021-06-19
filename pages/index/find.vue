@@ -33,7 +33,7 @@
 <!-- 			</view> -->
 
 				<mescroll-uni :class="['postwrap',(type == 3) ? 'usedwrap' : '']" scroll-y="true" :style="{height: height+'px'}" class="listwrap" 
-					top="300"
+					:top="topFixed"
 					bottom="120"
 					ref="mescrollRef"
 					@init="mescrollInit"
@@ -387,13 +387,19 @@ export default {
 			pos:'home',
 			add_type:'',
 			score_text:'',
-			height:700
+			height:700,
+			rate:0,
+			topFixed:0
 	
 		};
 	},
 	onLoad() {},
 	mounted() {
+		
 		var system = uni.getSystemInfoSync()
+		let rate = 750 / system.windowWidth 
+		this.rate = rate
+		this.topFixed = 170+this.CustomBar*rate
 		this.height = system.windowHeight - uni.upx2px(180);
 		this.$Bus.$on('noToken', (e) => {
 		    this.goLogin((res) => {
@@ -1856,6 +1862,7 @@ page {
 				background: #EEF2FA;
 				border-radius: 10upx;
 			}
+			// 60+42+38
 			.active {
 				background: rgba(255, 156, 0, 0.1);
 				color: #ff9c00;

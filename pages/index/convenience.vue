@@ -20,7 +20,7 @@
 			<view :class="['postwrap',(type == 3 && postList.length > 0) ? 'usedwrap' : '']">
 			<!-- <mescroll-uni  :fixed="true"  :top="autoTop" bottom="120" ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption" :up="upOption" > -->
 				<mescroll-uni scroll-y="true" :style="{height: height+'px'}" class="listwrap" 
-					top="300"
+					:top="topFixed"
 					bottom="120"
 					ref="mescrollRef"
 					@init="mescrollInit"
@@ -384,7 +384,9 @@ export default {
 			score_text:'',
 			committeeList:[],
 			setcommunityOpen:false,
-			height:700
+			height:700,
+			topFixed:'',
+			rate:0
 	
 		};
 	},
@@ -403,6 +405,9 @@ export default {
 			})
 		})
 		var system = uni.getSystemInfoSync()
+		let rate = 750 / system.windowWidth 
+		this.rate = rate
+		this.topFixed = 200+this.CustomBar*rate
 		this.height = system.windowheight - uni.upx2px(188)
 		if(uni.getStorageSync('token')){
 			this.$getCount((result) => {
