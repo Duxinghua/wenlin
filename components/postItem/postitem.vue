@@ -453,7 +453,7 @@ export default {
 					return;
 				}
 			}
-			if (this.pitem.publish_type == 2) {
+			if (this.pitem.publish_type != 1) {
 				uni.navigateTo({
 					url: '/pages/update/committee?id=' + obj.committee_id
 				});
