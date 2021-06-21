@@ -2218,7 +2218,13 @@ var communityDynamicsImg = function communityDynamicsImg(params) {return (0, _re
 var pactivityDetail = function pactivityDetail(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/activity/detail', 'POST');};
 
 // 更新用户信息微信（头像、昵称等） https://sq.wenlinapp.com/api/wxapp/public/updateUserInfo 
-var updateUs = function updateUs(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/wxapp/public/updateUserInfo', 'POST');};var _default = (_wechatAuth$setUserPh = {
+var updateUs = function updateUs(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/wxapp/public/updateUserInfo', 'POST');};
+
+// {{online}}/api/community/Community_notices/getLastNotices
+var getLastNotices = function getLastNotices(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/Community_notices/getLastNotices', 'POST');};
+//{{online}}/api/community/Community_notices/detail
+var getNoticesDetail = function getNoticesDetail(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/Community_notices/detail', 'POST');};var _default = (_wechatAuth$setUserPh = {
+
 
 
   wechatAuth: wechatAuth,
@@ -2345,7 +2351,9 @@ updateUserInfo), _defineProperty(_wechatAuth$setUserPh, "communityDynamicsImg",
 communityDynamicsImg), _defineProperty(_wechatAuth$setUserPh, "publishNewthingDynamics",
 publishNewthingDynamics), _defineProperty(_wechatAuth$setUserPh, "pactivityDetail",
 pactivityDetail), _defineProperty(_wechatAuth$setUserPh, "updateUs",
-updateUs), _wechatAuth$setUserPh);exports.default = _default;
+updateUs), _defineProperty(_wechatAuth$setUserPh, "getLastNotices",
+getLastNotices), _defineProperty(_wechatAuth$setUserPh, "getNoticesDetail",
+getNoticesDetail), _wechatAuth$setUserPh);exports.default = _default;
 
 /***/ }),
 
@@ -2554,7 +2562,7 @@ var subscription = {
   vote: 'wedVxVL7kxxEMfcnjhVgWCottnrhwHzZ9SYZaWiGs48',
   jointuan: '8acnia-tVCSVzY49oVA3jteQCh1qhxrEc9DIfpsEIfg' };
 
-var version = 13;
+var version = 14;
 module.exports = {
   appid: appid,
   mapkey: mapkey,

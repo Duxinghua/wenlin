@@ -75,7 +75,7 @@
 				>
 					<!-- 		{{pitem.title}} -->
 					<!-- 	<rich-text :nodes="pitem.content" ></rich-text>	 -->
-					{{ pitem.title ? pitem.title : pitem.description }}
+					{{ pitem.title ? pitem.title : (pitem.content ? pitem.content : pitem.description) }}
 				</view>
 				<!-- <view class="posttitle" v-if="(pitem.publish_type == 2 || pitem.publish_type == 3) && pitem.title">{{pitem.description}}</view> -->
 				<view class="dalist" v-if="pitem.type == 6">
@@ -146,20 +146,20 @@
 					:class="['postdes', pitem.is_top == 1 ? 'postdesfix' : '', pitem.type == 6 ? 'postdesfix2' : '']"
 					v-if="(pitem.type != 7 || pitem.type != 8) && pitem.publish_type == 1"
 				>
-					{{ pitem.title }}
+					{{ pitem.title ? pitem.title : pitem.content }}
 				</view>
 				<!-- 			<view class="posttitle"   v-if="pitem.publish_type == 1 && pitem.title">{{pitem.content}}</view>
  -->
 				<view :class="['postdes', pitem.is_top == 1 ? 'postdesfix' : '', pitem.type == 2 ? 'postdesfix2' : '']" v-if="pitem.type != 7 && pitem.publish_type != 1">
 					<!-- 	<rich-text :nodes="pitem.content" ></rich-text>	 -->
-					{{ pitem.title }}
+					{{pitem.title ? pitem.title : pitem.content}}
 				</view>
 				<view
 					:class="['postdes', 'postdesfix11', pitem.is_top == 1 ? 'postdesfix' : '', pitem.type == 2 ? 'postdesfix2' : '']"
 					v-if="pitem.type == 7 && pitem.publish_type != 1"
 				>
 					<!-- 	<rich-text :nodes="pitem.content" ></rich-text>	 -->
-					{{ pitem.description }}
+					{{ pitem.description ? pitem.description : (pitem.title ? pitem.title : pitem.content)}}
 				</view>
 				<view
 					:class="['postdes', pitem.is_top == 1 ? 'postdesfix' : '', pitem.type != 2 ? 'postdesfix3' : '']"

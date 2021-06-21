@@ -1,7 +1,7 @@
 {
-  "component": true,
   "usingComponents": {
     "u-image": "/uview-ui/components/u-image/u-image",
+    "u-notice-bar": "/uview-ui/components/u-notice-bar/u-notice-bar",
     "mescroll-uni": "/components/mescroll-uni/mescroll-uni",
     "post-item": "/components/postItem/postitem",
     "used-item": "/components/usedItem/useditem",
@@ -12,5 +12,6 @@
     "help": "/components/help/help",
     "hch-poster": "/wxcomponents/hch-poster/hch-poster",
     "integraltip": "/components/integraltip/integraltip"
-  }
+  },
+  "component": true
 }

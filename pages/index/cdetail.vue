@@ -868,19 +868,22 @@
 							});
 						}
 					}else if(open_join == 0){
-						if(status == 1){
-							uni.showToast({
-								title: '无需报名',
-								icon: 'none',
-								duration: 2000
-							});	
-						}else{
-							uni.showToast({
-								title: this.askStatus(status),
-								icon: 'none',
-								duration: 2000
-							});
-						}
+						uni.navigateTo({
+							url:'../update/answer?answer_id='+ modular_id
+						})
+						// if(status == 1){
+						// 	uni.showToast({
+						// 		title: '无需报名',
+						// 		icon: 'none',
+						// 		duration: 2000
+						// 	});	
+						// }else{
+						// 	uni.showToast({
+						// 		title: this.askStatus(status),
+						// 		icon: 'none',
+						// 		duration: 2000
+						// 	});
+						// }
 					}
 					
 				}else if(modular_type == 2){
@@ -895,19 +898,9 @@
 							})
 						}
 					}else if(open_join == 0){
-						if(status == 1){
-							uni.showToast({
-								title: '无需报名',
-								icon: 'none',
-								duration: 2000
-							});	
-						}else{
-							uni.showToast({
-								title: this.winStatus(status),
-								icon: 'none',
-								duration: 2000
-							});
-						}
+						uni.navigateTo({
+							url:'../update/award?award_id='+ modular_id
+						})
 					}
 							
 				}
@@ -930,9 +923,11 @@
 						this.$refs.confrims.id = -1
 						this.$refs.confrims.guestShow = true
 						return
+					}else{
+						this.stodo()
 					}
 				}
-				this.stodo()
+				
 				
 			},
 			//答题处理
@@ -1258,7 +1253,7 @@
 					});
 					return
 				}
-				this.subMessageTodo(this.comIds,3,(ss) => {
+		
 					var data = {
 						object_id:this.id,
 						object_type:this.type,
@@ -1277,37 +1272,39 @@
 								title: result.msg,
 								duration: 2000,
 								success: () => {
-									// this.inputValue = ''
-									// this.parent_id = ''
-									// this.replyFlag = true
-									// this.parent_text = '说说你的看法'
-									// this.getCommentList()
-									this.replyTextarea = false
-									this.textareaautofocus = false
-									this.scrollFixed = false
-									this.inputValue = ''
-									this.parent_id = ''
-									this.replyFlag = true
-									this.parent_text = '说说你的看法'
-									if(result.data.add){
-										this.add_type = result.data.add == -1 ? '-' : '+'
-										this.score_text = result.data.score
-										this.$refs.integraltip.show()
-										setTimeout(()=>{
-											this.add_type = ''
-											this.score_text = ''
-											
-											this.$refs.integraltip.close()
+									this.subMessageTodo(this.comIds,3,(ss) => {
+										// this.inputValue = ''
+										// this.parent_id = ''
+										// this.replyFlag = true
+										// this.parent_text = '说说你的看法'
+										// this.getCommentList()
+										this.replyTextarea = false
+										this.textareaautofocus = false
+										this.scrollFixed = false
+										this.inputValue = ''
+										this.parent_id = ''
+										this.replyFlag = true
+										this.parent_text = '说说你的看法'
+										if(result.data.add){
+											this.add_type = result.data.add == -1 ? '-' : '+'
+											this.score_text = result.data.score
+											this.$refs.integraltip.show()
+											setTimeout(()=>{
+												this.add_type = ''
+												this.score_text = ''
+												
+												this.$refs.integraltip.close()
+												this.getCommentList()
+											},2000)
+										}else{
 											this.getCommentList()
-										},2000)
-									}else{
-										this.getCommentList()
-									}
+										}
+									})
 								}
 							});
 						}
 					})
-				})
+			
 			},
 			//复制功能
 			copy(index){

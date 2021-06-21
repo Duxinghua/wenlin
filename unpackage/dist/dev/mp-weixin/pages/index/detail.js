@@ -940,34 +940,44 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         that.getPDetail();
       } else if (that.type == 8) {
         that.getDdetail();
+      } else if (that.type == -1) {
+        that.getNoDetail();
       } else {
-        console.log(12);
         that.getDetail();
       }
     },
+    //公告
+    getNoDetail: function getNoDetail() {var _this3 = this;
+      var data = { id: this.id };
+      this.Api.getNoticesDetail(data).then(function (result) {
+        if (result.code == 1) {
+          _this3.detail = result.data;
+        }
+      });
+    },
     //便民详情
-    getPDetail: function getPDetail() {var _this3 = this;
+    getPDetail: function getPDetail() {var _this4 = this;
       this.Api.communitydynamicswikiDetail({ wiki_id: this.id }).then(function (result) {
         if (result.code == 1) {
           if (!result.data.wiki_id) {
             // uni.redirectTo({
             // 	url:'/pages/index/404'
             // })
-            _this3.$refs.deletetip.deleteShow = true;
+            _this4.$refs.deletetip.deleteShow = true;
             return;
           }
-          _this3.detail = result.data;
-          _this3.loading = false;
+          _this4.detail = result.data;
+          _this4.loading = false;
           //this.detail.contacts = this.detail.contacts.concat(this.detail.contacts)
-          _this3.detail.content = _this3.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
-          if (_this3.type == 2) {
-            _this3.config.title = '小区新鲜事';
-          } else if (_this3.type == 5) {
-            _this3.config.title = '小区新鲜事';
+          _this4.detail.content = _this4.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
+          if (_this4.type == 2) {
+            _this4.config.title = '小区新鲜事';
+          } else if (_this4.type == 5) {
+            _this4.config.title = '小区新鲜事';
           }
-          _this3.getCommentList();
-          if (_this3.srouce) {
-            _this3.autoShare();
+          _this4.getCommentList();
+          if (_this4.srouce) {
+            _this4.autoShare();
           }
         }
       });
@@ -996,7 +1006,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
     },
     //帮推
-    helpPush: function helpPush() {var _this4 = this;
+    helpPush: function helpPush() {var _this5 = this;
       // this.$getMyscore((data) => {
       // 	this.score = data.score
       // 	this.helpShow = true
@@ -1020,8 +1030,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       this.$getMyscore(function (res) {
         if (res.code == 1) {
-          _this4.score = res.data.score;
-          if (_this4.score == 0) {
+          _this5.score = res.data.score;
+          if (_this5.score == 0) {
             uni.showToast({
               title: '您的积分不足，请参加积分任务',
               icon: 'none',
@@ -1033,7 +1043,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
             }, 2000);
           } else {
-            _this4.helpShow = true;
+            _this5.helpShow = true;
           }
         }
       });
@@ -1041,7 +1051,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     Helpcancel: function Helpcancel() {
       this.helpShow = false;
     },
-    helpOk: function helpOk() {var _this5 = this;
+    helpOk: function helpOk() {var _this6 = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -1079,21 +1089,21 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       this.Api.communityDynamicsPushDynamics(data).then(function (result) {
         if (result.code == 1) {
-          _this5.navIndex = 2;
+          _this6.navIndex = 2;
           uni.showToast({
             title: result.msg,
             duration: 2000,
             success: function success() {
-              _this5.add_type = result.data.add == -1 ? '-' : '+';
-              _this5.score_text = result.data.score;
-              _this5.helpShow = false;
-              _this5.$refs.integraltip.show();
+              _this6.add_type = result.data.add == -1 ? '-' : '+';
+              _this6.score_text = result.data.score;
+              _this6.helpShow = false;
+              _this6.$refs.integraltip.show();
               setTimeout(function () {
-                _this5.add_type = '';
-                _this5.score_text = '';
-                _this5.$refs.Help.inputValue = 0;
-                _this5.$refs.integraltip.close();
-                _this5.getDetailAll();
+                _this6.add_type = '';
+                _this6.score_text = '';
+                _this6.$refs.Help.inputValue = 0;
+                _this6.$refs.integraltip.close();
+                _this6.getDetailAll();
               }, 2000);
             } });
 
@@ -1106,7 +1116,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         }
       });
     },
-    getCommentList: function getCommentList(ismore) {var _this6 = this;
+    getCommentList: function getCommentList(ismore) {var _this7 = this;
       //所有的都是10
       var data = {
         object_id: this.id,
@@ -1124,7 +1134,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (result.code == 1) {
             if (ismore) {
               var res = result.data.list;
-              _this6.total = result.data.total_page;
+              _this7.total = result.data.total_page;
               res.map(function (item) {
                 item.nodes =
                 '<p style="display:inline-flex;align-items:center;">' +
@@ -1155,10 +1165,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
                   });
                 }
               });
-              _this6.commentList = _this6.commentList.concat(res);
+              _this7.commentList = _this7.commentList.concat(res);
             } else {
               var res = result.data.list;
-              _this6.total = result.data.total_page;
+              _this7.total = result.data.total_page;
               res.map(function (item) {
                 item.nodes =
                 '<p style="display:inline-flex;align-items:center;">' +
@@ -1189,14 +1199,14 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
                   });
                 }
               });
-              _this6.commentList = res;
+              _this7.commentList = res;
             }
-            if (_this6.commentList.length) {
-              _this6.nodataFlag = false;
+            if (_this7.commentList.length) {
+              _this7.nodataFlag = false;
             } else {
-              _this6.nodataFlag = true;
+              _this7.nodataFlag = true;
             }
-            _this6.$forceUpdate();
+            _this7.$forceUpdate();
           }
         });
       } else if (this.navIndex == 2) {
@@ -1206,19 +1216,19 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (result.code == 1) {
             if (ismore) {
               var res = result.data.list;
-              _this6.total = result.data.total_page;
-              _this6.commentList = _this6.commentList.concat(res);
+              _this7.total = result.data.total_page;
+              _this7.commentList = _this7.commentList.concat(res);
             } else {
               var res = result.data.list;
-              _this6.total = result.data.total_page;
-              _this6.commentList = res;
+              _this7.total = result.data.total_page;
+              _this7.commentList = res;
             }
-            if (_this6.commentList.length) {
-              _this6.nodataFlag = false;
+            if (_this7.commentList.length) {
+              _this7.nodataFlag = false;
             } else {
-              _this6.nodataFlag = true;
+              _this7.nodataFlag = true;
             }
-            _this6.$forceUpdate();
+            _this7.$forceUpdate();
           }
         });
       }
@@ -1251,7 +1261,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.isShowEmj = !this.isShowEmj;
     },
     //评论点赞
-    floverHandler: function floverHandler(e) {var _this7 = this;
+    floverHandler: function floverHandler(e) {var _this8 = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -1286,7 +1296,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             // 	title: result.msg,
             // 	duration: 2000,
             // 	success: () => {
-            _this7.getCommentList();
+            _this8.getCommentList();
             // 	}
             // });
           }
@@ -1307,7 +1317,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             // 	title: result.msg,
             // 	duration: 2000,
             // 	success: () => {
-            _this7.getCommentList();
+            _this8.getCommentList();
             // }
             //});
           }
@@ -1345,7 +1355,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.autoBottom = 0;
     },
 
-    inputValueHander: function inputValueHander(e) {var _this8 = this;
+    inputValueHander: function inputValueHander(e) {var _this9 = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -1372,61 +1382,63 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         return;
       }
 
-      this.subMessageTodo(this.comIds, 3, function (ss) {
-        var data = {
-          object_id: _this8.detail.id,
-          object_type: _this8.type,
-          content: _this8.inputValue,
-          parent_id: _this8.parent_id,
-          community_id: uni.getStorageSync('community_id') };
 
-        if (_this8.type == 7 || _this8.type == 5) {
-          data.third_id = _this8.id;
-        }
-        if (_this8.type == 7) {
-          data.object_id = _this8.dynamics_id;
-        }
-        _this8.Api.setComments(data).then(function (result) {
-          if (result.code == 1) {
-            _this8.navIndex = 1;
-            uni.showToast({
-              title: result.msg,
-              duration: 2000,
-              success: function success() {
-                _this8.replyTextarea = false;
-                _this8.textareaautofocus = false;
-                _this8.scrollFixed = false;
+      var data = {
+        object_id: this.detail.id,
+        object_type: this.type,
+        content: this.inputValue,
+        parent_id: this.parent_id,
+        community_id: uni.getStorageSync('community_id') };
+
+      if (this.type == 7 || this.type == 5) {
+        data.third_id = this.id;
+      }
+      if (this.type == 7) {
+        data.object_id = this.dynamics_id;
+      }
+      this.Api.setComments(data).then(function (result) {
+        if (result.code == 1) {
+          _this9.navIndex = 1;
+          uni.showToast({
+            title: result.msg,
+            duration: 2000,
+            success: function success() {
+              _this9.subMessageTodo(_this9.comIds, 3, function (ss) {
+                _this9.replyTextarea = false;
+                _this9.textareaautofocus = false;
+                _this9.scrollFixed = false;
                 // this.isShowEmj = false
                 // this.inputValue = ''
                 // this.parent_id = ''
                 // this.replyFlag = true
                 // this.parent_text = '说说你的看法'
                 // this.getCommentList()
-                _this8.isShowEmj = false;
-                _this8.inputValue = '';
-                _this8.parent_id = '';
-                _this8.replyFlag = true;
-                _this8.parent_text = '说说你的看法';
+                _this9.isShowEmj = false;
+                _this9.inputValue = '';
+                _this9.parent_id = '';
+                _this9.replyFlag = true;
+                _this9.parent_text = '说说你的看法';
                 if (result.data.add) {
-                  _this8.add_type = result.data.add == -1 ? '-' : '+';
-                  _this8.score_text = result.data.score;
-                  _this8.$refs.integraltip.show();
+                  _this9.add_type = result.data.add == -1 ? '-' : '+';
+                  _this9.score_text = result.data.score;
+                  _this9.$refs.integraltip.show();
                   setTimeout(function () {
-                    _this8.add_type = '';
-                    _this8.score_text = '';
+                    _this9.add_type = '';
+                    _this9.score_text = '';
 
-                    _this8.$refs.integraltip.close();
-                    _this8.getCommentList();
+                    _this9.$refs.integraltip.close();
+                    _this9.getCommentList();
                   }, 2000);
                 } else {
-                  _this8.getCommentList();
+                  _this9.getCommentList();
                 }
-              } });
+              });
+            } });
 
-          }
-        });
-
+        }
       });
+
+
 
     },
     //复制功能
@@ -1478,37 +1490,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         success: function success() {} });
 
     },
-    getDdetail: function getDdetail() {var _this9 = this;
+    getDdetail: function getDdetail() {var _this10 = this;
       this.Api.dongtaiDetail({ object_id: this.id, object_type: this.type }).then(function (result) {
-        if (result.code == 1) {
-          if (!result.data.id) {
-            // uni.redirectTo({
-            // 	url:'/pages/index/404'
-            // })
-            _this9.$refs.deletetip.deleteShow = true;
-            return;
-          }
-          _this9.detail = result.data;
-          _this9.loading = false;
-          _this9.detail.content = _this9.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
-          if (_this9.type == 2) {
-            _this9.config.title = '小区新鲜事';
-          } else if (_this9.type == 5) {
-            _this9.config.title = '小区新鲜事';
-          }
-          _this9.detail.user = {
-            user_nickname: '' };
-
-          _this9.getCommentList();
-          if (_this9.srouce) {
-            console.log('dd,2');
-            _this9.autoShare();
-          }
-        }
-      });
-    },
-    getDetail: function getDetail() {var _this10 = this;
-      this.Api.communityDynamicsDetail({ object_id: this.id, object_type: this.type }).then(function (result) {
         if (result.code == 1) {
           if (!result.data.id) {
             // uni.redirectTo({
@@ -1520,26 +1503,55 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           _this10.detail = result.data;
           _this10.loading = false;
           _this10.detail.content = _this10.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
-          _this10.opening = result.data.opening;
-          _this10.srouceCommunity_id = result.data.community.community_id;
-          _this10.srouceCommunity_text = result.data.community.title;
           if (_this10.type == 2) {
             _this10.config.title = '小区新鲜事';
           } else if (_this10.type == 5) {
             _this10.config.title = '小区新鲜事';
+          }
+          _this10.detail.user = {
+            user_nickname: '' };
+
+          _this10.getCommentList();
+          if (_this10.srouce) {
+            console.log('dd,2');
+            _this10.autoShare();
+          }
+        }
+      });
+    },
+    getDetail: function getDetail() {var _this11 = this;
+      this.Api.communityDynamicsDetail({ object_id: this.id, object_type: this.type }).then(function (result) {
+        if (result.code == 1) {
+          if (!result.data.id) {
+            // uni.redirectTo({
+            // 	url:'/pages/index/404'
+            // })
+            _this11.$refs.deletetip.deleteShow = true;
+            return;
+          }
+          _this11.detail = result.data;
+          _this11.loading = false;
+          _this11.detail.content = _this11.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
+          _this11.opening = result.data.opening;
+          _this11.srouceCommunity_id = result.data.community.community_id;
+          _this11.srouceCommunity_text = result.data.community.title;
+          if (_this11.type == 2) {
+            _this11.config.title = '小区新鲜事';
+          } else if (_this11.type == 5) {
+            _this11.config.title = '小区新鲜事';
           } else {
-            if (_this10.detail.community) {
-              _this10.config.title = _this10.detail.community.title + _tool.default.resultValue(_this10.type);
+            if (_this11.detail.community) {
+              _this11.config.title = _this11.detail.community.title + _tool.default.resultValue(_this11.type);
             }
           }
           if (result.data.skill_desc) {
-            _this10.skillList = result.data.skill_desc.split(',');
+            _this11.skillList = result.data.skill_desc.split(',');
           }
-          _this10.author = result.data.user_id;
-          _this10.getCommentList();
-          if (_this10.srouce) {
+          _this11.author = result.data.user_id;
+          _this11.getCommentList();
+          if (_this11.srouce) {
             console.log('d2');
-            _this10.autoShare();
+            _this11.autoShare();
           }
         }
       });
@@ -1705,12 +1717,12 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       // parent_id:'',
       // parent_text:'说说你的看法',
     },
-    report: function report() {var _this11 = this;
+    report: function report() {var _this12 = this;
       //findFaultObject
       uni.navigateTo({
         url: '/pages/update/report?object_id=' + this.detail.id + '&object_type=' + this.detail.type,
         success: function success() {
-          _this11.findFaultValue = false;
+          _this12.findFaultValue = false;
         } });
 
     },
@@ -1721,7 +1733,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     closeMessage: function closeMessage() {
       this.messageShow = false;
     },
-    submitTodo: function submitTodo(e) {var _this12 = this;
+    submitTodo: function submitTodo(e) {var _this13 = this;
       if (!e) {
         uni.showToast({
           icon: 'none',
@@ -1741,13 +1753,13 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             duration: 1000,
             title: result.msg,
             success: function success() {
-              _this12.messageShow = false;
+              _this13.messageShow = false;
             } });
 
         }
       });
     },
-    thankHandler: function thankHandler(e) {var _this13 = this;
+    thankHandler: function thankHandler(e) {var _this14 = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -1768,8 +1780,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.findFaultObject = e;
       this.$getMyscore(function (result) {
         if (result.code == 1) {
-          _this13.score = result.data.score;
-          _this13.thankShow = true;
+          _this14.score = result.data.score;
+          _this14.thankShow = true;
         }
       });
     },
@@ -1798,7 +1810,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     cancel: function cancel() {
       this.thankShow = false;
     },
-    ok: function ok(e) {var _this14 = this;
+    ok: function ok(e) {var _this15 = this;
       var input = this.$refs.thank.inputValue;
       if (!input) {
         uni.showToast({
@@ -1821,16 +1833,16 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             icon: 'success',
             duration: 2000,
             success: function success() {
-              _this14.$refs.Help.inputValue = 0;
-              _this14.thankShow = false;
-              _this14.add_type = result.data.add == -1 ? '-' : '+';
-              _this14.score_text = result.data.score;
-              _this14.$refs.integraltip.show();
+              _this15.$refs.Help.inputValue = 0;
+              _this15.thankShow = false;
+              _this15.add_type = result.data.add == -1 ? '-' : '+';
+              _this15.score_text = result.data.score;
+              _this15.$refs.integraltip.show();
               setTimeout(function () {
-                _this14.add_type = '';
-                _this14.score_text = '';
-                _this14.$refs.integraltip.close();
-                _this14.getCommentList();
+                _this15.add_type = '';
+                _this15.score_text = '';
+                _this15.$refs.integraltip.close();
+                _this15.getCommentList();
               }, 2000);
             } });
 
@@ -1868,7 +1880,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     onShowclose: function onShowclose() {
       this.onShareShow = false;
     },
-    onShowtodo: function onShowtodo() {var _this15 = this;
+    onShowtodo: function onShowtodo() {var _this16 = this;
       this.scrollFixed = true;
       var pages = getCurrentPages(); //获取加载的页面
 
@@ -1890,29 +1902,29 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
       this.Api.getWXACodeUnlimit(data).then(function (result) {
         if (result.code == 1) {
-          _this15.$nextTick(function () {
-            _this15.onShareShow = false;
-            _this15.posterData.posterImgUrl = _this15.findFaultObject.images.length ? _this15.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
-            if (_this15.type == 7 || _this15.type == 8) {
-              _this15.posterData.title = _this15.findFaultObject.title;
+          _this16.$nextTick(function () {
+            _this16.onShareShow = false;
+            _this16.posterData.posterImgUrl = _this16.findFaultObject.images.length ? _this16.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
+            if (_this16.type == 7 || _this16.type == 8) {
+              _this16.posterData.title = _this16.findFaultObject.title;
             } else {
-              _this15.posterData.title = _this15.findFaultObject.content;
+              _this16.posterData.title = _this16.findFaultObject.content;
             }
-            if (_this15.posterData.title.length > 35) {
-              _this15.posterData.title = _this15.posterData.title.substr(0, 35) + '...';
+            if (_this16.posterData.title.length > 35) {
+              _this16.posterData.title = _this16.posterData.title.substr(0, 35) + '...';
             }
-            _this15.posterData.avatarUrl = uni.getStorageSync('user').avatar;
-            _this15.posterData.posterCodeUrl = result.data;
-            _this15.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this15.type) + '信息';
-            _this15.$forceUpdate();
+            _this16.posterData.avatarUrl = uni.getStorageSync('user').avatar;
+            _this16.posterData.posterCodeUrl = result.data;
+            _this16.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this16.type) + '信息';
+            _this16.$forceUpdate();
             setTimeout(function () {
-              _this15.canvasFlag = false; //显示canvas海报
-              _this15.deliveryFlag = false; //关闭分享弹窗
-              _this15.$refs.hchPoster.posterShow();
+              _this16.canvasFlag = false; //显示canvas海报
+              _this16.deliveryFlag = false; //关闭分享弹窗
+              _this16.$refs.hchPoster.posterShow();
             }, 500);
           });
         } else {
-          _this15.scrollFixed = false;
+          _this16.scrollFixed = false;
         }
       });
     },
@@ -1920,7 +1932,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.scrollFixed = false;
       this.canvasFlag = val;
     },
-    condelHandler: function condelHandler(e) {var _this16 = this;
+    condelHandler: function condelHandler(e) {var _this17 = this;
       console.log(e);
 
       if (e == -1) {
@@ -1945,8 +1957,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             title: result.msg,
             duration: 2000,
             success: function success() {
-              _this16.$refs.confrims.guestShow = false;
-              _this16.getCommentList();
+              _this17.$refs.confrims.guestShow = false;
+              _this17.getCommentList();
             } });
 
         }

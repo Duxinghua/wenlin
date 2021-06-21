@@ -4,38 +4,79 @@
 		<navigation-custom :config="config" :scrollTop="scrollTop" @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight" />
 		<view class="detailcontent">
 			<UserHeader :type.sync="type" :pitem.sync="detail" @moreClick="moreClick" @goPer="goPer" v-if="type != 8" />
-			<view :class="['content', type == 7 ? 'contentfix' : '']">
-				<view class="ptdetail">
-					<view class="ptiem">
-						市场价|￥{{detail.price}}/{{detail.specifications}}
+			<view class="postheader" style="display: none;">
+				<view class="userinfo">
+					<view class="userwrap">
+						<text class="name">{{ detail.title }}</text>
 					</view>
-					<view class="piteminfo" v-for="(item,index) in detail.groupbuy_info" :key="index">
-						￥{{item.group_price}}/{{detail.specifications}} ({{item.group_min}}人成团价)
+					<view class="usertime">{{ detail.create_time | formatTime }}</view>
+				</view>
+				<view class="morewrap" @click="moreClick"><image src="../../static/more.png" class="more"></image></view>
+			</view>
+			<view :class="['content', type == 7 ? 'contentfix' : '']">
+				<view class="dalist" v-if="detail.type == 6">
+					<view class="daitem" v-for="(item, index) in skillList" :key="index" :index="index">{{ item }}</view>
+				</view>
+				<view class="sellwrap" v-if="detail.type == 3 || detail.type == 14">
+					<view class="sellinfo">
+			<!-- 			<text class="t1">{{ detail.sell_type | sellType }}</text>
+						| -->
+						<text class="t2" v-if="detail.sell_type != 4">￥{{  detail.sell_type == 2 ? 0 : detail.sell_price == -1 ? '面议' : detail.sell_price }}</text>
+						<text class="t2" v-if="detail.sell_type == 4">{{ detail.exchange_goods ? "物品："+ detail.exchange_goods : "积分："+detail.exchange_score }}</text>
 					</view>
 				</view>
-				<view class="postcontent" >
+				<view class="posttitle" v-if="detail.title && type == 7">{{ detail.title }}</view>
+				<view class="sellwrap" v-if="detail.type == 1 && detail.seek_score > 0">
+					<view class="sellinfo">
+						<text class="t1">悬赏积分</text>
+						|
+						<text class="t2" >{{ detail.seek_score }}</text>
+					</view>
+				</view>
+				<view class="posttitle" v-if="detail.title && type == 21">{{ detail.title }}</view>
+				<view class="postcontent" v-if="type != 7 && type != 8">
+					<!-- 	<text class="postcate">#{{Tool.resultValue(detail.type)}}</text> -->
 					<text class="postdes">{{ detail.content }}</text>
 				</view>
-				
+				<view class="posttitle" v-if="detail.title && type == 8">{{ detail.title }}</view>
+				<view class="posttimefovr" v-if="type == 8">
+					<text class="t2" @click="goComitee(detail.committee.committee_id)">{{ detail.committee.title }}</text>
+					<text class="t3">{{ detail.create_time | formatTime }}</text>
+					<view class="sc" @click="fCollect">
+						<image class="scimg" :src="detail.user_favorite == 0 ? '../../static/collect.png' : '../../static/collected.png'"></image>
+						<text class="sc_text">{{ detail.user_favorite == 0 ? '收藏' : '已收藏' }}</text>
+					</view>
+				</view>
+				<view class="postcontent postcontentfix" v-if="type == 7 || type == 8">
+					<!-- 	<text class="postcate">#{{Tool.resultValue(detail.type)}}</text> -->
+					<view class="contentmb" v-if="detail.contacts">
+						<text v-for="(item, index) in detail.contacts" :key="index" @click="mobilecall(item.phone)">
+							{{ item.name }}
+							<text class="mobile">{{ item.phone }}</text>
+						</text>
+					</view>
+					<view class="addresstext" @click="getMap" v-if="detail.address">{{ detail.city + detail.area + detail.address }}</view>
+					<rich-text :nodes="detail.content" />
+				</view>
+<!-- 				<view class="phonewrap" @click="openWxsj" v-if="autoMobileOpen" style="display: none;">
+					{{ detail.user.user_nickname.length > 6 ? new String(detail.user.user_nickname).substring(0, 5) + '...' : detail.user.user_nickname }}的联系方式
+				</view> -->
 				<view :class="['swiper-wrap', type == 7 || type == 8 ? 'swiper-wrap-fix' : '']" v-if="detail.images.length">
+					<!-- 				<swiper class="screen-swiper" :circular="true" @change="swiperChange"
+				 :autoplay="true" interval="5000" duration="500">
+					<swiper-item v-for="(item,index) in detail.images" :key="index" @click="previewImage(index)"> -->
+					<!-- :src="item" -->
 					<view class="swiper-imgs" mode="widthFix" v-for="(item, index) in detail.images" :key="index" @click="previewImage(index)">
 						<u-image :src="item" mode="widthFix"></u-image>
 					</view>
-					<view class="subsc" @click.stop="addMessage" v-if="false">
-						<image src="../../static/subsc.png" class="subico"></image>
-						<view class="subsctext">
-							订阅帖子回复提醒
-						</view>
-					</view>
+					<!-- 					</swiper-item>
+				</swiper>
+				<view class="imgIndex">{{imgIndex}}</view> -->
+					<view class="dpo" v-if="type == 8">{{ detail.post_hits }}人浏览</view>
 				</view>
-				
-				
-				<!-- 添加观点 -->
-				<!-- <image src="../../static/pushb-a.png" class="addVote" @click.stop="addVoteHandler"></image>		 -->
-				<view class="detailnav" >
+				<view class="detailnav" v-if="false">
 					<text :class="['navitem', navIndex == 1 ? 'active' : '']" @click="navClick(1)">评论{{ detail.comment_count ? detail.comment_count : '' }}</text>
 					<text :class="['navitem', navIndex == 2 ? 'active' : '']" @click="navClick(2)">帮推{{ detail.help_score ? detail.help_score : '' }}</text>
-					<text :class="['navitem', navIndex == 3 ? 'active' : '']" @click="navClick(3)">报名{{ detail.buy_num ? detail.buy_num : '' }}</text>
 				</view>
 				<view class="detailcontent u-skeleton-fillet">
 					<Comment
@@ -50,7 +91,7 @@
 						@thank="thankHandler"
 						@goPer="goPerHandler"
 					/>
-					<view class="headerItem" v-if="navIndex == 2 || navIndex == 3" v-for="(item, index) in commentList" :key="index">
+					<view class="headerItem" v-if="navIndex == 2" v-for="(item, index) in commentList" :key="index">
 						<view class="userheader">
 							<image :src="item.user.avatar" class="useravatar"></image>
 							<view class="userlist">
@@ -76,15 +117,8 @@
 				</view>
 			</view>
 		</view>
-		<view :class="['tuanbtn',detail.buy_status == 1 ? 'endcolor' : '']" @click.stop="joinHandler" v-if="detail.is_my == 0">
-			{{detail.buy_status == 0 ? '立即参团' : '拼团已结束'}}
-			<view v-if="detail.buy_status == 0">	（剩余时间：<u-count-down :timestamp="detail.timestamp" bg-color="transparent" color="white" separator-color="white"></u-count-down>）</view>
-		</view>
-		<view :class="['tuanbtn']" @click.stop="looktaun" v-if="detail.is_my == 1">
-			查看报名列表
-		</view>
 		<!-- 回复框 -->
-		<view class="reply" >
+		<view class="reply" v-if="false">
 			<view class="inputrow">
 				<view class="inputwrap inputwrapinit" @click="replyInit"><input maxlength="500" type="text" :disabled="true" :placeholder="parent_text" /></view>
 				<view class="pushwrap" @click="helpPush">
@@ -131,7 +165,7 @@
 			</view>
 		</view>
 		<!-- 电话 -->
-		<view class="wpwrap" v-if="autoMobileOpen " >
+		<view class="wpwrap" v-if="autoMobileOpen">
 			<image :src="imgURl + 'weixinico.png'" class="wpico" @click="copy(2)"   v-if="detail.weixin"></image>
 			<image :src="imgURl + 'phoneico.png'" class="wpico" @click="copy(1)" v-if="detail.mobile"></image>
 		</view>
@@ -150,8 +184,6 @@
 				</view>
 			</view>
 		</view>
-		<!--  -->
-
 		<!-- 挑错 -->
 		<LeaveWords
 			:messageValue.sync="messageText"
@@ -193,49 +225,6 @@
 		<Confrimpop ref="confrims" @del="condelHandler" />
 		<DeleteTip ref="deletetip" />
 		<u-skeleton :loading="loading" :animation="true" el-color="#ddd" bg-color="#fff" border-radius="10"></u-skeleton>
-		<u-popup v-model="voteFlag" mode="center" border-radius="10" closeable>
-			<view class="votepopup">
-				<view class="votitle">
-					{{voteType == 'vote' ? '投票' : '添加我的观点' }}
-				</view>
-				<u-input height="158" v-model="votetextarea" placeholder="顺便说点理由~" type="textarea"/>
-				<view v-if="voteType == 'commit'" class="selectwrap" @click.stop="selectTodo('name')">
-					<view class="label">{{nameLabel}}</view>
-					<u-icon color="#95A0B6" name="arrow-down-fill" size="20" ></u-icon>
-				</view>
-				<view class="btnwrap">
-					<view v-if="voteType == 'vote' " class="btn" @click.stop="voteFlag = false">
-						取消
-					</view>
-					<view :class="['btn','confirm',voteType == 'commit' ? 'widthFix' : '']" @click.stop="voteHandler">
-						确定
-					</view>
-				</view>
-			</view>
-		</u-popup>
-		<SelectItem :list="nameList" :type="selectType" :isShow="nameShow" @select="selectHandler" @close="nameShow = false"/>
-		<u-popup v-model="joinShow" mode="bottom" border-radius="60" closeable>
-			<view class="tuanpopup">
-				<view class="title">
-				报名团购
-				</view>
-				<view class="item">
-					<view class="label">请输入数量：</view>
-					<u-input v-model="tuanObj.buy_num" placeholder="请输入数量" />
-				</view>
-				<view class="item">
-					<view class="label">请输入手机号：</view>
-					<u-input v-model="tuanObj.mobile" placeholder="请输入手机号" />
-				</view>
-				<view class="item">
-					<view class="label">请输入微信号：</view>
-					<u-input v-model="tuanObj.weixin" placeholder="请输入微信号" />
-				</view>
-				<view class="btns" @click.stop="joinPinHandler">
-					提交
-				</view>
-			</view>
-		</u-popup>
 	</view>
 </template>
 
@@ -257,10 +246,10 @@ import hchPoster from '../../wxcomponents/hch-poster/hch-poster.vue';
 import Integraltip from '@/components/integraltip/integraltip.vue';
 import Confrimpop from '@/components/confrim/confrim.vue';
 import DeleteTip from '@/components/deletetip/deletetip.vue';
-import SelectItem from '@/components/selectitem/selectitem.vue'
 export default {
 	data() {
 		return {
+			imgURl:this.Config.minUrl,
 			//表情配置
 			windowHeight: 0, //记录界面高度
 			containerHeight: 0, //记录未固定整体滚动界面的高度
@@ -369,29 +358,9 @@ export default {
 			simpleFlag: false,
 			replyTextarea: false,
 			isHome: true,
-			loading: true,
-			voteFlag:false,
-			votetextarea:'',
-			voteobj:{},
-			voteType:'vote',
-			nameList:[
-				{value:0,name:'实名发布',check:false},
-				{value:1,name:'匿名发布',check:true}
-			],
-			nameLabel:'匿名发布',
-			selectType:'name',
-			joinShow:false,
-			nameShow:false,
-			tuanObj:{
-				buy_num:'',
-				mobile:'',
-				weixin:'',
-				groupbuy_id:''
-			},
-			imgURl:this.Config.minUrl
+			loading: true
 		};
 	},
-
 	mounted() {
 		console.log(this.$mp.query);
 		var singPage = uni.getStorageSync('singPage');
@@ -448,24 +417,23 @@ export default {
 			return {
 				title: this.detail.title,
 				imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
-				path: '/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
+				path: '/pages/index/detail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
 			};
 		} else if (this.detail.publish_type == 1) {
 			var content = this.detail.content
 			if(this.detail.sell_type && this.detail.sell_type == 2){
 				content = '赠送:'+content
 			}
-			console.log('/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id)
 			return {
 				title: content.length > 30 ? content.substr(0, 30) + '...' : content,
 				imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
-				path: '/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
+				path: '/pages/index/detail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
 			};
 		} else {
 			return {
 				title: this.detail.title,
 				imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
-				path: '/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
+				path: '/pages/index/detail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
 			};
 		}
 	},
@@ -497,123 +465,6 @@ export default {
 		};
 	},
 	methods: {
-		//弹框操作
-		joinPinHandler(){
-			if(!this.tuanObj.buy_num){
-				return this.$u.toast('请输入拼团数量')
-			}
-			if(!this.tuanObj.mobile){
-				return this.$u.toast('请输入拼团手机号')
-			}
-			if(!this.tuanObj.weixin){
-				return this.$u.toast('请输入拼团微信号')
-			}
-			this.tuanObj.community_id = uni.getStorageSync('community_id')
-			this.subMessageTodo(this.tuanIds,7,(ss) => {
-				this.Api.jionGroupbuy(this.tuanObj).then((result)=>{
-					if(result.code == 1){
-						this.joinShow = false
-						return this.$u.toast(result.msg)
-					}
-				})
-			})
-		},
-		//加入拼团
-		joinHandler(){
-			if(this.detail.buy_status == 0){
-				this.joinShow = true
-			}else{
-				return this.$u.toast('拼团已结束，请参加其它的拼团')
-			}
-		},
-		looktaun(){
-			uni.navigateTo({
-				url:'joinlist?id='+this.detail.groupbuy_id
-			})
-		},
-		addMessage(){
-			wx.requestSubscribeMessage({
-			  tmplIds: ['WKmoq7K1gmAiAhnzQqUK_9SvKevZStaxPK67-qV6P7U'],
-			  success (res) {
-				  console.log(res)
-			  }
-			})
-		},
-		lookVodetail(item){
-			uni.navigateTo({
-				url: 'ysvdetail?vote_id=' + item.vote_id+'&type='+this.detail.type
-			});
-		},
-		addVoteHandler(){
-			this.voteType = 'commit'
-			this.voteFlag = true
-		},
-		selectTodo(value){
-			this.nameShow = true
-		},
-		selectHandler(item){
-			this.nameList.map((sitem) => {
-				if(sitem.name == item.name){
-					this.nameLabel = sitem.name
-					sitem.check = true
-				}else{
-					sitem.check = false
-				}
-			})
-			this.nameShow = false
-		},
-		voteHandler(){
-			if(this.voteType == 'vote'){
-				var data = {
-					dynamics_id:this.dynamics_id,
-					community_id:this.detail.community_id,
-					title:this.votetextarea,
-					vote_id:this.voteobj.vote_id,
-					anonymous:1
-				}
-				// this.nameList.map((item)=>{
-				// 	if(item.check){
-				// 		data.anonymous = item.value
-				// 	}
-				// })
-				this.Api.vote(data).then((result)=>{
-					if(result.code == 1){
-						this.getDetailAll()
-						this.voteFlag = false
-					}else{
-						return this.$u.toast(result.msg)
-					}
-				})
-			}else{
-				var data = {
-					dynamics_id:this.dynamics_id,
-					community_id:this.detail.community_id,
-					vote_title:this.votetextarea
-				}
-				this.nameList.map((item)=>{
-					if(item.check){
-						data.anonymous = item.value
-					}
-				})
-				this.Api.addDynamicsVoteVote(data).then((result)=>{
-					if(result.code == 1){
-						this.getDetailAll()
-						this.voteFlag = false
-					}else{
-						return this.$u.toast(result.msg)
-					}
-				})
-			}
-		},
-		votoTodo(item){
-			this.voteType = 'vote'
-			this.voteobj = item
-			if(this.voteobj.is_vote == 0){
-				this.voteFlag = true
-			}else{
-				return this.$u.toast('您已投票')
-			}
-		},
 		loginTodoHander() {
 			if (this.$mp.query.scene) {
 				this.srouce = 1;
@@ -641,7 +492,7 @@ export default {
 			if (this.$mp.query.type) {
 				this.type = this.$mp.query.type;
 			}
-			if (this.$mp.query.dynamics_id) {
+			if (this.$mp.query.id) {
 				this.id = this.$mp.query.id;
 				this.dynamics_id = this.$mp.query.dynamics_id;
 				this.getDetailAll();
@@ -904,10 +755,53 @@ export default {
 		// 取不同的详情
 		getDetailAll() {
 			var that = this;
-			that.getDetail();
-		
+			if (that.type == 7) {
+				that.getPDetail();
+			} else if (that.type == 8) {
+				that.getDdetail();
+			} else if(that.type == 21){
+				that.getNoDetail()
+			}else{
+				that.getDetail();
+			}
 		},
-
+		//公告
+		getNoDetail(){
+			var data = {id:this.id}
+			this.Api.getNoticesDetail(data).then((result)=>{
+				if(result.code == 1){
+					this.detail = result.data
+					this.loading = false;
+				}
+			})
+		},
+		//便民详情
+		getPDetail() {
+			this.Api.communitydynamicswikiDetail({ wiki_id: this.id}).then(result => {
+				if (result.code == 1) {
+					if (!result.data.wiki_id) {
+						// uni.redirectTo({
+						// 	url:'/pages/index/404'
+						// })
+						this.$refs.deletetip.deleteShow = true;
+						return;
+					}
+					this.detail = result.data;
+					this.loading = false;
+					//this.detail.contacts = this.detail.contacts.concat(this.detail.contacts)
+					this.detail.content = this.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
+					if (this.type == 2) {
+						this.config.title = '小区新鲜事';
+					} else if (this.type == 5) {
+						this.config.title = '小区新鲜事';
+					}
+					this.getCommentList();
+					if (this.srouce) {
+						this.autoShare();
+					}
+				}
+			});
+		},
 		//个人名片
 		goPer() {
 			if (uni.getStorageSync('singPage') == 1) {
@@ -956,7 +850,6 @@ export default {
 			}
 			this.$getMyscore(res => {
 				if (res.code == 1) {
-					this.navIndex = 2
 					this.score = res.data.score;
 					if (this.score == 0) {
 						uni.showToast({
@@ -1016,6 +909,7 @@ export default {
 			}
 			this.Api.communityDynamicsPushDynamics(data).then(result => {
 				if (result.code == 1) {
+					this.navIndex = 2
 					uni.showToast({
 						title: result.msg,
 						duration: 2000,
@@ -1046,14 +940,14 @@ export default {
 			//所有的都是10
 			var data = {
 				object_id: this.id,
-				object_type: this.type,
+				object_type: this.detail.type,
 				page: this.page,
 				page_size: 10
 			};
 			if (this.type == 7 || this.type == 8) {
 				data.object_type = this.type;
 				data.type = this.type;
-				data.object_id = this.dynamics_id;
+				data.object_id = this.id;
 			}
 			if (this.navIndex == 1) {
 				this.Api.getMultistageComments(data).then(result => {
@@ -1157,24 +1051,6 @@ export default {
 						this.$forceUpdate();
 					}
 				});
-			}else if(this.navIndex == 3){
-				data.groupbuy_id = this.detail.groupbuy_id
-				this.Api.groupbuyJoinList(data).then((result)=>{
-					if(result.code == 1){
-						this.total = result.data.total_page
-						if(ismore){
-							this.commentList = this.commentList.concat(result.data.list)
-						}else{
-							this.commentList = result.data.list
-						}
-						if (this.commentList.length) {
-							this.nodataFlag = false;
-						} else {
-							this.nodataFlag = true;
-						}
-						this.$forceUpdate();
-					}
-				})
 			}
 		},
 		//删除评论
@@ -1196,6 +1072,7 @@ export default {
 					return;
 				}
 			}
+			console.log(e,'xxx')
 			this.$refs.confrims.guestShow = true;
 			this.$refs.confrims.id = e.id;
 		},
@@ -1235,7 +1112,6 @@ export default {
 				}
 				this.Api.setLikes(data).then(result => {
 					if (result.code == 1) {
-						
 						// uni.showToast({
 						// 	title: result.msg,
 						// 	duration: 2000,
@@ -1256,6 +1132,7 @@ export default {
 				}
 				this.Api.unsetLikes(data).then(result => {
 					if (result.code == 1) {
+				
 						// uni.showToast({
 						// 	title: result.msg,
 						// 	duration: 2000,
@@ -1324,9 +1201,10 @@ export default {
 				});
 				return;
 			}
-		
+			
+			
 				var data = {
-					object_id: this.dynamics_id,
+					object_id: this.detail.id,
 					object_type: this.type,
 					content: this.inputValue,
 					parent_id: this.parent_id,
@@ -1367,7 +1245,7 @@ export default {
 										setTimeout(() => {
 											this.add_type = '';
 											this.score_text = '';
-
+					
 											this.$refs.integraltip.close();
 											this.getCommentList();
 										}, 2000);
@@ -1379,7 +1257,9 @@ export default {
 						});
 					}
 				});
-			
+				
+		
+
 		},
 		//复制功能
 		copy(index) {
@@ -1431,7 +1311,7 @@ export default {
 			});
 		},
 		getDdetail() {
-			this.Api.dongtaiDetail({ dynamics_id: this.dynamics_id }).then(result => {
+			this.Api.dongtaiDetail({ object_id: this.id,object_type:this.type }).then(result => {
 				if (result.code == 1) {
 					if (!result.data.id) {
 						// uni.redirectTo({
@@ -1460,20 +1340,16 @@ export default {
 			});
 		},
 		getDetail() {
-			this.Api.groupbuyDetail({ object_id: this.id,object_type:this.type }).then(result => {
+			this.Api.communityDynamicsDetail({ object_id: this.id,object_type:this.type }).then(result => {
 				if (result.code == 1) {
-					if (!result.data.groupbuy_id) {
+					if (!result.data.id) {
 						// uni.redirectTo({
 						// 	url:'/pages/index/404'
 						// })
 						this.$refs.deletetip.deleteShow = true;
 						return;
 					}
-					this.tuanObj.groupbuy_id = result.data.groupbuy_id
 					this.detail = result.data;
-					this.detail.type = 17
-					this.detail.anonymous = 0
-					this.detail.timestamp = (parseInt(result.data.group_endtime) - parseInt(result.data.now_time))*1000
 					this.loading = false;
 					this.detail.content = this.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
 					this.opening = result.data.opening;
@@ -1488,10 +1364,10 @@ export default {
 							this.config.title = this.detail.community.title + Tool.resultValue(this.type);
 						}
 					}
-					this.author = result.data.user_id;
-					if(!this.voteobj){
-						this.voteobj = result.data.vote_list[0]
+					if(result.data.skill_desc){
+					this.skillList = result.data.skill_desc.split(',');
 					}
+					this.author = result.data.user_id;
 					this.getCommentList();
 					if (this.srouce) {
 						console.log('d2');
@@ -1533,11 +1409,8 @@ export default {
 				this.nodatatext = '暂无评论';
 			} else if (index == 2) {
 				this.nodatatext = '暂无帮推';
-			} else if (index == 3){
-				this.nodatatext = '暂无报名'
 			}
-				this.getCommentList();
-	
+			this.getCommentList();
 		},
 		//收藏处理
 		moreClick() {
@@ -1880,6 +1753,8 @@ export default {
 			this.canvasFlag = val;
 		},
 		condelHandler(e) {
+			console.log(e)
+
 			if (e == -1) {
 				var url = '';
 				if (this.type == 7 || this.type == 8) {
@@ -1926,31 +1801,25 @@ export default {
 		Firend,
 		Reply,
 		Confrimpop,
-		DeleteTip,
-		SelectItem,
-		Nodata
+		DeleteTip
 	},
 	computed: {
 		imgIndex() {
 			return this.swiperIndex + '/' + this.detail.images.length;
 		},
 		autoMobileOpen() {
-			if(this.detail.anonymous == 1){
-				return false
-			}else{
-				if (this.type != 8) {
-					if (this.detail.user) {
-						if (this.detail.mobile || this.detail.weixin) {
-							return true;
-						} else {
-							return false;
-						}
+			if (this.type != 8) {
+				if (this.detail.user) {
+					if (this.detail.mobile || this.detail.weixin) {
+						return true;
 					} else {
 						return false;
 					}
 				} else {
 					return false;
 				}
+			} else {
+				return false;
 			}
 		}
 	}
@@ -1967,7 +1836,7 @@ export default {
 	text-align: left;
 }
 page {
-	background: #F7F9FF;
+	background: white;
 }
 .helpdetailfix {
 	overflow: hidden;
@@ -1976,54 +1845,6 @@ page {
 .detailcontent {
 	display: flex;
 	flex-direction: column;
-}
-.ptdetail{
-	display: flex;
-	flex-direction: column;
-	padding:0 24rpx;
-	box-sizing: border-box;
-	.ptiem{
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		font-size: 34rpx;
-		font-family: PingFang SC;
-		font-weight: 500;
-		color: #404B69;
-		text-decoration: line-through;
-	}
-	.piteminfo{
-		font-size: 34rpx;
-		line-height: 60rpx;
-		font-family: PingFang SC;
-		font-weight: 500;
-		color: #FF9C00;
-	}
-}
-.subsc{
-	width: 100%;
-	margin:30rpx auto;
-	height: 93rpx;
-	line-height: 93rpx;
-	text-align: center;
-	background: rgba(255, 156, 0, 0);
-	border: 1px solid #08C299;
-	border-radius: 10rpx;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	.subico{
-		width:39rpx!important;
-		height:44rpx!important;
-		margin-right:20rpx;
-	}
-	.subsctext{
-		font-size: 38rpx;
-		font-family: PingFang SC;
-		font-weight: 500;
-		color: #08C299;
-	}
 }
 .helpdetail {
 	display: flex;
@@ -2097,6 +1918,7 @@ page {
 						font-size: 20upx;
 						font-weight: 500;
 						color: rgba(255, 156, 0, 0.8);
+						height: 28upx;
 					}
 				}
 				.chuang {
@@ -2221,6 +2043,7 @@ page {
 			box-sizing: border-box;
 			display: flex;
 			flex-direction: row;
+			// justify-content: center;
 			align-items: center;
 			.sellinfo {
 				height: 48upx;
@@ -2235,10 +2058,10 @@ page {
 				color: rgba(255, 156, 0, 1);
 				line-height: 48upx;
 				.t1 {
-					padding-right: 10upx;
+					// padding-right: 10upx;
 				}
 				.t2 {
-					padding-left: 10upx;
+					// padding-left: 10upx;
 				}
 			}
 		}
@@ -2412,81 +2235,8 @@ page {
 		.swiper-wrap-fix {
 			margin-top: 20upx;
 		}
-		.votelistwrap{
-			display: flex;
-			flex-direction: column;
-			width:100%;
-			.voteitem{
-				padding:24upx;
-				box-sizing: border-box;
-				width:100%;
-				background: white;
-				border-top:20upx solid  #F7F9FF;
-				.votetitle{
-					font-size: 30upx;
-					font-family: PingFang SC;
-					font-weight: 400;
-					color: #020433;
-					margin-bottom: 20upx;
-				}
-				.voteprogess{
-					width:100%;
-					display: flex;
-					flex-direction: row;
-					align-items: center;
-					/deep/ .u-progress{
-						width:600rpx;
-						display: flex;
-						align-items: center;
-					}
-					.votetext{
-						font-size: 30upx;
-						font-family: PingFang SC;
-						font-weight: 400;
-						color: #FF9C00;
-						margin-left:auto;
-					}
-				}
-				.votetool{
-					display: flex;
-					flex-direction: row;
-					align-items: center;
-					margin-top:20upx;
-					.votetoolitem{
-						display: flex;
-						flex-direction: row;
-						align-items: center;
-						width:33.33%;
-						justify-content: center;
-						color:#95A0B6;
-						.voteico{
-							width:34upx;
-							height:32upx;
-						}
-						.voteicos{
-							width:32upx;
-							height:31upx;
-						}
-						.votedes{
-							font-size: 30upx;
-							font-family: PingFang SC;
-							font-weight: 500;
-							color:#95A0B6;
-						}
-					}
-				}
-			}
-		}
-		.addVote{
-			width: 107upx;
-			height: 107upx;
-			border-radius: 50%;
-			position: fixed;
-			bottom: 400upx;
-			right:20upx;
-		}
 		.detailnav {
-			border-top: 20upx solid #F7F9FF;
+			border-top: 20upx solid rgba(234, 234, 234, 0.3);
 			display: flex;
 			flex-direction: row;
 			align-items: center;
@@ -2502,17 +2252,14 @@ page {
 				// font-weight:bold;
 				color: rgba(153, 153, 153, 1);
 				line-height: 50upx;
-				margin-right: 32upx;
-				padding-right: 32upx;
-				border-right: 4upx solid rgba(216, 216, 216, 1);
 			}
 			.active {
 				color: #333333;
 			}
-			.navitem:nth-last-of-type(1){
+			.navitem:nth-of-type(1) {
 				margin-right: 32upx;
 				padding-right: 32upx;
-				border-right: 4upx solid transparent;
+				border-right: 4upx solid rgba(216, 216, 216, 1);
 			}
 		}
 		.detailcontent {
@@ -2629,81 +2376,6 @@ page {
 		height: 100%;
 		background: rgba($color: #000000, $alpha: 0.6);
 		z-index: 98;
-	}
-	.tuanbtn{
-		width: 654rpx;
-		height: 100rpx;
-		line-height: 100rpx;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background: linear-gradient(44deg, #FEAA0E, #FFC000);
-		border-radius: 12rpx;
-		position: fixed;
-		bottom: 170rpx;
-		left:50%;
-		transform: translateX(-50%);
-		font-size: 38rpx;
-		font-family: PingFang SC;
-		font-weight: bold;
-		color: #FFFFFF;
-		view{
-			font-size: 28rpx;
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			padding:0 20rpx;
-			box-sizing: border-box;
-		}
-	}
-	.endcolor{
-		background: #B9B8B7;
-		color:white;
-	}
-	.tuanpopup{
-		width: 750rpx;
-		// height: 821rpx;
-		background: #FFFFFF;
-		border-radius: 30rpx 30rpx 0 0;
-		padding:60rpx;
-		box-sizing: border-box;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		.title{
-			font-size: 36rpx;
-			font-family: PingFang SC;
-			font-weight: bold;
-			color: #020433;
-		}
-		.item{
-			height:118rpx;
-			width:100%;
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			border-bottom: 2rpx solid #F0F0F0;
-			.label{
-				font-size: 30rpx;
-				font-family: PingFang SC;
-				font-weight: bold;
-				color: #020433;
-			}
-		}
-		.btns{
-			width: 654rpx;
-			height: 100rpx;
-			background: linear-gradient(44deg, #FEAA0E, #FFC000);
-			border-radius: 12rpx;
-			margin:80rpx auto;
-			font-size: 38rpx;
-			line-height: 100rpx;
-			text-align: center;
-			font-family: PingFang SC;
-			font-weight: bold;
-			color: #FFFFFF;
-		}
-
 	}
 	.reply {
 		display: flex;
@@ -2941,77 +2613,6 @@ page {
 					line-height: 56upx;
 					text-align: center;
 				}
-			}
-		}
-	}
-	.votepopup{
-		width: 622upx;
-		min-height: 550upx;
-		display: flex;
-		flex-direction: column;
-		padding:60upx 20upx;
-		box-sizing: border-box;
-		.votitle{
-			width: 100%;
-			height: 34upx;
-			font-size: 36upx;
-			font-family: PingFang SC;
-			font-weight: bold;
-			color: #404B69;
-			text-align: center;
-			margin-bottom: 40upx;
-		}
-		.selectwrap{
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			padding:17upx;
-			border: 1px solid #404B69;
-			border-radius: 10upx;
-			width: fit-content;
-			margin-top:40upx;
-			margin-bottom: 40upx;
-			margin-right:20upx;
-			.label{
-				font-size: 28upx;
-				margin-right:14upx;
-				font-family: PingFang SC;
-				font-weight: bold;
-				color: #95A0B6;
-			}
-			/deep/ .u-icon{
-				margin-top:8upx;
-			}
-		}
-		/deep/ .u-input__textarea{
-			background:#F7F9FF;
-			padding:31upx 20upx;
-			box-sizing: border-box;
-		}
-		.btnwrap{
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			margin-top:auto;
-			.btn{
-				width: 284upx;
-				height: 99upx;
-				background: #EEF2FA;
-				border-radius: 10upx;
-				font-size: 38upx;
-				line-height: 99upx;
-				text-align: center;
-				font-family: PingFang SC;
-				font-weight: bold;
-				color: #404B69;
-			}
-			.confirm{
-				margin-left: auto;
-				color:white;
-				background: linear-gradient(44deg, #FEAA0E, #FFC000);
-			}
-			.widthFix{
-				width:100%;
 			}
 		}
 	}

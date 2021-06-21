@@ -1388,26 +1388,27 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
         return;
       }
-      this.subMessageTodo(this.comIds, 3, function (ss) {
-        var data = {
-          dynamics_id: _this8.detail.id,
-          object_type: _this8.type,
-          content: _this8.inputValue,
-          parent_id: _this8.parent_id,
-          community_id: uni.getStorageSync('community_id') };
 
-        if (_this8.type == 7 || _this8.type == 5) {
-          data.third_id = _this8.id;
-        }
-        if (_this8.type == 7) {
-          data.dynamics_id = _this8.dynamics_id;
-        }
-        _this8.Api.setComments(data).then(function (result) {
-          if (result.code == 1) {
-            uni.showToast({
-              title: result.msg,
-              duration: 2000,
-              success: function success() {
+      var data = {
+        dynamics_id: this.detail.id,
+        object_type: this.type,
+        content: this.inputValue,
+        parent_id: this.parent_id,
+        community_id: uni.getStorageSync('community_id') };
+
+      if (this.type == 7 || this.type == 5) {
+        data.third_id = this.id;
+      }
+      if (this.type == 7) {
+        data.dynamics_id = this.dynamics_id;
+      }
+      this.Api.setComments(data).then(function (result) {
+        if (result.code == 1) {
+          uni.showToast({
+            title: result.msg,
+            duration: 2000,
+            success: function success() {
+              _this8.subMessageTodo(_this8.comIds, 3, function (ss) {
                 _this8.replyTextarea = false;
                 _this8.textareaautofocus = false;
                 _this8.scrollFixed = false;
@@ -1436,11 +1437,12 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
                 } else {
                   _this8.getCommentList();
                 }
-              } });
+              });
+            } });
 
-          }
-        });
+        }
       });
+
     },
     //复制功能
     copy: function copy(index) {

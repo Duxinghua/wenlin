@@ -49,7 +49,7 @@
 				{{pitem.create_time | formatTime}}  <text class="ph">{{pitem.post_hits}}人浏览</text>
 			</view>
 		</view>
-		<view class="morewrap"  @click.stop="moreClick">
+		<view class="morewrap"  @click.stop="moreClick" v-if="pitem.type != 21">
 			<image src="../../static/more.png" class="more" ></image>
 		</view>
 	</view>

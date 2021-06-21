@@ -1526,27 +1526,28 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
         return;
       }
-      this.subMessageTodo(this.comIds, 3, function (ss) {
-        var data = {
-          object_id: _this10.dynamics_id,
-          object_type: _this10.type,
-          content: _this10.inputValue,
-          parent_id: _this10.parent_id,
-          community_id: uni.getStorageSync('community_id') };
 
-        if (_this10.type == 7 || _this10.type == 5) {
-          data.third_id = _this10.id;
-        }
-        if (_this10.type == 7) {
-          data.object_id = _this10.dynamics_id;
-        }
-        _this10.Api.setComments(data).then(function (result) {
-          if (result.code == 1) {
-            _this10.navIndex = 1;
-            uni.showToast({
-              title: result.msg,
-              duration: 2000,
-              success: function success() {
+      var data = {
+        object_id: this.dynamics_id,
+        object_type: this.type,
+        content: this.inputValue,
+        parent_id: this.parent_id,
+        community_id: uni.getStorageSync('community_id') };
+
+      if (this.type == 7 || this.type == 5) {
+        data.third_id = this.id;
+      }
+      if (this.type == 7) {
+        data.object_id = this.dynamics_id;
+      }
+      this.Api.setComments(data).then(function (result) {
+        if (result.code == 1) {
+          _this10.navIndex = 1;
+          uni.showToast({
+            title: result.msg,
+            duration: 2000,
+            success: function success() {
+              _this10.subMessageTodo(_this10.comIds, 3, function (ss) {
                 _this10.replyTextarea = false;
                 _this10.textareaautofocus = false;
                 _this10.scrollFixed = false;
@@ -1575,11 +1576,12 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
                 } else {
                   _this10.getCommentList();
                 }
-              } });
+              });
+            } });
 
-          }
-        });
+        }
       });
+
     },
     //复制功能
     copy: function copy(index) {

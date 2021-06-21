@@ -1071,19 +1071,22 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
           }
         } else if (open_join == 0) {
-          if (status == 1) {
-            uni.showToast({
-              title: '无需报名',
-              icon: 'none',
-              duration: 2000 });
+          uni.navigateTo({
+            url: '../update/answer?answer_id=' + modular_id });
 
-          } else {
-            uni.showToast({
-              title: this.askStatus(status),
-              icon: 'none',
-              duration: 2000 });
-
-          }
+          // if(status == 1){
+          // 	uni.showToast({
+          // 		title: '无需报名',
+          // 		icon: 'none',
+          // 		duration: 2000
+          // 	});	
+          // }else{
+          // 	uni.showToast({
+          // 		title: this.askStatus(status),
+          // 		icon: 'none',
+          // 		duration: 2000
+          // 	});
+          // }
         }
 
       } else if (modular_type == 2) {
@@ -1098,19 +1101,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
           }
         } else if (open_join == 0) {
-          if (status == 1) {
-            uni.showToast({
-              title: '无需报名',
-              icon: 'none',
-              duration: 2000 });
+          uni.navigateTo({
+            url: '../update/award?award_id=' + modular_id });
 
-          } else {
-            uni.showToast({
-              title: this.winStatus(status),
-              icon: 'none',
-              duration: 2000 });
-
-          }
         }
 
       }
@@ -1133,9 +1126,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           this.$refs.confrims.id = -1;
           this.$refs.confrims.guestShow = true;
           return;
+        } else {
+          this.stodo();
         }
       }
-      this.stodo();
+
 
     },
     //答题处理
@@ -1461,25 +1456,26 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
         return;
       }
-      this.subMessageTodo(this.comIds, 3, function (ss) {
-        var data = {
-          object_id: _this7.id,
-          object_type: _this7.type,
-          content: _this7.inputValue,
-          parent_id: _this7.parent_id,
-          community_id: uni.getStorageSync('community_id') };
 
-        if (_this7.type == 7 || _this7.type == 5) {
-          data.third_id = _this7.id;
-        }
+      var data = {
+        object_id: this.id,
+        object_type: this.type,
+        content: this.inputValue,
+        parent_id: this.parent_id,
+        community_id: uni.getStorageSync('community_id') };
 
-        _this7.Api.setComments(data).then(function (result) {
-          if (result.code == 1) {
-            _this7.navIndex = 1;
-            uni.showToast({
-              title: result.msg,
-              duration: 2000,
-              success: function success() {
+      if (this.type == 7 || this.type == 5) {
+        data.third_id = this.id;
+      }
+
+      this.Api.setComments(data).then(function (result) {
+        if (result.code == 1) {
+          _this7.navIndex = 1;
+          uni.showToast({
+            title: result.msg,
+            duration: 2000,
+            success: function success() {
+              _this7.subMessageTodo(_this7.comIds, 3, function (ss) {
                 // this.inputValue = ''
                 // this.parent_id = ''
                 // this.replyFlag = true
@@ -1506,11 +1502,12 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
                 } else {
                   _this7.getCommentList();
                 }
-              } });
+              });
+            } });
 
-          }
-        });
+        }
       });
+
     },
     //复制功能
     copy: function copy(index) {

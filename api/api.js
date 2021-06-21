@@ -283,6 +283,12 @@ const pactivityDetail = (params) => wxRequest(params, baseURL + 'api/community/a
 // 更新用户信息微信（头像、昵称等） https://sq.wenlinapp.com/api/wxapp/public/updateUserInfo 
 const updateUs = (params) => wxRequest(params, baseURL + 'api/wxapp/public/updateUserInfo', 'POST')
 
+// {{online}}/api/community/Community_notices/getLastNotices
+const getLastNotices = (params) => wxRequest(params, baseURL + 'api/community/Community_notices/getLastNotices', 'POST')
+//{{online}}/api/community/Community_notices/detail
+const getNoticesDetail = (params) => wxRequest(params, baseURL + 'api/community/Community_notices/detail', 'POST')
+
+
 export default {
 	wechatAuth,
 	setUserPhoneBySecret,
@@ -408,5 +414,7 @@ export default {
 	communityDynamicsImg,
 	publishNewthingDynamics,
 	pactivityDetail,
-	updateUs
+	updateUs,
+	getLastNotices,
+	getNoticesDetail
 }

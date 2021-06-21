@@ -758,10 +758,20 @@ export default {
 				that.getPDetail();
 			} else if (that.type == 8) {
 				that.getDdetail();
-			} else {
-				console.log(12);
+			} else if(that.type == -1){
+				that.getNoDetail()
+			}else{
 				that.getDetail();
 			}
+		},
+		//公告
+		getNoDetail(){
+			var data = {id:this.id}
+			this.Api.getNoticesDetail(data).then((result)=>{
+				if(result.code == 1){
+					this.detail = result.data
+				}
+			})
 		},
 		//便民详情
 		getPDetail() {
@@ -1190,7 +1200,7 @@ export default {
 				return;
 			}
 			
-			this.subMessageTodo(this.comIds,3,(ss) => {
+			
 				var data = {
 					object_id: this.detail.id,
 					object_type: this.type,
@@ -1211,40 +1221,42 @@ export default {
 							title: result.msg,
 							duration: 2000,
 							success: () => {
-								this.replyTextarea = false;
-								this.textareaautofocus = false;
-								this.scrollFixed = false;
-								// this.isShowEmj = false
-								// this.inputValue = ''
-								// this.parent_id = ''
-								// this.replyFlag = true
-								// this.parent_text = '说说你的看法'
-								// this.getCommentList()
-								this.isShowEmj = false;
-								this.inputValue = '';
-								this.parent_id = '';
-								this.replyFlag = true;
-								this.parent_text = '说说你的看法';
-								if (result.data.add) {
-									this.add_type = result.data.add == -1 ? '-' : '+';
-									this.score_text = result.data.score;
-									this.$refs.integraltip.show();
-									setTimeout(() => {
-										this.add_type = '';
-										this.score_text = '';
-				
-										this.$refs.integraltip.close();
+								this.subMessageTodo(this.comIds,3,(ss) => {
+									this.replyTextarea = false;
+									this.textareaautofocus = false;
+									this.scrollFixed = false;
+									// this.isShowEmj = false
+									// this.inputValue = ''
+									// this.parent_id = ''
+									// this.replyFlag = true
+									// this.parent_text = '说说你的看法'
+									// this.getCommentList()
+									this.isShowEmj = false;
+									this.inputValue = '';
+									this.parent_id = '';
+									this.replyFlag = true;
+									this.parent_text = '说说你的看法';
+									if (result.data.add) {
+										this.add_type = result.data.add == -1 ? '-' : '+';
+										this.score_text = result.data.score;
+										this.$refs.integraltip.show();
+										setTimeout(() => {
+											this.add_type = '';
+											this.score_text = '';
+					
+											this.$refs.integraltip.close();
+											this.getCommentList();
+										}, 2000);
+									} else {
 										this.getCommentList();
-									}, 2000);
-								} else {
-									this.getCommentList();
-								}
+									}
+								})
 							}
 						});
 					}
 				});
 				
-			})
+		
 
 		},
 		//复制功能

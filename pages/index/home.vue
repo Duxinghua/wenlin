@@ -28,9 +28,13 @@
 					</view> -->
 				</view>
 				<view class="search">
-					<view class="searchleft" @click="searchLink">
-						<image src="../../static/search.png" class="ico"></image>
-						<text class="search-text">搜索问邻共享资源</text>
+					<view class="searchleft" >
+						<image src="../../static/search.png" class="ico" @click.stop="searchLink"></image>
+						<view class="notice">
+						<u-notice-bar mode="vertical" :list="list" bg-color="transparent" color="#020433" @click.stop="noticeHandler"></u-notice-bar>
+						</view>
+
+					<!-- 	<text class="search-text">搜索问邻共享资源</text> -->
 					</view>
 					<view class="searchright" @click="messageLink">
 						<image src="../../static/messageico.png" class="red"></image>
@@ -365,6 +369,8 @@ export default {
 	mixins: [MescrollMixin],
 	data() {
 		return {
+			list:[],
+			noList:[],
 			CustomBar:this.CustomBar,
 			scroll_refresher_enabled:false,
 			findsh:false,
@@ -618,6 +624,7 @@ export default {
 			this.all_community = uni.getStorageSync('all_community');
 			if (this.all_community.length) {
 				this.getUser();
+				this.getNotlist()
 				uni.setStorageSync('community_id', this.all_community[0].community_id);
 				uni.setStorageSync('committee_id', this.all_community[0].committee_id);
 				var url = uni.getStorageSync('url');
@@ -760,6 +767,33 @@ export default {
 		}
 	},
 	methods: {
+		noticeHandler(e){
+			this.goLogin(res => {
+				if (!res) {
+					var obj = this.noList[e]
+					uni.navigateTo({
+						url:'/pages/update/ndetail?dynamics_id='+obj.id+'&id='+obj.id+'&type=21'
+					})
+				}
+			})
+		},
+		getNotlist(){
+			var data = {
+				community_id: uni.getStorageSync('community_id')
+			}
+			this.Api.getLastNotices(data).then((result)=>{
+				if(result.code == 1){
+					var list = []
+					if(result.data.length){
+						result.data.map((item)=>{
+							list.push(item.title)
+						})
+					}
+					this.noList = result.data
+					this.list = list
+				}
+			})
+		},
 		throttle(fn,wait){
 		    var timer = null;
 		    return function(){
@@ -1130,6 +1164,7 @@ export default {
 			this.Api.setDefaultCommunity({ community_id: e.community_id }).then(result => {
 				if (result.code == 1) {
 					this.usersList = []
+					this.getNotlist()
 					this.getUser()
 					uni.showToast({
 						icon: 'success',
@@ -2170,6 +2205,9 @@ page {
 				justify-content: flex-start;
 				align-items: center;
 				margin-right: auto;
+				.notice{
+					width:100%;
+				}
 				.ico {
 					width: 33upx;
 					height: 33upx;
