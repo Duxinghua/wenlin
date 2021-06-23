@@ -34,8 +34,9 @@
 				<view class="flowwrap" v-if="pitem.type == 13" @click.stop="knowTodo">{{pitem.is_know == 0 ? '认识 TA' : (pitem.is_know == 1 ? '取消认识' : '自己')}}</view>
 				<view class="morewrap" v-if="pitem.type != 13" @click.stop="moreClick(pitem)"><image src="../../static/more.png" class="more"></image></view>
 			</view>
-			<view class="postheader" v-if="pitem.publish_type != 1">
+			<view class="postheader" v-if="pitem.publish_type != 1 && pitem.type != 7">
 				<view class="headerimg" @click.stop="goCom(pitem.committee)">
+
 					<image :src="pitem.committee.logo ? pitem.committee.logo : imgUrl + 'logovi.jpg'" class="avatar"></image>
 <!-- 					<image :src="pitem.publish_type == 2 ? pitem.committee.logo : (pitem.admin.avatar ? pitem.admin.avatar : imgUrl + 'logovi.jpg')" class="avatar"></image>
  -->				<!-- <image v-if="pitem.publish_type == 114"  :src="pitem.committee.logo ? pitem.committee.logo : imgUrl + 'logovi.jpg'" class="avatar"></image> -->
@@ -54,6 +55,27 @@
 				</view>
 				<view class="morewrap"  @click.stop="moreClick(pitem)"><image src="../../static/more.png" class="more"></image></view>
 			</view>
+			<view class="postheader" v-if="pitem.publish_type != 1 && pitem.type == 7">
+							<view class="headerimg" @click.stop="goCom(pitem)">
+			
+								<image :src="pitem.admin.avatar" class="avatar"></image>
+			<!-- 					<image :src="pitem.publish_type == 2 ? pitem.committee.logo : (pitem.admin.avatar ? pitem.admin.avatar : imgUrl + 'logovi.jpg')" class="avatar"></image>
+			 -->				<!-- <image v-if="pitem.publish_type == 114"  :src="pitem.committee.logo ? pitem.committee.logo : imgUrl + 'logovi.jpg'" class="avatar"></image> -->
+								<image style="display: none;" src="../../static/da.png" class="da"></image>
+							</view>
+							<view class="userinfo" @click.stop="goCom(pitem.committee)">
+								<view class="userwrap">
+									<text class="name">{{ pitem.admin.user_nickname }}</text>
+			<!-- 						<text v-if="pitem.publish_type == 114" class="name">{{pitem.committee.title ?  pitem.committee.title : '问邻管理员' }}</text>
+			 -->					</view>
+								<view class="usertime">
+									{{ pitem.create_time | formatTime }}
+									<text class="ph">{{pitem.post_hits}}人浏览</text>
+									<text class="juli" v-if="type != 1">{{ pitem.juli }}</text>
+								</view>
+							</view>
+							<view class="morewrap"  @click.stop="moreClick(pitem)"><image src="../../static/more.png" class="more"></image></view>
+						</view>
 			<view class="postcontent" v-if="pitem.type != 13">
 			
 				<image v-if="pitem.is_top == 1" src="../../static/ding.png" class="ding"></image>
@@ -113,7 +135,7 @@
 				<view class="morewrap" @click.stop="moreClick(pitem)"><image src="../../static/more.png" class="more"></image></view>
 			</view>
 			<view class="postheader" v-if="pitem.publish_type != 1 && pitem.type != 7">
-				<view class="headerimg" @click.stop="goCom(pitem.goCom)">
+				<view class="headerimg" @click.stop="goCom(pitem.committee)">
 					<image :src="pitem.publish_type == 2 ? pitem.committee.logo :  imgUrl + 'logovi.jpg'" class="avatar"></image>
 					<image style="display: none;" src="../../static/da.png" class="da"></image>
 				</view>
@@ -132,7 +154,7 @@
 			<view :class="['postheader', allFlag != true ? 'postheaderfix' : '']" v-if="pitem.publish_type != 1 && pitem.type == 7">
 				<view :class="['userinfo', pitem.type == 7 ? 'userinfofix' : '']">
 					<view class="userwrap">
-						<text class="name titlefix">{{ pitem.title}}11</text>
+						<text class="name titlefix">{{ pitem.title}}</text>
 					</view>
 					<view class="usertime">{{ pitem.create_time | formatTime }}</view>
 					<text class="ph">{{pitem.post_hits}}人浏览</text>
@@ -453,7 +475,7 @@ export default {
 					return;
 				}
 			}
-			if (this.pitem.publish_type != 1) {
+			if (this.pitem.publish_type != 1 && this.pitem.type != 7) {
 				uni.navigateTo({
 					url: '/pages/update/committee?id=' + obj.committee_id
 				});

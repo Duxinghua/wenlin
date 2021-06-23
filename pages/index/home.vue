@@ -30,11 +30,11 @@
 				<view class="search">
 					<view class="searchleft" >
 						<image src="../../static/search.png" class="ico" @click.stop="searchLink"></image>
-						<view class="notice">
-						<u-notice-bar mode="vertical" :list="list" bg-color="transparent" color="#020433" @click.stop="noticeHandler"></u-notice-bar>
+						<view class="notice" v-if="list.length">
+						<u-notice-bar :volume-icon="false" duration="4000" speed="200" mode="vertical" :list="list" bg-color="transparent" color="#020433" @click.stop="noticeHandler"></u-notice-bar>
 						</view>
 
-					<!-- 	<text class="search-text">搜索问邻共享资源</text> -->
+						<text class="search-text" v-else>搜索问邻共享资源</text>
 					</view>
 					<view class="searchright" @click="messageLink">
 						<image src="../../static/messageico.png" class="red"></image>
@@ -228,7 +228,7 @@
 				<view class="logintop">您尚未登录</view>
 				<view class="loginbottom">
 					<text class="textitem" @click="guestShow = !guestShow">取消</text>
-					<button open-type="getUserInfo" @getuserinfo="getUserInfo" class="textitem textitem-fix">微信登录</button>
+					<button  @click="getUserInfo" class="textitem textitem-fix">微信登录</button>
 				</view>
 			</view>
 		</view>
@@ -247,7 +247,7 @@
 					<view class="logintitle">选择登录方式</view>
 					<view class="logintype">
 						<view class="loginitem">
-							<button open-type="getUserInfo" @getuserinfo="getUserInfo" class="weixinbtn">
+							<button  @click="getUserInfo" class="weixinbtn">
 								<image src="../../static/weixin.png"></image>
 								<text>微信登录</text>
 							</button>
@@ -300,7 +300,7 @@
 				<view class="logintop">登录之后加入小区才可以拜年</view>
 				<view class="loginbottom">
 					<text class="textitem" @click="guestPaiOpen = !guestPaiOpen">取消</text>
-					<button open-type="getUserInfo" @getuserinfo="getUserInfo" class="textitem textitem-fix">微信登录</button>
+					<button  @click="getUserInfo" class="textitem textitem-fix">微信登录</button>
 				</view>
 			</view>
 		</view>
@@ -1337,6 +1337,7 @@ export default {
 		},
 		//授权处理
 		getUserInfo(e) {
+			var that = this
 			var p = new Promise((resolve, reject) => {
 				uni.getLocation({
 					success: res => {
@@ -1355,58 +1356,64 @@ export default {
 			});
 			p.then(data => {
 				//登录授权
-				var { encryptedData, iv, rawData, signature } = e.detail;
-				uni.login({
-					success: result => {
-						let { errMsg, code } = result;
-						if (errMsg == 'login:ok') {
-							var params = {
-								code: code,
-								encrypted_data: encryptedData,
-								signature: signature,
-								raw_data: rawData,
-								iv: iv
-							};
-							this.Api.communityLogin(params).then(res => {
-								if (res.code == 1) {
-									uni.setStorageSync('token', res.data.token);
-									uni.setStorageSync('user', res.data.user);
-									uni.setStorageSync('all_community', res.data.all_community);
-									this.community_id = res.data.all_community.length ? res.data.all_community[0].community_id : '';
-									uni.setStorageSync('community_id', this.community_id);
-									this.community_menu = res.data.all_community.length
-										? res.data.all_community[0].title + (res.data.all_community[0].total ? res.data.all_community[0].total : '')
-										: '问邻';
-									this.all_community = res.data.all_community;
-									
-									this.loginFalse = false;
-									this.guestShow = false;
-									this.userinforeg = true;
-									if(this.all_community.length == 0){
-										this.guestFlag = true
-									}
-									if (this.all_community.length) {
-										this.mescroll.resetUpScroll();
-									} else {
-										//如果开通过小区，待审核
-										//this.current = 3;
-										// this.setcommunity = true;
-										//
-										uni.navigateTo({
-											url:'../update/selectcommunity'
-										})
-										console.log('pid');
-										var pid = uni.getStorageSync('pid');
-										if (pid) {
-											this.community = uni.getStorageSync('ptitle');
-											this.communityId = uni.getStorageSync('pcommunity_id');
-										}
+				wx.getUserProfile({
+				     desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+				     success: (resx) => {
+							var { encryptedData, iv, rawData, signature } = resx;
+							uni.login({
+								success: result => {
+									let { errMsg, code } = result;
+									if (errMsg == 'login:ok') {
+										var params = {
+											code: code,
+											encrypted_data: encryptedData,
+											signature: signature,
+											raw_data: rawData,
+											iv: iv
+										};
+										that.Api.communityLogin(params).then(res => {
+											if (res.code == 1) {
+												uni.setStorageSync('token', res.data.token);
+												uni.setStorageSync('user', res.data.user);
+												uni.setStorageSync('all_community', res.data.all_community);
+												that.community_id = res.data.all_community.length ? res.data.all_community[0].community_id : '';
+												uni.setStorageSync('community_id', that.community_id);
+												that.community_menu = res.data.all_community.length
+													? res.data.all_community[0].title + (res.data.all_community[0].total ? res.data.all_community[0].total : '')
+													: '问邻';
+												that.all_community = res.data.all_community;
+												
+												that.loginFalse = false;
+												that.guestShow = false;
+												that.userinforeg = true;
+												if(that.all_community.length == 0){
+													that.guestFlag = true
+												}
+												if (that.all_community.length) {
+													that.mescroll.resetUpScroll();
+												} else {
+													//如果开通过小区，待审核
+													//that.current = 3;
+													// that.setcommunity = true;
+													//
+													uni.navigateTo({
+														url:'../update/selectcommunity'
+													})
+													console.log('pid');
+													var pid = uni.getStorageSync('pid');
+													if (pid) {
+														that.community = uni.getStorageSync('ptitle');
+														that.communityId = uni.getStorageSync('pcommunity_id');
+													}
+												}
+											}
+										});
 									}
 								}
 							});
-						}
-					}
-				});
+
+				     }
+				})
 			});
 		},
 		//设置小区
@@ -2206,7 +2213,7 @@ page {
 				align-items: center;
 				margin-right: auto;
 				.notice{
-					width:100%;
+					width:calc(100% - 63upx);
 				}
 				.ico {
 					width: 33upx;
@@ -2240,7 +2247,9 @@ page {
 					height: 40upx;
 					text-align: center;
 					font-size: 20upx;
-					line-height: 40upx;
+					display: flex;
+					justify-content: center;
+					align-items: center;
 					border-radius: 50%;
 					border: 1px solid white;
 					color: white;

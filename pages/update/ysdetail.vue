@@ -1294,6 +1294,7 @@ export default {
 		},
 
 		inputValueHander(e) {
+			var that = this
 			if (uni.getStorageSync('singPage') == 1) {
 				uni.showToast({
 					title: '请前往小程序使用完整服务',
@@ -1335,42 +1336,44 @@ export default {
 				}
 				this.Api.setComments(data).then(result => {
 					if (result.code == 1) {
-						uni.showToast({
-							title: result.msg,
-							duration: 2000,
-							success: () => {
-								this.subMessageTodo(this.comIds,3,(ss) => {
-									this.replyTextarea = false;
-									this.textareaautofocus = false;
-									this.scrollFixed = false;
+						
+						// uni.showToast({
+						// 	title: result.msg,
+						// 	duration: 2000,
+						// 	success: () => {
+							that.$u.toast(result.msg)
+								that.subMessageTodo(that.comIds,3,(ss) => {
+									that.replyTextarea = false;
+									that.textareaautofocus = false;
+									that.scrollFixed = false;
 									// this.isShowEmj = false
 									// this.inputValue = ''
 									// this.parent_id = ''
 									// this.replyFlag = true
 									// this.parent_text = '说说你的看法'
 									// this.getCommentList()
-									this.isShowEmj = false;
-									this.inputValue = '';
-									this.parent_id = '';
-									this.replyFlag = true;
-									this.parent_text = '说说你的看法';
+									that.isShowEmj = false;
+									that.inputValue = '';
+									that.parent_id = '';
+									that.replyFlag = true;
+									that.parent_text = '说说你的看法';
 									if (result.data.add) {
-										this.add_type = result.data.add == -1 ? '-' : '+';
-										this.score_text = result.data.score;
-										this.$refs.integraltip.show();
+										that.add_type = result.data.add == -1 ? '-' : '+';
+										that.score_text = result.data.score;
+										that.$refs.integraltip.show();
 										setTimeout(() => {
-											this.add_type = '';
-											this.score_text = '';
+											that.add_type = '';
+											that.score_text = '';
 
-											this.$refs.integraltip.close();
-											this.getCommentList();
+											that.$refs.integraltip.close();
+											that.getCommentList();
 										}, 2000);
 									} else {
-										this.getCommentList();
+										that.getCommentList();
 									}
 								})
-							}
-						});
+						// 	}
+						// });
 					}
 				});
 

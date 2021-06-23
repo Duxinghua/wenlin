@@ -429,8 +429,10 @@ export default {
 				path: '/pages/index/detail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
 			};
 		} else {
+			var content = this.detail.content
+			content = content.length > 30 ? content.substr(0, 30) + '...' : content
 			return {
-				title: this.detail.title,
+				title: this.detail.title ? this.detail.title : content,
 				imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
 				path: '/pages/index/detail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
 			};
@@ -444,7 +446,11 @@ export default {
 				content = '赠送:'+content
 			}
 			title = content.length > 30 ? content.substr(0, 30) + '...' : content;
-		} else {
+		} else if(this.detail.publish_type != 1){
+			var content = this.detail.content
+			content = content.length > 30 ? content.substr(0, 30) + '...' : content;
+			title = this.detail.title ? this.detail.title : content ;
+		}else{
 			title = this.detail.title;
 		}
 		var query = {};
@@ -947,6 +953,9 @@ export default {
 				data.type = this.type;
 				data.object_id = this.id;
 			}
+			if(!data.object_type){
+				data.object_type = this.type
+			}
 			if (this.navIndex == 1) {
 				this.Api.getMultistageComments(data).then(result => {
 					if (result.code == 1) {
@@ -1174,6 +1183,7 @@ export default {
 		},
 
 		inputValueHander(e) {
+			var that = this
 			if (uni.getStorageSync('singPage') == 1) {
 				uni.showToast({
 					title: '请前往小程序使用完整服务',
@@ -1217,42 +1227,43 @@ export default {
 				this.Api.setComments(data).then(result => {
 					if (result.code == 1) {
 						this.navIndex = 1
-						uni.showToast({
-							title: result.msg,
-							duration: 2000,
-							success: () => {
-								this.subMessageTodo(this.comIds,3,(ss) => {
-									this.replyTextarea = false;
-									this.textareaautofocus = false;
-									this.scrollFixed = false;
+						// uni.showToast({
+						// 	title: result.msg,
+						// 	duration: 2000,
+						// 	success: () => {
+							that.$u.toast(result.msg)
+								that.subMessageTodo(that.comIds,3,(ss) => {
+									that.replyTextarea = false;
+									that.textareaautofocus = false;
+									that.scrollFixed = false;
 									// this.isShowEmj = false
 									// this.inputValue = ''
 									// this.parent_id = ''
 									// this.replyFlag = true
 									// this.parent_text = '说说你的看法'
 									// this.getCommentList()
-									this.isShowEmj = false;
-									this.inputValue = '';
-									this.parent_id = '';
-									this.replyFlag = true;
-									this.parent_text = '说说你的看法';
+									that.isShowEmj = false;
+									that.inputValue = '';
+									that.parent_id = '';
+									that.replyFlag = true;
+									that.parent_text = '说说你的看法';
 									if (result.data.add) {
-										this.add_type = result.data.add == -1 ? '-' : '+';
-										this.score_text = result.data.score;
-										this.$refs.integraltip.show();
+										that.add_type = result.data.add == -1 ? '-' : '+';
+										that.score_text = result.data.score;
+										that.$refs.integraltip.show();
 										setTimeout(() => {
-											this.add_type = '';
-											this.score_text = '';
+											that.add_type = '';
+											that.score_text = '';
 					
-											this.$refs.integraltip.close();
-											this.getCommentList();
+											that.$refs.integraltip.close();
+											that.getCommentList();
 										}, 2000);
 									} else {
-										this.getCommentList();
+										that.getCommentList();
 									}
 								})
-							}
-						});
+						// 	}
+						// });
 					}
 				});
 				
@@ -2068,7 +2079,7 @@ page {
 			box-sizing: border-box;
 			font-size: 40upx;
 			font-family: PingFang-SC-Bold, PingFang-SC;
-			// font-weight:bold;
+			font-weight:bold;
 			line-height: 52upx;
 			color: rgba(51, 51, 51, 1);
 			text-align: left;

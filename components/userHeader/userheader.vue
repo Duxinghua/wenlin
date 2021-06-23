@@ -4,7 +4,8 @@
 		<view class="headerimg" >
 			<image @click.stop="goPer(pitem.user)" v-if="pitem.publish_type == 1 && pitem.anonymous == 0" :src="pitem.user.avatar" class="avatar"></image>
 			<image @click.stop="goPer(pitem.user)" v-if="pitem.publish_type == 1 && pitem.anonymous == 1" src="../../static/heading.png" class="avatar"></image>
-			<image @click.stop="goCom" v-if="pitem.publish_type != 1" :src="pitem.committee.logo" class="avatar"></image>
+			<image @click.stop="goCom" v-if="pitem.publish_type != 1 && pitem.type != 7" :src="pitem.committee.logo" class="avatar"></image>
+			<image @click.stop="goCom" v-if="pitem.publish_type != 1 && pitem.type == 7" :src="pitem.admin.avatar" class="avatar"></image>
 			<!-- <image v-if="pitem.publish_type == 3"  :src="pitem.admin.avatar" class="avatar"></image> -->
 			<image v-if="pitem.create_user.id && pitem.anonymous == 0"  @click.stop="goPer(pitem.create_user)"  :src="pitem.create_user.avatar"  class="avatar"></image>
 			

@@ -463,6 +463,8 @@
 				this.content = uni.getStorageSync('obj3')
 			}else if(this.type == 4){
 				this.content = uni.getStorageSync('obj4')
+			}else if(this.type == 5){
+				this.content = uni.getStorageSync('obj5')
 			}else if(this.type== 6){
 				this.content = uni.getStorageSync('obj6')
 			}else if(this.type == 7){
