@@ -709,7 +709,7 @@ export default {
 					if(result.code == 1) {
 						var totalPage  = result.data.total_pages
 						var curPageLen = result.data.list.length; 
-						if(this.page.num == 1) this.postList = []
+						if(page.num == 1) this.postList = []
 						this.postList = this.postList.concat(result.data.list);
 						this.mescroll.endByPage(curPageLen, totalPage);
 						// if(ismore){
@@ -734,7 +734,7 @@ export default {
 					if(result.code == 1) {
 						var totalPage  = result.data.total_pages
 						var curPageLen = result.data.list.length; 
-						if(this.page.num == 1) this.postList = []
+						if(page.num == 1) this.postList = []
 						this.postList = this.postList.concat(result.data.list);
 						this.mescroll.endByPage(curPageLen, totalPage);
 					// 	if(ismore){
@@ -1297,7 +1297,7 @@ export default {
 				}else{
 					this.flexType = false
 				}
-				// this.mescroll.scrollTo( 0, 300)
+				this.mescroll.scrollTo( 0, 300)
 				this.mescroll.resetUpScroll()
 				this.$forceUpdate()
 			})

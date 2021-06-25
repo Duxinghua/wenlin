@@ -501,13 +501,14 @@ export default {
 		},
 		//认识
 		usersetKown(data){
+			var that = this
 			this.Api.usersetKown(data).then((result) => {
 				if(result.code == 1){
 					uni.showToast({
 						icon:'success',
 						title:result.msg,
 						success: () => {
-							this.$emit('flush',{})
+							that.$emit('flush',{})
 						}
 					})
 				}else{

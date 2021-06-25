@@ -688,14 +688,15 @@ var _default =
       }
     },
     //认识
-    usersetKown: function usersetKown(data) {var _this = this;
+    usersetKown: function usersetKown(data) {
+      var that = this;
       this.Api.usersetKown(data).then(function (result) {
         if (result.code == 1) {
           uni.showToast({
             icon: 'success',
             title: result.msg,
             success: function success() {
-              _this.$emit('flush', {});
+              that.$emit('flush', {});
             } });
 
         } else {
@@ -710,14 +711,14 @@ var _default =
       });
     },
     //取消认识
-    userunSetKown: function userunSetKown(data) {var _this2 = this;
+    userunSetKown: function userunSetKown(data) {var _this = this;
       this.Api.userunSetKown(data).then(function (result) {
         if (result.code == 1) {
           uni.showToast({
             icon: 'success',
             title: result.msg,
             success: function success() {
-              _this2.$emit('flush', {});
+              _this.$emit('flush', {});
             } });
 
         } else {

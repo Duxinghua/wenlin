@@ -618,7 +618,6 @@ page.data-v-246cef20 {
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 1px solid red;
 }
 .helpdetail .content .votelistwrap .voteitem .voteavatarwrap .more.data-v-246cef20 {
   width: 65rpx;

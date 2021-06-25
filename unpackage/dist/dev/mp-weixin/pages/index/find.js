@@ -857,7 +857,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
           if (result.code == 1) {
             var totalPage = result.data.total_pages;
             var curPageLen = result.data.list.length;
-            if (_this4.page.num == 1) _this4.postList = [];
+            if (page.num == 1) _this4.postList = [];
             _this4.postList = _this4.postList.concat(result.data.list);
             _this4.mescroll.endByPage(curPageLen, totalPage);
             // if(ismore){
@@ -882,7 +882,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
           if (result.code == 1) {
             var totalPage = result.data.total_pages;
             var curPageLen = result.data.list.length;
-            if (_this4.page.num == 1) _this4.postList = [];
+            if (page.num == 1) _this4.postList = [];
             _this4.postList = _this4.postList.concat(result.data.list);
             _this4.mescroll.endByPage(curPageLen, totalPage);
             // 	if(ismore){
@@ -1445,7 +1445,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
         } else {
           _this14.flexType = false;
         }
-        // this.mescroll.scrollTo( 0, 300)
+        _this14.mescroll.scrollTo(0, 300);
         _this14.mescroll.resetUpScroll();
         _this14.$forceUpdate();
       });

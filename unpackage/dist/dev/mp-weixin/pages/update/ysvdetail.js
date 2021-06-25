@@ -663,7 +663,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       title = content.length > 30 ? content.substr(0, 30) + '...' : content;
     } else {
-      title = this.detail.title;
+      title = this.detail.vote_title;
     }
     var query = {};
     if (this.type == 7 || this.type == 8) {

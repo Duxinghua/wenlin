@@ -837,7 +837,9 @@ export default {
 			// }
 		},
 		flushHandler(){
-			this.upCallback()
+			// this.upOption.page.num = 1
+			this.postList = []
+			this.upCallback(this.upOption.page)
 		},
 		loginHandler(){
 			var data = {
@@ -1001,7 +1003,7 @@ export default {
 							this.totalPage = result.data.total_pages;
 							var totalPage = result.data.total_pages;
 							var curPageLen = result.data.list.length;
-							if (this.page == 1) {
+							if (page.num == 1) {
 								this.postList = [];
 								var list = []
 								if(this.type == 6 && this.darenObj){
@@ -1074,7 +1076,7 @@ export default {
 							// this.totalPage = result.data.total_pages;
 							var totalPage = result.data.total_pages;
 							var curPageLen = result.data.list.length;
-							if (this.page == 1) {
+							if (page.num == 1) {
 								this.postList = [];
 								var list = []
 								if(this.type == 6 && this.darenObj){
@@ -1612,6 +1614,7 @@ export default {
 		cateClick(index) {
 			this.postList = [];
 			this.cateIndex = index;
+			// this.upOption.page.num = 1
 			if (index == 0) {
 				this.allFlag = true;
 			} else {
@@ -1650,19 +1653,19 @@ export default {
 								this.darenObj.regedit = true
 								this.darenObj.type = 6
 							}
-								// this.mescroll.scrollTo(0, 300);
+								this.mescroll.scrollTo(0, 300);
 								this.mescroll.resetUpScroll();
 								this.$forceUpdate();
 							
 						}else{
-							// this.mescroll.scrollTo(0, 300);
+							this.mescroll.scrollTo(0, 300);
 								this.mescroll.resetUpScroll();
 								this.$forceUpdate();
 							
 						}
 					})
 				}else{
-					// this.mescroll.scrollTo(0, 300);
+					this.mescroll.scrollTo(0, 300);
 					this.mescroll.resetUpScroll();
 					this.$forceUpdate();
 				}

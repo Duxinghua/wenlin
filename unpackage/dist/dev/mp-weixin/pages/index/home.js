@@ -999,7 +999,9 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
       // }
     },
     flushHandler: function flushHandler() {
-      this.upCallback();
+      // this.upOption.page.num = 1
+      this.postList = [];
+      this.upCallback(this.upOption.page);
     },
     loginHandler: function loginHandler() {var _this5 = this;
       var data = {
@@ -1163,7 +1165,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
             _this7.totalPage = result.data.total_pages;
             var totalPage = result.data.total_pages;
             var curPageLen = result.data.list.length;
-            if (_this7.page == 1) {
+            if (page.num == 1) {
               _this7.postList = [];
               var list = [];
               if (_this7.type == 6 && _this7.darenObj) {
@@ -1236,7 +1238,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
             // this.totalPage = result.data.total_pages;
             var totalPage = result.data.total_pages;
             var curPageLen = result.data.list.length;
-            if (_this7.page == 1) {
+            if (page.num == 1) {
               _this7.postList = [];
               var list = [];
               if (_this7.type == 6 && _this7.darenObj) {
@@ -1774,6 +1776,7 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
     cateClick: function cateClick(index) {var _this16 = this;
       this.postList = [];
       this.cateIndex = index;
+      // this.upOption.page.num = 1
       if (index == 0) {
         this.allFlag = true;
       } else {
@@ -1812,19 +1815,19 @@ var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure
                 _this16.darenObj.regedit = true;
                 _this16.darenObj.type = 6;
               }
-              // this.mescroll.scrollTo(0, 300);
+              _this16.mescroll.scrollTo(0, 300);
               _this16.mescroll.resetUpScroll();
               _this16.$forceUpdate();
 
             } else {
-              // this.mescroll.scrollTo(0, 300);
+              _this16.mescroll.scrollTo(0, 300);
               _this16.mescroll.resetUpScroll();
               _this16.$forceUpdate();
 
             }
           });
         } else {
-          // this.mescroll.scrollTo(0, 300);
+          _this16.mescroll.scrollTo(0, 300);
           _this16.mescroll.resetUpScroll();
           _this16.$forceUpdate();
         }

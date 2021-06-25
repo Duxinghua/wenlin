@@ -40,7 +40,7 @@
 			<view class="userwrap" v-if="pitem.create_user.id  && pitem.anonymous == 1" @click.stop="goPer(pitem.user)">
 				<text class="name">匿名用户</text>
 			</view>
-			<view class="userwrap" v-if="pitem.publish_type != 1"  @click.stop="goCom">
+			<view class="userwrap" v-if="pitem.publish_type != 1 && !pitem.vote_id"  @click.stop="goCom">
 				<text class="name">{{pitem.committee.title}}</text>
 			</view>
 			<view class="userwrap" v-if="pitem.publish_type == 3">

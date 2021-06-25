@@ -456,7 +456,7 @@ export default {
 			}
 			title = content.length > 30 ? content.substr(0, 30) + '...' : content;
 		} else {
-			title = this.detail.title;
+			title = this.detail.vote_title;
 		}
 		var query = {};
 		if (this.type == 7 || this.type == 8) {
@@ -2264,7 +2264,6 @@ page {
 								position: absolute;
 								width:100%;
 								height:100%;
-								border:1px solid red
 							}
 						}
 					}
