@@ -448,7 +448,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 610));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 638));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 652));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | components/bkhumor-emoji/index */ "components/bkhumor-emoji/index").then((function () {return resolve(__webpack_require__(/*! @/components/bkhumor-emoji/index.vue */ 659));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 624));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Firend = function Firend() {__webpack_require__.e(/*! require.ensure | components/onfirend/onfirend */ "components/onfirend/onfirend").then((function () {return resolve(__webpack_require__(/*! ../../components/onfirend/onfirend.vue */ 645));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 546));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UserHeader = function UserHeader() {__webpack_require__.e(/*! require.ensure | components/userHeader/userheader */ "components/userHeader/userheader").then((function () {return resolve(__webpack_require__(/*! @/components/userHeader/userheader.vue */ 666));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Comment = function Comment() {__webpack_require__.e(/*! require.ensure | components/comment/comment */ "components/comment/comment").then((function () {return resolve(__webpack_require__(/*! @/components/comment/comment.vue */ 673));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 560));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 680));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Confrimpop = function Confrimpop() {__webpack_require__.e(/*! require.ensure | components/confrim/confrim */ "components/confrim/confrim").then((function () {return resolve(__webpack_require__(/*! @/components/confrim/confrim.vue */ 687));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var DeleteTip = function DeleteTip() {__webpack_require__.e(/*! require.ensure | components/deletetip/deletetip */ "components/deletetip/deletetip").then((function () {return resolve(__webpack_require__(/*! @/components/deletetip/deletetip.vue */ 694));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 610));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 638));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 652));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | components/bkhumor-emoji/index */ "components/bkhumor-emoji/index").then((function () {return resolve(__webpack_require__(/*! @/components/bkhumor-emoji/index.vue */ 659));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 624));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Firend = function Firend() {__webpack_require__.e(/*! require.ensure | components/onfirend/onfirend */ "components/onfirend/onfirend").then((function () {return resolve(__webpack_require__(/*! ../../components/onfirend/onfirend.vue */ 645));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 546));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UserHeader = function UserHeader() {__webpack_require__.e(/*! require.ensure | components/userHeader/userheader */ "components/userHeader/userheader").then((function () {return resolve(__webpack_require__(/*! @/components/userHeader/userheader.vue */ 666));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Comment = function Comment() {__webpack_require__.e(/*! require.ensure | components/comment/comment */ "components/comment/comment").then((function () {return resolve(__webpack_require__(/*! @/components/comment/comment.vue */ 673));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 560));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 680));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Confrimpop = function Confrimpop() {__webpack_require__.e(/*! require.ensure | components/confrim/confrim */ "components/confrim/confrim").then((function () {return resolve(__webpack_require__(/*! @/components/confrim/confrim.vue */ 687));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Confrimpops = function Confrimpops() {__webpack_require__.e(/*! require.ensure | components/confrim/confrim */ "components/confrim/confrim").then((function () {return resolve(__webpack_require__(/*! @/components/confrim/confrim.vue */ 687));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var DeleteTip = function DeleteTip() {__webpack_require__.e(/*! require.ensure | components/deletetip/deletetip */ "components/deletetip/deletetip").then((function () {return resolve(__webpack_require__(/*! @/components/deletetip/deletetip.vue */ 694));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
 
 
 
@@ -679,7 +681,56 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
   },
   methods: {
-    getPhoneNumber: function getPhoneNumber(e) {var _this = this;
+    deleteDynamics: function deleteDynamics(obj) {
+      console.log(obj);
+      this.$refs.dconfrims.guestShow = true;
+      this.$refs.dconfrims.id = obj.id;
+      this.$refs.dconfrims.type = obj.type;
+      this.$refs.dconfrims.obj = obj;
+      this.$refs.dconfrims.text = '是否删除本贴?';
+    },
+    condelHandlers: function condelHandlers(obj) {var _this = this;
+      console.log(obj);
+      var pitem = obj;
+      var object_id = pitem.id;
+      var type = pitem.type;
+      var object_type = pitem.type;
+      // if (type == 5) {
+      // 	object_id = pitem.object_id	
+      // } else {
+
+      // 	if (type == 7 || type == 8) {
+      // 		if(type == 8){
+      // 			object_id = pitem.object_id	
+      // 		}else{
+      // 			object_id = pitem.wiki_id
+      // 		}
+      // 	} else if(type == 16){
+      // 		object_id = pitem.object_id	
+      // 	}else if(type == 17){
+      // 		object_id = pitem.object_id	
+      // 	}else{
+      // 		object_id = pitem.object_id	
+      // 	}
+      // }
+      this.Api.deleteDynamics({ object_type: object_type, object_id: object_id, community_id: uni.getStorageSync('community_id') }).then(function (result) {
+        if (result.code == 1) {
+          uni.showToast({
+            icon: 'success',
+            title: result.msg,
+            duration: 2000,
+            success: function success() {
+              _this.$refs.dconfrims.guestShow = false;
+              _this.findFaultValue = false;
+              uni.reLaunch({
+                url: '/pages/index/index' });
+
+            } });
+
+        }
+      });
+    },
+    getPhoneNumber: function getPhoneNumber(e) {var _this2 = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -704,7 +755,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (result.code == 1) {
             uni.setStorageSync('mobile', result.data);
             if (result.data) {
-              _this.stodo();
+              _this2.stodo();
             }
           }
         });
@@ -854,7 +905,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         url: '/pages/index/index' });
 
     },
-    autoShare: function autoShare() {var _this2 = this;
+    autoShare: function autoShare() {var _this3 = this;
       if (this.srouce == 1) {
         if (uni.getStorageSync('token')) {
           if (this.opening == 0 && this.detail.publish_type == 1) {
@@ -899,9 +950,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
               uni.setStorageSync('committee_id', all_community[0].committee_id);
 
             } else {
-              _this2.srouceText = '提示您尚未登录，请登录后操作';
-              _this2.srouceBtnText = '登录';
-              _this2.srouceShow = true;
+              _this3.srouceText = '提示您尚未登录，请登录后操作';
+              _this3.srouceBtnText = '登录';
+              _this3.srouceShow = true;
             }
 
 
@@ -995,7 +1046,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.$forceUpdate();
     },
     //切换
-    navClick: function navClick(index) {var _this3 = this;
+    navClick: function navClick(index) {var _this4 = this;
       this.page = 1;
       this.total = 0;
       this.commentList = [];
@@ -1010,10 +1061,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         this.nodatatext = '暂无答题人';
       }
       setTimeout(function () {
-        if (_this3.navIndex == 1 || _this3.navIndex == 2 || _this3.navIndex == 4) {
-          _this3.getCommentList();
-        } else if (_this3.navIndex == 3) {
-          _this3.getJoinUserList();
+        if (_this4.navIndex == 1 || _this4.navIndex == 2 || _this4.navIndex == 4) {
+          _this4.getCommentList();
+        } else if (_this4.navIndex == 3) {
+          _this4.getJoinUserList();
         }
       }, 300);
     },
@@ -1191,7 +1242,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         phoneNumber: phone });
 
     },
-    getCommentList: function getCommentList(ismore) {var _this4 = this;
+    getCommentList: function getCommentList(ismore) {var _this5 = this;
       var data = {
         object_id: this.dynamics_id,
         object_type: this.type,
@@ -1203,7 +1254,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (result.code == 1) {
             if (ismore) {
               var res = result.data.list;
-              _this4.total = result.data.total_page;
+              _this5.total = result.data.total_page;
               res.map(function (item) {
                 item.nodes = '<p style="display:inline-flex;align-items:center;">' + new String(item.content).
                 toString().
@@ -1216,11 +1267,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
                   });
                 }
               });
-              _this4.commentList = _this4.commentList.concat(res);
-              _this4.commentpageTotal = result.data.total_page;
+              _this5.commentList = _this5.commentList.concat(res);
+              _this5.commentpageTotal = result.data.total_page;
             } else {
               var res = result.data.list;
-              _this4.total = result.data.total_page;
+              _this5.total = result.data.total_page;
               res.map(function (item) {
                 item.nodes = '<p style="display:inline-flex;align-items:center;">' + new String(item.content).
                 toString().
@@ -1233,13 +1284,13 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
                   });
                 }
               });
-              _this4.commentList = res;
-              _this4.commentpageTotal = result.data.total_page;
+              _this5.commentList = res;
+              _this5.commentpageTotal = result.data.total_page;
             }
-            if (_this4.commentList.length) {
-              _this4.nodataFlag = false;
+            if (_this5.commentList.length) {
+              _this5.nodataFlag = false;
             } else {
-              _this4.nodataFlag = true;
+              _this5.nodataFlag = true;
             }
           }
         });
@@ -1250,17 +1301,17 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (result.code == 1) {
             if (ismore) {
               var res = result.data.list;
-              _this4.total = result.data.total_page;
-              _this4.commentList = _this4.commentList.concat(res);
+              _this5.total = result.data.total_page;
+              _this5.commentList = _this5.commentList.concat(res);
             } else {
               var res = result.data.list;
-              _this4.total = result.data.total_page;
-              _this4.commentList = res;
+              _this5.total = result.data.total_page;
+              _this5.commentList = res;
             }
-            if (_this4.commentList.length) {
-              _this4.nodataFlag = false;
+            if (_this5.commentList.length) {
+              _this5.nodataFlag = false;
             } else {
-              _this4.nodataFlag = true;
+              _this5.nodataFlag = true;
             }
           }
         });
@@ -1270,24 +1321,24 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (result.code == 1) {
             if (ismore) {
               var res = result.data.list;
-              _this4.total = result.data.total_page;
-              _this4.commentList = _this4.commentList.concat(res);
+              _this5.total = result.data.total_page;
+              _this5.commentList = _this5.commentList.concat(res);
             } else {
               var res = result.data.list;
-              _this4.total = result.data.total_page;
-              _this4.commentList = res;
+              _this5.total = result.data.total_page;
+              _this5.commentList = res;
             }
-            if (_this4.commentList.length) {
-              _this4.nodataFlag = false;
+            if (_this5.commentList.length) {
+              _this5.nodataFlag = false;
             } else {
-              _this4.nodataFlag = true;
+              _this5.nodataFlag = true;
             }
           }
         });
       }
     },
     //报名列表
-    getJoinUserList: function getJoinUserList(ismore) {var _this5 = this;
+    getJoinUserList: function getJoinUserList(ismore) {var _this6 = this;
       var data = {
         activity_id: this.id,
         page: this.page,
@@ -1297,19 +1348,19 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         if (result.code == 1) {
           if (ismore) {
             var res = result.data.list;
-            _this5.total = result.data.total_page;
-            _this5.commentList = _this5.commentList.concat(res);
-            _this5.commentpageTotal = result.data.total_page;
+            _this6.total = result.data.total_page;
+            _this6.commentList = _this6.commentList.concat(res);
+            _this6.commentpageTotal = result.data.total_page;
           } else {
             var res = result.data.list;
-            _this5.total = result.data.total_page;
-            _this5.commentList = res;
-            _this5.commentpageTotal = result.data.total_page;
+            _this6.total = result.data.total_page;
+            _this6.commentList = res;
+            _this6.commentpageTotal = result.data.total_page;
           }
-          if (_this5.commentList.length) {
-            _this5.nodataFlag = false;
+          if (_this6.commentList.length) {
+            _this6.nodataFlag = false;
           } else {
-            _this5.nodataFlag = true;
+            _this6.nodataFlag = true;
           }
         }
       });
@@ -1341,7 +1392,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.isShowEmj = !this.isShowEmj;
     },
     //评论点赞
-    floverHandler: function floverHandler(e) {var _this6 = this;
+    floverHandler: function floverHandler(e) {var _this7 = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -1374,7 +1425,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             // 	title:result.msg,
             // 	duration:2000,
             // 	success: () => {
-            _this6.getCommentList();
+            _this7.getCommentList();
             // 	}
             // })
           }
@@ -1393,7 +1444,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             // 	title:result.msg,
             // 	duration:2000,
             // 	success: () => {
-            _this6.getCommentList();
+            _this7.getCommentList();
             // 	}
             // })
           }
@@ -1430,7 +1481,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.autoBottom = 0;
     },
 
-    inputValueHander: function inputValueHander(e) {var _this7 = this;
+    inputValueHander: function inputValueHander(e) {var _this8 = this;
       var that = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
@@ -1471,7 +1522,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
       this.Api.setComments(data).then(function (result) {
         if (result.code == 1) {
-          _this7.navIndex = 1;
+          _this8.navIndex = 1;
           that.$u.toast(result.msg);
           // uni.showToast({
           // 	title: result.msg,
@@ -1543,44 +1594,44 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         } });
 
     },
-    getDetail: function getDetail() {var _this8 = this;
+    getDetail: function getDetail() {var _this9 = this;
       this.Api.pactivityDetail({ object_id: this.id, object_type: this.type }).then(function (result) {
         if (result.code == 1) {
           if (!result.data.id) {
             // uni.redirectTo({
             // 	url:'/pages/index/404'
             // })
-            _this8.$refs.deletetip.deleteShow = true;
+            _this9.$refs.deletetip.deleteShow = true;
 
             return;
           }
-          _this8.detail = result.data;
-          if (_this8.detail.admin_id) {
-            _this8.config.title = _this8.publishType(_this8.detail.committee.type) + '活动';
+          _this9.detail = result.data;
+          if (_this9.detail.admin_id) {
+            _this9.config.title = _this9.publishType(_this9.detail.committee.type) + '活动';
           }
-          _this8.detail.content = _this8.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
-          if (_this8.detail.images.length == 0) {
-            _this8.detail.images.push('https://sq.wenlinapp.com/appimg/act_post.png');
+          _this9.detail.content = _this9.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
+          if (_this9.detail.images.length == 0) {
+            _this9.detail.images.push('https://sq.wenlinapp.com/appimg/act_post.png');
           }
           if (result.data.join_start_time == result.data.join_end_time) {
-            _this8.detail.join_time = result.data.join_end_time ? _tool.default.dateFormat('YY-mm-dd', result.data.join_end_time) : 0;
+            _this9.detail.join_time = result.data.join_end_time ? _tool.default.dateFormat('YY-mm-dd', result.data.join_end_time) : 0;
           } else {
-            _this8.detail.join_time = result.data.join_start_time ? _tool.default.dateFormat('YY-mm-dd', new Date(result.data.join_start_time * 1000)) + ' 至 ' + _tool.default.dateFormat('YY-mm-dd', new Date(result.data.join_end_time * 1000)) : 0;
+            _this9.detail.join_time = result.data.join_start_time ? _tool.default.dateFormat('YY-mm-dd', new Date(result.data.join_start_time * 1000)) + ' 至 ' + _tool.default.dateFormat('YY-mm-dd', new Date(result.data.join_end_time * 1000)) : 0;
           }
-          _this8.loading = false;
-          _this8.$forceUpdate();
+          _this9.loading = false;
+          _this9.$forceUpdate();
           // this.getCommentList()
-          if (_this8.detail.activity_type == 1) {
-            _this8.navIndex = 3;
-            _this8.getJoinUserList();
-          } else if (_this8.detail.activity_type == 2) {
-            _this8.navIndex = 4;
-            _this8.getCommentList();
+          if (_this9.detail.activity_type == 1) {
+            _this9.navIndex = 3;
+            _this9.getJoinUserList();
+          } else if (_this9.detail.activity_type == 2) {
+            _this9.navIndex = 4;
+            _this9.getCommentList();
           }
 
-          if (_this8.srouce) {
+          if (_this9.srouce) {
             console.log('d2');
-            _this8.autoShare();
+            _this9.autoShare();
           }
         }
       });
@@ -1647,7 +1698,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       // parent_text:'说说你的看法',
     },
     //帮助处理
-    helpPush: function helpPush() {var _this9 = this;
+    helpPush: function helpPush() {var _this10 = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -1667,10 +1718,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       this.$getMyscore(function (res) {
         if (res.code == 1) {
-          _this9.navIndex = 2;
-          _this9.getCommentList();
-          _this9.score = res.data.score;
-          if (_this9.score == 0) {
+          _this10.navIndex = 2;
+          _this10.getCommentList();
+          _this10.score = res.data.score;
+          if (_this10.score == 0) {
 
             uni.showToast({
               title: '您的积分不足，请参加积分任务',
@@ -1684,7 +1735,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             }, 2000);
 
           } else {
-            _this9.helpShow = true;
+            _this10.helpShow = true;
           }
         }
       });
@@ -1692,7 +1743,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     Helpcancel: function Helpcancel() {
       this.helpShow = false;
     },
-    ok: function ok(e) {var _this10 = this;
+    ok: function ok(e) {var _this11 = this;
       var score = this.$refs.Help.inputValue;
       if (!score) {
         uni.showToast({
@@ -1714,21 +1765,21 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       // }
       this.Api.communityDynamicsPushDynamics(data).then(function (result) {
         if (result.code == 1) {
-          _this10.navIndex = 2;
-          _this10.getCommentList();
+          _this11.navIndex = 2;
+          _this11.getCommentList();
           uni.showToast({
             title: result.msg,
             duration: 2000,
             success: function success() {
-              _this10.add_type = result.data.add == -1 ? '-' : '+';
-              _this10.score_text = result.data.score;
-              _this10.$refs.Help.inputValue = 0;
-              _this10.helpShow = false;
-              _this10.$refs.integraltip.show();
+              _this11.add_type = result.data.add == -1 ? '-' : '+';
+              _this11.score_text = result.data.score;
+              _this11.$refs.Help.inputValue = 0;
+              _this11.helpShow = false;
+              _this11.$refs.integraltip.show();
               setTimeout(function () {
-                _this10.add_type = '';
-                _this10.score_text = '';
-                _this10.$refs.integraltip.close();
+                _this11.add_type = '';
+                _this11.score_text = '';
+                _this11.$refs.integraltip.close();
 
               }, 2000);
 
@@ -1770,7 +1821,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     onShowclose: function onShowclose() {
       this.onShareShow = false;
     },
-    onShowtodo: function onShowtodo() {var _this11 = this;
+    onShowtodo: function onShowtodo() {var _this12 = this;
       this.scrollFixed = true;
       var pages = getCurrentPages(); //获取加载的页面
 
@@ -1792,32 +1843,32 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
       this.Api.getWXACodeUnlimit(data).then(function (result) {
         if (result.code == 1) {
-          _this11.$nextTick(function () {
-            _this11.onShareShow = false;
-            _this11.posterData.posterImgUrl = _this11.findFaultObject.images.length ? _this11.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
-            if (_this11.type == 7 || _this11.type == 8 || _this11.type == 5) {
-              _this11.posterData.title = _this11.findFaultObject.title;
+          _this12.$nextTick(function () {
+            _this12.onShareShow = false;
+            _this12.posterData.posterImgUrl = _this12.findFaultObject.images.length ? _this12.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
+            if (_this12.type == 7 || _this12.type == 8 || _this12.type == 5) {
+              _this12.posterData.title = _this12.findFaultObject.title;
             } else {
-              _this11.posterData.title = _this11.findFaultObject.content;
+              _this12.posterData.title = _this12.findFaultObject.content;
             }
-            if (_this11.posterData.title.length > 35) {
-              _this11.posterData.title = _this11.posterData.title.substr(0, 35) + '...';
+            if (_this12.posterData.title.length > 35) {
+              _this12.posterData.title = _this12.posterData.title.substr(0, 35) + '...';
             }
-            _this11.posterData.avatarUrl = uni.getStorageSync('user').avatar;
-            _this11.posterData.posterCodeUrl = result.data;
-            _this11.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this11.type) + '信息';
-            _this11.$forceUpdate();
+            _this12.posterData.avatarUrl = uni.getStorageSync('user').avatar;
+            _this12.posterData.posterCodeUrl = result.data;
+            _this12.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this12.type) + '信息';
+            _this12.$forceUpdate();
             setTimeout(function () {
-              _this11.canvasFlag = false; //显示canvas海报
-              _this11.deliveryFlag = false; //关闭分享弹窗
-              _this11.$refs.hchPoster.posterShow();
+              _this12.canvasFlag = false; //显示canvas海报
+              _this12.deliveryFlag = false; //关闭分享弹窗
+              _this12.$refs.hchPoster.posterShow();
             }, 500);
 
 
           });
 
         } else {
-          _this11.scrollFixed = false;
+          _this12.scrollFixed = false;
         }
       });
 
@@ -1831,7 +1882,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.findFaultValue = false;
       this.onShareShow = false;
     },
-    condelHandler: function condelHandler(e) {var _this12 = this;
+    condelHandler: function condelHandler(e) {var _this13 = this;
       if (e == -1) {
         var url = '/pages/index/cdetail?dynamics_id=' + this.dynamics_id + '&type=' + this.type + '&id=' + this.id;
         uni.setStorageSync('url', url);
@@ -1849,8 +1900,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             title: result.msg,
             duration: 2000,
             success: function success() {
-              _this12.$refs.confrims.guestShow = false;
-              _this12.getCommentList();
+              _this13.$refs.confrims.guestShow = false;
+              _this13.getCommentList();
             } });
 
         }
@@ -1870,6 +1921,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     Nodata: Nodata,
     Firend: Firend,
     Confrimpop: Confrimpop,
+    Confrimpops: Confrimpops,
     DeleteTip: DeleteTip },
 
   computed: {

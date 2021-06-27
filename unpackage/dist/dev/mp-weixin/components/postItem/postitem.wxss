@@ -210,6 +210,9 @@
   color: #FFFFFF;
   margin-left: auto;
 }
+.postitem .postheader .flowwrapbg.data-v-86265978 {
+  background: #414b6a;
+}
 .postitem .postheader .morewrap.data-v-86265978 {
   height: 64rpx;
   width: 180rpx;

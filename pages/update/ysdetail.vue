@@ -69,17 +69,17 @@
 				</view>
 				<view class="votelistwrap">
 					<view class="voteitem" v-for="(item,index) in detail.vote_list" :key="index">
-						<view class="votetitle">
+						<view class="votetitle" @click.stop="lookVodetail(item)">
 							{{item.vote_title}}
 						</view>
-						<view class="voteprogess">
+						<view class="voteprogess" @click.stop="lookVodetail(item)">
 							<u-line-progress height="30" :show-percent="false" active-color="#FF9C00" inactive-color="#F5F6FA" :percent="item.vote_percent * 100"></u-line-progress>
 							<view class="votetext">
 								{{(item.vote_percent * 100).toFixed(2) }}%
 							</view>
 						</view>
 						<view class="votetool">
-							<view class="votetoolitem"  >
+							<view class="votetoolitem" @click.stop="lookVodetail(item)" >
 								{{item.vote_num}}票
 							</view>
 							<view class="votetoolitem" @click.stop="lookVodetail(item)">
@@ -221,7 +221,7 @@
 		/>
 
 		<!-- 找错 -->
-		<FindFault :isShow="findFaultValue" :isCollect="findFaultCollect" :isType="findFaultType" @close="fClose" @collect="fCollect" @find="fFind" @report="report" @onshare="onShowshare" />
+		<FindFault  @del="deleteDynamics" :pitem="detail"  :isShow="findFaultValue" :isCollect="findFaultCollect" :isType="findFaultType" @close="fClose" @collect="fCollect" @find="fFind" @report="report" @onshare="onShowshare" />
 		<!-- 答谢 -->
 		<Thank ref="thank" :isShow="thankShow" @close="cancel" @ok="ok" :score="score" />
 		<!-- 帮推 -->
@@ -272,7 +272,7 @@
 			</view>
 		</u-popup>
 		<SelectItem :list="nameList" :type="selectType" :isShow="nameShow" @select="selectHandler" @close="nameShow = false"/>
-		
+		<Confrimpops ref="dconfrims" @del="condelHandlers" />
 	</view>
 </template>
 
@@ -293,6 +293,7 @@ import Tool from '../../utils/tool.js';
 import hchPoster from '../../wxcomponents/hch-poster/hch-poster.vue';
 import Integraltip from '@/components/integraltip/integraltip.vue';
 import Confrimpop from '@/components/confrim/confrim.vue';
+import Confrimpops from '@/components/confrim/confrim.vue';
 import DeleteTip from '@/components/deletetip/deletetip.vue';
 import SelectItem from '@/components/selectitem/selectitem.vue'
 export default {
@@ -525,6 +526,55 @@ export default {
 		};
 	},
 	methods: {
+		deleteDynamics(obj){
+			console.log(obj)
+			this.$refs.dconfrims.guestShow = true
+			this.$refs.dconfrims.id = obj.id
+			this.$refs.dconfrims.type = obj.type
+			this.$refs.dconfrims.obj = obj
+			this.$refs.dconfrims.text = '是否删除本贴?'
+		},
+		condelHandlers(obj){
+			console.log(obj)
+			var pitem = obj
+			var object_id = pitem.id
+			var type = pitem.type
+			var object_type = pitem.type
+			// if (type == 5) {
+			// 	object_id = pitem.object_id	
+			// } else {
+			
+			// 	if (type == 7 || type == 8) {
+			// 		if(type == 8){
+			// 			object_id = pitem.object_id	
+			// 		}else{
+			// 			object_id = pitem.wiki_id
+			// 		}
+			// 	} else if(type == 16){
+			// 		object_id = pitem.object_id	
+			// 	}else if(type == 17){
+			// 		object_id = pitem.object_id	
+			// 	}else{
+			// 		object_id = pitem.object_id	
+			// 	}
+			// }
+			this.Api.deleteDynamics({object_type:object_type,object_id:object_id,community_id:uni.getStorageSync('community_id')}).then((result) => {
+				if(result.code == 1){
+					uni.showToast({
+						icon:'success',
+						title:result.msg,
+						duration:2000,
+						success: () => {
+							this.$refs.dconfrims.guestShow = false
+							this.findFaultValue = false
+							uni.reLaunch({
+								url:'/pages/index/index'
+							})
+						}
+					})
+				}
+			})
+		},
 		lookVodetail(item){
 			uni.navigateTo({
 				url: 'ysvdetail?vote_id=' + item.vote_id+'&type='+this.detail.type
@@ -1916,6 +1966,7 @@ export default {
 		Firend,
 		Reply,
 		Confrimpop,
+		Confrimpops,
 		DeleteTip,
 		SelectItem
 	},

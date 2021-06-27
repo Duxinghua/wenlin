@@ -822,7 +822,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -2153,6 +2153,9 @@ var addDynamicsVoteVote = function addDynamicsVoteVote(params) {return (0, _requ
 var singleVoteDetail = function singleVoteDetail(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/vote/singleVoteDetail', 'POST');};
 //议事厅投票评论--1.1  {{localhost}}/api/community/vote/voteComment
 var voteComment = function voteComment(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/vote/voteComment', 'POST');};
+
+var voteCommentReply = function voteCommentReply(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/vote/voteCommentReply', 'POST');};
+
 //议事厅投票评论列表--1.1 {{localhost}}/api/community/vote/getMultistageComments
 var getVoteMultistageComments = function getVoteMultistageComments(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/vote/getMultistageComments', 'POST');};
 // 小区公益---1.1 community/community_score/communityScore
@@ -2353,7 +2356,8 @@ publishNewthingDynamics), _defineProperty(_wechatAuth$setUserPh, "pactivityDetai
 pactivityDetail), _defineProperty(_wechatAuth$setUserPh, "updateUs",
 updateUs), _defineProperty(_wechatAuth$setUserPh, "getLastNotices",
 getLastNotices), _defineProperty(_wechatAuth$setUserPh, "getNoticesDetail",
-getNoticesDetail), _wechatAuth$setUserPh);exports.default = _default;
+getNoticesDetail), _defineProperty(_wechatAuth$setUserPh, "voteCommentReply",
+voteCommentReply), _wechatAuth$setUserPh);exports.default = _default;
 
 /***/ }),
 
@@ -2562,7 +2566,7 @@ var subscription = {
   vote: 'wedVxVL7kxxEMfcnjhVgWCottnrhwHzZ9SYZaWiGs48',
   jointuan: '8acnia-tVCSVzY49oVA3jteQCh1qhxrEc9DIfpsEIfg' };
 
-var version = 15;
+var version = 16;
 module.exports = {
   appid: appid,
   mapkey: mapkey,
@@ -14151,7 +14155,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -14172,14 +14176,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -14265,7 +14269,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -19606,7 +19610,7 @@ parser.prototype.Content = function () {
 var formatRegExp = /%[sdj%]/g;
 var warning = function warning() {}; // don't print warning message when in production env or node runtime
 
-if (typeof process !== 'undefined' && Object({"VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}) && "development" !== 'production' && typeof window !==
+if (typeof process !== 'undefined' && Object({"NODE_ENV":"development","VUE_APP_NAME":"lindemoc","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}) && "development" !== 'production' && typeof window !==
 'undefined' && typeof document !== 'undefined') {
   warning = function warning(type, errors) {
     if (typeof console !== 'undefined' && console.warn) {

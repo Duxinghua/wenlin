@@ -705,11 +705,6 @@ page.data-v-246cef20 {
 .helpdetail .content .detailnav .active.data-v-246cef20 {
   color: #333333;
 }
-.helpdetail .content .detailnav .navitem.data-v-246cef20:nth-of-type(1) {
-  margin-right: 32rpx;
-  padding-right: 32rpx;
-  border-right: 4rpx solid #d8d8d8;
-}
 .helpdetail .content .detailcontent.data-v-246cef20 {
   padding: 0rpx 24rpx;
   -webkit-box-sizing: border-box;

@@ -22,6 +22,7 @@
     "firend": "/components/onfirend/onfirend",
     "reply": "/components/reply/reply",
     "confrimpop": "/components/confrim/confrim",
+    "confrimpops": "/components/confrim/confrim",
     "delete-tip": "/components/deletetip/deletetip",
     "select-item": "/components/selectitem/selectitem"
   }

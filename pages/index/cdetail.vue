@@ -207,7 +207,7 @@
 		<!-- 帮推 -->
 		<Help ref="Help" :isShow="helpShow" @close="Helpcancel" @ok="ok" :score="score"/>
 		<!-- 找错 -->
-		<FindFault :isShow="findFaultValue" :isCollect="findFaultCollect" :isType="findFaultType" @close="fClose" @collect="fCollect" @find="fFind"  @onshare="onShowshare" />
+		<FindFault @del="deleteDynamics" :pitem="detail"  :isShow="findFaultValue" :isCollect="findFaultCollect" :isType="findFaultType" @close="fClose" @collect="fCollect" @find="fFind"  @onshare="onShowshare" />
 		<!-- 分享 -->
 		<Onshare :isShow="onShareShow" :isHome.sync="isHome" @onsend="onsend" @close="onShowclose" @ontodo="onShowtodo" @onshare="onShowshare" />
 <!-- 		<hchPoster ref="hchPoster" :canvasFlag.sync="canvasFlag" @cancel="canvasCancel" :posterObj.sync="posterData"/>
@@ -230,6 +230,7 @@
 		</view>
 		<Firend ref="Firend" />
 		<Confrimpop ref='confrims' @del="condelHandler"/>
+		<Confrimpops ref="dconfrims" @del="condelHandlers" />
 		<DeleteTip ref="deletetip" />
 		<u-skeleton :loading="loading" :animation="true" el-color="#ddd" bg-color="#fff" border-radius="10"></u-skeleton>
 	</view>
@@ -249,6 +250,7 @@
 	import hchPoster from '../../wxcomponents/hch-poster/hch-poster.vue'
 	import Integraltip from '@/components/integraltip/integraltip.vue'
 	import Confrimpop from '@/components/confrim/confrim.vue'
+	import Confrimpops from '@/components/confrim/confrim.vue';
 	import DeleteTip from '@/components/deletetip/deletetip.vue'
 	export default{
 		data () {
@@ -476,6 +478,55 @@
 		    }
 		},
 		methods:{
+			deleteDynamics(obj){
+				console.log(obj)
+				this.$refs.dconfrims.guestShow = true
+				this.$refs.dconfrims.id = obj.id
+				this.$refs.dconfrims.type = obj.type
+				this.$refs.dconfrims.obj = obj
+				this.$refs.dconfrims.text = '是否删除本贴?'
+			},
+			condelHandlers(obj){
+				console.log(obj)
+				var pitem = obj
+				var object_id = pitem.id
+				var type = pitem.type
+				var object_type = pitem.type
+				// if (type == 5) {
+				// 	object_id = pitem.object_id	
+				// } else {
+				
+				// 	if (type == 7 || type == 8) {
+				// 		if(type == 8){
+				// 			object_id = pitem.object_id	
+				// 		}else{
+				// 			object_id = pitem.wiki_id
+				// 		}
+				// 	} else if(type == 16){
+				// 		object_id = pitem.object_id	
+				// 	}else if(type == 17){
+				// 		object_id = pitem.object_id	
+				// 	}else{
+				// 		object_id = pitem.object_id	
+				// 	}
+				// }
+				this.Api.deleteDynamics({object_type:object_type,object_id:object_id,community_id:uni.getStorageSync('community_id')}).then((result) => {
+					if(result.code == 1){
+						uni.showToast({
+							icon:'success',
+							title:result.msg,
+							duration:2000,
+							success: () => {
+								this.$refs.dconfrims.guestShow = false
+								this.findFaultValue = false
+								uni.reLaunch({
+									url:'/pages/index/index'
+								})
+							}
+						})
+					}
+				})
+			},
 			getPhoneNumber(e){
 				if (uni.getStorageSync('singPage') == 1) {
 					uni.showToast({
@@ -1667,6 +1718,7 @@
 			Nodata,
 			Firend,
 			Confrimpop,
+			Confrimpops,
 			DeleteTip
 		},
 		computed:{

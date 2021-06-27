@@ -59,7 +59,7 @@
 				</scroll-view>
 			</view>
 			<!-- 			</view> -->
-			<view :class="['postwrap', type == 3 && postList.length > 0 ? 'usedwrap' : '']">
+			<view :class="['postwrap', type == 3 ? 'usedwrap' : '']">
 			<mescroll-uni scroll-y="true"  v-if="type != 3" :style="{height: height+'px'}" 
 			class="listwrap"
 			:top="topFixed"
@@ -95,8 +95,9 @@
 				</mescroll-uni>
 
 				<mescroll-uni scroll-y="true"  v-if="type == 3" :style="{height: height+'px'}"
-				class="listwrap"
+				class="listwrap listwrap2"
 				:top="topFixed"
+				:flexType="true"
 				bottom="120"
 				ref="mescrollRef"
 				@init="mescrollInit"
@@ -314,6 +315,8 @@
 			:isShow="findFaultValue"
 			:isCollect="findFaultCollect"
 			:isType="findFaultType"
+			:pitem="findFaultObject"
+			@del="deleteDynamics"
 			@close="fClose"
 			@collect="fCollect"
 			@find="fFind"
@@ -350,10 +353,12 @@
 		<view class="xf" v-if="false " @click.stop="paiHandler">
 			<u-image :src="imgURl+'xf.png'" width="100%" height="100%"></u-image>
 		</view> -->
+		<Confrimpop ref='confrims' @del="condelHandler"/>
 	</view>
 </template>
 
 <script>
+import Confrimpop from '@/components/confrim/confrim.vue';
 import MescrollMixin from '@/components/mescroll-uni/mescroll-mixins.js';
 import LeaveWords from '@/components/leavewords/leavewords.vue';
 import PostItem from '@/components/postItem/postitem.vue';
@@ -767,6 +772,53 @@ export default {
 		}
 	},
 	methods: {
+		deleteDynamics(obj){
+			console.log(obj)
+			this.$refs.confrims.guestShow = true
+			this.$refs.confrims.id = obj.id
+			this.$refs.confrims.type = obj.type
+			this.$refs.confrims.obj = obj
+			this.$refs.confrims.text = '是否删除本贴?'
+		},
+		condelHandler(obj){
+			console.log(obj)
+			var pitem = obj
+			var object_id = ''
+			var type = pitem.type
+			var object_type = pitem.type
+			if (type == 5) {
+				object_id = pitem.object_id	
+			} else {
+			
+				if (type == 7 || type == 8) {
+					if(type == 8){
+						object_id = pitem.object_id	
+					}else{
+						object_id = pitem.wiki_id
+					}
+				} else if(type == 16){
+					object_id = pitem.object_id	
+				}else if(type == 17){
+					object_id = pitem.object_id	
+				}else{
+					object_id = pitem.object_id	
+				}
+			}
+			this.Api.deleteDynamics({object_type:object_type,object_id:object_id,community_id:uni.getStorageSync('community_id')}).then((result) => {
+				if(result.code == 1){
+					uni.showToast({
+						icon:'success',
+						title:result.msg,
+						duration:2000,
+						success: () => {
+							this.$refs.confrims.guestShow = false
+							this.findFaultValue = false
+							this.mescroll.resetUpScroll();
+						}
+					})
+				}
+			})
+		},
 		noticeHandler(e){
 			this.goLogin(res => {
 				if (!res) {
@@ -2008,7 +2060,8 @@ export default {
 		Onshare,
 		Help,
 		hchPoster,
-		Integraltip
+		Integraltip,
+		Confrimpop
 	}
 	// onReachBottom(){
 	// 	this.upOption.page.num ++
@@ -2019,6 +2072,12 @@ export default {
 <style lang="scss" scoped>
 page {
 	background: white;
+}
+.listwrap2{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: flex-start;
 }
 
 .content {
@@ -2355,6 +2414,7 @@ page {
 		.usedwrap {
 			display: flex;
 			flex-direction: row;
+			align-content: flex-start;
 			flex-wrap: wrap;
 		}
 		,

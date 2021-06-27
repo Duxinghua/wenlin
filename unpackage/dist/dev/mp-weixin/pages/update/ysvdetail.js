@@ -445,7 +445,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Reply = function Reply() {__webpack_require__.e(/*! require.ensure | components/reply/reply */ "components/reply/reply").then((function () {return resolve(__webpack_require__(/*! @/components/reply/reply.vue */ 603));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 610));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Thank = function Thank() {__webpack_require__.e(/*! require.ensure | components/thank/thank */ "components/thank/thank").then((function () {return resolve(__webpack_require__(/*! @/components/thank/thank.vue */ 617));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 624));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure | components/leavewords/leavewords */ "components/leavewords/leavewords").then((function () {return resolve(__webpack_require__(/*! @/components/leavewords/leavewords.vue */ 631));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 638));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Firend = function Firend() {__webpack_require__.e(/*! require.ensure | components/onfirend/onfirend */ "components/onfirend/onfirend").then((function () {return resolve(__webpack_require__(/*! ../../components/onfirend/onfirend.vue */ 645));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 652));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | components/bkhumor-emoji/index */ "components/bkhumor-emoji/index").then((function () {return resolve(__webpack_require__(/*! @/components/bkhumor-emoji/index.vue */ 659));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 546));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UserHeader = function UserHeader() {__webpack_require__.e(/*! require.ensure | components/userHeader/userheader */ "components/userHeader/userheader").then((function () {return resolve(__webpack_require__(/*! @/components/userHeader/userheader.vue */ 666));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Comment = function Comment() {__webpack_require__.e(/*! require.ensure | components/comment/comment */ "components/comment/comment").then((function () {return resolve(__webpack_require__(/*! @/components/comment/comment.vue */ 673));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 560));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 680));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Confrimpop = function Confrimpop() {__webpack_require__.e(/*! require.ensure | components/confrim/confrim */ "components/confrim/confrim").then((function () {return resolve(__webpack_require__(/*! @/components/confrim/confrim.vue */ 687));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var DeleteTip = function DeleteTip() {__webpack_require__.e(/*! require.ensure | components/deletetip/deletetip */ "components/deletetip/deletetip").then((function () {return resolve(__webpack_require__(/*! @/components/deletetip/deletetip.vue */ 694));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var SelectItem = function SelectItem() {__webpack_require__.e(/*! require.ensure | components/selectitem/selectitem */ "components/selectitem/selectitem").then((function () {return resolve(__webpack_require__(/*! @/components/selectitem/selectitem.vue */ 747));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Reply = function Reply() {__webpack_require__.e(/*! require.ensure | components/reply/reply */ "components/reply/reply").then((function () {return resolve(__webpack_require__(/*! @/components/reply/reply.vue */ 603));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Nodata = function Nodata() {__webpack_require__.e(/*! require.ensure | components/nodata/nodata */ "components/nodata/nodata").then((function () {return resolve(__webpack_require__(/*! @/components/nodata/nodata.vue */ 610));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Thank = function Thank() {__webpack_require__.e(/*! require.ensure | components/thank/thank */ "components/thank/thank").then((function () {return resolve(__webpack_require__(/*! @/components/thank/thank.vue */ 617));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Help = function Help() {__webpack_require__.e(/*! require.ensure | components/help/help */ "components/help/help").then((function () {return resolve(__webpack_require__(/*! @/components/help/help.vue */ 624));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var LeaveWords = function LeaveWords() {__webpack_require__.e(/*! require.ensure | components/leavewords/leavewords */ "components/leavewords/leavewords").then((function () {return resolve(__webpack_require__(/*! @/components/leavewords/leavewords.vue */ 631));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Onshare = function Onshare() {__webpack_require__.e(/*! require.ensure | components/onshare/onshare */ "components/onshare/onshare").then((function () {return resolve(__webpack_require__(/*! @/components/onshare/onshare.vue */ 638));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Firend = function Firend() {__webpack_require__.e(/*! require.ensure | components/onfirend/onfirend */ "components/onfirend/onfirend").then((function () {return resolve(__webpack_require__(/*! ../../components/onfirend/onfirend.vue */ 645));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var FindFault = function FindFault() {__webpack_require__.e(/*! require.ensure | components/findFault/findFault */ "components/findFault/findFault").then((function () {return resolve(__webpack_require__(/*! @/components/findFault/findFault.vue */ 652));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var emotion = function emotion() {__webpack_require__.e(/*! require.ensure | components/bkhumor-emoji/index */ "components/bkhumor-emoji/index").then((function () {return resolve(__webpack_require__(/*! @/components/bkhumor-emoji/index.vue */ 659));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var navigationCustom = function navigationCustom() {__webpack_require__.e(/*! require.ensure | components/struggler-navigationCustom/navigation-custom */ "components/struggler-navigationCustom/navigation-custom").then((function () {return resolve(__webpack_require__(/*! ../../components/struggler-navigationCustom/navigation-custom */ 546));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var UserHeader = function UserHeader() {__webpack_require__.e(/*! require.ensure | components/userHeader/userheader */ "components/userHeader/userheader").then((function () {return resolve(__webpack_require__(/*! @/components/userHeader/userheader.vue */ 666));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Comment = function Comment() {__webpack_require__.e(/*! require.ensure | components/comment/comment */ "components/comment/comment").then((function () {return resolve(__webpack_require__(/*! @/components/comment/comment.vue */ 673));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hchPoster = function hchPoster() {Promise.all(/*! require.ensure | wxcomponents/hch-poster/hch-poster */[__webpack_require__.e("common/vendor"), __webpack_require__.e("wxcomponents/hch-poster/hch-poster")]).then((function () {return resolve(__webpack_require__(/*! ../../wxcomponents/hch-poster/hch-poster.vue */ 560));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Integraltip = function Integraltip() {__webpack_require__.e(/*! require.ensure | components/integraltip/integraltip */ "components/integraltip/integraltip").then((function () {return resolve(__webpack_require__(/*! @/components/integraltip/integraltip.vue */ 680));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Confrimpop = function Confrimpop() {__webpack_require__.e(/*! require.ensure | components/confrim/confrim */ "components/confrim/confrim").then((function () {return resolve(__webpack_require__(/*! @/components/confrim/confrim.vue */ 687));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Confrimpops = function Confrimpops() {__webpack_require__.e(/*! require.ensure | components/confrim/confrim */ "components/confrim/confrim").then((function () {return resolve(__webpack_require__(/*! @/components/confrim/confrim.vue */ 687));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var DeleteTip = function DeleteTip() {__webpack_require__.e(/*! require.ensure | components/deletetip/deletetip */ "components/deletetip/deletetip").then((function () {return resolve(__webpack_require__(/*! @/components/deletetip/deletetip.vue */ 694));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var SelectItem = function SelectItem() {__webpack_require__.e(/*! require.ensure | components/selectitem/selectitem */ "components/selectitem/selectitem").then((function () {return resolve(__webpack_require__(/*! @/components/selectitem/selectitem.vue */ 747));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
 
 
 
@@ -682,13 +683,62 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
   },
   methods: {
+    deleteDynamics: function deleteDynamics(obj) {
+      console.log(obj, 'xx');
+      this.$refs.dconfrims.guestShow = true;
+      this.$refs.dconfrims.id = obj.vote_id;
+      this.$refs.dconfrims.type = obj.type;
+      this.$refs.dconfrims.obj = obj;
+      this.$refs.dconfrims.text = '是否删除本贴?';
+    },
+    condelHandlers: function condelHandlers(obj) {var _this = this;
+      console.log(obj);
+      var pitem = obj;
+      var object_id = this.detail.vote_id;
+      var type = pitem.type;
+      var object_type = 16;
+      // if (type == 5) {
+      // 	object_id = pitem.object_id	
+      // } else {
+
+      // 	if (type == 7 || type == 8) {
+      // 		if(type == 8){
+      // 			object_id = pitem.object_id	
+      // 		}else{
+      // 			object_id = pitem.wiki_id
+      // 		}
+      // 	} else if(type == 16){
+      // 		object_id = pitem.object_id	
+      // 	}else if(type == 17){
+      // 		object_id = pitem.object_id	
+      // 	}else{
+      // 		object_id = pitem.object_id	
+      // 	}
+      // }
+      this.Api.deleteDynamics({ object_type: object_type, object_id: object_id, community_id: uni.getStorageSync('community_id') }).then(function (result) {
+        if (result.code == 1) {
+          uni.showToast({
+            icon: 'success',
+            title: result.msg,
+            duration: 2000,
+            success: function success() {
+              _this.$refs.dconfrims.guestShow = false;
+              _this.findFaultValue = false;
+              uni.reLaunch({
+                url: '/pages/index/index' });
+
+            } });
+
+        }
+      });
+    },
     selectTodo: function selectTodo(value) {
       this.nameShow = true;
     },
-    selectHandler: function selectHandler(item) {var _this = this;
+    selectHandler: function selectHandler(item) {var _this2 = this;
       this.nameList.map(function (sitem) {
         if (sitem.name == item.name) {
-          _this.nameLabel = sitem.name;
+          _this2.nameLabel = sitem.name;
           sitem.check = true;
         } else {
           sitem.check = false;
@@ -696,7 +746,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       });
       this.nameShow = false;
     },
-    voteHandler: function voteHandler() {var _this2 = this;
+    voteHandler: function voteHandler() {var _this3 = this;
       if (this.voteobj.is_vote == 0) {
         var data = {
           dynamics_id: this.dynamics_id,
@@ -712,10 +762,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         // })
         this.Api.vote(data).then(function (result) {
           if (result.code == 1) {
-            _this2.getDetailAll();
-            _this2.voteFlag = false;
+            _this3.getDetailAll();
+            _this3.voteFlag = false;
           } else {
-            return _this2.$u.toast(result.msg);
+            return _this3.$u.toast(result.msg);
           }
         });
       } else {
@@ -941,7 +991,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         url: '/pages/index/index' });
 
     },
-    autoShare: function autoShare() {var _this3 = this;
+    autoShare: function autoShare() {var _this4 = this;
       if (this.srouce == 1) {
         if (uni.getStorageSync('token')) {
           if (this.opening == 0 && this.detail.publish_type == 1) {
@@ -983,9 +1033,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
               uni.setStorageSync('community_id', all_community[0].community_id);
               uni.setStorageSync('committee_id', all_community[0].committee_id);
             } else {
-              _this3.srouceText = '提示您尚未登录，请登录后操作';
-              _this3.srouceBtnText = '登录';
-              _this3.srouceShow = true;
+              _this4.srouceText = '提示您尚未登录，请登录后操作';
+              _this4.srouceBtnText = '登录';
+              _this4.srouceShow = true;
             }
           });
         }
@@ -1022,7 +1072,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
     },
     //帮推
-    helpPush: function helpPush() {var _this4 = this;
+    helpPush: function helpPush() {var _this5 = this;
       // this.$getMyscore((data) => {
       // 	this.score = data.score
       // 	this.helpShow = true
@@ -1046,8 +1096,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
       this.$getMyscore(function (res) {
         if (res.code == 1) {
-          _this4.score = res.data.score;
-          if (_this4.score == 0) {
+          _this5.score = res.data.score;
+          if (_this5.score == 0) {
             uni.showToast({
               title: '您的积分不足，请参加积分任务',
               icon: 'none',
@@ -1059,7 +1109,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
             }, 2000);
           } else {
-            _this4.helpShow = true;
+            _this5.helpShow = true;
           }
         }
       });
@@ -1067,7 +1117,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     Helpcancel: function Helpcancel() {
       this.helpShow = false;
     },
-    helpOk: function helpOk() {var _this5 = this;
+    helpOk: function helpOk() {var _this6 = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -1109,16 +1159,16 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             title: result.msg,
             duration: 2000,
             success: function success() {
-              _this5.add_type = result.data.add == -1 ? '-' : '+';
-              _this5.score_text = result.data.score;
-              _this5.helpShow = false;
-              _this5.$refs.integraltip.show();
+              _this6.add_type = result.data.add == -1 ? '-' : '+';
+              _this6.score_text = result.data.score;
+              _this6.helpShow = false;
+              _this6.$refs.integraltip.show();
               setTimeout(function () {
-                _this5.add_type = '';
-                _this5.score_text = '';
-                _this5.$refs.Help.inputValue = 0;
-                _this5.$refs.integraltip.close();
-                _this5.getDetailAll();
+                _this6.add_type = '';
+                _this6.score_text = '';
+                _this6.$refs.Help.inputValue = 0;
+                _this6.$refs.integraltip.close();
+                _this6.getDetailAll();
               }, 2000);
             } });
 
@@ -1131,7 +1181,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         }
       });
     },
-    getCommentList: function getCommentList(ismore) {var _this6 = this;
+    getCommentList: function getCommentList(ismore) {var _this7 = this;
       //所有的都是10
       var data = {
         vote_id: this.id,
@@ -1143,7 +1193,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (result.code == 1) {
             if (ismore) {
               var res = result.data.list;
-              _this6.total = result.data.total_page;
+              _this7.total = result.data.total_page;
               res.map(function (item) {
                 item.nodes =
                 '<p style="display:inline-flex;align-items:center;">' +
@@ -1174,10 +1224,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
                   });
                 }
               });
-              _this6.commentList = _this6.commentList.concat(res);
+              _this7.commentList = _this7.commentList.concat(res);
             } else {
               var res = result.data.list;
-              _this6.total = result.data.total_page;
+              _this7.total = result.data.total_page;
               res.map(function (item) {
                 item.nodes =
                 '<p style="display:inline-flex;align-items:center;">' +
@@ -1208,14 +1258,14 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
                   });
                 }
               });
-              _this6.commentList = res;
+              _this7.commentList = res;
             }
-            if (_this6.commentList.length) {
-              _this6.nodataFlag = false;
+            if (_this7.commentList.length) {
+              _this7.nodataFlag = false;
             } else {
-              _this6.nodataFlag = true;
+              _this7.nodataFlag = true;
             }
-            _this6.$forceUpdate();
+            _this7.$forceUpdate();
           }
         });
       } else if (this.navIndex == 2) {
@@ -1225,19 +1275,19 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (result.code == 1) {
             if (ismore) {
               var res = result.data.list;
-              _this6.total = result.data.total_page;
-              _this6.commentList = _this6.commentList.concat(res);
+              _this7.total = result.data.total_page;
+              _this7.commentList = _this7.commentList.concat(res);
             } else {
               var res = result.data.list;
-              _this6.total = result.data.total_page;
-              _this6.commentList = res;
+              _this7.total = result.data.total_page;
+              _this7.commentList = res;
             }
-            if (_this6.commentList.length) {
-              _this6.nodataFlag = false;
+            if (_this7.commentList.length) {
+              _this7.nodataFlag = false;
             } else {
-              _this6.nodataFlag = true;
+              _this7.nodataFlag = true;
             }
-            _this6.$forceUpdate();
+            _this7.$forceUpdate();
           }
         });
       }
@@ -1269,7 +1319,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.isShowEmj = !this.isShowEmj;
     },
     //评论点赞
-    floverHandler: function floverHandler(e) {var _this7 = this;
+    floverHandler: function floverHandler(e) {var _this8 = this;
+      return;
+      console.log(e);
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -1304,7 +1356,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             // 	title: result.msg,
             // 	duration: 2000,
             // 	success: () => {
-            _this7.getCommentList();
+            _this8.getCommentList();
             // 	}
             // });
           }
@@ -1324,7 +1376,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             // 	title: result.msg,
             // 	duration: 2000,
             // 	success: () => {
-            _this7.getCommentList();
+            _this8.getCommentList();
             // }
             //});
           }
@@ -1391,59 +1443,97 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
 
       var data = {
-        dynamics_id: this.detail.id,
-        object_type: this.type,
+        vote_id: this.detail.vote_id,
+        dynamics_id: this.detail.dynamics_id,
         content: this.inputValue,
-        parent_id: this.parent_id,
         community_id: uni.getStorageSync('community_id') };
 
-      if (this.type == 7 || this.type == 5) {
-        data.third_id = this.id;
-      }
-      if (this.type == 7) {
-        data.dynamics_id = this.dynamics_id;
-      }
-      this.Api.setComments(data).then(function (result) {
-        if (result.code == 1) {
-          // uni.showToast({
-          // 	title: result.msg,
-          // 	duration: 2000,
-          // 	success: () => {
-          that.$u.toast(result.msg);
-          that.subMessageTodo(that.comIds, 3, function (ss) {
-            that.replyTextarea = false;
-            that.textareaautofocus = false;
-            that.scrollFixed = false;
-            // this.isShowEmj = false
-            // this.inputValue = ''
-            // this.parent_id = ''
-            // this.replyFlag = true
-            // this.parent_text = '说说你的看法'
-            // this.getCommentList()
-            that.isShowEmj = false;
-            that.inputValue = '';
-            that.parent_id = '';
-            that.replyFlag = true;
-            that.parent_text = '说说你的看法';
-            if (result.data.add) {
-              that.add_type = result.data.add == -1 ? '-' : '+';
-              that.score_text = result.data.score;
-              that.$refs.integraltip.show();
-              setTimeout(function () {
-                that.add_type = '';
-                that.score_text = '';
+      if (this.parent_id) {
+        data.parent_id = this.parent_id;
+        this.Api.voteCommentReply(data).then(function (result) {
+          if (result.code == 1) {
+            // uni.showToast({
+            // 	title: result.msg,
+            // 	duration: 2000,
+            // 	success: () => {
+            that.$u.toast(result.msg);
+            that.subMessageTodo(that.comIds, 3, function (ss) {
+              that.replyTextarea = false;
+              that.textareaautofocus = false;
+              that.scrollFixed = false;
+              // this.isShowEmj = false
+              // this.inputValue = ''
+              // this.parent_id = ''
+              // this.replyFlag = true
+              // this.parent_text = '说说你的看法'
+              // this.getCommentList()
+              that.isShowEmj = false;
+              that.inputValue = '';
+              that.parent_id = '';
+              that.replyFlag = true;
+              that.parent_text = '说说你的看法';
+              if (result.data.add) {
+                that.add_type = result.data.add == -1 ? '-' : '+';
+                that.score_text = result.data.score;
+                that.$refs.integraltip.show();
+                setTimeout(function () {
+                  that.add_type = '';
+                  that.score_text = '';
 
-                that.$refs.integraltip.close();
+                  that.$refs.integraltip.close();
+                  that.getCommentList();
+                }, 2000);
+              } else {
                 that.getCommentList();
-              }, 2000);
-            } else {
-              that.getCommentList();
-            }
-          });
-          // 	}
-          // });
-        }
-      });
+              }
+            });
+            // 	}
+            // });
+          }
+        });
+      } else {
+        this.Api.voteComment(data).then(function (result) {
+          if (result.code == 1) {
+            // uni.showToast({
+            // 	title: result.msg,
+            // 	duration: 2000,
+            // 	success: () => {
+            that.$u.toast(result.msg);
+            that.subMessageTodo(that.comIds, 3, function (ss) {
+              that.replyTextarea = false;
+              that.textareaautofocus = false;
+              that.scrollFixed = false;
+              // this.isShowEmj = false
+              // this.inputValue = ''
+              // this.parent_id = ''
+              // this.replyFlag = true
+              // this.parent_text = '说说你的看法'
+              // this.getCommentList()
+              that.isShowEmj = false;
+              that.inputValue = '';
+              that.parent_id = '';
+              that.replyFlag = true;
+              that.parent_text = '说说你的看法';
+              if (result.data.add) {
+                that.add_type = result.data.add == -1 ? '-' : '+';
+                that.score_text = result.data.score;
+                that.$refs.integraltip.show();
+                setTimeout(function () {
+                  that.add_type = '';
+                  that.score_text = '';
+
+                  that.$refs.integraltip.close();
+                  that.getCommentList();
+                }, 2000);
+              } else {
+                that.getCommentList();
+              }
+            });
+            // 	}
+            // });
+          }
+        });
+      }
 
     },
     //复制功能
@@ -1495,39 +1585,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         success: function success() {} });
 
     },
-    getDdetail: function getDdetail() {var _this8 = this;
+    getDdetail: function getDdetail() {var _this9 = this;
       this.Api.dongtaiDetail({ dynamics_id: this.dynamics_id }).then(function (result) {
         if (result.code == 1) {
           if (!result.data.id) {
-            // uni.redirectTo({
-            // 	url:'/pages/index/404'
-            // })
-            _this8.$refs.deletetip.deleteShow = true;
-            return;
-          }
-          _this8.detail = result.data;
-          _this8.loading = false;
-          _this8.detail.content = _this8.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
-          if (_this8.type == 2) {
-            _this8.config.title = '小区新鲜事';
-          } else if (_this8.type == 5) {
-            _this8.config.title = '小区新鲜事';
-          }
-          _this8.detail.user = {
-            user_nickname: '' };
-
-          _this8.getCommentList();
-          if (_this8.srouce) {
-            console.log('dd,2');
-            _this8.autoShare();
-          }
-        }
-      });
-    },
-    getDetail: function getDetail() {var _this9 = this;
-      this.Api.singleVoteDetail({ vote_id: this.id }).then(function (result) {
-        if (result.code == 1) {
-          if (!result.data.vote_id) {
             // uni.redirectTo({
             // 	url:'/pages/index/404'
             // })
@@ -1536,26 +1597,55 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           }
           _this9.detail = result.data;
           _this9.loading = false;
-          _this9.opening = result.data.opening;
-          _this9.srouceCommunity_id = result.data.create_user.community_id;
-          _this9.srouceCommunity_text = result.data.create_user.community_name;
+          _this9.detail.content = _this9.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
           if (_this9.type == 2) {
             _this9.config.title = '小区新鲜事';
           } else if (_this9.type == 5) {
             _this9.config.title = '小区新鲜事';
-          } else {
-            if (_this9.detail.community) {
-              _this9.config.title = _this9.detail.community.title + _tool.default.resultValue(_this9.type);
-            }
           }
-          _this9.author = result.data.user_id;
-          if (!_this9.voteobj) {
-            _this9.voteobj = result.data.vote_list[0];
-          }
+          _this9.detail.user = {
+            user_nickname: '' };
+
           _this9.getCommentList();
           if (_this9.srouce) {
-            console.log('d2');
+            console.log('dd,2');
             _this9.autoShare();
+          }
+        }
+      });
+    },
+    getDetail: function getDetail() {var _this10 = this;
+      this.Api.singleVoteDetail({ vote_id: this.id }).then(function (result) {
+        if (result.code == 1) {
+          if (!result.data.vote_id) {
+            // uni.redirectTo({
+            // 	url:'/pages/index/404'
+            // })
+            _this10.$refs.deletetip.deleteShow = true;
+            return;
+          }
+          _this10.detail = result.data;
+          _this10.loading = false;
+          _this10.opening = result.data.opening;
+          _this10.srouceCommunity_id = result.data.create_user.community_id;
+          _this10.srouceCommunity_text = result.data.create_user.community_name;
+          if (_this10.type == 2) {
+            _this10.config.title = '小区新鲜事';
+          } else if (_this10.type == 5) {
+            _this10.config.title = '小区新鲜事';
+          } else {
+            if (_this10.detail.community) {
+              _this10.config.title = _this10.detail.community.title + _tool.default.resultValue(_this10.type);
+            }
+          }
+          _this10.author = result.data.user_id;
+          if (!_this10.voteobj) {
+            _this10.voteobj = result.data.vote_list[0];
+          }
+          _this10.getCommentList();
+          if (_this10.srouce) {
+            console.log('d2');
+            _this10.autoShare();
           }
         }
       });
@@ -1721,12 +1811,12 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       // parent_id:'',
       // parent_text:'说说你的看法',
     },
-    report: function report() {var _this10 = this;
+    report: function report() {var _this11 = this;
       //findFaultObject
       uni.navigateTo({
         url: '/pages/update/report?object_id=' + this.detail.id + '&object_type=' + this.detail.type,
         success: function success() {
-          _this10.findFaultValue = false;
+          _this11.findFaultValue = false;
         } });
 
     },
@@ -1737,7 +1827,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     closeMessage: function closeMessage() {
       this.messageShow = false;
     },
-    submitTodo: function submitTodo(e) {var _this11 = this;
+    submitTodo: function submitTodo(e) {var _this12 = this;
       if (!e) {
         uni.showToast({
           icon: 'none',
@@ -1757,13 +1847,13 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             duration: 1000,
             title: result.msg,
             success: function success() {
-              _this11.messageShow = false;
+              _this12.messageShow = false;
             } });
 
         }
       });
     },
-    thankHandler: function thankHandler(e) {var _this12 = this;
+    thankHandler: function thankHandler(e) {var _this13 = this;
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
           title: '请前往小程序使用完整服务',
@@ -1784,8 +1874,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.findFaultObject = e;
       this.$getMyscore(function (result) {
         if (result.code == 1) {
-          _this12.score = result.data.score;
-          _this12.thankShow = true;
+          _this13.score = result.data.score;
+          _this13.thankShow = true;
         }
       });
     },
@@ -1814,7 +1904,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     cancel: function cancel() {
       this.thankShow = false;
     },
-    ok: function ok(e) {var _this13 = this;
+    ok: function ok(e) {var _this14 = this;
       var input = this.$refs.thank.inputValue;
       if (!input) {
         uni.showToast({
@@ -1837,16 +1927,16 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             icon: 'success',
             duration: 2000,
             success: function success() {
-              _this13.$refs.Help.inputValue = 0;
-              _this13.thankShow = false;
-              _this13.add_type = result.data.add == -1 ? '-' : '+';
-              _this13.score_text = result.data.score;
-              _this13.$refs.integraltip.show();
+              _this14.$refs.Help.inputValue = 0;
+              _this14.thankShow = false;
+              _this14.add_type = result.data.add == -1 ? '-' : '+';
+              _this14.score_text = result.data.score;
+              _this14.$refs.integraltip.show();
               setTimeout(function () {
-                _this13.add_type = '';
-                _this13.score_text = '';
-                _this13.$refs.integraltip.close();
-                _this13.getCommentList();
+                _this14.add_type = '';
+                _this14.score_text = '';
+                _this14.$refs.integraltip.close();
+                _this14.getCommentList();
               }, 2000);
             } });
 
@@ -1884,7 +1974,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     onShowclose: function onShowclose() {
       this.onShareShow = false;
     },
-    onShowtodo: function onShowtodo() {var _this14 = this;
+    onShowtodo: function onShowtodo() {var _this15 = this;
       this.scrollFixed = true;
       var pages = getCurrentPages(); //获取加载的页面
 
@@ -1906,29 +1996,29 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
       this.Api.getWXACodeUnlimit(data).then(function (result) {
         if (result.code == 1) {
-          _this14.$nextTick(function () {
-            _this14.onShareShow = false;
-            _this14.posterData.posterImgUrl = _this14.findFaultObject.images.length ? _this14.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
-            if (_this14.type == 7 || _this14.type == 8) {
-              _this14.posterData.title = _this14.findFaultObject.title;
+          _this15.$nextTick(function () {
+            _this15.onShareShow = false;
+            _this15.posterData.posterImgUrl = _this15.findFaultObject.images.length ? _this15.findFaultObject.images[0] : 'https://sq.wenlinapp.com/appimg/share500400.jpg';
+            if (_this15.type == 7 || _this15.type == 8) {
+              _this15.posterData.title = _this15.findFaultObject.title;
             } else {
-              _this14.posterData.title = _this14.findFaultObject.content;
+              _this15.posterData.title = _this15.findFaultObject.content;
             }
-            if (_this14.posterData.title.length > 35) {
-              _this14.posterData.title = _this14.posterData.title.substr(0, 35) + '...';
+            if (_this15.posterData.title.length > 35) {
+              _this15.posterData.title = _this15.posterData.title.substr(0, 35) + '...';
             }
-            _this14.posterData.avatarUrl = uni.getStorageSync('user').avatar;
-            _this14.posterData.posterCodeUrl = result.data;
-            _this14.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this14.type) + '信息';
-            _this14.$forceUpdate();
+            _this15.posterData.avatarUrl = uni.getStorageSync('user').avatar;
+            _this15.posterData.posterCodeUrl = result.data;
+            _this15.posterData.des = uni.getStorageSync('user').user_nickname + '给你分享了一个' + _tool.default.resultValue(_this15.type) + '信息';
+            _this15.$forceUpdate();
             setTimeout(function () {
-              _this14.canvasFlag = false; //显示canvas海报
-              _this14.deliveryFlag = false; //关闭分享弹窗
-              _this14.$refs.hchPoster.posterShow();
+              _this15.canvasFlag = false; //显示canvas海报
+              _this15.deliveryFlag = false; //关闭分享弹窗
+              _this15.$refs.hchPoster.posterShow();
             }, 500);
           });
         } else {
-          _this14.scrollFixed = false;
+          _this15.scrollFixed = false;
         }
       });
     },
@@ -1936,7 +2026,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       this.scrollFixed = false;
       this.canvasFlag = val;
     },
-    condelHandler: function condelHandler(e) {var _this15 = this;
+    condelHandler: function condelHandler(e) {var _this16 = this;
       if (e == -1) {
         var url = '';
         if (this.type == 7 || this.type == 8) {
@@ -1959,8 +2049,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             title: result.msg,
             duration: 2000,
             success: function success() {
-              _this15.$refs.confrims.guestShow = false;
-              _this15.getCommentList();
+              _this16.$refs.confrims.guestShow = false;
+              _this16.getCommentList();
             } });
 
         }
@@ -1983,6 +2073,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     Firend: Firend,
     Reply: Reply,
     Confrimpop: Confrimpop,
+    Confrimpops: Confrimpops,
     DeleteTip: DeleteTip,
     SelectItem: SelectItem },
 

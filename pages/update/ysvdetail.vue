@@ -22,9 +22,9 @@
 						</view>
 						<view class="voteavatarwrap">
 							<view class="votelist">
-								<view class="voteaitem" v-for="(item,index) in detail.vote_user_list">
+							<view class="voteaitem" v-for="(item,index) in detail.vote_user_list" :key="index">
 									<image :src="item.avatar" class="iavatar"></image>
-								</view>
+							</view>
 							</view>
 							<view class="more" v-if="detail.vote_user_list.length > 8">
 								{{detail.vote_user_list.length}}
@@ -51,7 +51,7 @@
 				</view>
 				<view class="detailnav">
 					<text :class="['navitem', navIndex == 1 ? 'active' : '']" @click="navClick(1)">评论{{ detail.comment_count ? detail.comment_count : '' }}</text>
-					<text :class="['navitem', navIndex == 2 ? 'active' : '']" @click="navClick(2)">帮推{{ detail.help_score ? detail.help_score : '' }}</text>
+					<text v-if="false" :class="['navitem', navIndex == 2 ? 'active' : '']" @click="navClick(2)">帮推{{ detail.help_score ? detail.help_score : '' }}</text>
 				</view>
 				<view class="detailcontent u-skeleton-fillet">
 					<Comment
@@ -170,7 +170,7 @@
 		/>
 
 		<!-- 找错 -->
-		<FindFault :isShow="findFaultValue" :isCollect="findFaultCollect" :isType="findFaultType" @close="fClose" @collect="fCollect" @find="fFind" @report="report" @onshare="onShowshare" />
+		<FindFault   :isShow="findFaultValue" :isCollect="findFaultCollect" :isType="findFaultType" @close="fClose" @collect="fCollect" @find="fFind" @report="report" @onshare="onShowshare" />
 		<!-- 答谢 -->
 		<Thank ref="thank" :isShow="thankShow" @close="cancel" @ok="ok" :score="score" />
 		<!-- 帮推 -->
@@ -221,7 +221,7 @@
 			</view>
 		</u-popup>
 		<SelectItem :list="nameList" :type="selectType" :isShow="nameShow" @select="selectHandler" @close="nameShow = false"/>
-		
+		<Confrimpops ref="dconfrims" @del="condelHandlers" />
 	</view>
 </template>
 
@@ -242,6 +242,7 @@ import Tool from '../../utils/tool.js';
 import hchPoster from '../../wxcomponents/hch-poster/hch-poster.vue';
 import Integraltip from '@/components/integraltip/integraltip.vue';
 import Confrimpop from '@/components/confrim/confrim.vue';
+import Confrimpops from '@/components/confrim/confrim.vue';
 import DeleteTip from '@/components/deletetip/deletetip.vue';
 import SelectItem from '@/components/selectitem/selectitem.vue'
 export default {
@@ -475,6 +476,55 @@ export default {
 		};
 	},
 	methods: {
+		deleteDynamics(obj){
+			console.log(obj,'xx')
+			this.$refs.dconfrims.guestShow = true
+			this.$refs.dconfrims.id = obj.vote_id
+			this.$refs.dconfrims.type = obj.type
+			this.$refs.dconfrims.obj = obj
+			this.$refs.dconfrims.text = '是否删除本贴?'
+		},
+		condelHandlers(obj){
+			console.log(obj)
+			var pitem = obj
+			var object_id = this.detail.vote_id
+			var type = pitem.type
+			var object_type = 16
+			// if (type == 5) {
+			// 	object_id = pitem.object_id	
+			// } else {
+			
+			// 	if (type == 7 || type == 8) {
+			// 		if(type == 8){
+			// 			object_id = pitem.object_id	
+			// 		}else{
+			// 			object_id = pitem.wiki_id
+			// 		}
+			// 	} else if(type == 16){
+			// 		object_id = pitem.object_id	
+			// 	}else if(type == 17){
+			// 		object_id = pitem.object_id	
+			// 	}else{
+			// 		object_id = pitem.object_id	
+			// 	}
+			// }
+			this.Api.deleteDynamics({object_type:object_type,object_id:object_id,community_id:uni.getStorageSync('community_id')}).then((result) => {
+				if(result.code == 1){
+					uni.showToast({
+						icon:'success',
+						title:result.msg,
+						duration:2000,
+						success: () => {
+							this.$refs.dconfrims.guestShow = false
+							this.findFaultValue = false
+							uni.reLaunch({
+								url:'/pages/index/index'
+							})
+						}
+					})
+				}
+			})
+		},
 		selectTodo(value){
 			this.nameShow = true
 		},
@@ -1063,6 +1113,8 @@ export default {
 		},
 		//评论点赞
 		floverHandler(e) {
+			return
+			console.log(e)
 			if (uni.getStorageSync('singPage') == 1) {
 				uni.showToast({
 					title: '请前往小程序使用完整服务',
@@ -1184,59 +1236,97 @@ export default {
 			}
 		
 				var data = {
-					dynamics_id: this.detail.id,
-					object_type: this.type,
+					vote_id: this.detail.vote_id,
+					dynamics_id: this.detail.dynamics_id,
 					content: this.inputValue,
-					parent_id: this.parent_id,
 					community_id: uni.getStorageSync('community_id')
 				};
-				if (this.type == 7 || this.type == 5) {
-					data.third_id = this.id;
-				}
-				if (this.type == 7) {
-					data.dynamics_id = this.dynamics_id;
-				}
-				this.Api.setComments(data).then(result => {
-					if (result.code == 1) {
-						// uni.showToast({
-						// 	title: result.msg,
-						// 	duration: 2000,
-						// 	success: () => {
-								that.$u.toast(result.msg)
-								that.subMessageTodo(that.comIds,3,(ss) => {
-									that.replyTextarea = false;
-									that.textareaautofocus = false;
-									that.scrollFixed = false;
-									// this.isShowEmj = false
-									// this.inputValue = ''
-									// this.parent_id = ''
-									// this.replyFlag = true
-									// this.parent_text = '说说你的看法'
-									// this.getCommentList()
-									that.isShowEmj = false;
-									that.inputValue = '';
-									that.parent_id = '';
-									that.replyFlag = true;
-									that.parent_text = '说说你的看法';
-									if (result.data.add) {
-										that.add_type = result.data.add == -1 ? '-' : '+';
-										that.score_text = result.data.score;
-										that.$refs.integraltip.show();
-										setTimeout(() => {
-											that.add_type = '';
-											that.score_text = '';
-
-											that.$refs.integraltip.close();
+				if(this.parent_id){
+					data.parent_id = this.parent_id
+					this.Api.voteCommentReply(data).then(result => {
+						if (result.code == 1) {
+							// uni.showToast({
+							// 	title: result.msg,
+							// 	duration: 2000,
+							// 	success: () => {
+									that.$u.toast(result.msg)
+									that.subMessageTodo(that.comIds,3,(ss) => {
+										that.replyTextarea = false;
+										that.textareaautofocus = false;
+										that.scrollFixed = false;
+										// this.isShowEmj = false
+										// this.inputValue = ''
+										// this.parent_id = ''
+										// this.replyFlag = true
+										// this.parent_text = '说说你的看法'
+										// this.getCommentList()
+										that.isShowEmj = false;
+										that.inputValue = '';
+										that.parent_id = '';
+										that.replyFlag = true;
+										that.parent_text = '说说你的看法';
+										if (result.data.add) {
+											that.add_type = result.data.add == -1 ? '-' : '+';
+											that.score_text = result.data.score;
+											that.$refs.integraltip.show();
+											setTimeout(() => {
+												that.add_type = '';
+												that.score_text = '';
+					
+												that.$refs.integraltip.close();
+												that.getCommentList();
+											}, 2000);
+										} else {
 											that.getCommentList();
-										}, 2000);
-									} else {
-										that.getCommentList();
-									}
-								})
-						// 	}
-						// });
-					}
-				});
+										}
+									})
+							// 	}
+							// });
+						}
+					});
+				}else{
+					this.Api.voteComment(data).then(result => {
+						if (result.code == 1) {
+							// uni.showToast({
+							// 	title: result.msg,
+							// 	duration: 2000,
+							// 	success: () => {
+									that.$u.toast(result.msg)
+									that.subMessageTodo(that.comIds,3,(ss) => {
+										that.replyTextarea = false;
+										that.textareaautofocus = false;
+										that.scrollFixed = false;
+										// this.isShowEmj = false
+										// this.inputValue = ''
+										// this.parent_id = ''
+										// this.replyFlag = true
+										// this.parent_text = '说说你的看法'
+										// this.getCommentList()
+										that.isShowEmj = false;
+										that.inputValue = '';
+										that.parent_id = '';
+										that.replyFlag = true;
+										that.parent_text = '说说你的看法';
+										if (result.data.add) {
+											that.add_type = result.data.add == -1 ? '-' : '+';
+											that.score_text = result.data.score;
+											that.$refs.integraltip.show();
+											setTimeout(() => {
+												that.add_type = '';
+												that.score_text = '';
+
+												that.$refs.integraltip.close();
+												that.getCommentList();
+											}, 2000);
+										} else {
+											that.getCommentList();
+										}
+									})
+							// 	}
+							// });
+						}
+					});
+				}
 	
 		},
 		//复制功能
@@ -1776,6 +1866,7 @@ export default {
 		Firend,
 		Reply,
 		Confrimpop,
+		Confrimpops,
 		DeleteTip,
 		SelectItem
 	},
@@ -2330,11 +2421,12 @@ page {
 			.active {
 				color: #333333;
 			}
-			.navitem:nth-of-type(1) {
-				margin-right: 32upx;
-				padding-right: 32upx;
-				border-right: 4upx solid rgba(216, 216, 216, 1);
-			}
+			// .navitem:nth-of-type(1) {
+			// 	display: none;
+			// 	margin-right: 32upx;
+			// 	padding-right: 32upx;
+			// 	border-right: 4upx solid rgba(216, 216, 216, 1);
+			// }
 		}
 		.detailcontent {
 			padding: 0upx 24upx;

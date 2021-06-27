@@ -176,6 +176,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 {
   components: {
     navigationCustom: navigationCustom },
@@ -222,6 +227,9 @@ __webpack_require__.r(__webpack_exports__);
         vote_title: '' });
 
       this.$forceUpdate();
+    },
+    deleteHandler: function deleteHandler(index) {
+      this.textareaList.splice(index, 1);
     },
     saveHandler: function saveHandler() {
       var a = 0;

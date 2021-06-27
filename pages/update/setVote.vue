@@ -5,7 +5,12 @@
 			<view class="title">
 				选项内容最多50个字，请缩短内容
 			</view>
-			<u-input v-model="item.vote_title" height="146" maxlength="50" placeholder="选项" type="textarea" :border="true" border-color="#404B69" v-for="(item,index) in textareaList" :key="index" :index="index" />
+			<view class="inputwrap"  v-for="(item,index) in textareaList" :key="index" :index="index">
+				<u-input v-model="item.vote_title" height="146" maxlength="50" placeholder="选项" type="textarea" :border="true" border-color="#404B69" />
+				<view class="delete" @click="deleteHandler(index)">
+					
+				</view>
+			</view>
 			<view class="adbtn" @click.stop="addHandler">
 				<u-icon name="plus" color="#404B69" size="48"></u-icon>
 			</view>
@@ -65,6 +70,9 @@
 				})
 				this.$forceUpdate()
 			},
+			deleteHandler(index){
+				this.textareaList.splice(index,1)
+			},
 			saveHandler(){
 				var a = 0
 				this.textareaList.map((item)=>{
@@ -103,8 +111,33 @@
 				line-height: 36upx;
 				margin-bottom: 20upx;
 			}
+			.inputwrap{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				.delete{
+					width: 39rpx;
+					height: 39rpx;
+					border-radius: 50%;
+					border:1rpx solid #FF9C00;
+					position: relative;
+					margin-left:30rpx;
+				}
+				.delete:after{
+					position: absolute;
+					content:'';
+					left:50%;
+					top: 50%;
+					transform: translate(-50%,-50%);
+					width:20rpx;
+					height: 1rpx;
+					background: #FF9C00;
+				}
+			}
 			/deep/ .u-input{
 				margin-bottom: 20upx;
+				width: 580rpx;
+				margin-right: auto;
 			}
 			.adbtn{
 				width: 100%;

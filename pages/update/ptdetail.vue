@@ -163,7 +163,7 @@
 		/>
 
 		<!-- 找错 -->
-		<FindFault :isShow="findFaultValue" :isCollect="findFaultCollect" :isType="findFaultType" @close="fClose" @collect="fCollect" @find="fFind" @report="report" @onshare="onShowshare" />
+		<FindFault   @del="deleteDynamics" :pitem="detail" :isShow="findFaultValue" :isCollect="findFaultCollect" :isType="findFaultType" @close="fClose" @collect="fCollect" @find="fFind" @report="report" @onshare="onShowshare" />
 		<!-- 答谢 -->
 		<Thank ref="thank" :isShow="thankShow" @close="cancel" @ok="ok" :score="score" />
 		<!-- 帮推 -->
@@ -191,6 +191,7 @@
 		<Integraltip ref="integraltip" :types.sync="add_type" :score.sync="score_text" />
 		<Firend ref="Firend" />
 		<Confrimpop ref="confrims" @del="condelHandler" />
+		<Confrimpops ref="dconfrims" @del="condelHandlers" />
 		<DeleteTip ref="deletetip" />
 		<u-skeleton :loading="loading" :animation="true" el-color="#ddd" bg-color="#fff" border-radius="10"></u-skeleton>
 		<u-popup v-model="voteFlag" mode="center" border-radius="10" closeable>
@@ -256,6 +257,7 @@ import Tool from '../../utils/tool.js';
 import hchPoster from '../../wxcomponents/hch-poster/hch-poster.vue';
 import Integraltip from '@/components/integraltip/integraltip.vue';
 import Confrimpop from '@/components/confrim/confrim.vue';
+import Confrimpops from '@/components/confrim/confrim.vue';
 import DeleteTip from '@/components/deletetip/deletetip.vue';
 import SelectItem from '@/components/selectitem/selectitem.vue'
 export default {
@@ -497,6 +499,55 @@ export default {
 		};
 	},
 	methods: {
+		deleteDynamics(obj){
+			console.log(obj)
+			this.$refs.dconfrims.guestShow = true
+			this.$refs.dconfrims.id = obj.id
+			this.$refs.dconfrims.type = obj.type
+			this.$refs.dconfrims.obj = obj
+			this.$refs.dconfrims.text = '是否删除本贴?'
+		},
+		condelHandlers(obj){
+			console.log(obj)
+			var pitem = obj
+			var object_id = pitem.groupbuy_id
+			var type = pitem.type
+			var object_type = pitem.type
+			// if (type == 5) {
+			// 	object_id = pitem.object_id	
+			// } else {
+			
+			// 	if (type == 7 || type == 8) {
+			// 		if(type == 8){
+			// 			object_id = pitem.object_id	
+			// 		}else{
+			// 			object_id = pitem.wiki_id
+			// 		}
+			// 	} else if(type == 16){
+			// 		object_id = pitem.object_id	
+			// 	}else if(type == 17){
+			// 		object_id = pitem.object_id	
+			// 	}else{
+			// 		object_id = pitem.object_id	
+			// 	}
+			// }
+			this.Api.deleteDynamics({object_type:object_type,object_id:object_id,community_id:uni.getStorageSync('community_id')}).then((result) => {
+				if(result.code == 1){
+					uni.showToast({
+						icon:'success',
+						title:result.msg,
+						duration:2000,
+						success: () => {
+							this.$refs.dconfrims.guestShow = false
+							this.findFaultValue = false
+							uni.reLaunch({
+								url:'/pages/index/index'
+							})
+						}
+					})
+				}
+			})
+		},
 		//弹框操作
 		joinPinHandler(){
 			if(!this.tuanObj.buy_num){
@@ -1928,6 +1979,7 @@ export default {
 		Firend,
 		Reply,
 		Confrimpop,
+		Confrimpops,
 		DeleteTip,
 		SelectItem,
 		Nodata

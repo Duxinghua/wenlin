@@ -517,8 +517,8 @@
 					margin-left:auto;
 				}
 				.useracitve{
-					background:#b9b8b7;
-					color:#020433;
+					background:#414b6a;
+					color:white;
 				}
 			}
 			.useritem{

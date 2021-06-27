@@ -10,6 +10,7 @@
     "onshare": "/components/onshare/onshare",
     "help": "/components/help/help",
     "hch-poster": "/wxcomponents/hch-poster/hch-poster",
-    "integraltip": "/components/integraltip/integraltip"
+    "integraltip": "/components/integraltip/integraltip",
+    "confrimpop": "/components/confrim/confrim"
   }
 }

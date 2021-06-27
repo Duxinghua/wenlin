@@ -319,7 +319,7 @@ page.data-v-17e096b0 {
 .personalcard .pcontent .somethingwrap .somelist .someitem .sometitle.data-v-17e096b0 {
   font-weight: 500;
   color: #333333;
-  width: 450rpx;
+  width: 400rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

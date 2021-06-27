@@ -36,6 +36,7 @@
 					:top="topFixed"
 					bottom="120"
 					ref="mescrollRef"
+					:flexType="type == 3 ? true : false"
 					@init="mescrollInit"
 					@down="downCallback"
 					@up="upCallback"
@@ -225,7 +226,7 @@
 		<!-- 帮推 -->
 		<Help ref="Help" :isShow="helpShow" @close="Helpcancel" @ok="ok" :score="score"/>
 		<!-- 找错 -->
-		<FindFault   :isShow="findFaultValue" :isCollect="findFaultCollect" :isType="findFaultType" @close="fClose" @collect="fCollect" @find="fFind" @report="report"  @onshare="onShowshare"/>
+		<FindFault  @del="deleteDynamics"  :isShow="findFaultValue" :isCollect="findFaultCollect" :isType="findFaultType" @close="fClose" @collect="fCollect" @find="fFind" @report="report"  @onshare="onShowshare"/>
 		<!-- 		<cu-tarbar :selectIndex="selectIndex"></cu-tarbar> -->
 		<!-- 分享功能 -->
 		<Onshare :isShow="onShareShow" :isHome.sync="isHome"  @close="onShowclose" @ontodo="onShowtodo" @onshare="onShowshare" />
@@ -238,10 +239,12 @@
 		<!-- 积分提示 -->
 		<Integraltip ref="integraltip" :types.sync="add_type" :score.sync="score_text"  />
 		
+		<Confrimpop ref='confrims' @del="condelHandler"/>
 	</view>
 </template>
 
 <script>
+import Confrimpop from '@/components/confrim/confrim.vue';
 import MescrollMixin from "@/components/mescroll-uni/mescroll-mixins.js";
 import LeaveWords from '@/components/leavewords/leavewords.vue'
 import PostItem from '@/components/postItem/postitem.vue';
@@ -577,6 +580,53 @@ export default {
 		
 	},
 	methods: {
+		deleteDynamics(obj){
+			console.log(obj)
+			this.$refs.confrims.guestShow = true
+			this.$refs.confrims.id = obj.id
+			this.$refs.confrims.type = obj.type
+			this.$refs.confrims.obj = obj
+			this.$refs.confrims.text = '是否删除本贴?'
+		},
+		condelHandler(obj){
+			console.log(obj)
+			var pitem = obj
+			var object_id = ''
+			var type = pitem.type
+			var object_type = pitem.type
+			if (type == 5) {
+				object_id = pitem.object_id	
+			} else {
+			
+				if (type == 7 || type == 8) {
+					if(type == 8){
+						object_id = pitem.object_id	
+					}else{
+						object_id = pitem.wiki_id
+					}
+				} else if(type == 16){
+					object_id = pitem.object_id	
+				}else if(type == 17){
+					object_id = pitem.object_id	
+				}else{
+					object_id = pitem.object_id	
+				}
+			}
+			this.Api.deleteDynamics({object_type:object_type,object_id:object_id,community_id:uni.getStorageSync('community_id')}).then((result) => {
+				if(result.code == 1){
+					uni.showToast({
+						icon:'success',
+						title:result.msg,
+						duration:2000,
+						success: () => {
+							this.$refs.confrims.guestShow = false
+							this.findFaultValue = false
+							this.mescroll.resetUpScroll();
+						}
+					})
+				}
+			})
+		},
 		onRestore(e){
 			console.log(e,'onrestore')
 		},
@@ -1650,7 +1700,8 @@ export default {
 		Onshare,
 		Help,
 		hchPoster,
-		Integraltip
+		Integraltip,
+		Confrimpop
 	}
 	// onReachBottom(){
 	// 	this.upOption.page.num ++ 
@@ -1805,7 +1856,7 @@ page {
 				flex-direction: row;
 				align-items: center;
 				position: absolute;
-				right:30upx;
+				right:48upx;
 				top:50%;
 				transform: translateY(-50%);
 				.nerico{

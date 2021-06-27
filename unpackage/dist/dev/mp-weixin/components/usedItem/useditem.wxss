@@ -32,16 +32,15 @@
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
           flex-direction: column;
-  width: 344rpx;
+  width: 320rpx;
   margin-top: 28rpx;
   margin-bottom: 28rpx;
   margin-right: 14rpx;
-  margin-left: 28rpx;
-  float: left;
+  margin-left: 48rpx;
 }
 .usedItem .usedimg.data-v-287d3838 {
-  width: 344rpx;
-  height: 344rpx;
+  width: 320rpx;
+  height: 320rpx;
   margin-bottom: 24rpx;
   -webkit-border-radius: 16rpx;
           border-radius: 16rpx;
@@ -59,8 +58,8 @@
   z-index: 10;
 }
 .usedItem .imgnodata .nodatai.data-v-287d3838 {
-  width: calc(344rpx * 0.75);
-  height: calc(344rpx * 0.75);
+  width: calc(320rpx * 0.75);
+  height: calc(320rpx * 0.75);
   position: absolute;
   left: 50%;
   top: 100%;

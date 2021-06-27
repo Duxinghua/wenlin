@@ -164,8 +164,8 @@ page.data-v-8c090db4 {
   margin-left: auto;
 }
 .personalcard .pcontent .userheader .useracitve.data-v-8c090db4 {
-  background: #b9b8b7;
-  color: #020433;
+  background: #414b6a;
+  color: white;
 }
 .personalcard .pcontent .useritem.data-v-8c090db4 {
   display: -webkit-box;

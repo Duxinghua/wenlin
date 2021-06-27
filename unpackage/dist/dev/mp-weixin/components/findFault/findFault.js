@@ -130,6 +130,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -138,6 +139,9 @@ var _default =
 
   },
   props: {
+    pitem: {
+      type: Object },
+
     isCollect: {
       type: Boolean,
       default: false },
@@ -184,6 +188,9 @@ var _default =
     },
     collect: function collect() {
       this.$emit('collect', this.isCollect);
+    },
+    del: function del() {
+      this.$emit('del', this.pitem);
     },
     find: function find() {
       this.$emit('find');

@@ -107,15 +107,14 @@
 .usedItem {
 	display: flex;
 	flex-direction: column;
-	width: 344upx;
+	width: 320upx;
 	margin-top: 28upx;
 	margin-bottom: 28upx;
 	margin-right: 14upx;
-	margin-left: 28upx;
-	float: left;
+	margin-left: 48upx;
 	.usedimg {
-		width: 344upx;
-		height: 344upx;
+		width: 320upx;
+		height: 320upx;
 		margin-bottom: 24upx;
 		border-radius: 16upx;
 		overflow: hidden;
@@ -130,8 +129,8 @@
 		overflow: hidden;
 		z-index: 10;
 		.nodatai{
-			width:calc(344upx * 0.75);
-			height:calc(344upx * 0.75);
+			width:calc(320upx * 0.75);
+			height:calc(320upx * 0.75);
 			position:absolute ;
 			left:50%;
 			top:100%;

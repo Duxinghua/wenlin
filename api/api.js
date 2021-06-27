@@ -216,6 +216,9 @@ const addDynamicsVoteVote = (params) => wxRequest(params, baseURL + 'api/communi
 const singleVoteDetail = (params) => wxRequest(params, baseURL + 'api/community/vote/singleVoteDetail', 'POST')
 //议事厅投票评论--1.1  {{localhost}}/api/community/vote/voteComment
 const voteComment = (params) => wxRequest(params, baseURL + 'api/community/vote/voteComment', 'POST')
+
+const voteCommentReply = (params) => wxRequest(params, baseURL + 'api/community/vote/voteCommentReply', 'POST')
+
 //议事厅投票评论列表--1.1 {{localhost}}/api/community/vote/getMultistageComments
 const getVoteMultistageComments = (params) => wxRequest(params, baseURL + 'api/community/vote/getMultistageComments', 'POST')
 // 小区公益---1.1 community/community_score/communityScore
@@ -416,5 +419,6 @@ export default {
 	pactivityDetail,
 	updateUs,
 	getLastNotices,
-	getNoticesDetail
+	getNoticesDetail,
+	voteCommentReply
 }

@@ -27,6 +27,19 @@
 page.data-v-14a6ab35 {
   background: white;
 }
+.listwrap2.data-v-14a6ab35 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-align-content: flex-start;
+          align-content: flex-start;
+}
 .content.data-v-14a6ab35 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -473,6 +486,8 @@ page.data-v-14a6ab35 {
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
           flex-direction: row;
+  -webkit-align-content: flex-start;
+          align-content: flex-start;
   -webkit-flex-wrap: wrap;
           flex-wrap: wrap;
 }

@@ -16,6 +16,7 @@
     "nodata": "/components/nodata/nodata",
     "firend": "/components/onfirend/onfirend",
     "confrimpop": "/components/confrim/confrim",
+    "confrimpops": "/components/confrim/confrim",
     "delete-tip": "/components/deletetip/deletetip"
   }
 }

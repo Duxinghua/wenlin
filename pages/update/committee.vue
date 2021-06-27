@@ -813,7 +813,7 @@ page {
 					.sometitle{
 						font-weight: 500;
 						color:rgba(51, 51, 51, 1);
-						width:450upx;
+						width:400upx;
 						overflow: hidden;
 						text-overflow: ellipsis;
 						white-space: nowrap;

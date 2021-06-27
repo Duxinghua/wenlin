@@ -8,7 +8,8 @@
 			</view>
 			<view class="collect" @click="collect">{{isCollect? '取消收藏':'收藏'}}</view>
 			<view class="collect" @click="find" v-if="autoFd">挑错</view>
-		    <view class="collect" @click="report" v-if="autoShow">举报</view>
+		    <view class="collect" @click="report" v-if="pitem.is_my == 0">举报</view>
+			 <view class="collect" @click="del" v-if="pitem.is_my == 1">删除</view>
 			<view class="collect cancel" @click="close">取消</view>
 		</view>
 	</view>
@@ -22,6 +23,9 @@
 			}
 		},
 		props:{
+			pitem:{
+				type:Object
+			},
 			isCollect:{
 				type:Boolean,
 				default:false
@@ -68,6 +72,9 @@
 			},
 			collect(){
 				this.$emit('collect',this.isCollect)
+			},
+			del(){
+				this.$emit('del',this.pitem)
 			},
 			find(){
 				this.$emit('find')
