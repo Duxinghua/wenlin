@@ -1526,7 +1526,7 @@ export default {
 					this.detail = result.data;
 					this.detail.type = 17
 					this.detail.anonymous = 0
-					this.detail.timestamp = (parseInt(result.data.group_endtime) - parseInt(result.data.now_time))*1000
+					this.detail.timestamp = (parseInt(result.data.group_endtime) - parseInt(result.data.now_time))
 					this.loading = false;
 					this.detail.content = this.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
 					this.opening = result.data.opening;

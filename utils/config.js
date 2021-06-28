@@ -14,7 +14,7 @@ const subscription = {
 	vote:'wedVxVL7kxxEMfcnjhVgWCottnrhwHzZ9SYZaWiGs48',
 	jointuan:'8acnia-tVCSVzY49oVA3jteQCh1qhxrEc9DIfpsEIfg'
 }
-const version = 16
+const version = 17
 module.exports = {
 	appid,
 	mapkey,

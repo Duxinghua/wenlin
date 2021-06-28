@@ -1728,7 +1728,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           _this13.detail = result.data;
           _this13.detail.type = 17;
           _this13.detail.anonymous = 0;
-          _this13.detail.timestamp = (parseInt(result.data.group_endtime) - parseInt(result.data.now_time)) * 1000;
+          _this13.detail.timestamp = parseInt(result.data.group_endtime) - parseInt(result.data.now_time);
           _this13.loading = false;
           _this13.detail.content = _this13.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
           _this13.opening = result.data.opening;
