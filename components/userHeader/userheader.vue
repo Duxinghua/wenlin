@@ -18,7 +18,7 @@
 		<view class="userinfo" >
 			<view class="userwrap" v-if="pitem.publish_type == 1 && pitem.anonymous == 0" @click.stop="goPer(pitem.user)">
 				<text class="name">{{pitem.user.user_nickname}}·{{ucommunityid == pitem.user.community_id ? pitem.user.building+'#' : pitem.user.community_name}}</text>
-				<view class="likewrap">
+				<view class="likewrap" v-if="false">
 					<image class="like" src="../../static/like.png"></image>
 					<text>{{pitem.user.love_value}}</text>
 				</view>

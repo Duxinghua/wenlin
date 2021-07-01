@@ -447,6 +447,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -455,7 +458,8 @@ var _default =
       deliveryFlag: false,
       canvasFlag: true,
       posterData: {},
-      ucommunityid: uni.getStorageSync('community_id') };
+      ucommunityid: uni.getStorageSync('community_id'),
+      is_know: this.pitem.is_know };
 
   },
   props: {
@@ -679,10 +683,10 @@ var _default =
 
 
       console.log(this.pitem);
-      if (this.pitem.is_know == 0) {
+      if (this.is_know == 0) {
         console.log(1111);
         this.usersetKown(data);
-      } else if (this.pitem.is_know > 0) {
+      } else if (this.is_know == 1) {
         console.log(1112221);
         this.userunSetKown(data);
       }
@@ -696,7 +700,9 @@ var _default =
             icon: 'success',
             title: result.msg,
             success: function success() {
-              that.$emit('flush', {});
+              that.is_know = 1;
+              that.$forceUpdate();
+              // that.$emit('flush',{})
             } });
 
         } else {
@@ -711,14 +717,17 @@ var _default =
       });
     },
     //取消认识
-    userunSetKown: function userunSetKown(data) {var _this = this;
+    userunSetKown: function userunSetKown(data) {
+      var that = this;
       this.Api.userunSetKown(data).then(function (result) {
         if (result.code == 1) {
           uni.showToast({
             icon: 'success',
             title: result.msg,
             success: function success() {
-              _this.$emit('flush', {});
+              that.is_know = 0;
+              that.$forceUpdate();
+              // this.$emit('flush',{})
             } });
 
         } else {

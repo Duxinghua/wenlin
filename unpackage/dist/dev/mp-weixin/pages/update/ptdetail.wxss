@@ -59,6 +59,7 @@ page.data-v-22835e1c {
   padding: 0 24rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin-bottom: 20rpx;
 }
 .ptdetail .ptiem.data-v-22835e1c {
   display: -webkit-box;
@@ -77,12 +78,18 @@ page.data-v-22835e1c {
   color: #404B69;
   text-decoration: line-through;
 }
+.ptdetail .ptiem text.data-v-22835e1c {
+  font-weight: bold;
+}
 .ptdetail .piteminfo.data-v-22835e1c {
   font-size: 34rpx;
   line-height: 60rpx;
   font-family: PingFang SC;
   font-weight: 500;
   color: #FF9C00;
+}
+.ptdetail .piteminfo text.data-v-22835e1c {
+  font-weight: bold;
 }
 .subsc.data-v-22835e1c {
   width: 100%;

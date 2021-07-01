@@ -417,6 +417,7 @@
 				group_endtime:'请选择截止时间',
 				timeShow:false,
 				stock:null,
+				first:true,
 				flagsoce:0//积分区分
 			}
 		},
@@ -803,6 +804,10 @@
 			//发布处理
 			pushClick(e){
 				this.subMessageTodo(this.comIds,'2,3',(rs)=>{
+					if(!this.first){
+						return
+					}
+					this.first = false
 					var data = {
 						title:this.title,
 						content:this.content,

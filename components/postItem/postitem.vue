@@ -17,21 +17,24 @@
 							匿名用户
 						</text>
 
-						<view class="likewrap" v-if="pitem.anonymous != 1">
+						<view class="likewrap" v-if="pitem.anonymous != 1 && pitem.type != 13">
 							<image class="like" src="../../static/like.png"></image>
 							<text>{{ pitem.user.love_value }}</text>
+						</view>
+						<view class="likewrap" v-if="pitem.anonymous != 1 && pitem.type == 13">
+							<text>新邻居</text>
 						</view>
 
 						<text class="chuang" v-if="pitem.user.founder == 1 && pitem.anonymous != 1">创</text>
 					</view>
 					<view class="usertime">
 						{{ pitem.create_time | formatTime }}
-						<text class="ph">{{pitem.post_hits}}人浏览</text>
+						<text class="ph" v-if="pitem.type != 13">{{pitem.post_hits}}人浏览</text>
 						<text class="juli" v-if="type != 1">{{ pitem.juli }}</text>
 					</view>
 				</view>
 				<!-- is_know  0 不认识  1 已认识  2 自己 -->
-				<view :class="['flowwrap',pitem.is_know == 1 ? 'flowwrapbg' :'']" v-if="pitem.type == 13" @click.stop="knowTodo">{{pitem.is_know == 0 ? '认识 TA' : (pitem.is_know == 1 ? '取消认识' : '自己')}}</view>
+				<view :class="['flowwrap',is_know == 1 ? 'flowwrapbg' :'']" v-if="pitem.type == 13" @click.stop="knowTodo">{{is_know == 0 ? '认识 TA' : (is_know == 1 ? '取消认识' : '自己')}}</view>
 				<view class="morewrap" v-if="pitem.type != 13" @click.stop="moreClick(pitem)"><image src="../../static/more.png" class="more"></image></view>
 			</view>
 			<view class="postheader" v-if="pitem.publish_type != 1 && pitem.type != 7">
@@ -267,7 +270,8 @@ export default {
 			deliveryFlag: false,
 			canvasFlag: true,
 			posterData: {},
-			ucommunityid: uni.getStorageSync('community_id')
+			ucommunityid: uni.getStorageSync('community_id'),
+			is_know:this.pitem.is_know
 		};
 	},
 	props: {
@@ -491,10 +495,10 @@ export default {
 			}
 			
 			console.log(this.pitem)
-			if(this.pitem.is_know == 0){
+			if(this.is_know == 0){
 				console.log(1111)
 				this.usersetKown(data)
-			}else if(this.pitem.is_know > 0){
+			}else if(this.is_know  == 1){
 					console.log(1112221)
 				this.userunSetKown(data)
 			}
@@ -508,7 +512,9 @@ export default {
 						icon:'success',
 						title:result.msg,
 						success: () => {
-							that.$emit('flush',{})
+							that.is_know = 1
+							that.$forceUpdate()
+							// that.$emit('flush',{})
 						}
 					})
 				}else{
@@ -524,13 +530,16 @@ export default {
 		},
 		//取消认识
 		userunSetKown(data){
+			var that = this
 			this.Api.userunSetKown(data).then((result) => {
 				if(result.code == 1){
 					uni.showToast({
 						icon:'success',
 						title:result.msg,
 						success: () => {
-							this.$emit('flush',{})
+							that.is_know = 0
+							that.$forceUpdate()
+							// this.$emit('flush',{})
 						}
 					})
 				}else{

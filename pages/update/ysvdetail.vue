@@ -1233,7 +1233,7 @@ export default {
 					duration: 2000
 				});
 				return;
-			}
+			}else{
 		
 				var data = {
 					vote_id: this.detail.vote_id,
@@ -1326,6 +1326,7 @@ export default {
 							// });
 						}
 					});
+				}
 				}
 	
 		},

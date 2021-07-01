@@ -1304,7 +1304,7 @@
 					    duration: 2000
 					});
 					return
-				}
+				}else{
 		
 					var data = {
 						object_id:this.id,
@@ -1357,6 +1357,7 @@
 							});
 					// 	}
 					// })
+					}
 			
 			},
 			//复制功能

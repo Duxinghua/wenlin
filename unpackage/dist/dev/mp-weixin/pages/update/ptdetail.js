@@ -648,17 +648,19 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
   },
   onPageScroll: function onPageScroll(e) {},
   onShareAppMessage: function onShareAppMessage() {
+    //xxx(用户昵称)发布了一个邻里团，已有x人参团，只差你了
+    var content = this.detail.user.user_nickname + '发布了一个邻里团,已有' + this.detail.buy_num + '人参团，只差你了';
     if (this.detail.publish_type == 2 || this.detail.publish_type == 3) {
       return {
-        title: this.detail.title,
+        title: content,
         imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
         path: '/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id };
 
     } else if (this.detail.publish_type == 1) {
-      var content = this.detail.content;
-      if (this.detail.sell_type && this.detail.sell_type == 2) {
-        content = '赠送:' + content;
-      }
+      // var content = this.detail.content
+      // if(this.detail.sell_type && this.detail.sell_type == 2){
+      // 	content = '赠送:'+content
+      // }
       console.log('/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id);
       return {
         title: content.length > 30 ? content.substr(0, 30) + '...' : content,
@@ -667,23 +669,23 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
     } else {
       return {
-        title: this.detail.title,
+        title: content.length > 30 ? content.substr(0, 30) + '...' : content,
         imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
         path: '/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id };
 
     }
   },
   onShareTimeline: function onShareTimeline(e) {
-    var title = '';
-    if (this.detail.publish_type == 1) {
-      var content = this.detail.content;
-      if (this.detail.sell_type && this.detail.sell_type == 2) {
-        content = '赠送:' + content;
-      }
-      title = content.length > 30 ? content.substr(0, 30) + '...' : content;
-    } else {
-      title = this.detail.title;
-    }
+    var content = this.detail.user.user_nickname + '发布了一个邻里团,已有' + this.detail.buy_num + '人参团，只差你了';
+    // if (this.detail.publish_type == 1) {
+    // 	var content = this.detail.content
+    // 	if(this.detail.sell_type && this.detail.sell_type == 2){
+    // 		content = '赠送:'+content
+    // 	}
+    // 	title = content.length > 30 ? content.substr(0, 30) + '...' : content;
+    // } else {
+    // 	title = this.detail.title;
+    // }
     var query = {};
     if (this.type == 7 || this.type == 8) {
       query.id = this.id;
@@ -695,7 +697,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     }
     // query=JSON.stringify(query);
     return {
-      title: title,
+      title: content,
       imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
       query: query };
 
@@ -1577,63 +1579,64 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           duration: 2000 });
 
         return;
-      }
+      } else {
 
-      var data = {
-        object_id: this.dynamics_id,
-        object_type: this.type,
-        content: this.inputValue,
-        parent_id: this.parent_id,
-        community_id: uni.getStorageSync('community_id') };
+        var data = {
+          object_id: this.dynamics_id,
+          object_type: this.type,
+          content: this.inputValue,
+          parent_id: this.parent_id,
+          community_id: uni.getStorageSync('community_id') };
 
-      if (this.type == 7 || this.type == 5) {
-        data.third_id = this.id;
-      }
-      if (this.type == 7) {
-        data.object_id = this.dynamics_id;
-      }
-      this.Api.setComments(data).then(function (result) {
-        if (result.code == 1) {
-          _this11.navIndex = 1;
-          // uni.showToast({
-          // 	title: result.msg,
-          // 	duration: 2000,
-          // 	success: () => {
-          that.$u.toast(result.msg);
-          that.subMessageTodo(that.comIds, 3, function (ss) {
-            that.replyTextarea = false;
-            that.textareaautofocus = false;
-            that.scrollFixed = false;
-            // this.isShowEmj = false
-            // this.inputValue = ''
-            // this.parent_id = ''
-            // this.replyFlag = true
-            // this.parent_text = '说说你的看法'
-            // this.getCommentList()
-            that.isShowEmj = false;
-            that.inputValue = '';
-            that.parent_id = '';
-            that.replyFlag = true;
-            that.parent_text = '说说你的看法';
-            if (result.data.add) {
-              that.add_type = result.data.add == -1 ? '-' : '+';
-              that.score_text = result.data.score;
-              that.$refs.integraltip.show();
-              setTimeout(function () {
-                that.add_type = '';
-                that.score_text = '';
-
-                that.$refs.integraltip.close();
-                that.getCommentList();
-              }, 2000);
-            } else {
-              that.getCommentList();
-            }
-          });
-          // 	}
-          // });
+        if (this.type == 7 || this.type == 5) {
+          data.third_id = this.id;
         }
-      });
+        if (this.type == 7) {
+          data.object_id = this.dynamics_id;
+        }
+        this.Api.setComments(data).then(function (result) {
+          if (result.code == 1) {
+            _this11.navIndex = 1;
+            // uni.showToast({
+            // 	title: result.msg,
+            // 	duration: 2000,
+            // 	success: () => {
+            that.$u.toast(result.msg);
+            that.subMessageTodo(that.comIds, 3, function (ss) {
+              that.replyTextarea = false;
+              that.textareaautofocus = false;
+              that.scrollFixed = false;
+              // this.isShowEmj = false
+              // this.inputValue = ''
+              // this.parent_id = ''
+              // this.replyFlag = true
+              // this.parent_text = '说说你的看法'
+              // this.getCommentList()
+              that.isShowEmj = false;
+              that.inputValue = '';
+              that.parent_id = '';
+              that.replyFlag = true;
+              that.parent_text = '说说你的看法';
+              if (result.data.add) {
+                that.add_type = result.data.add == -1 ? '-' : '+';
+                that.score_text = result.data.score;
+                that.$refs.integraltip.show();
+                setTimeout(function () {
+                  that.add_type = '';
+                  that.score_text = '';
+
+                  that.$refs.integraltip.close();
+                  that.getCommentList();
+                }, 2000);
+              } else {
+                that.getCommentList();
+              }
+            });
+            // 	}
+            // });
+          }
+        });
+      }
 
     },
     //复制功能

@@ -1507,59 +1507,60 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           duration: 2000 });
 
         return;
-      }
+      } else {
 
-      var data = {
-        object_id: this.id,
-        object_type: this.type,
-        content: this.inputValue,
-        parent_id: this.parent_id,
-        community_id: uni.getStorageSync('community_id') };
+        var data = {
+          object_id: this.id,
+          object_type: this.type,
+          content: this.inputValue,
+          parent_id: this.parent_id,
+          community_id: uni.getStorageSync('community_id') };
 
-      if (this.type == 7 || this.type == 5) {
-        data.third_id = this.id;
-      }
-
-      this.Api.setComments(data).then(function (result) {
-        if (result.code == 1) {
-          _this8.navIndex = 1;
-          that.$u.toast(result.msg);
-          // uni.showToast({
-          // 	title: result.msg,
-          // 	duration: 2000,
-          // 	success: () => {
-          that.subMessageTodo(that.comIds, 3, function (ss) {
-            // this.inputValue = ''
-            // this.parent_id = ''
-            // this.replyFlag = true
-            // this.parent_text = '说说你的看法'
-            // this.getCommentList()
-            that.replyTextarea = false;
-            that.textareaautofocus = false;
-            that.scrollFixed = false;
-            that.inputValue = '';
-            that.parent_id = '';
-            that.replyFlag = true;
-            that.parent_text = '说说你的看法';
-            if (result.data.add) {
-              that.add_type = result.data.add == -1 ? '-' : '+';
-              that.score_text = result.data.score;
-              that.$refs.integraltip.show();
-              setTimeout(function () {
-                that.add_type = '';
-                that.score_text = '';
-
-                that.$refs.integraltip.close();
-                that.getCommentList();
-              }, 2000);
-            } else {
-              that.getCommentList();
-            }
-          });
+        if (this.type == 7 || this.type == 5) {
+          data.third_id = this.id;
         }
-      });
-      // 	}
-      // })
+
+        this.Api.setComments(data).then(function (result) {
+          if (result.code == 1) {
+            _this8.navIndex = 1;
+            that.$u.toast(result.msg);
+            // uni.showToast({
+            // 	title: result.msg,
+            // 	duration: 2000,
+            // 	success: () => {
+            that.subMessageTodo(that.comIds, 3, function (ss) {
+              // this.inputValue = ''
+              // this.parent_id = ''
+              // this.replyFlag = true
+              // this.parent_text = '说说你的看法'
+              // this.getCommentList()
+              that.replyTextarea = false;
+              that.textareaautofocus = false;
+              that.scrollFixed = false;
+              that.inputValue = '';
+              that.parent_id = '';
+              that.replyFlag = true;
+              that.parent_text = '说说你的看法';
+              if (result.data.add) {
+                that.add_type = result.data.add == -1 ? '-' : '+';
+                that.score_text = result.data.score;
+                that.$refs.integraltip.show();
+                setTimeout(function () {
+                  that.add_type = '';
+                  that.score_text = '';
+
+                  that.$refs.integraltip.close();
+                  that.getCommentList();
+                }, 2000);
+              } else {
+                that.getCommentList();
+              }
+            });
+          }
+        });
+        // 	}
+        // })
+      }
 
     },
     //复制功能

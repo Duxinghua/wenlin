@@ -1201,7 +1201,7 @@ export default {
 					duration: 2000
 				});
 				return;
-			}
+			}else{
 			
 			
 				var data = {
@@ -1259,6 +1259,7 @@ export default {
 						// });
 					}
 				});
+				}
 				
 		
 

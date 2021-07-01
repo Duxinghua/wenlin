@@ -91,7 +91,7 @@
 							<view class="votetoolitem" @click.stop="votoTodo(item)">
 								<image :src="item.is_vote == 0 ? require('../../static/vite.png') : require('../../static/voteactive.png')" class="voteicos"></image>
 								<view class="votedes">
-									投票
+									{{item.is_vote == 0 ? '投票' : '已投'}}
 								</view>
 							</view>
 						</view>
@@ -103,7 +103,7 @@
 					<text :class="['navitem', navIndex == 1 ? 'active' : '']" @click="navClick(1)">评论{{ detail.comment_count ? detail.comment_count : '' }}</text>
 					<text :class="['navitem', navIndex == 2 ? 'active' : '']" @click="navClick(2)">帮推{{ detail.help_score ? detail.help_score : '' }}</text>
 				</view>
-				<view class="detailcontent u-skeleton-fillet">
+				<view class="detailcontent u-skeleton-fillet"  v-if="false">
 					<Comment
 						v-if="navIndex == 1"
 						:type="type"
@@ -256,7 +256,7 @@
 				<view class="votitle">
 					{{voteType == 'vote' ? '投票' : '添加我的观点' }}
 				</view>
-				<u-input height="158" v-model="votetextarea" :placeholder="voteType == 'vote' ? '添加我的观点' : '每个人最多添加3次'" type="textarea"/>
+				<u-input height="158" v-model="votetextarea" :placeholder="voteType == 'vote' ? '顺便说点理由' : '每个人最多添加3次'" type="textarea"/>
 				<view v-if="voteType == 'commit'" class="selectwrap" @click.stop="selectTodo('name')">
 					<view class="label">{{nameLabel}}</view>
 					<u-icon color="#95A0B6" name="arrow-down-fill" size="20" ></u-icon>
@@ -1369,7 +1369,7 @@ export default {
 					duration: 2000
 				});
 				return;
-			}
+			}else{
 		
 				var data = {
 					dynamics_id: this.detail.id,
@@ -1426,6 +1426,7 @@ export default {
 						// });
 					}
 				});
+				}
 
 		},
 		//复制功能

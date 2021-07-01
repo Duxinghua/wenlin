@@ -7,10 +7,10 @@
 			<view :class="['content', type == 7 ? 'contentfix' : '']">
 				<view class="ptdetail">
 					<view class="ptiem">
-						市场价|￥{{detail.price}}/{{detail.specifications}}
+						<text>市场价|￥{{detail.price}}</text>/{{detail.specifications}}
 					</view>
 					<view class="piteminfo" v-for="(item,index) in detail.groupbuy_info" :key="index">
-						￥{{item.group_price}}/{{detail.specifications}} ({{item.group_min}}人成团价)
+						<text>￥{{item.group_price}}</text>/{{detail.specifications}} ({{item.group_min}}人成团价)
 					</view>
 				</view>
 				<view class="postcontent" >
@@ -446,17 +446,19 @@ export default {
 	},
 	onPageScroll: function(e) {},
 	onShareAppMessage: function() {
+		//xxx(用户昵称)发布了一个邻里团，已有x人参团，只差你了
+		var content = this.detail.user.user_nickname+'发布了一个邻里团,已有'+this.detail.buy_num+'人参团，只差你了'
 		if (this.detail.publish_type == 2 || this.detail.publish_type == 3) {
 			return {
-				title: this.detail.title,
+				title: content,
 				imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
 				path: '/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
 			};
 		} else if (this.detail.publish_type == 1) {
-			var content = this.detail.content
-			if(this.detail.sell_type && this.detail.sell_type == 2){
-				content = '赠送:'+content
-			}
+			// var content = this.detail.content
+			// if(this.detail.sell_type && this.detail.sell_type == 2){
+			// 	content = '赠送:'+content
+			// }
 			console.log('/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id)
 			return {
 				title: content.length > 30 ? content.substr(0, 30) + '...' : content,
@@ -465,23 +467,23 @@ export default {
 			};
 		} else {
 			return {
-				title: this.detail.title,
+				title:  content.length > 30 ? content.substr(0, 30) + '...' : content,
 				imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
 				path: '/pages/update/ptdetail?srouce=1&id=' + this.id + '&type=' + this.type + '&dynamics_id=' + this.dynamics_id
 			};
 		}
 	},
 	onShareTimeline(e) {
-		var title = '';
-		if (this.detail.publish_type == 1) {
-			var content = this.detail.content
-			if(this.detail.sell_type && this.detail.sell_type == 2){
-				content = '赠送:'+content
-			}
-			title = content.length > 30 ? content.substr(0, 30) + '...' : content;
-		} else {
-			title = this.detail.title;
-		}
+		var content = this.detail.user.user_nickname+'发布了一个邻里团,已有'+this.detail.buy_num+'人参团，只差你了'
+		// if (this.detail.publish_type == 1) {
+		// 	var content = this.detail.content
+		// 	if(this.detail.sell_type && this.detail.sell_type == 2){
+		// 		content = '赠送:'+content
+		// 	}
+		// 	title = content.length > 30 ? content.substr(0, 30) + '...' : content;
+		// } else {
+		// 	title = this.detail.title;
+		// }
 		var query = {};
 		if (this.type == 7 || this.type == 8) {
 			query.id = this.id;
@@ -493,7 +495,7 @@ export default {
 		}
 		// query=JSON.stringify(query);
 		return {
-			title: title,
+			title: content,
 			imageUrl: this.detail.images && this.detail.images.length ? this.detail.images[0] : 'https://sq.wenlinapp.com/appimg/send54.png',
 			query: query
 		};
@@ -1375,7 +1377,7 @@ export default {
 					duration: 2000
 				});
 				return;
-			}
+			}else{
 		
 				var data = {
 					object_id: this.dynamics_id,
@@ -1432,6 +1434,7 @@ export default {
 						// });
 					}
 				});
+				}
 			
 		},
 		//复制功能
@@ -2036,6 +2039,7 @@ page {
 	flex-direction: column;
 	padding:0 24rpx;
 	box-sizing: border-box;
+	margin-bottom: 20rpx;
 	.ptiem{
 		display: flex;
 		flex-direction: row;
@@ -2045,6 +2049,9 @@ page {
 		font-weight: 500;
 		color: #404B69;
 		text-decoration: line-through;
+		text{
+			font-weight: bold;
+		}
 	}
 	.piteminfo{
 		font-size: 34rpx;
@@ -2052,6 +2059,9 @@ page {
 		font-family: PingFang SC;
 		font-weight: 500;
 		color: #FF9C00;
+		text{
+			font-weight: bold;
+		}
 	}
 }
 .subsc{
