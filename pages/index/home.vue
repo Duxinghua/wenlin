@@ -2278,16 +2278,22 @@ page {
 				align-items: center;
 				margin-right: auto;
 				.notice{
-					width:calc(100% - 63upx);
+					width:calc(100% - 40upx);
+					/deep/ .u-notice-bar{
+						padding-left:0rpx !important
+					}
 				}
+
 				.ico {
 					width: 33upx;
 					height: 33upx;
-					margin-right: 30upx;
+					// margin-right: 30upx;
 				}
 				.search-text {
 					font-size: 28upx;
 					padding-left: 5upx;
+					padding-left:30upx;
+					box-sizing: border-box;
 					color: #95a0b6;
 				}
 			}

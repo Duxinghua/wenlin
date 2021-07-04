@@ -305,16 +305,21 @@ page.data-v-14a6ab35 {
   margin-right: auto;
 }
 .content .home .search .searchleft .notice.data-v-14a6ab35 {
-  width: calc(100% - 63rpx);
+  width: calc(100% - 40rpx);
+}
+.content .home .search .searchleft .notice.data-v-14a6ab35 .u-notice-bar {
+  padding-left: 0rpx !important;
 }
 .content .home .search .searchleft .ico.data-v-14a6ab35 {
   width: 33rpx;
   height: 33rpx;
-  margin-right: 30rpx;
 }
 .content .home .search .searchleft .search-text.data-v-14a6ab35 {
   font-size: 28rpx;
   padding-left: 5rpx;
+  padding-left: 30rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   color: #95a0b6;
 }
 .content .home .search .searchright.data-v-14a6ab35 {
