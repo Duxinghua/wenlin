@@ -186,10 +186,10 @@ export default {
 			var count = 0
 			if(result.code == 1){
 				if(!isNaN(result.data.comment_unread)){
-					count += result.data.comment_unread
-					count += result.data.leave_message_unread
-					count += result.data.sys_notices_unread
-					count += result.data.thanks_unread
+						count += result.data.comment_unread;
+						count += result.data.committee_publish_notices_unread;
+						count += result.data.leave_message_unread
+						count += result.data.sys_notices_unread;
 					this.notices_count = count
 				}else{
 					this.notices_count = 0

@@ -734,9 +734,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
         if (result.code == 1) {
           if (!isNaN(result.data.comment_unread)) {
             count += result.data.comment_unread;
+            count += result.data.committee_publish_notices_unread;
             count += result.data.leave_message_unread;
             count += result.data.sys_notices_unread;
-            count += result.data.thanks_unread;
             _this.notices_count = count;
           } else {
             _this.notices_count = 0;
@@ -750,9 +750,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
           if (result.code == 1) {
             if (!isNaN(result.data.comment_unread)) {
               count += result.data.comment_unread;
+              count += result.data.committee_publish_notices_unread;
               count += result.data.leave_message_unread;
               count += result.data.sys_notices_unread;
-              count += result.data.thanks_unread;
               _this.notices_count = count;
             } else {
               _this.notices_count = 0;
