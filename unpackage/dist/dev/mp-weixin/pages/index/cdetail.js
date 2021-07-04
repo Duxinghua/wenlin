@@ -964,6 +964,18 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
 
     },
+    fixtodo: function fixtodo() {
+      var token = uni.getStorageSync('token');
+      var all_community = uni.getStorageSync('all_community');
+      if (all_community.length) {
+        uni.setStorageSync('community_id', all_community[0].community_id);
+        uni.setStorageSync('committee_id', all_community[0].committee_id);
+      } else {
+        this.srouceText = '提示您尚未登录，请登录后操作';
+        this.srouceBtnText = '登录';
+        this.srouceShow = true;
+      }
+    },
     goComitee: function goComitee(obj) {
       if (uni.getStorageSync('singPage') == 1) {
         uni.showToast({
@@ -1633,6 +1645,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (_this9.srouce) {
             console.log('d2');
             _this9.autoShare();
+          } else {
+            _this9.fixtodo();
           }
         }
       });

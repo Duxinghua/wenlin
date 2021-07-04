@@ -45,6 +45,9 @@
   -webkit-flex-direction: column;
           flex-direction: column;
 }
+.worker .workerlist.data-v-486b892e .nodata {
+  margin-top: 400rpx;
+}
 .worker .workerlist .workeritem.data-v-486b892e {
   width: 100%;
   display: -webkit-box;

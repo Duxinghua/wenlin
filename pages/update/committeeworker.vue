@@ -107,7 +107,7 @@ export default {
 			display: flex;
 			flex-direction: column;
 			/deep/ .nodata{
-				
+				margin-top:400upx;
 			}
 			.workeritem{
 				width:100%;

@@ -1003,6 +1003,18 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         that.getDetail();
       }
     },
+    fixtodo: function fixtodo() {
+      var token = uni.getStorageSync('token');
+      var all_community = uni.getStorageSync('all_community');
+      if (all_community.length) {
+        uni.setStorageSync('community_id', all_community[0].community_id);
+        uni.setStorageSync('committee_id', all_community[0].committee_id);
+      } else {
+        this.srouceText = '提示您尚未登录，请登录后操作';
+        this.srouceBtnText = '登录';
+        this.srouceShow = true;
+      }
+    },
     //公告
     getNoDetail: function getNoDetail() {var _this4 = this;
       var data = { id: this.id };
@@ -1035,6 +1047,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           _this5.getCommentList();
           if (_this5.srouce) {
             _this5.autoShare();
+          } else {
+            _this5.fixtodo();
           }
         }
       });
@@ -1578,6 +1592,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (_this11.srouce) {
             console.log('dd,2');
             _this11.autoShare();
+          } else {
+            _this11.fixtodo();
           }
         }
       });
@@ -1592,12 +1608,19 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
             _this12.$refs.deletetip.deleteShow = true;
             return;
           }
+          console.log(result.data);
           _this12.detail = result.data;
           _this12.loading = false;
           _this12.detail.content = _this12.detail.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:block;"');
           _this12.opening = result.data.opening;
-          _this12.srouceCommunity_id = result.data.community.community_id;
-          _this12.srouceCommunity_text = result.data.community.title;
+          if (_this12.detail.publish_type != 1 && _this12.detail.publish_type != 2) {
+            _this12.srouceCommunity_id = result.data.committee.committee_id;
+            _this12.srouceCommunity_text = result.data.committee.title;
+
+          } else {
+            _this12.srouceCommunity_id = result.data.community.community_id;
+            _this12.srouceCommunity_text = result.data.community.title;
+          }
           if (_this12.type == 2) {
             _this12.config.title = '小区新鲜事';
           } else if (_this12.type == 5) {
@@ -1615,6 +1638,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (_this12.srouce) {
             console.log('d2');
             _this12.autoShare();
+          } else {
+            _this12.fixtodo();
           }
         }
       });

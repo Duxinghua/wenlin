@@ -798,6 +798,8 @@ export default {
 					this.getCommentList();
 					if (this.srouce) {
 						this.autoShare();
+					}else{
+						this.fixtodo()
 					}
 				}
 			});
@@ -1313,6 +1315,19 @@ export default {
 				success: () => {}
 			});
 		},
+		fixtodo(){
+			var token = uni.getStorageSync('token');
+			var all_community = uni.getStorageSync('all_community');
+			if (all_community.length) {
+				uni.setStorageSync('community_id', all_community[0].community_id);
+				uni.setStorageSync('committee_id', all_community[0].committee_id);
+			} else {
+				this.srouceText = '提示您尚未登录，请登录后操作';
+				this.srouceBtnText = '登录';
+				this.srouceShow = true;
+			}
+		},
+		
 		getDdetail() {
 			this.Api.dongtaiDetail({ object_id: this.id,object_type:this.type }).then(result => {
 				if (result.code == 1) {
@@ -1338,6 +1353,8 @@ export default {
 					if (this.srouce) {
 						console.log('dd,2');
 						this.autoShare();
+					}else{
+						this.fixtodo()
 					}
 				}
 			});
@@ -1375,6 +1392,8 @@ export default {
 					if (this.srouce) {
 						console.log('d2');
 						this.autoShare();
+					}else{
+						this.fixtodo()
 					}
 				}
 			});

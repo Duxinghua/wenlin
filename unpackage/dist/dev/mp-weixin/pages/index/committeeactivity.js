@@ -363,18 +363,20 @@ __webpack_require__.r(__webpack_exports__);
       // 	});
       // 	return
       // }
-      this.Api.activityjoin(data).then(function (result) {
-        if (result.code == 1) {
-          uni.showToast({
-            icon: 'success',
-            title: result.msg,
-            success: function success() {
-              uni.redirectTo({
-                url: '/pages/index/cdetail?id=' + _this.id + '&type=' + _this.type });
+      this.subMessageTodo(this.activeIds, 6, function (ss) {
+        _this.Api.activityjoin(data).then(function (result) {
+          if (result.code == 1) {
+            uni.showToast({
+              icon: 'success',
+              title: result.msg,
+              success: function success() {
+                uni.redirectTo({
+                  url: '/pages/index/cdetail?id=' + _this.id + '&type=' + _this.type });
 
-            } });
+              } });
 
-        }
+          }
+        });
       });
     } },
 

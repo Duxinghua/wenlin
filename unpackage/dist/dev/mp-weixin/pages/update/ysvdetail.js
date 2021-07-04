@@ -991,6 +991,18 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         url: '/pages/index/index' });
 
     },
+    fixtodo: function fixtodo() {
+      var token = uni.getStorageSync('token');
+      var all_community = uni.getStorageSync('all_community');
+      if (all_community.length) {
+        uni.setStorageSync('community_id', all_community[0].community_id);
+        uni.setStorageSync('committee_id', all_community[0].committee_id);
+      } else {
+        this.srouceText = '提示您尚未登录，请登录后操作';
+        this.srouceBtnText = '登录';
+        this.srouceShow = true;
+      }
+    },
     autoShare: function autoShare() {var _this4 = this;
       if (this.srouce == 1) {
         if (uni.getStorageSync('token')) {
@@ -1611,6 +1623,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (_this9.srouce) {
             console.log('dd,2');
             _this9.autoShare();
+          } else {
+            _this9.fixtodo();
           }
         }
       });
@@ -1647,6 +1661,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (_this10.srouce) {
             console.log('d2');
             _this10.autoShare();
+          } else {
+            _this10.fixtodo();
           }
         }
       });
@@ -2044,7 +2060,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       var data = {
         id: e };
 
-      this.Api.delComments(data).then(function (result) {
+      this.Api.votedelComments(data).then(function (result) {
         if (result.code == 1) {
           uni.showToast({
             title: result.msg,

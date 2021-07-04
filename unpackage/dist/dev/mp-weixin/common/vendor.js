@@ -2226,8 +2226,9 @@ var updateUs = function updateUs(params) {return (0, _request.wxRequest)(params,
 // {{online}}/api/community/Community_notices/getLastNotices
 var getLastNotices = function getLastNotices(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/Community_notices/getLastNotices', 'POST');};
 //{{online}}/api/community/Community_notices/detail
-var getNoticesDetail = function getNoticesDetail(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/Community_notices/detail', 'POST');};var _default = (_wechatAuth$setUserPh = {
-
+var getNoticesDetail = function getNoticesDetail(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/Community_notices/detail', 'POST');};
+//{{online}}/api/community/vote/delComments 删除议事厅
+var votedelComments = function votedelComments(params) {return (0, _request.wxRequest)(params, _config.baseURL + 'api/community/vote/delComments', 'POST');};var _default = (_wechatAuth$setUserPh = {
 
 
   wechatAuth: wechatAuth,
@@ -2357,7 +2358,8 @@ pactivityDetail), _defineProperty(_wechatAuth$setUserPh, "updateUs",
 updateUs), _defineProperty(_wechatAuth$setUserPh, "getLastNotices",
 getLastNotices), _defineProperty(_wechatAuth$setUserPh, "getNoticesDetail",
 getNoticesDetail), _defineProperty(_wechatAuth$setUserPh, "voteCommentReply",
-voteCommentReply), _wechatAuth$setUserPh);exports.default = _default;
+voteCommentReply), _defineProperty(_wechatAuth$setUserPh, "votedelComments",
+votedelComments), _wechatAuth$setUserPh);exports.default = _default;
 
 /***/ }),
 
@@ -2566,7 +2568,7 @@ var subscription = {
   vote: 'wedVxVL7kxxEMfcnjhVgWCottnrhwHzZ9SYZaWiGs48',
   jointuan: '8acnia-tVCSVzY49oVA3jteQCh1qhxrEc9DIfpsEIfg' };
 
-var version = 17;
+var version = 18;
 module.exports = {
   appid: appid,
   mapkey: mapkey,

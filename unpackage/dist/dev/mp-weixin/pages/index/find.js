@@ -958,7 +958,7 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
           if (result.code == 1) {
             var totalPage = result.data.total_pages;
             var curPageLen = result.data.list.length;
-            if (_this5.page.num == 1) _this5.postList = [];
+            if (page.num == 1) _this5.postList = [];
             _this5.postList = _this5.postList.concat(result.data.list);
             _this5.mescroll.endByPage(curPageLen, totalPage);
             // if(ismore){

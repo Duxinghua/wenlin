@@ -43,7 +43,7 @@
 							<view class="votetoolitem" @click="votoTodo(detail)">
 								<image :src="detail.is_vote == 0 ? require('../../static/vite.png') : require('../../static/voteactive.png')" class="voteicos"></image>
 								<view class="votedes">
-									投票
+								{{detail.is_vote == 0 ? '投票' : '已投'}}
 								</view>
 							</view>
 						</view>
@@ -784,6 +784,18 @@ export default {
 				url: '/pages/index/index'
 			});
 		},
+		fixtodo(){
+			var token = uni.getStorageSync('token');
+			var all_community = uni.getStorageSync('all_community');
+			if (all_community.length) {
+				uni.setStorageSync('community_id', all_community[0].community_id);
+				uni.setStorageSync('committee_id', all_community[0].committee_id);
+			} else {
+				this.srouceText = '提示您尚未登录，请登录后操作';
+				this.srouceBtnText = '登录';
+				this.srouceShow = true;
+			}
+		},
 		autoShare() {
 			if (this.srouce == 1) {
 				if (uni.getStorageSync('token')) {
@@ -1404,6 +1416,8 @@ export default {
 					if (this.srouce) {
 						console.log('dd,2');
 						this.autoShare();
+					}else{
+						this.fixtodo()
 					}
 				}
 			});
@@ -1440,6 +1454,8 @@ export default {
 					if (this.srouce) {
 						console.log('d2');
 						this.autoShare();
+					}else{
+						this.fixtodo()
 					}
 				}
 			});
@@ -1837,7 +1853,7 @@ export default {
 			var data = {
 				id: e
 			};
-			this.Api.delComments(data).then(result => {
+			this.Api.votedelComments(data).then(result => {
 				if (result.code == 1) {
 					uni.showToast({
 						title: result.msg,

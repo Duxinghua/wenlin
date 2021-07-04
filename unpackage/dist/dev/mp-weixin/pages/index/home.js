@@ -521,6 +521,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/components/mescroll-uni/mescroll-mixins.js */ 543));
 
 
@@ -814,6 +816,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
         _this.loginFalse = true;
         _this.guestFlag = true;
         _this.guestShowOpen = true;
+        setTimeout(function () {
+          _this.current = 3;
+          //this.mescroll.resetUpScroll();
+          _this.mescroll.resetUpScroll();
+        }, 3000);
       } else {
         _this.loginFalse = false;
         _this.guestFlag = false;
@@ -1290,18 +1297,11 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
             // this.totalPage = result.data.total_pages;
             var totalPage = result.data.total_pages;
             var curPageLen = result.data.list.length;
-            if (page.num == 1) {
-              _this8.postList = [];
-              var list = [];
-              if (_this8.type == 6 && _this8.darenObj) {
-                list.push(_this8.darenObj);
-              }
-              _this8.postList = list.concat(result.data.list);
+            if (page.num == 1) _this8.postList = [];
 
-            } else {
-              _this8.postList = _this8.postList.concat(result.data.list);
-              _this8.mescroll.endByPage(curPageLen, totalPage);
-            }
+            _this8.postList = _this8.postList.concat(result.data.list);
+            _this8.mescroll.endByPage(curPageLen, totalPage);
+
             // if (this.postList.length) {
             // 	this.flexNoData = true;
             // } else {
@@ -1838,6 +1838,9 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
       var token = uni.getStorageSync('token');
       if (!token) {
         this.guestFlag = true;
+        this.mescroll.scrollTo(0, 300);
+        this.mescroll.resetUpScroll();
+        this.$forceUpdate();
         return;
       } else {
         if (this.all_community.length == 0) {

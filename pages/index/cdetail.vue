@@ -761,6 +761,18 @@
 				}
 			
 			},
+			fixtodo(){
+				var token = uni.getStorageSync('token');
+				var all_community = uni.getStorageSync('all_community');
+				if (all_community.length) {
+					uni.setStorageSync('community_id', all_community[0].community_id);
+					uni.setStorageSync('committee_id', all_community[0].committee_id);
+				} else {
+					this.srouceText = '提示您尚未登录，请登录后操作';
+					this.srouceBtnText = '登录';
+					this.srouceShow = true;
+				}
+			},
 			goComitee(obj){
 				if (uni.getStorageSync('singPage') == 1) {
 					uni.showToast({
@@ -1430,6 +1442,8 @@
 						if(this.srouce){
 							console.log('d2')
 							this.autoShare()
+						}else{
+							this.fixtodo()
 						}
 					}
 				})
@@ -1885,17 +1899,32 @@
 						height:36upx;
 						margin-bottom: 10px;
 					}
+		
 					.name,.label{
 						font-size:28upx;
 						font-family:PingFang-SC-Medium,PingFang-SC;
 						font-weight:500;
 						color:#020433;
-						line-height:40upx;
+						line-height:46upx;
 						margin-right:15upx;
 					}
 					.label{
 						width: fit-content;
-						max-width:120upx;
+						max-width:130upx;
+						position: relative;
+						padding-left:10upx;
+						box-sizing: border-box;
+					}
+					.label::after{
+						position: absolute;
+						left:0;
+						content: '';
+						top:50%;
+						transform: translateY(-50%);
+						width:5upx;
+						height: 5upx;
+						background-color: #020433;
+						border-radius: 50%;
 					}
 					.name{
 						text-align: left;
@@ -1903,7 +1932,7 @@
 						margin-right:0;
 					}
 					.namec{
-						color:#FF9C00;
+						color:#ED3269;
 						display:flex;
 						flex-direction: column;
 					}
@@ -2033,10 +2062,11 @@
 			}
 			.detail-title{
 				width:100%;
-				font-size:40upx;
+				font-size:34upx;
 				font-family:PingFang-SC-Bold,PingFang-SC;
 				// font-weight:bold;
-				color:rgba(51,51,51,1);
+				color:#020433;
+				font-weight: bold;
 				line-height:52upx;
 				padding-bottom: 20upx;
 				margin-bottom: 20upx;

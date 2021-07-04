@@ -5,7 +5,7 @@
 			<view class="home-top"  :style="[{top:CustomBar + 'px'}]" v-if="committeeList.length">
 			
 <!-- 			<view class="tagwrap"> -->
-			<view class="tagwrap" >
+			<view class="tagwrap"  v-if="committeeList.length">
 				<!-- 分类 cu-item nav-item-->
 				<view   :class="['tagitem', cateIndex == index ? 'active' : '']" v-for="(item, index) in committeeList" :key="index" @click="cateClick(index)" @tap="tabSelect" :data-id="index">
 				<image :src="item.logo"  class="image"></image>
@@ -492,6 +492,10 @@ export default {
 			if (!this.token) {
 				//没有token要求用户授权
 				this.loginFalse = true;
+				var system = uni.getSystemInfoSync()
+				let rate = 750 / system.windowWidth 
+				this.rate = rate
+				this.topFixed = this.CustomBar*rate
 			} else {
 				this.loginFalse = false;
 				//判断我是否设置小区
@@ -631,6 +635,14 @@ export default {
 			if(result.code == 1){
 				this.committeeList = result.data
 				console.log(this.committeeList,'committeeList')
+				if(this.committeeList.length == 0){
+					
+					var system = uni.getSystemInfoSync()
+					let rate = 750 / system.windowWidth 
+					this.rate = rate
+					this.topFixed = this.CustomBar*rate
+					
+				}
 				this.$forceUpdate()
 			}
 		},

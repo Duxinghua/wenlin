@@ -79,10 +79,10 @@ export default {
 						'&type=' +
 						shareObj.type +
 						'&dynamics_id=' +
-						shareObj.id
+						shareObj.object_id
 				};
-			}else if (shareObj.publish_type == 2) {
-				if (shareObj.publish_type == 2 && shareObj.type == 5) {
+			}else if (shareObj.publish_type != 1 && shareObj.publish_type != 3) {
+				if (shareObj.type == 5) {
 					return {
 						title: shareObj.title,
 						imageUrl: image,
@@ -92,11 +92,13 @@ export default {
 							'&type=' +
 							shareObj.type +
 							'&dynamics_id=' +
-							shareObj.id
+							shareObj.object_id
 					};
 				} else {
+					var content = shareObj.title || shareObj.content
+					content = content.length > 30 ? content.substr(0, 30) + '...' : content
 					return {
-						title: shareObj.title,
+						title: content,
 						imageUrl: image,
 						path:
 							'/pages/index/detail?srouce=1&id=' +
@@ -104,7 +106,7 @@ export default {
 							'&type=' +
 							shareObj.type +
 							'&dynamics_id=' +
-							shareObj.id
+							shareObj.object_id
 					};
 				}
 			} else if (shareObj.publish_type == 1) {
@@ -121,14 +123,15 @@ export default {
 						imageUrl: image,
 						path:
 							'/pages/index/detail?srouce=1&id=' +
-							shareObj.id +
+							shareObj.object_id +
 							'&type=' +
 							shareObj.type +
 							'&dynamics_id=' +
 							shareObj.object_id
 					};
 				}else if(shareObj.type == 17){
-					var content = shareObj.content
+					// var content = shareObj.content
+					var content = shareObj.user.user_nickname+'发布了一个邻里团,已有'+shareObj.buy_num+'人参团，只差你了'
 					return {
 						title:
 							content.length > 30
@@ -136,8 +139,8 @@ export default {
 								: content,
 						imageUrl: image,
 						path:
-							'/pages/index/ptdetail?srouce=1&id=' +
-							shareObj.id +
+							'/pages/update/ptdetail?srouce=1&id=' +
+							shareObj.object_id +
 							'&type=' +
 							shareObj.type +
 							'&dynamics_id=' +
@@ -153,8 +156,8 @@ export default {
 								: content,
 						imageUrl: image,
 						path:
-							'/pages/index/ysdetail?srouce=1&id=' +
-							shareObj.id +
+							'/pages/update/ysdetail?srouce=1&id=' +
+							shareObj.object_id +
 							'&type=' +
 							shareObj.type +
 							'&dynamics_id=' +
@@ -167,7 +170,7 @@ export default {
 						imageUrl: image,
 						path:
 							'/pages/index/detail?srouce=1&id=' +
-							shareObj.id +
+							shareObj.object_id +
 							'&type=' +
 							shareObj.type +
 							'&dynamics_id=' +
@@ -183,7 +186,7 @@ export default {
 						imageUrl: image,
 						path:
 							'/pages/index/detail?srouce=1&id=' +
-							shareObj.id +
+							shareObj.object_id +
 							'&type=' +
 							shareObj.type +
 							'&dynamics_id=' +
@@ -196,7 +199,7 @@ export default {
 					imageUrl: image,
 					path:
 						'/pages/index/detail?srouce=1&id=' +
-						shareObj.id +
+						shareObj.object_id +
 						'&type=' +
 						shareObj.type +
 						'&dynamics_id=' +

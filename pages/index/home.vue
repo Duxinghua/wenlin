@@ -34,7 +34,7 @@
 						<u-notice-bar :volume-icon="false" duration="4000" speed="200" mode="vertical" :list="list" bg-color="transparent" color="#020433" @click.stop="noticeHandler"></u-notice-bar>
 						</view>
 
-						<text class="search-text" v-else>搜索问邻共享资源</text>
+						<text class="search-text" @click.stop="searchLink" v-else>搜索问邻共享资源</text>
 					</view>
 					<view class="searchright" @click="messageLink">
 						<image src="../../static/messageico.png" class="red"></image>
@@ -60,9 +60,10 @@
 			</view>
 			<!-- 			</view> -->
 			<view :class="['postwrap', type == 3 ? 'usedwrap' : '']">
-			<mescroll-uni scroll-y="true"  v-if="type != 3" :style="{height: height+'px'}" 
+			<mescroll-uni scroll-y="true"  :style="{height: height+'px'}" 
 			class="listwrap"
 			:top="topFixed"
+			:flexType="type == 3 ? true : false"
 			bottom="120"
 			ref="mescrollRef"
 			@init="mescrollInit"
@@ -73,6 +74,7 @@
 			 >
 <!-- 			 //@refresherpulling="pulling" -->
 					<PostItem
+						v-if="type != 3" 
 						:allFlag="allFlag"
 						:type="current"
 						v-for="(item, index) in postList"
@@ -92,7 +94,7 @@
 							{{guestdata}}
 						</view>
 					</view> -->
-				</mescroll-uni>
+<!-- 				</mescroll-uni>
 
 				<mescroll-uni scroll-y="true"  v-if="type == 3" :style="{height: height+'px'}"
 				class="listwrap listwrap2"
@@ -105,8 +107,8 @@
 				@up="upCallback"
 				:down="downOption"
 				:up="upOption"
-				>
-					<UsedItem v-for="(item, index) in postList" :pitem="item" :key="index" :usedIndex="index" @toLogin="goDetails" />
+				> -->
+					<UsedItem v-if="type == 3"  v-for="(item, index) in postList" :pitem="item" :key="index" :usedIndex="index" @toLogin="goDetails" />
 	<!-- 				flexNoData guestFlag -->
 <!-- 					<view class="guestdata" v-if="flexNoData">
 						<u-image width="654" height="550" src="https://sq.wenlinapp.com/upload/mini/regnodata.png"></u-image>
@@ -651,7 +653,12 @@ export default {
 				//没有token要求用户授权
 				this.loginFalse = true;
 				this.guestFlag = true;
-				this.guestShowOpen = true
+				this.guestShowOpen = true;
+				setTimeout(() => {
+					this.current = 3;
+					//this.mescroll.resetUpScroll();
+					this.mescroll.resetUpScroll()
+				}, 3000);
 			} else {
 				this.loginFalse = false;
 				this.guestFlag = false;
@@ -1128,18 +1135,11 @@ export default {
 							// this.totalPage = result.data.total_pages;
 							var totalPage = result.data.total_pages;
 							var curPageLen = result.data.list.length;
-							if (page.num == 1) {
-								this.postList = [];
-								var list = []
-								if(this.type == 6 && this.darenObj){
-									list.push(this.darenObj)
-								}
-								this.postList = list.concat(result.data.list)
+							if (page.num == 1) this.postList = [];
 		
-							}else{
-								this.postList = this.postList.concat(result.data.list);
-								this.mescroll.endByPage(curPageLen, totalPage);
-							}
+							this.postList = this.postList.concat(result.data.list);
+							this.mescroll.endByPage(curPageLen, totalPage);
+							
 							// if (this.postList.length) {
 							// 	this.flexNoData = true;
 							// } else {
@@ -1676,6 +1676,9 @@ export default {
 			var token = uni.getStorageSync('token');
 			if(!token){
 				this.guestFlag = true
+				this.mescroll.scrollTo(0, 300);
+					this.mescroll.resetUpScroll();
+					this.$forceUpdate();
 				return
 			}else{
 				 if(this.all_community.length == 0){

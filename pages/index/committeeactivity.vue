@@ -231,18 +231,20 @@
 				// 	});
 				// 	return
 				// }
-				this.Api.activityjoin(data).then((result) => {
-					if(result.code == 1){
-						uni.showToast({
-							icon:'success',
-							title:result.msg,
-							success: () => {
-								uni.redirectTo({
-									url:'/pages/index/cdetail?id='+this.id+'&type='+this.type
-								})
-							}
-						})
-					}
+				this.subMessageTodo(this.activeIds,6,(ss) => {
+					this.Api.activityjoin(data).then((result) => {
+						if(result.code == 1){
+							uni.showToast({
+								icon:'success',
+								title:result.msg,
+								success: () => {
+									uni.redirectTo({
+										url:'/pages/index/cdetail?id='+this.id+'&type='+this.type
+									})
+								}
+							})
+						}
+					})
 				})
 			}
 		},

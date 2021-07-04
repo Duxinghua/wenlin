@@ -1688,6 +1688,18 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         success: function success() {} });
 
     },
+    fixtodo: function fixtodo() {
+      var token = uni.getStorageSync('token');
+      var all_community = uni.getStorageSync('all_community');
+      if (all_community.length) {
+        uni.setStorageSync('community_id', all_community[0].community_id);
+        uni.setStorageSync('committee_id', all_community[0].committee_id);
+      } else {
+        this.srouceText = '提示您尚未登录，请登录后操作';
+        this.srouceBtnText = '登录';
+        this.srouceShow = true;
+      }
+    },
     getDdetail: function getDdetail() {var _this12 = this;
       this.Api.dongtaiDetail({ dynamics_id: this.dynamics_id }).then(function (result) {
         if (result.code == 1) {
@@ -1713,6 +1725,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (_this12.srouce) {
             console.log('dd,2');
             _this12.autoShare();
+          } else {
+            _this12.fixtodo();
           }
         }
       });
@@ -1754,6 +1768,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (_this13.srouce) {
             console.log('d2');
             _this13.autoShare();
+          } else {
+            _this13.fixtodo();
           }
         }
       });

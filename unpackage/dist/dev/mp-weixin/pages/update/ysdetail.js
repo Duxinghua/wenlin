@@ -795,15 +795,66 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       });
     },
     lookVodetail: function lookVodetail(item) {
+      if (uni.getStorageSync('singPage') == 1) {
+        uni.showToast({
+          title: '请前往小程序使用完整服务',
+          icon: 'none',
+          duration: 2000 });
+
+        return;
+      } else {
+        var token = uni.getStorageSync('token');
+        var all_community = uni.getStorageSync('all_community');
+        if (!token && all_community.length == 0 || token && all_community.length == 0) {
+          this.$refs.confrims.text = '暂无权限操作，登录问邻即可操作';
+          this.$refs.confrims.id = -1;
+          this.$refs.confrims.guestShow = true;
+          return;
+        }
+      }
       uni.navigateTo({
         url: 'ysvdetail?vote_id=' + item.vote_id + '&type=' + this.detail.type });
 
     },
     addVoteHandler: function addVoteHandler() {
+      if (uni.getStorageSync('singPage') == 1) {
+        uni.showToast({
+          title: '请前往小程序使用完整服务',
+          icon: 'none',
+          duration: 2000 });
+
+        return;
+      } else {
+        var token = uni.getStorageSync('token');
+        var all_community = uni.getStorageSync('all_community');
+        if (!token && all_community.length == 0 || token && all_community.length == 0) {
+          this.$refs.confrims.text = '暂无权限操作，登录问邻即可操作';
+          this.$refs.confrims.id = -1;
+          this.$refs.confrims.guestShow = true;
+          return;
+        }
+      }
       this.voteType = 'commit';
       this.voteFlag = true;
     },
     selectTodo: function selectTodo(value) {
+      if (uni.getStorageSync('singPage') == 1) {
+        uni.showToast({
+          title: '请前往小程序使用完整服务',
+          icon: 'none',
+          duration: 2000 });
+
+        return;
+      } else {
+        var token = uni.getStorageSync('token');
+        var all_community = uni.getStorageSync('all_community');
+        if (!token && all_community.length == 0 || token && all_community.length == 0) {
+          this.$refs.confrims.text = '暂无权限操作，登录问邻即可操作';
+          this.$refs.confrims.id = -1;
+          this.$refs.confrims.guestShow = true;
+          return;
+        }
+      }
       this.nameShow = true;
     },
     selectHandler: function selectHandler(item) {var _this2 = this;
@@ -863,6 +914,23 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
       }
     },
     votoTodo: function votoTodo(item) {
+      if (uni.getStorageSync('singPage') == 1) {
+        uni.showToast({
+          title: '请前往小程序使用完整服务',
+          icon: 'none',
+          duration: 2000 });
+
+        return;
+      } else {
+        var token = uni.getStorageSync('token');
+        var all_community = uni.getStorageSync('all_community');
+        if (!token && all_community.length == 0 || token && all_community.length == 0) {
+          this.$refs.confrims.text = '暂无权限操作，登录问邻即可操作';
+          this.$refs.confrims.id = -1;
+          this.$refs.confrims.guestShow = true;
+          return;
+        }
+      }
       this.votetextarea = '';
       this.voteType = 'vote';
       this.voteobj = item;
@@ -952,6 +1020,25 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
 
         } });
 
+    },
+    checkTodo: function checkTodo() {
+      if (uni.getStorageSync('singPage') == 1) {
+        uni.showToast({
+          title: '请前往小程序使用完整服务',
+          icon: 'none',
+          duration: 2000 });
+
+        return;
+      } else {
+        var token = uni.getStorageSync('token');
+        var all_community = uni.getStorageSync('all_community');
+        if (!token && all_community.length == 0 || token && all_community.length == 0) {
+          this.$refs.confrims.text = '暂无权限操作，登录问邻即可操作';
+          this.$refs.confrims.id = -1;
+          this.$refs.confrims.guestShow = true;
+          return;
+        }
+      }
     },
     mobilecall: function mobilecall(mobile) {
       if (uni.getStorageSync('singPage') == 1) {
@@ -1088,6 +1175,18 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
         url: '/pages/index/index' });
 
     },
+    fixtodo: function fixtodo() {
+      var token = uni.getStorageSync('token');
+      var all_community = uni.getStorageSync('all_community');
+      if (all_community.length) {
+        uni.setStorageSync('community_id', all_community[0].community_id);
+        uni.setStorageSync('committee_id', all_community[0].committee_id);
+      } else {
+        this.srouceText = '提示您尚未登录，请登录后操作';
+        this.srouceBtnText = '登录';
+        this.srouceShow = true;
+      }
+    },
     autoShare: function autoShare() {var _this4 = this;
       if (this.srouce == 1) {
         if (uni.getStorageSync('token')) {
@@ -1188,6 +1287,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           _this6.getCommentList();
           if (_this6.srouce) {
             _this6.autoShare();
+          } else {
+            _this6.fixtodo();
           }
         }
       });
@@ -1722,6 +1823,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (_this11.srouce) {
             console.log('dd,2');
             _this11.autoShare();
+          } else {
+            _this11.fixtodo();
           }
         }
       });
@@ -1759,6 +1862,8 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
           if (_this12.srouce) {
             console.log('d2');
             _this12.autoShare();
+          } else {
+            _this12.fixtodo();
           }
         }
       });

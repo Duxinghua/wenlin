@@ -640,6 +640,10 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
       if (!_this.token) {
         //没有token要求用户授权
         _this.loginFalse = true;
+        var system = uni.getSystemInfoSync();
+        var _rate = 750 / system.windowWidth;
+        _this.rate = _rate;
+        _this.topFixed = _this.CustomBar * _rate;
       } else {
         _this.loginFalse = false;
         //判断我是否设置小区
@@ -774,11 +778,19 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
         url: '../update/selectcommunity' });
 
     },
-    getCommitList: function getCommitList() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+    getCommitList: function getCommitList() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var result, system, rate;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   _this3.Api.myCommitteeList({ type: 0 }));case 2:result = _context.sent;
                 if (result.code == 1) {
                   _this3.committeeList = result.data;
                   console.log(_this3.committeeList, 'committeeList');
+                  if (_this3.committeeList.length == 0) {
+
+                    system = uni.getSystemInfoSync();
+                    rate = 750 / system.windowWidth;
+                    _this3.rate = rate;
+                    _this3.topFixed = _this3.CustomBar * rate;
+
+                  }
                   _this3.$forceUpdate();
                 }case 4:case "end":return _context.stop();}}}, _callee);}))();
     },

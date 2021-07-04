@@ -290,7 +290,8 @@ const updateUs = (params) => wxRequest(params, baseURL + 'api/wxapp/public/updat
 const getLastNotices = (params) => wxRequest(params, baseURL + 'api/community/Community_notices/getLastNotices', 'POST')
 //{{online}}/api/community/Community_notices/detail
 const getNoticesDetail = (params) => wxRequest(params, baseURL + 'api/community/Community_notices/detail', 'POST')
-
+//{{online}}/api/community/vote/delComments 删除议事厅
+const votedelComments = (params) => wxRequest(params, baseURL + 'api/community/vote/delComments', 'POST')
 
 export default {
 	wechatAuth,
@@ -420,5 +421,6 @@ export default {
 	updateUs,
 	getLastNotices,
 	getNoticesDetail,
-	voteCommentReply
+	voteCommentReply,
+	votedelComments
 }
