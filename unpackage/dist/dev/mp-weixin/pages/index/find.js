@@ -1224,54 +1224,66 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! @/utils/tool.js */ 14
       });
       p.then(function (data) {
         //登录授权
-        var _e$detail2 = e.detail,encryptedData = _e$detail2.encryptedData,iv = _e$detail2.iv,rawData = _e$detail2.rawData,signature = _e$detail2.signature;
-        uni.login({
-          success: function success(result) {var
-            errMsg = result.errMsg,code = result.code;
-            if (errMsg == 'login:ok') {
-              var params = {
-                code: code,
-                encrypted_data: encryptedData,
-                signature: signature,
-                raw_data: rawData,
-                iv: iv };
+        uni.reLaunch({
+          url: '/pages/index/index',
+          success: function success(res) {
+            return;
+          } });
 
-              _this10.Api.communityLogin(params).then(function (res) {
-                if (res.code == 1) {
-                  if (res.data.all_community) {
-                    res.data.all_community.map(function (item) {
-                      item.title = item.community_name;
-                    });
-                  }
-                  uni.setStorageSync('token', res.data.token);
-                  uni.setStorageSync('user', res.data.user);
-                  uni.setStorageSync('all_community', res.data.all_community);
-                  _this10.community_id = res.data.all_community.length ? res.data.all_community[0].community_id : '';
-                  uni.setStorageSync('community_id', _this10.community_id);
-                  _this10.community_menu = res.data.all_community.length ? res.data.all_community[0].title + (res.data.all_community[0].total ? res.data.all_community[0].total : '') : '问邻';
-                  _this10.all_community = res.data.all_community;
-                  _this10.loginFalse = false;
-                  _this10.guestShow = false;
-                  _this10.userinforeg = true;
-                  if (_this10.all_community.length) {
-                    _this10.mescroll.resetUpScroll();
-                  } else {
-                    //如果开通过小区，待审核 
-                    _this10.current = 3;
-                    // this.setcommunity = true
-                    uni.navigateTo({
-                      url: '../update/setcommunity' });
+        return;
+        wx.getUserProfile({
+          desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+          success: function success(resx) {var
+            encryptedData = resx.encryptedData,iv = resx.iv,rawData = resx.rawData,signature = resx.signature;
+            uni.login({
+              success: function success(result) {var
+                errMsg = result.errMsg,code = result.code;
+                if (errMsg == 'login:ok') {
+                  var params = {
+                    code: code,
+                    encrypted_data: encryptedData,
+                    signature: signature,
+                    raw_data: rawData,
+                    iv: iv };
 
-                    console.log('pid');
-                    var pid = uni.getStorageSync('pid');
-                    if (pid) {
-                      _this10.community = uni.getStorageSync('ptitle');
-                      _this10.communityId = uni.getStorageSync('pcommunity_id');
+                  _this10.Api.communityLogin(params).then(function (res) {
+                    if (res.code == 1) {
+                      if (res.data.all_community) {
+                        res.data.all_community.map(function (item) {
+                          item.title = item.community_name;
+                        });
+                      }
+                      uni.setStorageSync('token', res.data.token);
+                      uni.setStorageSync('user', res.data.user);
+                      uni.setStorageSync('all_community', res.data.all_community);
+                      _this10.community_id = res.data.all_community.length ? res.data.all_community[0].community_id : '';
+                      uni.setStorageSync('community_id', _this10.community_id);
+                      _this10.community_menu = res.data.all_community.length ? res.data.all_community[0].title + (res.data.all_community[0].total ? res.data.all_community[0].total : '') : '问邻';
+                      _this10.all_community = res.data.all_community;
+                      _this10.loginFalse = false;
+                      _this10.guestShow = false;
+                      _this10.userinforeg = true;
+                      if (_this10.all_community.length) {
+                        _this10.mescroll.resetUpScroll();
+                      } else {
+                        //如果开通过小区，待审核 
+                        _this10.current = 3;
+                        // this.setcommunity = true
+                        uni.navigateTo({
+                          url: '../update/setcommunity' });
+
+                        console.log('pid');
+                        var pid = uni.getStorageSync('pid');
+                        if (pid) {
+                          _this10.community = uni.getStorageSync('ptitle');
+                          _this10.communityId = uni.getStorageSync('pcommunity_id');
+                        }
+                      }
                     }
-                  }
+                  });
                 }
-              });
-            }
+              } });
+
           } });
 
       });

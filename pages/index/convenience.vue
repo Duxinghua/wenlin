@@ -143,7 +143,7 @@
 				<view class="logintop">您尚未登录</view>
 				<view class="loginbottom">
 					<text class="textitem" @click="guestShow = !guestShow">取消</text>
-					<button open-type="getUserInfo" @getuserinfo="getUserInfo" class="textitem textitem-fix">
+					<button  @click="getUserInfo" class="textitem textitem-fix">
 					微信登录
 					</button>
 				
@@ -162,7 +162,7 @@
 					<view class="logintitle">选择登录方式</view>
 					<view class="logintype">
 						<view class="loginitem">
-							<button open-type="getUserInfo" @getuserinfo="getUserInfo" class="weixinbtn">
+							<button  @click="getUserInfo" class="weixinbtn">
 								<image src="../../static/weixin.png"></image>
 								<text>微信登录</text>
 							</button>
@@ -1018,55 +1018,67 @@ export default {
 			});
 			p.then(data => {
 				//登录授权
-				var { encryptedData, iv, rawData, signature } = e.detail;
-				uni.login({
-					success: result => {
-						let { errMsg, code } = result;
-						if (errMsg == 'login:ok') {
-							var params = {
-								code: code,
-								encrypted_data: encryptedData,
-								signature: signature,
-								raw_data: rawData,
-								iv: iv
-							};
-							this.Api.communityLogin(params).then(res => {
-								if (res.code == 1) {
-									uni.setStorageSync('token', res.data.token);
-									uni.setStorageSync('user', res.data.user);
-									uni.setStorageSync('all_community', res.data.all_community);
-									this.community_id = res.data.all_community.length ? res.data.all_community[0].community_id :'';
-									uni.setStorageSync('community_id', this.community_id);
-									this.community_menu = res.data.all_community.length ? res.data.all_community[0].title+(res.data.all_community[0].total ? res.data.all_community[0].total :'')  :'问邻';
-									this.all_community = res.data.all_community;
-									this.loginFalse = false;
-									this.guestShow = false
-									this.userinforeg = true;
-									if(this.all_community.length){
-										this.page = 1
-										this.postList = []
-										this.mescroll.resetUpScroll()
-									}else{
-										//如果开通过小区，待审核 
-										// this.current = 3
-										// this.setcommunity = true
-										if(this.all_community.legnth == 0){
-											uni.navigateTo({
-												url:'../update/selectcommunity'
-											})
-										}
-										console.log('pid')
-										var pid = uni.getStorageSync('pid')
-										if(pid){
-											this.community = uni.getStorageSync('ptitle')
-											this.communityId = uni.getStorageSync('pcommunity_id')
-										}
+				uni.reLaunch({
+					url:'/pages/index/index',
+					success: (res) => {
+						return
+					}
+				})
+				return
+				wx.getUserProfile({
+				     desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+				     success: (resx) => {
+							var { encryptedData, iv, rawData, signature } = resx;
+							uni.login({
+								success: result => {
+									let { errMsg, code } = result;
+									if (errMsg == 'login:ok') {
+										var params = {
+											code: code,
+											encrypted_data: encryptedData,
+											signature: signature,
+											raw_data: rawData,
+											iv: iv
+										};
+										this.Api.communityLogin(params).then(res => {
+											if (res.code == 1) {
+												uni.setStorageSync('token', res.data.token);
+												uni.setStorageSync('user', res.data.user);
+												uni.setStorageSync('all_community', res.data.all_community);
+												this.community_id = res.data.all_community.length ? res.data.all_community[0].community_id :'';
+												uni.setStorageSync('community_id', this.community_id);
+												this.community_menu = res.data.all_community.length ? res.data.all_community[0].title+(res.data.all_community[0].total ? res.data.all_community[0].total :'')  :'问邻';
+												this.all_community = res.data.all_community;
+												this.loginFalse = false;
+												this.guestShow = false
+												this.userinforeg = true;
+												if(this.all_community.length){
+													this.page = 1
+													this.postList = []
+													this.mescroll.resetUpScroll()
+												}else{
+													//如果开通过小区，待审核 
+													// this.current = 3
+													// this.setcommunity = true
+													if(this.all_community.legnth == 0){
+														uni.navigateTo({
+															url:'../update/selectcommunity'
+														})
+													}
+													console.log('pid')
+													var pid = uni.getStorageSync('pid')
+													if(pid){
+														this.community = uni.getStorageSync('ptitle')
+														this.communityId = uni.getStorageSync('pcommunity_id')
+													}
+												}
+											}
+										});
 									}
 								}
 							});
-						}
-					}
-				});
+						},
+				})
 			});
 		},
 		//设置小区
