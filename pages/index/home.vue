@@ -567,20 +567,49 @@ export default {
 			this.goLogin(res => {});
 		});
 		if (uni.getStorageSync('token')) {
-			this.$getCount(result => {
-				var count = 0;
-				if (result.code == 1) {
-					if (!isNaN(result.data.comment_unread)) {
-						count += result.data.comment_unread;
-						count += result.data.committee_publish_notices_unread;
-						count += result.data.leave_message_unread
-						count += result.data.sys_notices_unread;
-						this.notices_count = count;
-					} else {
-						this.notices_count = 0;
+			// this.$getCount(result => {
+			// 	var count = 0;
+			// 	if (result.code == 1) {
+			// 		if (!isNaN(result.data.comment_unread)) {
+			// 			count += result.data.comment_unread;
+			// 			count += result.data.committee_publish_notices_unread;
+			// 			count += result.data.leave_message_unread
+			// 			count += result.data.sys_notices_unread;
+			// 			this.notices_count = count;
+			// 		} else {
+			// 			this.notices_count = 0;
+			// 		}
+			// 	}
+			// });
+			this.$getCount((result) => {
+				var count = 0
+				if(result.code == 1){
+					// {"code":1,"msg":"查询成功","data":{"sys_unread":1,"comment_unread":0,"leave_message_unread":0}}
+	
+						
+							// count += result.data.comment_unread;
+							// count += result.data.committee_publish_notices_unread;
+							// count += result.data.leave_message_unread
+							// count += result.data.sys_notices_unread;
+							if(result.data.sys_unread){
+								count += result.data.sys_unread
+							}
+							if(result.data.comment_unread){
+								count += result.data.comment_unread
+							}
+							if(result.data.leave_message_unread){
+								count += result.data.leave_message_unread
+							}
+							if(result.data.sys_notices_unread){
+								count += result.data.sys_notices_unread
+							}
+							
+						this.notices_count = count
+					}else{
+						this.notices_count = 0
 					}
-				}
-			});
+				
+			})
 
 			this.$Bus.$on('countmsg', countmsg => {
 				this.$getCount(result => {

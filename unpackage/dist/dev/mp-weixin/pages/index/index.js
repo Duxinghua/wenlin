@@ -301,16 +301,31 @@ var _tool = _interopRequireDefault(__webpack_require__(/*! ../../utils/tool.js *
     this.$getCount(function (result) {
       var count = 0;
       if (result.code == 1) {
-        if (!isNaN(result.data.comment_unread)) {
-          count += result.data.comment_unread;
-          count += result.data.committee_publish_notices_unread;
-          count += result.data.leave_message_unread;
-          count += result.data.sys_notices_unread;
-          _this.notices_count = count;
-        } else {
-          _this.notices_count = 0;
+        // {"code":1,"msg":"查询成功","data":{"sys_unread":1,"comment_unread":0,"leave_message_unread":0}}
+        // if(!isNaN(result.data.comment_unread)){
+
+        // count += result.data.comment_unread;
+        // count += result.data.committee_publish_notices_unread;
+        // count += result.data.leave_message_unread
+        // count += result.data.sys_notices_unread;
+        if (result.data.sys_unread) {
+          count += result.data.sys_unread;
         }
+        if (result.data.comment_unread) {
+          count += result.data.comment_unread;
+        }
+        if (result.data.leave_message_unread) {
+          count += result.data.leave_message_unread;
+        }
+        if (result.data.sys_notices_unread) {
+          count += result.data.sys_notices_unread;
+        }
+
+        _this.notices_count = count;
+      } else {
+        _this.notices_count = 0;
       }
+      // }
     });
     this.$Bus.$on('noToken', function (e) {
       console.log(e, 'e', '1111');
