@@ -18,7 +18,7 @@
 					</view>
 					<text class="headertext">评论</text>
 				</view>
-				<view class="headeritem" @click="headerClick(3)">
+				<view class="headeritem" @click="headerClick(3)" v-if="false">
 					<view :class="['headericos',headerIndex == 3 ? 'headericosac' :'']">
 						<image :src="headerIndex == 3 ? '../../static/a3a.png' : '../../static/a3.png'" class="headerico"></image>
 						<view class="numtext" v-if="unreads.thanks_unread">{{ unreads.thanks_unread < 99 ? unreads.thanks_unread : '99+' }}</view>
@@ -459,7 +459,7 @@ export default {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				margin-right:calc((100% - 448upx)/3);
+				margin-right:calc((100% - 336upx)/2);
 				.headericos {
 					position: relative;
 					height: 112upx;

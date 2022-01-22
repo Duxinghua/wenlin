@@ -45,7 +45,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: calc((100% - 448rpx)/3);
+  margin-right: calc((100% - 336rpx)/2);
 }
 .integral .content .headerwrap .headeritem .headericos.data-v-214954fa {
   position: relative;
