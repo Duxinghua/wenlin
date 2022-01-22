@@ -25,80 +25,44 @@
 /* 透明度 */
 /* 文章场景相关 */
 .setvote.data-v-4d9db4e5 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 100%;
   min-height: 100vh;
   background: white;
 }
 .setvote .content.data-v-4d9db4e5 {
   padding: 24rpx 48rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
+  box-sizing: border-box;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .setvote .content .headerItem.data-v-4d9db4e5 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding-bottom: 34rpx;
   padding-top: 34rpx;
   border-bottom: 2rpx solid #dedede;
 }
 .setvote .content .headerItem .userheader.data-v-4d9db4e5 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 .setvote .content .headerItem .userheader .useravatar.data-v-4d9db4e5 {
   width: 80rpx;
   height: 80rpx;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   margin-right: 16rpx;
 }
 .setvote .content .headerItem .userheader .userlist.data-v-4d9db4e5 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
+  flex-direction: column;
+  flex: 1;
 }
 .setvote .content .headerItem .userheader .userlist .usertop.data-v-4d9db4e5 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 .setvote .content .headerItem .userheader .userlist .usertop .username.data-v-4d9db4e5 {
   font-size: 26rpx;
@@ -112,22 +76,12 @@
   width: 82rpx;
   height: 32rpx;
   background: #08C299;
-  -webkit-border-radius: 8rpx;
-          border-radius: 8rpx;
+  border-radius: 8rpx;
   margin-right: 16rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .setvote .content .headerItem .userheader .userlist .usertop .like .likeimg.data-v-4d9db4e5 {
   width: 30rpx;
@@ -145,8 +99,7 @@
   width: 36rpx;
   height: 32rpx;
   background: rgba(255, 156, 0, 0.1);
-  -webkit-border-radius: 8rpx;
-          border-radius: 8rpx;
+  border-radius: 8rpx;
   font-size: 20rpx;
   font-family: PingFang-SC-Bold, PingFang-SC;
   font-weight: bold;
@@ -191,25 +144,17 @@
 }
 .setvote .textarea.data-v-4d9db4e5 {
   background: #F7F9FF;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   padding: 15rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-size: 28rpx;
   height: 120rpx;
 }
 .setvote .remarkcontent.data-v-4d9db4e5 {
   padding: 62rpx 24rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 .setvote .remarkcontent .title.data-v-4d9db4e5 {
   width: 100%;
@@ -222,13 +167,8 @@
   margin-bottom: 30rpx;
 }
 .setvote .remarkcontent .rcontent.data-v-4d9db4e5 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   margin-top: 30rpx;
 }
 .setvote .remarkcontent .rcontent .label.data-v-4d9db4e5 {
@@ -239,17 +179,10 @@
   color: #95A0B6;
 }
 .setvote .remarkcontent .rcontent .itemwrap.data-v-4d9db4e5 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-align-content: flex-start;
-          align-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 .setvote .remarkcontent .rcontent .itemwrap .item.data-v-4d9db4e5 {
   width: 167rpx;
@@ -259,8 +192,7 @@
   line-height: 48rpx;
   text-align: center;
   background: #EEF2FA;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   font-size: 30rpx;
   font-family: PingFang SC;
   font-weight: 500;
@@ -271,10 +203,8 @@
   height: 99rpx;
   line-height: 99rpx;
   text-align: center;
-  background: -webkit-linear-gradient(46deg, #FEAA0E, #FFC000);
   background: linear-gradient(44deg, #FEAA0E, #FFC000);
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   text-align: center;
   font-size: 38rpx;
   font-family: PingFang SC;

@@ -25,34 +25,18 @@
 /* 透明度 */
 /* 文章场景相关 */
 .integral.data-v-3d262fa0 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .integral .content.data-v-3d262fa0 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 24rpx 24rpx 0 24rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .integral .content .searchlist.data-v-3d262fa0 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .integral .content .searchlist .searchitem.data-v-3d262fa0:first-child {
   margin-top: 20rpx;
@@ -60,42 +44,23 @@
 .integral .content .searchlist .searchitem.data-v-3d262fa0 {
   height: 160rpx;
   border-bottom: 1rpx solid rgba(222, 222, 222, 0.6);
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-          justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 .integral .content .searchlist .searchitem .headeravater.data-v-3d262fa0 {
   width: 96rpx;
   height: 96rpx;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   margin-right: 16rpx;
   overflow: hidden;
 }
 .integral .content .searchlist .searchitem .area.data-v-3d262fa0 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-  -webkit-align-items: flex-start;
-          align-items: flex-start;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .integral .content .searchlist .searchitem .area .t1.data-v-3d262fa0 {
   font-size: 30rpx;
@@ -116,8 +81,7 @@
   margin-left: auto;
   width: 92rpx;
   height: 56rpx;
-  -webkit-border-radius: 8rpx;
-          border-radius: 8rpx;
+  border-radius: 8rpx;
   background: #FF9C00;
   color: white;
   font-size: 26rpx;
@@ -152,19 +116,11 @@
   width: 580rpx;
   height: 320rpx;
   background: white;
-  -webkit-border-radius: 16rpx;
-          border-radius: 16rpx;
+  border-radius: 16rpx;
   z-index: 3002;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-          justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .integral .popup .logout .t1.data-v-3d262fa0 {
   font-size: 36rpx;
@@ -177,27 +133,16 @@
 }
 .integral .popup .logout .t2.data-v-3d262fa0 {
   height: 126rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   border-top: 1px solid rgba(222, 222, 222, 0.6);
 }
 .integral .popup .logout .t2 .s1.data-v-3d262fa0, .integral .popup .logout .t2 .s2.data-v-3d262fa0 {
   width: 50%;
   height: 126rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   font-size: 32rpx;
   font-family: PingFang-SC-Medium,PingFang-SC;
   font-weight: 500;

@@ -25,13 +25,8 @@
 /* 透明度 */
 /* 文章场景相关 */
 .reply.data-v-6acf99cc {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   position: fixed;
   padding: 20rpx 24rpx 20rpx 24rpx;
   left: 0;
@@ -39,23 +34,13 @@
   width: 100%;
   min-height: 100rpx;
   background: white;
-  -webkit-box-shadow: 0rpx 12rpx 20rpx 0rpx rgba(0, 0, 0, 0.4);
-          box-shadow: 0rpx 12rpx 20rpx 0rpx rgba(0, 0, 0, 0.4);
+  box-shadow: 0rpx 12rpx 20rpx 0rpx rgba(0, 0, 0, 0.4);
 }
 .reply .inputrow.data-v-6acf99cc {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-          justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 .reply .inputrow .inputbtn.data-v-6acf99cc {
   width: 100rpx;
@@ -70,8 +55,7 @@
   width: 100%;
   height: 100rpx;
   background: rgba(234, 234, 234, 0.3);
-  -webkit-border-radius: 50rpx;
-          border-radius: 50rpx;
+  border-radius: 50rpx;
   position: relative;
 }
 .reply .inputrow .inputwrap .face.data-v-6acf99cc {
@@ -102,16 +86,9 @@
   font-weight: 500;
   color: #ff9c00;
   line-height: 32rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   margin: 0 auto;
 }
 .reply .inputrow .pushwrap .pushico.data-v-6acf99cc {
@@ -125,12 +102,8 @@
   font-weight: 500;
   color: #666666;
   line-height: 32rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  align-items: center;
 }
 .reply .inputrow .sharewrap .shareico.data-v-6acf99cc {
   width: 36rpx;

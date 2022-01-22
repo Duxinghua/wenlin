@@ -25,13 +25,8 @@
 /* 透明度 */
 /* 文章场景相关 */
 .answer.data-v-1c14d7ac {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   position: relative;
   height: 1800rpx;
 }
@@ -58,8 +53,7 @@
   width: 690rpx;
   height: 1276rpx;
   background: #FFFFFF;
-  -webkit-border-radius: 30rpx;
-          border-radius: 30rpx;
+  border-radius: 30rpx;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -80,25 +74,13 @@
           transform: translateX(-50%);
   top: 180rpx;
   z-index: 102;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .answer .taskcontent .titlewrap.data-v-1c14d7ac {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   margin-top: 49rpx;
 }
 .answer .taskcontent .titlewrap .tleft.data-v-1c14d7ac {
@@ -106,15 +88,9 @@
   height: 60rpx;
   position: relative;
   z-index: 31;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   font-size: 30rpx;
   font-family: PingFang SC;
   font-weight: bold;
@@ -149,21 +125,14 @@
   color: #4E5191;
   line-height: 50rpx;
   padding: 0 40rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin-top: 30rpx;
 }
 .answer .taskcontent .asklist.data-v-1c14d7ac {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 0 40rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .answer .taskcontent .asklist .askitem.data-v-1c14d7ac {
   margin-top: 16rpx;
@@ -173,27 +142,21 @@
   line-height: 100rpx;
   text-align: center;
   background: #F2F2F2;
-  -webkit-border-radius: 50rpx;
-          border-radius: 50rpx;
+  border-radius: 50rpx;
   padding: 0 30rpx;
   font-size: 26rpx;
   font-family: PingFang SC;
   font-weight: 800;
   color: #4E5191;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
 }
 .answer .taskcontent .asklist .askcheck.data-v-1c14d7ac {
   color: white;
-  background: -webkit-gradient(linear, left top, right top, from(#FDAB1B), to(#FA892D));
-  background: -webkit-linear-gradient(left, #FDAB1B, #FA892D);
   background: linear-gradient(90deg, #FDAB1B, #FA892D);
 }
 .answer .taskcontent .asklist .error.data-v-1c14d7ac {
   color: white;
-  background: -webkit-gradient(linear, left top, right top, from(#FC6786), to(#FF415B));
-  background: -webkit-linear-gradient(left, #FC6786, #FF415B);
   background: linear-gradient(90deg, #FC6786, #FF415B);
 }
 .answer .taskcontent .asklist .ok.data-v-1c14d7ac {
@@ -206,19 +169,10 @@
           transform: translateY(-50%);
 }
 .answer .taskcontent .btnsx.data-v-1c14d7ac {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   margin-top: 30rpx;
 }
 .answer .taskcontent .btnsx .btn-c.data-v-1c14d7ac {
@@ -226,8 +180,7 @@
   height: 90rpx;
   margin-left: 40rpx;
   margin-right: 40rpx;
-  -webkit-border-radius: 20rpx;
-          border-radius: 20rpx;
+  border-radius: 20rpx;
   font-size: rpx;
   color: #333333;
   font-weight: bold;

@@ -1713,7 +1713,6 @@ page {
 		width: 100%;
 		box-sizing: border-box;
 		background: #F7F9FF;
-		
 		box-sizing: border-box;
 		.home-top{
 			display: flex;
@@ -1731,7 +1730,6 @@ page {
 			align-items: center;
 			padding:30upx;
 			box-sizing: border-box;
-			// margin-bottom: 24upx;
 			.searchleft{
 				width:615upx;
 				height:80upx;
@@ -1844,6 +1842,7 @@ page {
 				border-radius: 4upx;
 			}
 		}
+		
 		.tagwrap {
 			display: inline-flex;
 			width: 100%;
@@ -1899,7 +1898,7 @@ page {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
-		},
+		}
 		.usedwrapfix{
 			display:flex;
 			flex-direction: column;

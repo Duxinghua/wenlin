@@ -28,52 +28,29 @@ page.data-v-5741ab4f {
   background: white !important;
 }
 .personalcard.data-v-5741ab4f {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   background: whtie !important;
   min-height: 100vh;
   padding-bottom: 320rpx;
 }
 .personalcard .pcontent.data-v-5741ab4f {
   padding: 24rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
+  box-sizing: border-box;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .personalcard .pcontent.data-v-5741ab4f .nodata {
   margin-top: 400rpx;
 }
 .personalcard .pcontent .somelist.data-v-5741ab4f {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .personalcard .pcontent .somelist .someitem.data-v-5741ab4f {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   font-size: 28rpx;
   font-family: PingFang-SC-Bold, PingFang-SC;
   font-weight: bold;

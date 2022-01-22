@@ -44,11 +44,8 @@
   height: 72rpx;
   position: fixed;
   bottom: 100rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-justify-content: space-around;
-          justify-content: space-around;
+  justify-content: space-around;
   z-index: 50001;
 }
 .canvas-content .save-btn {
@@ -59,10 +56,8 @@
   width: 40%;
   height: 100%;
   text-align: center;
-  -webkit-border-radius: 45rpx;
-          border-radius: 45rpx;
-  -webkit-border-radius: 36rpx;
-          border-radius: 36rpx;
+  border-radius: 45rpx;
+  border-radius: 36rpx;
   z-index: 50002;
 }
 .canvas-content .cancel-btn {

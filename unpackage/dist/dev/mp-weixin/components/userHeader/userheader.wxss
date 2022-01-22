@@ -25,27 +25,18 @@
 /* 透明度 */
 /* 文章场景相关 */
 .postheader.data-v-ade7f6b8 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   padding-top: 20rpx;
   padding-bottom: 20rpx;
   padding-left: 24rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .postheader .headerimg.data-v-ade7f6b8 {
   width: 80rpx;
   height: 80rpx;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   position: relative;
   margin-right: 14rpx;
 }
@@ -55,8 +46,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   z-index: 1;
 }
 .postheader .headerimg .da.data-v-ade7f6b8 {
@@ -68,24 +58,14 @@
   z-index: 2;
 }
 .postheader .userinfo.data-v-ade7f6b8 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin-right: 20rpx;
   max-width: calc(100% - 286rpx);
 }
 .postheader .userinfo .userwrap.data-v-ade7f6b8 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 .postheader .userinfo .userwrap .name.data-v-ade7f6b8 {
   height: 36rpx;
@@ -106,19 +86,11 @@
   padding-left: 8rpx;
   padding-right: 8rpx;
   height: 32rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   background: #08C299;
-  -webkit-border-radius: 8rpx;
-          border-radius: 8rpx;
+  border-radius: 8rpx;
   margin-right: 15rpx;
 }
 .postheader .userinfo .userwrap .likewrap .like.data-v-ade7f6b8 {
@@ -135,8 +107,7 @@
   width: 37rpx;
   height: 32rpx;
   background: #08C299;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   font-size: 20rpx;
   font-weight: bold;
   color: white;
@@ -160,20 +131,13 @@
 }
 .postheader .morewrap.data-v-ade7f6b8 {
   margin-left: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  justify-content: flex-end;
+  align-items: center;
   height: 64rpx;
   width: 180rpx;
   padding-right: 29rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .postheader .more.data-v-ade7f6b8 {
   width: calc(48rpx * 1.2);

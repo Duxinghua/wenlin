@@ -25,13 +25,8 @@
 /* 透明度 */
 /* 文章场景相关 */
 .answer.data-v-5ef583ca {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   position: relative;
 }
 .answer .bg.data-v-5ef583ca {
@@ -52,8 +47,7 @@
   width: fit-content;
   padding: 10rpx 50rpx;
   text-align: center;
-  -webkit-border-radius: 35rpx;
-          border-radius: 35rpx;
+  border-radius: 35rpx;
   color: white;
   font-weight: bold;
   font-size: 50rpx;
@@ -69,8 +63,7 @@
   color: white;
   text-align: center;
   line-height: 100rpx;
-  -webkit-border-radius: 50rpx;
-          border-radius: 50rpx;
+  border-radius: 50rpx;
   background: #ff9c00;
 }
 .answer .answerbtn.data-v-5ef583ca {

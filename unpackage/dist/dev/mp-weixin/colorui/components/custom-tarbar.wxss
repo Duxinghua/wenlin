@@ -33,8 +33,6 @@
 .tab-meico {
   width: 60rpx;
   height: 56rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
   margin: 0 auto;
 }
@@ -43,8 +41,7 @@
   z-index: 15;
   width: 104rpx;
   height: 104rpx;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   border: 13rpx solid white;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -62,11 +59,9 @@
   color: #020433;
 }
 .tab-action {
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
 }
 .cu-footer-tabbar {
-  -webkit-box-shadow: 0rpx 12rpx 20rpx 0rpx rgba(0, 0, 0, 0.4);
-          box-shadow: 0rpx 12rpx 20rpx 0rpx rgba(0, 0, 0, 0.4);
+  box-shadow: 0rpx 12rpx 20rpx 0rpx rgba(0, 0, 0, 0.4);
 }
 

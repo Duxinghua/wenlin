@@ -51,15 +51,9 @@
   width: 620rpx;
   height: 320rpx;
   background: white;
-  -webkit-border-radius: 16px;
-          border-radius: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
+  border-radius: 16px;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .popup .findFault .title.data-v-2a067cb0 {
   height: 44rpx;
@@ -72,15 +66,9 @@
   margin-top: 32rpx;
 }
 .popup .findFault .inputwarp.data-v-2a067cb0 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
   margin-top: 32rpx;
   width: 320rpx;
@@ -117,13 +105,8 @@
   width: 100%;
   height: 104rpx;
   border-top: 1px solid #DEDEDE;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 .popup .findFault .btns .cancel.data-v-2a067cb0, .popup .findFault .btns .confrim.data-v-2a067cb0 {
   height: 100%;
@@ -154,15 +137,9 @@
   border-bottom: 1px solid rgba(222, 222, 222, 0.5);
 }
 .popup .findFault .sharewarp.data-v-2a067cb0 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .popup .findFault .cancel.data-v-2a067cb0 {
   border-bottom: 1px solid transparent;

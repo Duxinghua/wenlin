@@ -52,11 +52,9 @@
   height: 760rpx;
   padding-left: 24rpx;
   padding-right: 24rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   background: white;
-  -webkit-border-radius: 16rpx 16rpx 0px 0px;
-          border-radius: 16rpx 16rpx 0px 0px;
+  border-radius: 16rpx 16rpx 0px 0px;
 }
 .popup .message .openheader.data-v-64f266f8 {
   height: 108rpx;
@@ -65,23 +63,13 @@
   font-family: PingFang-SC-Bold, PingFang-SC;
   font-weight: bold;
   color: #333333;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  align-items: center;
 }
 .popup .message .openheader text.data-v-64f266f8 {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
+  flex: 1;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+  justify-content: center;
 }
 .popup .message .openheader .opencolse.data-v-64f266f8 {
   width: 31rpx;
@@ -99,8 +87,7 @@
   width: 100%;
   height: 400rpx;
   background: rgba(222, 222, 222, 0.3);
-  -webkit-border-radius: 8rpx;
-          border-radius: 8rpx;
+  border-radius: 8rpx;
   position: relative;
 }
 .popup .message .textwrap .textarea.data-v-64f266f8 {
@@ -126,13 +113,8 @@
   font-weight: 500;
   color: #333333;
   line-height: u36px;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 .popup .message .textwrap .tip .t2.data-v-64f266f8 {
   color: #999999;
@@ -145,8 +127,7 @@
   height: 80rpx;
   background: rgba(255, 156, 0, 0.5);
   box-shadowss: 0px 8rpx 16rpx 0px rgba(225, 138, 0, 0.1);
-  -webkit-border-radius: 40rpx;
-          border-radius: 40rpx;
+  border-radius: 40rpx;
   margin-top: 64rpx;
   font-size: 36rpx;
   font-family: PingFang-SC-Bold, PingFang-SC;

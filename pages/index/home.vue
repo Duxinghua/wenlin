@@ -2426,7 +2426,6 @@ page {
 			align-content: flex-start;
 			flex-wrap: wrap;
 		}
-		,
 		.usedwrapfix {
 			display: flex;
 			flex-direction: column;

@@ -28,33 +28,20 @@ page.data-v-a28003aa {
   background: white;
 }
 .helpdetail.data-v-a28003aa {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   background: white;
 }
 .helpdetail .content.data-v-a28003aa {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding: 10rpx 24rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   min-height: 100vh;
   margin-bottom: 168rpx;
 }
 .helpdetail .content .postcontent.data-v-a28003aa {
   position: relative;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
   display: inline-flex;
   width: 100%;
 }
@@ -86,8 +73,7 @@ page.data-v-a28003aa {
 .helpdetail .content .swiper-wrap.data-v-a28003aa {
   width: 100%;
   height: 480rpx;
-  -webkit-border-radius: 16rpx;
-          border-radius: 16rpx;
+  border-radius: 16rpx;
   overflow: hidden;
   position: relative;
   margin-bottom: 40rpx;
@@ -98,8 +84,7 @@ page.data-v-a28003aa {
   line-height: 36rpx;
   text-align: center;
   background: rgba(0, 0, 0, 0.3);
-  -webkit-border-radius: 20rpx;
-          border-radius: 20rpx;
+  border-radius: 20rpx;
   font-size: 22rpx;
   font-family: PingFang-SC-Bold,PingFang-SC;
   font-weight: bold;
@@ -112,28 +97,19 @@ page.data-v-a28003aa {
 .helpdetail .content .swiper-wrap .screen-swiper.data-v-a28003aa {
   width: 100%;
   height: 100%;
-  -webkit-border-radius: 16rpx;
-          border-radius: 16rpx;
+  border-radius: 16rpx;
   overflow: hidden;
 }
 .helpdetail .content .swiper-wrap .screen-swiper .swiper-imgs.data-v-a28003aa {
   width: 100%;
   height: 100%;
-  -webkit-border-radius: 16rpx;
-          border-radius: 16rpx;
+  border-radius: 16rpx;
   overflow: hidden;
 }
 .helpdetail .content .detailnav.data-v-a28003aa {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 .helpdetail .content .detailnav .navitem.data-v-a28003aa {
   min-width: 128rpx;
@@ -153,65 +129,35 @@ page.data-v-a28003aa {
   border-right: 4rpx solid #d8d8d8;
 }
 .helpdetail .content .detailcontent.data-v-a28003aa {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .helpdetail .content .detailcontent .headerItem.data-v-a28003aa {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   padding-bottom: 34rpx;
   padding-top: 34rpx;
   border-bottom: 2rpx solid #DEDEDE;
 }
 .helpdetail .content .detailcontent .headerItem .userheader.data-v-a28003aa {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 .helpdetail .content .detailcontent .headerItem .userheader .useravatar.data-v-a28003aa {
   width: 64rpx;
   height: 64rpx;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   margin-right: 16rpx;
 }
 .helpdetail .content .detailcontent .headerItem .userheader .userlist.data-v-a28003aa {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
+  flex-direction: column;
+  flex: 1;
 }
 .helpdetail .content .detailcontent .headerItem .userheader .userlist .usertop.data-v-a28003aa {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 .helpdetail .content .detailcontent .headerItem .userheader .userlist .usertop .username.data-v-a28003aa {
   font-size: 26rpx;
@@ -225,22 +171,12 @@ page.data-v-a28003aa {
   width: 82rpx;
   height: 32rpx;
   background: rgba(255, 156, 0, 0.1);
-  -webkit-border-radius: 8rpx;
-          border-radius: 8rpx;
+  border-radius: 8rpx;
   margin-right: 16rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .helpdetail .content .detailcontent .headerItem .userheader .userlist .usertop .like .likeimg.data-v-a28003aa {
   width: 30rpx;
@@ -258,8 +194,7 @@ page.data-v-a28003aa {
   width: 36rpx;
   height: 32rpx;
   background: rgba(255, 156, 0, 0.1);
-  -webkit-border-radius: 8rpx;
-          border-radius: 8rpx;
+  border-radius: 8rpx;
   font-size: 20rpx;
   font-family: PingFang-SC-Bold,PingFang-SC;
   font-weight: bold;
@@ -288,13 +223,8 @@ page.data-v-a28003aa {
   margin-right: auto;
 }
 .helpdetail .reply.data-v-a28003aa {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   position: fixed;
   padding: 20rpx 24rpx 88rpx 24rpx;
   left: 0;
@@ -302,23 +232,13 @@ page.data-v-a28003aa {
   width: 100%;
   min-height: 168rpx;
   background: white;
-  -webkit-box-shadow: 0rpx 12rpx 20rpx 0rpx rgba(0, 0, 0, 0.1);
-          box-shadow: 0rpx 12rpx 20rpx 0rpx rgba(0, 0, 0, 0.1);
+  box-shadow: 0rpx 12rpx 20rpx 0rpx rgba(0, 0, 0, 0.1);
 }
 .helpdetail .reply .inputrow.data-v-a28003aa {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-          justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 .helpdetail .reply .inputrow .inputbtn.data-v-a28003aa {
   font-size: 30rpx;
@@ -330,8 +250,7 @@ page.data-v-a28003aa {
   width: 420rpx;
   height: 60rpx;
   background: rgba(234, 234, 234, 0.3);
-  -webkit-border-radius: 32rpx;
-          border-radius: 32rpx;
+  border-radius: 32rpx;
   position: relative;
 }
 .helpdetail .reply .inputrow .inputwrap .face.data-v-a28003aa {
@@ -362,16 +281,9 @@ page.data-v-a28003aa {
   font-weight: 500;
   color: #ff9c00;
   line-height: 32rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   margin: 0 auto;
 }
 .helpdetail .reply .inputrow .pushwrap .pushico.data-v-a28003aa {
@@ -385,12 +297,8 @@ page.data-v-a28003aa {
   font-weight: 500;
   color: #666666;
   line-height: 32rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  align-items: center;
 }
 .helpdetail .reply .inputrow .sharewrap .shareico.data-v-a28003aa {
   width: 36rpx;
@@ -427,33 +335,18 @@ page.data-v-a28003aa {
   width: 528rpx;
   height: 240rpx;
   background: white;
-  -webkit-border-radius: 16px;
-          border-radius: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
+  border-radius: 16px;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .helpdetail .popup .wxsjcontent .mobile.data-v-a28003aa:nth-of-type(2) {
   border-bottom: 1px solid transparent;
 }
 .helpdetail .popup .wxsjcontent .mobile.data-v-a28003aa {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   height: 120rpx;
   line-height: 120rpx;
   border-bottom: 1px solid #DEDEDE;
@@ -476,8 +369,7 @@ page.data-v-a28003aa {
   width: 100rpx;
   height: 56rpx;
   background: #ff9c00;
-  -webkit-border-radius: 8rpx;
-          border-radius: 8rpx;
+  border-radius: 8rpx;
   font-size: 26rpx;
   font-family: PingFang-SC-Bold,PingFang-SC;
   font-weight: bold;

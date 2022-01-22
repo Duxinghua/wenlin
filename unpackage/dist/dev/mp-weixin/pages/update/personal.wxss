@@ -28,27 +28,15 @@
   width: 100%;
   min-height: 100vh;
   background: white;
-  -webkit-border-radius: 16rpx 16rpx 0rpx 0rpx;
-          border-radius: 16rpx 16rpx 0rpx 0rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
+  border-radius: 16rpx 16rpx 0rpx 0rpx;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .openarea .contents.data-v-47be765d {
   padding: 0 40rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
+  box-sizing: border-box;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .openarea .openheader.data-v-47be765d {
   height: 100rpx;
@@ -57,23 +45,13 @@
   font-family: PingFang-SC-Bold, PingFang-SC;
   font-weight: bold;
   color: #333333;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  align-items: center;
 }
 .openarea .openheader text.data-v-47be765d {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
+  flex: 1;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+  justify-content: center;
 }
 .openarea .openheader .opencolse.data-v-47be765d {
   width: 31rpx;
@@ -88,16 +66,9 @@
   height: 32rpx;
 }
 .openarea .openitem.data-v-47be765d {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   position: relative;
   height: 117rpx;
   border-bottom: 2rpx solid rgba(222, 222, 222, 0.3);
@@ -133,8 +104,6 @@
 .openarea .openitem .adico.data-v-47be765d {
   width: 32rpx;
   height: 42rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
   margin-left: auto;
 }
@@ -142,8 +111,7 @@
   width: 136rpx;
   height: 56rpx;
   background: #ff9c00;
-  -webkit-border-radius: 8rpx;
-          border-radius: 8rpx;
+  border-radius: 8rpx;
   border: none;
   font-size: 26rpx;
   font-family: PingFang-SC-Bold, PingFang-SC;
@@ -168,10 +136,8 @@
 .openarea .openbutton.data-v-47be765d {
   width: 100%;
   height: 100rpx;
-  background: -webkit-linear-gradient(46deg, #FEAA0E, #FFC000);
   background: linear-gradient(44deg, #FEAA0E, #FFC000);
-  -webkit-border-radius: 12px;
-          border-radius: 12px;
+  border-radius: 12px;
   font-size: 38rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
@@ -186,8 +152,7 @@
 .openarea .chooseid.data-v-47be765d {
   height: 550rpx;
   padding: 0 40rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .openarea .chooseid .openheader.data-v-47be765d {
   height: 100rpx;
@@ -196,23 +161,13 @@
   font-family: PingFang-SC-Bold, PingFang-SC;
   font-weight: bold;
   color: #333333;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  align-items: center;
 }
 .openarea .chooseid .openheader text.data-v-47be765d {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
+  flex: 1;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+  justify-content: center;
 }
 .openarea .chooseid .openheader .opencolse.data-v-47be765d {
   width: 31rpx;
@@ -229,16 +184,9 @@
 .openarea .chooseid .pickerview.data-v-47be765d {
   width: 100%;
   height: 200rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+  flex-direction: column;
+  justify-content: center;
 }
 .openarea .chooseid .pickerview .item.data-v-47be765d {
   width: 100%;

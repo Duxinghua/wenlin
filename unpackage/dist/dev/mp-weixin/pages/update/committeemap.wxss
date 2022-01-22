@@ -25,13 +25,8 @@
 /* 透明度 */
 /* 文章场景相关 */
 .map.data-v-fdd66248 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .map .page-map.data-v-fdd66248 {
   margin-top: 24rpx;
@@ -40,15 +35,9 @@
 }
 .map .addressinfo.data-v-fdd66248 {
   padding: 46rpx 24rpx 0 24rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
+  box-sizing: border-box;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .map .addressinfo .t1.data-v-fdd66248 {
   height: 42rpx;

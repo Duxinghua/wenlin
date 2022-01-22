@@ -25,15 +25,9 @@
 /* 透明度 */
 /* 文章场景相关 */
 .almost-lottery.data-v-861fe3f8 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
   background-repeat: no-repeat;
   background-position: center center;
@@ -52,29 +46,17 @@
 }
 .almost-lottery__wrap.data-v-861fe3f8 {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .almost-lottery__canvas.data-v-861fe3f8 {
   position: absolute;
   left: -9999px;
   opacity: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .almost-lottery__action.data-v-861fe3f8 {
   position: absolute;
@@ -103,7 +85,6 @@
 }
 .canvas-img.data-v-861fe3f8 {
   display: block;
-  -webkit-transition: -webkit-transform cubic-bezier(0.34, 0.12, 0.05, 0.95);
   transition: -webkit-transform cubic-bezier(0.34, 0.12, 0.05, 0.95);
   transition: transform cubic-bezier(0.34, 0.12, 0.05, 0.95);
   transition: transform cubic-bezier(0.34, 0.12, 0.05, 0.95), -webkit-transform cubic-bezier(0.34, 0.12, 0.05, 0.95);

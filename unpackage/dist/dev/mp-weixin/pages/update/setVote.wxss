@@ -25,28 +25,17 @@
 /* 透明度 */
 /* 文章场景相关 */
 .setvote.data-v-692e1cdf {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 100%;
   min-height: 100vh;
   background: white;
 }
 .setvote .content.data-v-692e1cdf {
   padding: 48rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
+  box-sizing: border-box;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .setvote .content .title.data-v-692e1cdf {
   font-size: 24rpx;
@@ -57,22 +46,14 @@
   margin-bottom: 20rpx;
 }
 .setvote .content .inputwrap.data-v-692e1cdf {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 .setvote .content .inputwrap .delete.data-v-692e1cdf {
   width: 39rpx;
   height: 39rpx;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   border: 1rpx solid #FF9C00;
   position: relative;
   margin-left: 30rpx;
@@ -98,25 +79,16 @@
   height: 146rpx;
   background: rgba(255, 156, 0, 0);
   border: 1px solid #404B69;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
+  border-radius: 10rpx;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .setvote .content .btn.data-v-692e1cdf {
   width: 654rpx;
   height: 100rpx;
-  background: -webkit-linear-gradient(46deg, #FEAA0E, #FFC000);
   background: linear-gradient(44deg, #FEAA0E, #FFC000);
-  -webkit-border-radius: 12rpx 12px 12px 12px;
-          border-radius: 12rpx 12px 12px 12px;
+  border-radius: 12rpx 12px 12px 12px;
   line-height: 100rpx;
   text-align: center;
   position: fixed;

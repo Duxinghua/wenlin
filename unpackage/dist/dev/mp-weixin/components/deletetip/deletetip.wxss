@@ -50,13 +50,8 @@
   height: 100%;
   background: white;
   z-index: 3002;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .popup .tipslogin .networkico.data-v-1857a934 {
   width: 654rpx;

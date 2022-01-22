@@ -25,27 +25,15 @@
 /* 透明度 */
 /* 文章场景相关 */
 .award.data-v-ecb121e0 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .award .awardcontent.data-v-ecb121e0 {
   width: 100%;
   height: 1488rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   z-index: 300;
 }
@@ -61,8 +49,7 @@
   width: 485rpx;
   height: 64rpx;
   border: 1px solid #ffffff;
-  -webkit-border-radius: 32rpx;
-          border-radius: 32rpx;
+  border-radius: 32rpx;
   line-height: 64rpx;
   text-align: center;
   font-size: 33rpx;
@@ -79,34 +66,18 @@
   width: 701rpx;
   height: 607rpx;
   background: #FEFCFA;
-  -webkit-border-radius: 20rpx;
-          border-radius: 20rpx;
+  border-radius: 20rpx;
   margin: 0 auto;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   padding: 28rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .award .awardcontent .lotterywrap .titlewrap.data-v-ecb121e0 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   height: 40rpx;
 }
 .award .awardcontent .lotterywrap .titlewrap .tabico.data-v-ecb121e0 {
@@ -145,23 +116,15 @@
   overflow-x: hidden;
 }
 .award .awardcontent .lotterywrap .userlist .useritem.data-v-ecb121e0 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   margin-bottom: 20rpx;
 }
 .award .awardcontent .lotterywrap .userlist .useritem .a1.data-v-ecb121e0 {
   width: 68rpx;
   height: 68rpx;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
 }
 .award .awardcontent .lotterywrap .userlist .useritem .username.data-v-ecb121e0 {
   overflow: hidden;
@@ -175,9 +138,7 @@
   margin-left: 20rpx;
 }
 .award .awardcontent .lotterywrap .userlist .useritem .awardc.data-v-ecb121e0 {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
+  flex: 1;
   margin-left: 20rpx;
   font-size: 26rpx;
   font-family: PingFang SC;
@@ -190,16 +151,9 @@
 .award .imgwrap.data-v-ecb121e0 {
   width: 100%;
   height: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 .award .imgwrap .abg.data-v-ecb121e0 {
   position: absolute;
@@ -240,8 +194,6 @@
   width: 260rpx;
 }
 .award .imgwrapa.data-v-ecb121e0 {
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+  justify-content: center;
 }
 

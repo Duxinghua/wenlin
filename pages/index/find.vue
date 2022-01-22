@@ -1944,7 +1944,7 @@ page {
 			flex-direction: row;
 			flex-wrap: wrap;
 			align-content: flex-start;
-		},
+		}
 		.usedwrapfix{
 			display:flex;
 			flex-direction: column;

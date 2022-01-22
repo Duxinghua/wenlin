@@ -25,15 +25,9 @@
 /* 透明度 */
 /* 文章场景相关 */
 .imgwrap.data-v-e6556fa4 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: wrap;
-          flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .imgwrap .imgitem.data-v-e6556fa4 {
   width: 191rpx;
@@ -62,18 +56,11 @@
 .imgwrap .imgupload.data-v-e6556fa4 {
   width: 191rpx;
   height: 153rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   background: #DEDEDE;
-  -webkit-border-radius: 7rpx;
-          border-radius: 7rpx;
+  border-radius: 7rpx;
   position: relative;
 }
 .imgwrap .imgupload .imgjia.data-v-e6556fa4 {
@@ -87,33 +74,19 @@
   width: 100%;
   min-height: 100vh;
   background: white;
-  -webkit-border-radius: 16rpx 16rpx 0rpx 0rpx;
-          border-radius: 16rpx 16rpx 0rpx 0rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
+  border-radius: 16rpx 16rpx 0rpx 0rpx;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .openarea .toolbar.data-v-e6556fa4 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   height: 100rpx;
   background: white;
   width: 100%;
   padding: 0 40rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-size: 34rpx;
 }
 .openarea .toolbar .cancel.data-v-e6556fa4 {
@@ -125,15 +98,9 @@
 }
 .openarea .contents.data-v-e6556fa4 {
   padding: 0 40rpx 100rpx 40rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
+  box-sizing: border-box;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .openarea .openheader.data-v-e6556fa4 {
   height: 100rpx;
@@ -142,23 +109,13 @@
   font-family: PingFang-SC-Bold, PingFang-SC;
   font-weight: bold;
   color: #333333;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  align-items: center;
 }
 .openarea .openheader text.data-v-e6556fa4 {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
+  flex: 1;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+  justify-content: center;
 }
 .openarea .openheader .opencolse.data-v-e6556fa4 {
   width: 31rpx;
@@ -173,16 +130,9 @@
   height: 32rpx;
 }
 .openarea .openitem.data-v-e6556fa4 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   position: relative;
   height: 117rpx;
   border-bottom: 2rpx solid rgba(222, 222, 222, 0.3);
@@ -190,10 +140,8 @@
 .openarea .openitem .selectlocation.data-v-e6556fa4 {
   width: 170rpx;
   height: 61rpx;
-  background: -webkit-linear-gradient(46deg, #FEAA0E, #FFC000);
   background: linear-gradient(44deg, #FEAA0E, #FFC000);
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   line-height: 61rpx;
   text-align: center;
   font-size: 26rpx;
@@ -223,9 +171,7 @@
   text-align: left;
 }
 .openarea .openitem .opendes.data-v-e6556fa4 {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
+  flex: 1;
   line-height: 36rpx;
   font-size: 28rpx;
   font-family: PingFang SC;
@@ -253,8 +199,6 @@
 .openarea .openitem .adico.data-v-e6556fa4 {
   width: 32rpx;
   height: 42rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
   margin-left: auto;
 }
@@ -262,8 +206,7 @@
   width: 136rpx;
   height: 56rpx;
   background: #ff9c00;
-  -webkit-border-radius: 8rpx;
-          border-radius: 8rpx;
+  border-radius: 8rpx;
   border: none;
   font-size: 26rpx;
   font-family: PingFang-SC-Bold, PingFang-SC;
@@ -289,8 +232,7 @@
   width: 100%;
   height: 100rpx;
   background: #B9B8B7;
-  -webkit-border-radius: 12px;
-          border-radius: 12px;
+  border-radius: 12px;
   font-size: 38rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
@@ -302,10 +244,8 @@
 .openarea .openbutton.data-v-e6556fa4 {
   width: 100%;
   height: 100rpx;
-  background: -webkit-linear-gradient(46deg, #FEAA0E, #FFC000);
   background: linear-gradient(44deg, #FEAA0E, #FFC000);
-  -webkit-border-radius: 12px;
-          border-radius: 12px;
+  border-radius: 12px;
   font-size: 38rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
@@ -320,8 +260,7 @@
 .openarea .chooseid.data-v-e6556fa4 {
   height: 550rpx;
   padding: 0 40rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .openarea .chooseid .openheader.data-v-e6556fa4 {
   height: 100rpx;
@@ -330,23 +269,13 @@
   font-family: PingFang-SC-Bold, PingFang-SC;
   font-weight: bold;
   color: #333333;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  align-items: center;
 }
 .openarea .chooseid .openheader text.data-v-e6556fa4 {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
+  flex: 1;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+  justify-content: center;
 }
 .openarea .chooseid .openheader .opencolse.data-v-e6556fa4 {
   width: 31rpx;
@@ -363,16 +292,9 @@
 .openarea .chooseid .pickerview.data-v-e6556fa4 {
   width: 100%;
   height: 200rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+  flex-direction: column;
+  justify-content: center;
 }
 .openarea .chooseid .pickerview .item.data-v-e6556fa4 {
   width: 100%;
@@ -383,15 +305,9 @@
   width: 100%;
   height: 881rpx;
   background: #FFFFFF;
-  -webkit-border-radius: 60rpx;
-          border-radius: 60rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
+  border-radius: 60rpx;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .openarea .relist .reheader.data-v-e6556fa4 {
   line-height: 134rpx;
@@ -405,50 +321,27 @@
 }
 .openarea .relist .reconlist.data-v-e6556fa4 {
   height: 553rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 0 30rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .openarea .relist .reconlist .reconitem.data-v-e6556fa4 {
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 30rpx 0;
   border-bottom: 2rpx solid #F0F0F0;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 .openarea .relist .reconlist .reconitem .reconleft.data-v-e6556fa4 {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
+  flex: 1;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: start;
-  -webkit-align-items: flex-start;
-          align-items: flex-start;
+  flex-direction: row;
+  align-items: flex-start;
 }
 .openarea .relist .reconlist .reconitem .reconleft .reicoimg.data-v-e6556fa4 {
   width: 24rpx;
@@ -457,13 +350,8 @@
   margin-right: 10rpx;
 }
 .openarea .relist .reconlist .reconitem .reconleft .recontentlis.data-v-e6556fa4 {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .openarea .relist .reconlist .reconitem .reconleft .recontentlis .title.data-v-e6556fa4 {
   font-size: 36rpx;
@@ -488,18 +376,14 @@
   font-family: PingFang SC;
   font-weight: 500;
   color: #FFFFFF;
-  background: -webkit-linear-gradient(46deg, #FEAA0E, #FFC000);
   background: linear-gradient(44deg, #FEAA0E, #FFC000);
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
 }
 .openarea .relist .rebtn.data-v-e6556fa4 {
   width: 690rpx;
   height: 100rpx;
-  background: -webkit-linear-gradient(46deg, #FEAA0E, #FFC000);
   background: linear-gradient(44deg, #FEAA0E, #FFC000);
-  -webkit-border-radius: 12rpx;
-          border-radius: 12rpx;
+  border-radius: 12rpx;
   margin: 30rpx auto 0 auto;
   line-height: 100rpx;
   text-align: center;
