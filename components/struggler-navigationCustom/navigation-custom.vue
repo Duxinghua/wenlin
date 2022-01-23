@@ -85,6 +85,10 @@
 			scrollMaxHeight:{
 				type:Number,
 				default:288
+			},
+			home:{
+				type:Boolean,
+				default:true
 			}
 		},
 		methods:{
@@ -105,12 +109,18 @@
 				}
 			},
 			home_(){
-				uni.switchTab({
-					url:"/pages/index/index"
-				})
-				uni.redirectTo({
-					url:"/pages/index/index"
-				})
+				if(this.home){
+					uni.switchTab({
+						url:"/pages/index/index"
+					})
+					uni.redirectTo({
+						url:"/pages/index/index"
+					})
+				}else{
+					uni.redirectTo({
+						url:'/pages/ks/dk'
+					})
+				}
 			},
 			conduct_(){
 				this.$emit("customConduct")

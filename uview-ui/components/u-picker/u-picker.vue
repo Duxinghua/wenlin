@@ -79,7 +79,7 @@
 				<picker-view v-else-if="mode == 'selector'" :value="valueArr" @change="change" class="u-picker-view" @pickstart="pickstart" @pickend="pickend">
 					<picker-view-column v-if="!reset">
 						<view class="u-column-item" v-for="(item, index) in range" :key="index">
-							<view class="u-line-1">{{ getItemValue(item, 'selector') }}</view>
+							<view :class="['u-line-1',selectIndex == index ? 'active-u-line' : '']">{{ getItemValue(item, 'selector') }}</view>
 						</view>
 					</picker-view-column>
 				</picker-view>
@@ -252,6 +252,7 @@ export default {
 	},
 	data() {
 		return {
+			selectIndex:0,
 			years: [],
 			months: [],
 			days: [],
@@ -527,6 +528,7 @@ export default {
 		// 用户更改picker的列选项
 		change(e) {
 			this.valueArr = e.detail.value;
+			this.selectIndex = this.valueArr[0]
 			let i = 0;
 			if (this.mode == 'time') {
 				// 这里使用i++，是因为this.valueArr数组的长度是不确定长度的，它根据this.params的值来配置长度
@@ -595,7 +597,11 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../libs/css/style.components.scss';
-
+.active-u-line{
+	color:red;
+	font-weight: bold;
+	font-size: 40rpx;
+}
 .u-datetime-picker {
 	position: relative;
 	z-index: 999;

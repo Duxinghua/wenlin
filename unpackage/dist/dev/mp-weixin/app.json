@@ -14,6 +14,17 @@
     ],
     "subPackages": [
         {
+            "root": "pages/ks",
+            "pages": [
+                "first",
+                "setup",
+                "ag",
+                "dk",
+                "yy",
+                "dkdetail"
+            ]
+        },
+        {
             "root": "pages/update",
             "pages": [
                 "publicbenefit",

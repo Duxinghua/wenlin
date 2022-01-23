@@ -39,7 +39,7 @@
 					<picker-view @change="columnChange" class="u-select__body__picker-view" :value="defaultSelector" @pickstart="pickstart" @pickend="pickend">
 						<picker-view-column v-for="(item, index) in columnData" :key="index">
 							<view class="u-select__body__picker-view__item" v-for="(item1, index1) in item" :key="index1">
-								<view class="u-line-1">{{ item1[labelName] }}</view>
+								<view :class="['u-line-1',index == 0 && index1 == defaultSelector[0] ? 'active_Blue' : '',index == 1 && index1 == defaultSelector[1] ? 'active_Blue' : '' ]">{{ item1[labelName] }}</view>
 							</view>
 						</picker-view-column>
 					</picker-view>
@@ -284,6 +284,7 @@ export default {
 					if (val != columnIndex[idx]) index = idx;
 				});
 				this.defaultSelector = columnIndex;
+				console.log(this.defaultSelector,'defaultSelector')
 				for (let i = index + 1; i < this.columnNum; i++) {
 					// 当前变化列的下一列的数据，需要获取上一列的数据，同时需要指定是上一列的第几个的children，再往后的
 					// 默认是队列的第一个为默认选项
@@ -351,6 +352,11 @@ export default {
 
 <style scoped lang="scss">
 @import "../../libs/css/style.components.scss";
+.active_Blue{
+	color:blue;
+	font-weight: bold;
+	font-size: 40rpx;
+}
 
 .u-select {
 

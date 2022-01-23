@@ -24,6 +24,11 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.active-u-line.data-v-70102400 {
+  color: red;
+  font-weight: bold;
+  font-size: 40rpx;
+}
 .u-datetime-picker.data-v-70102400 {
   position: relative;
   z-index: 999;

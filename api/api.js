@@ -293,6 +293,39 @@ const getNoticesDetail = (params) => wxRequest(params, baseURL + 'api/community/
 //{{online}}/api/community/vote/delComments 删除议事厅
 const votedelComments = (params) => wxRequest(params, baseURL + 'api/community/vote/delComments', 'POST')
 
+//核酸 
+//{{online}}/api/nucleicacid/nucleic_acid/narounds
+
+const narounds = (params) => wxRequest(params, baseURL + 'api/nucleicacid/nucleic_acid/narounds', 'POST')
+//核酸打卡 
+
+const punchclock = (params) => wxRequest(params, baseURL + 'api/nucleicacid/nucleic_acid/punchclock', 'POST')
+//核酸预约
+
+const addAppointment = (params) => wxRequest(params, baseURL + 'api/nucleicacid/nucleic_acid/addAppointment', 'POST')
+//添加代打卡用户
+
+const otherUserInfo = (params) => wxRequest(params, baseURL + 'api/nucleicacid/nucleic_acid/otherUserInfo', 'POST')
+//我添加的用户列表
+const myUsersList = (params) => wxRequest(params, baseURL + 'api/nucleicacid/nucleic_acid/myUsers', 'POST')
+ //获取需要做核酸的小区
+const getNucleicAcidCommunity = (params) => wxRequest(params, baseURL + 'api/nucleicacid/nucleic_acid/getNucleicAcidCommunity', 'POST')
+ 
+ //获取需要做核酸的小区的楼栋
+const getCommunityBuilding = (params) => wxRequest(params, baseURL + 'api/nucleicacid/nucleic_acid/getCommunityBuilding', 'POST')
+
+//第一次添加用户
+
+ const addUserInfo = (params) => wxRequest(params, baseURL + 'api/nucleicacid/nucleic_acid/addUserInfo', 'POST')
+ 
+ //获取用户详情
+ 
+  const getUserinfo = (params) => wxRequest(params, baseURL + 'api/nucleicacid/nucleic_acid/getUserinfo', 'POST')
+  
+  //修改用户信息
+  
+    const editUserinfo = (params) => wxRequest(params, baseURL + 'api/nucleicacid/nucleic_acid/editUserinfo', 'POST')
+
 export default {
 	wechatAuth,
 	setUserPhoneBySecret,
@@ -422,5 +455,15 @@ export default {
 	getLastNotices,
 	getNoticesDetail,
 	voteCommentReply,
-	votedelComments
+	votedelComments,
+	narounds,
+	punchclock,
+	addAppointment,
+	otherUserInfo,
+	myUsersList,
+	getNucleicAcidCommunity,
+	getCommunityBuilding,
+	addUserInfo,
+	getUserinfo,
+	editUserinfo
 }

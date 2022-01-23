@@ -2,7 +2,7 @@
 	"easycom": {
 		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 	},
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://
 		{
 			"path": "pages/index/index",
 			"style": {
@@ -93,7 +93,49 @@
 			"query": "" //启动参数，在页面的onLoad函数里面得到
 		}]
 	},
-	"subpackages": [{
+	"subpackages": [
+		{
+			"root": "pages/ks",
+			"pages": [
+				{
+					"path": "first",
+					"style": {
+						"navigationBarTitleText": "启动页"
+					}
+				},
+				{
+					"path": "setup",
+					"style": {
+						"navigationBarTitleText": "设置"
+					}
+				},
+				{
+					"path": "ag",
+					"style": {
+						"navigationBarTitleText": "添加代打卡共同居住人"
+					}
+				},
+				{
+					"path": "dk",
+					"style": {
+						"navigationBarTitleText": "打卡"
+					}
+				},
+				{
+					"path": "yy",
+					"style": {
+						"navigationBarTitleText": "上门预约"
+					}
+				},
+				{
+					"path": "dkdetail",
+					"style": {
+						"navigationBarTitleText": "打卡详情"
+					}
+				}
+			]
+		},
+		{
 		"root": "pages/update",
 		"pages": [{
 				"path": "publicbenefit",
