@@ -89,22 +89,32 @@
 			home:{
 				type:Boolean,
 				default:true
+			},
+			flag:{
+				type:String,
+				default:'home'
 			}
 		},
 		methods:{
 			back_(){
-				var pages = getCurrentPages() //获取加载的页面
-				if(pages.length != 1){
-					console.log(pages,'pages')
-					uni.navigateBack({
-						delta:1
-					});
-				}else if(pages.length == 1){
-					uni.switchTab({
-						url:"/pages/index/index"
-					})
+				if(this.flag == 'home'){
+					var pages = getCurrentPages() //获取加载的页面
+					if(pages.length != 1){
+						console.log(pages,'pages')
+						uni.navigateBack({
+							delta:1
+						});
+					}else if(pages.length == 1){
+						uni.switchTab({
+							url:"/pages/index/index"
+						})
+						uni.redirectTo({
+							url:"/pages/index/index"
+						})
+					}
+				}else{
 					uni.redirectTo({
-						url:"/pages/index/index"
+						url:'/pages/ks/first'
 					})
 				}
 			},

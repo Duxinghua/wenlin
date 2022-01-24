@@ -39,7 +39,7 @@
 					<picker-view @change="columnChange" class="u-select__body__picker-view" :value="defaultSelector" @pickstart="pickstart" @pickend="pickend">
 						<picker-view-column v-for="(item, index) in columnData" :key="index">
 							<view class="u-select__body__picker-view__item" v-for="(item1, index1) in item" :key="index1">
-								<view :class="['u-line-1',index == 0 && index1 == defaultSelector[0] ? 'active_Blue' : '',index == 1 && index1 == defaultSelector[1] ? 'active_Blue' : '' ]">{{ item1[labelName] }}</view>
+								<view :class="['u-line-1',index == 0 && index1 == defaultSelector[0] ? 'active_Blue' : '',index == 1 && index1 == defaultSelector[1] ? 'active_Blue' : '', selectIndex == index1 ? 'active_Blue' : '' ]">{{ item1[labelName] }}</view>
 							</view>
 						</picker-view-column>
 					</picker-view>
@@ -166,6 +166,7 @@ export default {
 			columnData: [],
 			// 每次队列发生变化时，保存选择的结果
 			selectValue: [],
+			selectIndex:0,
 			// 上一次列变化时的index
 			lastSelectIndex: [],
 			// 列数
@@ -276,6 +277,7 @@ export default {
 		columnChange(e) {
 			let index = null;
 			let columnIndex = e.detail.value;
+			console.log(e)
 			// 由于后面是需要push进数组的，所以需要先清空数组
 			this.selectValue = [];
 			if(this.mode == 'mutil-column-auto') {
@@ -308,6 +310,7 @@ export default {
 				// 保存这一次的结果，用于下次列发生变化时作比较
 				this.lastSelectIndex = columnIndex;
 			} else if(this.mode == 'single-column') {
+				this.selectIndex = columnIndex[0]
 				let data = this.columnData[0][columnIndex[0]];
 				// 初始默认选中值
 				let tmp = {

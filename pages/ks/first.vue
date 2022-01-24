@@ -28,6 +28,7 @@
 			}
 		},
 		onLoad(options) {
+			console.log(options)
 			uni.login({
 				success: (res) => {
 					let { errMsg,code} = res
@@ -41,6 +42,7 @@
 				this.srouce = 1;
 				var scene = decodeURIComponent(options.scene);
 				var arr = scene.split('&');
+				console.log(arr,'arr')
 				if (arr[0]) {
 					if (arr[0].split('=')[1]) {
 						this.community_id = arr[0].split('=')[1];

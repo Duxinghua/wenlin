@@ -110,7 +110,7 @@
   white-space: nowrap;
 }
 .postitem .postheader .userinfo .userwrap .likewrap.data-v-86265978 {
-  min-width: 60rpx;
+  min-width: 80rpx;
   padding-left: 15rpx;
   padding-right: 15rpx;
   height: 32rpx;
@@ -121,6 +121,7 @@
   background: #08C299;
   border-radius: 8rpx;
   margin-right: 15rpx;
+  white-space: nowrap;
 }
 .postitem .postheader .userinfo .userwrap .likewrap .like.data-v-86265978 {
   width: 30rpx;

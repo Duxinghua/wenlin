@@ -143,6 +143,10 @@
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
+		/deep/ .u-btn-picker{
+			font-size: 34rpx;
+			font-weight: bold;
+		}
 
 		.content {
 			padding: 0 24rpx;
@@ -164,8 +168,8 @@
 					}
 					/deep/ .u-input__input{
 						color:red;
-						font-size: 36rpx;
-						font-weight: bold;
+						// font-size: 36rpx;
+						// font-weight: bold;
 					}
 
 			}

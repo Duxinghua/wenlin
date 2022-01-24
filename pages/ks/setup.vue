@@ -1,6 +1,6 @@
 <template>
 	<view class="setup">
-		<navigation-custom :config="config" :scrollTop="scrollTop" :home="false"   @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight"/>
+		<navigation-custom :config="config" :scrollTop="scrollTop" :home="false" flag="setup"  @customConduct="customConduct" :scrollMaxHeight="scrollMaxHeight"/>
 		<image mode="widthFix" src="https://sq.wenlinapp.com/upload/dynamics/20220123/7a4d82c42ddf21a26f98866d25d7c5fc_thumb.png" class="banner"></image>
 		<view class="form-wrap">
 			<u-section title="住址信息" font-size="36" line-color="#0F75E7" color="#020433"  :right="false"></u-section>
@@ -11,7 +11,7 @@
 				<u-input v-model="community_name"   placeholder="选择小区" @click="cshow = true"   :custom-style="communityCs" :type="type" :border="true" />
 
 			</view>
-			<view class="form-item tow-item-wrap fixs" @click="rshow = true">
+			<view class="form-item tow-item-wrap " @click="rshow = true">
 				<view class="label">
 					所在楼栋
 				</view>
@@ -25,14 +25,14 @@
 				<view class="label">
 					姓名
 				</view>
-				<u-input v-model="username"  placeholder="请输入姓名" :custom-style="communityCs" type="text" :border="true" />
+				<u-input v-model="username"  placeholder="请输入姓名" :custom-style="communityCs2" type="text" :border="true" />
 			
 			</view>
 			<view class="form-item first-item-wrap">
 				<view class="label">
 					身份证
 				</view>
-				<u-input v-model="idcard"  placeholder="请输入身份证" :custom-style="communityCs" type="text" :border="true" />
+				<u-input v-model="idcard"  placeholder="请输入身份证" :custom-style="communityCs2" type="text" :border="true" />
 			</view>
 			<view class="form-item first-item-wrap">
 				<view class="label">
@@ -47,7 +47,7 @@
 		<view class="submit" @click="addUserInfo">
 			{{uid ? '修改' : '下一步'}}
 		</view>
-		<u-select v-model="cshow" :list="clist" @confirm="confirmc"></u-select>
+		<u-select v-model="cshow"  mode="single-column" :list="clist" @confirm="confirmc"></u-select>
 		<u-select v-model="rshow" mode="mutil-column-auto" :list="rlist" @confirm="confirmr"></u-select>
 	</view>
 </template>
@@ -75,16 +75,19 @@
 				building:'',
 				building_detail:'',
 				buildCs:{
-					width:'150rpx'
+					width:'190rpx'
 				},
 				communityCs:{
-					width:'393rpx'
+					width:'470rpx'
+				},
+				communityCs2:{
+					width:'500rpx'
 				},
 				communityCs1:{
-					width:'218rpx'
+					width:'350rpx'
 				},
 				config: {
-					title: '设置', //title
+					title: '添加身份信息', //title
 					bgcolor: 'white', //背景颜色
 					fontcolor:"rgba(51, 51, 51, 1)", //文字颜色，默认白色
 					type:1, //type 1，3胶囊 2，4无胶囊模式
@@ -105,7 +108,7 @@
 			}
 			if(options.uid){
 				this.uid = options.uid
-				this.config.title = '修改'
+				this.config.title = '修改身份信息'
 				this.getUserinfo()
 			}
 			this.getNucleicAcidCommunity()
@@ -239,7 +242,7 @@
 			},
 			addUserInfo(){
 				var data = {}
-				if(this.community_name.length == 0){
+				if(new String(this.community_id).toString().length == 0){
 					this.$u.toast('请选择小区')
 					return
 				}else{
@@ -323,6 +326,10 @@
 		height:100vh;
 		display: flex;
 		flex-direction: column;
+		/deep/ .u-select__header__btn{
+			font-size: 34rpx;
+			font-weight: bold;
+		}
 		.banner{
 			width: 100%;
 			margin-bottom: 36rpx;
@@ -339,7 +346,10 @@
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-around;
-			padding:0 42rpx;
+			width: 710rpx;
+			padding-left: 20rpx;
+			box-sizing: border-box;
+			margin:0 auto;
 			box-sizing: border-box;
 			.label{
 				font-size: 32rpx;
@@ -370,9 +380,9 @@
 		}
 		.fixs	/deep/ .u-input__input{
 				height:61rpx;
-				color:blue;
-				font-size: 36rpx;
-				font-weight: bold;
+				// color:blue;
+				// font-size: 36rpx;
+				// font-weight: bold;
 		}
 		.first-item-wrap{
 			margin-top: 20rpx;
@@ -380,6 +390,7 @@
 		.tow-item-wrap{
 			margin-top: 20rpx;
 			padding-bottom:45rpx;
+			padding-left:20rpx;
 			box-sizing: border-box;
 			justify-content: space-between;
 			border-bottom: 10rpx solid #F7F9FF;

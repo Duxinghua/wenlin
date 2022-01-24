@@ -654,7 +654,7 @@ export default {
 					white-space: nowrap;
 				}
 				.likewrap {
-					min-width: 60upx;
+					min-width: 80upx;
 					padding-left: 15upx;
 					padding-right: 15upx;
 					height: 32upx;
@@ -665,6 +665,7 @@ export default {
 					background: #08C299;
 					border-radius: 8upx;
 					margin-right: 15upx;
+					white-space: nowrap;
 					// position: relative;
 					.like {
 						width: 30upx;

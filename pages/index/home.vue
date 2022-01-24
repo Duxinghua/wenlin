@@ -355,9 +355,9 @@
 		<view class="xf" v-if="false " @click.stop="paiHandler">
 			<u-image :src="imgURl+'xf.png'" width="100%" height="100%"></u-image>
 		</view> -->
-		<Confrimpop ref='confrims' @del="condelHandler"/>
-		<image @click="gos" src="https://sq.wenlinapp.com/upload/dynamics/20220123/91161160c8728968d740e84e077920fe.png" style="width:180rpx;height:180rpx;
-		position: fixed;right:100rpx;bottom:200rpx;z-index:1000" />
+		<Confrimpop ref='confrims' @del="condelHandler" />
+<!-- 		<image @click="gos" src="https://sq.wenlinapp.com/upload/dynamics/20220123/91161160c8728968d740e84e077920fe.png" style="width:180rpx;height:180rpx;
+		position: fixed;right:100rpx;bottom:200rpx;z-index:1000" /> -->
 	</view>
 </template>
 

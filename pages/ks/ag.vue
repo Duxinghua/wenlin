@@ -75,7 +75,7 @@
 					width:'190rpx'
 				},
 				communityCs:{
-					width:'434rpx'
+					width:'500rpx'
 				},
 				communityCs1:{
 					width:'270rpx'
@@ -216,7 +216,8 @@
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-around;
-			padding:0 42rpx;
+			width: 100%;
+			padding-left: 20rpx;
 			box-sizing: border-box;
 			.label{
 				font-size: 32rpx;
